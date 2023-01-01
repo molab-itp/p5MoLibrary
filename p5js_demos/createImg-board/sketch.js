@@ -2,7 +2,7 @@
 // Firebase-createImg-board
 // Display images from Firebase storage as a bill board
 
-let storeKey = 'mo-gallery-1';
+let storeKey = 'mo-gallery-web';
 let xloc;
 let yloc;
 let nitems;

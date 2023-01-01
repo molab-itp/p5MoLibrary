@@ -2,7 +2,7 @@
 // Firebase createImg-slide-show
 // Display images from Firebase storage as a slide show
 
-let storeKey = 'mo-gallery-1';
+let storeKey = 'mo-gallery-web';
 let nitems;
 let updateCount = 0;
 let a_img = [];
