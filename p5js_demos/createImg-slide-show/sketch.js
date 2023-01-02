@@ -52,7 +52,7 @@ function received_gallery(data) {
     let img = createImg(val.mediaPath, val.authorEmail);
     div.child(img);
     a_img.push(img);
-    img.style('display:none');
+    img.style('display:none;width:100%');
   }
 }
 
@@ -70,3 +70,5 @@ function ui_div_empty(id) {
   }
   return div;
 }
+
+// https://www.w3schools.com/howto/howto_css_full_page.asp
