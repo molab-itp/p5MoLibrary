@@ -2,6 +2,7 @@
 // Firebase createImg-slide-show
 // Display images from Firebase storage as a slide show
 
+// storage key for list of images
 let storeKey = 'mo-gallery-web';
 let nitems;
 let updateCount = 0;
@@ -13,7 +14,8 @@ function setup() {
   noCanvas();
   // console.log('app', fb_.app);
 
-  // Setup listner for changes to firebase db
+  // Setup listener for changes to firebase db
+  // fb_ is initialized by fb_firebase.js
   let galleryRef = fb_.ref(fb_.database, storeKey);
   fb_.onValue(galleryRef, (snapshot) => {
     const data = snapshot.val();

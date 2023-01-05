@@ -1,3 +1,11 @@
+//
+// Expose firebase api to non-import code p5js script.js
+// as object via variable fb_.xxxx
+//
+
+// Documentation starting reference
+// <!-- https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en -->
+
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
 
 // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
@@ -62,8 +70,6 @@ const dbRef = ref(getDatabase());
 //   console.log('galleryRef data', data);
 // });
 
-// Expose api to non-import code p5js script.js as fb_.xxxx
-//
 const fb_ = {};
 window.fb_ = fb_;
 fb_.app = app;
@@ -74,13 +80,12 @@ fb_.ref = ref;
 fb_.onValue = onValue;
 
 // History
-// Extracted to own file firebase.js and use
+// Extracted to own file fb_firebase.js and use
 //  <script type="module" src="firebase.js"></script>
+// to load from index.html
 // This step was to verify that script module import works in p5js editor
 
 // Initial version that does not use module import
 // https://editor.p5js.org/jht1493/sketches/5LgILr8RF
 // Firebase-createImg-board
 // Display images from Firebase storage as a bill board
-
-// <!-- https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en -->
