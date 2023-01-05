@@ -26,10 +26,13 @@ function setup() {
 
 function draw() {
   if (frameCount % 120 == 0 && a_img.length > 0 && !mouseIsPressed) {
+    // index of previous image
     let oindex = a_index % a_img.length;
+    // advance index of current image
     a_index = (a_index + 1) % a_img.length;
     let img = a_img[a_index];
     if (!img) return;
+    // Show this image and hide the previous one
     img.style('display:inline');
     if (oindex != a_index) {
       img = a_img[oindex];
@@ -52,7 +55,8 @@ function received_gallery(data) {
     let img = createImg(val.mediaPath, val.authorEmail);
     div.child(img);
     a_img.push(img);
-    img.style('display:none;width:100%');
+    // All images start out hidden
+    // img.style('display:none');
   }
 }
 
@@ -70,5 +74,3 @@ function ui_div_empty(id) {
   }
   return div;
 }
-
-// https://www.w3schools.com/howto/howto_css_full_page.asp

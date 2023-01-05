@@ -23,8 +23,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const fb_ = {};
-fb_.app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 const auth = getAuth();
 signInAnonymously(auth)
@@ -39,20 +38,20 @@ signInAnonymously(auth)
   });
 
 const database = getDatabase();
-console.log('database', database);
+// console.log('database', database);
 
 const dbRef = ref(getDatabase());
-get(child(dbRef, `mo-gallery-1`))
-  .then((snapshot) => {
-    if (snapshot.exists()) {
-      console.log('snapshot', snapshot.val());
-    } else {
-      console.log('No data available');
-    }
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+// get(child(dbRef, `mo-gallery-1`))
+//   .then((snapshot) => {
+//     if (snapshot.exists()) {
+//       console.log('snapshot', snapshot.val());
+//     } else {
+//       console.log('No data available');
+//     }
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   });
 
 // https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0
 
@@ -63,11 +62,25 @@ get(child(dbRef, `mo-gallery-1`))
 //   console.log('galleryRef data', data);
 // });
 
+// Expose api to non-import code p5js script.js as fb_.xxxx
+//
+const fb_ = {};
 window.fb_ = fb_;
+fb_.app = app;
 fb_.auth = auth;
 fb_.database = database;
 fb_.dbRef = dbRef;
 fb_.ref = ref;
 fb_.onValue = onValue;
 
-// Callbacks are removed by calling the off() method on your Firebase database reference.
+// History
+// Extracted to own file firebase.js and use
+//  <script type="module" src="firebase.js"></script>
+// This step was to verify that script module import works in p5js editor
+
+// Initial version that does not use module import
+// https://editor.p5js.org/jht1493/sketches/5LgILr8RF
+// Firebase-createImg-board
+// Display images from Firebase storage as a bill board
+
+// <!-- https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en -->
