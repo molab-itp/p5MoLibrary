@@ -58,7 +58,7 @@ function received_gallery(data) {
     div.child(img);
     a_img.push(img);
     // All images start out hidden
-    // img.style('display:none');
+    img.style('display:none;width:100%');
   }
 }
 
