@@ -53,7 +53,8 @@ function received_gallery(data) {
   for (val of arr) {
     console.log('val', val);
     // let img = createImg( 'https://p5js.org/assets/img/asterisk-01.png', 'the p5 magenta asterisk' );
-    let img = createImg(val.mediaPath, val.authorEmail);
+    let path = val.mediaPathFullRez ?? val.mediaPath;
+    let img = createImg(path, val.authorEmail);
     div.child(img);
   }
 }
