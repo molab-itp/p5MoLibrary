@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
   </head>
   <body>
-    v1
+    <!-- v2023-02-08 18:01:45 -->
     <main></main>
 
     <!-- Documentation reference -->
@@ -65,7 +65,7 @@
       console.log('database', database);
 
       const dbRef = ref(getDatabase());
-      get(child(dbRef, `mo-gallery-1`))
+      get(child(dbRef, `mo-gallery-web`))
         .then((snapshot) => {
           if (snapshot.exists()) {
             console.log('snapshot', snapshot.val());
@@ -74,7 +74,7 @@
           }
         })
         .catch((error) => {
-          console.error(error);
+          console.error('error', error);
         });
 
       // https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0

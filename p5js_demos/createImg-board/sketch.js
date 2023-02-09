@@ -3,14 +3,12 @@
 // Display images from Firebase storage as a bill board
 
 let storeKey = 'mo-gallery-web';
-let xloc;
-let yloc;
-let nitems;
+let nitems = 0;
 let updateCount = 0;
+let rdata;
 
 function setup() {
-  createCanvas(400, 100);
-
+  noCanvas();
   // console.log('app', fb_.app);
 
   // Setup listner for changes to firebase db
@@ -21,25 +19,30 @@ function setup() {
     received_gallery(data);
   });
 
-  xloc = 10;
-  yloc = height / 2;
+  let btn = createButton('Shuffle').mousePressed(() => {
+    //console.log('Shuffle');
+    received_gallery(rdata, { doShuffle: 1 });
+  });
+  btn.style('font-size:42px');
+  ui_update();
 }
 
-function draw() {
-  background(220);
-  text(storeKey, xloc, yloc);
-  // xloc = (xloc + 1) % width;
-  if (nitems) {
-    text('nitems=' + nitems, 10, 20);
-    text('updateCount=' + updateCount, 10, 35);
-  }
+function ui_update() {
+  ui_span('date', ' ' + formatDate());
+  ui_span('updateCount', ' updateCount:' + updateCount);
+  ui_span('nitems', ' nitems:' + nitems);
 }
 
-function received_gallery(data) {
+function formatDate() {
+  // return '';
+  return new Date().toISOString();
+}
+function received_gallery(data, opts) {
   let div = ui_div_empty('igallery');
   if (!data) {
     return;
   }
+  rdata = data;
   updateCount += 1;
 
   // for (key in data) {
@@ -48,14 +51,21 @@ function received_gallery(data) {
 
   // Display in reverse order to see new additions first
   let arr = Object.values(data).reverse();
+  if (opts && opts.doShuffle) {
+    arr = shuffle(arr);
+  }
   nitems = arr.length;
 
   for (val of arr) {
     console.log('val', val);
     // let img = createImg( 'https://p5js.org/assets/img/asterisk-01.png', 'the p5 magenta asterisk' );
+    // select full resolution media if available
+    //
     let path = val.mediaPathFullRez ?? val.mediaPath;
     let img = createImg(path, val.authorEmail);
     div.child(img);
+
+    ui_update();
   }
 }
 
@@ -72,4 +82,12 @@ function ui_div_empty(id) {
     }
   }
   return div;
+}
+
+function ui_span(id, html) {
+  let span = select('#' + id);
+  if (!span) {
+    span = createSpan().id(id);
+  }
+  span.html(html);
 }
