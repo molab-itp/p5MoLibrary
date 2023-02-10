@@ -6,6 +6,7 @@ let storeKey = 'mo-gallery-web';
 let nitems = 0;
 let updateCount = 0;
 let rdata;
+let doScroll = false;
 
 function setup() {
   noCanvas();
@@ -19,11 +20,22 @@ function setup() {
     received_gallery(data);
   });
 
-  let btn = createButton('Shuffle').mousePressed(() => {
+  let shuffleBtn = createButton('Shuffle').mousePressed(() => {
     //console.log('Shuffle');
     received_gallery(rdata, { doShuffle: 1 });
   });
-  btn.style('font-size:42px');
+  shuffleBtn.style('font-size:42px');
+
+  let fullScreenBtn = createButton('Full Screen').mousePressed(() => {
+    ui_toggleFullScreen();
+  });
+  fullScreenBtn.style('font-size:42px');
+
+  let toggleScrollButn = createButton('Scroll').mousePressed(() => {
+    doScroll = !doScroll;
+  });
+  toggleScrollButn.style('font-size:42px');
+
   ui_update();
 }
 
@@ -90,4 +102,18 @@ function ui_span(id, html) {
     span = createSpan().id(id);
   }
   span.html(html);
+}
+
+function ui_toggleFullScreen() {
+  if (!document.documentElement.requestFullscreen) {
+    console.log('NO document.documentElement.requestFullscreen');
+    return;
+  }
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
 }
