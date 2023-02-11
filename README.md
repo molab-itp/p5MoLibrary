@@ -1,4 +1,4 @@
-# 98-MoGallery-p5js
+# [98-MoGallery-p5js](https://github.com/mobilelabclass-itp/98-MoGallery-p5js)
 
 View images from MoGallery firebase database using p5js
 
