@@ -28,6 +28,9 @@ function setup() {
 
   let fullScreenBtn = createButton('Full Screen').mousePressed(() => {
     ui_toggleFullScreen();
+    shuffleBtn.remove();
+    fullScreenBtn.remove();
+    toggleScrollButn.remove();
   });
   fullScreenBtn.style('font-size:42px');
 
@@ -98,6 +101,12 @@ function ui_div_empty(id) {
 
 function ui_span(id, html) {
   let span = select('#' + id);
+  if (document.fullscreenElement) {
+    if (span) {
+      span.remove();
+    }
+    return;
+  }
   if (!span) {
     span = createSpan().id(id);
   }
