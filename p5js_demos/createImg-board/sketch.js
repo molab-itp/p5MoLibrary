@@ -5,13 +5,26 @@
 let storeKey = 'mo-gallery-web';
 let nitems = 0;
 let updateCount = 0;
-let rdata;
 let doScroll = false;
+let shuffleBtn;
+let fullScreenBtn;
+let toggleScrollButn;
+let rdata; // Firebase object results from server. key is id
+let rarr; // Array of items from server
+let rwidth = 1920; // dimensions for image element
+let rheight = 1080;
+let scrollLimit = 0;
+let debug = 0;
 
 function setup() {
   noCanvas();
   // console.log('app', fb_.app);
-
+  if (debug) {
+    rwidth = rwidth / 4;
+    rheight = rheight / 4;
+    scrollLimit = 2;
+    doScroll = 1;
+  }
   // Setup listner for changes to firebase db
   let galleryRef = fb_.ref(fb_.database, storeKey);
   fb_.onValue(galleryRef, (snapshot) => {
@@ -20,23 +33,25 @@ function setup() {
     received_gallery(data);
   });
 
-  let shuffleBtn = createButton('Shuffle').mousePressed(() => {
+  shuffleBtn = createButton('Shuffle').mousePressed(() => {
     //console.log('Shuffle');
     received_gallery(rdata, { doShuffle: 1 });
   });
   shuffleBtn.style('font-size:42px');
 
-  let fullScreenBtn = createButton('Full Screen').mousePressed(() => {
+  fullScreenBtn = createButton('Full Screen').mousePressed(() => {
     ui_toggleFullScreen();
-    shuffleBtn.remove();
-    fullScreenBtn.remove();
-    toggleScrollButn.remove();
+    ui_remove_all();
   });
   fullScreenBtn.style('font-size:42px');
 
-  let toggleScrollButn = createButton('Scroll').mousePressed(() => {
+  toggleScrollButn = createButton('Scroll').mousePressed(() => {
     doScroll = !doScroll;
     console.log('doScroll', doScroll);
+    if (doScroll) {
+      ui_toggleFullScreen();
+      ui_remove_all();
+    }
     // window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
   });
   toggleScrollButn.style('font-size:42px');
@@ -49,7 +64,17 @@ function draw() {
   if (doScroll) {
     // window.scrollBy({ top: window.scrollY + 1, behavior: 'smooth' });
     window.scrollBy(0, 1);
+    let nlimit = scrollLimit || rarr.length;
+    if (window.scrollY > (nlimit + 1) * rheight) {
+      window.scrollTo(0, 0);
+    }
   }
+}
+
+function ui_remove_all() {
+  shuffleBtn.remove();
+  fullScreenBtn.remove();
+  toggleScrollButn.remove();
 }
 
 function ui_update() {
@@ -75,13 +100,13 @@ function received_gallery(data, opts) {
   //   let val = data[key];
 
   // Display in reverse order to see new additions first
-  let arr = Object.values(data).reverse();
+  rarr = Object.values(data).reverse();
   if (opts && opts.doShuffle) {
-    arr = shuffle(arr);
+    rarr = shuffle(arr);
   }
-  nitems = arr.length;
+  nitems = rarr.length;
 
-  for (val of arr) {
+  for (val of rarr) {
     // console.log('received_gallery val', val);
     // let img = createImg( 'https://p5js.org/assets/img/asterisk-01.png', 'the p5 magenta asterisk' );
     // select full resolution media if available
@@ -90,7 +115,7 @@ function received_gallery(data, opts) {
     let img = createImg(path, val.authorEmail);
     div.child(img);
 
-    img.style('width:1920px;');
+    img.style(`width: ${rwidth}px;`);
 
     ui_update();
   }
