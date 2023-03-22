@@ -50,9 +50,14 @@
       fb_.app = initializeApp(firebaseConfig);
 
       const auth = getAuth();
+      const database = getDatabase();
+      // console.log('database', database);
+      const dbRef = ref(getDatabase());
+
       signInAnonymously(auth)
         .then(() => {
-          console.log('signInAnonymously OK');
+          console.log('signInAnonymously OK 4');
+          // check_gallery();
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -61,21 +66,19 @@
           console.log('errorMessage', errorMessage);
         });
 
-      const database = getDatabase();
-      console.log('database', database);
-
-      const dbRef = ref(getDatabase());
-      get(child(dbRef, `mo-gallery-web`))
-        .then((snapshot) => {
-          if (snapshot.exists()) {
-            console.log('snapshot', snapshot.val());
-          } else {
-            console.log('No data available');
-          }
-        })
-        .catch((error) => {
-          console.error('error', error);
-        });
+      function check_gallery() {
+        get(child(dbRef, `mo-gallery-web`))
+          .then((snapshot) => {
+            if (snapshot.exists()) {
+              console.log('check_gallery snapshot', snapshot.val());
+            } else {
+              console.log('No data available');
+            }
+          })
+          .catch((error) => {
+            console.error('error', error);
+          });
+      }
 
       // https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0
 
@@ -96,6 +99,6 @@
       // Callbacks are removed by calling the off() method on your Firebase database reference.
     </script>
 
-    <script src="sketch.js?v=1"></script>
+    <script src="sketch.js?v=2"></script>
   </body>
 </html>

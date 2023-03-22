@@ -36,10 +36,20 @@ function setup() {
 
   let toggleScrollButn = createButton('Scroll').mousePressed(() => {
     doScroll = !doScroll;
+    console.log('doScroll', doScroll);
+    // window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
   });
   toggleScrollButn.style('font-size:42px');
 
   ui_update();
+}
+
+function draw() {
+  // console.log('draw');
+  if (doScroll) {
+    // window.scrollBy({ top: window.scrollY + 1, behavior: 'smooth' });
+    window.scrollBy(0, 1);
+  }
 }
 
 function ui_update() {
@@ -72,13 +82,15 @@ function received_gallery(data, opts) {
   nitems = arr.length;
 
   for (val of arr) {
-    console.log('val', val);
+    // console.log('received_gallery val', val);
     // let img = createImg( 'https://p5js.org/assets/img/asterisk-01.png', 'the p5 magenta asterisk' );
     // select full resolution media if available
     //
     let path = val.mediaPathFullRez ?? val.mediaPath;
     let img = createImg(path, val.authorEmail);
     div.child(img);
+
+    img.style('width:1920px;');
 
     ui_update();
   }
