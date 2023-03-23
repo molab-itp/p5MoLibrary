@@ -2,7 +2,7 @@
 // Firebase-createImg-board
 // Display images from Firebase storage as a bill board
 
-let storeKey = 'mo-gallery-web';
+let galleryKey = 'mo-gallery-web';
 let nitems = 0;
 let updateCount = 0;
 let doScroll = false;
@@ -25,8 +25,10 @@ function setup() {
     scrollLimit = 2;
     doScroll = 1;
   }
+  check_url_param();
+
   // Setup listner for changes to firebase db
-  let galleryRef = fb_.ref(fb_.database, storeKey);
+  let galleryRef = fb_.ref(fb_.database, galleryKey);
   fb_.onValue(galleryRef, (snapshot) => {
     const data = snapshot.val();
     console.log('galleryRef data', data);
@@ -78,7 +80,7 @@ function ui_remove_all() {
 }
 
 function ui_update() {
-  ui_span('date', ' ' + formatDate());
+  ui_span('date', 'v4 ' + formatDate());
   ui_span('updateCount', ' updateCount:' + updateCount);
   ui_span('nitems', ' nitems:' + nitems);
 }
@@ -102,7 +104,7 @@ function received_gallery(data, opts) {
   // Display in reverse order to see new additions first
   rarr = Object.values(data).reverse();
   if (opts && opts.doShuffle) {
-    rarr = shuffle(arr);
+    rarr = shuffle(rarr);
   }
   nitems = rarr.length;
 
@@ -162,4 +164,26 @@ function ui_toggleFullScreen() {
       document.exitFullscreen();
     }
   }
+}
+
+function check_url_param() {
+  let query = window.location.search;
+  console.log('query', query);
+  if (query.length < 1) return;
+  let params = params_query(query);
+  let ngallery = params['gallery'];
+  if (ngallery) {
+    // mo-gallery-web
+    galleryKey = `mo-gallery-${ngallery}-web`;
+  }
+  console.log('galleryKey', galleryKey);
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+function params_query(query) {
+  // eg. query='abc=foo&def=%5Basf%5D&xyz=5'
+  // params={abc: "foo", def: "[asf]", xyz: "5"}
+  const urlParams = new URLSearchParams(query);
+  const params = Object.fromEntries(urlParams);
+  return params;
 }
