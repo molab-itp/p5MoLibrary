@@ -80,7 +80,7 @@ function ui_remove_all() {
 }
 
 function ui_update() {
-  ui_span('date', 'v4 ' + formatDate());
+  ui_span('date', 'v5 ' + formatDate());
   ui_span('updateCount', ' updateCount:' + updateCount);
   ui_span('nitems', ' nitems:' + nitems);
 }
@@ -90,6 +90,7 @@ function formatDate() {
   return new Date().toISOString();
 }
 function received_gallery(data, opts) {
+  window.scrollTo(0, 0);
   let div = ui_div_empty('igallery');
   if (!data) {
     return;
