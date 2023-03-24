@@ -80,7 +80,7 @@ function ui_remove_all() {
 }
 
 function ui_update() {
-  ui_span('date', 'v6 ' + formatDate());
+  ui_span('date', 'v7 ' + formatDate());
   ui_span('updateCount', ' updateCount:' + updateCount);
   ui_span('nitems', ' nitems:' + nitems);
 }
@@ -114,7 +114,8 @@ function received_gallery(data, opts) {
     // let img = createImg( 'https://p5js.org/assets/img/asterisk-01.png', 'the p5 magenta asterisk' );
     // select full resolution media if available
     //
-    let path = val.mediaPathFullRez ?? val.mediaPath;
+    // let path = val.mediaPathFullRez ?? val.mediaPath;
+    let path = val.mediaPathFullRez || val.mediaPath;
     let img = createImg(path, val.authorEmail);
     div.child(img);
 
