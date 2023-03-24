@@ -80,7 +80,7 @@ function ui_remove_all() {
 }
 
 function ui_update() {
-  ui_span('date', 'v5 ' + formatDate());
+  ui_span('date', 'v6 ' + formatDate());
   ui_span('updateCount', ' updateCount:' + updateCount);
   ui_span('nitems', ' nitems:' + nitems);
 }
@@ -118,7 +118,9 @@ function received_gallery(data, opts) {
     let img = createImg(path, val.authorEmail);
     div.child(img);
 
-    img.style(`width: ${rwidth}px;`);
+    // avoid backquote for rasberry pi browser
+    // img.style(`width: ${rwidth}px;`);
+    img.style('width: ' + rwidth + 'px;');
 
     ui_update();
   }
@@ -175,7 +177,9 @@ function check_url_param() {
   let ngallery = params['gallery'];
   if (ngallery) {
     // mo-gallery-web
-    galleryKey = `mo-gallery-${ngallery}-web`;
+    // rasberry pie does not like back quote
+    // galleryKey = `mo-gallery-${ngallery}-web`;
+    galleryKey = 'mo-gallery-' + ngallery + '-web';
   }
   console.log('galleryKey', galleryKey);
 }
