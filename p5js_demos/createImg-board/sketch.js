@@ -5,19 +5,23 @@
 // https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/
 // https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/?gallery=ims
 
-let galleryKey = 'mo-gallery-web';
+// let galleryKey = 'mo-gallery-web';
+let galleryKey = 'mo-gallery-ims-web';
 let nitems = 0;
 let updateCount = 0;
 let doScroll = false;
-let shuffleBtn;
-let fullScreenBtn;
-let toggleScrollButn;
 let rdata; // Firebase object results from server. key is id
 let rarr; // Array of items from server
 let rwidth = 1920; // dimensions for image element
 let rheight = 1080;
 let scrollLimit = 0;
+let doSplat = 0;
 let debug = 0;
+
+let shuffleBtn;
+let fullScreenBtn;
+let toggleScrollBtn;
+let splatBtn;
 
 function setup() {
   noCanvas();
@@ -50,7 +54,7 @@ function setup() {
   });
   fullScreenBtn.style('font-size:42px');
 
-  toggleScrollButn = createButton('Scroll').mousePressed(() => {
+  toggleScrollBtn = createButton('Scroll').mousePressed(() => {
     doScroll = !doScroll;
     console.log('doScroll', doScroll);
     if (doScroll) {
@@ -59,7 +63,14 @@ function setup() {
     }
     // window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
   });
-  toggleScrollButn.style('font-size:42px');
+  toggleScrollBtn.style('font-size:42px');
+
+  splatBtn = createButton('Splat').mousePressed(() => {
+    console.log('splatBtn', doSplat);
+    doSplat = !doSplat;
+    received_gallery(rdata);
+  });
+  splatBtn.style('font-size:42px');
 
   ui_update();
 }
@@ -79,7 +90,8 @@ function draw() {
 function ui_remove_all() {
   shuffleBtn.remove();
   fullScreenBtn.remove();
-  toggleScrollButn.remove();
+  toggleScrollBtn.remove();
+  splatBtn.remove();
 }
 
 function ui_update() {
@@ -124,7 +136,11 @@ function received_gallery(data, opts) {
 
     // avoid backquote for rasberry pi browser
     // img.style(`width: ${rwidth}px;`);
-    img.style('width: ' + rwidth + 'px;');
+    let iwidth = rwidth;
+    if (doSplat) {
+      iwidth = random(100, 400);
+    }
+    img.style('width: ' + iwidth + 'px;');
 
     ui_update();
   }
