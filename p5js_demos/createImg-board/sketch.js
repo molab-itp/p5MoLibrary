@@ -2,6 +2,9 @@
 // Firebase-createImg-board
 // Display images from Firebase storage as a bill board
 
+// https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/
+// https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/?gallery=ims
+
 let galleryKey = 'mo-gallery-web';
 let nitems = 0;
 let updateCount = 0;
