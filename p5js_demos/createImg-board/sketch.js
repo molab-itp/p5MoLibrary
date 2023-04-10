@@ -87,23 +87,6 @@ function draw() {
   }
 }
 
-function ui_remove_all() {
-  shuffleBtn.remove();
-  fullScreenBtn.remove();
-  toggleScrollBtn.remove();
-  splatBtn.remove();
-}
-
-function ui_update() {
-  ui_span('date', 'v7 ' + formatDate());
-  ui_span('updateCount', ' updateCount:' + updateCount);
-  ui_span('nitems', ' nitems:' + nitems);
-}
-
-function formatDate() {
-  // return '';
-  return new Date().toISOString();
-}
 function received_gallery(data, opts) {
   window.scrollTo(0, 0);
   let div = ui_div_empty('igallery');
@@ -144,6 +127,24 @@ function received_gallery(data, opts) {
 
     ui_update();
   }
+}
+
+function ui_remove_all() {
+  shuffleBtn.remove();
+  fullScreenBtn.remove();
+  toggleScrollBtn.remove();
+  splatBtn.remove();
+}
+
+function ui_update() {
+  ui_span('date', 'v7 ' + formatDate());
+  ui_span('updateCount', ' updateCount:' + updateCount);
+  ui_span('nitems', ' nitems:' + nitems);
+}
+
+function formatDate() {
+  // return '';
+  return new Date().toISOString();
 }
 
 function ui_div_empty(id) {
