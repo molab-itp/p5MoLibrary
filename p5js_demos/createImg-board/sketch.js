@@ -3,10 +3,10 @@
 // Display images from Firebase storage as a bill board
 
 // https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/
-// https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/?gallery=ims
+// https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/?gallery=-ims
 
-// let galleryKey = 'mo-gallery-web';
-let galleryKey = 'mo-gallery-ims-web';
+let galleryKey = 'mo-gallery-web';
+// let galleryKey = 'mo-gallery-ims-web';
 let nitems = 0;
 let updateCount = 0;
 let doScroll = false;
@@ -137,7 +137,7 @@ function ui_remove_all() {
 }
 
 function ui_update() {
-  ui_span('date', 'v7 ' + formatDate());
+  ui_span('date', 'v8 ' + formatDate());
   ui_span('updateCount', ' updateCount:' + updateCount);
   ui_span('nitems', ' nitems:' + nitems);
 }
@@ -200,7 +200,8 @@ function check_url_param() {
     // mo-gallery-web
     // rasberry pie does not like back quote
     // galleryKey = `mo-gallery-${ngallery}-web`;
-    galleryKey = 'mo-gallery-' + ngallery + '-web';
+    // galleryKey = ngallery;
+    galleryKey = 'mo-gallery' + ngallery + '-web';
   }
   console.log('galleryKey', galleryKey);
 }
