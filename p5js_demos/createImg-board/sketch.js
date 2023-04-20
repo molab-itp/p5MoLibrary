@@ -4,7 +4,9 @@
 
 // https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/
 // https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/?gallery=-ims
+// https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/?gallery=-
 
+let a_version = 'v8 ';
 let galleryKey = 'mo-gallery-web';
 // let galleryKey = 'mo-gallery-ims-web';
 let nitems = 0;
@@ -137,7 +139,7 @@ function ui_remove_all() {
 }
 
 function ui_update() {
-  ui_span('date', 'v8 ' + formatDate());
+  ui_span('date', a_version + formatDate());
   ui_span('updateCount', ' updateCount:' + updateCount);
   ui_span('nitems', ' nitems:' + nitems);
 }
