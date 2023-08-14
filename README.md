@@ -4,6 +4,8 @@ View images from MoGallery firebase database using p5js
 
 - [p5js_demos/createImg-board](p5js_demos/createImg-board/)
 - [p5js_demos/createImg-slide-show](p5js_demos/createImg-slide-show)
+- [p5js_demos/draw-share](p5js_demos/draw-share)
+- [p5js_demos/draw-share-multi](p5js_demos/draw-share-multi)
 
 ## Browser Preview
 
