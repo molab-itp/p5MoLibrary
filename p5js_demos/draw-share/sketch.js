@@ -30,6 +30,9 @@ function setup() {
 
   my.clearBtn = createButton('Clear').mousePressed(gallery_clear);
   my.clearBtn.style('font-size:42px');
+
+  my.trimBtn = createButton('Trim').mousePressed(gallery_trim);
+  my.trimBtn.style('font-size:42px');
 }
 
 function draw() {
@@ -39,6 +42,7 @@ function draw() {
     let p1 = my.points[index - 1];
     let p2 = my.points[index];
     if (p1.break || p2.break) continue;
+    // line(p1.x + random(-2, 2), p1.y + random(-2, 2), p2.x, p2.y);
     line(p1.x, p1.y, p2.x, p2.y);
   }
 }
@@ -48,9 +52,9 @@ function mouseDragged() {
   let x = mouseX;
   let y = mouseY;
   if (my.points.length > 0) {
-    let opt = my.points[my.points.length - 1];
-    if (!opt.break) {
-      if (dist(opt.x, opt.y, x, y) < my.min_drag) {
+    let ppt = my.points[my.points.length - 1];
+    if (!ppt.break) {
+      if (dist(ppt.x, ppt.y, x, y) < my.min_drag) {
         return;
       }
     }
@@ -69,7 +73,26 @@ function add_item(item) {
 
 function write_points() {
   add_item({ break: 1 });
+  gallery_update();
+}
+
+function gallery_clear() {
+  my.points = [];
+  fb_.set(my.galleryRef, {});
+}
+
+function gallery_trim() {
+  my.points.splice(0, 1);
+  gallery_update();
+}
+
+function gallery_update() {
+  let ucount = 1;
+  if (my.rdata && my.rdata.ucount) {
+    ucount = my.rdata.ucount + 1;
+  }
   fb_.set(my.galleryRef, {
+    ucount: ucount,
     now: new Date().toISOString(),
     points: my.points,
   });
@@ -90,11 +113,6 @@ function gallery_signin() {
     .catch((error) => {
       console.log('signin error', error);
     });
-}
-
-function gallery_clear() {
-  my.points = [];
-  fb_.set(my.galleryRef, {});
 }
 
 function gallery_onValue() {
