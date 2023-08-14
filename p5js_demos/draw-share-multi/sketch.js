@@ -1,7 +1,7 @@
-// https://editor.p5js.org/jht9629-nyu/sketches/fEp51pBhA
-// draw-share
+// https://editor.p5js.org/jht9629-nyu/sketches/mCr2W68mc
+// draw-share-multi
 
-let a_version = 'v1 ';
+let a_version = 'v2 ';
 let galleryKey = 'mo-draw-web-shared';
 
 let max_points = 100;
@@ -52,6 +52,7 @@ function draw() {
   for (let index = 1; index < points.length; index++) {
     let p1 = points[index - 1];
     let p2 = points[index];
+    if (p1.break || p2.break) continue;
     line(p1.x, p1.y, p2.x, p2.y);
   }
 }
@@ -68,25 +69,8 @@ function signin() {
     });
 }
 
-// Not used
-function read_points() {
-  console.log('read_points');
-  fb_
-    .get(galleryRef)
-    .then((snapshot) => {
-      if (snapshot.exists()) {
-        rdata = snapshot.val();
-        console.log('read_points', rdata);
-      } else {
-        console.log('read_points No data available');
-      }
-    })
-    .catch((error) => {
-      console.log('read_points', error);
-    });
-}
-
 function write_points() {
+  points.push({ break: 1 });
   fb_.set(galleryRef, {
     now: new Date().toISOString(),
     points: points,
@@ -167,9 +151,6 @@ function ui_toggleFullScreen() {
   }
 }
 
-// let galleryKey = 'mo-gallery-web';
-// let galleryKey = 'mo-gallery-ims-web';
-
 function check_url_param() {
   let query = window.location.search;
   console.log('query', query);
@@ -195,38 +176,5 @@ function params_query(query) {
   return params;
 }
 
-// https://editor.p5js.org/jht1493/sketches/5LgILr8RF
-// Firebase-createImg-board
-// Display images from Firebase storage as a bill board
-
-// https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/
-// https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/?gallery=ims-web
-// https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/?gallery=web
-
-// # --
-// https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0
-
-// import { getDatabase, ref, set } from "firebase/database";
-
-// function writeUserData(userId, name, email, imageUrl) {
-//   const db = getDatabase();
-//   set(ref(db, 'users/' + userId), {
-//     username: name,
-//     email: email,
-//     profile_picture : imageUrl
-//   });
-// }
-
-// # --
-// import { getDatabase, ref, child, get } from "firebase/database";
-
-// const dbRef = ref(getDatabase());
-// get(child(dbRef, `users/${userId}`)).then((snapshot) => {
-//   if (snapshot.exists()) {
-//     console.log(snapshot.val());
-//   } else {
-//     console.log("No data available");
-//   }
-// }).catch((error) => {
-//   console.error(error);
-// });
+// https://editor.p5js.org/jht9629-nyu/sketches/fEp51pBhA
+// draw-share
