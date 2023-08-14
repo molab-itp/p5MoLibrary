@@ -43,16 +43,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth();
-signInAnonymously(auth)
-  .then(() => {
-    console.log('signInAnonymously OK');
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.log('errorCode', errorCode);
-    console.log('errorMessage', errorMessage);
-  });
+// signInAnonymously(auth)
+//   .then(() => {
+//     console.log('signInAnonymously OK');
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     console.log('errorCode', errorCode);
+//     console.log('errorMessage', errorMessage);
+//   });
 
 const database = getDatabase();
 // console.log('database', database);
@@ -90,6 +90,7 @@ fb_.onValue = onValue;
 fb_.child = child;
 fb_.get = get;
 fb_.set = set;
+fb_.signInAnonymously = signInAnonymously;
 
 // History
 // Extracted to own file fb_firebase.js and use

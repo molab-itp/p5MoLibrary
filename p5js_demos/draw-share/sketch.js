@@ -2,7 +2,7 @@
 // Firebase-createImg-board copy
 
 let a_version = 'v1 ';
-let galleryKey = 'mo-draw-shared';
+let galleryKey = 'mo-draw-web-shared';
 
 let max_points = 100;
 let nitems = 0;
@@ -12,6 +12,7 @@ let debug = 0;
 let points = [];
 let cnv;
 let galleryRef;
+let rdata;
 
 function setup() {
   cnv = createCanvas(400, 400);
@@ -32,6 +33,8 @@ function setup() {
   ui_update();
 
   strokeWeight(10);
+
+  signin();
 }
 
 function draw() {
@@ -53,8 +56,39 @@ function draw() {
   }
 }
 
+function signin() {
+  fb_
+    .signInAnonymously(fb_.auth)
+    .then(() => {
+      console.log('signin OK');
+      // read_points();
+    })
+    .catch((error) => {
+      console.log('signin error', error);
+    });
+}
+
+// Not used
+function read_points() {
+  console.log('read_points');
+  fb_
+    .get(galleryRef)
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        rdata = snapshot.val();
+        console.log('read_points', rdata);
+      } else {
+        console.log('read_points No data available');
+      }
+    })
+    .catch((error) => {
+      console.log('read_points', error);
+    });
+}
+
 function write_points() {
   fb_.set(galleryRef, {
+    now: new Date().toISOString(),
     points: points,
   });
 }
@@ -68,24 +102,14 @@ function canvas_mouseReleased() {
   write_points();
 }
 
-function received_gallery(data, opts) {
+function received_gallery(data) {
   // console.log('received_gallery data', data);
-
   rdata = data;
   updateCount += 1;
 
-  // for (key in data) {
-  //   console.log('key', key);
-  //   let val = data[key];
+  points = rdata.points;
+  nitems = points.length;
 
-  // Display in reverse order to see new additions first
-  rarr = Object.values(data).reverse();
-
-  nitems = rarr.length;
-
-  for (val of rarr) {
-    console.log('received_gallery val', val);
-  }
   ui_update();
 }
 
@@ -192,3 +216,17 @@ function params_query(query) {
 //     profile_picture : imageUrl
 //   });
 // }
+
+// # --
+// import { getDatabase, ref, child, get } from "firebase/database";
+
+// const dbRef = ref(getDatabase());
+// get(child(dbRef, `users/${userId}`)).then((snapshot) => {
+//   if (snapshot.exists()) {
+//     console.log(snapshot.val());
+//   } else {
+//     console.log("No data available");
+//   }
+// }).catch((error) => {
+//   console.error(error);
+// });
