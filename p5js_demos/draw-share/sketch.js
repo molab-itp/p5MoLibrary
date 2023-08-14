@@ -4,15 +4,19 @@
 let a_version = 'v1 ';
 let galleryKey = 'mo-draw-shared';
 
-let max_points = 40;
+let max_points = 100;
 let nitems = 0;
 let updateCount = 0;
 let debug = 0;
 
 let points = [];
+let cnv;
 
 function setup() {
-  createCanvas(400, 400);
+  cnv = createCanvas(400, 400);
+  cnv.mousePressed(canvas_mousePressed);
+  cnv.mouseReleased(canvas_mouseReleased);
+
   // console.log('app', fb_.app);
   check_url_param();
 
@@ -46,6 +50,14 @@ function draw() {
     let p2 = points[index];
     line(p1.x, p1.y, p2.x, p2.y);
   }
+}
+
+function canvas_mousePressed() {
+  console.log('canvas_mousePressed');
+}
+
+function canvas_mouseReleased() {
+  console.log('canvas_mouseReleased');
 }
 
 function received_gallery(data, opts) {
