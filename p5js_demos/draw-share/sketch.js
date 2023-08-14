@@ -11,6 +11,7 @@ let debug = 0;
 
 let points = [];
 let cnv;
+let galleryRef;
 
 function setup() {
   cnv = createCanvas(400, 400);
@@ -20,8 +21,8 @@ function setup() {
   // console.log('app', fb_.app);
   check_url_param();
 
-  // Setup listner for changes to firebase db
-  let galleryRef = fb_.ref(fb_.database, galleryKey);
+  // Setup listener for changes to firebase db
+  galleryRef = fb_.ref(fb_.database, galleryKey);
   fb_.onValue(galleryRef, (snapshot) => {
     const data = snapshot.val();
     console.log('galleryRef data', data);
@@ -52,12 +53,19 @@ function draw() {
   }
 }
 
+function write_points() {
+  fb_.set(galleryRef, {
+    points: points,
+  });
+}
+
 function canvas_mousePressed() {
   console.log('canvas_mousePressed');
 }
 
 function canvas_mouseReleased() {
   console.log('canvas_mouseReleased');
+  write_points();
 }
 
 function received_gallery(data, opts) {
@@ -170,3 +178,17 @@ function params_query(query) {
 // https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/
 // https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/?gallery=ims-web
 // https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/?gallery=web
+
+// # --
+// https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0
+
+// import { getDatabase, ref, set } from "firebase/database";
+
+// function writeUserData(userId, name, email, imageUrl) {
+//   const db = getDatabase();
+//   set(ref(db, 'users/' + userId), {
+//     username: name,
+//     email: email,
+//     profile_picture : imageUrl
+//   });
+// }

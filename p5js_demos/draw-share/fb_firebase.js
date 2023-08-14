@@ -17,7 +17,14 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 // import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js'
 
-import { getDatabase, ref, child, get, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
+import {
+  getDatabase,
+  ref,
+  set,
+  child,
+  get,
+  onValue,
+} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -80,6 +87,9 @@ fb_.database = database;
 fb_.dbRef = dbRef;
 fb_.ref = ref;
 fb_.onValue = onValue;
+fb_.child = child;
+fb_.get = get;
+fb_.set = set;
 
 // History
 // Extracted to own file fb_firebase.js and use
