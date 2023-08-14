@@ -1,34 +1,19 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/fEp51pBhA
 // Firebase-createImg-board copy
 
-let a_version = 'v9 ';
-let galleryKey = 'mo-gallery-web';
-// let galleryKey = 'mo-gallery-ims-web';
+let a_version = 'v1 ';
+let galleryKey = 'mo-draw-shared';
+
+let max_points = 40;
 let nitems = 0;
 let updateCount = 0;
-let doScroll = false;
-let rdata; // Firebase object results from server. key is id
-let rarr; // Array of items from server
-let rwidth = 1920; // dimensions for image element
-let rheight = 1080;
-let scrollLimit = 0;
-let doSplat = 0;
 let debug = 0;
 
-let shuffleBtn;
-let fullScreenBtn;
-let toggleScrollBtn;
-let splatBtn;
+let points = [];
 
 function setup() {
-  noCanvas();
+  createCanvas(400, 400);
   // console.log('app', fb_.app);
-  if (debug) {
-    rwidth = rwidth / 4;
-    rheight = rheight / 4;
-    scrollLimit = 2;
-    doScroll = 1;
-  }
   check_url_param();
 
   // Setup listner for changes to firebase db
@@ -39,59 +24,33 @@ function setup() {
     received_gallery(data);
   });
 
-  shuffleBtn = createButton('Shuffle').mousePressed(() => {
-    //console.log('Shuffle');
-    received_gallery(rdata, { doShuffle: 1 });
-  });
-  shuffleBtn.style('font-size:42px');
-
-  fullScreenBtn = createButton('Full Screen').mousePressed(() => {
-    ui_toggleFullScreen();
-    ui_remove_all();
-  });
-  fullScreenBtn.style('font-size:42px');
-
-  toggleScrollBtn = createButton('Scroll').mousePressed(() => {
-    doScroll = !doScroll;
-    console.log('doScroll', doScroll);
-    if (doScroll) {
-      ui_toggleFullScreen();
-      ui_remove_all();
-    }
-    // window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-  });
-  toggleScrollBtn.style('font-size:42px');
-
-  splatBtn = createButton('Splat').mousePressed(() => {
-    console.log('splatBtn', doSplat);
-    doSplat = !doSplat;
-    received_gallery(rdata);
-  });
-  splatBtn.style('font-size:42px');
-
-  createP();
-
   ui_update();
+
+  strokeWeight(10);
 }
 
 function draw() {
-  // console.log('draw');
-  if (doScroll) {
-    // window.scrollBy({ top: window.scrollY + 1, behavior: 'smooth' });
-    window.scrollBy(0, 1);
-    let nlimit = scrollLimit || rarr.length;
-    if (window.scrollY > (nlimit + 1) * rheight) {
-      window.scrollTo(0, 0);
+  background(200);
+
+  if (mouseIsPressed) {
+    let x = mouseX;
+    let y = mouseY;
+    points.push({ x, y });
+    if (points.length > max_points) {
+      points.splice(0, 1);
     }
+  }
+
+  for (let index = 1; index < points.length; index++) {
+    let p1 = points[index - 1];
+    let p2 = points[index];
+    line(p1.x, p1.y, p2.x, p2.y);
   }
 }
 
 function received_gallery(data, opts) {
-  window.scrollTo(0, 0);
-  let div = ui_div_empty('igallery');
-  if (!data) {
-    return;
-  }
+  // console.log('received_gallery data', data);
+
   rdata = data;
   updateCount += 1;
 
@@ -101,38 +60,13 @@ function received_gallery(data, opts) {
 
   // Display in reverse order to see new additions first
   rarr = Object.values(data).reverse();
-  if (opts && opts.doShuffle) {
-    rarr = shuffle(rarr);
-  }
+
   nitems = rarr.length;
 
   for (val of rarr) {
-    // console.log('received_gallery val', val);
-    // let img = createImg( 'https://p5js.org/assets/img/asterisk-01.png', 'the p5 magenta asterisk' );
-    // select full resolution media if available
-    //
-    // let path = val.mediaPathFullRez ?? val.mediaPath;
-    let path = val.mediaPathFullRez || val.mediaPath;
-    let img = createImg(path, val.authorEmail);
-    div.child(img);
-
-    // avoid backquote for rasberry pi browser
-    // img.style(`width: ${rwidth}px;`);
-    let iwidth = rwidth;
-    if (doSplat) {
-      iwidth = random(100, 400);
-    }
-    img.style('width: ' + iwidth + 'px;');
-
-    ui_update();
+    console.log('received_gallery val', val);
   }
-}
-
-function ui_remove_all() {
-  shuffleBtn.remove();
-  fullScreenBtn.remove();
-  toggleScrollBtn.remove();
-  splatBtn.remove();
+  ui_update();
 }
 
 function ui_update() {
