@@ -2,7 +2,7 @@
 // draw-share-multi
 
 let my = {
-  version: 'v5 ',
+  version: 'v6 ',
   galleryKey: 'mo-draw-web-shared',
   max_points: 200,
   nitems: 0,
@@ -24,18 +24,20 @@ function setup() {
 
   strokeWeight(my.brush_size);
 
-  ui_update();
-
-  createP();
-
   my.clearBtn = createButton('Clear').mousePressed(gallery_clear);
-  my.clearBtn.style('font-size:42px');
+  // my.clearBtn.style('font-size:42px');
 
   my.trimBtn = createButton('Trim').mousePressed(gallery_trim);
-  my.trimBtn.style('font-size:42px');
+  // my.trimBtn.style('font-size:42px');
+
+  createElement('br');
+
+  ui_update();
 }
 
 function draw() {
+  window.scrollBy(0, 1);
+
   background(200);
 
   for (let index = 1; index < my.points.length; index++) {
@@ -141,6 +143,7 @@ function ui_update() {
 }
 
 function formatDate() {
+  return '';
   return new Date().toISOString();
 }
 
