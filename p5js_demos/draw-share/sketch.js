@@ -2,7 +2,7 @@
 // draw-share-multi
 
 let my = {
-  version: 'v6 ',
+  version: 'v7 ',
   galleryKey: 'mo-draw-web-shared',
   max_points: 200,
   nitems: 0,
@@ -15,6 +15,7 @@ function setup() {
   my.canv = createCanvas(393, 600);
 
   my.canv.mouseReleased(canvas_mouseReleased);
+  my.canv.touchEnded(canvas_mouseReleased);
 
   my.min_drag = my.brush_size / 2;
 
