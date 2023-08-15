@@ -2,7 +2,7 @@
 // draw-share-multi
 
 let my = {
-  version: 'v4 ',
+  version: 'v9 ',
   galleryKey: 'mo-draw-web-shared',
   max_points: 200,
   nitems: 0,
@@ -15,6 +15,7 @@ function setup() {
   my.canv = createCanvas(393, 600);
 
   my.canv.mouseReleased(canvas_mouseReleased);
+  my.canv.touchEnded(canvas_mouseReleased);
 
   my.min_drag = my.brush_size / 2;
 
@@ -24,18 +25,20 @@ function setup() {
 
   strokeWeight(my.brush_size);
 
-  ui_update();
-
-  createP();
-
   my.clearBtn = createButton('Clear').mousePressed(gallery_clear);
-  my.clearBtn.style('font-size:42px');
+  // my.clearBtn.style('font-size:42px');
 
   my.trimBtn = createButton('Trim').mousePressed(gallery_trim);
-  my.trimBtn.style('font-size:42px');
+  // my.trimBtn.style('font-size:42px');
+
+  createElement('br');
+
+  ui_update();
 }
 
 function draw() {
+  // window.scrollBy(0, 1);
+
   background(200);
 
   for (let index = 1; index < my.points.length; index++) {
@@ -62,6 +65,11 @@ function mouseDragged() {
   add_item({ x, y });
   // required to prevent touch drag moving canvas on mobile
   return false;
+}
+
+function canvas_mouseReleased() {
+  console.log('canvas_mouseReleased');
+  write_points();
 }
 
 function add_item(item) {
@@ -96,11 +104,6 @@ function gallery_update() {
     now: new Date().toISOString(),
     points: my.points,
   });
-}
-
-function canvas_mouseReleased() {
-  console.log('canvas_mouseReleased');
-  write_points();
 }
 
 function gallery_signin() {
@@ -141,6 +144,7 @@ function ui_update() {
 }
 
 function formatDate() {
+  return '';
   return new Date().toISOString();
 }
 
