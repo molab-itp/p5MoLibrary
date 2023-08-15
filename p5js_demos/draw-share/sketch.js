@@ -2,7 +2,7 @@
 // draw-share-multi
 
 let my = {
-  version: 'v7 ',
+  version: 'v8 ',
   galleryKey: 'mo-draw-web-shared',
   max_points: 200,
   nitems: 0,
@@ -37,7 +37,7 @@ function setup() {
 }
 
 function draw() {
-  window.scrollBy(0, 1);
+  // window.scrollBy(0, 1);
 
   background(200);
 
@@ -65,6 +65,11 @@ function mouseDragged() {
   add_item({ x, y });
   // required to prevent touch drag moving canvas on mobile
   return false;
+}
+
+function canvas_mouseReleased() {
+  console.log('canvas_mouseReleased');
+  write_points();
 }
 
 function add_item(item) {
@@ -99,11 +104,6 @@ function gallery_update() {
     now: new Date().toISOString(),
     points: my.points,
   });
-}
-
-function canvas_mouseReleased() {
-  console.log('canvas_mouseReleased');
-  write_points();
 }
 
 function gallery_signin() {
