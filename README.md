@@ -11,7 +11,7 @@ View images from MoGallery firebase database using p5js
 
 Using github pages to view this repo
 
-- [github.io/98-MoGallery-p5js](https://mobilelabclass-itp.github.io/98-MoGallery-p5js/)
+- [github.io/98-MoGallery-p5js](https://molab-itp.github.io/98-MoGallery-p5js/)
 
 ## Issues
 
