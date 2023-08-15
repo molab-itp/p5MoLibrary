@@ -2,7 +2,7 @@
 // draw-share-multi
 
 let my = {
-  version: 'v5 ',
+  version: 'v4 ',
   galleryKey: 'mo-draw-web-shared',
   max_points: 200,
   nitems: 0,
