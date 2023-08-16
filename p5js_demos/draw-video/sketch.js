@@ -36,7 +36,9 @@ function draw() {
   if (!video_ready()) return;
   // window.scrollBy(0, 1);
 
-  // background(200);
+  if (my.drawBackground) {
+    background(200);
+  }
 
   // image(my.video, 0, 0);
 
@@ -44,6 +46,8 @@ function draw() {
 }
 
 function my_init() {
+  my.drawBackground = 1;
+
   my.nitems = 0;
   my.updateCount = 0;
   my.points = [];
@@ -166,9 +170,28 @@ function ui_init() {
   my.trimBtn = createButton('Trim').mousePressed(gallery_trim);
   // my.trimBtn.style('font-size:42px');
 
+  my.faceChk = createCheckbox('Face', my.face);
+  my.faceChk.style('display:inline');
+  my.faceChk.changed(faceChk_action);
+
+  my.drawBackgroundChk = createCheckbox('Bkgd', my.drawBackground);
+  my.drawBackgroundChk.style('display:inline');
+  my.drawBackgroundChk.changed(function () {
+    my.drawBackground = this.checked();
+  });
+
   createElement('br');
 
   ui_update();
+}
+
+// check box action for front facing or back facing camera selection
+function faceChk_action() {
+  my.face = this.checked();
+  my.facingMode = my.face ? 'user' : 'environment';
+  console.log('my.facingMode', my.facingMode);
+  my.video.remove();
+  create_myVideo();
 }
 
 function ui_update() {
