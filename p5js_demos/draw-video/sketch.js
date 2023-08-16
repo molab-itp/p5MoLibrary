@@ -104,6 +104,28 @@ function canvas_mouseReleased() {
 
 function draw_grid_scan() {
   let { x, y } = my;
+  let more = 1;
+  while (more) {
+    let c = my.video.get(x, y);
+    my.layer.noStroke();
+    my.layer.fill(c);
+    my.layer.rect(x, y, my.brushSize, my.brushSize);
+    x += my.brushSize;
+    if (x > my.width) {
+      more = 0;
+      x = 0;
+      y += my.brushSize;
+      if (y > my.height) {
+        y = 0;
+      }
+    }
+  }
+  my.x = x;
+  my.y = y;
+}
+
+function draw_grid_scan1() {
+  let { x, y } = my;
   let c = my.video.get(x, y);
   my.layer.noStroke();
   my.layer.fill(c);
