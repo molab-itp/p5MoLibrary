@@ -9,12 +9,12 @@ let my = {
   vheight: 640,
   face: true, // camera face front or back
   brushSize: 10,
+  drawBackground: 0,
+  drawVideo: 1,
 };
 
 function setup() {
   my_init();
-
-  // my.layer = createGraphics(my.width, my.height);
 
   // my.canv = createCanvas(393, 600);
   my.canv = createCanvas(my.width, my.height);
@@ -28,8 +28,6 @@ function setup() {
   ui_init();
 
   create_myVideo();
-
-  strokeWeight(my.brushSize);
 }
 
 function draw() {
@@ -37,17 +35,21 @@ function draw() {
   // window.scrollBy(0, 1);
 
   if (my.drawBackground) {
-    background(200);
+    my.layer.background(200);
   }
 
-  // image(my.video, 0, 0);
+  if (my.drawVideo) {
+    let img = my.video.get();
+    img.filter(GRAY);
+    image(img, 0, 0);
+  }
 
   draw_points();
+
+  image(my.layer, 0, 0);
 }
 
 function my_init() {
-  my.drawBackground = 1;
-
   my.nitems = 0;
   my.updateCount = 0;
   my.points = [];
@@ -62,6 +64,10 @@ function my_init() {
   my.py = my.y;
 
   my.min_drag = my.brushSize / 2;
+
+  my.layer = createGraphics(my.width, my.height);
+  my.layer.strokeWeight(my.brushSize);
+  my.layer.clear();
 }
 
 function draw_points() {
@@ -71,9 +77,9 @@ function draw_points() {
     if (p1.break || p2.break) continue;
     // line(p1.x + random(-2, 2), p1.y + random(-2, 2), p2.x, p2.y);
     if (p1.c != undefined) {
-      stroke(p1.c);
+      my.layer.stroke(p1.c);
     }
-    line(p1.x, p1.y, p2.x, p2.y);
+    my.layer.line(p1.x, p1.y, p2.x, p2.y);
   }
 }
 
