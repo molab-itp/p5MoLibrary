@@ -2,7 +2,7 @@
 // draw-video
 
 let my = {
-  version: 19,
+  version: 20,
   galleryKey: 'mo-draw-web-shared',
   maxPoints: 200,
   vwidth: 480, // Aspect ratio of video capture
@@ -86,9 +86,11 @@ function draw_points() {
     if (p1.c != undefined) {
       my.layer.stroke(p1.c);
     }
-    my.layer.line(p1.x, p1.y, p2.x, p2.y);
-    // my.layer.line(p1.x, 0, p1.x, my.height);
-    // my.layer.line(0, p1.y, my.width, p1.y);
+    if (p1.r != undefined) {
+      my.layer.rect(p1.x, p1.y, my.brushSize, my.brushSize);
+    } else {
+      my.layer.line(p1.x, p1.y, p2.x, p2.y);
+    }
   }
 }
 
@@ -124,10 +126,12 @@ function draw_random_walker() {
   let y = my.walkerY;
 
   let c = my.video.get(x, y);
-  add_item({ x, y, c });
+  add_item({ x, y, c, r: 1 });
 
-  x = x + random(-my.brushSize, my.brushSize);
-  y = y + random(-my.brushSize, my.brushSize);
+  // x = x + random(-my.brushSize, my.brushSize);
+  // y = y + random(-my.brushSize, my.brushSize);
+  x = x + my.brushSize * random([-1, 0, 1]);
+  y = y + my.brushSize * random([-1, 0, 1]);
   my.walkerX = (x + my.width) % my.width;
   my.walkerY = (y + my.height) % my.height;
 }
