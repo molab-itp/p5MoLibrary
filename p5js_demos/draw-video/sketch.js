@@ -2,19 +2,51 @@
 // draw-share-multi
 
 let my = {
-  version: 'v10 ',
+  version: 12,
   galleryKey: 'mo-draw-web-shared',
-  max_points: 200,
-  nitems: 0,
-  updateCount: 0,
-  brush_size: 10,
-  points: [],
+  maxPoints: 200,
+  vwidth: 480, // Aspect ratio of video capture
+  vheight: 640,
+  face: true, // camera face front or back
+  brushSize: 10,
 };
 
 function setup() {
-  my.vwidth = 480; // Aspect ratio of video capture
-  my.vheight = 640;
-  my.face = true; // camera face front or back
+  my_init();
+
+  // my.layer = createGraphics(my.width, my.height);
+
+  // my.canv = createCanvas(393, 600);
+  my.canv = createCanvas(my.width, my.height);
+  my.canv.mouseReleased(canvas_mouseReleased);
+  my.canv.touchEnded(canvas_mouseReleased);
+
+  gallery_signin();
+
+  gallery_onValue();
+
+  ui_init();
+
+  create_myVideo();
+
+  strokeWeight(my.brushSize);
+}
+
+function draw() {
+  if (!video_ready()) return;
+  // window.scrollBy(0, 1);
+
+  // background(200);
+
+  // image(my.video, 0, 0);
+
+  draw_points();
+}
+
+function my_init() {
+  my.nitems = 0;
+  my.updateCount = 0;
+  my.points = [];
 
   // match canvas to video dimensions
   my.width = my.vwidth;
@@ -25,44 +57,7 @@ function setup() {
   my.px = my.x;
   my.py = my.y;
 
-  // my.layer = createGraphics(my.width, my.height);
-
-  // my.canv = createCanvas(393, 600);
-  my.canv = createCanvas(my.width, my.height);
-
-  my.canv.mouseReleased(canvas_mouseReleased);
-  my.canv.touchEnded(canvas_mouseReleased);
-
-  my.min_drag = my.brush_size / 2;
-
-  gallery_signin();
-
-  gallery_onValue();
-
-  my.clearBtn = createButton('Clear').mousePressed(gallery_clear);
-  // my.clearBtn.style('font-size:42px');
-
-  my.trimBtn = createButton('Trim').mousePressed(gallery_trim);
-  // my.trimBtn.style('font-size:42px');
-
-  createElement('br');
-
-  ui_update();
-
-  create_myVideo();
-
-  strokeWeight(my.brush_size);
-}
-
-function draw() {
-  if (!video_ready()) return;
-  // window.scrollBy(0, 1);
-
-  background(200);
-
-  // image(my.video, 0, 0);
-
-  draw_points();
+  my.min_drag = my.brushSize / 2;
 }
 
 function draw_points() {
@@ -103,7 +98,7 @@ function canvas_mouseReleased() {
 
 function add_item(item) {
   my.points.push(item);
-  if (my.points.length > my.max_points) {
+  if (my.points.length > my.maxPoints) {
     my.points.splice(0, 1);
   }
 }
@@ -150,30 +145,39 @@ function gallery_signin() {
 function gallery_onValue() {
   // Setup listener for changes to firebase db
   my.galleryRef = fb_.ref(fb_.database, my.galleryKey);
-  fb_.onValue(my.galleryRef, received_snap);
+  fb_.onValue(my.galleryRef, function (snapshot) {
+    // console.log('received_gallery data', data);
+    const data = snapshot.val();
+    console.log('received_gallery data', data);
+    my.rdata = data;
+    my.updateCount += 1;
+    if (my.rdata && my.rdata.points) {
+      my.points = my.rdata.points;
+      my.nitems = my.points.length;
+    }
+    ui_update();
+  });
 }
 
-function received_snap(snapshot) {
-  // console.log('received_gallery data', data);
-  const data = snapshot.val();
-  console.log('received_gallery data', data);
-  my.rdata = data;
-  my.updateCount += 1;
-  if (my.rdata && my.rdata.points) {
-    my.points = my.rdata.points;
-    my.nitems = my.points.length;
-  }
+function ui_init() {
+  my.clearBtn = createButton('Clear').mousePressed(gallery_clear);
+  // my.clearBtn.style('font-size:42px');
+
+  my.trimBtn = createButton('Trim').mousePressed(gallery_trim);
+  // my.trimBtn.style('font-size:42px');
+
+  createElement('br');
+
   ui_update();
 }
 
 function ui_update() {
-  ui_span('date', my.version + formatDate());
-  ui_span('updateCount', ' updateCount:' + my.updateCount);
-  ui_span('nitems', ' nitems:' + my.nitems);
+  ui_span('ver', '(' + my.version + ')');
+  ui_span('updateCount', ' u:' + my.updateCount);
+  ui_span('nitems', ' n:' + my.nitems);
 }
 
 function formatDate() {
-  return '';
   return new Date().toISOString();
 }
 
