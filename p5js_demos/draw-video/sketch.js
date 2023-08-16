@@ -2,7 +2,7 @@
 // draw-video
 
 let my = {
-  version: 16,
+  version: 17,
   galleryKey: 'mo-draw-web-shared',
   maxPoints: 200,
   vwidth: 480, // Aspect ratio of video capture
@@ -39,7 +39,7 @@ function draw() {
     image(img, 0, 0);
   }
   if (my.drawGrid) {
-    draw_grid_scan();
+    draw_grid_scan_spiral();
   }
 
   draw_points();
@@ -100,6 +100,37 @@ function mouseDragged() {
 function canvas_mouseReleased() {
   console.log('canvas_mouseReleased');
   write_points();
+}
+
+function draw_grid_scan_spiral() {
+  if (!my.spiralPoints) {
+    let props = {
+      width: my.width,
+      height: my.height,
+      d: 10,
+    };
+    let spiral = new SpiralWalker(props);
+    my.spiralPoints = spiral.points();
+    my.spiralIndex = 0;
+  }
+  let ent = my.spiralPoints[my.spiralIndex];
+  my.spiralIndex = (my.spiralIndex + 1) % my.spiralPoints.length;
+  let x = ent[0];
+  let y = ent[1];
+  let c = my.video.get(x, y);
+  my.layer.noStroke();
+  my.layer.fill(c);
+  my.layer.rect(x, y, my.brushSize, my.brushSize);
+  x += my.brushSize;
+  if (x > my.width) {
+    x = 0;
+    y += my.brushSize;
+    if (y > my.height) {
+      y = 0;
+    }
+  }
+  my.x = x;
+  my.y = y;
 }
 
 function draw_grid_scan() {
