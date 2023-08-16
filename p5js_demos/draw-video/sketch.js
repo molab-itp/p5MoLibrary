@@ -10,7 +10,7 @@ let my = {
   face: true, // camera face front or back
   brushSize: 10,
   drawVideo: 1,
-  drawGrid: 0,
+  drawGrid: 1,
 };
 
 function setup() {
@@ -39,7 +39,9 @@ function draw() {
     image(img, 0, 0);
   }
   if (my.drawGrid) {
-    draw_grid_scan_spiral();
+    // draw_grid_scan_spiral();
+    // draw_grid_scan1_down();
+    draw_grid_scan1_right();
   }
 
   draw_points();
@@ -102,6 +104,29 @@ function canvas_mouseReleased() {
   write_points();
 }
 
+function draw_grid_scan1_right() {
+  let { x, y } = my;
+  let more = 1;
+  let img = my.video.get();
+  while (more) {
+    let c = img.get(x, y);
+    my.layer.noStroke();
+    my.layer.fill(c);
+    my.layer.rect(x, y, my.brushSize, my.brushSize);
+    y += my.brushSize;
+    if (y > my.height) {
+      more = 0;
+      y = 0;
+      x += my.brushSize;
+      if (x > my.width) {
+        x = 0;
+      }
+    }
+  }
+  my.x = x;
+  my.y = y;
+}
+
 function draw_grid_scan_spiral() {
   if (!my.spiralPoints) {
     let props = {
@@ -133,7 +158,7 @@ function draw_grid_scan_spiral() {
   my.y = y;
 }
 
-function draw_grid_scan() {
+function draw_grid_scan1_down() {
   let { x, y } = my;
   let more = 1;
   let img = my.video.get();
