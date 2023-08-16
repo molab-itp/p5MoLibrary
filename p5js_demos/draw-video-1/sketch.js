@@ -2,7 +2,7 @@
 // draw-video
 
 let my = {
-  version: 16,
+  version: 15,
   galleryKey: 'mo-draw-web-shared',
   maxPoints: 200,
   vwidth: 480, // Aspect ratio of video capture
