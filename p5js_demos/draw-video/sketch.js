@@ -2,7 +2,7 @@
 // draw-video
 
 let my = {
-  version: 17,
+  version: 18,
   galleryKey: 'mo-draw-web-shared',
   maxPoints: 200,
   vwidth: 480, // Aspect ratio of video capture
@@ -41,7 +41,8 @@ function draw() {
   if (my.drawGrid) {
     // draw_grid_scan_spiral();
     // draw_grid_scan1_down();
-    draw_grid_scan1_right();
+    // draw_grid_scan1_right();
+    draw_grid_scan_right();
   }
 
   draw_points();
@@ -78,6 +79,8 @@ function draw_points() {
       my.layer.stroke(p1.c);
     }
     my.layer.line(p1.x, p1.y, p2.x, p2.y);
+    // my.layer.line(p1.x, 0, p1.x, my.height);
+    // my.layer.line(0, p1.y, my.width, p1.y);
   }
 }
 
@@ -102,6 +105,27 @@ function mouseDragged() {
 function canvas_mouseReleased() {
   console.log('canvas_mouseReleased');
   write_points();
+}
+
+function draw_grid_scan_right() {
+  let w = my.video.width;
+  let h = my.video.height;
+
+  let sx = w / 2;
+  let sy = 0;
+  let sw = 1;
+  let sh = h;
+  let dx = my.x;
+  let dy = 0;
+  let dw = 1;
+  let dh = height;
+  my.layer.copy(my.video, sx, sy, sw, sh, dx, dy, dw, dh);
+  // copy(video, w/2, 0, 1, h, x, 0, 1, h);
+
+  my.x = my.x + 1;
+  if (my.x > width) {
+    my.x = 0;
+  }
 }
 
 function draw_grid_scan1_right() {
