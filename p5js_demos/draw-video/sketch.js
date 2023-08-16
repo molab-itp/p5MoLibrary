@@ -2,14 +2,13 @@
 // draw-video
 
 let my = {
-  version: 12,
+  version: 13,
   galleryKey: 'mo-draw-web-shared',
   maxPoints: 200,
   vwidth: 480, // Aspect ratio of video capture
   vheight: 640,
   face: true, // camera face front or back
   brushSize: 10,
-  // drawBackground: 0,
   drawVideo: 1,
 };
 
@@ -32,11 +31,6 @@ function setup() {
 
 function draw() {
   if (!video_ready()) return;
-  // window.scrollBy(0, 1);
-
-  // if (my.drawBackground) {
-  //   my.layer.background(200);
-  // }
 
   if (my.drawVideo) {
     let img = my.video.get();
