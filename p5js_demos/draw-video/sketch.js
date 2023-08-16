@@ -9,7 +9,7 @@ let my = {
   vheight: 640,
   face: true, // camera face front or back
   brushSize: 10,
-  drawBackground: 0,
+  // drawBackground: 0,
   drawVideo: 1,
 };
 
@@ -34,9 +34,9 @@ function draw() {
   if (!video_ready()) return;
   // window.scrollBy(0, 1);
 
-  if (my.drawBackground) {
-    my.layer.background(200);
-  }
+  // if (my.drawBackground) {
+  //   my.layer.background(200);
+  // }
 
   if (my.drawVideo) {
     let img = my.video.get();
@@ -118,7 +118,7 @@ function write_points() {
   gallery_update();
 }
 
-function gallery_clear() {
+function gallery_empty() {
   my.points = [];
   fb_.set(my.galleryRef, {});
 }
@@ -170,20 +170,16 @@ function gallery_onValue() {
 }
 
 function ui_init() {
-  my.clearBtn = createButton('Clear').mousePressed(gallery_clear);
-  // my.clearBtn.style('font-size:42px');
+  createButton('Empty').mousePressed(gallery_empty);
 
-  my.trimBtn = createButton('Trim').mousePressed(gallery_trim);
-  // my.trimBtn.style('font-size:42px');
+  createButton('Trim').mousePressed(gallery_trim);
 
   my.faceChk = createCheckbox('Face', my.face);
   my.faceChk.style('display:inline');
   my.faceChk.changed(faceChk_action);
 
-  my.drawBackgroundChk = createCheckbox('Bkgd', my.drawBackground);
-  my.drawBackgroundChk.style('display:inline');
-  my.drawBackgroundChk.changed(function () {
-    my.drawBackground = this.checked();
+  createButton('Clear').mousePressed(function () {
+    my.layer.clear();
   });
 
   createElement('br');
