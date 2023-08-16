@@ -2,7 +2,7 @@
 // draw-video
 
 let my = {
-  version: 13,
+  version: 15,
   galleryKey: 'mo-draw-web-shared',
   maxPoints: 200,
   vwidth: 480, // Aspect ratio of video capture
@@ -10,6 +10,7 @@ let my = {
   face: true, // camera face front or back
   brushSize: 10,
   drawVideo: 1,
+  drawGrid: 0,
 };
 
 function setup() {
@@ -37,6 +38,9 @@ function draw() {
     img.filter(GRAY);
     image(img, 0, 0);
   }
+  if (my.drawGrid) {
+    draw_grid_scan();
+  }
 
   draw_points();
 
@@ -54,13 +58,10 @@ function my_init() {
 
   my.x = floor(my.width / 2);
   my.y = floor(my.height / 2);
-  my.px = my.x;
-  my.py = my.y;
 
   my.min_drag = my.brushSize / 2;
 
   my.layer = createGraphics(my.width, my.height);
-  my.layer.strokeWeight(my.brushSize);
   my.layer.clear();
 }
 
@@ -70,6 +71,7 @@ function draw_points() {
     let p2 = my.points[index];
     if (p1.break || p2.break) continue;
     // line(p1.x + random(-2, 2), p1.y + random(-2, 2), p2.x, p2.y);
+    my.layer.strokeWeight(my.brushSize);
     if (p1.c != undefined) {
       my.layer.stroke(p1.c);
     }
@@ -100,17 +102,40 @@ function canvas_mouseReleased() {
   write_points();
 }
 
-// create the vidoe capture element based on my.facingMode
-function create_myVideo() {
-  let options = { video: { facingMode: my.facingMode } };
-  my.video = createCapture(options);
-  my.video.size(my.vwidth, my.vheight);
-  my.video.hide();
+function draw_grid_scan() {
+  let { x, y } = my;
+  let c = my.video.get(x, y);
+  my.layer.noStroke();
+  my.layer.fill(c);
+  my.layer.rect(x, y, my.brushSize, my.brushSize);
+  x += my.brushSize;
+  if (x > my.width) {
+    x = 0;
+    y += my.brushSize;
+    if (y > my.height) {
+      y = 0;
+    }
+  }
+  my.x = x;
+  my.y = y;
 }
 
-// is the video ready to be displayed
-function video_ready() {
-  return my.video.loadedmetadata && my.video.width > 0 && my.video.height > 0;
+function draw_grid_random_walk() {
+  let { x, y } = my;
+  let c = my.video.get(x, y);
+  my.layer.noStroke();
+  my.layer.fill(c);
+  my.layer.rect(x, y, my.brushSize, my.brushSize);
+  x += my.brushSize * random([-1, 0, 1]);
+  y += my.brushSize * random([-1, 0, 1]);
+  if (x < 0) x = 0;
+  let rt = my.width - my.brushSize;
+  if (x > rt) x = rt;
+  if (y < 0) y = 0;
+  let bt = my.height - my.brushSize;
+  if (y > bt) y = bt;
+  my.x = x;
+  my.y = y;
 }
 
 // 2023-08-14 jht: Convert to my variable references

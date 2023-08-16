@@ -3,13 +3,19 @@ function ui_init() {
 
   createButton('Trim').mousePressed(gallery_trim);
 
-  my.faceChk = createCheckbox('Face', my.face);
-  my.faceChk.style('display:inline');
-  my.faceChk.changed(faceChk_action);
-
   createButton('Clear').mousePressed(function () {
     my.layer.clear();
   });
+
+  my.gridChk = createCheckbox('Grid', my.drawGrid);
+  my.gridChk.style('display:inline');
+  my.gridChk.changed(function () {
+    my.drawGrid = this.checked();
+  });
+
+  my.faceChk = createCheckbox('Face', my.face);
+  my.faceChk.style('display:inline');
+  my.faceChk.changed(faceChk_action);
 
   createElement('br');
 
@@ -47,4 +53,17 @@ function ui_span(id, html) {
     span = createSpan().id(id);
   }
   span.html(html);
+}
+
+// create the vidoe capture element based on my.facingMode
+function create_myVideo() {
+  let options = { video: { facingMode: my.facingMode } };
+  my.video = createCapture(options);
+  my.video.size(my.vwidth, my.vheight);
+  my.video.hide();
+}
+
+// is the video ready to be displayed
+function video_ready() {
+  return my.video.loadedmetadata && my.video.width > 0 && my.video.height > 0;
 }
