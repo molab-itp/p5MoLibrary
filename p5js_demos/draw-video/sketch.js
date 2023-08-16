@@ -2,7 +2,7 @@
 // draw-video
 
 let my = {
-  version: 18,
+  version: 19,
   galleryKey: 'mo-draw-web-shared',
   maxPoints: 200,
   vwidth: 480, // Aspect ratio of video capture
@@ -11,6 +11,7 @@ let my = {
   brushSize: 10,
   drawVideo: 1,
   drawGrid: 1,
+  drawWalker: 1,
 };
 
 function setup() {
@@ -47,6 +48,10 @@ function draw() {
 
   draw_points();
 
+  if (my.drawWalker) {
+    draw_random_walker();
+  }
+
   image(my.layer, 0, 0);
 }
 
@@ -66,6 +71,9 @@ function my_init() {
 
   my.layer = createGraphics(my.width, my.height);
   my.layer.clear();
+
+  my.walkerX = my.x;
+  my.walkerY = my.y;
 }
 
 function draw_points() {
@@ -98,6 +106,10 @@ function mouseDragged() {
   }
   let c = my.video.get(x, y);
   add_item({ x, y, c });
+
+  my.walkerX = x;
+  my.walkerY = y;
+
   // required to prevent touch drag moving canvas on mobile
   return false;
 }
@@ -107,10 +119,22 @@ function canvas_mouseReleased() {
   write_points();
 }
 
+function draw_random_walker() {
+  let x = my.walkerX;
+  let y = my.walkerY;
+
+  let c = my.video.get(x, y);
+  add_item({ x, y, c });
+
+  x = x + random(-my.brushSize, my.brushSize);
+  y = y + random(-my.brushSize, my.brushSize);
+  my.walkerX = (x + my.width) % my.width;
+  my.walkerY = (y + my.height) % my.height;
+}
+
 function draw_grid_scan_right() {
   let w = my.video.width;
   let h = my.video.height;
-
   let sx = w / 2;
   let sy = 0;
   let sw = 1;

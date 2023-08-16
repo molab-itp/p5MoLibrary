@@ -13,6 +13,12 @@ function ui_init() {
     my.drawGrid = this.checked();
   });
 
+  my.walkerChk = createCheckbox('Walker', my.drawWalker);
+  my.walkerChk.style('display:inline');
+  my.walkerChk.changed(function () {
+    my.drawWalker = this.checked();
+  });
+
   my.faceChk = createCheckbox('Face', my.face);
   my.faceChk.style('display:inline');
   my.faceChk.changed(faceChk_action);
