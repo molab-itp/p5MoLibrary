@@ -1,4 +1,6 @@
 function ui_init() {
+  ui_span('ver', '(' + my.version + ')');
+
   createButton('Empty').mousePressed(gallery_empty);
 
   createButton('Trim').mousePressed(gallery_trim);
@@ -7,21 +9,21 @@ function ui_init() {
     my.layer.clear();
   });
 
-  my.gridChk = createCheckbox('Grid', my.drawGrid);
-  my.gridChk.style('display:inline');
-  my.gridChk.changed(function () {
-    my.drawGrid = this.checked();
-  });
+  // my.gridChk = createCheckbox('Grid', my.drawGrid);
+  // my.gridChk.style('display:inline');
+  // my.gridChk.changed(function () {
+  //   my.drawGrid = this.checked();
+  // });
 
-  my.walkerChk = createCheckbox('Walker', my.drawWalker);
-  my.walkerChk.style('display:inline');
-  my.walkerChk.changed(function () {
-    my.drawWalker = this.checked();
-  });
+  // my.walkerChk = createCheckbox('Walker', my.drawWalker);
+  // my.walkerChk.style('display:inline');
+  // my.walkerChk.changed(function () {
+  //   my.drawWalker = this.checked();
+  // });
 
-  my.faceChk = createCheckbox('Face', my.face);
-  my.faceChk.style('display:inline');
-  my.faceChk.changed(faceChk_action);
+  // my.faceChk = createCheckbox('Face', my.face);
+  // my.faceChk.style('display:inline');
+  // my.faceChk.changed(faceChk_action);
 
   createElement('br');
 
@@ -38,7 +40,6 @@ function faceChk_action() {
 }
 
 function ui_update() {
-  ui_span('ver', '(' + my.version + ')');
   ui_span('updateCount', ' u:' + my.updateCount);
   ui_span('nitems', ' n:' + my.nitems);
 }

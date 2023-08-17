@@ -2,7 +2,7 @@
 // draw-video
 
 let my = {
-  version: 20,
+  version: 21,
   galleryKey: 'mo-draw-web-shared',
   maxPoints: 200,
   vwidth: 480, // Aspect ratio of video capture
@@ -49,7 +49,8 @@ function draw() {
   draw_points();
 
   if (my.drawWalker) {
-    draw_random_walker();
+    // draw_random_walker();
+    draw_walker_scan();
   }
 
   image(my.layer, 0, 0);
@@ -72,8 +73,9 @@ function my_init() {
   my.layer = createGraphics(my.width, my.height);
   my.layer.clear();
 
-  my.walkerX = my.x;
-  my.walkerY = my.y;
+  my.walker = {};
+  my.walker.x = my.x;
+  my.walker.y = my.y;
 }
 
 function draw_points() {
@@ -82,13 +84,14 @@ function draw_points() {
     let p2 = my.points[index];
     if (p1.break || p2.break) continue;
     // line(p1.x + random(-2, 2), p1.y + random(-2, 2), p2.x, p2.y);
-    my.layer.strokeWeight(my.brushSize);
-    if (p1.c != undefined) {
-      my.layer.stroke(p1.c);
-    }
+    let c = p1.c || 0;
     if (p1.r != undefined) {
-      my.layer.rect(p1.x, p1.y, my.brushSize, my.brushSize);
+      my.layer.noStroke();
+      my.layer.fill(c);
+      my.layer.rect(p1.x, p1.y, my.brushSize, my.brushSize * 2);
     } else {
+      my.layer.strokeWeight(my.brushSize);
+      my.layer.stroke(c);
       my.layer.line(p1.x, p1.y, p2.x, p2.y);
     }
   }
@@ -109,8 +112,8 @@ function mouseDragged() {
   let c = my.video.get(x, y);
   add_item({ x, y, c });
 
-  my.walkerX = x;
-  my.walkerY = y;
+  // my.walker.x = x;
+  // my.walker.y = y;
 
   // required to prevent touch drag moving canvas on mobile
   return false;
@@ -121,19 +124,43 @@ function canvas_mouseReleased() {
   write_points();
 }
 
-function draw_random_walker() {
-  let x = my.walkerX;
-  let y = my.walkerY;
+function draw_walker_scan() {
+  let x = my.walker.x;
+  let y = my.walker.y;
+  let c = my.video.get(x, y);
+  add_item({ x, y, c, r: 1 });
+  // my.layer.noStroke();
+  // my.layer.fill(c);
+  // my.layer.rect(x, y, my.brushSize, my.brushSize);
+  // x += my.brushSize;
+  x += 1;
+  if (x > my.width) {
+    x = 0;
+    y += my.brushSize;
+    if (y > my.height) {
+      y = 0;
+    }
+  }
+  my.walker.x = x;
+  my.walker.y = y;
+}
+
+function draw_walker_random() {
+  let x = my.walker.x;
+  let y = my.walker.y;
 
   let c = my.video.get(x, y);
   add_item({ x, y, c, r: 1 });
 
   // x = x + random(-my.brushSize, my.brushSize);
   // y = y + random(-my.brushSize, my.brushSize);
-  x = x + my.brushSize * random([-1, 0, 1]);
-  y = y + my.brushSize * random([-1, 0, 1]);
-  my.walkerX = (x + my.width) % my.width;
-  my.walkerY = (y + my.height) % my.height;
+  let bz = my.brushSize * 2;
+  x = x + bz * random([-1, 0, 1]);
+  y = y + bz * random([-1, 0, 1]);
+  my.walker.x = (x + my.width) % my.width;
+  my.walker.y = (y + my.height) % my.height;
+
+  my.walker.x = my.x;
 }
 
 function draw_grid_scan_right() {
