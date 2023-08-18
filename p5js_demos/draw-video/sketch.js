@@ -2,7 +2,7 @@
 // draw-video
 
 let my = {
-  version: 21,
+  version: 23,
   galleryKey: 'mo-draw-web-shared',
   maxPoints: 200,
   vwidth: 480, // Aspect ratio of video capture
@@ -39,21 +39,19 @@ function draw() {
     img.filter(GRAY);
     image(img, 0, 0);
   }
+
   if (my.drawGrid) {
-    // draw_grid_scan_spiral();
-    // draw_grid_scan1_down();
-    // draw_grid_scan1_right();
     draw_grid_scan_right();
   }
 
   draw_points();
 
   if (my.drawWalker) {
-    // draw_random_walker();
     draw_walker_scan();
   }
 
-  image(my.layer, 0, 0);
+  image(my.layer_scan, 0, 0);
+  image(my.layer_walker, 0, 0);
 }
 
 function my_init() {
@@ -70,12 +68,20 @@ function my_init() {
 
   my.min_drag = my.brushSize / 2;
 
-  my.layer = createGraphics(my.width, my.height);
-  my.layer.clear();
+  my.layer_scan = createGraphics(my.width, my.height);
+  my.layer_scan.clear();
+
+  my.layer_walker = createGraphics(my.width, my.height);
+  my.layer_walker.clear();
 
   my.walker = {};
   my.walker.x = my.x;
   my.walker.y = my.y;
+  my.walker.y0 = my.y;
+  // my.walker.x = 0;
+  // my.walker.y = 0;
+
+  my.scanPhase = 0;
 }
 
 function draw_points() {
@@ -83,16 +89,16 @@ function draw_points() {
     let p1 = my.points[index - 1];
     let p2 = my.points[index];
     if (p1.break || p2.break) continue;
-    // line(p1.x + random(-2, 2), p1.y + random(-2, 2), p2.x, p2.y);
     let c = p1.c || 0;
+    let layer = my.layer_walker;
     if (p1.r != undefined) {
-      my.layer.noStroke();
-      my.layer.fill(c);
-      my.layer.rect(p1.x, p1.y, my.brushSize, my.brushSize * 2);
+      layer.noStroke();
+      layer.fill(c);
+      layer.rect(p1.x, p1.y, my.brushSize, my.brushSize * 2);
     } else {
-      my.layer.strokeWeight(my.brushSize);
-      my.layer.stroke(c);
-      my.layer.line(p1.x, p1.y, p2.x, p2.y);
+      layer.strokeWeight(my.brushSize);
+      layer.stroke(c);
+      layer.line(p1.x, p1.y, p2.x, p2.y);
     }
   }
 }
@@ -112,9 +118,6 @@ function mouseDragged() {
   let c = my.video.get(x, y);
   add_item({ x, y, c });
 
-  // my.walker.x = x;
-  // my.walker.y = y;
-
   // required to prevent touch drag moving canvas on mobile
   return false;
 }
@@ -127,40 +130,24 @@ function canvas_mouseReleased() {
 function draw_walker_scan() {
   let x = my.walker.x;
   let y = my.walker.y;
-  let c = my.video.get(x, y);
-  add_item({ x, y, c, r: 1 });
-  // my.layer.noStroke();
-  // my.layer.fill(c);
-  // my.layer.rect(x, y, my.brushSize, my.brushSize);
-  // x += my.brushSize;
-  x += 1;
-  if (x > my.width) {
-    x = 0;
-    y += my.brushSize;
-    if (y > my.height) {
-      y = 0;
+  let more = 1;
+  let img = my.video.get();
+  while (more) {
+    let c = img.get(x, y);
+    add_item({ x, y, c, r: 1 });
+    more = 0;
+    x += 1;
+    if (x > my.width) {
+      x = 0;
+      more = 0;
+      y += my.brushSize;
+      if (y > my.height) {
+        y = my.walker.y0;
+      }
     }
   }
   my.walker.x = x;
   my.walker.y = y;
-}
-
-function draw_walker_random() {
-  let x = my.walker.x;
-  let y = my.walker.y;
-
-  let c = my.video.get(x, y);
-  add_item({ x, y, c, r: 1 });
-
-  // x = x + random(-my.brushSize, my.brushSize);
-  // y = y + random(-my.brushSize, my.brushSize);
-  let bz = my.brushSize * 2;
-  x = x + bz * random([-1, 0, 1]);
-  y = y + bz * random([-1, 0, 1]);
-  my.walker.x = (x + my.width) % my.width;
-  my.walker.y = (y + my.height) % my.height;
-
-  my.walker.x = my.x;
 }
 
 function draw_grid_scan_right() {
@@ -174,127 +161,25 @@ function draw_grid_scan_right() {
   let dy = 0;
   let dw = 1;
   let dh = height;
-  my.layer.copy(my.video, sx, sy, sw, sh, dx, dy, dw, dh);
+  let layer = my.layer_scan;
+  layer.copy(my.video, sx, sy, sw, sh, dx, dy, dw, dh);
   // copy(video, w/2, 0, 1, h, x, 0, 1, h);
+  if (my.scanPhase) {
+    layer.erase();
+    layer.noStroke();
+    layer.fill(255);
+    layer.rect(dx, dy, dw, dh / 2);
+    layer.noErase();
+  }
 
   my.x = my.x + 1;
   if (my.x > width) {
     my.x = 0;
+    my.scanPhase = (my.scanPhase + 1) % 2;
   }
 }
 
-function draw_grid_scan1_right() {
-  let { x, y } = my;
-  let more = 1;
-  let img = my.video.get();
-  while (more) {
-    let c = img.get(x, y);
-    my.layer.noStroke();
-    my.layer.fill(c);
-    my.layer.rect(x, y, my.brushSize, my.brushSize);
-    y += my.brushSize;
-    if (y > my.height) {
-      more = 0;
-      y = 0;
-      x += my.brushSize;
-      if (x > my.width) {
-        x = 0;
-      }
-    }
-  }
-  my.x = x;
-  my.y = y;
-}
-
-function draw_grid_scan_spiral() {
-  if (!my.spiralPoints) {
-    let props = {
-      width: my.width,
-      height: my.height,
-      d: 10,
-    };
-    let spiral = new SpiralWalker(props);
-    my.spiralPoints = spiral.points();
-    my.spiralIndex = 0;
-  }
-  let ent = my.spiralPoints[my.spiralIndex];
-  my.spiralIndex = (my.spiralIndex + 1) % my.spiralPoints.length;
-  let x = ent[0];
-  let y = ent[1];
-  let c = my.video.get(x, y);
-  my.layer.noStroke();
-  my.layer.fill(c);
-  my.layer.rect(x, y, my.brushSize, my.brushSize);
-  x += my.brushSize;
-  if (x > my.width) {
-    x = 0;
-    y += my.brushSize;
-    if (y > my.height) {
-      y = 0;
-    }
-  }
-  my.x = x;
-  my.y = y;
-}
-
-function draw_grid_scan1_down() {
-  let { x, y } = my;
-  let more = 1;
-  let img = my.video.get();
-  while (more) {
-    let c = img.get(x, y);
-    my.layer.noStroke();
-    my.layer.fill(c);
-    my.layer.rect(x, y, my.brushSize, my.brushSize);
-    x += my.brushSize;
-    if (x > my.width) {
-      more = 0;
-      x = 0;
-      y += my.brushSize;
-      if (y > my.height) {
-        y = 0;
-      }
-    }
-  }
-  my.x = x;
-  my.y = y;
-}
-
-function draw_grid_scan1() {
-  let { x, y } = my;
-  let c = my.video.get(x, y);
-  my.layer.noStroke();
-  my.layer.fill(c);
-  my.layer.rect(x, y, my.brushSize, my.brushSize);
-  x += my.brushSize;
-  if (x > my.width) {
-    x = 0;
-    y += my.brushSize;
-    if (y > my.height) {
-      y = 0;
-    }
-  }
-  my.x = x;
-  my.y = y;
-}
-
-function draw_grid_random_walk() {
-  let { x, y } = my;
-  let c = my.video.get(x, y);
-  my.layer.noStroke();
-  my.layer.fill(c);
-  my.layer.rect(x, y, my.brushSize, my.brushSize);
-  x += my.brushSize * random([-1, 0, 1]);
-  y += my.brushSize * random([-1, 0, 1]);
-  if (x < 0) x = 0;
-  let rt = my.width - my.brushSize;
-  if (x > rt) x = rt;
-  if (y < 0) y = 0;
-  let bt = my.height - my.brushSize;
-  if (y > bt) y = bt;
-  my.x = x;
-  my.y = y;
-}
+// [] consider acceleromitor for scan up down
 
 // 2023-08-14 jht: Convert to my variable references
 
