@@ -2,7 +2,7 @@
 // draw-video
 
 let my = {
-  version: 23,
+  version: 24,
   galleryKey: 'mo-draw-web-shared',
   maxPoints: 200,
   vwidth: 480, // Aspect ratio of video capture
@@ -75,9 +75,10 @@ function my_init() {
   my.layer_walker.clear();
 
   my.walker = {};
+  my.walker.y0 = floor(my.height * 0.333);
+  my.walker.y1 = floor(my.height * 0.666);
+  my.walker.y = my.walker.y0;
   my.walker.x = my.x;
-  my.walker.y = my.y;
-  my.walker.y0 = my.y;
   // my.walker.x = 0;
   // my.walker.y = 0;
 
@@ -141,7 +142,7 @@ function draw_walker_scan() {
       x = 0;
       more = 0;
       y += my.brushSize;
-      if (y > my.height) {
+      if (y > my.walker.y1) {
         y = my.walker.y0;
       }
     }
