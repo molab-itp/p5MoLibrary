@@ -42,3 +42,22 @@ function create_myVideo() {
 function video_ready() {
   return my.video.loadedmetadata && my.video.width > 0 && my.video.height > 0;
 }
+
+function ui_update() {
+  ui_span('updateCount', ' u:' + my.updateCount);
+  ui_span('nitems', ' n:' + my.nitems);
+}
+
+function ui_span(id, html) {
+  let span = select('#' + id);
+  if (document.fullscreenElement) {
+    if (span) {
+      span.remove();
+    }
+    return;
+  }
+  if (!span) {
+    span = createSpan().id(id);
+  }
+  span.html(html);
+}
