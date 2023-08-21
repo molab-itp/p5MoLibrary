@@ -101,11 +101,6 @@ function check_scroll() {
   }
 }
 
-// function mousePressed() {
-//   my.scrolling = !my.scrolling;
-//   console.log('my.scrolling', my.scrolling);
-// }
-
 function create_myVideo() {
   let options = { video: { facingMode: my.facingMode } };
   my.video = createCapture(options);
@@ -128,9 +123,6 @@ function create_ui() {
   my.runChk.changed(function () {
     my.run = this.checked();
   });
-
-  // createElement('br');
-  // my.aref = createA('https://jht1493.github.io/2021-NYU-ITP-Installation/colored.html', 'Colored Portraits', '_blank');
 }
 
 function canvas_mouseReleased() {

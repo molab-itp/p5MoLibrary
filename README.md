@@ -10,6 +10,7 @@ View images from MoGallery firebase database using p5js
 
 - [p5js_demos/draw-share](p5js_demos/draw-share)
 - [p5js_demos/draw-video](p5js_demos/draw-video)
+- [p5js_demos/pixel-grid](p5js_demos/pixel-grid)
 
 ## Browser Preview
 
