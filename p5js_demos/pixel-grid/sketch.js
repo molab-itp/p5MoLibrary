@@ -9,6 +9,10 @@ let my = {
   scrolling: 1,
   nstep: 16,
   margin: 0.1,
+  byPixel: 1,
+  run: 1,
+  perFrame: 6,
+  // byLine: 1,
 };
 
 function setup() {
@@ -28,33 +32,60 @@ function draw() {
 
   check_scroll();
 
+  if (frameCount % my.perFrame != 0) return;
+
   // faster to get entire video frame as an image
   let img = my.video.get();
-  // let stepPx = my.stepPx;
-  // let rr = stepPx * (1 - my.margin);
-  // let vx = 0;
-  // let vy = 0;
 
-  image(img, my.vx, my.vy);
+  image(img, 0, 0);
 
-  while (my.vy < my.vheight) {
-    let col = img.get(my.vx, my.vy);
-    fill(col);
-    rect(my.vx, my.vy, my.rr, my.rr);
+  draw_layer(img);
+}
+
+function draw_layer(img) {
+  let layer = my.layer;
+  more = 1;
+  let col;
+  while (more) {
+    col = img.get(my.vx, my.vy);
+    layer.fill(col);
+    layer.noStroke();
+    layer.rect(my.vx, my.vy, my.rr, my.rr);
+    if (!my.run) {
+      break;
+    }
     my.vx += my.stepPx;
     if (my.vx > my.vwidth) {
       my.vx = 0;
       my.vy += my.stepPx;
+      if (my.vy > my.vheight) {
+        more = 0;
+        my.vy = 0;
+      }
+      if (my.byLine) {
+        more = 0;
+      }
+    }
+    if (my.byPixel) {
+      more = 0;
     }
   }
-  my.vy = 0;
+  image(layer, 0, 0);
+  strokeWeight(my.crossWt);
+  stroke(col);
+  let x = my.vx + my.rr / 2;
+  let y = my.vy + my.rr / 2;
+  line(x, 0, x, my.height);
+  line(0, y, my.width, y);
 }
 
 function my_init() {
   my.width = my.vwidth;
   my.height = my.vheight;
+  my.layer = createGraphics(my.width, my.height);
   my.stepPx = floor(my.vwidth / my.nstep);
   my.rr = floor(my.stepPx * (1 - my.margin));
+  my.crossWt = my.stepPx - my.rr;
   my.vx = 0;
   my.vy = 0;
 }
@@ -86,6 +117,12 @@ function create_ui() {
   my.faceChk = createCheckbox('Face', my.face);
   my.faceChk.style('display:inline');
   my.faceChk.changed(faceChk_action);
+
+  my.runChk = createCheckbox('Run', my.run);
+  my.runChk.style('display:inline');
+  my.runChk.changed(function () {
+    my.run = this.checked();
+  });
 
   // createElement('br');
   // my.aref = createA('https://jht1493.github.io/2021-NYU-ITP-Installation/colored.html', 'Colored Portraits', '_blank');
