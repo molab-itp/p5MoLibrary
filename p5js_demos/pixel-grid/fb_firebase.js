@@ -8,22 +8,29 @@
 // Documentation starting reference
 // <!-- https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en -->
 
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
+import {
+  initializeApp, //
+} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
 
 // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
 // import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js'
 
 // Add Firebase products that you want to use
-import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
+import {
+  getAuth, //
+  signInAnonymously,
+} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 // import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js'
 
 import {
-  getDatabase,
-  ref,
-  set,
   child,
   get,
+  getDatabase,
+  increment,
   onValue,
+  ref,
+  set,
+  update,
 } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 
 // Your web app's Firebase configuration
@@ -58,41 +65,29 @@ const database = getDatabase();
 // console.log('database', database);
 
 const dbRef = ref(getDatabase());
-// get(child(dbRef, `mo-gallery-1`))
-//   .then((snapshot) => {
-//     if (snapshot.exists()) {
-//       console.log('snapshot', snapshot.val());
-//     } else {
-//       console.log('No data available');
-//     }
-//   })
-//   .catch((error) => {
-//     console.error(error);
-//   });
+
+const fb_ = {
+  app, //
+  auth,
+  child,
+  database,
+  dbRef,
+  get,
+  increment,
+  onValue,
+  ref,
+  set,
+  signInAnonymously,
+  update,
+};
+window.fb_ = fb_;
+
+// History
+
+// https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0#atomic_server-side_increments
 
 // https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0
 
-// const galleryRef = ref(database, 'mo-gallery-1');
-// fb_.galleryRef = galleryRef;
-// onValue(galleryRef, (snapshot) => {
-//   const data = snapshot.val();
-//   console.log('galleryRef data', data);
-// });
-
-const fb_ = { app, auth, database, dbRef, ref, onValue, child, get, set, signInAnonymously };
-window.fb_ = fb_;
-// fb_.app = app;
-// fb_.auth = auth;
-// fb_.database = database;
-// fb_.dbRef = dbRef;
-// fb_.ref = ref;
-// fb_.onValue = onValue;
-// fb_.child = child;
-// fb_.get = get;
-// fb_.set = set;
-// fb_.signInAnonymously = signInAnonymously;
-
-// History
 // Extracted to own file fb_firebase.js and use
 //  <script type="module" src="firebase.js"></script>
 // to load from index.html

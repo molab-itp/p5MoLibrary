@@ -13,7 +13,14 @@ let my = {
   // byLine: 1,
   run: 1,
   perFrame: 6,
-  galleryKey: 'mo-draw-web-shared',
+  storeRootKey: 'm0-lob-web-shared',
+  // storeData: {
+  //   DK1Lcj16BFhDPgdvGGkVP9FS3Xy2: {
+  //     count_i: 1,
+  //     date_i: 1692655136999,
+  //     date_s: '2023-08-21T21:58:56.999Z',
+  //   },
+  // },
 };
 
 function setup() {
@@ -30,7 +37,7 @@ function setup() {
 
   create_ui();
 
-  gallery_init();
+  dstore_init();
 }
 
 function draw() {
