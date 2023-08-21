@@ -24,8 +24,9 @@ function dstore_onValue() {
   // Setup listener for changes to firebase db
   my.storeRootRef = fb_.ref(fb_.database, my.storeRootKey);
   fb_.onValue(my.storeRootRef, function (snapshot) {
-    const data = snapshot.val();
+    let data = snapshot.val();
     console.log('dstore_onValue data', data);
+    data = data || {};
     my.storeData = data;
     my.nitems = Object.keys(data).length;
     my.updateCount += 1;
