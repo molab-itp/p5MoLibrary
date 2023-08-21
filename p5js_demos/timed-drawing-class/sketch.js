@@ -9,7 +9,8 @@ let drawPoints;
 function my_init() {
   my.save_label = 'plea';
   my.lapse = 5; // seconds to re-draw points
-  my.xoffset = my.width / 2;
+  // my.xoffset = my.width / 2;
+  my.xoffset = 0;
   my.draw_specs = [
     { color: 'red', strokeWeight: 12 },
     { color: 'green', strokeWeight: 7 },

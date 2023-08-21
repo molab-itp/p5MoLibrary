@@ -18,7 +18,10 @@ let my = {
 function setup() {
   my_init();
 
-  createCanvas(my.width, my.height);
+  my.canvas = createCanvas(my.width, my.height);
+  my.canvas.mouseReleased(canvas_mouseReleased);
+  my.canvas.touchEnded(canvas_mouseReleased);
+
   background(255);
   noStroke();
 
@@ -71,6 +74,8 @@ function draw_layer(img) {
     }
   }
   image(layer, 0, 0);
+
+  // Draw cross-hair
   strokeWeight(my.crossWt);
   stroke(col);
   let x = my.vx + my.rr / 2;
@@ -96,10 +101,10 @@ function check_scroll() {
   }
 }
 
-function mousePressed() {
-  my.scrolling = !my.scrolling;
-  console.log('my.scrolling', my.scrolling);
-}
+// function mousePressed() {
+//   my.scrolling = !my.scrolling;
+//   console.log('my.scrolling', my.scrolling);
+// }
 
 function create_myVideo() {
   let options = { video: { facingMode: my.facingMode } };
@@ -126,6 +131,23 @@ function create_ui() {
 
   // createElement('br');
   // my.aref = createA('https://jht1493.github.io/2021-NYU-ITP-Installation/colored.html', 'Colored Portraits', '_blank');
+}
+
+function canvas_mouseReleased() {
+  // console.log('canvas_mouseReleased');
+  track_xy();
+}
+
+function track_xy() {
+  my.vx = mouseX;
+  my.vy = mouseY;
+}
+
+function mouseDragged() {
+  // console.log('mouseDragged');
+  track_xy();
+  // required to prevent touch drag moving canvas on mobile
+  return false;
 }
 
 function faceChk_action() {
