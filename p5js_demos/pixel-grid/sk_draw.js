@@ -6,7 +6,7 @@ function draw_layer(img) {
     col = img.get(my.vx, my.vy);
     layer.fill(col);
     layer.noStroke();
-    layer.rect(my.vx, my.vy, my.rr, my.rr);
+    layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
     if (!my.run) {
       break;
     }
@@ -31,8 +31,8 @@ function draw_layer(img) {
   // Draw cross-hair
   strokeWeight(my.crossWt);
   stroke(col);
-  let x = my.vx + my.rr / 2;
-  let y = my.vy + my.rr / 2;
+  let x = my.vx + my.innerPx / 2;
+  let y = my.vy + my.innerPx / 2;
   line(x, 0, x, my.height);
   line(0, y, my.width, y);
 }

@@ -2,7 +2,7 @@
 // pixel-grid
 
 let my = {
-  version: 4, // update to verify change on mobile
+  version: 5, // update to verify change on mobile
   vwidth: 480, // Aspect ratio of video capture
   vheight: 640,
   face: 1,
@@ -30,10 +30,8 @@ function setup() {
   my.canvas.mouseReleased(canvas_mouseReleased);
   my.canvas.touchEnded(canvas_mouseReleased);
 
-  background(255);
+  background(200);
   noStroke();
-
-  create_myVideo();
 
   create_ui();
 
@@ -41,6 +39,16 @@ function setup() {
 }
 
 function draw() {
+  my.draw_func();
+}
+
+function draw_host() {
+  console.log('draw_host');
+
+  check_scroll();
+}
+
+function draw_guest() {
   if (!video_ready()) return;
 
   check_scroll();
@@ -56,12 +64,24 @@ function draw() {
 }
 
 function my_init() {
-  my.width = my.vwidth;
-  my.height = my.vheight;
+  my.query = get_url_params();
+  if (my.query) {
+    my.userName = my.query.u;
+    my.hostName = my.query.h;
+  }
+  if (my.hostName) {
+    my.draw_func = draw_host;
+    my.width = displayWidth;
+    my.height = displayHeight;
+  } else {
+    my.draw_func = draw_guest;
+    my.width = my.vwidth;
+    my.height = my.vheight;
+  }
   my.layer = createGraphics(my.width, my.height);
   my.stepPx = floor(my.vwidth / my.nstep);
-  my.rr = floor(my.stepPx * (1 - my.margin));
-  my.crossWt = my.stepPx - my.rr;
+  my.innerPx = floor(my.stepPx * (1 - my.margin));
+  my.crossWt = my.stepPx - my.innerPx;
   my.vx = 0;
   my.vy = 0;
 }

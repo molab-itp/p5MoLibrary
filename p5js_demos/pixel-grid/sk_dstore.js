@@ -42,39 +42,30 @@ function dstore_signin_update() {
   updates[`date_s`] = now.toISOString();
   updates[`date_i`] = now.getTime();
   updates[`count_i`] = fb_.increment(1);
+  if (my.userName) {
+    updates['name_s'] = my.userName;
+  }
   fb_.update(ref, updates);
 }
 
-function dstore_empty() {
-  my.points = [];
-  fb_.set(my.storeRootRef, {});
-}
-
-function dstore_trim() {
-  my.points.splice(0, 1);
-  dstore_update();
-}
-
-function dstore_update() {
-  let ucount = 1;
-  if (my.storeData && my.storeData.ucount) {
-    ucount = my.storeData.ucount + 1;
-  }
-  fb_.set(my.storeRootRef, {
-    ucount: ucount,
-    now: new Date().toISOString(),
-    points: my.points,
-  });
-}
-
-// function add_item(item) {
-//   my.points.push(item);
-//   if (my.points.length > my.maxPoints) {
-//     my.points.splice(0, 1);
-//   }
+// function dstore_empty() {
+//   my.points = [];
+//   fb_.set(my.storeRootRef, {});
 // }
 
-// function write_points() {
-//   add_item({ break: 1 });
+// function dstore_trim() {
+//   my.points.splice(0, 1);
 //   dstore_update();
+// }
+
+// function dstore_update() {
+//   let ucount = 1;
+//   if (my.storeData && my.storeData.ucount) {
+//     ucount = my.storeData.ucount + 1;
+//   }
+//   fb_.set(my.storeRootRef, {
+//     ucount: ucount,
+//     now: new Date().toISOString(),
+//     points: my.points,
+//   });
 // }
