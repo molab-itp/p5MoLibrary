@@ -79,18 +79,18 @@ const dbRef = ref(getDatabase());
 //   console.log('galleryRef data', data);
 // });
 
-const fb_ = {};
+const fb_ = { app, auth, database, dbRef, ref, onValue, child, get, set, signInAnonymously };
 window.fb_ = fb_;
-fb_.app = app;
-fb_.auth = auth;
-fb_.database = database;
-fb_.dbRef = dbRef;
-fb_.ref = ref;
-fb_.onValue = onValue;
-fb_.child = child;
-fb_.get = get;
-fb_.set = set;
-fb_.signInAnonymously = signInAnonymously;
+// fb_.app = app;
+// fb_.auth = auth;
+// fb_.database = database;
+// fb_.dbRef = dbRef;
+// fb_.ref = ref;
+// fb_.onValue = onValue;
+// fb_.child = child;
+// fb_.get = get;
+// fb_.set = set;
+// fb_.signInAnonymously = signInAnonymously;
 
 // History
 // Extracted to own file fb_firebase.js and use
