@@ -30,7 +30,7 @@ function dstore_log_onValue() {
     console.log('dstore_onValue key', key);
     console.log('dstore_onValue data', data);
     data = data || {};
-    my.storeData = data;
+    my.storeLogData = data;
     my.nitems = Object.keys(data).length;
     my.updateCount += 1;
     ui_update();

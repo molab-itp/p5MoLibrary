@@ -15,7 +15,7 @@ let my = {
   store: 0,
   perFrame: 6,
   storeRootKey: 'm0-update-web',
-  // storeData: {
+  // storeLogData: {
   //   DK1Lcj16BFhDPgdvGGkVP9FS3Xy2: {
   //     count_i: 1,
   //     date_i: 1692655136999,
