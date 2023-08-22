@@ -65,7 +65,7 @@ function dstore_pix_onChild() {
   fb_.onChildChanged(ref, (data) => {
     let key = data.key;
     let val = data.val();
-    // console.log('dstore_pix_onChild Changed key val=', key, val);
+    console.log('dstore_pix_onChild Changed key val=', key, val);
     // onChildChanged DK1Lcj16BFhDPgdvGGkVP9FS3Xy2
     // {
     //   "date_i": 1692677048708,
@@ -82,8 +82,12 @@ function dstore_pix_onChild() {
   });
 }
 
-function dstore_pix_update(ops) {
-  let path = `${my.storeRootKey}/pix/${my.uid}`;
+function dstore_pix_update(seq, ops) {
+  if (!my.uid) {
+    console.log('dstore_pix_update no uid', my.uid);
+    return;
+  }
+  let path = `${my.storeRootKey}/pix/${my.uid}/${seq}`;
   let ref = fb_.ref(fb_.database, path);
   const updates = {};
   updates[`date_i`] = Date.now();

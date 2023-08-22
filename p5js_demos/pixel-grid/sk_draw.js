@@ -22,7 +22,7 @@ function draw_layer(img) {
       if (my.byLine) {
         more = 0;
       }
-      draw_record_flush();
+      draw_record_flush(my.vy);
     }
     if (my.byPixel) {
       more = 0;
@@ -47,8 +47,8 @@ function draw_record_rect(c, x, y, w, h) {
   my.drawOps.push(op);
 }
 
-function draw_record_flush() {
+function draw_record_flush(seq) {
   if (!my.store) return;
-  dstore_pix_update(my.drawOps);
+  dstore_pix_update(seq, my.drawOps);
   my.drawOps = [];
 }

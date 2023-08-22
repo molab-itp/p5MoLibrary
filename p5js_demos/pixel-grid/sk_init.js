@@ -29,8 +29,10 @@ function ui_init() {
 
   createSpan('v' + my.version);
 
-  my.resetBtn = createButton('Reset');
-  my.resetBtn.mousePressed(reset_action);
+  my.reloadBtn = createButton('Reload');
+  my.reloadBtn.mousePressed(function () {
+    location.reload();
+  });
 
   if (!my.hostName) {
     my.faceChk = createCheckbox('Face', my.face);
@@ -59,9 +61,6 @@ function faceChk_action() {
   create_myVideo();
 }
 
-function reset_action() {
-  location.reload();
-}
 function check_scroll() {
   if (my.scrolling) {
     window.scrollBy(0, 1);
