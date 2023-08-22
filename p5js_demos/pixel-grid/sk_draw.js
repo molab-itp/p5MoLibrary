@@ -48,6 +48,7 @@ function draw_record_rect(c, x, y, w, h) {
 }
 
 function draw_record_flush() {
+  if (!my.store) return;
   dstore_pix_update(my.drawOps);
   my.drawOps = [];
 }

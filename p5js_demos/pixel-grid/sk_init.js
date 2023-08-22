@@ -1,7 +1,7 @@
 function my_init() {
   my.query = get_url_params();
   if (my.query) {
-    my.userName = my.query.u;
+    my.guestName = my.query.g;
     my.hostName = my.query.h;
   }
   if (my.hostName) {
@@ -43,6 +43,12 @@ function ui_init() {
   my.runChk.changed(function () {
     my.run = this.checked();
   });
+
+  my.storeChk = createCheckbox('Store', my.store);
+  my.storeChk.style('display:inline');
+  my.storeChk.changed(function () {
+    my.store = this.checked();
+  });
 }
 
 function faceChk_action() {
@@ -76,8 +82,8 @@ function video_ready() {
 function ui_update() {
   ui_span('updateCount', ' uc:' + my.updateCount);
   ui_span('nitems', ' ni:' + my.nitems);
-  if (my.userName) {
-    ui_span('userName', ' userName:' + my.userName);
+  if (my.guestName) {
+    ui_span('guestName', ' guestName:' + my.guestName);
   }
   if (my.hostName) {
     ui_span('hostName', ' hostName:' + my.hostName);

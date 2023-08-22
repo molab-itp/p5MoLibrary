@@ -46,7 +46,7 @@ function dstore_signin_update() {
   updates[`date_s`] = now.toISOString();
   updates[`date_i`] = now.getTime();
   updates[`count_i`] = fb_.increment(1);
-  updates['name_s'] = my.userName || null;
+  updates['name_s'] = my.guestName || null;
   updates['host_s'] = my.hostName || null;
   fb_.update(ref, updates);
 }
@@ -90,6 +90,7 @@ function dstore_pix_update(ops) {
   const updates = {};
   updates[`date_i`] = Date.now();
   updates[`ops`] = ops;
+  updates[`count_i`] = fb_.increment(1);
   fb_.update(ref, updates);
 }
 
@@ -101,16 +102,4 @@ function dstore_pix_update(ops) {
 // function dstore_trim() {
 //   my.points.splice(0, 1);
 //   dstore_update();
-// }
-
-// function dstore_update() {
-//   let ucount = 1;
-//   if (my.storeData && my.storeData.ucount) {
-//     ucount = my.storeData.ucount + 1;
-//   }
-//   fb_.set(my.storeRootRef, {
-//     ucount: ucount,
-//     now: new Date().toISOString(),
-//     points: my.points,
-//   });
 // }

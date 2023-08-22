@@ -2,7 +2,7 @@
 // pixel-grid
 
 let my = {
-  version: 6, // update to verify change on mobile
+  version: 8, // update to verify change on mobile
   vwidth: 480, // Aspect ratio of video capture
   vheight: 640,
   face: 1,
@@ -12,6 +12,7 @@ let my = {
   byPixel: 1,
   // byLine: 1,
   run: 1,
+  store: 0,
   perFrame: 6,
   storeRootKey: 'm0-update-web',
   // storeData: {
@@ -22,7 +23,7 @@ let my = {
   //   },
   // },
   // query:
-  //  u -> userName
+  //  g -> guestName
   //  h -> hostName
 };
 
