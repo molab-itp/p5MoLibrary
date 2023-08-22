@@ -2,11 +2,12 @@
 // pixel-grid
 
 let my = {
-  version: 14, // update to verify change on mobile
+  version: 16, // update to verify change on mobile
   vwidth: 480, // Aspect ratio of video capture
   vheight: 640,
   face: 1,
-  scrolling: 0,
+  scrollOnStart: 1,
+  scrollStopSecs: 4,
   nstep: 16,
   margin: 0.1,
   byPixel: 1,

@@ -43,13 +43,15 @@ function draw_layer(img) {
 // layer.fill(colr);
 // layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
 function draw_record_rect(c, x, y, w, h) {
-  if (!my.drawOps) return;
-  let op = { r: 1, c, x, y, w, h };
-  my.drawOps.push(op);
+  if (my.store) {
+    let op = { r: 1, c, x, y, w, h };
+    my.drawOps.push(op);
+  }
 }
 
 function draw_record_flush(seq) {
-  if (!my.store) return;
-  dstore_pix_update(seq, my.drawOps);
+  if (my.store) {
+    dstore_pix_update(seq, my.drawOps);
+  }
   my.drawOps = [];
 }

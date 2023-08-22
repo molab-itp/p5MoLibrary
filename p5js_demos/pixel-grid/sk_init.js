@@ -24,6 +24,39 @@ function my_init() {
   my.drawOps = [];
   my.colr = [0, 0, 0];
   my.uid = -1;
+  // my.scrolling = my.scrollOnStart;
+  // if (my.scrolling) {
+  //   setTimeout(function () {
+  //     console.log('my.scrolling ZERO');
+  //     my.scrolling = 0;
+  //   }, my.scrollStopSecs * 1000);
+  // }
+  if (my.scrollOnStart) {
+    ui_toggle_scroll();
+  }
+}
+
+function ui_toggle_scroll() {
+  if (window.scrollY > 0) {
+    // scroll down some. jump back to top
+    console.log('ui_toggle_scroll jump to top');
+    window.scrollBy(0, -1000);
+    my.scrolling = 0;
+  } else {
+    // At top. initiated scrolling
+    console.log('ui_toggle_scroll start');
+    my.scrolling = 1;
+    setTimeout(function () {
+      console.log('ui_toggle_scroll stop');
+      my.scrolling = 0;
+    }, my.scrollStopSecs * 1000);
+  }
+}
+
+function check_scroll() {
+  if (my.scrolling) {
+    window.scrollBy(0, 1);
+  }
 }
 
 function ui_init() {
@@ -31,7 +64,10 @@ function ui_init() {
     create_myVideo();
   }
 
-  createSpan('v' + my.version);
+  my.verBtn = createButton('v' + my.version);
+  my.verBtn.mousePressed(function () {
+    ui_toggle_scroll();
+  });
 
   my.reloadBtn = createButton('Reload');
   my.reloadBtn.mousePressed(function () {
@@ -71,12 +107,6 @@ function faceChk_action() {
   console.log('my.facingMode', my.facingMode);
   my.video.remove();
   create_myVideo();
-}
-
-function check_scroll() {
-  if (my.scrolling) {
-    window.scrollBy(0, 1);
-  }
 }
 
 function create_myVideo() {

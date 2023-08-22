@@ -105,3 +105,5 @@ function dstore_pix_update(seq, ops) {
 //   my.points.splice(0, 1);
 //   dstore_update();
 // }
+
+// https://console.firebase.google.com/u/0/project/molab-485f5/database/molab-485f5-default-rtdb/data/~2Fm0-update-web
