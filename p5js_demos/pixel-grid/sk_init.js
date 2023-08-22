@@ -22,7 +22,7 @@ function my_init() {
   my.vx = 0;
   my.vy = 0;
   my.drawOps = [];
-  my.col = [0, 0, 0];
+  my.colr = [0, 0, 0];
   my.uid = -1;
 }
 
@@ -98,9 +98,9 @@ function ui_update() {
 function ui_update1() {
   let x = my.vx;
   let y = my.vy;
-  let r = my.col[0];
-  let g = my.col[1];
-  let b = my.col[2];
+  let r = my.colr[0];
+  let g = my.colr[1];
+  let b = my.colr[2];
   let str = ` x: ${x} y: ${y} r: ${r} g: ${g} b:${b}`;
   ui_span('report', str);
   ui_break('report_break');

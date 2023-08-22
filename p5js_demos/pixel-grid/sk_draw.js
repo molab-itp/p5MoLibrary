@@ -1,14 +1,14 @@
 function draw_layer(img) {
   let layer = my.layer;
   more = 1;
-  let col;
+  let colr;
   while (more) {
-    col = img.get(my.vx, my.vy);
-    my.col = col;
-    layer.fill(col);
+    colr = img.get(my.vx, my.vy);
+    my.colr = colr;
+    layer.fill(colr);
     layer.noStroke();
     layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
-    draw_record_rect(col, my.vx, my.vy, my.innerPx, my.innerPx);
+    draw_record_rect(colr, my.vx, my.vy, my.innerPx, my.innerPx);
     if (!my.run) {
       break;
     }
@@ -33,14 +33,14 @@ function draw_layer(img) {
 
   // Draw cross-hair
   strokeWeight(my.crossWt);
-  stroke(col);
+  stroke(colr);
   let x = my.vx + my.innerPx / 2;
   let y = my.vy + my.innerPx / 2;
   line(x, 0, x, my.height);
   line(0, y, my.width, y);
 }
 
-// layer.fill(col);
+// layer.fill(colr);
 // layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
 function draw_record_rect(c, x, y, w, h) {
   if (!my.drawOps) return;
