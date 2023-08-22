@@ -4,6 +4,7 @@ function draw_layer(img) {
   let col;
   while (more) {
     col = img.get(my.vx, my.vy);
+    my.col = col;
     layer.fill(col);
     layer.noStroke();
     layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);

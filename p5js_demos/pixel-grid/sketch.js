@@ -2,7 +2,7 @@
 // pixel-grid
 
 let my = {
-  version: 11, // update to verify change on mobile
+  version: 13, // update to verify change on mobile
   vwidth: 480, // Aspect ratio of video capture
   vheight: 640,
   face: 1,
@@ -13,6 +13,7 @@ let my = {
   // byLine: 1,
   run: 1,
   store: 0,
+  host: 0,
   perFrame: 6,
   storeRootKey: 'm0-update-web',
   // storeLogData/log {
@@ -46,6 +47,8 @@ function setup() {
 
 function draw() {
   my.draw_func();
+
+  ui_update();
 }
 
 function draw_host() {

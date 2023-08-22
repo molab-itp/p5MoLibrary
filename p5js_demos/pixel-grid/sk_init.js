@@ -8,10 +8,12 @@ function my_init() {
     my.draw_func = draw_host;
     my.width = displayWidth;
     my.height = displayHeight;
+    my.host = 1;
   } else {
     my.draw_func = draw_guest;
     my.width = my.vwidth;
     my.height = my.vheight;
+    my.host = 0;
   }
   my.layer = createGraphics(my.width, my.height);
   my.stepPx = floor(my.vwidth / my.nstep);
@@ -20,6 +22,8 @@ function my_init() {
   my.vx = 0;
   my.vy = 0;
   my.drawOps = [];
+  my.col = [0, 0, 0];
+  my.uid = -1;
 }
 
 function ui_init() {
@@ -51,6 +55,14 @@ function ui_init() {
   my.storeChk.changed(function () {
     my.store = this.checked();
   });
+
+  my.hostChk = createCheckbox('Host', my.host);
+  my.hostChk.style('display:inline');
+  my.hostChk.changed(function () {
+    my.host = this.checked();
+  });
+
+  createElement('br');
 }
 
 function faceChk_action() {
@@ -79,6 +91,22 @@ function video_ready() {
 }
 
 function ui_update() {
+  ui_update1();
+  ui_update2();
+}
+
+function ui_update1() {
+  let x = my.vx;
+  let y = my.vy;
+  let r = my.col[0];
+  let g = my.col[1];
+  let b = my.col[2];
+  let str = ` x: ${x} y: ${y} r: ${r} g: ${g} b:${b}`;
+  ui_span('report', str);
+  ui_break('report_break');
+}
+
+function ui_update2() {
   ui_span('updateCount', ' uc:' + my.updateCount);
   ui_span('nitems', ' ni:' + my.nitems);
   if (my.guestName) {
@@ -89,6 +117,13 @@ function ui_update() {
   }
   if (my.uid) {
     ui_span('uid', ' uid:' + my.uid);
+  }
+}
+
+function ui_break(id) {
+  let elm = select('#' + id);
+  if (!elm) {
+    elm = createElement('br').id(id);
   }
 }
 
