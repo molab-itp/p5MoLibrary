@@ -7,6 +7,7 @@ function draw_layer(img) {
     layer.fill(col);
     layer.noStroke();
     layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
+    draw_record_rect(col, my.vx, my.vy, my.innerPx, my.innerPx);
     if (!my.run) {
       break;
     }
@@ -21,6 +22,7 @@ function draw_layer(img) {
       if (my.byLine) {
         more = 0;
       }
+      draw_record_flush();
     }
     if (my.byPixel) {
       more = 0;
@@ -35,4 +37,17 @@ function draw_layer(img) {
   let y = my.vy + my.innerPx / 2;
   line(x, 0, x, my.height);
   line(0, y, my.width, y);
+}
+
+// layer.fill(col);
+// layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
+function draw_record_rect(c, x, y, w, h) {
+  if (!my.drawOps) return;
+  let op = { r: 1, c, x, y, w, h };
+  my.drawOps.push(op);
+}
+
+function draw_record_flush() {
+  dstore_pix_update(my.drawOps);
+  my.drawOps = [];
 }

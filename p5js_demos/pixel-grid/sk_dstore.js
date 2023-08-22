@@ -1,7 +1,6 @@
 function dstore_init() {
   my.updateCount = 0;
   dstore_signin();
-  dstore_onValue();
 }
 
 function dstore_signin() {
@@ -13,18 +12,22 @@ function dstore_signin() {
       console.log('uid', uid);
       my.uid = uid;
       dstore_signin_update();
-      // read_points();
+      dstore_log_onValue();
+      dstore_pix_onChild();
     })
     .catch((error) => {
       console.log('signin error', error);
     });
 }
 
-function dstore_onValue() {
+function dstore_log_onValue() {
   // Setup listener for changes to firebase db
-  my.storeRootRef = fb_.ref(fb_.database, my.storeRootKey);
-  fb_.onValue(my.storeRootRef, function (snapshot) {
-    let data = snapshot.val();
+  let path = `${my.storeRootKey}/log`;
+  let ref = fb_.ref(fb_.database, path);
+  fb_.onValue(ref, function (snap) {
+    let key = snap.key;
+    let data = snap.val();
+    console.log('dstore_onValue key', key);
     console.log('dstore_onValue data', data);
     data = data || {};
     my.storeData = data;
@@ -35,7 +38,7 @@ function dstore_onValue() {
 }
 
 function dstore_signin_update() {
-  let path = `${my.storeRootKey}/${my.uid}`;
+  let path = `${my.storeRootKey}/log/${my.uid}`;
   console.log('dstore_signin_update path', path);
   let ref = fb_.ref(fb_.database, path);
   let now = new Date();
@@ -43,9 +46,50 @@ function dstore_signin_update() {
   updates[`date_s`] = now.toISOString();
   updates[`date_i`] = now.getTime();
   updates[`count_i`] = fb_.increment(1);
-  if (my.userName) {
-    updates['name_s'] = my.userName;
-  }
+  updates['name_s'] = my.userName || null;
+  updates['host_s'] = my.hostName || null;
+  fb_.update(ref, updates);
+}
+
+function dstore_pix_onChild() {
+  // import { getDatabase, ref, onChildAdded, onChildChanged, onChildRemoved }
+  // from "firebase/database";
+  let path = `${my.storeRootKey}/pix`;
+  console.log('dstore_pix_onChild path', path);
+  let ref = fb_.ref(fb_.database, path);
+
+  fb_.onChildAdded(ref, (data) => {
+    let key = data.key;
+    let val = data.val();
+    console.log('onChildAdded', key, val);
+  });
+
+  fb_.onChildChanged(ref, (data) => {
+    let key = data.key;
+    let val = data.val();
+    // console.log('onChildChanged', key, val);
+    // onChildChanged DK1Lcj16BFhDPgdvGGkVP9FS3Xy2
+    // {
+    //   "date_i": 1692677048708,
+    //   "ops": [
+    //       { "c": [ 135, 132, 133, 255 ],
+    //          "h": 27, "r": 1, "w": 27, "x": 0, "y": 0
+    //       },
+  });
+
+  fb_.onChildRemoved(ref, (data) => {
+    let key = data.key;
+    let val = data.val();
+    console.log('onChildRemoved', key, val);
+  });
+}
+
+function dstore_pix_update(ops) {
+  let path = `${my.storeRootKey}/pix/${my.uid}`;
+  let ref = fb_.ref(fb_.database, path);
+  const updates = {};
+  updates[`date_i`] = Date.now();
+  updates[`ops`] = ops;
   fb_.update(ref, updates);
 }
 

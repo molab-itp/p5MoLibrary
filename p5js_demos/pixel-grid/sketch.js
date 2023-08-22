@@ -13,7 +13,7 @@ let my = {
   // byLine: 1,
   run: 1,
   perFrame: 6,
-  storeRootKey: 'm0-lob-web-shared',
+  storeRootKey: 'm0-update-web',
   // storeData: {
   //   DK1Lcj16BFhDPgdvGGkVP9FS3Xy2: {
   //     count_i: 1,
@@ -21,6 +21,9 @@ let my = {
   //     date_s: '2023-08-21T21:58:56.999Z',
   //   },
   // },
+  // query:
+  //  u -> userName
+  //  h -> hostName
 };
 
 function setup() {
@@ -33,7 +36,7 @@ function setup() {
   background(200);
   noStroke();
 
-  create_ui();
+  ui_init();
 
   dstore_init();
 }
@@ -61,29 +64,6 @@ function draw_guest() {
   image(img, 0, 0);
 
   draw_layer(img);
-}
-
-function my_init() {
-  my.query = get_url_params();
-  if (my.query) {
-    my.userName = my.query.u;
-    my.hostName = my.query.h;
-  }
-  if (my.hostName) {
-    my.draw_func = draw_host;
-    my.width = displayWidth;
-    my.height = displayHeight;
-  } else {
-    my.draw_func = draw_guest;
-    my.width = my.vwidth;
-    my.height = my.vheight;
-  }
-  my.layer = createGraphics(my.width, my.height);
-  my.stepPx = floor(my.vwidth / my.nstep);
-  my.innerPx = floor(my.stepPx * (1 - my.margin));
-  my.crossWt = my.stepPx - my.innerPx;
-  my.vx = 0;
-  my.vy = 0;
 }
 
 function canvas_mouseReleased() {

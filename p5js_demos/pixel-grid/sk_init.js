@@ -1,14 +1,42 @@
-function create_ui() {
-  create_myVideo();
+function my_init() {
+  my.query = get_url_params();
+  if (my.query) {
+    my.userName = my.query.u;
+    my.hostName = my.query.h;
+  }
+  if (my.hostName) {
+    my.draw_func = draw_host;
+    my.width = displayWidth;
+    my.height = displayHeight;
+  } else {
+    my.draw_func = draw_guest;
+    my.width = my.vwidth;
+    my.height = my.vheight;
+  }
+  my.layer = createGraphics(my.width, my.height);
+  my.stepPx = floor(my.vwidth / my.nstep);
+  my.innerPx = floor(my.stepPx * (1 - my.margin));
+  my.crossWt = my.stepPx - my.innerPx;
+  my.vx = 0;
+  my.vy = 0;
+  my.drawOps = [];
+}
+
+function ui_init() {
+  if (!my.hostName) {
+    create_myVideo();
+  }
 
   createSpan('v' + my.version);
 
   my.resetBtn = createButton('Reset');
   my.resetBtn.mousePressed(reset_action);
 
-  my.faceChk = createCheckbox('Face', my.face);
-  my.faceChk.style('display:inline');
-  my.faceChk.changed(faceChk_action);
+  if (!my.hostName) {
+    my.faceChk = createCheckbox('Face', my.face);
+    my.faceChk.style('display:inline');
+    my.faceChk.changed(faceChk_action);
+  }
 
   my.runChk = createCheckbox('Run', my.run);
   my.runChk.style('display:inline');
@@ -46,8 +74,8 @@ function video_ready() {
 }
 
 function ui_update() {
-  ui_span('updateCount', ' u:' + my.updateCount);
-  ui_span('nitems', ' n:' + my.nitems);
+  ui_span('updateCount', ' uc:' + my.updateCount);
+  ui_span('nitems', ' ni:' + my.nitems);
   if (my.userName) {
     ui_span('userName', ' userName:' + my.userName);
   }
