@@ -82,6 +82,9 @@ function ui_update() {
   if (my.hostName) {
     ui_span('hostName', ' hostName:' + my.hostName);
   }
+  if (my.uid) {
+    ui_span('uid', ' uid:' + my.uid);
+  }
 }
 
 function ui_span(id, html) {
