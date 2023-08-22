@@ -7,16 +7,15 @@ function dstore_signin() {
   fb_
     .signInAnonymously(fb_.auth)
     .then(() => {
-      console.log('signin OK');
       let uid = fb_.auth.currentUser.uid;
-      console.log('uid', uid);
+      console.log('dstore_signin uid=', uid);
       my.uid = uid;
       dstore_signin_update();
       dstore_log_onValue();
       dstore_pix_onChild();
     })
     .catch((error) => {
-      console.log('signin error', error);
+      console.log('dstore_signin error', error);
     });
 }
 
@@ -27,8 +26,7 @@ function dstore_log_onValue() {
   fb_.onValue(ref, function (snap) {
     let key = snap.key;
     let data = snap.val();
-    console.log('dstore_onValue key', key);
-    console.log('dstore_onValue data', data);
+    console.log('dstore_log_onValue key data=', key, data);
     data = data || {};
     my.storeLogData = data;
     my.nitems = Object.keys(data).length;
@@ -39,7 +37,7 @@ function dstore_log_onValue() {
 
 function dstore_signin_update() {
   let path = `${my.storeRootKey}/log/${my.uid}`;
-  console.log('dstore_signin_update path', path);
+  console.log('dstore_signin_update path=', path);
   let ref = fb_.ref(fb_.database, path);
   let now = new Date();
   const updates = {};
@@ -61,13 +59,13 @@ function dstore_pix_onChild() {
   fb_.onChildAdded(ref, (data) => {
     let key = data.key;
     let val = data.val();
-    console.log('onChildAdded', key, val);
+    console.log('dstore_pix_onChild Added key val=', key, val);
   });
 
   fb_.onChildChanged(ref, (data) => {
     let key = data.key;
     let val = data.val();
-    // console.log('onChildChanged', key, val);
+    // console.log('dstore_pix_onChild Changed key val=', key, val);
     // onChildChanged DK1Lcj16BFhDPgdvGGkVP9FS3Xy2
     // {
     //   "date_i": 1692677048708,
@@ -80,7 +78,7 @@ function dstore_pix_onChild() {
   fb_.onChildRemoved(ref, (data) => {
     let key = data.key;
     let val = data.val();
-    console.log('onChildRemoved', key, val);
+    console.log('dstore_pix_onChild Removed key val=', key, val);
   });
 }
 
