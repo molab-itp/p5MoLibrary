@@ -13,10 +13,10 @@ function draw_layer(img) {
       break;
     }
     my.vx += my.stepPx;
-    if (my.vx > my.vwidth) {
+    if (my.vx >= my.vwidth) {
       my.vx = 0;
       my.vy += my.stepPx;
-      if (my.vy > my.vheight) {
+      if (my.vy >= my.vheight) {
         more = 0;
         my.vy = 0;
       }
