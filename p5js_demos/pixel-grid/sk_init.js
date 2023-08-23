@@ -132,7 +132,7 @@ function ui_update1() {
   let g = my.colr[1];
   let b = my.colr[2];
   let str = ` x: ${x} y: ${y} r: ${r} g: ${g} b:${b}`;
-  ui_span('report', str);
+  my.report = ui_span('report', str);
   ui_break('report_break');
 }
 
@@ -169,6 +169,7 @@ function ui_span(id, html) {
     span = createSpan().id(id);
   }
   span.html(html);
+  return span;
 }
 
 // return null or url query as object
