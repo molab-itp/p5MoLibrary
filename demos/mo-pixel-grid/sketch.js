@@ -2,7 +2,7 @@
 // mo-pixel-grid
 
 let my = {
-  version: 20, // update to verify change on mobile
+  version: 21, // update to verify change on mobile
   vwidth: 480, // Aspect ratio of video capture
   vheight: 640,
   face: 1,
@@ -16,7 +16,7 @@ let my = {
   store: 0,
   host: 0,
   perFrame: 6,
-  storeRootKey: 'm0-update-web',
+  storeRootKey: 'm0-@r-@w-',
   // storeLogData/log {
   //   DK1Lcj16BFhDPgdvGGkVP9FS3Xy2: {
   //     count_i: 1,
