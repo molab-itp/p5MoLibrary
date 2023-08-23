@@ -24,13 +24,6 @@ function my_init() {
   my.drawOps = [];
   my.colr = [0, 0, 0];
   my.uid = -1;
-  // my.scrolling = my.scrollOnStart;
-  // if (my.scrolling) {
-  //   setTimeout(function () {
-  //     console.log('my.scrolling ZERO');
-  //     my.scrolling = 0;
-  //   }, my.scrollStopSecs * 1000);
-  // }
   if (my.scrollOnStart) {
     ui_toggle_scroll();
   }
@@ -121,24 +114,42 @@ function video_ready() {
 }
 
 function ui_update() {
-  ui_update1();
-  ui_update2();
+  ui_update_xy();
+  ui_update_rgb();
+  ui_break('break1');
+  ui_update_info();
 }
 
-function ui_update1() {
+function ui_update_xy() {
   let x = my.vx;
   let y = my.vy;
+  let str = ` x: ${x} y: ${y}`;
+  my.report = ui_span('report', str);
+}
+
+function ui_update_rgb() {
   let r = my.colr[0];
   let g = my.colr[1];
   let b = my.colr[2];
-  let str = ` x: ${x} y: ${y} r: ${r} g: ${g} b:${b}`;
-  my.report = ui_span('report', str);
-  ui_break('report_break');
+
+  let spanrgb = ui_span('rgb', ` &nbsp&nbsp&nbsp&nbsp`);
+  let spanr = ui_span('r', ` r: ${r} &nbsp`);
+  let spang = ui_span('g', ` g: ${g} &nbsp`);
+  let spanb = ui_span('b', ` b: ${b} &nbsp`);
+
+  spanrgb.elt.style.backgroundColor = `rgb(${r},${g},${b})`;
+  spanr.elt.style.backgroundColor = `rgb(${r},0,0)`;
+  spang.elt.style.backgroundColor = `rgb(0,${g},0)`;
+  spanb.elt.style.backgroundColor = `rgb(0,0,${b})`;
+
+  spanr.elt.style.color = 'white';
+  spang.elt.style.color = 'white';
+  spanb.elt.style.color = 'white';
 }
 
-function ui_update2() {
-  ui_span('updateCount', ' uc:' + my.updateCount);
-  ui_span('nitems', ' ni:' + my.nitems);
+function ui_update_info() {
+  // ui_span('updateCount', ' uc:' + my.updateCount);
+  // ui_span('nitems', ' ni:' + my.nitems);
   if (my.guestName) {
     ui_span('guestName', ' guestName:' + my.guestName);
   }

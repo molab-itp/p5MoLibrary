@@ -2,12 +2,12 @@
 
 View images from MoGallery firebase database using p5js
 
-- [p5js_demos/createImg-board](p5js_demos/createImg-board/)
-- [p5js_demos/createImg-slide-show](p5js_demos/createImg-slide-show)
+- [p5js_demos/createImg-board](demos/createImg-board/)
+- [demos/createImg-slide-show](demos/createImg-slide-show)
 
-- [p5js_demos/draw-share](p5js_demos/draw-share)
-- [p5js_demos/draw-video](p5js_demos/draw-video)
-- [p5js_demos/pixel-grid](p5js_demos/pixel-grid v14)
+- [demos/draw-share](demos/draw-share)
+- [demos/draw-video](demos/draw-video)
+- [demos/mo-pixel-grid](demos/mo-pixel-grid)
 
 ## Browser Preview
 
@@ -17,4 +17,4 @@ Using github pages to view this repo
 
 ## Issues
 
-- [] p5js_demos/createImg-board does to read store on first launch, sometimes
+- [] demos/createImg-board does to read store on first launch, sometimes

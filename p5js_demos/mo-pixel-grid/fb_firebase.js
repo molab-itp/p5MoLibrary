@@ -4,6 +4,7 @@
 // fb_.ref
 // fb_.database
 // fb_.onValue
+// ...
 
 // Documentation starting reference
 // <!-- https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en -->
@@ -70,7 +71,7 @@ const database = getDatabase();
 const dbRef = ref(getDatabase());
 
 const fb_ = {
-  app, //
+  app, // export api for non-module scripts
   auth,
   child,
   database,
@@ -88,7 +89,7 @@ const fb_ = {
 };
 window.fb_ = fb_;
 
-// History
+// -- History
 
 // https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0#atomic_server-side_increments
 

@@ -1,3 +1,4 @@
+// incrementally draw grid of pixel rects from given image img
 function draw_layer(img) {
   let layer = my.layer;
   more = 1;
@@ -29,6 +30,8 @@ function draw_layer(img) {
       more = 0;
     }
   }
+
+  // draw layer to canvas
   image(layer, 0, 0);
 
   // Draw cross-hair

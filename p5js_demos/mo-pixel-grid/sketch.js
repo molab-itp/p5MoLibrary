@@ -1,8 +1,8 @@
-// https://editor.p5js.org/jht9629-nyu/sketches/twgS6eWRZ
-// pixel-grid
+// https://editor.p5js.org/jht9629-nyu/sketches/7Wjlo3pPU
+// mo-pixel-grid
 
 let my = {
-  version: 18, // update to verify change on mobile
+  version: 19, // update to verify change on mobile
   vwidth: 480, // Aspect ratio of video capture
   vheight: 640,
   face: 1,
@@ -39,7 +39,6 @@ function setup() {
   my.canvas.touchEnded(canvas_mouseReleased);
 
   background(200);
-  noStroke();
 
   ui_init();
 
@@ -91,3 +90,6 @@ function mouseDragged() {
   // required to prevent touch drag moving canvas on mobile
   return false;
 }
+
+// https://editor.p5js.org/jht9629-nyu/sketches/twgS6eWRZ
+// pixel-grid
