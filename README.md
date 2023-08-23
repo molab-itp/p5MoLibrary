@@ -19,4 +19,6 @@ Using github pages to view this repo
 
 - [] demos/createImg-board does to read store on first launch, sometimes
 
-<!-- v20 -->
+<!--
+v21 -- updated mo-pixel-grid/storeRootKey
+-->
