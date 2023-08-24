@@ -3,6 +3,9 @@ function my_init() {
   if (my.query) {
     my.guestName = my.query.g;
     my.hostName = my.query.h;
+    my.nstep = my.query.nstep || my.nstep;
+    my.perFrame = my.query.perFrame || my.perFrame;
+    my.byLine = my.query.byLine || my.byLine;
   }
   if (my.hostName) {
     my.draw_func = draw_host;
@@ -16,9 +19,6 @@ function my_init() {
     my.host = 0;
   }
   my.layer = createGraphics(my.width, my.height);
-  my.stepPx = floor(my.vwidth / my.nstep);
-  my.innerPx = floor(my.stepPx * (1 - my.margin));
-  my.crossWt = my.stepPx - my.innerPx;
   my.vx = 0;
   my.vy = 0;
   my.drawOps = [];
@@ -26,6 +26,16 @@ function my_init() {
   my.uid = -1;
   if (my.scrollOnStart) {
     ui_toggle_scroll();
+  }
+  init_nstep();
+}
+
+function init_nstep() {
+  my.stepPx = floor(my.vwidth / my.nstep);
+  my.innerPx = floor(my.stepPx * (1 - my.margin));
+  my.crossWt = my.stepPx - my.innerPx;
+  if (!my.query || !my.query.byLine) {
+    my.byLine = my.nstep > 16;
   }
 }
 
@@ -67,6 +77,11 @@ function ui_init() {
     location.reload();
   });
 
+  ui_nstep_selection();
+  // ui_perFrame_selection();
+
+  createElement('br');
+
   if (!my.hostName) {
     my.faceChk = createCheckbox('Face', my.face);
     my.faceChk.style('display:inline');
@@ -92,6 +107,22 @@ function ui_init() {
   });
 
   createElement('br');
+}
+
+function ui_nstep_selection() {
+  createSpan(' nstep:');
+  let aSel = createSelect();
+  let opts = [16, 32, 64, 128, 8];
+  for (let ent of opts) {
+    aSel.option(ent, ent);
+  }
+  aSel.selected(my.nstep);
+  aSel.changed(function () {
+    my.nstep = parseFloat(this.value());
+    console.log('ui_nstep_selection', my.nstep);
+    init_nstep();
+    my.layer.clear();
+  });
 }
 
 function faceChk_action() {

@@ -2,7 +2,7 @@
 // mo-pixel-grid
 
 let my = {
-  version: 21, // update to verify change on mobile
+  version: 23, // update to verify change on mobile
   vwidth: 480, // Aspect ratio of video capture
   vheight: 640,
   face: 1,
@@ -10,8 +10,7 @@ let my = {
   scrollStopSecs: 4,
   nstep: 16,
   margin: 0.1,
-  byPixel: 1,
-  // byLine: 1,
+  byPixel: 0,
   run: 1,
   store: 0,
   host: 0,

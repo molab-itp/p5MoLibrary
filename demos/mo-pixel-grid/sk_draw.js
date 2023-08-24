@@ -26,7 +26,7 @@ function draw_layer(img) {
       }
       draw_record_flush(my.vy);
     }
-    if (my.byPixel) {
+    if (!my.byLine) {
       more = 0;
     }
   }
@@ -35,12 +35,14 @@ function draw_layer(img) {
   image(layer, 0, 0);
 
   // Draw cross-hair
-  strokeWeight(my.crossWt);
-  stroke(colr);
-  let x = my.vx + my.innerPx / 2;
-  let y = my.vy + my.innerPx / 2;
-  line(x, 0, x, my.height);
-  line(0, y, my.width, y);
+  if (!my.byLine) {
+    strokeWeight(my.crossWt);
+    stroke(colr);
+    let x = my.vx + my.innerPx / 2;
+    let y = my.vy + my.innerPx / 2;
+    line(x, 0, x, my.height);
+    line(0, y, my.width, y);
+  }
 }
 
 // layer.fill(colr);
