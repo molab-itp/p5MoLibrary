@@ -37,6 +37,8 @@ function init_nstep() {
   if (!my.query || !my.query.byLine) {
     my.byLine = my.nstep > 16;
   }
+  my.vx = 0;
+  my.vy = width / 2;
 }
 
 function ui_toggle_scroll() {
