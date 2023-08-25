@@ -2,10 +2,11 @@
 // mo-pixel-grid
 
 let my = {
-  version: 23, // update to verify change on mobile
+  version: 24, // update to verify change on mobile
   vwidth: 480, // Aspect ratio of video capture
   vheight: 640,
   face: 1,
+  showVideo: 1,
   scrollOnStart: 1,
   scrollStopSecs: 4,
   nstep: 16,
@@ -37,8 +38,6 @@ function setup() {
   my.canvas.mouseReleased(canvas_mouseReleased);
   my.canvas.touchEnded(canvas_mouseReleased);
 
-  background(200);
-
   ui_init();
 
   dstore_init();
@@ -63,10 +62,14 @@ function draw_guest() {
 
   if (frameCount % my.perFrame != 0) return;
 
+  background(0);
+
   // faster to get entire video frame as an image
   let img = my.video.get();
 
-  image(img, 0, 0);
+  if (my.showVideo) {
+    image(img, 0, 0);
+  }
 
   draw_layer(img);
 }

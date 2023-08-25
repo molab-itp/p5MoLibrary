@@ -88,6 +88,12 @@ function ui_init() {
     my.faceChk.changed(faceChk_action);
   }
 
+  my.videoChk = createCheckbox('Video', my.showVideo);
+  my.videoChk.style('display:inline');
+  my.videoChk.changed(function () {
+    my.showVideo = this.checked();
+  });
+
   my.runChk = createCheckbox('Run', my.run);
   my.runChk.style('display:inline');
   my.runChk.changed(function () {
@@ -104,9 +110,15 @@ function ui_init() {
   my.hostChk.style('display:inline');
   my.hostChk.changed(function () {
     my.host = this.checked();
+    init_host();
   });
 
   createElement('br');
+}
+
+function init_host() {
+  console.log('init_host', my.host);
+  my.draw_func = my.host ? draw_host : draw_guest;
 }
 
 function ui_nstep_selection() {
