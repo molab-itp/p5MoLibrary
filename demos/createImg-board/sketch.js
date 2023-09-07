@@ -7,7 +7,7 @@
 // https://mobilelabclass-itp.github.io/98-MoGallery-p5js/p5js_demos/createImg-board/?gallery=web
 
 let a_version = 'v9 ';
-let galleryKey = 'mo-gallery-web';
+let galleryKey = 'mo-1/gallery-@r-';
 // let galleryKey = 'mo-gallery-ims-web';
 let nitems = 0;
 let updateCount = 0;
