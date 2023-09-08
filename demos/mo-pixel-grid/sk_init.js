@@ -126,7 +126,7 @@ function init_host() {
 function ui_nstep_selection() {
   createSpan(' nstep:');
   let aSel = createSelect();
-  let opts = [16, 32, 64, 128, 8];
+  let opts = [16, 32, 64, 128, 8, 4, 2, 1];
   for (let ent of opts) {
     aSel.option(ent, ent);
   }

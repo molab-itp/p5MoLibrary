@@ -1,3 +1,17 @@
+// my storeRootKey: 'm0-@r-@w-',
+// storeLogData/log {
+//   DK1Lcj16BFhDPgdvGGkVP9FS3Xy2: {
+//     count_i: 1,
+//     date_i: 1692655136999,
+//     date_s: '2023-08-21T21:58:56.999Z',
+//   },
+// },
+// storeLogData/pix
+//
+// query:
+//  g -> guestName
+//  h -> hostName
+
 function dstore_init() {
   my.updateCount = 0;
   dstore_signin();

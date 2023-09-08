@@ -15,6 +15,7 @@ function draw_layer(img) {
     }
     my.vx += my.stepPx;
     if (my.vx >= my.vwidth) {
+      draw_record_flush(my.vy);
       my.vx = 0;
       my.vy += my.stepPx;
       if (my.vy >= my.vheight) {
@@ -24,7 +25,6 @@ function draw_layer(img) {
       if (my.byLine) {
         more = 0;
       }
-      draw_record_flush(my.vy);
     }
     if (!my.byLine) {
       more = 0;
