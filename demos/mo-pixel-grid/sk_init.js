@@ -1,4 +1,18 @@
 function my_init() {
+  init_query();
+  my.layer = createGraphics(my.width, my.height);
+  my.vx = 0;
+  my.vy = 0;
+  my.drawOps = [];
+  my.colr = [0, 0, 0];
+  my.uid = -1;
+  if (my.scrollOnStart) {
+    ui_toggle_scroll();
+  }
+  init_nstep();
+}
+
+function init_query() {
   my.query = get_url_params();
   if (my.query) {
     my.guestName = my.query.g;
@@ -18,16 +32,6 @@ function my_init() {
     my.height = my.vheight;
     my.host = 0;
   }
-  my.layer = createGraphics(my.width, my.height);
-  my.vx = 0;
-  my.vy = 0;
-  my.drawOps = [];
-  my.colr = [0, 0, 0];
-  my.uid = -1;
-  if (my.scrollOnStart) {
-    ui_toggle_scroll();
-  }
-  init_nstep();
 }
 
 function init_nstep() {
