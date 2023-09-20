@@ -3,6 +3,8 @@
 function setup() {
   console.log('mo-storage setup');
 
+  createCanvas(400, 400);
+
   demo_getDownloadURL();
 
   // demo_listAll();

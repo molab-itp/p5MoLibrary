@@ -1,0 +1,37 @@
+_plan.txt
+
+# --
+
+[] image blob from firebase storage
+
+[] upload canvas
+
+[] center sample
+[] no margin below 8 pixels
+[] square
+
+[] store by y index, not y coord
+// index for pix/{uid}/n
+my.vxi
+my.vyi
+my.vxn
+my.vyn
+
+if (my.vx >= my.vwidth) {
+
+if (my.vy >= my.vheight) {
+
+[] center get pixel
+my.getOffset
+    colr = img.get(my.vx, my.vy);
+    
+# --
+
+https://molab-itp.github.io/98-MoGallery-p5js/demos/mo-pixel-grid/
+[x] y position in dbbase is off by 1
+  0 --> 30
+
+[x] 2x2 option
+[x] 1x1 option
+
+# --
