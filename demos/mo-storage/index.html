@@ -24,15 +24,15 @@
       import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
       // import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js'
 
-      import {
-        getDatabase,
-        ref,
-        child,
-        get,
-        onValue,
-      } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
+      // import {
+      //   getDatabase,
+      //   ref,
+      //   child,
+      //   get,
+      //   onValue,
+      // } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
 
-      // import { getStorage, ref, listAll } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js";
+      import { getStorage, ref, listAll } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js';
 
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -52,14 +52,13 @@
       fb_.app = initializeApp(firebaseConfig);
 
       const auth = getAuth();
-      const database = getDatabase();
-      // console.log('database', database);
-      const dbRef = ref(getDatabase());
+
+      // const database = getDatabase();
+      // const dbRef = ref(getDatabase());
 
       signInAnonymously(auth)
         .then(() => {
-          console.log('signInAnonymously OK 4');
-          // check_gallery();
+          console.log('signInAnonymously OK');
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -68,37 +67,11 @@
           console.log('errorMessage', errorMessage);
         });
 
-      function check_gallery() {
-        get(child(dbRef, `mo-gallery-web`))
-          .then((snapshot) => {
-            if (snapshot.exists()) {
-              console.log('check_gallery snapshot', snapshot.val());
-            } else {
-              console.log('No data available');
-            }
-          })
-          .catch((error) => {
-            console.error('error', error);
-          });
-      }
-
-      // https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0
-
-      // const galleryRef = ref(database, 'mo-gallery-1');
-      // fb_.galleryRef = galleryRef;
-      // onValue(galleryRef, (snapshot) => {
-      //   const data = snapshot.val();
-      //   console.log('galleryRef data', data);
-      // });
-
       window.fb_ = fb_;
       fb_.auth = auth;
-      fb_.database = database;
-      fb_.dbRef = dbRef;
+      fb_.getStorage = getStorage;
       fb_.ref = ref;
-      fb_.onValue = onValue;
-
-      // Callbacks are removed by calling the off() method on your Firebase database reference.
+      fb_.listAll = listAll;
     </script>
 
     <script src="sketch.js?v=9"></script>

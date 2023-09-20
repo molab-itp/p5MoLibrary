@@ -5,3 +5,6 @@
 
 10.4.0
 
+fb_.auth.currentUser.uid
+'yGt3ZocTRxWpZQu9bMymjI8zku32'
+
