@@ -30,8 +30,9 @@ function demo_getDownloadURL() {
       xhr.send();
 
       // Or inserted into an <img> element
-      const img = document.getElementById('myimg');
-      img.setAttribute('src', url);
+      // const img = document.getElementById('myimg');
+      let img = createImg(url, 'img test');
+      // img.setAttribute('src', url);
     })
     .catch((error) => {
       // Handle any errors
@@ -39,7 +40,9 @@ function demo_getDownloadURL() {
     });
 }
 
-// !!@ TODO
+// fixed cors using online gsutil
+// https://stackoverflow.com/users/saves/22601444/all
+
 // fix cors with
 // https://firebase.google.com/docs/storage/web/download-files#cors_configuration
 
