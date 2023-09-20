@@ -1,6 +1,6 @@
 // mo-storage
 
-let a_version = 'v9 ';
+let a_version = 'v9-10.4.0 ';
 let galleryKey = 'mo-1/gallery-@r-';
 // let galleryKey = 'mo-gallery-ims-web';
 let nitems = 0;
