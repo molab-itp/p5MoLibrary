@@ -11,10 +11,11 @@ function setup() {
 let a_blob;
 
 function demo_getDownloadURL() {
-  const storage = getStorage();
-  getDownloadURL(ref(storage, 'images/stars.jpg'))
+  const storage = fb_.getStorage();
+  fb_
+    .getDownloadURL(fb_.ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg'))
     .then((url) => {
-      // `url` is the download URL for 'images/stars.jpg'
+      // `url` is the download URL for '1.jpeg'
       console.log('demo_listAll url', url);
 
       // This can be downloaded directly:
@@ -37,6 +38,15 @@ function demo_getDownloadURL() {
       console.log('demo_listAll error', error);
     });
 }
+
+// demo_listAll url https://firebasestorage.googleapis.com/v0/b/molab-485f5.appspot.com/o/GNhzoQknS1OHY8DA1Fvygmltr902%2F1.jpeg?alt=media&token=acea55e8-08ba-45d9-9858-73eb604cf38a
+
+// Access to XMLHttpRequest at 'https://firebasestorage.googleapis.com/v0/b/molab-485f5.appspot.com/o/GNhzoQknS1OHY8DA1Fvygmltr902%2F1.jpeg?alt=media&token=acea55e8-08ba-45d9-9858-73eb604cf38a'
+// from origin 'http://127.0.0.1:5502' has been blocked by CORS policy:
+// No 'Access-Control-Allow-Origin' header is present on the requested resource.
+//
+// sketch.js?v=9:30     GET https://firebasestorage.googleapis.com/v0/b/molab-485f5.appspot.com/o/GNhzoQknS1OHY8DA1Fvygmltr902%2F1.jpeg?alt=media&token=acea55e8-08ba-45d9-9858-73eb604cf38a
+// net::ERR_FAILED 200
 
 // https://firebase.google.com/docs/storage/web/list-files#list_all_files
 function demo_listAll() {
