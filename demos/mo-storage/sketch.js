@@ -7,6 +7,8 @@ function setup() {
 
   my.cnv = createCanvas(600, 300);
 
+  my.len = int(width / 10);
+
   demo_getDownloadURL();
 
   // demo_listAll();
@@ -17,7 +19,9 @@ function draw() {
   strokeWeight(4);
   noFill();
   let w = width / 10;
-  circle(mouseX, mouseY, w);
+  let x = mouseX - (mouseX % my.len);
+  let y = mouseY - (mouseY % my.len);
+  circle(x, y, w);
 }
 
 // https://stackoverflow.com/questions/38004917/how-to-render-a-blob-on-a-canvas-element
