@@ -1,32 +1,64 @@
 // mo-storage
 
+let my = {};
+
 function setup() {
   console.log('mo-storage setup');
 
-  createCanvas(400, 400);
+  my.cnv = createCanvas(600, 300);
 
   demo_getDownloadURL();
 
   // demo_listAll();
 }
 
-let a_blob;
+function draw() {
+  stroke('red');
+  strokeWeight(4);
+  noFill();
+  let w = width / 10;
+  circle(mouseX, mouseY, w);
+}
+
+// https://stackoverflow.com/questions/38004917/how-to-render-a-blob-on-a-canvas-element
+// HTMLCanvasElement.prototype.renderImage = function(blob) {
+
+let d_img;
+
+function renderBlobToCanvas(blob) {
+  let canvas = my.cnv.elt;
+  var ctx = canvas.getContext('2d');
+  var img = new Image();
+  d_img = img;
+
+  img.onload = function () {
+    ctx.drawImage(img, 0, 0);
+    URL.revokeObjectURL(img.src);
+  };
+  img.src = URL.createObjectURL(blob);
+}
+
+let d_blob;
 
 function demo_getDownloadURL() {
   const storage = fb_.getStorage();
   fb_
-    .getDownloadURL(fb_.ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg'))
+    // .getDownloadURL(fb_.ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg'))
+    .getDownloadURL(fb_.ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2/386.jpeg'))
+    // oVFxc052pOWF5qq560qMuBmEsbr2/120.jpeg
+    // oVFxc052pOWF5qq560qMuBmEsbr2/119.jpeg
     .then((url) => {
       // `url` is the download URL for '1.jpeg'
-      console.log('demo_listAll url', url);
+      console.log('demo_getDownloadURL url', url);
 
       // This can be downloaded directly:
       const xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';
       xhr.onload = (event) => {
         const blob = xhr.response;
-        a_blob = blob;
-        console.log('demo_listAll blob', blob);
+        d_blob = blob;
+        console.log('demo_getDownloadURL blob', blob);
+        renderBlobToCanvas(blob);
       };
       xhr.open('GET', url);
       xhr.send();
@@ -38,7 +70,7 @@ function demo_getDownloadURL() {
     })
     .catch((error) => {
       // Handle any errors
-      console.log('demo_listAll error', error);
+      console.log('demo_getDownloadURL error', error);
     });
 }
 
@@ -61,7 +93,7 @@ function demo_getDownloadURL() {
 function demo_listAll() {
   const storage = fb_.getStorage();
   // Create a reference under which you want to list
-  const listRef = fb_.ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902');
+  const listRef = fb_.ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
   // const listRef = fb_.ref(storage, '');
   // Find all the prefixes and items.
   fb_

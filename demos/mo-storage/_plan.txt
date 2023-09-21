@@ -26,11 +26,14 @@ my.getOffset
     colr = img.get(my.vx, my.vy);
     
 # --
+2023-09-21 15:47:09
 
+[x] demo_getDownloadURL
+
+# --
 https://molab-itp.github.io/98-MoGallery-p5js/demos/mo-pixel-grid/
 [x] y position in dbbase is off by 1
   0 --> 30
-
 [x] 2x2 option
 [x] 1x1 option
 

@@ -53,8 +53,7 @@
       };
 
       // Initialize Firebase
-      const fb_ = {};
-      fb_.app = initializeApp(firebaseConfig);
+      const app = initializeApp(firebaseConfig);
 
       const auth = getAuth();
 
@@ -72,7 +71,9 @@
           console.log('errorMessage', errorMessage);
         });
 
+      const fb_ = {};
       window.fb_ = fb_;
+      fb_.app = app;
       fb_.auth = auth;
       fb_.getStorage = getStorage;
       fb_.ref = ref;
