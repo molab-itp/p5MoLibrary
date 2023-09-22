@@ -7,21 +7,65 @@ function setup() {
 
   my.cnv = createCanvas(600, 300);
 
-  my.len = int(width / 10);
+  my.len = int(width / 20);
 
-  demo_getDownloadURL();
+  // demo_getDownloadURL();
 
-  // demo_listAll();
+  createButton('Upload').mousePressed(function () {
+    demo_upload();
+  });
+  // show all
+  // demo_listAll('');
+  // show all items for this id
+  demo_listAll('oVFxc052pOWF5qq560qMuBmEsbr2');
 }
 
 function draw() {
-  stroke('red');
+  let cl = random(['red', 'green', 'yellow']);
+  stroke(cl);
   strokeWeight(4);
   noFill();
-  let w = width / 10;
+  let w = my.len;
   let x = mouseX - (mouseX % my.len);
   let y = mouseY - (mouseY % my.len);
   circle(x, y, w);
+}
+
+// https://firebase.google.com/docs/storage/web/upload-files?authuser=0#upload_from_a_blob_or_file
+
+function demo_upload() {
+  console.log('demo_upload');
+
+  let type = 'image/jpeg';
+  let quality = 1;
+
+  canvas.toBlob(
+    (blob) => {
+      demo_upload_blob(blob);
+    },
+    type,
+    quality
+  ); // JPEG at 95% quality
+}
+
+function demo_upload_blob(blob) {
+  console.log('demo_upload_blob', blob);
+  // import { getStorage, ref, uploadBytes } from "firebase/storage";
+
+  let { getStorage, ref, uploadBytes } = fb_;
+
+  const storage = getStorage();
+  const storageRef = ref(storage, 'some-child');
+
+  // 'file' comes from the Blob or File API
+  uploadBytes(storageRef, blob)
+    .then((snapshot) => {
+      console.log('Uploaded a blob or file!');
+    })
+    .catch((error) => {
+      // Handle any errors
+      console.log('demo_upload_blob error', error);
+    });
 }
 
 // https://stackoverflow.com/questions/38004917/how-to-render-a-blob-on-a-canvas-element
@@ -45,10 +89,10 @@ function renderBlobToCanvas(blob) {
 let d_blob;
 
 function demo_getDownloadURL() {
-  const storage = fb_.getStorage();
-  fb_
-    // .getDownloadURL(fb_.ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg'))
-    .getDownloadURL(fb_.ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2/386.jpeg'))
+  let { getStorage, ref, getDownloadURL } = fb_;
+  const storage = getStorage();
+  // getDownloadURL(ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg'))
+  getDownloadURL(ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2/386.jpeg'))
     // oVFxc052pOWF5qq560qMuBmEsbr2/120.jpeg
     // oVFxc052pOWF5qq560qMuBmEsbr2/119.jpeg
     .then((url) => {
@@ -94,14 +138,15 @@ function demo_getDownloadURL() {
 // net::ERR_FAILED 200
 
 // https://firebase.google.com/docs/storage/web/list-files#list_all_files
-function demo_listAll() {
-  const storage = fb_.getStorage();
+function demo_listAll(bucket) {
+  let { getStorage, ref, listAll } = fb_;
+  const storage = getStorage();
   // Create a reference under which you want to list
-  const listRef = fb_.ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
-  // const listRef = fb_.ref(storage, '');
+  // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
+  // const listRef = ref(storage, '');
+  const listRef = ref(storage, bucket);
   // Find all the prefixes and items.
-  fb_
-    .listAll(listRef)
+  listAll(listRef)
     .then((res) => {
       res.prefixes.forEach((folderRef) => {
         // All the prefixes under listRef.

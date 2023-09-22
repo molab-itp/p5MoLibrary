@@ -1,4 +1,4 @@
-_plan.txt
+_aplan.txt
 
 # --
 
@@ -23,7 +23,12 @@ if (my.vy >= my.vheight) {
 [] center get pixel
 my.getOffset
     colr = img.get(my.vx, my.vy);
-    
+
+# --
+2023-09-22 11:06:37
+[] upload canvas
+
+
 # --
 2023-09-21 15:47:09
 
