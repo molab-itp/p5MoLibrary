@@ -5,11 +5,11 @@ let my = {};
 function setup() {
   console.log('mo-storage setup');
 
-  my.cnv = createCanvas(600, 300);
+  my.cnv = createCanvas(200, 100);
 
   my.len = int(width / 20);
 
-  // demo_getDownloadURL();
+  demo_getDownloadURL();
 
   createButton('Upload').mousePressed(function () {
     demo_upload();
@@ -17,7 +17,7 @@ function setup() {
   // show all
   // demo_listAll('');
   // show all items for this id
-  demo_listAll('oVFxc052pOWF5qq560qMuBmEsbr2');
+  // demo_listAll('oVFxc052pOWF5qq560qMuBmEsbr2');
 }
 
 function draw() {
@@ -54,13 +54,16 @@ function demo_upload_blob(blob) {
 
   let { getStorage, ref, uploadBytes } = fb_;
 
+  let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
+
   const storage = getStorage();
-  const storageRef = ref(storage, 'some-child');
+  const storageRef = ref(storage, path);
 
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, blob)
     .then((snapshot) => {
       console.log('Uploaded a blob or file!');
+      console.log('snapshot', snapshot);
     })
     .catch((error) => {
       // Handle any errors
@@ -80,7 +83,7 @@ function renderBlobToCanvas(blob) {
   d_img = img;
 
   img.onload = function () {
-    ctx.drawImage(img, 0, 0);
+    ctx.drawImage(img, 0, 0, width, height);
     URL.revokeObjectURL(img.src);
   };
   img.src = URL.createObjectURL(blob);
