@@ -1,12 +1,21 @@
 // mo-storage
 
 let my = {};
-let root_path = '/-mo-1-@w-';
 
 function setup() {
   console.log('mo-storage setup');
 
-  my.cnv = createCanvas(200, 100);
+  my.rootPath = '-mo-1-@w-';
+  my.type = 'image/png'; // png image type preserves white background
+  // my.type = 'image/jpeg'; // jpeg give black background
+  my.ext = '.png';
+  // my.ext = '.jpg';
+  my.quality = 1;
+
+  my.width = 400;
+  my.height = 200;
+
+  my.cnv = createCanvas(my.width, my.height);
 
   my.len = int(width / 20);
 
@@ -15,20 +24,23 @@ function setup() {
   });
 
   createButton('ListAll').mousePressed(function () {
-    // demo_listAll(root_path);
-    demo_listAll('');
+    demo_listAll(my.rootPath);
+    // demo_listAll('');
     // demo_listAll('oVFxc052pOWF5qq560qMuBmEsbr2');
   });
 
   createButton('List').mousePressed(function () {
-    // demo_list(root_path);
+    // demo_list(my.rootPath);
     demo_list('');
     // demo_list('oVFxc052pOWF5qq560qMuBmEsbr2');
   });
 
   createButton('Download').mousePressed(function () {
     // demo_getDownloadURL('oVFxc052pOWF5qq560qMuBmEsbr2/129.jpeg');
-    demo_getDownloadURL('/-mo-1-@w-/mY5kp2xDNRWJG7dYAWXOFfwIwZD3/001');
+    // demo_getDownloadURL('/-mo-1-@w-/mY5kp2xDNRWJG7dYAWXOFfwIwZD3/001');
+    // demo_getDownloadURL('-mo-1-@w-/y29ShmiYYNST4KUKK7G76db6k4H2/001.png');
+    // -mo-1-@w-/y29ShmiYYNST4KUKK7G76db6k4H2
+    demo_getDownloadURL();
   });
 
   createButton('Upload').mousePressed(function () {
@@ -46,12 +58,13 @@ function setup() {
 function draw() {
   let cl = random(['red', 'green', 'yellow']);
   stroke(cl);
-  strokeWeight(4);
+  let sw = 4;
+  strokeWeight(sw);
   noFill();
   let w = my.len;
-  let x = mouseX - (mouseX % my.len);
-  let y = mouseY - (mouseY % my.len);
-  circle(x, y, w);
+  let x = mouseX - (mouseX % w);
+  let y = mouseY - (mouseY % w);
+  circle(x, y, w - sw);
 }
 
 function demo_signIn() {
@@ -73,36 +86,37 @@ function demo_signIn() {
 function demo_upload() {
   console.log('demo_upload');
 
-  // let type = 'image/jpeg';
-  let type = 'image/png'; // png image type preserves white background
-  let quality = 1;
-
   canvas.toBlob(
     (blob) => {
       demo_upload_blob(blob);
     },
-    type,
-    quality
+    my.type,
+    my.quality
   ); // JPEG at 95% quality
 }
 
+function default_imagePath() {
+  return `${my.rootPath}/${fb_.auth.currentUser.uid}/001${my.ext}`;
+}
 function demo_upload_blob(blob) {
   console.log('demo_upload_blob', blob);
   // import { getStorage, ref, uploadBytes } from "firebase/storage";
 
   let { getStorage, ref, uploadBytes } = fb_;
 
-  let path = `${root_path}/${fb_.auth.currentUser.uid}/001`;
   // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
+  my.imagePath = default_imagePath();
+  console.log('demo_upload_blob my.imagePath', my.imagePath);
 
   const storage = getStorage();
-  const storageRef = ref(storage, path);
+  const storageRef = ref(storage, my.imagePath);
 
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, blob)
     .then((snapshot) => {
-      console.log('snapshot', snapshot);
-      console.log('Uploaded path', path);
+      console.log('snapshot.metadata.fullPath', snapshot.metadata.fullPath);
+      // console.log('snapshot', snapshot);
+      // console.log('Uploaded path', path);
     })
     .catch((error) => {
       // Handle any errors
@@ -131,6 +145,11 @@ function renderBlobToCanvas(blob) {
 let d_blob;
 
 function demo_getDownloadURL(path) {
+  console.log('demo_getDownloadURL path', path);
+  if (!path) {
+    path = default_imagePath();
+    console.log('demo_getDownloadURL path', path);
+  }
   let { getStorage, ref, getDownloadURL } = fb_;
   const storage = getStorage();
   // getDownloadURL(ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg'))

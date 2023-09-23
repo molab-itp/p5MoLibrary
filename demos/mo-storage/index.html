@@ -60,6 +60,7 @@
 
       const auth = getAuth();
 
+      // Export from module to window global for p5js access
       const fb_ = {};
       window.fb_ = fb_;
       fb_.app = app;
@@ -71,8 +72,10 @@
       fb_.getDownloadURL = getDownloadURL;
       fb_.uploadBytes = uploadBytes;
       fb_.list = list;
+      //
     </script>
 
-    <script src="sketch.js?v=9"></script>
+    <!-- <script src="sketch.js?v=9"></script> -->
+    <script src="sketch.js"></script>
   </body>
 </html>
