@@ -9,11 +9,26 @@ function setup() {
 
   my.len = int(width / 20);
 
-  demo_getDownloadURL();
+  createButton('SignIn').mousePressed(function () {
+    demo_signIn();
+  });
+
+  createButton('ListAll').mousePressed(function () {
+    demo_listAll('');
+    // demo_listAll('oVFxc052pOWF5qq560qMuBmEsbr2');
+  });
+
+  createButton('Download').mousePressed(function () {
+    // demo_getDownloadURL('oVFxc052pOWF5qq560qMuBmEsbr2/129.jpeg');
+    demo_getDownloadURL('/-mo-1-@w-/mY5kp2xDNRWJG7dYAWXOFfwIwZD3/001');
+  });
 
   createButton('Upload').mousePressed(function () {
     demo_upload();
   });
+
+  createElement('br');
+
   // show all
   // demo_listAll('');
   // show all items for this id
@@ -31,12 +46,27 @@ function draw() {
   circle(x, y, w);
 }
 
+function demo_signIn() {
+  let { signInAnonymously, auth } = fb_;
+  signInAnonymously(auth)
+    .then(() => {
+      console.log('signInAnonymously OK');
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log('errorCode', errorCode);
+      console.log('errorMessage', errorMessage);
+    });
+}
+
 // https://firebase.google.com/docs/storage/web/upload-files?authuser=0#upload_from_a_blob_or_file
 
 function demo_upload() {
   console.log('demo_upload');
 
-  let type = 'image/jpeg';
+  // let type = 'image/jpeg';
+  let type = 'image/png'; // png image type preserves white background
   let quality = 1;
 
   canvas.toBlob(
@@ -63,8 +93,8 @@ function demo_upload_blob(blob) {
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, blob)
     .then((snapshot) => {
-      console.log('Uploaded path', path);
       console.log('snapshot', snapshot);
+      console.log('Uploaded path', path);
     })
     .catch((error) => {
       // Handle any errors
@@ -92,11 +122,11 @@ function renderBlobToCanvas(blob) {
 
 let d_blob;
 
-function demo_getDownloadURL() {
+function demo_getDownloadURL(path) {
   let { getStorage, ref, getDownloadURL } = fb_;
   const storage = getStorage();
   // getDownloadURL(ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg'))
-  getDownloadURL(ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2/386.jpeg'))
+  getDownloadURL(ref(storage, path))
     // oVFxc052pOWF5qq560qMuBmEsbr2/120.jpeg
     // oVFxc052pOWF5qq560qMuBmEsbr2/119.jpeg
     .then((url) => {
@@ -127,7 +157,17 @@ function demo_getDownloadURL() {
 }
 
 // fixed cors using online gsutil
-// https://stackoverflow.com/users/saves/22601444/all
+// https://stackoverflow.com/questions/37760695/firebase-storage-and-access-control-allow-origin
+// https://console.cloud.google.com/welcome?project=dbsample-8eb08
+// [
+//   {
+//     "origin": ["*"],
+//     "method": ["GET"],
+//     "maxAgeSeconds": 3600
+//   }
+// ]
+// gsutil cors set cors.json gs://molab-2022.appspot.com
+// https://console.firebase.google.com/project/molab-2022/storage/molab-2022.appspot.com/files
 
 // fix cors with
 // https://firebase.google.com/docs/storage/web/download-files#cors_configuration
@@ -141,14 +181,18 @@ function demo_getDownloadURL() {
 // sketch.js?v=9:30     GET https://firebasestorage.googleapis.com/v0/b/molab-485f5.appspot.com/o/GNhzoQknS1OHY8DA1Fvygmltr902%2F1.jpeg?alt=media&token=acea55e8-08ba-45d9-9858-73eb604cf38a
 // net::ERR_FAILED 200
 
+let d_error;
+
 // https://firebase.google.com/docs/storage/web/list-files#list_all_files
 function demo_listAll(bucket) {
+  console.log('demo_listAll bucket', bucket);
   let { getStorage, ref, listAll } = fb_;
   const storage = getStorage();
   // Create a reference under which you want to list
   // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
   // const listRef = ref(storage, '');
   const listRef = ref(storage, bucket);
+  console.log('listRef', listRef);
   // Find all the prefixes and items.
   listAll(listRef)
     .then((res) => {
@@ -169,6 +213,7 @@ function demo_listAll(bucket) {
     .catch((error) => {
       // Uh-oh, an error occurred!
       console.log('demo_listAll error', error);
+      d_error = error;
     });
 }
 
