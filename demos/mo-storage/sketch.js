@@ -54,7 +54,8 @@ function demo_upload_blob(blob) {
 
   let { getStorage, ref, uploadBytes } = fb_;
 
-  let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
+  let path = `/-mo-1-@w-/${fb_.auth.currentUser.uid}/001`;
+  // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
 
   const storage = getStorage();
   const storageRef = ref(storage, path);
@@ -62,7 +63,7 @@ function demo_upload_blob(blob) {
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, blob)
     .then((snapshot) => {
-      console.log('Uploaded a blob or file!');
+      console.log('Uploaded path', path);
       console.log('snapshot', snapshot);
     })
     .catch((error) => {
