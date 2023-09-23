@@ -1,6 +1,7 @@
 // mo-storage
 
 let my = {};
+let root_path = '/-mo-1-@w-';
 
 function setup() {
   console.log('mo-storage setup');
@@ -14,7 +15,8 @@ function setup() {
   });
 
   createButton('ListAll').mousePressed(function () {
-    demo_listAll('');
+    demo_listAll(root_path);
+    // demo_listAll('');
     // demo_listAll('oVFxc052pOWF5qq560qMuBmEsbr2');
   });
 
@@ -84,7 +86,7 @@ function demo_upload_blob(blob) {
 
   let { getStorage, ref, uploadBytes } = fb_;
 
-  let path = `/-mo-1-@w-/${fb_.auth.currentUser.uid}/001`;
+  let path = `${root_path}/${fb_.auth.currentUser.uid}/001`;
   // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
 
   const storage = getStorage();
