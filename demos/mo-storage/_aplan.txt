@@ -22,6 +22,19 @@ my.getOffset
     colr = img.get(my.vx, my.vy);
 
 # --
+2023-09-23 03:18:16
+
+[] getStorage
+  --> storage
+
+[x] listALl fixed. Missing version in firebase rules
+Bytes sent by all clients. The limit is 1 GB per day.
+1.38GB
+>> try on jht1493 firebase, same listAll failure
+>> need to play cors to jht1493
+  let type = 'image/png'; // png image type preserves white background
+
+# --
 2023-09-23 02:39:47
 [x] allow writes only to path containing -@w-
 

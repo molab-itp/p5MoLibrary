@@ -15,8 +15,8 @@ function setup() {
   });
 
   createButton('ListAll').mousePressed(function () {
-    demo_listAll(root_path);
-    // demo_listAll('');
+    // demo_listAll(root_path);
+    demo_listAll('');
     // demo_listAll('oVFxc052pOWF5qq560qMuBmEsbr2');
   });
 
@@ -207,15 +207,15 @@ function demo_listAll(bucket) {
       res.prefixes.forEach((folderRef) => {
         // All the prefixes under listRef.
         // You may call listAll() recursively on them.
-        console.log('folderRef', folderRef);
+        // console.log('folderRef', folderRef);
         // console.log('folderRef.path', folderRef.path); // Defined
-        console.log('bucket', folderRef.bucket);
-        console.log('fullPath', folderRef.fullPath);
+        // console.log('bucket', folderRef.bucket);
+        console.log('prefix fullPath', folderRef.fullPath);
       });
       res.items.forEach((itemRef) => {
         // All the items under listRef.
-        console.log('itemRef', itemRef);
-        console.log('fullPath', itemRef.fullPath);
+        // console.log('itemRef', itemRef);
+        console.log('item fullPath', itemRef.fullPath);
       });
     })
     .catch((error) => {
@@ -241,15 +241,15 @@ function demo_list(bucket) {
       res.prefixes.forEach((folderRef) => {
         // All the prefixes under listRef.
         // You may call listAll() recursively on them.
-        console.log('folderRef', folderRef);
+        // console.log('folderRef', folderRef);
         // console.log('folderRef.path', folderRef.path); // Defined
-        console.log('bucket', folderRef.bucket);
-        console.log('fullPath', folderRef.fullPath);
+        // console.log('bucket', folderRef.bucket);
+        console.log('prefix fullPath', folderRef.fullPath);
       });
       res.items.forEach((itemRef) => {
         // All the items under listRef.
-        console.log('itemRef', itemRef);
-        console.log('fullPath', itemRef.fullPath);
+        // console.log('itemRef', itemRef);
+        console.log('item fullPath', itemRef.fullPath);
       });
     })
     .catch((error) => {
