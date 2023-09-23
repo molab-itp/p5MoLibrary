@@ -100,15 +100,11 @@ function default_imagePath() {
 }
 function demo_upload_blob(blob) {
   console.log('demo_upload_blob', blob);
-  // import { getStorage, ref, uploadBytes } from "firebase/storage";
-
-  let { getStorage, ref, uploadBytes } = fb_;
+  let { storage, ref, uploadBytes } = fb_;
 
   // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
   my.imagePath = default_imagePath();
   console.log('demo_upload_blob my.imagePath', my.imagePath);
-
-  const storage = getStorage();
   const storageRef = ref(storage, my.imagePath);
 
   // 'file' comes from the Blob or File API
@@ -150,8 +146,7 @@ function demo_getDownloadURL(path) {
     path = default_imagePath();
     console.log('demo_getDownloadURL path', path);
   }
-  let { getStorage, ref, getDownloadURL } = fb_;
-  const storage = getStorage();
+  let { storage, ref, getDownloadURL } = fb_;
   // getDownloadURL(ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg'))
   getDownloadURL(ref(storage, path))
     // oVFxc052pOWF5qq560qMuBmEsbr2/120.jpeg
@@ -213,8 +208,7 @@ let d_error;
 // https://firebase.google.com/docs/storage/web/list-files#list_all_files
 function demo_listAll(bucket) {
   console.log('demo_listAll bucket', bucket);
-  let { getStorage, ref, listAll } = fb_;
-  const storage = getStorage();
+  let { storage, ref, listAll } = fb_;
   // Create a reference under which you want to list
   // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
   // const listRef = ref(storage, '');
@@ -247,8 +241,7 @@ function demo_listAll(bucket) {
 // https://firebase.google.com/docs/storage/web/list-files#paginate_list_results
 function demo_list(bucket) {
   console.log('demo_list bucket', bucket);
-  let { getStorage, ref, list } = fb_;
-  const storage = getStorage();
+  let { storage, ref, list } = fb_;
   // Create a reference under which you want to list
   // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
   // const listRef = ref(storage, '');
