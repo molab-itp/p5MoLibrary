@@ -20,6 +20,12 @@ function setup() {
     // demo_listAll('oVFxc052pOWF5qq560qMuBmEsbr2');
   });
 
+  createButton('List').mousePressed(function () {
+    // demo_list(root_path);
+    demo_list('');
+    // demo_list('oVFxc052pOWF5qq560qMuBmEsbr2');
+  });
+
   createButton('Download').mousePressed(function () {
     // demo_getDownloadURL('oVFxc052pOWF5qq560qMuBmEsbr2/129.jpeg');
     demo_getDownloadURL('/-mo-1-@w-/mY5kp2xDNRWJG7dYAWXOFfwIwZD3/001');
@@ -215,6 +221,40 @@ function demo_listAll(bucket) {
     .catch((error) => {
       // Uh-oh, an error occurred!
       console.log('demo_listAll error', error);
+      d_error = error;
+    });
+}
+
+// https://firebase.google.com/docs/storage/web/list-files#paginate_list_results
+function demo_list(bucket) {
+  console.log('demo_list bucket', bucket);
+  let { getStorage, ref, list } = fb_;
+  const storage = getStorage();
+  // Create a reference under which you want to list
+  // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
+  // const listRef = ref(storage, '');
+  const listRef = ref(storage, bucket);
+  console.log('listRef', listRef);
+  // Find all the prefixes and items.
+  list(listRef, { maxResults: 100 })
+    .then((res) => {
+      res.prefixes.forEach((folderRef) => {
+        // All the prefixes under listRef.
+        // You may call listAll() recursively on them.
+        console.log('folderRef', folderRef);
+        // console.log('folderRef.path', folderRef.path); // Defined
+        console.log('bucket', folderRef.bucket);
+        console.log('fullPath', folderRef.fullPath);
+      });
+      res.items.forEach((itemRef) => {
+        // All the items under listRef.
+        console.log('itemRef', itemRef);
+        console.log('fullPath', itemRef.fullPath);
+      });
+    })
+    .catch((error) => {
+      // Uh-oh, an error occurred!
+      console.log('demo_list error', error);
       d_error = error;
     });
 }
