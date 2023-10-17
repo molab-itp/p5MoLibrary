@@ -17,7 +17,7 @@ function setup() {
   my_init();
 
   pixelDensity(1);
-  my.cnv = createCanvas(my.width, my.height);
+  my.canvas = createCanvas(my.width, my.height);
 
   ui_init();
 
@@ -33,18 +33,6 @@ function draw() {
   if (my.showVideo) {
     image(img, 0, 0);
   }
-}
-
-function draw_mouse() {
-  let cl = random(['red', 'green', 'yellow']);
-  stroke(cl);
-  let sw = 4;
-  strokeWeight(sw);
-  noFill();
-  let w = my.len;
-  let x = mouseX - (mouseX % w);
-  let y = mouseY - (mouseY % w);
-  circle(x, y, w - sw);
 }
 
 function create_myVideo() {
