@@ -1,11 +1,12 @@
 // mo-storage
 
-let vScale = 3;
+let vScale = 4;
 
 let my = {
-  version: 27, // update to verify change on mobile
-  vwidth: 480 / vScale, // Aspect ratio of video capture
-  vheight: 640 / vScale,
+  version: 28, // update to verify change on mobile
+  vwidth: 640 / vScale,
+  vheight: 480 / vScale,
+  vFlip: 0,
   facingMode: 1,
   showVideo: 1,
 };
@@ -35,13 +36,17 @@ function draw() {
 }
 
 function my_init() {
-  my.rootPath = '-mo-1-@w-';
+  my.rootPath = '-mo-2-@w-';
   my.type = 'image/png'; // png image type preserves white background
   // my.type = 'image/jpeg'; // jpeg give black background
   my.ext = '.png';
   // my.ext = '.jpg';
   my.quality = 1;
-
+  if (my.vFlip) {
+    let temp = my.vwidth;
+    my.vwidth = my.vheight;
+    my.vheight = temp;
+  }
   my.width = my.vwidth;
   my.height = my.vheight;
 
@@ -98,7 +103,7 @@ function create_myVideo() {
   let options = { video: { facingMode: my.facingMode } };
   my.video = createCapture(options);
   my.video.size(my.vwidth, my.vheight);
-  my.video.hide();
+  // my.video.hide();
 }
 
 function video_ready() {
@@ -182,7 +187,7 @@ function demo_getDownloadURL(path) {
   console.log('demo_getDownloadURL path', path);
   if (!path) {
     path = default_imagePath();
-    console.log('demo_getDownloadURL path', path);
+    console.log('demo_getDownloadURL default_imagePath', path);
   }
   let { storage, ref, getDownloadURL } = fb_;
   // getDownloadURL(ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg'))
