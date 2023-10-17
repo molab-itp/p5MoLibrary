@@ -55,7 +55,7 @@ function store_upload_blob(blob) {
 // HTMLCanvasElement.prototype.renderImage = function(blob) {
 
 function renderBlobToCanvas(blob) {
-  let canvas = my.cnv.elt;
+  let canvas = my.canvas.elt;
   var ctx = canvas.getContext('2d');
   var img = new Image();
   img.onload = function () {
