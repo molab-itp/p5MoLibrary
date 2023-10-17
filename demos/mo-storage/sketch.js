@@ -15,6 +15,7 @@ function setup() {
   my.width = 400;
   my.height = 200;
 
+  pixelDensity(1);
   my.cnv = createCanvas(my.width, my.height);
 
   my.len = int(width / 20);
