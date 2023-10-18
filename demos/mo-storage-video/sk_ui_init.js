@@ -3,15 +3,15 @@ function ui_init() {
     store_signIn();
   });
 
-  createButton('ListAll').mousePressed(function () {
-    // store_listAll(my.rootPath);
-    store_listAll('');
-    // store_listAll('oVFxc052pOWF5qq560qMuBmEsbr2');
-  });
+  // createButton('ListAll').mousePressed(function () {
+  //   // store_listAll(my.rootPath);
+  //   store_listAll('');
+  //   // store_listAll('oVFxc052pOWF5qq560qMuBmEsbr2');
+  // });
 
   createButton('List').mousePressed(function () {
-    // store_list(my.rootPath);
-    store_list('');
+    store_list(my.rootPath);
+    // store_list('');
     // store_list('oVFxc052pOWF5qq560qMuBmEsbr2');
   });
 

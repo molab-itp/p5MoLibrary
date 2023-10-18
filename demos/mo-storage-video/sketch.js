@@ -9,6 +9,7 @@ let my = {
   vFlip: 0,
   facingMode: 1,
   showVideo: 1,
+  frameCount: 0,
 };
 
 function setup() {
@@ -22,6 +23,10 @@ function setup() {
   ui_init();
 
   create_myVideo();
+
+  textSize(height / 8);
+
+  frameRate(2);
 }
 
 function draw() {
@@ -33,6 +38,20 @@ function draw() {
   if (my.showVideo) {
     image(img, 0, 0);
   }
+
+  let str = frameCount + '';
+  let tw = textWidth(str);
+  let th = textLeading();
+  let ta = textAscent();
+
+  let x = width - tw;
+  let y = height - th;
+  fill(0);
+  rect(x, y, tw, th);
+  fill(255);
+  text(frameCount, x, y + ta);
+
+  frameCount++;
 }
 
 function create_myVideo() {

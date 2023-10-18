@@ -1,5 +1,5 @@
 function my_init() {
-  my.rootPath = '-mo-storage-video-@w-';
+  my.rootPath = '-mo-storage-video-@w-/clips';
   my.type = 'image/png'; // png image type preserves white background
   // my.type = 'image/jpeg'; // jpeg give black background
   my.ext = '.png';

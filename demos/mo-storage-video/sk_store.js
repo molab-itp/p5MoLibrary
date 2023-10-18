@@ -30,7 +30,7 @@ function next_imagePath() {
   // return `${my.rootPath}/${fb_.auth.currentUser.uid}/001${my.ext}`;
   let nums = my.image_seq_num.toString().padStart(my.image_seq_pad, '0');
   my.image_seq_num = (my.image_seq_num + 1) % my.image_seq_max;
-  return `${my.rootPath}/clips/${nums}${my.ext}`;
+  return `${my.rootPath}/${nums}${my.ext}`;
 }
 function store_upload_blob(blob) {
   console.log('store_upload_blob', blob);
