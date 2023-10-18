@@ -1,5 +1,5 @@
 function my_init() {
-  my.rootPath = '-mo-2-@w-';
+  my.rootPath = '-mo-storage-video-@w-';
   my.type = 'image/png'; // png image type preserves white background
   // my.type = 'image/jpeg'; // jpeg give black background
   my.ext = '.png';
@@ -13,6 +13,11 @@ function my_init() {
   my.width = my.vwidth;
   my.height = my.vheight;
 
+  // image are store in sequence
+  // {my.rootPath}/clips/${nums}${my.ext}
+  my.image_seq_num = 0;
+  my.image_seq_max = 9;
+  my.image_seq_pad = 3;
   my.layer = createGraphics(my.width, my.height);
 
   my.len = int(my.width / 20);

@@ -1,7 +1,7 @@
 //
 // firebase-storage
 
-console.log('fb_fstore');
+// console.log('fb_fstore');
 
 import {
   getStorage,

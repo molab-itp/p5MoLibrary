@@ -1,15 +1,13 @@
 //
 // Expose firebase api to non-import code p5js script.js
 // via variable fb_.xxxx
-// fb_.ref
-// fb_.database
-// fb_.onValue
+// fb_.dbRef
 // ...
 
 // Documentation starting reference
 // <!-- https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en -->
 
-console.log('fb_fbase');
+// console.log('fb_fbase');
 
 import {
   child,

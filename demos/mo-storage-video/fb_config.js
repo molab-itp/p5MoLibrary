@@ -1,15 +1,15 @@
 //
 // Expose firebase api to non-import code p5js script.js
 // via variable fb_.xxxx
-// fb_.ref
-// fb_.database
-// fb_.onValue
+// fb_.app
+// fb_.auth
+// fb_.signInAnonymously
 // ...
 
 // Documentation starting reference
 // <!-- https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en -->
 
-console.log('fb_config');
+// console.log('fb_config');
 
 import {
   initializeApp, //
@@ -25,9 +25,8 @@ import {
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
 
 // Your web app's Firebase configuration
-// Your web app's Firebase configuration
 // jht9629
-const firebaseConfig = {
+const firebaseConfig_jht9629 = {
   apiKey: 'AIzaSyDLxi_fvCG2kzD2eJ4MxEZbOJ_GFSpIVe0',
   authDomain: 'molab-485f5.firebaseapp.com',
   databaseURL: 'https://molab-485f5-default-rtdb.firebaseio.com',
@@ -37,9 +36,8 @@ const firebaseConfig = {
   appId: '1:219508380677:web:b5d846a150e7d60368b86c',
   measurementId: 'G-40F0BN8L7L',
 };
-// Your web app's Firebase configuration
 // jht1493
-const firebaseConfig1 = {
+const firebaseConfig_jht1493 = {
   apiKey: 'AIzaSyBl4dTlon41lMW1b3CgJ7LphBH_fi6RETo',
   authDomain: 'molab-2022.firebaseapp.com',
   databaseURL: 'https://molab-2022-default-rtdb.firebaseio.com',
@@ -50,12 +48,13 @@ const firebaseConfig1 = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig_jht9629);
 
 const auth = getAuth();
 
+// export api for non-module script
 window.fb_ = {
-  app, // export api for non-module scripts
+  app,
   auth,
   signInAnonymously,
 };
