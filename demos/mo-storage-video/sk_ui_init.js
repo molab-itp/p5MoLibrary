@@ -4,8 +4,8 @@ function ui_init() {
   });
 
   createButton('ListAll').mousePressed(function () {
-    store_listAll(my.rootPath);
-    // store_listAll('');
+    // store_listAll(my.rootPath);
+    store_listAll('');
     // store_listAll('oVFxc052pOWF5qq560qMuBmEsbr2');
   });
 

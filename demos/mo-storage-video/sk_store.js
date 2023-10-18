@@ -163,6 +163,5 @@ function store_list(bucket) {
     .catch((error) => {
       // Uh-oh, an error occurred!
       console.log('store_list error', error);
-      d_error = error;
     });
 }
