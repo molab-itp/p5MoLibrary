@@ -39,7 +39,7 @@ function draw() {
     image(img, 0, 0);
   }
 
-  let str = frameCount + '';
+  let str = my.frameCount + '';
   let tw = textWidth(str);
   let th = textLeading();
   let ta = textAscent();
@@ -49,9 +49,9 @@ function draw() {
   fill(0);
   rect(x, y, tw, th);
   fill(255);
-  text(frameCount, x, y + ta);
+  text(my.frameCount, x, y + ta);
 
-  frameCount++;
+  my.frameCount++;
 }
 
 function create_myVideo() {
