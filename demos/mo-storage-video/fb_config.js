@@ -13,7 +13,7 @@ console.log('fb_config');
 
 import {
   initializeApp, //
-} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
+} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
 
 // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
 // import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js'
@@ -22,10 +22,11 @@ import {
 import {
   getAuth, //
   signInAnonymously,
-} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
+} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Your web app's Firebase configuration
+// jht9629
 const firebaseConfig = {
   apiKey: 'AIzaSyDLxi_fvCG2kzD2eJ4MxEZbOJ_GFSpIVe0',
   authDomain: 'molab-485f5.firebaseapp.com',
@@ -36,21 +37,22 @@ const firebaseConfig = {
   appId: '1:219508380677:web:b5d846a150e7d60368b86c',
   measurementId: 'G-40F0BN8L7L',
 };
+// Your web app's Firebase configuration
+// jht1493
+const firebaseConfig1 = {
+  apiKey: 'AIzaSyBl4dTlon41lMW1b3CgJ7LphBH_fi6RETo',
+  authDomain: 'molab-2022.firebaseapp.com',
+  databaseURL: 'https://molab-2022-default-rtdb.firebaseio.com',
+  projectId: 'molab-2022',
+  storageBucket: 'molab-2022.appspot.com',
+  messagingSenderId: '1007268220063',
+  appId: '1:1007268220063:web:a69f608f35ca3f8d9a26aa',
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth();
-// signInAnonymously(auth)
-//   .then(() => {
-//     console.log('signInAnonymously OK');
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     console.log('errorCode', errorCode);
-//     console.log('errorMessage', errorMessage);
-//   });
 
 window.fb_ = {
   app, // export api for non-module scripts

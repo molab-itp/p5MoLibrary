@@ -23,7 +23,7 @@ import {
   ref,
   set,
   update,
-} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
+} from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
 
 const database = getDatabase();
 // console.log('database', database);

@@ -12,7 +12,7 @@ let my = {
 };
 
 function setup() {
-  console.log('mo-storage setup');
+  console.log('mo-storage-video setup');
 
   my_init();
 

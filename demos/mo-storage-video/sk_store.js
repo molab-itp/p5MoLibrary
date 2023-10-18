@@ -31,7 +31,7 @@ function default_imagePath() {
 }
 function store_upload_blob(blob) {
   console.log('store_upload_blob', blob);
-  let { storage, ref, uploadBytes } = fb_;
+  let { storage, ref, uploadBytes } = fb_.fstore;
 
   // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
   my.imagePath = default_imagePath();
@@ -71,7 +71,7 @@ function store_getDownloadURL(path) {
     path = default_imagePath();
     console.log('store_getDownloadURL default_imagePath', path);
   }
-  let { storage, ref, getDownloadURL } = fb_;
+  let { storage, ref, getDownloadURL } = fb_.fstore;
   // getDownloadURL(ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg'))
   getDownloadURL(ref(storage, path))
     // oVFxc052pOWF5qq560qMuBmEsbr2/120.jpeg
@@ -105,7 +105,7 @@ function store_getDownloadURL(path) {
 // https://firebase.google.com/docs/storage/web/list-files#list_all_files
 function store_listAll(bucket) {
   console.log('store_listAll bucket', bucket);
-  let { storage, ref, listAll } = fb_;
+  let { storage, ref, listAll } = fb_.fstore;
   // Create a reference under which you want to list
   // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
   // const listRef = ref(storage, '');
@@ -137,7 +137,7 @@ function store_listAll(bucket) {
 // https://firebase.google.com/docs/storage/web/list-files#paginate_list_results
 function store_list(bucket) {
   console.log('store_list bucket', bucket);
-  let { storage, ref, list } = fb_;
+  let { storage, ref, list } = fb_.fstore;
   // Create a reference under which you want to list
   // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
   // const listRef = ref(storage, '');
