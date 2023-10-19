@@ -15,7 +15,8 @@ function my_init() {
 
   // image are store in sequence
   // {my.rootPath}/clips/${nums}${my.ext}
-  my.image_seq_num = 0;
+  my.image_seq_up = 0;
+  my.image_seq_down = 0;
   my.image_seq_max = 9;
   my.image_seq_pad = 3;
   my.layer = createGraphics(my.width, my.height);

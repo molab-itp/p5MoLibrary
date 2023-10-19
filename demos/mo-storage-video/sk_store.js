@@ -26,10 +26,10 @@ function store_upload() {
   ); // JPEG at 95% quality
 }
 
-function next_imagePath() {
+function next_imagePath(seq) {
   // return `${my.rootPath}/${fb_.auth.currentUser.uid}/001${my.ext}`;
-  let nums = my.image_seq_num.toString().padStart(my.image_seq_pad, '0');
-  my.image_seq_num = (my.image_seq_num + 1) % my.image_seq_max;
+  let nums = my[seq].toString().padStart(my.image_seq_pad, '0');
+  my[seq] = (my[seq] + 1) % my.image_seq_max;
   return `${my.rootPath}/${nums}${my.ext}`;
 }
 function store_upload_blob(blob) {
@@ -37,7 +37,7 @@ function store_upload_blob(blob) {
   let { storage, ref, uploadBytes } = fb_.fstore;
 
   // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
-  my.imagePath = next_imagePath();
+  my.imagePath = next_imagePath('image_seq_up');
   console.log('store_upload_blob my.imagePath', my.imagePath);
   const storageRef = ref(storage, my.imagePath);
 
@@ -71,7 +71,7 @@ function renderBlobToCanvas(blob) {
 function store_getDownloadURL(path) {
   console.log('store_getDownloadURL path', path);
   if (!path) {
-    path = next_imagePath();
+    path = next_imagePath('image_seq_down');
     console.log('store_getDownloadURL next_imagePath', path);
   }
   let { storage, ref, getDownloadURL } = fb_.fstore;

@@ -3,19 +3,22 @@
 View images from MoGallery firebase database using p5js
 
 - validate
-- [demos/createImg-board](demos/createImg-board/)
-- [demos/createImg-slide-show](demos/createImg-slide-show)
+
+  - [demos/createImg-board](demos/createImg-board/)
+  - [demos/createImg-slide-show](demos/createImg-slide-show)
 
 - test
-- [demos/mo-pixel-grid](demos/mo-pixel-grid)
-- [demos/mo-storage](demos/mo-storage)
-- [demos/mo-storage-video](demos/mo-storage-video)
-- [demos/timed-drawing-class](demos/timed-drawing-class)
-)
-<!-- - hold
+  - [demos/mo-pixel-grid](demos/mo-pixel-grid)
+  - [demos/mo-storage](demos/mo-storage)
+  - [demos/mo-storage-video](demos/mo-storage-video)
+  - [demos/timed-drawing-class](demos/timed-drawing-class)
+
+<!--
+- hold
 - [demos/draw-share](demos/draw-share)
 - [demos/draw-video](demos/draw-video)
-- -->
+-
+-->
 
 ## Browser Preview
 
