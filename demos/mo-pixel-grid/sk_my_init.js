@@ -42,7 +42,10 @@ function init_nstep() {
     my.byLine = my.nstep > 16;
   }
   my.vx = 0;
-  my.vy = width / 2;
+  // my.vy = width / 2;
+  my.vy = 0;
+  my.vxi = 0;
+  my.vyi = 0;
 }
 
 // return null or url query as object

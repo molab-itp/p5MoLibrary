@@ -14,13 +14,17 @@ function draw_layer(img) {
       break;
     }
     my.vx += my.stepPx;
+    my.vxi += 1;
     if (my.vx >= my.vwidth) {
-      draw_record_flush(my.vy);
+      draw_record_flush(my.vyi);
       my.vx = 0;
+      my.vxi = 0;
       my.vy += my.stepPx;
+      my.vyi += 1;
       if (my.vy >= my.vheight) {
         more = 0;
         my.vy = 0;
+        my.vyi = 0;
       }
       if (my.byLine) {
         more = 0;

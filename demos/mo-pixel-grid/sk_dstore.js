@@ -110,9 +110,19 @@ function dstore_pix_update(seq, ops) {
   fb_.update(ref, updates);
 }
 
-// function dstore_empty() {
-//   my.points = [];
-//   fb_.set(my.storeRootRef, {});
-// }
+function dstore_removeAll() {
+  let path = `${my.storeRootKey}/pix`;
+  let ref = fb_.ref(fb_.database, path);
+  fb_
+    .set(ref, {})
+    .then(() => {
+      // Data saved successfully!
+      console.log('dstore_removeAll OK');
+    })
+    .catch((error) => {
+      // The write failed...
+      console.log('dstore_removeAll error', error);
+    });
+}
 
 // https://console.firebase.google.com/u/0/project/molab-485f5/database/molab-485f5-default-rtdb/data/~2Fm0-update-web
