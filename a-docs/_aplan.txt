@@ -2,11 +2,29 @@ _aplan.txt
 
 # --
 
+[] doc: lib/fb_
+[] doc: permision model
+  my.rootPath = '-mo-storage-video-@w-/clips';
+  my.rootPath = '-mo-1-@w-';
+  storeRootKey: 'm0-@r-@w-',
+let galleryKey = 'mo-1/gallery-@r-';
+let storeKey = 'mo-1/gallery-@r-';
+
 [] center sample
 [] no margin below 8 pixels
 [] square
 
-[] store by y index, not y coord
+[] center get pixel
+my.getOffset
+    colr = img.get(my.vx, my.vy);
+
+# --
+[] upload canvas sequence
+
+
+
+# --
+[x] store by y index, not y coord
 // index for pix/{uid}/n
 my.vxi
 my.vyi
@@ -16,13 +34,6 @@ my.vyn
 if (my.vx >= my.vwidth) {
 
 if (my.vy >= my.vheight) {
-
-[] center get pixel
-my.getOffset
-    colr = img.get(my.vx, my.vy);
-
-# --
-[] upload canvas sequence
 
 # --
 2023-09-23 14:21:30
