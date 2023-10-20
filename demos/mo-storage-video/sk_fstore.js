@@ -29,7 +29,7 @@ function fstore_upload_blob(blob) {
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, blob)
     .then((snapshot) => {
-      console_dlog('snapshot.metadata.fullPath ' + snapshot.metadata.fullPath);
+      // console_dlog('snapshot.metadata.fullPath ' + snapshot.metadata.fullPath);
       // console.log('snapshot', snapshot);
       // console.log('Uploaded path', path);
     })

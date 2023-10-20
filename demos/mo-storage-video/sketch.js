@@ -1,7 +1,7 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=05', // update to verify change on mobile
+  version: '?v=06', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
@@ -13,7 +13,7 @@ let my = {
   replay: 0,
   uid: -1,
   // scale: 16,
-  scale: 4,
+  scale: 8,
   // imageQuality: 0.01,
   imageQuality: 1,
   captionScale: 8,
@@ -90,7 +90,7 @@ function draw_update() {
 }
 
 function update_interval() {
-  console.log('update_interval my.count', my.count);
+  // console.log('update_interval my.count', my.count);
   if (my.replay) {
     // console.log('update_interval fstore_download');
     fstore_download();
