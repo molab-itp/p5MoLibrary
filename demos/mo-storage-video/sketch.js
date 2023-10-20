@@ -6,7 +6,7 @@ let my = {
   height: 640,
   vFlip: 0,
   facingMode: 1,
-  frameCount: 100,
+  count: 100,
   face: 1,
   showVideo: 1,
   run: 1,
@@ -60,7 +60,7 @@ function draw_guest() {
     layer.image(img, 0, 0);
   }
 
-  let str = my.frameCount + '';
+  let str = my.count + '';
   let tw = layer.textWidth(str);
   let th = layer.textLeading();
   let ta = layer.textAscent();
@@ -70,7 +70,7 @@ function draw_guest() {
   layer.fill(0);
   layer.rect(x, y, tw, th);
   layer.fill(255);
-  layer.text(my.frameCount, x, y + ta);
+  layer.text(my.count, x, y + ta);
 
   image(layer, 0, 0, width, height);
 
@@ -78,13 +78,13 @@ function draw_guest() {
 }
 
 function update_interval() {
-  // console.log('update_interval my.frameCount', my.frameCount, frameCount);
+  // console.log('update_interval my.count', my.count, count);
   if (my.host) {
     fstore_download();
     return;
   }
   if (my.run) {
-    my.frameCount++;
+    my.count++;
   }
   if (my.store) {
     fstore_upload();

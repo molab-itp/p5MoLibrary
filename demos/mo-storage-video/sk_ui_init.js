@@ -26,10 +26,8 @@ function ui_init_controls() {
     fb_signIn();
   });
 
-  createButton('List').mousePressed(function () {
-    fstore_list(my.rootPath);
-    // fstore_list('');
-    // fstore_list('oVFxc052pOWF5qq560qMuBmEsbr2');
+  createButton('Reset count').mousePressed(function () {
+    my.count = 0;
   });
 
   createButton('Download').mousePressed(function () {
