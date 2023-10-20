@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script> -->
+
+    <!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+
+    <style>
+      @media only screen and (max-width: 600px) {
+        body,
+        button,
+        select,
+        input {
+          font-size: 5vw;
+        }
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
   </head>
   <body>
     <main></main>
 
-    <script type="module" src="../../lib/fb_config.js"></script>
+    <script type="module" src="../../lib/fb_config.js?v=01"></script>
 
-    <script src="sk_ui_init.js"></script>
-    <script src="sk_my_init.js"></script>
-    <script src="sk_store.js"></script>
-    <script src="sketch.js"></script>
+    <script src="sk_ui_init.js?v=01"></script>
+    <script src="sk_my_init.js?v=01"></script>
+    <script src="sk_fstore.js?v=01"></script>
+    <script src="sketch.js?v=01"></script>
+    <!-- ?v=01 included to force reload from cache
+      update in sketch.js 
+      let my = { version: n, ...
+     -->
   </body>
 </html>

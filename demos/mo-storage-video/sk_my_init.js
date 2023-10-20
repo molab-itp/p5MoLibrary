@@ -1,17 +1,19 @@
 function my_init() {
   my.rootPath = '-mo-storage-video-@w-/clips';
-  my.type = 'image/png'; // png image type preserves white background
-  // my.type = 'image/jpeg'; // jpeg give black background
-  my.ext = '.png';
-  // my.ext = '.jpg';
-  my.quality = 1;
-  if (my.vFlip) {
-    let temp = my.vwidth;
-    my.vwidth = my.vheight;
-    my.vheight = temp;
+  if (my.png) {
+    // png image type preserves white background
+    my.type = 'image/png';
+    my.ext = '.png';
+  } else {
+    // jpeg give black background
+    my.type = 'image/jpeg';
+    my.ext = '.jpg';
   }
-  my.width = my.vwidth;
-  my.height = my.vheight;
+  if (my.vFlip) {
+    let temp = my.width;
+    my.width = my.height;
+    my.height = temp;
+  }
 
   // image are store in sequence
   // {my.rootPath}/clips/${nums}${my.ext}
@@ -19,7 +21,15 @@ function my_init() {
   my.image_seq_down = 0;
   my.image_seq_max = 9;
   my.image_seq_pad = 3;
-  my.layer = createGraphics(my.width, my.height);
 
-  my.len = int(my.width / 20);
+  {
+    let w = int(my.width / my.scale);
+    let h = int(my.height / my.scale);
+    my.layer = createGraphics(w, h);
+    my.vwidth = w;
+    my.vheight = h;
+    my.layer.textSize(my.layer.height / my.captionScale);
+  }
+
+  my.draw_func = draw_guest;
 }

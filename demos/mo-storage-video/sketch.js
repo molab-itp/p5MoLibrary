@@ -1,15 +1,25 @@
 // mo-storage-video
 
-let vScale = 4;
-
 let my = {
-  version: 28, // update to verify change on mobile
-  vwidth: 640 / vScale,
-  vheight: 480 / vScale,
+  version: '?v=01', // update to verify change on mobile
+  width: 480, // Aspect ratio of video capture
+  height: 640,
   vFlip: 0,
   facingMode: 1,
+  frameCount: 100,
+  face: 1,
   showVideo: 1,
-  frameCount: 0,
+  run: 1,
+  store: 0,
+  host: 0,
+  uid: -1,
+  // scale: 16,
+  scale: 1,
+  captionScale: 8,
+  interval: 1,
+  debugLog: 0,
+  // imageQuality: 0.01,
+  imageQuality: 1,
 };
 
 function setup() {
@@ -24,45 +34,81 @@ function setup() {
 
   ui_init();
 
-  create_myVideo();
-
-  textSize(height / 8);
-
-  frameRate(2);
+  setInterval(update_interval, my.interval * 1000);
+  // frameRate(2);
 }
 
 function draw() {
+  my.draw_func();
+
+  ui_update();
+}
+
+function draw_host() {
+  // console.log('draw_host');
+}
+
+function draw_guest() {
   if (!video_ready()) return;
 
   // faster to get entire video frame as an image
   let img = my.video.get();
 
+  let layer = my.layer;
+
   if (my.showVideo) {
-    image(img, 0, 0);
+    layer.image(img, 0, 0);
   }
 
   let str = my.frameCount + '';
-  let tw = textWidth(str);
-  let th = textLeading();
-  let ta = textAscent();
+  let tw = layer.textWidth(str);
+  let th = layer.textLeading();
+  let ta = layer.textAscent();
 
-  let x = width - tw;
-  let y = height - th;
-  fill(0);
-  rect(x, y, tw, th);
-  fill(255);
-  text(my.frameCount, x, y + ta);
+  let x = layer.width - tw;
+  let y = layer.height - th;
+  layer.fill(0);
+  layer.rect(x, y, tw, th);
+  layer.fill(255);
+  layer.text(my.frameCount, x, y + ta);
 
-  my.frameCount++;
+  image(layer, 0, 0, width, height);
+
+  ui_update();
 }
 
-function create_myVideo() {
-  let options = { video: { facingMode: my.facingMode } };
-  my.video = createCapture(options);
-  my.video.size(my.vwidth, my.vheight);
-  // my.video.hide();
+function update_interval() {
+  // console.log('update_interval my.frameCount', my.frameCount, frameCount);
+  if (my.host) {
+    fstore_download();
+    return;
+  }
+  if (my.run) {
+    my.frameCount++;
+  }
+  if (my.store) {
+    fstore_upload();
+  }
 }
 
-function video_ready() {
-  return my.video.loadedmetadata && my.video.width > 0 && my.video.height > 0;
+function fb_signIn() {
+  let { signInAnonymously, auth } = fb_;
+  signInAnonymously(auth)
+    .then(() => {
+      console.log('signInAnonymously OK');
+      let uid = auth.currentUser.uid;
+      my.uid = uid;
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log('errorCode', errorCode);
+      console.log('errorMessage', errorMessage);
+    });
+}
+
+function console_dlog(msg) {
+  if (my.debugLog) {
+    console.log(msg);
+  }
 }

@@ -1,29 +1,14 @@
-function store_signIn() {
-  let { signInAnonymously, auth } = fb_;
-  signInAnonymously(auth)
-    .then(() => {
-      console.log('signInAnonymously OK');
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log('errorCode', errorCode);
-      console.log('errorMessage', errorMessage);
-    });
-}
-
 // https://firebase.google.com/docs/storage/web/upload-files?authuser=0#upload_from_a_blob_or_file
 
-function store_upload() {
-  console.log('store_upload');
-
-  canvas.toBlob(
+function fstore_upload() {
+  // console.log('fstore_upload');
+  my.layer.elt.toBlob(
     (blob) => {
-      store_upload_blob(blob);
+      fstore_upload_blob(blob);
     },
     my.type,
-    my.quality
-  ); // JPEG at 95% quality
+    my.imageQuality
+  );
 }
 
 function next_imagePath(seq) {
@@ -32,25 +17,25 @@ function next_imagePath(seq) {
   my[seq] = (my[seq] + 1) % my.image_seq_max;
   return `${my.rootPath}/${nums}${my.ext}`;
 }
-function store_upload_blob(blob) {
-  console.log('store_upload_blob', blob);
+function fstore_upload_blob(blob) {
+  // console.log('fstore_upload_blob', blob);
   let { storage, ref, uploadBytes } = fb_.fstore;
 
   // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
   my.imagePath = next_imagePath('image_seq_up');
-  console.log('store_upload_blob my.imagePath', my.imagePath);
+  console_dlog('fstore_upload_blob my.imagePath', my.imagePath);
   const storageRef = ref(storage, my.imagePath);
 
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, blob)
     .then((snapshot) => {
-      console.log('snapshot.metadata.fullPath', snapshot.metadata.fullPath);
+      console_dlog('snapshot.metadata.fullPath', snapshot.metadata.fullPath);
       // console.log('snapshot', snapshot);
       // console.log('Uploaded path', path);
     })
     .catch((error) => {
       // Handle any errors
-      console.log('store_upload_blob error', error);
+      console.log('fstore_upload_blob error', error);
     });
 }
 
@@ -68,27 +53,57 @@ function renderBlobToCanvas(blob) {
   img.src = URL.createObjectURL(blob);
 }
 
-function store_getDownloadURL(path) {
-  console.log('store_getDownloadURL path', path);
+function fstore_download(path) {
+  // console.log('fstore_getDownloadURL path', path);
   if (!path) {
     path = next_imagePath('image_seq_down');
-    console.log('store_getDownloadURL next_imagePath', path);
+    console_dlog('fstore_download next_imagePath', path);
   }
   let { storage, ref, getDownloadURL } = fb_.fstore;
-  // getDownloadURL(ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg'))
   getDownloadURL(ref(storage, path))
-    // oVFxc052pOWF5qq560qMuBmEsbr2/120.jpeg
-    // oVFxc052pOWF5qq560qMuBmEsbr2/119.jpeg
     .then((url) => {
       // `url` is the download URL for '1.jpeg'
-      console.log('store_getDownloadURL url', url);
+      console_dlog('fstore_download url', url);
 
       // This can be downloaded directly:
       const xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';
       xhr.onload = (event) => {
         const blob = xhr.response;
-        console.log('store_getDownloadURL blob', blob);
+        console_dlog('fstore_download blob', blob);
+        renderBlobToCanvas(blob);
+      };
+      xhr.open('GET', url);
+      xhr.send();
+
+      // Or inserted into an <img> element
+      // let img = createImg(url, 'img test');
+      // img.setAttribute('src', url);
+    })
+    .catch((error) => {
+      // Handle any errors
+      console.log('fstore_getDownloadURL error', error);
+    });
+}
+
+function fstore_getDownloadURL(path) {
+  // console.log('fstore_getDownloadURL path', path);
+  if (!path) {
+    path = next_imagePath('image_seq_down');
+    console.log('fstore_getDownloadURL next_imagePath', path);
+  }
+  let { storage, ref, getDownloadURL } = fb_.fstore;
+  getDownloadURL(ref(storage, path))
+    .then((url) => {
+      // `url` is the download URL for '1.jpeg'
+      console.log('fstore_getDownloadURL url', url);
+
+      // This can be downloaded directly:
+      const xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = (event) => {
+        const blob = xhr.response;
+        console.log('fstore_getDownloadURL blob', blob);
         renderBlobToCanvas(blob);
       };
       xhr.open('GET', url);
@@ -101,13 +116,13 @@ function store_getDownloadURL(path) {
     })
     .catch((error) => {
       // Handle any errors
-      console.log('store_getDownloadURL error', error);
+      console.log('fstore_getDownloadURL error', error);
     });
 }
 
 // https://firebase.google.com/docs/storage/web/list-files#list_all_files
-function store_listAll(bucket) {
-  console.log('store_listAll bucket', bucket);
+function fstore_listAll(bucket) {
+  console.log('fstore_listAll bucket', bucket);
   let { storage, ref, listAll } = fb_.fstore;
   // Create a reference under which you want to list
   // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
@@ -133,13 +148,13 @@ function store_listAll(bucket) {
     })
     .catch((error) => {
       // Uh-oh, an error occurred!
-      console.log('store_listAll error', error);
+      console.log('fstore_listAll error', error);
     });
 }
 
 // https://firebase.google.com/docs/storage/web/list-files#paginate_list_results
-function store_list(bucket) {
-  console.log('store_list bucket', bucket);
+function fstore_list(bucket) {
+  console.log('fstore_list bucket', bucket);
   let { storage, ref, list } = fb_.fstore;
   // Create a reference under which you want to list
   // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
@@ -165,6 +180,6 @@ function store_list(bucket) {
     })
     .catch((error) => {
       // Uh-oh, an error occurred!
-      console.log('store_list error', error);
+      console.log('fstore_list error', error);
     });
 }

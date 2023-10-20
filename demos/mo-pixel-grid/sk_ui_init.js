@@ -1,5 +1,5 @@
 //
-// my.canvase is create before ui_init call
+// my.canvas is create before ui_init call
 //
 function ui_init() {
   ui_init_controls();
