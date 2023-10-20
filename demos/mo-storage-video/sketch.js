@@ -10,7 +10,7 @@ let my = {
   showVideo: 1,
   run: 1,
   store: 0,
-  host: 0,
+  replay: 0,
   uid: -1,
   // scale: 16,
   scale: 1,
@@ -20,7 +20,8 @@ let my = {
   interval: 1,
   debugLog: 0,
   image_seq_max: 15,
-  initCount: 0,
+  count_init: 100,
+  count_max: 15,
 };
 
 function setup() {
@@ -45,8 +46,8 @@ function draw() {
   ui_update();
 }
 
-function draw_host() {
-  // console.log('draw_host');
+function draw_replay() {
+  // console.log('draw_replay');
 }
 
 function draw_guest() {
@@ -80,12 +81,15 @@ function draw_guest() {
 
 function update_interval() {
   // console.log('update_interval my.count', my.count, count);
-  if (my.host) {
+  if (my.replay) {
     fstore_download();
     return;
   }
   if (my.run) {
-    my.count++;
+    my.count = (my.count + 1) % (my.count_max + my.count_init);
+    if (my.count < my.count_init) {
+      my.count = my.count_init;
+    }
   }
   if (my.store) {
     fstore_upload();

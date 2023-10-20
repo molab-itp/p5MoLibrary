@@ -13,7 +13,7 @@ function ui_init() {
 }
 
 function ui_init_controls() {
-  if (!my.hostName) {
+  if (!my.replayName) {
     create_myVideo();
   }
 
@@ -27,7 +27,7 @@ function ui_init_controls() {
   });
 
   createButton('Reset count').mousePressed(function () {
-    my.count = my.initCount;
+    my.count = my.count_init;
   });
 
   createButton('Download').mousePressed(function () {
@@ -49,7 +49,7 @@ function ui_init_controls() {
 
   createElement('br');
 
-  if (!my.hostName) {
+  if (!my.replayName) {
     my.faceChk = createCheckbox('Face', my.face);
     my.faceChk.style('display:inline');
     my.faceChk.changed(faceChk_action);
@@ -71,22 +71,22 @@ function ui_init_controls() {
   my.storeChk.style('display:inline');
   my.storeChk.changed(function () {
     my.store = this.checked();
-    my.count = my.initCount;
+    my.count = my.count_init;
   });
 
-  my.hostChk = createCheckbox('Host', my.host);
-  my.hostChk.style('display:inline');
-  my.hostChk.changed(function () {
-    my.host = this.checked();
-    init_host();
+  my.replayChk = createCheckbox('Replay', my.replay);
+  my.replayChk.style('display:inline');
+  my.replayChk.changed(function () {
+    my.replay = this.checked();
+    init_replay();
   });
 
   createElement('br');
 }
 
-function init_host() {
-  // console.log('init_host', my.host);
-  my.draw_func = my.host ? draw_host : draw_guest;
+function init_replay() {
+  // console.log('init_replay', my.replay);
+  my.draw_func = my.replay ? draw_replay : draw_guest;
 }
 
 function faceChk_action() {
@@ -119,8 +119,8 @@ function ui_update_info() {
   if (my.guestName) {
     ui_span('guestName', ' guestName:' + my.guestName);
   }
-  if (my.hostName) {
-    ui_span('hostName', ' hostName:' + my.hostName);
+  if (my.replayName) {
+    ui_span('replayName', ' replayName:' + my.replayName);
   }
   if (my.uid) {
     ui_span('uid', ' uid:' + my.uid);
