@@ -6,7 +6,6 @@ let my = {
   height: 640,
   vFlip: 0,
   facingMode: 1,
-  count: 100,
   face: 1,
   showVideo: 1,
   run: 1,
@@ -15,11 +14,13 @@ let my = {
   uid: -1,
   // scale: 16,
   scale: 1,
+  // imageQuality: 0.01,
+  imageQuality: 1,
   captionScale: 8,
   interval: 1,
   debugLog: 0,
-  // imageQuality: 0.01,
-  imageQuality: 1,
+  image_seq_max: 15,
+  initCount: 0,
 };
 
 function setup() {
@@ -96,8 +97,7 @@ function fb_signIn() {
   signInAnonymously(auth)
     .then(() => {
       console.log('signInAnonymously OK');
-      let uid = auth.currentUser.uid;
-      my.uid = uid;
+      my.uid = auth.currentUser.uid;
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -112,3 +112,6 @@ function console_dlog(msg) {
     console.log(msg);
   }
 }
+
+// https://en.wikipedia.org/wiki/15_minutes_of_fame
+// --> 15 seconds

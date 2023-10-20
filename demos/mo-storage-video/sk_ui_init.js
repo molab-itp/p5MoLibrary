@@ -27,7 +27,7 @@ function ui_init_controls() {
   });
 
   createButton('Reset count').mousePressed(function () {
-    my.count = 0;
+    my.count = my.initCount;
   });
 
   createButton('Download').mousePressed(function () {
@@ -71,6 +71,7 @@ function ui_init_controls() {
   my.storeChk.style('display:inline');
   my.storeChk.changed(function () {
     my.store = this.checked();
+    my.count = my.initCount;
   });
 
   my.hostChk = createCheckbox('Host', my.host);

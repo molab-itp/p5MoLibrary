@@ -17,10 +17,10 @@ function my_init() {
 
   // image are store in sequence
   // {my.rootPath}/clips/${nums}${my.ext}
-  my.image_seq_up = 0;
-  my.image_seq_down = 0;
-  my.image_seq_max = 9;
+  my.image_seq_up = my.initCount;
+  my.image_seq_down = my.initCount;
   my.image_seq_pad = 3;
+  my.count = my.initCount;
 
   {
     let w = int(my.width / my.scale);
