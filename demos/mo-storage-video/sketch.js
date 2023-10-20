@@ -15,6 +15,8 @@ let my = {
 function setup() {
   console.log('mo-storage-video setup');
 
+  fb_.init();
+
   my_init();
 
   pixelDensity(1);
