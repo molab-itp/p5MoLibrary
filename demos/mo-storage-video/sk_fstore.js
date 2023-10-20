@@ -23,13 +23,13 @@ function fstore_upload_blob(blob) {
 
   // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
   my.imagePath = next_imagePath('image_seq_up');
-  console_dlog('fstore_upload_blob my.imagePath', my.imagePath);
+  console_dlog('fstore_upload_blob my.imagePath ' + my.imagePath);
   const storageRef = ref(storage, my.imagePath);
 
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, blob)
     .then((snapshot) => {
-      console_dlog('snapshot.metadata.fullPath', snapshot.metadata.fullPath);
+      console_dlog('snapshot.metadata.fullPath ' + snapshot.metadata.fullPath);
       // console.log('snapshot', snapshot);
       // console.log('Uploaded path', path);
     })
@@ -57,20 +57,20 @@ function fstore_download(path) {
   // console.log('fstore_getDownloadURL path', path);
   if (!path) {
     path = next_imagePath('image_seq_down');
-    console_dlog('fstore_download next_imagePath', path);
   }
+  console.log('fstore_download next_imagePath ' + path);
   let { storage, ref, getDownloadURL } = fb_.fstore;
   getDownloadURL(ref(storage, path))
     .then((url) => {
       // `url` is the download URL for '1.jpeg'
-      console_dlog('fstore_download url', url);
+      // console_dlog('fstore_download url', url);
 
       // This can be downloaded directly:
       const xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';
       xhr.onload = (event) => {
         const blob = xhr.response;
-        console_dlog('fstore_download blob', blob);
+        // console_dlog('fstore_download blob ' + blob);
         renderBlobToCanvas(blob);
       };
       xhr.open('GET', url);

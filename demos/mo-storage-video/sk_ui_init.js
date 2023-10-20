@@ -26,20 +26,23 @@ function ui_init_controls() {
     fb_signIn();
   });
 
-  createButton('Reset count').mousePressed(function () {
-    my.count = my.count_init;
-  });
+  // createButton('Reset count').mousePressed(function () {
+  //   my.count = my.count_init;
+  // });
 
-  createButton('Download').mousePressed(function () {
-    // fstore_getDownloadURL('oVFxc052pOWF5qq560qMuBmEsbr2/129.jpeg');
-    // fstore_getDownloadURL('/-mo-1-@w-/mY5kp2xDNRWJG7dYAWXOFfwIwZD3/001');
-    // fstore_getDownloadURL('-mo-1-@w-/y29ShmiYYNST4KUKK7G76db6k4H2/001.png');
-    // -mo-1-@w-/y29ShmiYYNST4KUKK7G76db6k4H2
-    fstore_getDownloadURL();
-  });
+  // createButton('Download').mousePressed(function () {
+  //   // fstore_getDownloadURL('oVFxc052pOWF5qq560qMuBmEsbr2/129.jpeg');
+  //   fstore_getDownloadURL();
+  // });
 
-  createButton('Upload').mousePressed(function () {
-    fstore_upload();
+  // createButton('Upload').mousePressed(function () {
+  //   fstore_upload();
+  // });
+
+  createButton('NextColor').mousePressed(function () {
+    my.colorIndex = (my.colorIndex + 1) % my.colors.length;
+    // my.replayChk.checked(0);
+    // my.replay = 0;
   });
 
   my.reloadBtn = createButton('Reload');
@@ -71,23 +74,24 @@ function ui_init_controls() {
   my.storeChk.style('display:inline');
   my.storeChk.changed(function () {
     my.store = this.checked();
-    my.count = my.count_init;
+    init_counts();
   });
 
   my.replayChk = createCheckbox('Replay', my.replay);
   my.replayChk.style('display:inline');
   my.replayChk.changed(function () {
     my.replay = this.checked();
-    init_replay();
+    // init_replay();
+    init_counts();
   });
 
   createElement('br');
 }
 
-function init_replay() {
-  // console.log('init_replay', my.replay);
-  my.draw_func = my.replay ? draw_replay : draw_guest;
-}
+// function init_replay() {
+//   // console.log('init_replay', my.replay);
+//   my.draw_func = my.replay ? draw_replay : draw_guest;
+// }
 
 function faceChk_action() {
   my.face = this.checked();

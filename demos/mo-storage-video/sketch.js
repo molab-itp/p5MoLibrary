@@ -1,11 +1,11 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=04', // update to verify change on mobile
+  version: '?v=05', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
-  facingMode: 1,
+  facingMode: 'user',
   face: 1,
   showVideo: 1,
   run: 1,
@@ -18,10 +18,12 @@ let my = {
   imageQuality: 1,
   captionScale: 8,
   interval: 1,
-  debugLog: 0,
+  debugLog: 1,
   image_seq_max: 15,
   count_init: 100,
   count_max: 15,
+  colors: ['red', 'green', 'gold'],
+  colorIndex: 0,
 };
 
 function setup() {
@@ -36,21 +38,18 @@ function setup() {
 
   ui_init();
 
-  setInterval(update_interval, my.interval * 1000);
+  // setInterval will flood out draw when saving and replaying
+  // setInterval(update_interval, my.interval * 1000);
   // frameRate(2);
 }
 
 function draw() {
-  my.draw_func();
+  draw_update();
 
   ui_update();
 }
 
-function draw_replay() {
-  // console.log('draw_replay');
-}
-
-function draw_guest() {
+function draw_update() {
   if (!video_ready()) return;
 
   // faster to get entire video frame as an image
@@ -61,38 +60,51 @@ function draw_guest() {
   if (my.showVideo) {
     layer.image(img, 0, 0);
   }
-
   let str = my.count + '';
   let tw = layer.textWidth(str);
   let th = layer.textLeading();
   let ta = layer.textAscent();
 
-  let x = layer.width - tw;
-  let y = layer.height - th;
-  layer.fill(0);
+  // let x = layer.width - tw;
+  // let y = layer.height - th;
+  let cnt = my.count + 1;
+  // console.log('draw_update cnt', cnt);
+  let x = 0;
+  let y = 0;
+  let colr = my.colors[my.colorIndex];
+  layer.fill(colr);
   layer.rect(x, y, tw, th);
   layer.fill(255);
-  layer.text(my.count, x, y + ta);
-
-  image(layer, 0, 0, width, height);
+  layer.text(cnt, x, y + ta);
+  if (!my.replay) {
+    image(layer, 0, 0, width, height);
+  }
 
   ui_update();
+
+  let now = millis() / 1000;
+  if (now > my.next_secs) {
+    my.next_secs = now + my.interval;
+    update_interval();
+  }
 }
 
 function update_interval() {
-  // console.log('update_interval my.count', my.count, count);
+  console.log('update_interval my.count', my.count);
   if (my.replay) {
+    // console.log('update_interval fstore_download');
     fstore_download();
-    return;
-  }
-  if (my.run) {
-    my.count = (my.count + 1) % (my.count_max + my.count_init);
-    if (my.count < my.count_init) {
-      my.count = my.count_init;
-    }
+    // return;
   }
   if (my.store) {
     fstore_upload();
+  }
+  if (my.run) {
+    my.count = my.count + 1;
+    if (my.count >= my.count_init + my.count_max) {
+      my.colorIndex = (my.colorIndex + 1) % my.colors.length;
+      my.count = my.count_init;
+    }
   }
 }
 
