@@ -22,9 +22,9 @@ function ui_init_controls() {
     // ui_toggle_scroll();
   });
 
-  createButton('SignIn').mousePressed(function () {
-    fb_signIn();
-  });
+  // createButton('SignIn').mousePressed(function () {
+  //   fb_signIn();
+  // });
 
   // createButton('Reset count').mousePressed(function () {
   //   my.count = my.count_init;
@@ -39,7 +39,7 @@ function ui_init_controls() {
   //   fstore_upload();
   // });
 
-  createButton('NextColor').mousePressed(function () {
+  createButton('Color+').mousePressed(function () {
     my.colorIndex = (my.colorIndex + 1) % my.colors.length;
     // my.replayChk.checked(0);
     // my.replay = 0;

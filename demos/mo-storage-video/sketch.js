@@ -1,7 +1,7 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=06', // update to verify change on mobile
+  version: '?v=07', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
@@ -13,7 +13,7 @@ let my = {
   replay: 0,
   uid: -1,
   // scale: 16,
-  scale: 8,
+  scale: 4,
   // imageQuality: 0.01,
   imageQuality: 1,
   captionScale: 8,
@@ -29,7 +29,8 @@ let my = {
 function setup() {
   console.log('mo-storage-video setup');
 
-  fb_.init();
+  // fb_.init('jht9629');
+  fb_.init('jht1493');
 
   my_init();
 
@@ -41,6 +42,8 @@ function setup() {
   // setInterval will flood out draw when saving and replaying
   // setInterval(update_interval, my.interval * 1000);
   // frameRate(2);
+
+  fb_signIn();
 }
 
 function draw() {

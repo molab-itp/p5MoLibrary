@@ -13,7 +13,7 @@ function fstore_upload() {
 
 function next_imagePath(seq) {
   // return `${my.rootPath}/${fb_.auth.currentUser.uid}/001${my.ext}`;
-  let nums = my[seq].toString().padStart(my.image_seq_pad, '0');
+  let nums = (my[seq] + 1).toString().padStart(my.image_seq_pad, '0');
   my[seq] = (my[seq] + 1) % my.image_seq_max;
   return `${my.rootPath}/${nums}${my.ext}`;
 }
