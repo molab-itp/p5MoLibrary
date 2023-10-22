@@ -64,22 +64,21 @@ function draw_update() {
   if (my.showVideo) {
     layer.image(img, 0, 0);
   }
-  let str = my.count + '';
+
+  let str = (my.count + 1).toString().padStart(my.image_seq_pad, '0');
   let tw = layer.textWidth(str);
   let th = layer.textLeading();
   let ta = layer.textAscent();
 
   // let x = layer.width - tw;
   // let y = layer.height - th;
-  let cnt = my.count + 1;
-  // console.log('draw_update cnt', cnt);
   let x = 0;
   let y = 0;
   let colr = my.colors[my.colorIndex];
   layer.fill(colr);
   layer.rect(x, y, tw, th);
   layer.fill(255);
-  layer.text(cnt, x, y + ta);
+  layer.text(str, x, y + ta);
   if (!my.replay) {
     image(layer, 0, 0, width, height);
   }
