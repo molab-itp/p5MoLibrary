@@ -5,7 +5,7 @@ let my = {};
 function setup() {
   console.log('mo-storage setup');
 
-  my.rootPath = '-mo-1-@w-';
+  my.dbStoreRootPath = '-mo-1-@w-';
   my.type = 'image/png'; // png image type preserves white background
   // my.type = 'image/jpeg'; // jpeg give black background
   my.ext = '.png';
@@ -25,13 +25,13 @@ function setup() {
   });
 
   createButton('ListAll').mousePressed(function () {
-    demo_listAll(my.rootPath);
+    demo_listAll(my.dbStoreRootPath);
     // demo_listAll('');
     // demo_listAll('oVFxc052pOWF5qq560qMuBmEsbr2');
   });
 
   createButton('List').mousePressed(function () {
-    // demo_list(my.rootPath);
+    // demo_list(my.dbStoreRootPath);
     demo_list('');
     // demo_list('oVFxc052pOWF5qq560qMuBmEsbr2');
   });
@@ -97,7 +97,7 @@ function demo_upload() {
 }
 
 function default_imagePath() {
-  return `${my.rootPath}/${fb_.auth.currentUser.uid}/001${my.ext}`;
+  return `${my.dbStoreRootPath}/${fb_.auth.currentUser.uid}/001${my.ext}`;
 }
 function demo_upload_blob(blob) {
   console.log('demo_upload_blob', blob);

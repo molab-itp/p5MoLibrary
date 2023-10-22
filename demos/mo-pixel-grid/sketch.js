@@ -16,7 +16,7 @@ let my = {
   store: 0,
   host: 0,
   perFrame: 6,
-  storeRootKey: 'm0-@r-@w-',
+  dbStoreRootPath: 'm0-@r-@w-',
 };
 
 function setup() {

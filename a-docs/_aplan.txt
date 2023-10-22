@@ -4,9 +4,9 @@ _aplan.txt
 
 [] doc: lib/fb_
 [] doc: permision model
-  my.rootPath = '-mo-storage-video-@w-/clips';
-  my.rootPath = '-mo-1-@w-';
-  storeRootKey: 'm0-@r-@w-',
+  my.dbStoreRootPath = '-mo-storage-video-@w-/clips';
+  my.dbStoreRootPath = '-mo-1-@w-';
+  dbStoreRootPath: 'm0-@r-@w-',
 let galleryKey = 'mo-1/gallery-@r-';
 let storeKey = 'mo-1/gallery-@r-';
 

@@ -1,4 +1,4 @@
-// my storeRootKey: 'm0-@r-@w-',
+// my dbStoreRootPath: 'm0-@r-@w-',
 // storeLogData/log {
 //   DK1Lcj16BFhDPgdvGGkVP9FS3Xy2: {
 //     count_i: 1,
@@ -35,7 +35,7 @@ function dstore_signin() {
 
 function dstore_log_onValue() {
   // Setup listener for changes to firebase db
-  let path = `${my.storeRootKey}/log`;
+  let path = `${my.dbStoreRootPath}/log`;
   let ref = fb_.ref(fb_.database, path);
   fb_.onValue(ref, function (snap) {
     let key = snap.key;
@@ -50,7 +50,7 @@ function dstore_log_onValue() {
 }
 
 function dstore_signin_update() {
-  let path = `${my.storeRootKey}/log/${my.uid}`;
+  let path = `${my.dbStoreRootPath}/log/${my.uid}`;
   console.log('dstore_signin_update path=', path);
   let ref = fb_.ref(fb_.database, path);
   let now = new Date();
@@ -66,7 +66,7 @@ function dstore_signin_update() {
 function dstore_pix_onChild() {
   // import { getDatabase, ref, onChildAdded, onChildChanged, onChildRemoved }
   // from "firebase/database";
-  let path = `${my.storeRootKey}/pix`;
+  let path = `${my.dbStoreRootPath}/pix`;
   console.log('dstore_pix_onChild path', path);
   let ref = fb_.ref(fb_.database, path);
 
@@ -101,7 +101,7 @@ function dstore_pix_update(seq, ops) {
     console.log('dstore_pix_update no uid', my.uid);
     return;
   }
-  let path = `${my.storeRootKey}/pix/${my.uid}/${seq}`;
+  let path = `${my.dbStoreRootPath}/pix/${my.uid}/${seq}`;
   let ref = fb_.ref(fb_.database, path);
   const updates = {};
   updates[`date_i`] = Date.now();
@@ -111,7 +111,7 @@ function dstore_pix_update(seq, ops) {
 }
 
 function dstore_removeAll() {
-  let path = `${my.storeRootKey}/pix`;
+  let path = `${my.dbStoreRootPath}/pix`;
   let ref = fb_.ref(fb_.database, path);
   fb_
     .set(ref, {})

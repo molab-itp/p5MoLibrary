@@ -153,3 +153,18 @@ function ui_span(id, html) {
   span.html(html);
   return span;
 }
+
+function ui_log(...args) {
+  // if (my.debugLog) {
+  // }
+  console.log(...args);
+  if (!my.logLines) {
+    my.logLines = [];
+    my.logDiv = createDiv('');
+  }
+  my.logLines.push(args.join(' '));
+  if (my.logLines.length > my.logLinesMax) {
+    my.logLines.splice(0, 1);
+  }
+  my.logDiv.html(my.logLines.join('<br/>'));
+}

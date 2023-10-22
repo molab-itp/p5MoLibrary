@@ -1,7 +1,7 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=07', // update to verify change on mobile
+  version: '?v=08', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
@@ -24,6 +24,7 @@ let my = {
   count_max: 15,
   colors: ['red', 'green', 'gold'],
   colorIndex: 0,
+  logLinesMax: 5,
 };
 
 function setup() {
@@ -124,12 +125,6 @@ function fb_signIn() {
       console.log('errorCode', errorCode);
       console.log('errorMessage', errorMessage);
     });
-}
-
-function console_dlog(msg) {
-  if (my.debugLog) {
-    console.log(msg);
-  }
 }
 
 // https://en.wikipedia.org/wiki/15_minutes_of_fame

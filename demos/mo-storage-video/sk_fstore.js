@@ -12,10 +12,10 @@ function fstore_upload() {
 }
 
 function next_imagePath(seq) {
-  // return `${my.rootPath}/${fb_.auth.currentUser.uid}/001${my.ext}`;
+  // return `${my.dbStoreRootPath}/${fb_.auth.currentUser.uid}/001${my.ext}`;
   let nums = (my[seq] + 1).toString().padStart(my.image_seq_pad, '0');
   my[seq] = (my[seq] + 1) % my.image_seq_max;
-  return `${my.rootPath}/${nums}${my.ext}`;
+  return `${my.dbStoreRootPath}/${nums}${my.ext}`;
 }
 function fstore_upload_blob(blob) {
   // console.log('fstore_upload_blob', blob);
@@ -23,13 +23,13 @@ function fstore_upload_blob(blob) {
 
   // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
   my.imagePath = next_imagePath('image_seq_up');
-  console_dlog('fstore_upload_blob my.imagePath ' + my.imagePath);
+  ui_log('fstore_upload_blob my.imagePath', my.imagePath);
   const storageRef = ref(storage, my.imagePath);
 
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, blob)
     .then((snapshot) => {
-      // console_dlog('snapshot.metadata.fullPath ' + snapshot.metadata.fullPath);
+      // ui_log('snapshot.metadata.fullPath ' + snapshot.metadata.fullPath);
       // console.log('snapshot', snapshot);
       // console.log('Uploaded path', path);
     })
@@ -58,19 +58,19 @@ function fstore_download(path) {
   if (!path) {
     path = next_imagePath('image_seq_down');
   }
-  console.log('fstore_download next_imagePath ' + path);
+  ui_log('fstore_download next_imagePath ' + path);
   let { storage, ref, getDownloadURL } = fb_.fstore;
   getDownloadURL(ref(storage, path))
     .then((url) => {
       // `url` is the download URL for '1.jpeg'
-      // console_dlog('fstore_download url', url);
+      // ui_log('fstore_download url', url);
 
       // This can be downloaded directly:
       const xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';
       xhr.onload = (event) => {
         const blob = xhr.response;
-        // console_dlog('fstore_download blob ' + blob);
+        // ui_log('fstore_download blob ' + blob);
         renderBlobToCanvas(blob);
       };
       xhr.open('GET', url);

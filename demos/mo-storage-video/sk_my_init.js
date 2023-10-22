@@ -1,5 +1,5 @@
 function my_init() {
-  my.rootPath = '-mo-storage-video-@w-/clips';
+  my.dbStoreRootPath = '-mo-storage-video-@w-/clips';
   if (my.png) {
     // png image type preserves white background
     my.type = 'image/png';
@@ -9,6 +9,10 @@ function my_init() {
     my.type = 'image/jpeg';
     my.ext = '.jpg';
   }
+  if (windowWidth < 600) {
+    my.width = windowWidth;
+    my.height = windowHeight;
+  }
   if (my.vFlip) {
     let temp = my.width;
     my.width = my.height;
@@ -16,7 +20,7 @@ function my_init() {
   }
 
   // image are store in sequence
-  // {my.rootPath}/clips/${nums}${my.ext}
+  // {my.dbStoreRootPath}/clips/${nums}${my.ext}
   my.image_seq_pad = 3;
 
   {
