@@ -2,26 +2,27 @@
 
 function fstore_upload() {
   // console.log('fstore_upload');
+  let count = my.count;
   my.layer.elt.toBlob(
     (blob) => {
-      fstore_upload_blob(blob);
+      fstore_upload_blob(blob, count);
     },
     my.type,
     my.imageQuality
   );
 }
 
-function next_imagePath() {
+function next_imagePath(count) {
   // console.log('next_imagePath');
-  let nums = (my.count + my.count_base + 1).toString().padStart(my.image_seq_pad, '0');
-  return `${my.dbStoreRootPath}/${nums}${my.ext}`;
+  let str = (count + my.count_base + 1).toString().padStart(my.image_seq_pad, '0');
+  return `${my.dbStoreRootPath}/${str}${my.ext}`;
 }
-function fstore_upload_blob(blob) {
+function fstore_upload_blob(blob, count) {
   // console.log('fstore_upload_blob', blob);
   let { storage, ref, uploadBytes } = fb_.fstore;
 
   // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
-  my.imagePath = next_imagePath();
+  my.imagePath = next_imagePath(count);
   ui_log('fstore_upload_blob my.imagePath', my.imagePath);
   const storageRef = ref(storage, my.imagePath);
 
@@ -54,7 +55,7 @@ function renderBlobToCanvas(blob) {
 
 function fstore_download() {
   // console.log('fstore_download ');
-  let path = next_imagePath();
+  let path = next_imagePath(my.count);
   ui_log('fstore_download next_imagePath ' + path);
   let { storage, ref, getDownloadURL } = fb_.fstore;
   getDownloadURL(ref(storage, path))

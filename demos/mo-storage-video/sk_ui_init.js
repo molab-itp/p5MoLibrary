@@ -40,11 +40,13 @@ function ui_init_controls() {
   });
 
   createButton('<-Prev').mousePressed(function () {
-    adjust_count(1);
+    adjust_count(-1);
+    update_interval();
   });
 
   createButton('Next+>').mousePressed(function () {
     adjust_count(1);
+    update_interval();
   });
 
   createElement('br');
