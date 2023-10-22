@@ -89,7 +89,7 @@ function update_interval() {
   }
   if (my.run) {
     if (adjust_count(1)) {
-      my.colorIndex = (my.colorIndex + 1) % my.colors.length;
+      // my.colorIndex = (my.colorIndex + 1) % my.colors.length;
     }
   }
 }
