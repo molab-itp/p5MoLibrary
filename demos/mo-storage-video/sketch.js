@@ -1,7 +1,7 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=011', // update to verify change on mobile
+  version: '?v=012', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
@@ -62,8 +62,8 @@ function draw_update() {
     layer.image(img, 0, 0);
   }
 
-  draw_number_at(my.count + 1 + my.count_base, { layer });
-  draw_number_at(frameCount, { layer, bottom: 1, small: 1 });
+  draw_number(my.count + 1 + my.count_base, { layer });
+  draw_millis(layer);
 
   if (!my.replay) {
     image(layer, 0, 0, width, height);
@@ -76,32 +76,6 @@ function draw_update() {
     my.next_secs = now + my.interval;
     update_interval();
   }
-}
-
-function draw_number_at(count, opt) {
-  let { layer, bottom, small } = opt;
-
-  let capSize = my.topCaptionSize;
-  if (small) capSize /= 3;
-  layer.textSize(capSize);
-
-  let str = count.toString().padStart(my.image_seq_pad, '0');
-
-  let tw = layer.textWidth(str);
-  let th = layer.textLeading();
-  let ta = layer.textAscent();
-
-  let x = 0;
-  let y = 0;
-  if (bottom) {
-    x = layer.width - tw;
-    y = layer.height - th;
-  }
-  let colr = my.colors[my.colorIndex];
-  layer.fill(colr);
-  layer.rect(x, y, tw, th);
-  layer.fill(255);
-  layer.text(str, x, y + ta);
 }
 
 function update_interval() {
