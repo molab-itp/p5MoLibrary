@@ -6,9 +6,7 @@ function draw_millis(layer) {
 function draw_number(num, opt) {
   let { layer, right, small, frac } = opt;
 
-  let capSize = my.topCaptionSize;
-  if (small) capSize /= 3;
-  layer.textSize(capSize);
+  layer.textSize(my.captionSize);
 
   let str = num.toString();
   if (frac) {
@@ -25,6 +23,9 @@ function draw_number(num, opt) {
   if (right) {
     x = layer.width - tw;
     // y = layer.height - th;
+  } else {
+    tw = layer.width / 2;
+    str += ' ' + my.uid.substring(0, 7);
   }
   let colr = my.colors[my.colorIndex];
   if (right) colr = 0;
@@ -61,7 +62,7 @@ function draw_dateISOString(layer) {
   let today = new Date();
   let str = today.toISOString();
 
-  let capSize = my.topCaptionSize / 4;
+  let capSize = my.captionSize;
   layer.textSize(capSize);
 
   let tw = layer.textWidth(str);

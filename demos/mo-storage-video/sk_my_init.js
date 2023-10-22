@@ -29,7 +29,8 @@ function my_init() {
     my.layer = createGraphics(w, h);
     my.vwidth = w;
     my.vheight = h;
-    my.topCaptionSize = my.layer.height / my.captionScale;
+    my.captionSize = my.layer.height / my.captionScale;
+    my.layer.noStroke();
   }
 
   my.next_secs = millis() / 1000 + my.interval;

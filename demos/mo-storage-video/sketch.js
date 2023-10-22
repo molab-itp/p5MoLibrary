@@ -1,7 +1,7 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=013', // update to verify change on mobile
+  version: '?v=014', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
@@ -16,7 +16,7 @@ let my = {
   scale: 4,
   // imageQuality: 0.01,
   imageQuality: 1,
-  captionScale: 8,
+  captionScale: 32,
   interval: 1,
   debugLog: 1,
   // image_seq_max: 5,
