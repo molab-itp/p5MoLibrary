@@ -1,28 +1,29 @@
 // https://firebase.google.com/docs/storage/web/upload-files?authuser=0#upload_from_a_blob_or_file
 
-function fstore_upload() {
+function fstore_upload(delta) {
   // console.log('fstore_upload');
   my.layer.elt.toBlob(
     (blob) => {
-      fstore_upload_blob(blob);
+      fstore_upload_blob(blob, delta);
     },
     my.type,
     my.imageQuality
   );
 }
 
-function next_imagePath(seq) {
+function next_imagePath(seq, delta) {
+  console.log('next_imagePath seq', seq, 'delta', delta);
   // return `${my.dbStoreRootPath}/${fb_.auth.currentUser.uid}/001${my.ext}`;
   let nums = (my[seq] + 1 + my.count_init).toString().padStart(my.image_seq_pad, '0');
-  my[seq] = (my[seq] + 1) % my.image_seq_max;
+  my[seq] = (my[seq] + delta + my.image_seq_max) % my.image_seq_max;
   return `${my.dbStoreRootPath}/${nums}${my.ext}`;
 }
-function fstore_upload_blob(blob) {
-  // console.log('fstore_upload_blob', blob);
+function fstore_upload_blob(blob, delta) {
+  console.log('fstore_upload_blob', blob, 'delta', delta);
   let { storage, ref, uploadBytes } = fb_.fstore;
 
   // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
-  my.imagePath = next_imagePath('image_seq_up');
+  my.imagePath = next_imagePath('image_seq_up', delta);
   ui_log('fstore_upload_blob my.imagePath', my.imagePath);
   const storageRef = ref(storage, my.imagePath);
 
@@ -53,11 +54,9 @@ function renderBlobToCanvas(blob) {
   img.src = URL.createObjectURL(blob);
 }
 
-function fstore_download(path) {
-  // console.log('fstore_getDownloadURL path', path);
-  if (!path) {
-    path = next_imagePath('image_seq_down');
-  }
+function fstore_download(delta) {
+  console.log('fstore_download delta', delta);
+  let path = next_imagePath('image_seq_down', delta);
   ui_log('fstore_download next_imagePath ' + path);
   let { storage, ref, getDownloadURL } = fb_.fstore;
   getDownloadURL(ref(storage, path))
@@ -86,10 +85,10 @@ function fstore_download(path) {
     });
 }
 
-function fstore_getDownloadURL(path) {
+function fstore_getDownloadURL(path, delta) {
   // console.log('fstore_getDownloadURL path', path);
   if (!path) {
-    path = next_imagePath('image_seq_down');
+    path = next_imagePath('image_seq_down', delta);
     console.log('fstore_getDownloadURL next_imagePath', path);
   }
   let { storage, ref, getDownloadURL } = fb_.fstore;

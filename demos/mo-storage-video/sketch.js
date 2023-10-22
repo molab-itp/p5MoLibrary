@@ -1,7 +1,7 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=010', // update to verify change on mobile
+  version: '?v=011', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
@@ -19,9 +19,9 @@ let my = {
   captionScale: 8,
   interval: 1,
   debugLog: 1,
-  image_seq_max: 15,
+  image_seq_max: 5,
   count_init: 100,
-  count_max: 15,
+  count_max: 5,
   colors: ['red', 'green', 'gold'],
   colorIndex: 0,
   logLinesMax: 5,
@@ -93,19 +93,30 @@ function update_interval() {
   // console.log('update_interval my.count', my.count);
   if (my.replay) {
     // console.log('update_interval fstore_download');
-    fstore_download();
+    fstore_download(my.run ? 1 : 0);
     // return;
   }
   if (my.store) {
-    fstore_upload();
+    fstore_upload(my.run ? 1 : 0);
   }
   if (my.run) {
-    my.count = my.count + 1;
-    if (my.count >= my.count_init + my.count_max) {
+    if (adjust_count(1)) {
       my.colorIndex = (my.colorIndex + 1) % my.colors.length;
-      my.count = my.count_init;
     }
   }
+}
+
+function adjust_count(delta) {
+  my.count = my.count + delta;
+  let wrap = 0;
+  if (my.count >= my.count_init + my.count_max) {
+    my.count = my.count_init;
+    wrap = 1;
+  } else if (my.count < my.count_init) {
+    my.count = my.count_init + my.count_max - 1;
+    wrap = 1;
+  }
+  return wrap;
 }
 
 function fb_signIn() {

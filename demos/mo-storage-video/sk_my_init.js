@@ -30,15 +30,11 @@ function my_init() {
     my.vwidth = w;
     my.vheight = h;
     my.layer.textSize(my.layer.height / my.captionScale);
-
-    my.downLayer;
   }
 
-  // my.draw_func = draw_guest;
+  my.next_secs = millis() / 1000 + my.interval;
 
   init_counts();
-
-  my.next_secs = millis() / 1000 + my.interval;
 }
 
 function init_counts() {

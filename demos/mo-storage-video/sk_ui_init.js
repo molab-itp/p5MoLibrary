@@ -19,18 +19,11 @@ function ui_init_controls() {
 
   my.verBtn = createButton(my.version.substring(1));
   my.verBtn.mousePressed(function () {
-    // ui_toggle_scroll();
+    location.reload();
   });
 
   createButton('Color+').mousePressed(function () {
     my.colorIndex = (my.colorIndex + 1) % my.colors.length;
-    // my.replayChk.checked(0);
-    // my.replay = 0;
-  });
-
-  my.reloadBtn = createButton('Reload');
-  my.reloadBtn.mousePressed(function () {
-    location.reload();
   });
 
   createButton('<-100').mousePressed(function () {
@@ -44,6 +37,14 @@ function ui_init_controls() {
   createButton('100+>').mousePressed(function () {
     my.count_init += 100;
     init_counts();
+  });
+
+  createButton('<-Prev').mousePressed(function () {
+    adjust_count(1);
+  });
+
+  createButton('Next+>').mousePressed(function () {
+    adjust_count(1);
   });
 
   createElement('br');
@@ -184,4 +185,9 @@ function ui_error(...args) {
 
 // createButton('Upload').mousePressed(function () {
 //   fstore_upload();
+// });
+
+// my.reloadBtn = createButton('Reload');
+// my.reloadBtn.mousePressed(function () {
+//   location.reload();
 // });
