@@ -38,7 +38,8 @@ function my_init() {
 }
 
 function init_counts() {
-  my.image_seq_up = 0;
-  my.image_seq_down = my.image_seq_max - 1;
-  my.count = my.count_init;
+  // my.image_seq_up = 0;
+  // my.image_seq_down = my.image_seq_max - 1;
+  // my.count = my.count_base;
+  my.count = 0;
 }

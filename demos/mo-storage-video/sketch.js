@@ -19,8 +19,8 @@ let my = {
   captionScale: 8,
   interval: 1,
   debugLog: 1,
-  image_seq_max: 5,
-  count_init: 100,
+  // image_seq_max: 5,
+  count_base: 100,
   count_max: 5,
   colors: ['red', 'green', 'gold'],
   colorIndex: 0,
@@ -62,7 +62,7 @@ function draw_update() {
     layer.image(img, 0, 0);
   }
 
-  let str = (my.count + 1).toString().padStart(my.image_seq_pad, '0');
+  let str = (my.count + 1 + my.count_base).toString().padStart(my.image_seq_pad, '0');
   let tw = layer.textWidth(str);
   let th = layer.textLeading();
   let ta = layer.textAscent();
@@ -93,11 +93,11 @@ function update_interval() {
   // console.log('update_interval my.count', my.count);
   if (my.replay) {
     // console.log('update_interval fstore_download');
-    fstore_download(my.run ? 1 : 0);
+    fstore_download();
     // return;
   }
   if (my.store) {
-    fstore_upload(my.run ? 1 : 0);
+    fstore_upload();
   }
   if (my.run) {
     if (adjust_count(1)) {
@@ -109,11 +109,11 @@ function update_interval() {
 function adjust_count(delta) {
   my.count = my.count + delta;
   let wrap = 0;
-  if (my.count >= my.count_init + my.count_max) {
-    my.count = my.count_init;
+  if (my.count >= my.count_max) {
+    my.count = 0;
     wrap = 1;
-  } else if (my.count < my.count_init) {
-    my.count = my.count_init + my.count_max - 1;
+  } else if (my.count < 0) {
+    my.count = my.count_max - 1;
     wrap = 1;
   }
   return wrap;

@@ -1,29 +1,27 @@
 // https://firebase.google.com/docs/storage/web/upload-files?authuser=0#upload_from_a_blob_or_file
 
-function fstore_upload(delta) {
+function fstore_upload() {
   // console.log('fstore_upload');
   my.layer.elt.toBlob(
     (blob) => {
-      fstore_upload_blob(blob, delta);
+      fstore_upload_blob(blob);
     },
     my.type,
     my.imageQuality
   );
 }
 
-function next_imagePath(seq, delta) {
-  console.log('next_imagePath seq', seq, 'delta', delta);
-  // return `${my.dbStoreRootPath}/${fb_.auth.currentUser.uid}/001${my.ext}`;
-  let nums = (my[seq] + 1 + my.count_init).toString().padStart(my.image_seq_pad, '0');
-  my[seq] = (my[seq] + delta + my.image_seq_max) % my.image_seq_max;
+function next_imagePath() {
+  // console.log('next_imagePath');
+  let nums = (my.count + my.count_base + 1).toString().padStart(my.image_seq_pad, '0');
   return `${my.dbStoreRootPath}/${nums}${my.ext}`;
 }
-function fstore_upload_blob(blob, delta) {
-  console.log('fstore_upload_blob', blob, 'delta', delta);
+function fstore_upload_blob(blob) {
+  // console.log('fstore_upload_blob', blob);
   let { storage, ref, uploadBytes } = fb_.fstore;
 
   // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
-  my.imagePath = next_imagePath('image_seq_up', delta);
+  my.imagePath = next_imagePath();
   ui_log('fstore_upload_blob my.imagePath', my.imagePath);
   const storageRef = ref(storage, my.imagePath);
 
@@ -54,9 +52,9 @@ function renderBlobToCanvas(blob) {
   img.src = URL.createObjectURL(blob);
 }
 
-function fstore_download(delta) {
-  console.log('fstore_download delta', delta);
-  let path = next_imagePath('image_seq_down', delta);
+function fstore_download() {
+  // console.log('fstore_download ');
+  let path = next_imagePath();
   ui_log('fstore_download next_imagePath ' + path);
   let { storage, ref, getDownloadURL } = fb_.fstore;
   getDownloadURL(ref(storage, path))
@@ -77,40 +75,6 @@ function fstore_download(delta) {
 
       // Or inserted into an <img> element
       // let img = createImg(url, 'img test');
-      // img.setAttribute('src', url);
-    })
-    .catch((error) => {
-      // Handle any errors
-      ui_error('fstore_getDownloadURL error', error);
-    });
-}
-
-function fstore_getDownloadURL(path, delta) {
-  // console.log('fstore_getDownloadURL path', path);
-  if (!path) {
-    path = next_imagePath('image_seq_down', delta);
-    console.log('fstore_getDownloadURL next_imagePath', path);
-  }
-  let { storage, ref, getDownloadURL } = fb_.fstore;
-  getDownloadURL(ref(storage, path))
-    .then((url) => {
-      // `url` is the download URL for '1.jpeg'
-      console.log('fstore_getDownloadURL url', url);
-
-      // This can be downloaded directly:
-      const xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = (event) => {
-        const blob = xhr.response;
-        console.log('fstore_getDownloadURL blob', blob);
-        renderBlobToCanvas(blob);
-      };
-      xhr.open('GET', url);
-      xhr.send();
-
-      // Or inserted into an <img> element
-      // const img = document.getElementById('myimg');
-      let img = createImg(url, 'img test');
       // img.setAttribute('src', url);
     })
     .catch((error) => {

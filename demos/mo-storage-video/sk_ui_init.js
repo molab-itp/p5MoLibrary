@@ -27,15 +27,15 @@ function ui_init_controls() {
   });
 
   createButton('<-100').mousePressed(function () {
-    my.count_init -= 100;
-    if (my.count_init < 0) {
-      my.count_init = 0;
+    my.count_base -= 100;
+    if (my.count_base < 0) {
+      my.count_base = 0;
     }
     init_counts();
   });
 
   createButton('100+>').mousePressed(function () {
-    my.count_init += 100;
+    my.count_base += 100;
     init_counts();
   });
 
@@ -175,12 +175,7 @@ function ui_error(...args) {
 // });
 
 // createButton('Reset count').mousePressed(function () {
-//   my.count = my.count_init;
-// });
-
-// createButton('Download').mousePressed(function () {
-//   // fstore_getDownloadURL('oVFxc052pOWF5qq560qMuBmEsbr2/129.jpeg');
-//   fstore_getDownloadURL();
+//   my.count = my.count_base;
 // });
 
 // createButton('Upload').mousePressed(function () {
