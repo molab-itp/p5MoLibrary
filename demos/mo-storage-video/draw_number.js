@@ -27,6 +27,7 @@ function draw_number(num, opt) {
     // y = layer.height - th;
   }
   let colr = my.colors[my.colorIndex];
+  if (right) colr = 0;
   layer.fill(colr);
   layer.rect(x, y, tw, th);
   layer.fill(255);
@@ -52,4 +53,27 @@ function convert_timeFrac(num, frac) {
     str = hours.toString().padStart(2, '0') + ':' + str;
   }
   return str;
+}
+
+//  toISOString()
+
+function draw_dateISOString(layer) {
+  let today = new Date();
+  let str = today.toISOString();
+
+  let capSize = my.topCaptionSize / 4;
+  layer.textSize(capSize);
+
+  let tw = layer.textWidth(str);
+  let th = layer.textLeading();
+  let ta = layer.textAscent();
+
+  let x = layer.width - tw;
+  let y = layer.height - th;
+
+  // let colr = my.colors[my.colorIndex];
+  layer.fill(0);
+  layer.rect(x, y, tw, th);
+  layer.fill(255);
+  layer.text(str, x, y + ta);
 }
