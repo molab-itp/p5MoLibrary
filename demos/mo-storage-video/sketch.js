@@ -62,20 +62,9 @@ function draw_update() {
     layer.image(img, 0, 0);
   }
 
-  let str = (my.count + 1 + my.count_base).toString().padStart(my.image_seq_pad, '0');
-  let tw = layer.textWidth(str);
-  let th = layer.textLeading();
-  let ta = layer.textAscent();
+  draw_number_at(my.count + 1 + my.count_base, { layer });
+  draw_number_at(frameCount, { layer, bottom: 1, small: 1 });
 
-  // let x = layer.width - tw;
-  // let y = layer.height - th;
-  let x = 0;
-  let y = 0;
-  let colr = my.colors[my.colorIndex];
-  layer.fill(colr);
-  layer.rect(x, y, tw, th);
-  layer.fill(255);
-  layer.text(str, x, y + ta);
   if (!my.replay) {
     image(layer, 0, 0, width, height);
   }
@@ -89,12 +78,36 @@ function draw_update() {
   }
 }
 
+function draw_number_at(count, opt) {
+  let { layer, bottom, small } = opt;
+
+  let capSize = my.topCaptionSize;
+  if (small) capSize /= 3;
+  layer.textSize(capSize);
+
+  let str = count.toString().padStart(my.image_seq_pad, '0');
+
+  let tw = layer.textWidth(str);
+  let th = layer.textLeading();
+  let ta = layer.textAscent();
+
+  let x = 0;
+  let y = 0;
+  if (bottom) {
+    x = layer.width - tw;
+    y = layer.height - th;
+  }
+  let colr = my.colors[my.colorIndex];
+  layer.fill(colr);
+  layer.rect(x, y, tw, th);
+  layer.fill(255);
+  layer.text(str, x, y + ta);
+}
+
 function update_interval() {
   // console.log('update_interval my.count', my.count);
   if (my.replay) {
-    // console.log('update_interval fstore_download');
     fstore_download();
-    // return;
   }
   if (my.store) {
     fstore_upload();
