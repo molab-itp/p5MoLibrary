@@ -22,23 +22,6 @@ function ui_init_controls() {
     // ui_toggle_scroll();
   });
 
-  // createButton('SignIn').mousePressed(function () {
-  //   fb_signIn();
-  // });
-
-  // createButton('Reset count').mousePressed(function () {
-  //   my.count = my.count_init;
-  // });
-
-  // createButton('Download').mousePressed(function () {
-  //   // fstore_getDownloadURL('oVFxc052pOWF5qq560qMuBmEsbr2/129.jpeg');
-  //   fstore_getDownloadURL();
-  // });
-
-  // createButton('Upload').mousePressed(function () {
-  //   fstore_upload();
-  // });
-
   createButton('Color+').mousePressed(function () {
     my.colorIndex = (my.colorIndex + 1) % my.colors.length;
     // my.replayChk.checked(0);
@@ -48,6 +31,19 @@ function ui_init_controls() {
   my.reloadBtn = createButton('Reload');
   my.reloadBtn.mousePressed(function () {
     location.reload();
+  });
+
+  createButton('<-100').mousePressed(function () {
+    my.count_init -= 100;
+    if (my.count_init < 0) {
+      my.count_init = 0;
+    }
+    init_counts();
+  });
+
+  createButton('100+>').mousePressed(function () {
+    my.count_init += 100;
+    init_counts();
   });
 
   createElement('br');
@@ -168,3 +164,24 @@ function ui_log(...args) {
   }
   my.logDiv.html(my.logLines.join('<br/>'));
 }
+
+function ui_error(...args) {
+  ui_log(...args);
+}
+
+// createButton('SignIn').mousePressed(function () {
+//   fb_signIn();
+// });
+
+// createButton('Reset count').mousePressed(function () {
+//   my.count = my.count_init;
+// });
+
+// createButton('Download').mousePressed(function () {
+//   // fstore_getDownloadURL('oVFxc052pOWF5qq560qMuBmEsbr2/129.jpeg');
+//   fstore_getDownloadURL();
+// });
+
+// createButton('Upload').mousePressed(function () {
+//   fstore_upload();
+// });

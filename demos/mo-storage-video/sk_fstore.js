@@ -13,7 +13,7 @@ function fstore_upload() {
 
 function next_imagePath(seq) {
   // return `${my.dbStoreRootPath}/${fb_.auth.currentUser.uid}/001${my.ext}`;
-  let nums = (my[seq] + 1).toString().padStart(my.image_seq_pad, '0');
+  let nums = (my[seq] + 1 + my.count_init).toString().padStart(my.image_seq_pad, '0');
   my[seq] = (my[seq] + 1) % my.image_seq_max;
   return `${my.dbStoreRootPath}/${nums}${my.ext}`;
 }
@@ -35,7 +35,7 @@ function fstore_upload_blob(blob) {
     })
     .catch((error) => {
       // Handle any errors
-      console.log('fstore_upload_blob error', error);
+      ui_error('fstore_upload_blob error', error);
     });
 }
 
@@ -82,7 +82,7 @@ function fstore_download(path) {
     })
     .catch((error) => {
       // Handle any errors
-      console.log('fstore_getDownloadURL error', error);
+      ui_error('fstore_getDownloadURL error', error);
     });
 }
 
@@ -116,7 +116,7 @@ function fstore_getDownloadURL(path) {
     })
     .catch((error) => {
       // Handle any errors
-      console.log('fstore_getDownloadURL error', error);
+      ui_error('fstore_getDownloadURL error', error);
     });
 }
 
@@ -180,6 +180,6 @@ function fstore_list(bucket) {
     })
     .catch((error) => {
       // Uh-oh, an error occurred!
-      console.log('fstore_list error', error);
+      ui_error('fstore_list error', error);
     });
 }
