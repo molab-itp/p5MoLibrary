@@ -1,7 +1,7 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=09', // update to verify change on mobile
+  version: '?v=010', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
@@ -30,9 +30,6 @@ let my = {
 function setup() {
   console.log('mo-storage-video setup');
 
-  // fb_.init('jht9629');
-  fb_.init('jht1493');
-
   my_init();
 
   pixelDensity(1);
@@ -40,9 +37,9 @@ function setup() {
 
   ui_init();
 
-  // setInterval will flood out draw when saving and replaying
-  // setInterval(update_interval, my.interval * 1000);
-  // frameRate(2);
+  let config = fb_.init('jht9629');
+  // let config = fb_.init('jht1493');
+  ui_log('config.projectId', config.projectId);
 
   fb_signIn();
 }
@@ -115,16 +112,20 @@ function fb_signIn() {
   let { signInAnonymously, auth } = fb_;
   signInAnonymously(auth)
     .then(() => {
-      console.log('signInAnonymously OK');
+      ui_log('signInAnonymously OK');
       my.uid = auth.currentUser.uid;
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log('errorCode', errorCode);
-      console.log('errorMessage', errorMessage);
+      ui_log('fb_signIn errorCode', errorCode);
+      ui_log('fb_signIn errorMessage', errorMessage);
     });
 }
 
 // https://en.wikipedia.org/wiki/15_minutes_of_fame
 // --> 15 seconds
+
+// setInterval will flood out draw when saving and replaying
+// setInterval(update_interval, my.interval * 1000);
+// frameRate(2);
