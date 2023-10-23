@@ -19,7 +19,6 @@ let my = {
   captionScale: 32,
   interval: 1,
   debugLog: 1,
-  // image_seq_max: 5,
   count_base: 100,
   count_max: 5,
   colors: ['red', 'green', 'gold'],
