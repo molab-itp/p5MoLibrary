@@ -81,6 +81,8 @@ function fstore_download() {
     .catch((error) => {
       // Handle any errors
       ui_error('fstore_getDownloadURL error', error);
+      fill(0);
+      rect(0, 0, width, height);
     });
 }
 

@@ -1,15 +1,15 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=015', // update to verify change on mobile
+  version: '?v=016', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
   facingMode: 'user',
   face: 1,
   showVideo: 1,
-  run: 1,
-  store: 0,
+  fcount: 1,
+  record: 0,
   replay: 0,
   uid: '-none-',
   // scale: 16,
@@ -83,10 +83,10 @@ function update_interval() {
   if (my.replay) {
     fstore_download();
   }
-  if (my.store) {
+  if (my.record) {
     fstore_upload();
   }
-  if (my.run) {
+  if (my.fcount) {
     if (adjust_count(1)) {
       // my.colorIndex = (my.colorIndex + 1) % my.colors.length;
     }

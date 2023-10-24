@@ -1,5 +1,5 @@
 //
-// my.canvas is create before ui_init call
+// my.canvas is created before ui_init call
 //
 function ui_init() {
   ui_init_controls();
@@ -63,16 +63,16 @@ function ui_init_controls() {
     my.showVideo = this.checked();
   });
 
-  my.runChk = createCheckbox('Run', my.run);
-  my.runChk.style('display:inline');
-  my.runChk.changed(function () {
-    my.run = this.checked();
+  my.fcountChk = createCheckbox('Count', my.fcount);
+  my.fcountChk.style('display:inline');
+  my.fcountChk.changed(function () {
+    my.fcount = this.checked();
   });
 
-  my.storeChk = createCheckbox('Store', my.store);
-  my.storeChk.style('display:inline');
-  my.storeChk.changed(function () {
-    my.store = this.checked();
+  my.recordChk = createCheckbox('Record', my.record);
+  my.recordChk.style('display:inline');
+  my.recordChk.changed(function () {
+    my.record = this.checked();
     init_counts();
   });
 
