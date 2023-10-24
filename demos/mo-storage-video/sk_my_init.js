@@ -1,5 +1,9 @@
 function my_init() {
+  //
   my.dbStoreRootPath = '-mo-storage-video-@w-/clips';
+
+  pixelDensity(1);
+
   if (my.png) {
     // png image type preserves white background
     my.type = 'image/png';
@@ -23,19 +27,21 @@ function my_init() {
   // {my.dbStoreRootPath}/clips/${nums}${my.ext}
   my.image_seq_pad = 3;
 
-  {
-    let w = int(my.width / my.scale);
-    let h = int(my.height / my.scale);
-    my.layer = createGraphics(w, h);
-    my.vwidth = w;
-    my.vheight = h;
-    my.captionSize = my.layer.height / my.captionScale;
-    my.layer.noStroke();
-  }
+  init_layer();
 
   my.next_secs = millis() / 1000 + my.interval;
 
   init_counts();
+}
+
+function init_layer() {
+  let w = int(my.width / my.scale);
+  let h = int(my.height / my.scale);
+  my.layer = createGraphics(w, h);
+  my.vwidth = w;
+  my.vheight = h;
+  my.captionSize = my.layer.height / my.captionScale;
+  my.layer.noStroke();
 }
 
 function init_counts() {

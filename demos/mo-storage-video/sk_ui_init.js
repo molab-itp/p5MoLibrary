@@ -39,15 +39,17 @@ function ui_init_controls() {
     init_counts();
   });
 
-  createButton('<-Prev').mousePressed(function () {
+  createButton('<-1').mousePressed(function () {
     adjust_count(-1);
     update_interval();
   });
 
-  createButton('Next+>').mousePressed(function () {
+  createButton('1+>').mousePressed(function () {
     adjust_count(1);
     update_interval();
   });
+
+  create_resolution_selection();
 
   createElement('br');
 
@@ -87,10 +89,21 @@ function ui_init_controls() {
   createElement('br');
 }
 
-// function init_replay() {
-//   // console.log('init_replay', my.replay);
-//   my.draw_func = my.replay ? draw_replay : draw_guest;
-// }
+function create_resolution_selection() {
+  // createSpan('Rez:');
+  let sel = createSelect();
+  for (let index = 1; index <= 8; index++) {
+    sel.option('Rez: ' + index, index);
+  }
+  sel.selected(my.scale);
+  sel.changed(function () {
+    let nval = parseFloat(this.value());
+    my.scale = nval;
+    init_layer();
+    my.video.remove();
+    create_myVideo();
+  });
+}
 
 function faceChk_action() {
   my.face = this.checked();
@@ -188,3 +201,13 @@ function ui_error(...args) {
 // my.reloadBtn.mousePressed(function () {
 //   location.reload();
 // });
+
+// https://www.htmlsymbols.xyz/unicode/U+FF0B
+// Fullwidth plus sign
+
+// https://www.ssec.wisc.edu/~tomw/java/unicode.html
+
+// function init_replay() {
+//   // console.log('init_replay', my.replay);
+//   my.draw_func = my.replay ? draw_replay : draw_guest;
+// }

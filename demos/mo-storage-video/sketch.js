@@ -1,7 +1,7 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=016', // update to verify change on mobile
+  version: '?v=017', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
@@ -13,7 +13,7 @@ let my = {
   replay: 0,
   uid: '-none-',
   // scale: 16,
-  scale: 4,
+  scale: 3,
   // imageQuality: 0.01,
   imageQuality: 1,
   captionScale: 32,
@@ -31,7 +31,6 @@ function setup() {
 
   my_init();
 
-  pixelDensity(1);
   my.canvas = createCanvas(my.width, my.height);
 
   ui_init();
