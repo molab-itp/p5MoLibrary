@@ -1,7 +1,7 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=017', // update to verify change on mobile
+  version: '?v=018', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
@@ -23,7 +23,7 @@ let my = {
   count_max: 5,
   colors: ['red', 'green', 'gold'],
   colorIndex: 0,
-  logLinesMax: 5,
+  logLinesMax: 3,
 };
 
 function setup() {
@@ -88,6 +88,8 @@ function update_interval() {
   if (my.fcount) {
     if (adjust_count(1)) {
       // my.colorIndex = (my.colorIndex + 1) % my.colors.length;
+      my.record = 0;
+      my.recordChk.checked(0);
     }
   }
 }

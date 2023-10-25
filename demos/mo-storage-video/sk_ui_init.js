@@ -51,6 +51,8 @@ function ui_init_controls() {
 
   create_resolution_selection();
 
+  create_count_selection();
+
   createElement('br');
 
   if (!my.replayName) {
@@ -89,8 +91,19 @@ function ui_init_controls() {
   createElement('br');
 }
 
+function create_count_selection() {
+  let sel = createSelect();
+  for (let index = 5; index <= 1000; index += index) {
+    sel.option('Count: ' + index, index);
+  }
+  sel.selected(my.scale);
+  sel.changed(function () {
+    let nval = parseFloat(this.value());
+    my.count_max = nval;
+  });
+}
+
 function create_resolution_selection() {
-  // createSpan('Rez:');
   let sel = createSelect();
   for (let index = 1; index <= 8; index++) {
     sel.option('Rez: ' + index, index);
