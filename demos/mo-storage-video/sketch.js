@@ -1,7 +1,7 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=018', // update to verify change on mobile
+  version: '?v=019', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
@@ -20,10 +20,11 @@ let my = {
   interval: 1,
   debugLog: 1,
   count_base: 100,
-  count_max: 5,
+  count_max: 3,
   colors: ['red', 'green', 'gold'],
   colorIndex: 0,
   logLinesMax: 3,
+  clipsName: 'clips-2023-10-27',
 };
 
 function setup() {
@@ -40,6 +41,8 @@ function setup() {
   ui_log('config.projectId', config.projectId);
 
   fb_signIn();
+
+  textSize(40);
 }
 
 function draw() {
@@ -67,6 +70,8 @@ function draw_update() {
   if (!my.replay) {
     image(layer, 0, 0, width, height);
   }
+
+  draw_count();
 
   ui_update();
 

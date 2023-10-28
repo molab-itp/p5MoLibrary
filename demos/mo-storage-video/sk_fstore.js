@@ -15,7 +15,7 @@ function fstore_upload() {
 function next_imagePath(count) {
   // console.log('next_imagePath');
   let str = (count + my.count_base + 1).toString().padStart(my.image_seq_pad, '0');
-  return `${my.dbStoreRootPath}/${str}${my.ext}`;
+  return `${my.dbStoreRootPath}/${my.clipsName}/${str}${my.ext}`;
 }
 function fstore_upload_blob(blob, count) {
   // console.log('fstore_upload_blob', blob);

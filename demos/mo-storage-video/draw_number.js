@@ -1,12 +1,8 @@
-function draw_millis(layer) {
-  let fmt = { layer, right: 1, small: 1, frac: 2 };
-  draw_number(millis() / 1000, fmt);
-}
-
 function draw_number(num, opt) {
-  let { layer, right, small, frac } = opt;
+  let { layer, right, bottom, frac, noid, captionSize } = opt;
 
-  layer.textSize(my.captionSize);
+  if (!captionSize) captionSize = my.captionSize;
+  layer.textSize(captionSize);
 
   let str = num.toString();
   if (frac) {
@@ -22,10 +18,14 @@ function draw_number(num, opt) {
   let y = 0;
   if (right) {
     x = layer.width - tw;
-    // y = layer.height - th;
   } else {
     tw = layer.width / 2;
-    str += ' ' + my.uid.substring(0, 7);
+    if (!noid) {
+      str += ' ' + my.uid.substring(0, 7);
+    }
+  }
+  if (bottom) {
+    y = layer.height - th;
   }
   let colr = my.colors[my.colorIndex];
   if (right) colr = 0;
@@ -56,8 +56,6 @@ function convert_timeFrac(num, frac) {
   return str;
 }
 
-//  toISOString()
-
 function draw_dateISOString(layer) {
   let today = new Date();
   let str = today.toISOString();
@@ -77,4 +75,54 @@ function draw_dateISOString(layer) {
   layer.rect(x, y, tw, th);
   layer.fill(255);
   layer.text(str, x, y + ta);
+}
+
+function draw_millis(layer) {
+  let fmt = { layer, right: 1, small: 1, frac: 2 };
+  draw_number(millis() / 1000, fmt);
+}
+
+// !!@ Always black on transparent
+// function draw_count() {
+//   let fmt = { layer: my.canvas, bottom: 1, noid: 1, captionSize: height / 30 };
+//   draw_number(my.count, fmt);
+//   // textSize(100);
+// }
+
+// !!@ fill and rect not drawn
+// function draw_count() {
+//   let layer = my.canvas;
+//   let num = my.count;
+//   let str = num.toString();
+//   str = str.padStart(my.image_seq_pad, '0');
+//   layer.textSize(25);
+//   let tw = layer.textWidth(str);
+//   let th = layer.textLeading();
+//   let ta = layer.textAscent();
+//   let x = 0;
+//   let y = layer.height - th;
+//   layer.fill(0);
+//   layer.rect(x, y, tw, th);
+//   layer.fill(255);
+//   layer.text(str, x, y + ta);
+// }
+
+// !!@ layer vs. canvas inconsistency
+function draw_count() {
+  let num = my.count + my.count_base + 1;
+  let str = num.toString();
+  str = str.padStart(my.image_seq_pad, '0');
+  let captionSize = height / my.captionScale;
+  textSize(captionSize);
+  let tw = textWidth(str);
+  let th = textLeading();
+  let ta = textAscent();
+  // let x = 0;
+  let x = width / 2 - tw / 2;
+  // let y = height - th;
+  let y = 0;
+  fill(0);
+  rect(x, y, tw, th);
+  fill(255);
+  text(str, x, y + ta);
 }

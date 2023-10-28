@@ -49,9 +49,13 @@ function ui_init_controls() {
     update_interval();
   });
 
+  createElement('br');
+
   create_resolution_selection();
 
   create_count_selection();
+
+  create_clipsName_input();
 
   createElement('br');
 
@@ -91,12 +95,19 @@ function ui_init_controls() {
   createElement('br');
 }
 
+function create_clipsName_input() {
+  let elm = createInput(my.clipsName).input(function () {
+    my.clipsName = this.value();
+  });
+}
+
 function create_count_selection() {
   let sel = createSelect();
+  sel.option('Count: 3', 3);
   for (let index = 5; index <= 1000; index += index) {
     sel.option('Count: ' + index, index);
   }
-  sel.selected(my.scale);
+  sel.selected(my.count_max);
   sel.changed(function () {
     let nval = parseFloat(this.value());
     my.count_max = nval;

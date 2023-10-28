@@ -1,6 +1,6 @@
 function my_init() {
   //
-  my.dbStoreRootPath = '-mo-storage-video-@w-/clips';
+  my.dbStoreRootPath = '-mo-storage-video-@w-';
 
   pixelDensity(1);
 
