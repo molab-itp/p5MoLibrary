@@ -119,10 +119,10 @@ function create_resolution_selection() {
   for (let index = 1; index <= 8; index++) {
     sel.option('Rez: ' + index, index);
   }
-  sel.selected(my.scale);
+  sel.selected(my.rezScale);
   sel.changed(function () {
     let nval = parseFloat(this.value());
-    my.scale = nval;
+    my.rezScale = nval;
     init_layer();
     my.video.remove();
     create_myVideo();
@@ -135,17 +135,6 @@ function faceChk_action() {
   console.log('my.facingMode', my.facingMode);
   my.video.remove();
   create_myVideo();
-}
-
-function create_myVideo() {
-  let options = { video: { facingMode: my.facingMode } };
-  my.video = createCapture(options);
-  my.video.size(my.vwidth, my.vheight);
-  my.video.hide();
-}
-
-function video_ready() {
-  return my.video.loadedmetadata && my.video.width > 0 && my.video.height > 0;
 }
 
 function ui_update() {
@@ -191,8 +180,7 @@ function ui_span(id, html) {
 }
 
 function ui_log(...args) {
-  // if (my.debugLog) {
-  // }
+  // if (! my.debugLog) return
   console.log(...args);
   if (!my.logLines) {
     my.logLines = [];

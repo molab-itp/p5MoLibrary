@@ -13,7 +13,7 @@ let my = {
   replay: 0,
   uid: '-none-',
   // scale: 16,
-  scale: 3,
+  rezScale: 1,
   // imageQuality: 0.01,
   imageQuality: 1,
   captionScale: 32,
@@ -24,7 +24,12 @@ let my = {
   colors: ['red', 'green', 'gold'],
   colorIndex: 0,
   logLinesMax: 3,
-  clipsName: 'clips-2023-10-27',
+  clipsName: 'clips',
+  recordCountDown: {
+    max: 5,
+    secs: 0,
+    startSecs: 0,
+  },
 };
 
 function setup() {

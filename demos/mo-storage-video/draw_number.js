@@ -90,39 +90,59 @@ function draw_millis(layer) {
 // }
 
 // !!@ fill and rect not drawn
-// function draw_count() {
-//   let layer = my.canvas;
-//   let num = my.count;
-//   let str = num.toString();
-//   str = str.padStart(my.image_seq_pad, '0');
-//   layer.textSize(25);
-//   let tw = layer.textWidth(str);
-//   let th = layer.textLeading();
-//   let ta = layer.textAscent();
-//   let x = 0;
-//   let y = layer.height - th;
-//   layer.fill(0);
-//   layer.rect(x, y, tw, th);
-//   layer.fill(255);
-//   layer.text(str, x, y + ta);
-// }
-
+//  layer = my.canvas
 // !!@ layer vs. canvas inconsistency
 function draw_count() {
-  let num = my.count + my.count_base + 1;
-  let str = num.toString();
-  str = str.padStart(my.image_seq_pad, '0');
+  // let layer = my.canvas;
+  let layer = p5.instance;
+  let str = frame_count_str();
   let captionSize = height / my.captionScale;
-  textSize(captionSize);
-  let tw = textWidth(str);
-  let th = textLeading();
-  let ta = textAscent();
+  layer.textSize(captionSize);
+  let tw = layer.textWidth(str);
+  let th = layer.textLeading();
+  let ta = layer.textAscent();
+  // Draw center top
   // let x = 0;
   let x = width / 2 - tw / 2;
   // let y = height - th;
   let y = 0;
-  fill(0);
-  rect(x, y, tw, th);
-  fill(255);
-  text(str, x, y + ta);
+  layer.fill(0);
+  layer.rect(x, y, tw, th);
+  layer.fill(255);
+  layer.text(str, x, y + ta);
+}
+
+// function draw_count() {
+//   let str = frame_count_str();
+//   let captionSize = height / my.captionScale;
+//   textSize(captionSize);
+//   let tw = textWidth(str);
+//   let th = textLeading();
+//   let ta = textAscent();
+//   // let x = 0;
+//   let x = width / 2 - tw / 2;
+//   // let y = height - th;
+//   let y = 0;
+//   fill(0);
+//   rect(x, y, tw, th);
+//   fill(255);
+//   text(str, x, y + ta);
+// }
+
+function frame_count_str() {
+  let num = my.count + my.count_base + 1;
+  let str = num.toString();
+  str = str.padStart(my.image_seq_pad, '0');
+  // Select the file name from the last download
+  if (my.replay) {
+    if (my.lastDownloadPath) {
+      let parts = my.lastDownloadPath.split('/');
+      if (parts.length > 0) {
+        str = parts[parts.length - 1];
+      }
+    } else {
+      str = '';
+    }
+  }
+  return str;
 }

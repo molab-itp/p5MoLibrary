@@ -1,8 +1,12 @@
 function my_init() {
   //
+  pixelDensity(1);
+
   my.dbStoreRootPath = '-mo-storage-video-@w-';
 
-  pixelDensity(1);
+  let today = new Date();
+  let str = today.toISOString();
+  my.clipsName += '-' + str.substring(0, 10);
 
   if (my.png) {
     // png image type preserves white background
@@ -35,8 +39,8 @@ function my_init() {
 }
 
 function init_layer() {
-  let w = int(my.width / my.scale);
-  let h = int(my.height / my.scale);
+  let w = int(my.width / my.rezScale);
+  let h = int(my.height / my.rezScale);
   my.layer = createGraphics(w, h);
   my.vwidth = w;
   my.vheight = h;
