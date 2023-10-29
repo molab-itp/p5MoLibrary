@@ -106,7 +106,12 @@ function draw_count() {
   let x = width / 2 - tw / 2;
   // let y = height - th;
   let y = 0;
-  layer.fill(0);
+  layer.strokeWeight(0);
+  if (my.record) {
+    layer.fill(255, 0, 0);
+  } else {
+    layer.fill(0);
+  }
   layer.rect(x, y, tw, th);
   layer.fill(255);
   layer.text(str, x, y + ta);

@@ -81,7 +81,7 @@ function ui_init_controls() {
   my.recordChk.style('display:inline');
   my.recordChk.changed(function () {
     my.record = this.checked();
-    init_counts();
+    record_state_update(my.record);
   });
 
   my.replayChk = createCheckbox('Replay', my.replay);
