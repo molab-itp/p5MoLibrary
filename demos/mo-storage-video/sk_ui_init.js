@@ -104,9 +104,10 @@ function create_clipsName_input() {
 function create_count_selection() {
   let sel = createSelect();
   sel.option('Count: 3', 3);
-  for (let index = 5; index <= 1000; index += index) {
+  for (let index = 5; index <= 100; index += index) {
     sel.option('Count: ' + index, index);
   }
+  sel.option('Count: 99', 99);
   sel.selected(my.count_max);
   sel.changed(function () {
     let nval = parseFloat(this.value());
