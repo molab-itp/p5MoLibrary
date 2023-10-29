@@ -13,7 +13,7 @@ function record_state_update(newState) {
 
 function record_state_track() {
   //
-  let m = height / 20;
+  let m = height * 0.08;
   strokeWeight(m);
   if (my.record && !my.record_preroll) {
     stroke(255, 0, 0);
@@ -31,12 +31,15 @@ function record_state_track() {
   let cnt = my.recordCountDown.next_secs - now;
   cnt = int(cnt + 1);
   let str = cnt + '';
+  let h = width * 1.4;
+  textSize(h);
   let w = textSize(str);
-  let h = width / 2;
-  let x = width / 2 - w / 2;
-  let y = height / 2;
+  console.log('w', w);
+  // let x = (width - w) * 1;
+  let x = width * 0.1;
+  let y = height * 0.8;
+  strokeWeight(m * 0.025);
   stroke(255, 0, 0);
   fill(255, 0, 0);
-  textSize(h);
   text(cnt, x, y);
 }
