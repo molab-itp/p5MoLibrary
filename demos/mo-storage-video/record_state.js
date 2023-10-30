@@ -34,7 +34,7 @@ function record_state_track() {
   let h = width * 1.4;
   textSize(h);
   let w = textSize(str);
-  console.log('w', w);
+  // console.log('w', w);
   // let x = (width - w) * 1;
   let x = width * 0.1;
   let y = height * 0.8;

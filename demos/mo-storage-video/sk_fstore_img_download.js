@@ -1,20 +1,20 @@
-function fstore_download() {
-  // console.log('fstore_download ');
+function fstore_img_download() {
+  // console.log('fstore_img_download ');
   let path = next_imagePath(my.count);
   my.lastDownloadPath = null;
-  // ui_log('fstore_download next_imagePath ' + path);
+  // ui_log('fstore_img_download next_imagePath ' + path);
   let { storage, ref, getDownloadURL } = fb_.fstore;
   getDownloadURL(ref(storage, path))
     .then((url) => {
       // `url` is the download URL for '1.jpeg'
-      // ui_log('fstore_download url', url);
+      // ui_log('fstore_img_download url', url);
 
       // This can be downloaded directly:
       const xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';
       xhr.onload = (event) => {
         const blob = xhr.response;
-        // ui_log('fstore_download blob ' + blob);
+        // ui_log('fstore_img_download blob ' + blob);
         renderBlobToCanvas(blob);
         my.lastDownloadPath = path;
         ui_log('download ' + path);

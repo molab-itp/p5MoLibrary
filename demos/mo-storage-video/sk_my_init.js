@@ -10,12 +10,12 @@ function my_init() {
 
   if (my.png) {
     // png image type preserves white background
-    my.type = 'image/png';
-    my.ext = '.png';
+    my.imageType = 'image/png';
+    my.imagExt = '.png';
   } else {
     // jpeg give black background
-    my.type = 'image/jpeg';
-    my.ext = '.jpg';
+    my.imageType = 'image/jpeg';
+    my.imagExt = '.jpg';
   }
   if (windowWidth < 600) {
     my.width = windowWidth;
@@ -28,7 +28,7 @@ function my_init() {
   }
 
   // image are store in sequence
-  // {my.dbStoreRootPath}/clips/${nums}${my.ext}
+  // {my.dbStoreRootPath}/clips/${nums}${my.imagExt}
   my.image_seq_pad = 3;
 
   init_layer();
@@ -36,6 +36,8 @@ function my_init() {
   my.next_secs = millis() / 1000 + my.interval;
 
   init_counts();
+
+  sound_init();
 }
 
 function init_layer() {

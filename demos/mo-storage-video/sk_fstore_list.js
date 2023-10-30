@@ -35,6 +35,7 @@ function fstore_listAll(bucket) {
 function fstore_list(bucket) {
   console.log('fstore_list bucket', bucket);
   let { storage, ref, list } = fb_.fstore;
+  bucket = bucket || my.dbStoreRootPath;
   // Create a reference under which you want to list
   // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
   // const listRef = ref(storage, '');

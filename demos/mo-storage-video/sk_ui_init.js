@@ -71,6 +71,12 @@ function ui_init_controls() {
     my.showVideo = this.checked();
   });
 
+  my.soundChk = createCheckbox('Sound', my.soundRecord);
+  my.soundChk.style('display:inline');
+  my.soundChk.changed(function () {
+    my.soundRecord = this.checked();
+  });
+
   my.fcountChk = createCheckbox('Count', my.fcount);
   my.fcountChk.style('display:inline');
   my.fcountChk.changed(function () {
@@ -207,7 +213,7 @@ function ui_error(...args) {
 // });
 
 // createButton('Upload').mousePressed(function () {
-//   fstore_upload();
+//   fstore_img_upload();
 // });
 
 // my.reloadBtn = createButton('Reload');

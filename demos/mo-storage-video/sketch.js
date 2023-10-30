@@ -1,13 +1,14 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=020', // update to verify change on mobile
+  version: '?v=021', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
   facingMode: 'user',
   face: 1,
   showVideo: 1,
+  soundRecord: 1,
   fcount: 1,
   record: 0,
   replay: 0,
@@ -20,7 +21,7 @@ let my = {
   interval: 1,
   debugLog: 1,
   count_base: 100,
-  count_max: 3,
+  count_max: 5,
   colors: ['red', 'green', 'gold'],
   colorIndex: 1,
   logLinesMax: 3,
@@ -93,15 +94,27 @@ function draw_update() {
 
 function update_interval() {
   // console.log('update_interval my.count', my.count);
+
   if (my.replay) {
-    fstore_download();
+    fstore_img_download();
+    if (my.soundRecord) {
+      sound_playback_start();
+    }
+  } else {
+    sound_playback_stop();
   }
+
   if (my.record_preroll) {
     return;
   }
+
   if (my.record) {
-    fstore_upload();
+    fstore_img_upload();
+    if (my.count == 0 && my.soundRecord) {
+      sound_record_start();
+    }
   }
+
   if (my.fcount) {
     if (adjust_count(1) && my.record) {
       // my.colorIndex = (my.colorIndex + 1) % my.colors.length;
@@ -109,6 +122,9 @@ function update_interval() {
       my.recordChk.checked(0);
       my.replay = 1;
       my.replayChk.checked(1);
+      if (my.soundRecord) {
+        sound_record_stop();
+      }
     }
   }
 }
