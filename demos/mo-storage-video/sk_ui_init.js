@@ -75,6 +75,9 @@ function ui_init_controls() {
   my.soundChk.style('display:inline');
   my.soundChk.changed(function () {
     my.soundRecord = this.checked();
+    if (my.soundRecord) {
+      sound_init();
+    }
   });
 
   my.fcountChk = createCheckbox('Count', my.fcount);

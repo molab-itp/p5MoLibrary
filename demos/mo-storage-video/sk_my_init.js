@@ -37,7 +37,9 @@ function my_init() {
 
   init_counts();
 
-  sound_init();
+  if (my.soundRecord) {
+    sound_init();
+  }
 }
 
 function init_layer() {
