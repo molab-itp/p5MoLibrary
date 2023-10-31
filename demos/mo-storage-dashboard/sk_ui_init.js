@@ -65,6 +65,12 @@ function ui_init_controls() {
     my.faceChk.changed(faceChk_action);
   }
 
+  my.fcountChk = createCheckbox('Count', my.fcount);
+  my.fcountChk.style('display:inline');
+  my.fcountChk.changed(function () {
+    my.fcount = this.checked();
+  });
+
   my.videoChk = createCheckbox('Video', my.showVideo);
   my.videoChk.style('display:inline');
   my.videoChk.changed(function () {
@@ -76,12 +82,6 @@ function ui_init_controls() {
   my.soundChk.changed(function () {
     my.soundEnable = this.checked();
     sound_state_update();
-  });
-
-  my.fcountChk = createCheckbox('Count', my.fcount);
-  my.fcountChk.style('display:inline');
-  my.fcountChk.changed(function () {
-    my.fcount = this.checked();
   });
 
   my.recordChk = createCheckbox('Record', my.record);

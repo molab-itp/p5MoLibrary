@@ -24,6 +24,7 @@ function sound_draw() {
   let nowMax = 0;
   let nowMin = 1;
   let xline = frameCount % width;
+  let yline = height;
   for (let i = 0; i < my.volhistory.length; i++) {
     let val = my.volhistory[i];
     let y = map(val, 0, my.lastMax, height, 0);
@@ -34,9 +35,11 @@ function sound_draw() {
     if (val > nowMax) {
       nowMax = val;
     }
-    if (val < nowMin) {
+    // Skip of 0 index to avoid startup zero amplitude
+    if (val < nowMin && i > 0) {
       nowMin = val;
       xline = i;
+      yline = y;
     }
   }
   my.lastMax = nowMax;
@@ -44,6 +47,7 @@ function sound_draw() {
   if (my.volhistory.length > width) {
     my.volhistory.splice(0, 1);
   }
-  stroke(255, 0, 0);
-  line(xline, 0, xline, height);
+  stroke(255, 255, 0);
+  line(0, yline, width, yline);
+  line(xline, yline, xline, height);
 }
