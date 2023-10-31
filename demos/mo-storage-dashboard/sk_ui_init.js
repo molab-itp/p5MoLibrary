@@ -75,11 +75,7 @@ function ui_init_controls() {
   my.soundChk.style('display:inline');
   my.soundChk.changed(function () {
     my.soundEnable = this.checked();
-    if (my.soundEnable) {
-      sound_init();
-    } else {
-      sound_playback_stop();
-    }
+    sound_state_update();
   });
 
   my.fcountChk = createCheckbox('Count', my.fcount);
@@ -93,13 +89,13 @@ function ui_init_controls() {
   my.recordChk.changed(function () {
     my.record = this.checked();
     record_state_update(my.record);
+    sound_state_update();
   });
 
   my.replayChk = createCheckbox('Replay', my.replay);
   my.replayChk.style('display:inline');
   my.replayChk.changed(function () {
     my.replay = this.checked();
-    // init_replay();
     init_counts();
   });
 

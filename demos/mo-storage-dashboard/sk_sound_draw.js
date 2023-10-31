@@ -1,17 +1,22 @@
-let volhistory = [];
-let lastMax = 0;
+function sound_draw_init() {
+  my.volhistory = [];
+  my.lastMax = 0;
+}
 
 function sound_draw() {
   let vol;
-  if (my.mic) {
-    vol = my.mic.getLevel();
-  } else if (my.amp) {
+  if (!my.soundEnable) {
+    return;
+  }
+  if (my.amp) {
     vol = my.amp.getLevel();
+  } else if (my.mic) {
+    vol = my.mic.getLevel();
   } else {
     return;
   }
   // console.log('sound_draw vol', vol);
-  volhistory.push(vol);
+  my.volhistory.push(vol);
   strokeWeight(2);
   stroke(255);
   noFill();
@@ -19,12 +24,12 @@ function sound_draw() {
   let nowMax = 0;
   let nowMin = 1;
   let xline = frameCount % width;
-  for (let i = 0; i < volhistory.length; i++) {
-    let val = volhistory[i];
-    let y = map(val, 0, lastMax, height, 0);
+  for (let i = 0; i < my.volhistory.length; i++) {
+    let val = my.volhistory[i];
+    let y = map(val, 0, my.lastMax, height, 0);
     vertex(i, y);
-    if (val > lastMax) {
-      lastMax = val;
+    if (val > my.lastMax) {
+      my.lastMax = val;
     }
     if (val > nowMax) {
       nowMax = val;
@@ -34,10 +39,10 @@ function sound_draw() {
       xline = i;
     }
   }
-  lastMax = nowMax;
+  my.lastMax = nowMax;
   endShape();
-  if (volhistory.length > width) {
-    volhistory.splice(0, 1);
+  if (my.volhistory.length > width) {
+    my.volhistory.splice(0, 1);
   }
   stroke(255, 0, 0);
   line(xline, 0, xline, height);

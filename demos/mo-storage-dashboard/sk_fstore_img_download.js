@@ -1,7 +1,7 @@
 function fstore_img_download() {
   // console.log('fstore_img_download ');
   let path = next_imagePath(my.count);
-  my.lastDownloadPath = null;
+  // my.lastDownloadPath = null;
   // ui_log('fstore_img_download next_imagePath ' + path);
   let { storage, ref, getDownloadURL } = fb_.fstore;
   getDownloadURL(ref(storage, path))
@@ -40,8 +40,10 @@ function fstore_img_download() {
 // HTMLCanvasElement.prototype.renderImage = function(blob) {
 
 function renderBlobToCanvas(blob) {
-  let canvas = my.canvas.elt;
-  var ctx = canvas.getContext('2d');
+  // let elt = my.canvas.elt;
+  // let ctx = elt.getContext('2d');
+  // let ctx = my.canvas.drawingContext;
+  let ctx = my.replayLayer.drawingContext;
   var img = new Image();
   img.onload = function () {
     ctx.drawImage(img, 0, 0, width, height);

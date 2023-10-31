@@ -92,6 +92,9 @@ function draw_millis(layer) {
 // !!@ fill and rect not drawn
 //  layer = my.canvas
 // !!@ layer vs. canvas inconsistency
+
+// Draw frame count or file name of last download to canvas
+//
 function draw_count() {
   // let layer = my.canvas;
   let layer = p5.instance;

@@ -1,8 +1,11 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=023', // update to verify change on mobile
-  width: 480, // Aspect ratio of video capture
+  // update to verify change on mobile
+  version: '?v=024',
+  // Aspect ratio of video capture/
+  // will be scaled by rezScale
+  width: 480,
   height: 640,
   vFlip: 0,
   facingMode: 'user',
@@ -75,7 +78,9 @@ function draw_update() {
   draw_millis(layer);
   draw_dateISOString(layer);
 
-  if (!my.replay) {
+  if (my.replay) {
+    image(my.replayLayer, 0, 0, width, height);
+  } else {
     image(layer, 0, 0, width, height);
   }
 

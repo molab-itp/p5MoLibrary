@@ -52,6 +52,8 @@ function init_layer() {
   my.vheight = h;
   my.captionSize = my.layer.height / my.captionScale;
   my.layer.noStroke();
+
+  my.replayLayer = createGraphics(my.width, my.height);
 }
 
 function init_counts() {
