@@ -71,12 +71,14 @@ function ui_init_controls() {
     my.showVideo = this.checked();
   });
 
-  my.soundChk = createCheckbox('Sound', my.soundRecord);
+  my.soundChk = createCheckbox('Sound', my.soundEnable);
   my.soundChk.style('display:inline');
   my.soundChk.changed(function () {
-    my.soundRecord = this.checked();
-    if (my.soundRecord) {
+    my.soundEnable = this.checked();
+    if (my.soundEnable) {
       sound_init();
+    } else {
+      sound_playback_stop();
     }
   });
 

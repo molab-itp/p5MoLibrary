@@ -17,7 +17,9 @@ function fstore_img_download() {
         // ui_log('fstore_img_download blob ' + blob);
         renderBlobToCanvas(blob);
         my.lastDownloadPath = path;
-        ui_log('download ' + path);
+        if (my.img_download_log) {
+          ui_log('download ' + path);
+        }
       };
       xhr.open('GET', url);
       xhr.send();

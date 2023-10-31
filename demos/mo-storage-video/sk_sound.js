@@ -1,21 +1,13 @@
 function sound_init() {
-  console.log('getAudioContext().state', getAudioContext().state);
-  if (getAudioContext().state !== 'running') {
-    getAudioContext().resume();
-  }
-
+  sound_AudioContext_resume();
   // create an audio in
   my.mic = new p5.AudioIn();
-
   // users must manually enable their browser microphone for recording to work properly!
   my.mic.start();
-
   // create a sound recorder
   my.recorder = new p5.SoundRecorder();
-
   // connect the mic to the recorder
   my.recorder.setInput(my.mic);
-
   // create an empty sound file
   // that we will use to playback the recording
   my.soundFile = new p5.SoundFile();
@@ -24,72 +16,50 @@ function sound_init() {
 
 function sound_record_start() {
   console.log('sound_record_start');
-
-  if (my.sound_record_started) return;
+  if (my.sound_record_started) {
+    return;
+  }
   my.sound_record_started = 1;
-
   // Tell recorder to record to a p5.SoundFile
   // which we will use for playback
   my.recorder.record(my.soundFile);
+  my.amp = new p5.Amplitude();
+  my.amp.setInput(my.soundFile);
+}
+
+function sound_AudioContext_resume() {
+  let aSoundContext = getAudioContext();
+  console.log('aSoundContext.state', aSoundContext.state);
+  if (aSoundContext.state !== 'running') {
+    aSoundContext.resume();
+  }
 }
 
 function sound_record_stop() {
   console.log('sound_record_stop');
-
   my.sound_record_started = 0;
-
   // stop recorder, and send the result to soundFile
   my.recorder.stop();
-
+  // Prepare for upload
   my.fstore_sound_upload_started = 1;
   my.fstore_sound_upload_completed = 0;
-  my.sound_download_soundFile = null;
+  my.sound_downFile = null;
+
+  if (my.mic) {
+    my.mic.stop();
+    my.mic = null;
+  }
 
   // Give record a sec before asking for blob
   setTimeout(sound_getBlob, 1 * 1000);
 }
 
-function sound_getBlob() {
-  my.soundBlob = my.soundFile.getBlob();
-
-  fstore_sound_upload_blob(my.soundBlob, 0);
-}
-
-function fstore_sound_upload_blob(blob, count) {
-  console.log('fstore_sound_upload_blob', blob);
-  let { storage, ref, uploadBytes } = fb_.fstore;
-  my.soundPath = next_soundPath(count);
-  ui_log('fstore_sound_upload_blob my.soundPath', my.soundPath);
-  const storageRef = ref(storage, my.soundPath);
-  // 'file' comes from the Blob or File API
-  uploadBytes(storageRef, blob)
-    .then((snapshot) => {
-      // ui_log('snapshot.metadata.fullPath ' + snapshot.metadata.fullPath);
-      // console.log('snapshot', snapshot);
-      // console.log('Uploaded path', path);
-      ui_log('upload ', my.soundPath);
-      my.fstore_sound_upload_completed = 1;
-    })
-    .catch((error) => {
-      // Handle any errors
-      ui_error('fstore_sound_upload_blob error', error);
-    });
-}
-
-function next_soundPath(count) {
-  // console.log('next_soundPath');
-  let str = (count + my.count_base + 1).toString().padStart(my.image_seq_pad, '0');
-  return `${my.dbStoreRootPath}/${my.clipsName}/${str}.wav`;
-}
-
 function sound_playback_start() {
-  // console.log('sound_playback_start', my.sound_download_soundFile ? 'soundFile' : '-');
-
+  // console.log('sound_playback_start', my.sound_downFile ? 'soundFile' : '-');
   // skip if soundfile is already playing
-  if (my.sound_download_soundFile) {
+  if (my.sound_downFile) {
     return;
   }
-
   // Wait for upload to complete
   if (
     my.fstore_sound_upload_started && //
@@ -97,74 +67,30 @@ function sound_playback_start() {
   ) {
     return;
   }
-
+  // download the sound
   fstore_sound_download();
 }
 
 function sound_playback_stop() {
-  // console.log('sound_playback_stop', my.sound_download_soundFile ? 'soundFile' : '-');
-
-  if (!my.sound_download_soundFile) {
+  // console.log('sound_playback_stop', my.sound_downFile ? 'soundFile' : '-');
+  if (!my.sound_downFile) {
     return;
   }
-
-  my.sound_download_soundFile.stop();
-  my.sound_download_soundFile = null;
+  // stop the sound and reset vars
+  my.sound_downFile.stop();
+  my.sound_downFile = null;
   my.sound_download_blob = null;
+  my.amp = null;
+  my.mic = null;
 }
 
-function fstore_sound_download() {
-  // console.log('fstore_sound_download ');
-  let path = next_soundPath(0);
-  // ui_log('fstore_sound_download next_imagePath ' + path);
-  let { storage, ref, getDownloadURL } = fb_.fstore;
-  getDownloadURL(ref(storage, path))
-    .then((url) => {
-      const xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = (event) => {
-        const blob = xhr.response;
-        // ui_log('fstore_sound_download blob ' + blob);
-        ui_log('download ' + path);
-        sound_play_blob(blob);
-      };
-      xhr.open('GET', url);
-      xhr.send();
-    })
-    .catch((error) => {
-      // Handle any errors
-      ui_error('fstore_sound_download error', error);
-    });
-}
-function sound_play_blob(blob) {
-  my.sound_download_blob = blob;
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    const srcUrl = e.target.result;
-    // console.log('sound_play_blob srcUrl', srcUrl);
-    my.sound_srcUrl = srcUrl;
-    my.sound_download_soundFile = new p5.SoundFile(
-      srcUrl, //
-      sound_cb_ok,
-      sound_cb_error,
-      sound_cb_while
-    );
-  };
-  reader.readAsDataURL(blob);
-
-  function sound_cb_ok() {
-    // console.log('sound_cb_ok');
-    my.sound_download_soundFile.play();
-    my.sound_download_soundFile.loop();
+function sound_downloaded() {
+  my.sound_downFile.play();
+  my.sound_downFile.loop();
+  if (!my.amp) {
+    my.amp = new p5.Amplitude();
   }
-
-  function sound_cb_error(error) {
-    ui_error('sound_cb_error', error);
-  }
-
-  function sound_cb_while(prog) {
-    // console.log('sound_cb_while prog', prog);
-  }
+  my.amp.setInput(my.sound_downFile);
 }
 
 // https://p5js.org/reference/#/p5.SoundFile

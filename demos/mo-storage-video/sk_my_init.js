@@ -37,9 +37,11 @@ function my_init() {
 
   init_counts();
 
-  if (my.soundRecord) {
+  if (my.soundEnable) {
     sound_init();
   }
+
+  my.img_download_log = 0;
 }
 
 function init_layer() {

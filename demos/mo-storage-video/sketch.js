@@ -1,14 +1,14 @@
 // mo-storage-video
 
 let my = {
-  version: '?v=022', // update to verify change on mobile
+  version: '?v=023', // update to verify change on mobile
   width: 480, // Aspect ratio of video capture
   height: 640,
   vFlip: 0,
   facingMode: 'user',
   face: 1,
   showVideo: 1,
-  soundRecord: 0,
+  soundEnable: 0,
   fcount: 1,
   record: 0,
   replay: 0,
@@ -55,6 +55,8 @@ function draw() {
   draw_update();
 
   ui_update();
+
+  sound_draw();
 }
 
 function draw_update() {
@@ -83,8 +85,6 @@ function draw_update() {
     draw_count();
   }
 
-  ui_update();
-
   let now = millis() / 1000;
   if (now > my.next_secs) {
     my.next_secs = now + my.interval;
@@ -97,7 +97,7 @@ function update_interval() {
 
   if (my.replay) {
     fstore_img_download();
-    if (my.soundRecord) {
+    if (my.soundEnable) {
       sound_playback_start();
     }
   } else {
@@ -110,19 +110,18 @@ function update_interval() {
 
   if (my.record) {
     fstore_img_upload();
-    if (my.count == 0 && my.soundRecord) {
+    if (my.count == 0 && my.soundEnable) {
       sound_record_start();
     }
   }
 
   if (my.fcount) {
     if (adjust_count(1) && my.record) {
-      // my.colorIndex = (my.colorIndex + 1) % my.colors.length;
       my.record = 0;
       my.recordChk.checked(0);
       my.replay = 1;
       my.replayChk.checked(1);
-      if (my.soundRecord) {
+      if (my.soundEnable) {
         sound_record_stop();
       }
     }
