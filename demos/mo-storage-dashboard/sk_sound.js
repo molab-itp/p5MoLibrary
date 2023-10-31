@@ -81,6 +81,7 @@ function sound_playback_stop() {
   if (!my.sound_downFile) {
     return;
   }
+  ui_log('sound_playback_stop', my.sound_downFile ? 'soundFile' : '-');
   // stop the sound and reset vars
   my.sound_downFile.stop();
   my.sound_downFile = null;
