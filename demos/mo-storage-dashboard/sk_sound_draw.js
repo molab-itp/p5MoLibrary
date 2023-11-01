@@ -60,3 +60,7 @@ function sound_draw() {
   line(0, yline, width, yline);
   line(xline, yline, xline, height);
 }
+
+// https://editor.p5js.org/jht9629-nyu/sketches/pwLiHkndo
+// mic graph
+// graph the volume level of the mic
