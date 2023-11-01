@@ -2,11 +2,11 @@ function my_init() {
   //
   pixelDensity(1);
 
-  my.dbStoreRootPath = '-mo-storage-video-@w-';
+  // my.dbStoreRootPath = '-mo-storage-video-@w-';
+  my.dbStoreRootPath = '-mo-storage-dashboard-@w-';
+  console.log('my.dbStoreRootPath', my.dbStoreRootPath);
 
-  let today = new Date();
-  let str = today.toISOString();
-  my.clipsName += '-' + str.substring(0, 10);
+  init_clipsName();
 
   if (my.png) {
     // png image type preserves white background
@@ -42,6 +42,28 @@ function my_init() {
   }
 
   my.img_download_log = 0;
+}
+
+function init_clipsName() {
+  let today = new Date();
+  let str = today.toISOString();
+  clipsName_restore();
+  my.clipsName += '/' + str.substring(0, 10);
+}
+
+function clipsName_restore() {
+  let nclipsName = localStorage.getItem('clipsName');
+  console.log('clipsName_restore nclipsName', nclipsName);
+  if (!nclipsName) {
+    return;
+  }
+  my.clipsName = nclipsName;
+}
+
+function clipsName_update() {
+  console.log('clipsName_update my.clipsName', my.clipsName);
+  let parts = my.clipsName.split('/');
+  localStorage.setItem('clipsName', parts[0]);
 }
 
 function init_layer() {

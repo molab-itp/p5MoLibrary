@@ -34,7 +34,7 @@ function next_soundPath(count) {
 function fstore_sound_download() {
   // console.log('fstore_sound_download ');
   let path = next_soundPath(0);
-  ui_log('fstore_sound_download next_imagePath ' + path);
+  // ui_log('fstore_sound_download next_imagePath ' + path);
   let { storage, ref, getDownloadURL } = fb_.fstore;
   getDownloadURL(ref(storage, path))
     .then((url) => {
@@ -71,7 +71,7 @@ function sound_play_blob(blob) {
   reader.readAsDataURL(blob);
 
   function sound_cb_ok() {
-    console.log('sound_cb_ok');
+    // console.log('sound_cb_ok');
     sound_downloaded();
   }
 

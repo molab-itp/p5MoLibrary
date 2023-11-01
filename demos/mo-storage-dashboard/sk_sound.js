@@ -39,7 +39,7 @@ function sound_record_start() {
 
 function sound_AudioContext_resume() {
   let aSoundContext = getAudioContext();
-  console.log('aSoundContext.state', aSoundContext.state);
+  // console.log('aSoundContext.state', aSoundContext.state);
   if (aSoundContext.state !== 'running') {
     aSoundContext.resume();
   }

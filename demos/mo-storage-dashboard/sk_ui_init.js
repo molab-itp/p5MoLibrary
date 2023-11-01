@@ -22,60 +22,9 @@ function ui_init_controls() {
     location.reload();
   });
 
-  createButton('Color+').mousePressed(function () {
-    my.colorIndex = (my.colorIndex + 1) % my.colors.length;
-  });
-
-  createButton('<-100').mousePressed(function () {
-    my.count_base -= 100;
-    if (my.count_base < 0) {
-      my.count_base = 0;
-    }
-    init_counts();
-  });
-
-  createButton('100+>').mousePressed(function () {
-    my.count_base += 100;
-    init_counts();
-  });
-
-  createButton('<-1').mousePressed(function () {
-    adjust_count(-1);
-    update_interval();
-  });
-
-  createButton('1+>').mousePressed(function () {
-    adjust_count(1);
-    update_interval();
-  });
-
-  createElement('br');
-
-  create_resolution_selection();
-
-  create_count_selection();
-
   create_clipsName_input();
 
   createElement('br');
-
-  if (!my.replayName) {
-    my.faceChk = createCheckbox('Face', my.face);
-    my.faceChk.style('display:inline');
-    my.faceChk.changed(faceChk_action);
-  }
-
-  my.fcountChk = createCheckbox('Count', my.fcount);
-  my.fcountChk.style('display:inline');
-  my.fcountChk.changed(function () {
-    my.fcount = this.checked();
-  });
-
-  my.videoChk = createCheckbox('Video', my.showVideo);
-  my.videoChk.style('display:inline');
-  my.videoChk.changed(function () {
-    my.showVideo = this.checked();
-  });
 
   my.soundChk = createCheckbox('Sound', my.soundEnable);
   my.soundChk.style('display:inline');
@@ -100,11 +49,52 @@ function ui_init_controls() {
   });
 
   createElement('br');
+
+  create_count_selection();
+
+  create_resolution_selection();
+
+  createButton('Color+').mousePressed(function () {
+    my.colorIndex = (my.colorIndex + 1) % my.colors.length;
+  });
+
+  createButton('<-1').mousePressed(function () {
+    adjust_count(-1);
+    update_interval();
+  });
+
+  createButton('1+>').mousePressed(function () {
+    adjust_count(1);
+    update_interval();
+  });
+
+  createElement('br');
+
+  if (!my.replayName) {
+    my.faceChk = createCheckbox('Face', my.face);
+    my.faceChk.style('display:inline');
+    my.faceChk.changed(faceChk_action);
+  }
+
+  my.fcountChk = createCheckbox('Count', my.fcount);
+  my.fcountChk.style('display:inline');
+  my.fcountChk.changed(function () {
+    my.fcount = this.checked();
+  });
+
+  my.videoChk = createCheckbox('Video', my.showVideo);
+  my.videoChk.style('display:inline');
+  my.videoChk.changed(function () {
+    my.showVideo = this.checked();
+  });
+
+  createElement('br');
 }
 
 function create_clipsName_input() {
   let elm = createInput(my.clipsName).input(function () {
     my.clipsName = this.value();
+    clipsName_update();
   });
 }
 
@@ -204,6 +194,19 @@ function ui_log(...args) {
 function ui_error(...args) {
   ui_log(...args);
 }
+
+// createButton('<-100').mousePressed(function () {
+//   my.count_base -= 100;
+//   if (my.count_base < 0) {
+//     my.count_base = 0;
+//   }
+//   init_counts();
+// });
+
+// createButton('100+>').mousePressed(function () {
+//   my.count_base += 100;
+//   init_counts();
+// });
 
 // createButton('SignIn').mousePressed(function () {
 //   fb_signIn();

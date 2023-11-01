@@ -31,8 +31,8 @@ function fstore_img_download() {
     .catch((error) => {
       // Handle any errors
       ui_error('fstore_getDownloadURL error', error);
-      fill(0);
-      rect(0, 0, width, height);
+      my.replayLayer.fill(0);
+      my.replayLayer.rect(0, 0, width, height);
     });
 }
 

@@ -1,13 +1,14 @@
 // https://firebase.google.com/docs/storage/web/list-files#list_all_files
 function fstore_listAll(bucket) {
-  console.log('fstore_listAll bucket', bucket);
+  // console.log('fstore_listAll bucket', bucket);
   let { storage, ref, listAll } = fb_.fstore;
   bucket = bucket || my.dbStoreRootPath;
+  console.log('fstore_listAll bucket', bucket);
   // Create a reference under which you want to list
   // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
   // const listRef = ref(storage, '');
   const listRef = ref(storage, bucket);
-  console.log('listRef', listRef);
+  // console.log('listRef', listRef);
   // Find all the prefixes and items.
   listAll(listRef)
     .then((res) => {
