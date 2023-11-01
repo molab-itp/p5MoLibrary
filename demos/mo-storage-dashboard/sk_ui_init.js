@@ -58,16 +58,6 @@ function ui_init_controls() {
     my.colorIndex = (my.colorIndex + 1) % my.colors.length;
   });
 
-  createButton('<-1').mousePressed(function () {
-    adjust_count(-1);
-    update_interval();
-  });
-
-  createButton('1+>').mousePressed(function () {
-    adjust_count(1);
-    update_interval();
-  });
-
   createElement('br');
 
   if (!my.replayName) {
@@ -76,16 +66,26 @@ function ui_init_controls() {
     my.faceChk.changed(faceChk_action);
   }
 
+  my.videoChk = createCheckbox('Video', my.showVideo);
+  my.videoChk.style('display:inline');
+  my.videoChk.changed(function () {
+    my.showVideo = this.checked();
+  });
+
   my.fcountChk = createCheckbox('Count', my.fcount);
   my.fcountChk.style('display:inline');
   my.fcountChk.changed(function () {
     my.fcount = this.checked();
   });
 
-  my.videoChk = createCheckbox('Video', my.showVideo);
-  my.videoChk.style('display:inline');
-  my.videoChk.changed(function () {
-    my.showVideo = this.checked();
+  createButton('<-1').mousePressed(function () {
+    adjust_count(-1);
+    update_interval();
+  });
+
+  createButton('1+>').mousePressed(function () {
+    adjust_count(1);
+    update_interval();
   });
 
   createElement('br');
