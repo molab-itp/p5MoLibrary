@@ -14,6 +14,8 @@ View images from MoGallery firebase database using p5js
   - [demos/createImg-board](demos/createImg-board/)
   - [demos/createImg-slide-show](demos/createImg-slide-show)
 
+[on github.io](https://molab-itp.github.io/98-MoGallery-p5js/?v=001)
+
 <!--
 - hold
 - [demos/draw-share](demos/draw-share)
