@@ -3,7 +3,7 @@
 
 let my = {
   // update to verify change on mobile
-  version: '?v=027',
+  version: '?v=028',
   // Aspect ratio of video capture/
   // will be scaled by rezScale
   width: 480,
