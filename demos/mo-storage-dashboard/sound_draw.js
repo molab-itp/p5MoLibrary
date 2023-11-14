@@ -35,6 +35,10 @@ function sound_draw() {
   for (let i = 0; i < nv; i++) {
     let val = my.volhistory[i];
     let y = map(val, 0, my.lastMax, height, 0);
+    if (Number.isNaN(y)) {
+      // console.log('i', i, 'y', y, 'val', val, 'my.lastMax', my.lastMax);
+      y = 0;
+    }
     vertex(xoffset + i, y);
     if (val > my.lastMax) {
       my.lastMax = val;
@@ -47,6 +51,7 @@ function sound_draw() {
       nowMin = val;
       xline = i;
       yline = y;
+      // console.log('xline', xline, 'yline', yline);
     }
   }
   my.lastMax = nowMax;
@@ -59,6 +64,7 @@ function sound_draw() {
   stroke(255, 255, 0);
   line(0, yline, width, yline);
   line(xline, yline, xline, height);
+  // console.log('xline', xline, 'yline', yline);
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/pwLiHkndo

@@ -1,9 +1,10 @@
 // https://editor.p5js.org/jht9629-gmail/sketches/VWbtyZTnx
 // mo-storage-dashboard
+// https://molab-itp.github.io/98-MoGallery-p5js/demos/mo-storage-dashboard
 
 let my = {
   // update to verify change on mobile
-  version: '?v=029',
+  version: '?v=030',
   // Aspect ratio of video capture/
   // will be scaled by rezScale
   width: 480,
