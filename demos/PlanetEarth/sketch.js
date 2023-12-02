@@ -9,15 +9,16 @@ let angleDir = 1;
 
 let table;
 let aRadius = 200;
-let aDetail = 2;
+let aDetail = 4;
 
 let earthImg;
 
 let cam;
 
 function preload() {
+  earthImg = loadImage('world-ultra.jpg');
+  // earthImg = loadImage('world-large.jpg');
   // earthImg = loadImage('world.jpg');
-  earthImg = loadImage('world-large.jpg');
   // earthImg = loadImage('earth.jpg');
 }
 
@@ -54,3 +55,8 @@ function mousePressed() {
 
 // https://editor.p5js.org/jht9629-nyu/sketches/SJtBwJIcU
 // CC 58 - Earthquake Visualization 3D
+
+// https://github.com/dmojdehi/SwiftGlobe.git
+//  demos/PlanetEarth/world-large.jpg
+//  demos/PlanetEarth/world-ultra.jpg
+//  demos/PlanetEarth/world.jpg
