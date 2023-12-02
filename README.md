@@ -4,6 +4,7 @@ View images from MoGallery firebase database using p5js
 
 - test
 
+  - [demos/PlanetEarth](demos/PlanetEarth?v=028)
   - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v=028)
   - [demos/mo-storage](demos/mo-storage)
   - [demos/mo-pixel-grid](demos/mo-pixel-grid)
