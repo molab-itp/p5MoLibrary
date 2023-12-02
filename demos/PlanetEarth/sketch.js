@@ -1,14 +1,15 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
 // PlanetEarth
 
-let angleY = 2.8;
+let angleX = -0.6;
+// let angleY = 2.8; // Africa
+let angleY = 5.0; // North America
 let angleStep = 0.001;
 let angleDir = 1;
 
 let table;
 let aRadius = 200;
 let aDetail = 2;
-let angleX = -0.1;
 
 let earthImg;
 
@@ -29,7 +30,7 @@ function setup() {
 }
 
 function draw() {
-  background(51);
+  background(0);
 
   // cam.pan(0.0001);
 
