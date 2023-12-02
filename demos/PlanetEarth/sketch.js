@@ -16,7 +16,8 @@ let earthImg;
 let cam;
 
 function preload() {
-  earthImg = loadImage('world-large.jpg');
+  earthImg = loadImage('world.jpg');
+  // earthImg = loadImage('world-large.jpg');
   // earthImg = loadImage('earth.jpg');
 }
 
