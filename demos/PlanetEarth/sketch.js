@@ -28,13 +28,9 @@ let my = {
 
 function preload() {
   my.earthImg = loadImage('world-ultra.jpg');
-  // earthImg = loadImage('world-large.jpg');
-  // earthImg = loadImage('world.jpg');
-  // earthImg = loadImage('earth.jpg');
 }
 
 function setup() {
-  // createCanvas(600, 600, WEBGL);
   createCanvas(windowWidth, windowHeight, WEBGL);
   my.aRadius = windowHeight * 0.38;
   nextDir();
