@@ -3,7 +3,7 @@
 
 function preload() {
   my.earthImg = loadImage('assets/world-ultra.jpg');
-  my.plenty = loadImage('assets/plenty.jpeg');
+  my.plenty = loadImage('assets/plenty-3.jpeg');
 }
 
 function setup() {
@@ -15,7 +15,8 @@ function setup() {
       let w = windowWidth;
       let h = windowHeight;
       my.aCanvas = p_.createCanvas(h, h, WEBGL);
-      my.aCanvas.position(w - h, 0);
+      // my.aCanvas.position(w / 2 - h / 2, 0);
+      my.aCanvas.position(0, 0);
       p_.clear();
       p_.noStroke();
     };
@@ -43,8 +44,8 @@ function draw() {
   fill('green');
   textSize(40);
   text('Hello', 0, 50);
-  // let w = my.plenty.width;
-  // let h = my.plenty.height;
+  let w = my.plenty.width;
+  let h = my.plenty.height;
   let wr = windowWidth;
   let hr = windowHeight;
   image(my.plenty, 0, 0, wr, hr);
