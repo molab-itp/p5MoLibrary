@@ -8,13 +8,14 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   my.aRadius = floor(windowHeight * 0.38);
-  // my.layer = createGraphics(windowWidth, windowHeight, WEBGL);
 
-  // pixelDensity(1);
   const skt = (p_) => {
     p_.setup = () => {
-      my.aCanvas = p_.createCanvas(windowWidth, windowHeight, WEBGL);
-      my.aCanvas.position(0, 0);
+      let w = windowWidth;
+      let h = windowHeight;
+      my.aCanvas = p_.createCanvas(h, h, WEBGL);
+      my.aCanvas.position(w - h, 0);
+      p_.noStroke();
     };
     p_.draw = () => {
       p_.rotateX(my.angleX);
@@ -23,7 +24,6 @@ function setup() {
       my.angleX += my.angleXstep * my.angleXdir;
       my.angleY += my.angleYstep * my.angleYdir;
 
-      p_.noStroke();
       p_.lights();
       p_.texture(my.earthImg);
       p_.sphere(my.aRadius, 24 * my.aDetail, 16 * my.aDetail);
@@ -36,10 +36,6 @@ function setup() {
 
 function draw() {
   background(0);
-
-  // let layer = my.layer;
-
-  // image(layer, 0, 0);
 }
 
 function mousePressed() {
