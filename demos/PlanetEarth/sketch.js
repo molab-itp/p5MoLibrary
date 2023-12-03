@@ -7,22 +7,27 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  my.aRadius = windowHeight * 0.38;
+  my.aRadius = floor(windowHeight * 0.38);
+  my.layer = createGraphics(windowWidth, windowHeight, WEBGL);
   nextDir();
 }
 
 function draw() {
   background(0);
 
-  rotateX(my.angleX);
-  rotateY(my.angleY);
+  let layer = my.layer;
+
+  layer.rotateX(my.angleX);
+  layer.rotateY(my.angleY);
 
   my.angleX += my.angleXstep * my.angleXdir;
   my.angleY += my.angleYstep * my.angleYdir;
 
-  lights();
-  texture(my.earthImg);
-  sphere(my.aRadius, 24 * my.aDetail, 16 * my.aDetail);
+  layer.lights();
+  layer.texture(my.earthImg);
+  layer.sphere(my.aRadius, 24 * my.aDetail, 16 * my.aDetail);
+
+  image(layer, 0, 0);
 }
 
 function mousePressed() {
