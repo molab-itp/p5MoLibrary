@@ -10,29 +10,32 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   my.aRadius = floor(windowHeight * 0.38);
 
-  const skt = (p_) => {
-    p_.setup = () => {
+  const skt = (pInst) => {
+    pInst.setup = () => {
       let w = windowWidth;
       let h = windowHeight;
-      my.aCanvas = p_.createCanvas(h, h, WEBGL);
+      my.aCanvas = pInst.createCanvas(h, h, WEBGL);
       // my.aCanvas.position(w / 2 - h / 2, 0);
-      my.aCanvas.position(w - h, 0);
-      p_.clear();
-      p_.noStroke();
+      // my.aCanvas.position(w - h, 0);
+      my.aCanvas.position(0, 0);
+      pInst.clear();
+      pInst.noStroke();
     };
-    p_.draw = () => {
-      p_.rotateX(my.angleX);
-      p_.rotateY(my.angleY);
+    pInst.draw = () => {
+      // pInst.orbitControl();
+
+      pInst.rotateX(my.angleX);
+      pInst.rotateY(my.angleY);
 
       my.angleX += my.angleXstep * my.angleXdir;
       my.angleY += my.angleYstep * my.angleYdir;
 
-      p_.lights();
-      p_.texture(my.earthImg);
-      p_.sphere(my.aRadius, 24 * my.aDetail, 16 * my.aDetail);
+      pInst.lights();
+      pInst.texture(my.earthImg);
+      pInst.sphere(my.aRadius, 24 * my.aDetail, 16 * my.aDetail);
     };
   };
-  my.p_inst = new p5(skt);
+  my.pInst = new p5(skt);
 
   nextDir();
 }
