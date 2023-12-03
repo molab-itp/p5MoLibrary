@@ -1,22 +1,18 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
 // PlanetEarth
 
-let angleX = -0.6;
-// let angleY = 2.8; // Africa
-let angleY = 5.0; // North America
-let angleStep = 0.001;
-let angleDir = 1;
-
-let table;
-let aRadius = 200;
-let aDetail = 4;
-
-let earthImg;
-
-let cam;
+let my = {
+  angleX: -0.6,
+  // angleY: 2.8, // Africa
+  angleY: 5.0, // North America
+  angleStep: 0.001,
+  angleDir: 1,
+  aRadius: 200,
+  aDetail: 4,
+};
 
 function preload() {
-  earthImg = loadImage('world-ultra.jpg');
+  my.earthImg = loadImage('world-ultra.jpg');
   // earthImg = loadImage('world-large.jpg');
   // earthImg = loadImage('world.jpg');
   // earthImg = loadImage('earth.jpg');
@@ -25,9 +21,9 @@ function preload() {
 function setup() {
   // createCanvas(600, 600, WEBGL);
   createCanvas(windowWidth, windowHeight, WEBGL);
-  aRadius = windowHeight * 0.38;
+  my.aRadius = windowHeight * 0.38;
 
-  cam = createCamera();
+  my.cam = createCamera();
   // cam.pan(-0.8);
 }
 
@@ -36,21 +32,21 @@ function draw() {
 
   // cam.pan(0.0001);
 
-  rotateX(angleX);
-  rotateY(angleY);
+  rotateX(my.angleX);
+  rotateY(my.angleY);
 
   // orbitControl();
-  angleY += angleStep * angleDir;
+  my.angleY += my.angleStep * my.angleDir;
 
   lights();
   fill(255);
   noStroke();
-  texture(earthImg);
-  sphere(aRadius, 24 * aDetail, 16 * aDetail);
+  texture(my.earthImg);
+  sphere(my.aRadius, 24 * my.aDetail, 16 * my.aDetail);
 }
 
 function mousePressed() {
-  angleDir = (angleDir + 1) % 2;
+  my.angleDir = (my.angleDir + 1) % 2;
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/SJtBwJIcU
