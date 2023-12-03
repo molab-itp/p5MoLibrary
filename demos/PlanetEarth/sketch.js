@@ -29,8 +29,6 @@ function mousePressed() {
 function nextDir() {
   my.dirIndex = (my.dirIndex + 1) % my.dirs.length;
   let newDirs = my.dirs[my.dirIndex];
-  // my.angleXdir = newDirs[0];
-  // my.angleYdir = newDirs[1];
   my.earth.angleXdir = newDirs[0];
   my.earth.angleYdir = newDirs[1];
 }
