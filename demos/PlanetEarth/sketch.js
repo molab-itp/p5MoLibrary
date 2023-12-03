@@ -36,8 +36,7 @@ function mouseDragged() {
   } else if (mouseY - pmouseY < -delta) {
     newDir = dirUp;
   }
-  my.earth.angleXdir = newDir[0];
-  my.earth.angleYdir = newDir[1];
+  my.earth.setDir(newDir);
 }
 
 function mousePressed_no() {
@@ -47,8 +46,9 @@ function mousePressed_no() {
 function nextDir() {
   my.dirIndex = (my.dirIndex + 1) % my.dirs.length;
   let newDir = my.dirs[my.dirIndex];
-  my.earth.angleXdir = newDir[0];
-  my.earth.angleYdir = newDir[1];
+  my.earth.setDir(newDir);
+  // my.earth.angleXdir = newDir[0];
+  // my.earth.angleYdir = newDir[1];
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/SJtBwJIcU

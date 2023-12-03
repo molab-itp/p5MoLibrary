@@ -45,4 +45,9 @@ class Earth {
     };
     this.pInst = new p5(skt);
   } // constructor
+
+  setDir(newDir) {
+    this.angleXdir = newDir[0];
+    this.angleYdir = newDir[1];
+  }
 }
