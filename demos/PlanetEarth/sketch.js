@@ -3,12 +3,27 @@
 
 let my = {
   angleX: -0.6,
+  angleXstep: 0.001,
+  angleXdir: 1,
   // angleY: 2.8, // Africa
+
   angleY: 5.0, // North America
-  angleStep: 0.001,
-  angleDir: 1,
+  angleYstep: 0.001,
+  angleYdir: 0,
+
   aRadius: 200,
   aDetail: 4,
+  dirs: [
+    [0, 1],
+    [0, 0],
+    [0, -1],
+    [0, 0],
+    [1, 0],
+    [0, 0],
+    [-1, 0],
+    [0, 0],
+  ],
+  dirIndex: 0,
 };
 
 function preload() {
@@ -22,31 +37,32 @@ function setup() {
   // createCanvas(600, 600, WEBGL);
   createCanvas(windowWidth, windowHeight, WEBGL);
   my.aRadius = windowHeight * 0.38;
-
-  my.cam = createCamera();
-  // cam.pan(-0.8);
+  nextDir();
 }
 
 function draw() {
   background(0);
 
-  // cam.pan(0.0001);
-
   rotateX(my.angleX);
   rotateY(my.angleY);
 
-  // orbitControl();
-  my.angleY += my.angleStep * my.angleDir;
+  my.angleX += my.angleXstep * my.angleXdir;
+  my.angleY += my.angleYstep * my.angleYdir;
 
   lights();
-  fill(255);
-  noStroke();
   texture(my.earthImg);
   sphere(my.aRadius, 24 * my.aDetail, 16 * my.aDetail);
 }
 
 function mousePressed() {
-  my.angleDir = (my.angleDir + 1) % 2;
+  nextDir();
+}
+
+function nextDir() {
+  my.dirIndex = (my.dirIndex + 1) % my.dirs.length;
+  let newDirs = my.dirs[my.dirIndex];
+  my.angleXdir = newDirs[0];
+  my.angleYdir = newDirs[1];
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/SJtBwJIcU
