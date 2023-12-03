@@ -25,7 +25,7 @@ function preload() {
 function setup() {
   // createCanvas(600, 600, WEBGL);
   createCanvas(windowWidth, windowHeight, WEBGL);
-  aRadius = windowWidth * 0.33;
+  aRadius = windowHeight * 0.38;
 
   cam = createCamera();
   // cam.pan(-0.8);
