@@ -22,15 +22,33 @@ function draw() {
   // image(my.plentyImg, 0, 0, wr, hr);
 }
 
-function mousePressed() {
+function mouseDragged() {
+  //
+  let newDir = dirStop;
+  // let delta = floor(width * 0.05);
+  let delta = 0;
+  if (mouseX - pmouseX > delta) {
+    newDir = dirRight;
+  } else if (mouseX - pmouseX < -delta) {
+    newDir = dirLeft;
+  } else if (mouseY - pmouseY > delta) {
+    newDir = dirDown;
+  } else if (mouseY - pmouseY < -delta) {
+    newDir = dirUp;
+  }
+  my.earth.angleXdir = newDir[0];
+  my.earth.angleYdir = newDir[1];
+}
+
+function mousePressed_no() {
   nextDir();
 }
 
 function nextDir() {
   my.dirIndex = (my.dirIndex + 1) % my.dirs.length;
-  let newDirs = my.dirs[my.dirIndex];
-  my.earth.angleXdir = newDirs[0];
-  my.earth.angleYdir = newDirs[1];
+  let newDir = my.dirs[my.dirIndex];
+  my.earth.angleXdir = newDir[0];
+  my.earth.angleYdir = newDir[1];
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/SJtBwJIcU
