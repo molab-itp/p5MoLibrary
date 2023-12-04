@@ -8,6 +8,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
   let x = 0;
   let y = 0;
   let earthImg = my.earthImg;
@@ -19,11 +20,15 @@ function setup() {
 
 function draw() {
   background(0);
+  // draw_plenty();
+}
+
+function draw_plenty() {
   let w = my.plentyImg.width;
   let h = my.plentyImg.height;
   let wr = windowWidth;
   let hr = windowHeight;
-  // image(my.plentyImg, 0, 0, wr, hr);
+  image(my.plentyImg, 0, 0, wr, hr);
 }
 
 function mouseDragged() {
