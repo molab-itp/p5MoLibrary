@@ -9,15 +9,33 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-  let x = 0;
-  let y = 0;
-  let earthImg = my.earthImg;
-  let flushRight = 1;
-  my.earth = new Earth({ x, y, width, height, earthImg, flushRight });
+  make_earth1();
+
+  // make_earth2();
 
   ui_create();
 
   nextDir();
+}
+
+function make_earth1() {
+  let x = 0;
+  let y = 0;
+  let h = height;
+  let earthImg = my.earthImg;
+  let flushRight = 1;
+  my.earth = new Earth({ x, y, width, height: h, earthImg, flushRight });
+}
+
+function make_earth2() {
+  let x = 0;
+  let y = 0;
+  let h = height / 2;
+  let earthImg = my.earthImg;
+  let flushRight = 0;
+  my.earth2 = new Earth({ x, y, width, height: h, earthImg, flushRight });
+  my.earth2.setAngle([-0.567, 5.0]); // USA
+  my.earth2.setDir(dirStop);
 }
 
 function draw() {

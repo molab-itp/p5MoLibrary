@@ -19,7 +19,7 @@ class Earth {
     this.detailX = 24 * 4;
     this.detailY = 16 * 4;
 
-    this.aRadius = floor(height * 0.38);
+    this.aRadius = floor(this.height * 0.38);
 
     const skt = (aInst) => {
       aInst.setup = () => {
@@ -27,10 +27,9 @@ class Earth {
         let h = this.height;
         this.aCanvas = aInst.createCanvas(h, h, WEBGL);
         if (this.flushRight) {
-          this.aCanvas.position(w - h, this.y);
-        } else {
-          this.aCanvas.position(this.x, this.y);
+          this.x = w - h;
         }
+        this.aCanvas.position(this.x, this.y);
         aInst.clear();
         aInst.noStroke();
       };
