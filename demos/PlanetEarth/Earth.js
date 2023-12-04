@@ -1,5 +1,5 @@
 class Earth {
-  // {x, y, width, height, earthImg}
+  // {x, y, width, height, earthImg, flushRight, orbitControl}
   constructor(props) {
     //
     Object.assign(this, props);
@@ -22,7 +22,9 @@ class Earth {
     this.aRadius = floor(this.height * 0.38);
 
     const skt = (aInst) => {
+      //
       aInst.setup = () => {
+        //
         let w = this.width;
         let h = this.height;
         this.aCanvas = aInst.createCanvas(h, h, WEBGL);
@@ -33,8 +35,14 @@ class Earth {
         aInst.clear();
         aInst.noStroke();
       };
+      //
       aInst.draw = () => {
-        // aInst.orbitControl();
+        //
+        aInst.clear();
+
+        if (this.orbitControl) {
+          aInst.orbitControl();
+        }
 
         aInst.rotateX(this.angleX);
         aInst.rotateY(this.angleY);

@@ -24,7 +24,8 @@ function make_earth1() {
   let h = height;
   let earthImg = my.earthImg;
   let flushRight = 1;
-  my.earth = new Earth({ x, y, width, height: h, earthImg, flushRight });
+  let orbitControl = 1;
+  my.earth = new Earth({ x, y, width, height: h, earthImg, flushRight, orbitControl });
 }
 
 function make_earth2() {
@@ -33,7 +34,8 @@ function make_earth2() {
   let h = height / 2;
   let earthImg = my.earthImg;
   let flushRight = 0;
-  my.earth2 = new Earth({ x, y, width, height: h, earthImg, flushRight });
+  let orbitControl = 1;
+  my.earth2 = new Earth({ x, y, width, height: h, earthImg, flushRight, orbitControl });
   my.earth2.setAngle([-0.567, 5.0]); // USA
   my.earth2.setDir(dirStop);
 }
@@ -52,7 +54,7 @@ function draw_plenty() {
   image(my.plentyImg, 0, 0, wr, hr);
 }
 
-function mouseDragged() {
+function mouseDragged_no() {
   //
   let newDir = dirStop;
   // let delta = floor(width * 0.05);
