@@ -40,7 +40,7 @@ function make_earth1() {
 
 function make_body2() {
   let x = 0;
-  let y = 0;
+  let y = floor(my.height * 0.25);
   let h = my.height / 2;
   let img = my.moonImg;
   let flushRight = 0;
@@ -53,10 +53,12 @@ function make_body2() {
 function make_camBody() {
   my.capture = createCapture(VIDEO);
   my.capture.hide();
-  let h = my.height / 2;
+  let h = floor(my.height * 0.3);
   // let x = floor(my.width / 2 - h / 2);
   let x = floor(my.width * 0.3);
-  let y = 0;
+  // let y = 0;
+  // let y = floor(my.height * 0.5);
+  let y = -floor(my.height * 0.07);
   let img = null;
   let flushRight = 0;
   let orbitControl = 1;
