@@ -9,14 +9,17 @@ class Earth {
     this.angleXdir = 1;
     //
     this.angleY = 2.8; // Africa
-    // this.angleY = 5.0; // North America
     this.angleYstep = 0.001;
     this.angleYdir = 0;
+
+    this.angleZ = 0;
+    this.angleZstep = 0.001;
+    this.angleZdir = 0;
 
     this.detailX = 24 * 4;
     this.detailY = 16 * 4;
 
-    this.aRadius = floor(height * 0.4);
+    this.aRadius = floor(height * 0.38);
 
     const skt = (aInst) => {
       aInst.setup = () => {
@@ -36,9 +39,13 @@ class Earth {
 
         aInst.rotateX(this.angleX);
         aInst.rotateY(this.angleY);
+        aInst.rotateZ(this.angleZ);
+        // Order of XY rotation matters
+        // aInst.rotateX(this.angleX);
 
         this.angleX += this.angleXstep * this.angleXdir;
         this.angleY += this.angleYstep * this.angleYdir;
+        this.angleZ += this.angleZstep * this.angleZdir;
 
         aInst.lights();
         aInst.texture(this.earthImg);
@@ -51,5 +58,20 @@ class Earth {
   setDir(newDir) {
     this.angleXdir = newDir[0];
     this.angleYdir = newDir[1];
+    this.angleZdir = newDir[2];
+  }
+
+  zero() {
+    this.angleX = 0;
+    this.angleY = 0;
+    this.angleZ = 0;
+  }
+
+  setAngle(newAngle) {
+    this.angleX = newAngle[0];
+    this.angleY = newAngle[1];
+    if (newAngle.length >= 3) {
+      this.angleZ = newAngle[2];
+    }
   }
 }

@@ -15,11 +15,14 @@ function setup() {
   let flushRight = 1;
   my.earth = new Earth({ x, y, width, height, earthImg, flushRight });
 
+  ui_create();
+
   nextDir();
 }
 
 function draw() {
   background(0);
+  ui_update();
   // draw_plenty();
 }
 
