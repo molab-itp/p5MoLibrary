@@ -53,7 +53,7 @@ function ui_update() {
   select('#id_angleY').html('[angleY=' + angleY + '] ');
 
   let angleZ = my.earth.angleZ.toFixed(4);
-  select('#id_angleY').html('[angleZ=' + angleZ + '] ');
+  select('#id_angleZ').html('[angleZ=' + angleZ + '] ');
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/rXhPgZ1k6
