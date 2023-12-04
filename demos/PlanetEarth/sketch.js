@@ -1,6 +1,6 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
-// https://github.com/molab-itp/98-MoGallery-p5js/tree/main/demos/PlanetEarth
-// PlanetEarth
+// https://github.com/molab-itp/98-MoGallery-p5js/tree/main/demos/HeavenlyBodyEarth
+// HeavenlyBodyEarth
 
 function preload() {
   my.earthImg = loadImage('assets/world-ultra.jpg');
@@ -20,7 +20,8 @@ function setup() {
 
   make_earth1();
 
-  make_body2();
+  // make_body2();
+  make_camBody();
 
   nextDir();
 }
@@ -32,7 +33,7 @@ function make_earth1() {
   let img = my.earthImg;
   let flushRight = 1;
   let orbitControl = 1;
-  my.earth = new Planet({ x, y, width: my.width, height: h, img, flushRight, orbitControl });
+  my.earth = new HeavenlyBody({ x, y, width: my.width, height: h, img, flushRight, orbitControl });
 }
 
 function make_body2() {
@@ -42,7 +43,22 @@ function make_body2() {
   let img = my.moonImg;
   let flushRight = 0;
   let orbitControl = 1;
-  my.earth2 = new Planet({ x, y, width: my.width, height: h, img, flushRight, orbitControl });
+  my.earth2 = new HeavenlyBody({ x, y, width: my.width, height: h, img, flushRight, orbitControl });
+  my.earth2.setAngle(-0.567, 5.0, 0); // USA
+  my.earth2.setDir(dirStop);
+}
+
+function make_camBody() {
+  my.capture = createCapture(VIDEO);
+  my.capture.hide();
+  let x = 0;
+  let y = 0;
+  let h = my.height / 2;
+  let img = null;
+  let flushRight = 0;
+  let orbitControl = 1;
+  let capture = my.capture;
+  my.earth2 = new HeavenlyBody({ x, y, width: my.width, height: h, img, flushRight, orbitControl, capture });
   my.earth2.setAngle(-0.567, 5.0, 0); // USA
   my.earth2.setDir(dirStop);
 }
@@ -106,21 +122,21 @@ function mousePressed_na() {
 // CC 58 - Earthquake Visualization 3D
 
 // https://github.com/dmojdehi/SwiftGlobe.git
-//  demos/PlanetEarth/world-large.jpg
-//  demos/PlanetEarth/world-ultra.jpg
-//  demos/PlanetEarth/world.jpg
+//  demos/HeavenlyBodyEarth/world-large.jpg
+//  demos/HeavenlyBodyEarth/world-ultra.jpg
+//  demos/HeavenlyBodyEarth/world.jpg
 
 // https://editor.p5js.org/Bixbite/sketches/H1-rxu1sm
 // CTC 8 - Solar System 3D by Bixbite
-//  demos/PlanetEarth/assets/moon.jpg
-//  demos/PlanetEarth/assets/venus.jpg
-//  demos/PlanetEarth/assets/phobos.jpg
-//  demos/PlanetEarth/assets/deimos.jpg
-//  demos/PlanetEarth/assets/sun.jpg
+//  demos/HeavenlyBodyEarth/assets/moon.jpg
+//  demos/HeavenlyBodyEarth/assets/venus.jpg
+//  demos/HeavenlyBodyEarth/assets/phobos.jpg
+//  demos/HeavenlyBodyEarth/assets/deimos.jpg
+//  demos/HeavenlyBodyEarth/assets/sun.jpg
 
 // https://en.wikipedia.org/wiki/Astronomical_object
-//  demos/PlanetEarth/assets/The_Celestial_Zoo.png
-//  demos/PlanetEarth/assets/Observable_Universe.png
+//  demos/HeavenlyBodyEarth/assets/The_Celestial_Zoo.png
+//  demos/HeavenlyBodyEarth/assets/Observable_Universe.png
 
 // https://thecodingtrain.com/challenges/9-solar-system-3d-textures
 // https://editor.p5js.org/codingtrain/sketches/SD8a6k6A
