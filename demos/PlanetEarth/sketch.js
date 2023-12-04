@@ -1,4 +1,5 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
+// https://github.com/molab-itp/98-MoGallery-p5js/tree/main/demos/PlanetEarth
 // PlanetEarth
 
 function preload() {
@@ -63,7 +64,20 @@ function draw_backgImg() {
   image(backgImg, 0, 0, wr, hr);
 }
 
-function mouseDragged_no() {
+function nextBackgImg() {
+  if (my.backgImgs.length <= 0) return;
+  my.backgImgIndex = (my.backgImgIndex + 1) % my.backgImgs.length;
+}
+
+function nextDir() {
+  my.dirIndex = (my.dirIndex + 1) % my.dirs.length;
+  let newDir = my.dirs[my.dirIndex];
+  my.earth.setDir(newDir);
+  // my.earth.angleXdir = newDir[0];
+  // my.earth.angleYdir = newDir[1];
+}
+
+function mouseDragged_na() {
   //
   let newDir = dirStop;
   // let delta = floor(width * 0.05);
@@ -86,19 +100,6 @@ function mousePressed_na() {
 
 function mousePressed_na() {
   nextDir();
-}
-
-function nextBackgImg() {
-  if (my.backgImgs.length <= 0) return;
-  my.backgImgIndex = (my.backgImgIndex + 1) % my.backgImgs.length;
-}
-
-function nextDir() {
-  my.dirIndex = (my.dirIndex + 1) % my.dirs.length;
-  let newDir = my.dirs[my.dirIndex];
-  my.earth.setDir(newDir);
-  // my.earth.angleXdir = newDir[0];
-  // my.earth.angleYdir = newDir[1];
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/SJtBwJIcU
