@@ -10,13 +10,16 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight - 70);
+
+  my.width = width;
+  my.height = height;
+
+  ui_create();
 
   make_earth1();
 
   make_body2();
-
-  ui_create();
 
   nextDir();
 }
@@ -24,21 +27,21 @@ function setup() {
 function make_earth1() {
   let x = 0;
   let y = 0;
-  let h = height;
+  let h = my.height;
   let img = my.earthImg;
   let flushRight = 1;
   let orbitControl = 1;
-  my.earth = new Planet({ x, y, width, height: h, img, flushRight, orbitControl });
+  my.earth = new Planet({ x, y, width: my.width, height: h, img, flushRight, orbitControl });
 }
 
 function make_body2() {
   let x = 0;
   let y = 0;
-  let h = height / 2;
+  let h = my.height / 2;
   let img = my.moonImg;
   let flushRight = 0;
   let orbitControl = 1;
-  my.earth2 = new Planet({ x, y, width, height: h, img, flushRight, orbitControl });
+  my.earth2 = new Planet({ x, y, width: my.width, height: h, img, flushRight, orbitControl });
   my.earth2.setAngle(-0.567, 5.0, 0); // USA
   my.earth2.setDir(dirStop);
 }
@@ -55,8 +58,8 @@ function draw_backgImg() {
   if (!backgImg) return;
   let w = backgImg.width;
   let h = backgImg.height;
-  let wr = width;
-  let hr = width * (h / w);
+  let wr = my.width;
+  let hr = wr * (h / w);
   image(backgImg, 0, 0, wr, hr);
 }
 
@@ -77,11 +80,11 @@ function mouseDragged_no() {
   my.earth.setDir(newDir);
 }
 
-function mousePressed() {
+function mousePressed_na() {
   nextBackgImg();
 }
 
-function mousePressed_no() {
+function mousePressed_na() {
   nextDir();
 }
 

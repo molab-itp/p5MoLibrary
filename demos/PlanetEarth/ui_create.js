@@ -1,6 +1,10 @@
 //
 function ui_create() {
   //
+  createSpan().id('id_angleX');
+  createSpan().id('id_angleY');
+  createSpan().id('id_angleZ');
+  createElement('br');
   createButton('up').mousePressed(function () {
     my.earth.setDir(dirUp);
   });
@@ -22,6 +26,7 @@ function ui_create() {
   createButton('stop').mousePressed(function () {
     my.earth.setDir(dirStop);
   });
+  createElement('br');
   createButton('zero').mousePressed(function () {
     my.earth.zero();
   });
@@ -37,14 +42,14 @@ function ui_create() {
   createButton('North Pole').mousePressed(function () {
     my.earth.setAngle(-1.5, 0.0, 0); // North Pole
   });
-  createSpan().id('id_angleX');
-  createSpan().id('id_angleY');
-  createSpan().id('id_angleZ');
+  createButton('backG').mousePressed(function () {
+    nextBackgImg();
+  });
 }
 
 function ui_update() {
   //
-  if (!select('#id_angleX')) return;
+  if (!ui_present()) return;
 
   let angleX = my.earth.angleX.toFixed(4);
   select('#id_angleX').html('[angleX=' + angleX + '] ');
@@ -54,6 +59,10 @@ function ui_update() {
 
   let angleZ = my.earth.angleZ.toFixed(4);
   select('#id_angleZ').html('[angleZ=' + angleZ + '] ');
+}
+
+function ui_present() {
+  return select('#id_angleX');
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/rXhPgZ1k6
