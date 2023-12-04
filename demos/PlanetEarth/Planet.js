@@ -1,5 +1,5 @@
-class Earth {
-  // {x, y, width, height, earthImg, flushRight, orbitControl}
+class Planet {
+  // {x, y, width, height, img, flushRight, orbitControl}
   constructor(props) {
     //
     Object.assign(this, props);
@@ -55,7 +55,7 @@ class Earth {
         this.angleZ += this.angleZstep * this.angleZdir;
 
         aInst.lights();
-        aInst.texture(this.earthImg);
+        aInst.texture(this.img);
         aInst.sphere(this.aRadius, this.detailX, this.detailY);
       };
     };
@@ -74,11 +74,9 @@ class Earth {
     this.angleZ = 0;
   }
 
-  setAngle(newAngle) {
-    this.angleX = newAngle[0];
-    this.angleY = newAngle[1];
-    if (newAngle.length >= 3) {
-      this.angleZ = newAngle[2];
-    }
+  setAngle(x, y, z) {
+    this.angleX = x;
+    this.angleY = y;
+    this.angleZ = z;
   }
 }

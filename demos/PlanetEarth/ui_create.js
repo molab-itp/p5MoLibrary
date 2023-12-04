@@ -26,16 +26,16 @@ function ui_create() {
     my.earth.zero();
   });
   createButton('Africa').mousePressed(function () {
-    my.earth.setAngle([0, 2.8]); // Africa
+    my.earth.setAngle(0, 2.8, 0); // Africa
   });
   createButton('USA').mousePressed(function () {
-    my.earth.setAngle([-0.567, 5.0]); // USA
+    my.earth.setAngle(-0.567, 5.0, 0); // USA
   });
   createButton('Antarctica').mousePressed(function () {
-    my.earth.setAngle([1.5, 0.0]); // Antarctica
+    my.earth.setAngle(1.5, 0.0, 0); // Antarctica
   });
   createButton('North Pole').mousePressed(function () {
-    my.earth.setAngle([-1.5, 0.0]); // North Pole
+    my.earth.setAngle(-1.5, 0.0, 0); // North Pole
   });
   createSpan().id('id_angleX');
   createSpan().id('id_angleY');

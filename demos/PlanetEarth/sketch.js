@@ -3,7 +3,8 @@
 
 function preload() {
   my.earthImg = loadImage('assets/world-ultra.jpg');
-  my.plentyImg = loadImage('assets/plenty-3.jpeg');
+  // my.backgImg = loadImage('assets/sun.jpg');
+  my.moonImg = loadImage('assets/moon.jpg');
 }
 
 function setup() {
@@ -11,7 +12,7 @@ function setup() {
 
   make_earth1();
 
-  // make_earth2();
+  make_body2();
 
   ui_create();
 
@@ -22,36 +23,37 @@ function make_earth1() {
   let x = 0;
   let y = 0;
   let h = height;
-  let earthImg = my.earthImg;
+  let img = my.earthImg;
   let flushRight = 1;
   let orbitControl = 1;
-  my.earth = new Earth({ x, y, width, height: h, earthImg, flushRight, orbitControl });
+  my.earth = new Planet({ x, y, width, height: h, img, flushRight, orbitControl });
 }
 
-function make_earth2() {
+function make_body2() {
   let x = 0;
   let y = 0;
   let h = height / 2;
-  let earthImg = my.earthImg;
+  let img = my.moonImg;
   let flushRight = 0;
   let orbitControl = 1;
-  my.earth2 = new Earth({ x, y, width, height: h, earthImg, flushRight, orbitControl });
-  my.earth2.setAngle([-0.567, 5.0]); // USA
+  my.earth2 = new Planet({ x, y, width, height: h, img, flushRight, orbitControl });
+  my.earth2.setAngle(-0.567, 5.0, 0); // USA
   my.earth2.setDir(dirStop);
 }
 
 function draw() {
   background(0);
+  draw_backgImg();
   ui_update();
-  // draw_plenty();
 }
 
-function draw_plenty() {
-  let w = my.plentyImg.width;
-  let h = my.plentyImg.height;
+function draw_backgImg() {
+  if (!my.backgImg) return;
+  let w = my.backgImg.width;
+  let h = my.backgImg.height;
   let wr = windowWidth;
   let hr = windowHeight;
-  image(my.plentyImg, 0, 0, wr, hr);
+  image(my.backgImg, 0, 0, wr, hr);
 }
 
 function mouseDragged_no() {
@@ -90,3 +92,11 @@ function nextDir() {
 //  demos/PlanetEarth/world-large.jpg
 //  demos/PlanetEarth/world-ultra.jpg
 //  demos/PlanetEarth/world.jpg
+
+// https://editor.p5js.org/Bixbite/sketches/H1-rxu1sm
+// CTC 8 - Solar System 3D by Bixbite
+//  demos/PlanetEarth/assets/moon.jpg
+//  demos/PlanetEarth/assets/venus.jpg
+//  demos/PlanetEarth/assets/phobos.jpg
+//  demos/PlanetEarth/assets/deimos.jpg
+//  demos/PlanetEarth/assets/sun.jpg
