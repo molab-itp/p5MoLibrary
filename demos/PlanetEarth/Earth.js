@@ -16,16 +16,18 @@ class Earth {
     this.detailX = 24 * 4;
     this.detailY = 16 * 4;
 
-    this.aRadius = floor(height * 0.38);
+    this.aRadius = floor(height * 0.4);
 
     const skt = (aInst) => {
       aInst.setup = () => {
         let w = this.width;
         let h = this.height;
         this.aCanvas = aInst.createCanvas(h, h, WEBGL);
-        // this.aCanvas.position(w / 2 - h / 2, 0);
-        // this.aCanvas.position(w - h, 0);
-        this.aCanvas.position(this.x, this.y);
+        if (this.flushRight) {
+          this.aCanvas.position(w - h, this.y);
+        } else {
+          this.aCanvas.position(this.x, this.y);
+        }
         aInst.clear();
         aInst.noStroke();
       };

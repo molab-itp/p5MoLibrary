@@ -8,7 +8,11 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  my.earth = new Earth({ x: 0, y: 0, width, height, earthImg: my.earthImg });
+  let x = 0;
+  let y = 0;
+  let earthImg = my.earthImg;
+  let flushRight = 1;
+  my.earth = new Earth({ x, y, width, height, earthImg, flushRight });
 
   nextDir();
 }
