@@ -1,3 +1,5 @@
+//
+
 class Planet {
   // {x, y, width, height, img, flushRight, orbitControl}
   constructor(props) {
@@ -21,7 +23,8 @@ class Planet {
 
     this.aRadius = floor(this.height * 0.38);
 
-    const skt = (aInst) => {
+    // Create an p5 instance to allow 3D to be layer on 2D canvas
+    const Planet_sketch = (aInst) => {
       //
       aInst.setup = () => {
         //
@@ -59,7 +62,8 @@ class Planet {
         aInst.sphere(this.aRadius, this.detailX, this.detailY);
       };
     };
-    this.pInst = new p5(skt);
+
+    this.pInst = new p5(Planet_sketch);
   } // constructor
 
   setDir(newDir) {
