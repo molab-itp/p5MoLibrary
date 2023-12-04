@@ -8,6 +8,7 @@ function preload() {
   // my.backgImg = loadImage('assets/The_Celestial_Zoo.png');
   my.backgImgs.push(loadImage('assets/plenty.jpeg'));
   my.backgImgs.push(loadImage('assets/The_Celestial_Zoo.png'));
+  my.backgImgs.push(loadImage('assets/sun.jpg'));
 }
 
 function setup() {
@@ -23,8 +24,6 @@ function setup() {
   make_body2();
 
   make_camBody();
-
-  nextDir();
 }
 
 function make_earth1() {
@@ -35,6 +34,8 @@ function make_earth1() {
   let flushRight = 1;
   let orbitControl = 1;
   my.earth = new HeavenlyBody({ x, y, width: my.width, height: h, img, flushRight, orbitControl });
+  my.earth.label = 'earth';
+  my.earth.setDir(dirRight);
 }
 
 function make_body2() {
@@ -44,24 +45,25 @@ function make_body2() {
   let img = my.moonImg;
   let flushRight = 0;
   let orbitControl = 1;
-  my.earth2 = new HeavenlyBody({ x, y, width: my.width, height: h, img, flushRight, orbitControl });
-  my.earth2.setAngle(-0.567, 5.0, 0); // USA
-  my.earth2.setDir(dirStop);
+  my.body2 = new HeavenlyBody({ x, y, width: my.width, height: h, img, flushRight, orbitControl });
+  my.body2.label = 'moon';
+  my.body2.setDir(dirLeft);
 }
 
 function make_camBody() {
   my.capture = createCapture(VIDEO);
   my.capture.hide();
   let h = my.height / 2;
+  // let x = floor(my.width / 2 - h / 2);
   let x = floor(my.width * 0.3);
   let y = 0;
   let img = null;
   let flushRight = 0;
   let orbitControl = 1;
   let capture = my.capture;
-  my.earth2 = new HeavenlyBody({ x, y, width: my.width, height: h, img, flushRight, orbitControl, capture });
-  my.earth2.setAngle(-0.567, 5.0, 0); // USA
-  my.earth2.setDir(dirStop);
+  my.camBody = new HeavenlyBody({ x, y, width: my.width, height: h, img, flushRight, orbitControl, capture });
+  my.camBody.label = 'camBody';
+  my.camBody.setDir(dirRight);
 }
 
 function draw() {

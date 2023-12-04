@@ -2,7 +2,7 @@
 // Create an p5 instance to allow 3D to be layer on 2D canvas
 
 class HeavenlyBody {
-  // {x, y, width, height, img, flushRight, orbitControl, capture}
+  // {x, y, width, height, img, flushRight, orbitControl, capture, label}
   constructor(props) {
     //
     Object.assign(this, props);
@@ -82,6 +82,7 @@ class HeavenlyBody {
   }
 
   setDir(newDir) {
+    console.log(this.label, 'setDir', newDir);
     this.angleXdir = newDir[0];
     this.angleYdir = newDir[1];
     this.angleZdir = newDir[2];
