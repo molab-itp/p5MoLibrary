@@ -9,6 +9,9 @@ let dirZLeft = [0, 0, -1];
 
 let my = {
   //
+  backgImgs: [],
+  backgImgIndex: 0,
+  //
   dirs: [
     //
     dirRight,

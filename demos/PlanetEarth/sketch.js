@@ -4,7 +4,9 @@
 function preload() {
   my.earthImg = loadImage('assets/world-ultra.jpg');
   my.moonImg = loadImage('assets/moon.jpg');
-  my.backgImg = loadImage('assets/The_Celestial_Zoo.png');
+  // my.backgImg = loadImage('assets/The_Celestial_Zoo.png');
+  my.backgImgs.push(loadImage('assets/plenty.jpeg'));
+  my.backgImgs.push(loadImage('assets/The_Celestial_Zoo.png'));
 }
 
 function setup() {
@@ -48,12 +50,14 @@ function draw() {
 }
 
 function draw_backgImg() {
-  if (!my.backgImg) return;
-  let w = my.backgImg.width;
-  let h = my.backgImg.height;
+  if (my.backgImgs.length <= 0) return;
+  let backgImg = my.backgImgs[my.backgImgIndex];
+  if (!backgImg) return;
+  let w = backgImg.width;
+  let h = backgImg.height;
   let wr = width;
   let hr = width * (h / w);
-  image(my.backgImg, 0, 0, wr, hr);
+  image(backgImg, 0, 0, wr, hr);
 }
 
 function mouseDragged_no() {
@@ -73,8 +77,17 @@ function mouseDragged_no() {
   my.earth.setDir(newDir);
 }
 
+function mousePressed() {
+  nextBackgImg();
+}
+
 function mousePressed_no() {
   nextDir();
+}
+
+function nextBackgImg() {
+  if (my.backgImgs.length <= 0) return;
+  my.backgImgIndex = (my.backgImgIndex + 1) % my.backgImgs.length;
 }
 
 function nextDir() {
@@ -104,3 +117,6 @@ function nextDir() {
 // https://en.wikipedia.org/wiki/Astronomical_object
 //  demos/PlanetEarth/assets/The_Celestial_Zoo.png
 //  demos/PlanetEarth/assets/Observable_Universe.png
+
+// https://thecodingtrain.com/challenges/9-solar-system-3d-textures
+// https://editor.p5js.org/codingtrain/sketches/SD8a6k6A
