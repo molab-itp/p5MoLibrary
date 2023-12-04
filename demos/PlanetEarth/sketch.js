@@ -1,6 +1,6 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
-// https://github.com/molab-itp/98-MoGallery-p5js/tree/main/demos/HeavenlyBodyEarth
-// HeavenlyBodyEarth
+// https://github.com/molab-itp/98-MoGallery-p5js/tree/main/demos/PlanetEarth
+// PlanetEarth
 
 function preload() {
   my.earthImg = loadImage('assets/world-ultra.jpg');
@@ -20,7 +20,8 @@ function setup() {
 
   make_earth1();
 
-  // make_body2();
+  make_body2();
+
   make_camBody();
 
   nextDir();
@@ -51,9 +52,9 @@ function make_body2() {
 function make_camBody() {
   my.capture = createCapture(VIDEO);
   my.capture.hide();
-  let x = 0;
-  let y = 0;
   let h = my.height / 2;
+  let x = floor(my.width * 0.3);
+  let y = 0;
   let img = null;
   let flushRight = 0;
   let orbitControl = 1;
