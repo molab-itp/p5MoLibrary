@@ -3,8 +3,8 @@
 
 function preload() {
   my.earthImg = loadImage('assets/world-ultra.jpg');
-  // my.backgImg = loadImage('assets/sun.jpg');
   my.moonImg = loadImage('assets/moon.jpg');
+  my.backgImg = loadImage('assets/The_Celestial_Zoo.png');
 }
 
 function setup() {
@@ -51,8 +51,8 @@ function draw_backgImg() {
   if (!my.backgImg) return;
   let w = my.backgImg.width;
   let h = my.backgImg.height;
-  let wr = windowWidth;
-  let hr = windowHeight;
+  let wr = width;
+  let hr = width * (h / w);
   image(my.backgImg, 0, 0, wr, hr);
 }
 
@@ -100,3 +100,7 @@ function nextDir() {
 //  demos/PlanetEarth/assets/phobos.jpg
 //  demos/PlanetEarth/assets/deimos.jpg
 //  demos/PlanetEarth/assets/sun.jpg
+
+// https://en.wikipedia.org/wiki/Astronomical_object
+//  demos/PlanetEarth/assets/The_Celestial_Zoo.png
+//  demos/PlanetEarth/assets/Observable_Universe.png
