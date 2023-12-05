@@ -65,7 +65,7 @@ function make_camBody() {
   let capture = my.capture;
   my.camBody = new HeavenlyBody({ x, y, width: my.width, height: h, img, flushRight, orbitControl, capture });
   my.camBody.label = 'camBody';
-  my.camBody.setDir(dirRight);
+  my.camBody.setDir([0, 10, 0]);
 }
 
 function draw() {
@@ -75,9 +75,9 @@ function draw() {
 }
 
 function draw_backgImg() {
-  if (my.backgImgs.length <= 0) return;
   let backgImg = my.backgImgs[my.backgImgIndex];
   if (!backgImg) return;
+  // Scale background image to the full width of the canvas
   let w = backgImg.width;
   let h = backgImg.height;
   let wr = my.width;
