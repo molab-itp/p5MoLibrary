@@ -26,6 +26,8 @@ function setup() {
   // make_body2();
 
   make_camBody();
+
+  my.focusBody = my.camBody;
 }
 
 function make_earth1() {
@@ -72,7 +74,6 @@ function make_camBody() {
   my.camBody.setDir([0, 0, 0]);
   // my.camBody.setDir([-4, 0, 0]);
   my.camBody.setAngle(-1.5, 3.0, 0);
-  my.focusBody = my.camBody;
 }
 
 function draw() {
