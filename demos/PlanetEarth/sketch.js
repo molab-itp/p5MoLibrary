@@ -4,10 +4,12 @@
 
 function preload() {
   my.earthImg = loadImage('assets/world-ultra.jpg');
+  // my.earthImg = loadImage('assets/Da_Vinci.jpg');
   my.moonImg = loadImage('assets/moon.jpg');
-  // my.backgImg = loadImage('assets/The_Celestial_Zoo.png');
-  my.backgImgs.push(loadImage('assets/plenty.jpeg'));
+  //
   my.backgImgs.push(loadImage('assets/The_Celestial_Zoo.png'));
+  my.backgImgs.push(loadImage('assets/Da_Vinci.jpg'));
+  my.backgImgs.push(loadImage('assets/plenty.jpeg'));
   my.backgImgs.push(loadImage('assets/sun.jpg'));
 }
 
@@ -19,9 +21,9 @@ function setup() {
 
   ui_create();
 
-  make_earth1();
+  // make_earth1();
 
-  make_body2();
+  // make_body2();
 
   make_camBody();
 }
@@ -53,19 +55,24 @@ function make_body2() {
 function make_camBody() {
   my.capture = createCapture(VIDEO);
   my.capture.hide();
-  let h = floor(my.height * 0.3);
+  let h = floor(my.height * 1);
+  // let h = floor(my.height * 0.3);
   // let x = floor(my.width / 2 - h / 2);
-  let x = floor(my.width * 0.3);
-  // let y = 0;
+  // let x = floor(my.width * 0.3);
+  let x = floor(my.width * 0.0);
+  let y = 0;
   // let y = floor(my.height * 0.5);
-  let y = -floor(my.height * 0.07);
+  // let y = -floor(my.height * 0.07);
   let img = null;
   let flushRight = 0;
   let orbitControl = 1;
   let capture = my.capture;
   my.camBody = new HeavenlyBody({ x, y, width: my.width, height: h, img, flushRight, orbitControl, capture });
   my.camBody.label = 'camBody';
-  my.camBody.setDir([0, 10, 0]);
+  my.camBody.setDir([0, 0, 0]);
+  // my.camBody.setDir([-4, 0, 0]);
+  my.camBody.setAngle(-1.5, 3.0, 0);
+  my.focusBody = my.camBody;
 }
 
 function draw() {
@@ -145,3 +152,7 @@ function mousePressed_na() {
 
 // https://thecodingtrain.com/challenges/9-solar-system-3d-textures
 // https://editor.p5js.org/codingtrain/sketches/SD8a6k6A
+
+// https://en.wikipedia.org/wiki/Vitruvian_Man
+// https://upload.wikimedia.org/wikipedia/commons/2/22/Da_Vinci_Vitruve_Luc_Viatour.jpg
+//  demos/PlanetEarth/assets/Da_Vinci.jpg
