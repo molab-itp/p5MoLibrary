@@ -25,9 +25,65 @@ function setup() {
 
   // make_body2();
 
-  make_camBody();
+  // make_camBody();
 
-  my.focusBody = my.camBody;
+  // my.focusBody = my.camBody;
+
+  my.panX = 0;
+  my.panXStep = 1;
+  my.panY = 0;
+  my.panYStep = 1;
+}
+
+function draw_backgImg() {
+  let backgImg = my.backgImgs[my.backgImgIndex];
+  if (!backgImg) return;
+  // Scale background image to the full width of the canvas
+  let w = backgImg.width;
+  let h = backgImg.height;
+  // let wr = my.width;
+  // let hr = floor(wr * (h / w));
+  let scale = 8;
+
+  let dx = 0;
+  let dy = 0;
+  let dWidth = my.width;
+  let dHeight = my.height;
+
+  let sx = my.panX;
+  let sy = my.panY;
+  let sWidth = floor(w / scale);
+  let sHeight = floor(h / scale);
+  // dWidth = floor(dHeight * (w / h));
+  dHeight = floor(dWidth * (h / w));
+
+  image(backgImg, dx, dy, dWidth, dHeight, sx, sy, sWidth, sHeight);
+}
+
+function mousePressed() {
+  my.panX0 = mouseX;
+  my.panY0 = mouseY;
+}
+
+function mouseDragged() {
+  my.panX += my.panX0 - mouseX;
+  my.panY += my.panY0 - mouseY;
+  my.panX0 = mouseX;
+  my.panY0 = mouseY;
+}
+
+// image(img, x, y, [width], [height])
+// image(img, dx, dy, dWidth, dHeight, sx, sy, [sWidth], [sHeight], [fit], [xAlign], [yAlign])
+
+function draw_backgImg_full() {
+  let backgImg = my.backgImgs[my.backgImgIndex];
+  if (!backgImg) return;
+  // Scale background image to the full width of the canvas
+  let w = backgImg.width;
+  let h = backgImg.height;
+  let wr = my.width;
+  let hr = wr * (h / w);
+  image(backgImg, 0, 0, wr, hr);
 }
 
 function make_earth1() {
@@ -80,17 +136,6 @@ function draw() {
   background(0);
   draw_backgImg();
   ui_update();
-}
-
-function draw_backgImg() {
-  let backgImg = my.backgImgs[my.backgImgIndex];
-  if (!backgImg) return;
-  // Scale background image to the full width of the canvas
-  let w = backgImg.width;
-  let h = backgImg.height;
-  let wr = my.width;
-  let hr = wr * (h / w);
-  image(backgImg, 0, 0, wr, hr);
 }
 
 function nextBackgImg() {
