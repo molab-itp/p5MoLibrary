@@ -6,27 +6,28 @@ function ui_create() {
   createSpan().id('id_zoom');
   createElement('br');
   createButton('zero').mousePressed(function () {
-    pan_init();
+    my.pane.pan_init();
   });
   createButton('center').mousePressed(function () {
-    pan_center();
+    my.pane.pan_center();
   });
-  createSlider(1, 14, my.zoomIndex, 0.01).input(function () {
-    pan_updateZoom(this.value());
+  createSlider(1, 14, my.pane.zoomIndex, 0.01).input(function () {
+    my.pane.pan_updateZoom(this.value());
   });
 }
 
 function ui_update() {
   //
   if (!ui_present()) return;
+  let pane = my.pane;
 
-  let panX = my.panX.toFixed(1);
+  let panX = pane.panX.toFixed(1);
   select('#id_panX').html('[panX=' + panX + '] ');
 
-  let panY = my.panY.toFixed(1);
+  let panY = pane.panY.toFixed(1);
   select('#id_panY').html('[panY=' + panY + '] ');
 
-  let zoom = my.zoomIndex.toFixed(1);
+  let zoom = pane.zoomIndex.toFixed(1);
   select('#id_zoom').html('[zoom=' + zoom + '] ');
 }
 
