@@ -8,7 +8,10 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight - 70);
+  my.canvas = createCanvas(windowWidth, windowHeight - 70);
+  my.canvas.mousePressed(canvas_mousePressed);
+  my.canvas.mouseReleased(canvas_mouseReleased);
+  // my.canvas.mouseDragged(canvas_mouseDragged);
 
   my.width = width;
   my.height = height;
@@ -18,6 +21,15 @@ function setup() {
   ui_create();
 }
 
+function draw() {
+  background(0);
+  draw_backgImg();
+  ui_update();
+  if (my.mouseTracking) {
+    canvas_mouseDragged();
+  }
+}
+
 function pan_init() {
   my.panX = 0;
   my.panY = 0;
@@ -25,12 +37,14 @@ function pan_init() {
 }
 
 function pan_center() {
+  my.zoom = 8;
   let w = my.backgImg.width;
   let h = my.backgImg.height;
   let sWidth = floor(w / my.zoom);
   let sHeight = floor(h / my.zoom);
   my.panX = floor((w - sWidth) * 0.5);
   my.panY = floor((h - sHeight) * 0.5);
+  // !!@ Need to correct center for dHeight < my.height
 }
 
 function draw_backgImg() {
@@ -60,30 +74,32 @@ function draw_backgImg() {
   image(backgImg, dx, dy, dWidth, dHeight, sx, sy, sWidth, sHeight);
 }
 
-function mousePressed() {
+function canvas_mousePressed() {
+  console.log('canvas_mousePressed');
+  my.mouseTracking = 1;
   my.panX0 = mouseX;
   my.panY0 = mouseY;
 }
 
-function mouseDragged() {
+function canvas_mouseReleased() {
+  console.log('canvas_mouseReleased');
+  my.mouseTracking = 0;
+}
+
+function canvas_mouseDragged() {
+  console.log('canvas_mouseDragged');
   my.panX += my.panX0 - mouseX;
   my.panY += my.panY0 - mouseY;
   my.panX0 = mouseX;
   my.panY0 = mouseY;
 }
 
-// image(img, x, y, [width], [height])
-// image(img, dx, dy, dWidth, dHeight, sx, sy, [sWidth], [sHeight], [fit], [xAlign], [yAlign])
-
-function draw() {
-  background(0);
-  draw_backgImg();
-  ui_update();
-}
-
 function nextBackgImg() {
   if (my.backgImgs.length <= 0) return;
   my.backgImgIndex = (my.backgImgIndex + 1) % my.backgImgs.length;
 }
+
+// image(img, x, y, [width], [height])
+// image(img, dx, dy, dWidth, dHeight, sx, sy, [sWidth], [sHeight], [fit], [xAlign], [yAlign])
 
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
