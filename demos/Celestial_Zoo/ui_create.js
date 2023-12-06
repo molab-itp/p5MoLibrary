@@ -11,9 +11,6 @@ function ui_create() {
   createButton('center').mousePressed(function () {
     pan_center();
   });
-  // createButton('backg').mousePressed(function () {
-  //   nextBackgImg();
-  // });
   createSlider(1, 14, my.zoomIndex, 0.01).input(function () {
     pan_updateZoom(this.value());
   });

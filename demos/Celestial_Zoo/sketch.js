@@ -6,8 +6,7 @@ let my = {};
 
 function preload() {
   //
-  my.backgImgs = [];
-  my.backgImgs.push(loadImage('../PlanetEarth/assets/The_Celestial_Zoo.png'));
+  my.backgImg = loadImage('../PlanetEarth/assets/The_Celestial_Zoo.png');
 }
 
 function setup() {
@@ -42,6 +41,7 @@ function pan_updateZoom(newValue) {
 
   let w = my.backgImg.width;
   let h = my.backgImg.height;
+
   let oW = floor(w * oRatio * 0.5);
   let oH = floor(h * oRatio * 0.5);
 
@@ -71,9 +71,7 @@ function pan_center() {
 }
 
 function draw_backgImg() {
-  let backgImg = my.backgImgs[my.backgImgIndex];
-  my.backgImg = backgImg;
-  if (!backgImg) return;
+  let backgImg = my.backgImg;
   // zoom background image to the full width of the canvas
   let w = backgImg.width;
   let h = backgImg.height;
@@ -114,11 +112,6 @@ function canvas_mouseDragged() {
   my.panY += my.panY0 - mouseY;
   my.panX0 = mouseX;
   my.panY0 = mouseY;
-}
-
-function nextBackgImg() {
-  if (my.backgImgs.length <= 0) return;
-  my.backgImgIndex = (my.backgImgIndex + 1) % my.backgImgs.length;
 }
 
 // !!@ no canvas mouseDragged
