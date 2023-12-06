@@ -11,9 +11,10 @@ function ui_create() {
   createButton('center').mousePressed(function () {
     my.pane.pan_center();
   });
-  createSlider(1, 14, my.pane.zoomIndex, 0.01).input(function () {
+  let slider = createSlider(1, 14, my.pane.zoomIndex, 0.01).input(function () {
     my.pane.pan_updateZoom(this.value());
   });
+  slider.style('width:400px');
 }
 
 function ui_update() {
@@ -27,7 +28,7 @@ function ui_update() {
   let panY = pane.panY.toFixed(1);
   select('#id_panY').html('[panY=' + panY + '] ');
 
-  let zoom = pane.zoomIndex.toFixed(1);
+  let zoom = pane.zoomIndex.toFixed(2);
   select('#id_zoom').html('[zoom=' + zoom + '] ');
 }
 

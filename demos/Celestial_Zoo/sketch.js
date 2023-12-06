@@ -16,17 +16,46 @@ function setup() {
   my.canvas.mouseReleased(canvas_mouseReleased);
   my.width = width;
   my.height = height;
+  my.paneRatio = 12 / 16;
 
-  let backgImg = my.backgImg;
-  my.pane = new Pane({ backgImg, width, height });
+  create_pane1();
+
+  create_pane2();
+
+  my.pane = my.pane1;
 
   ui_create();
+}
+
+function create_pane1() {
+  let label = 'pane1';
+  let width = my.width;
+  let height = my.height;
+  let backgImg = my.backgImg;
+  let r = my.paneRatio;
+  let x = floor(width * (1 - r));
+  let y = 0;
+  width = floor(width * r);
+  my.pane1 = new Pane({ label, backgImg, x, y, width, height });
+}
+
+function create_pane2() {
+  let label = 'pane2';
+  let width = my.width;
+  let height = my.height;
+  let backgImg = my.backgImg;
+  let r = 1 - my.paneRatio;
+  let x = 0;
+  let y = 0;
+  width = floor(width * r);
+  my.pane2 = new Pane({ label, backgImg, x, y, width, height });
 }
 
 function draw() {
   //
   background(0);
-  my.pane.draw_backgImg();
+  my.pane1.draw_backgImg();
+  my.pane2.draw_backgImg();
   ui_update();
   if (my.mouseTracking) {
     my.pane.mouseDragged();
@@ -36,6 +65,11 @@ function draw() {
 function canvas_mousePressed() {
   console.log('canvas_mousePressed');
   my.mouseTracking = 1;
+  if (my.pane1.touchPoint(mouseX, mouseY)) {
+    my.pane = my.pane1;
+  } else if (my.pane2.touchPoint(mouseX, mouseY)) {
+    my.pane = my.pane2;
+  }
   my.pane.mousePressed();
 }
 

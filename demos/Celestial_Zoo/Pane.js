@@ -1,12 +1,22 @@
 //
 
 class Pane {
-  // { backgImg, width, height }
+  // { label, backgImg, x, y, width, height }
   constructor(props) {
     //
     Object.assign(this, props);
     //
+    console.log('Pane', this.label, 'width', this.width, 'height', this.height);
+    //
     this.pan_init();
+  }
+
+  touchPoint(x, y) {
+    let xhit = this.x < x && x < this.x + this.width;
+    let yhit = this.y < y && y < this.y + this.height;
+    // console.log('Pane', this.label, this.x, this.y);
+    // console.log('x', x, 'y', y, 'xhit', xhit, 'yhit', yhit);
+    return xhit && yhit;
   }
 
   pan_updateZoom(newValue) {
@@ -52,8 +62,8 @@ class Pane {
     let h = backgImg.height;
     let r = h / w;
 
-    let dx = 0;
-    let dy = 0;
+    let dx = this.x;
+    let dy = this.y;
     let dWidth = this.width;
     let dHeight = floor(dWidth * r);
     if (dHeight < this.height) {
@@ -65,6 +75,11 @@ class Pane {
     let sy = this.panY;
     let sWidth = floor(w * this.zoomRatio);
     let sHeight = floor(h * this.zoomRatio);
+    if (this.width < dWidth) {
+      let dr = this.width / dWidth;
+      dWidth = this.width;
+      sWidth = floor(sWidth * dr);
+    }
 
     image(backgImg, dx, dy, dWidth, dHeight, sx, sy, sWidth, sHeight);
   }
