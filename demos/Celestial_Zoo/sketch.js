@@ -1,19 +1,24 @@
-// https://editor.p5js.org/jht9629-nyu/sketches/xxxx
+// https://editor.p5js.org/jht9629-nyu/sketches
 // https://github.com/molab-itp/98-MoGallery-p5js/tree/main/demos/Celestial_Zoo
 // Celestial_Zoo
 
+let my = {};
+
 function preload() {
   //
+  my.backgImgs = [];
   my.backgImgs.push(loadImage('../PlanetEarth/assets/The_Celestial_Zoo.png'));
 }
 
 function setup() {
-  my.canvas = createCanvas(windowWidth, windowHeight - 70);
+  //
+  my.canvas = createCanvas(windowWidth, windowHeight - 45);
   my.canvas.mousePressed(canvas_mousePressed);
   my.canvas.mouseReleased(canvas_mouseReleased);
-
   my.width = width;
   my.height = height;
+
+  my.backgImgIndex = 0;
 
   pan_init();
 
@@ -21,6 +26,7 @@ function setup() {
 }
 
 function draw() {
+  //
   background(0);
   draw_backgImg();
   ui_update();
@@ -29,18 +35,36 @@ function draw() {
   }
 }
 
+function pan_updateZoom(newValue) {
+  let oRatio = my.zoomRatio;
+  my.zoomIndex = newValue;
+  my.zoomRatio = 1 / my.zoomIndex;
+
+  let w = my.backgImg.width;
+  let h = my.backgImg.height;
+  let oW = floor(w * oRatio * 0.5);
+  let oH = floor(h * oRatio * 0.5);
+
+  let nW = floor(w * my.zoomRatio * 0.5);
+  let nH = floor(h * my.zoomRatio * 0.5);
+
+  my.panX = my.panX + oW - nW;
+  my.panY = my.panY + oH - nH;
+}
+
 function pan_init() {
   my.panX = 0;
   my.panY = 0;
-  my.zoom = 8;
+  my.zoomIndex = 8;
+  my.zoomRatio = 1 / my.zoomIndex;
 }
 
 function pan_center() {
-  my.zoom = 8;
+  my.zoomIndex = 8;
   let w = my.backgImg.width;
   let h = my.backgImg.height;
-  let sWidth = floor(w / my.zoom);
-  let sHeight = floor(h / my.zoom);
+  let sWidth = floor(w * my.zoomRatio);
+  let sHeight = floor(h * my.zoomRatio);
   my.panX = floor((w - sWidth) * 0.5);
   my.panY = floor((h - sHeight) * 0.5);
   // !!@ Need to correct center for dHeight < my.height
@@ -54,7 +78,6 @@ function draw_backgImg() {
   let w = backgImg.width;
   let h = backgImg.height;
   let r = h / w;
-  let zoom = my.zoom;
 
   let dx = 0;
   let dy = 0;
@@ -67,8 +90,8 @@ function draw_backgImg() {
 
   let sx = my.panX;
   let sy = my.panY;
-  let sWidth = floor(w / zoom);
-  let sHeight = floor(h / zoom);
+  let sWidth = floor(w * my.zoomRatio);
+  let sHeight = floor(h * my.zoomRatio);
 
   image(backgImg, dx, dy, dWidth, dHeight, sx, sy, sWidth, sHeight);
 }

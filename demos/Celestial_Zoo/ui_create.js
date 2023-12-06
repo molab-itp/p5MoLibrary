@@ -11,11 +11,11 @@ function ui_create() {
   createButton('center').mousePressed(function () {
     pan_center();
   });
-  createButton('backg').mousePressed(function () {
-    nextBackgImg();
-  });
-  createSlider(0, 12, my.zoom).input(function () {
-    my.zoom = this.value();
+  // createButton('backg').mousePressed(function () {
+  //   nextBackgImg();
+  // });
+  createSlider(1, 14, my.zoomIndex, 0.01).input(function () {
+    pan_updateZoom(this.value());
   });
 }
 
@@ -23,13 +23,13 @@ function ui_update() {
   //
   if (!ui_present()) return;
 
-  let panX = my.panX.toFixed(4);
+  let panX = my.panX.toFixed(1);
   select('#id_panX').html('[panX=' + panX + '] ');
 
-  let panY = my.panY.toFixed(4);
+  let panY = my.panY.toFixed(1);
   select('#id_panY').html('[panY=' + panY + '] ');
 
-  let zoom = my.zoom.toFixed(4);
+  let zoom = my.zoomIndex.toFixed(1);
   select('#id_zoom').html('[zoom=' + zoom + '] ');
 }
 
