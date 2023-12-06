@@ -21,18 +21,19 @@ function setup() {
 
   ui_create();
 
-  // make_earth1();
+  make_earth1();
 
-  // make_body2();
+  make_body2();
 
-  // make_camBody();
+  make_camBody();
 
-  // my.focusBody = my.camBody;
+  my.focusBody = my.camBody;
 
   my.panX = 0;
   my.panXStep = 1;
   my.panY = 0;
   my.panYStep = 1;
+  my.scale = 8;
 }
 
 function draw_backgImg() {
@@ -41,21 +42,22 @@ function draw_backgImg() {
   // Scale background image to the full width of the canvas
   let w = backgImg.width;
   let h = backgImg.height;
-  // let wr = my.width;
-  // let hr = floor(wr * (h / w));
-  let scale = 8;
+  let r = h / w;
+  let scale = my.scale;
 
   let dx = 0;
   let dy = 0;
   let dWidth = my.width;
-  let dHeight = my.height;
+  let dHeight = floor(dWidth * r);
+  if (dHeight < my.height) {
+    dHeight = my.height;
+    dWidth = floor(dHeight / r);
+  }
 
   let sx = my.panX;
   let sy = my.panY;
   let sWidth = floor(w / scale);
   let sHeight = floor(h / scale);
-  // dWidth = floor(dHeight * (w / h));
-  dHeight = floor(dWidth * (h / w));
 
   image(backgImg, dx, dy, dWidth, dHeight, sx, sy, sWidth, sHeight);
 }
