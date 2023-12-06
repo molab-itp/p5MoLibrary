@@ -13,27 +13,35 @@ function setup() {
   my.width = width;
   my.height = height;
 
-  init_pan();
+  pan_init();
 
   ui_create();
 }
 
-function init_pan() {
+function pan_init() {
   my.panX = 0;
-  my.panXStep = 1;
   my.panY = 0;
-  my.panYStep = 1;
-  my.scale = 8;
+  my.zoom = 8;
+}
+
+function pan_center() {
+  let w = my.backgImg.width;
+  let h = my.backgImg.height;
+  let sWidth = floor(w / my.zoom);
+  let sHeight = floor(h / my.zoom);
+  my.panX = floor((w - sWidth) * 0.5);
+  my.panY = floor((h - sHeight) * 0.5);
 }
 
 function draw_backgImg() {
   let backgImg = my.backgImgs[my.backgImgIndex];
+  my.backgImg = backgImg;
   if (!backgImg) return;
-  // Scale background image to the full width of the canvas
+  // zoom background image to the full width of the canvas
   let w = backgImg.width;
   let h = backgImg.height;
   let r = h / w;
-  let scale = my.scale;
+  let zoom = my.zoom;
 
   let dx = 0;
   let dy = 0;
@@ -46,8 +54,8 @@ function draw_backgImg() {
 
   let sx = my.panX;
   let sy = my.panY;
-  let sWidth = floor(w / scale);
-  let sHeight = floor(h / scale);
+  let sWidth = floor(w / zoom);
+  let sHeight = floor(h / zoom);
 
   image(backgImg, dx, dy, dWidth, dHeight, sx, sy, sWidth, sHeight);
 }
