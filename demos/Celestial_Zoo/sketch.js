@@ -1,6 +1,6 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/xxxx
 // https://github.com/molab-itp/98-MoGallery-p5js/tree/main/demos/Celestial_Zoo
-// PlanetEarth
+// Celestial_Zoo
 
 function preload() {
   //
@@ -11,7 +11,6 @@ function setup() {
   my.canvas = createCanvas(windowWidth, windowHeight - 70);
   my.canvas.mousePressed(canvas_mousePressed);
   my.canvas.mouseReleased(canvas_mouseReleased);
-  // my.canvas.mouseDragged(canvas_mouseDragged);
 
   my.width = width;
   my.height = height;
@@ -82,12 +81,12 @@ function canvas_mousePressed() {
 }
 
 function canvas_mouseReleased() {
-  console.log('canvas_mouseReleased');
+  // console.log('canvas_mouseReleased');
   my.mouseTracking = 0;
 }
 
 function canvas_mouseDragged() {
-  console.log('canvas_mouseDragged');
+  // console.log('canvas_mouseDragged');
   my.panX += my.panX0 - mouseX;
   my.panY += my.panY0 - mouseY;
   my.panX0 = mouseX;
@@ -98,6 +97,9 @@ function nextBackgImg() {
   if (my.backgImgs.length <= 0) return;
   my.backgImgIndex = (my.backgImgIndex + 1) % my.backgImgs.length;
 }
+
+// !!@ no canvas mouseDragged
+// my.canvas.mouseDragged(canvas_mouseDragged);
 
 // image(img, x, y, [width], [height])
 // image(img, dx, dy, dWidth, dHeight, sx, sy, [sWidth], [sHeight], [fit], [xAlign], [yAlign])

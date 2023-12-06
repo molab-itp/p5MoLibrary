@@ -118,11 +118,11 @@ function make_camBody() {
   let h = floor(my.height * 1);
   // let h = floor(my.height * 0.3);
   // let x = floor(my.width / 2 - h / 2);
-  // let x = floor(my.width * 0.3);
-  let x = floor(my.width * 0.0);
-  let y = 0;
+  let x = floor(my.width * 0.3);
+  // let x = floor(my.width * 0.0);
+  // let y = 0;
   // let y = floor(my.height * 0.5);
-  // let y = -floor(my.height * 0.07);
+  let y = -floor(my.height * 0.07);
   let img = null;
   let flushRight = 0;
   let orbitControl = 1;
