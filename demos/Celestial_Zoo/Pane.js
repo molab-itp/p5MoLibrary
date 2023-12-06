@@ -1,7 +1,7 @@
 //
 
 class Pane {
-  // { label, backgImg, x, y, width, height }
+  // { label, backgImg, x, y, width, height, initZoom, initCentered }
   constructor(props) {
     //
     Object.assign(this, props);
@@ -9,6 +9,9 @@ class Pane {
     console.log('Pane', this.label, 'width', this.width, 'height', this.height);
     //
     this.pan_init();
+    if (this.initCentered) {
+      this.pan_center();
+    }
   }
 
   touchPoint(x, y) {
@@ -40,7 +43,7 @@ class Pane {
   pan_init() {
     this.panX = 0;
     this.panY = 0;
-    this.zoomIndex = 8;
+    this.zoomIndex = this.initZoom;
     this.zoomRatio = 1 / this.zoomIndex;
   }
 
