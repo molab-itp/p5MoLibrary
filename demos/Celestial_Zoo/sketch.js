@@ -70,7 +70,7 @@ function draw() {
 }
 
 function canvas_mousePressed() {
-  console.log('canvas_mousePressed');
+  // console.log('canvas_mousePressed');
   my.mouseTracking = 1;
   if (my.pane1.touchPoint(mouseX, mouseY)) {
     my.pane = my.pane1;

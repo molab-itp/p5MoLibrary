@@ -6,8 +6,7 @@ class Pane {
     //
     Object.assign(this, props);
     this.initZoom = this.z;
-    //
-    console.log('Pane', this.label, 'width', this.width, 'height', this.height);
+    // console.log('Pane', this.label, 'width', this.width, 'height', this.height);
     //
     this.pan_init();
     if (this.initCentered) {
