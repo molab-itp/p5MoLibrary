@@ -4,7 +4,7 @@ View images from MoGallery firebase database using p5js
 
 - test
 
-  - [demos/PlanetEarth](demos/Celestial_Zoo?v=031)
+  - [demos/Celestial_Zoo](demos/Celestial_Zoo?v=031)
   - [demos/PlanetEarth](demos/PlanetEarth?v=031)
   - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v=031)
   - [demos/mo-storage](demos/mo-storage)
