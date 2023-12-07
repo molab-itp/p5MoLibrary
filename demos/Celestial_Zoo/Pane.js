@@ -5,6 +5,7 @@ class Pane {
   constructor(props) {
     //
     Object.assign(this, props);
+    this.initZoom = this.z;
     //
     console.log('Pane', this.label, 'width', this.width, 'height', this.height);
     //
@@ -48,7 +49,7 @@ class Pane {
   }
 
   pan_center() {
-    this.zoomIndex = 8;
+    this.zoomIndex = this.initZoom;
     let w = this.backgImg.width;
     let h = this.backgImg.height;
     let sWidth = floor(w * this.zoomRatio);

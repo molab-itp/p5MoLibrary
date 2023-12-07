@@ -35,12 +35,12 @@ function create_pane1() {
   let r = my.paneRatio;
   let x = floor(fwidth * (1 - r));
   let y = 0;
-  let initZoom = 8;
+  let z = 4.5;
   let initCentered = 1;
 
   let width = floor(fwidth * r);
 
-  my.pane1 = new Pane({ label, backgImg, x, y, width, height, initZoom, initCentered });
+  my.pane1 = new Pane({ label, backgImg, x, y, z, width, height, initCentered });
 }
 
 function create_pane2() {
@@ -51,11 +51,11 @@ function create_pane2() {
   let r = 1 - my.paneRatio;
   let x = 0;
   let y = 0;
-  let initZoom = 7.5;
+  let z = 8;
 
   let width = floor(fwidth * r);
 
-  my.pane2 = new Pane({ label, backgImg, x, y, width, height, initZoom });
+  my.pane2 = new Pane({ label, backgImg, x, y, z, width, height });
 }
 
 function draw() {

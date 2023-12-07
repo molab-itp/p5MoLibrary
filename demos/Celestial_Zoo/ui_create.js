@@ -14,7 +14,7 @@ function ui_create() {
   let slider = createSlider(1, 14, my.pane.zoomIndex, 0.01).input(function () {
     my.pane.pan_updateZoom(this.value());
   });
-  slider.style('width:400px');
+  slider.style('width:500px');
 }
 
 function ui_update() {
