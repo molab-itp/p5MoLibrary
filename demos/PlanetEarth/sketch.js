@@ -7,10 +7,10 @@ function preload() {
   // my.earthImg = loadImage('assets/Da_Vinci.jpg');
   my.moonImg = loadImage('assets/moon.jpg');
   //
-  my.backgImgs.push(loadImage('assets/The_Celestial_Zoo.png'));
-  my.backgImgs.push(loadImage('assets/Da_Vinci.jpg'));
   my.backgImgs.push(loadImage('assets/plenty.jpeg'));
   my.backgImgs.push(loadImage('assets/sun.jpg'));
+  my.backgImgs.push(loadImage('assets/The_Celestial_Zoo.png'));
+  my.backgImgs.push(loadImage('assets/Da_Vinci.jpg'));
 }
 
 function setup() {
@@ -27,13 +27,14 @@ function setup() {
 
   make_camBody();
 
-  my.focusBody = my.camBody;
+  // my.focusBody = my.camBody;
+  my.focusBody = my.earth;
 
   my.panX = 0;
   my.panXStep = 1;
   my.panY = 0;
   my.panYStep = 1;
-  my.scale = 8;
+  my.scale = 2;
 }
 
 function draw_backgImg() {
@@ -115,8 +116,9 @@ function make_body2() {
 function make_camBody() {
   my.capture = createCapture(VIDEO);
   my.capture.hide();
-  let h = floor(my.height * 1);
+  // let h = floor(my.height * 1);
   // let h = floor(my.height * 0.3);
+  let h = floor(my.height * 0.5);
   // let x = floor(my.width / 2 - h / 2);
   let x = floor(my.width * 0.3);
   // let x = floor(my.width * 0.0);
