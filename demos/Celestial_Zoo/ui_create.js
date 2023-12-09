@@ -11,6 +11,9 @@ function ui_create() {
   createButton('center').mousePressed(function () {
     my.pane.pan_center();
   });
+  createButton('clear').mousePressed(function () {
+    clearLastMouseEnts();
+  });
   {
     my.zoom_slider = createSlider(1, 14, my.pane.zoomIndex, 0.01).input(function () {
       my.pane.pan_updateZoom(this.value());
@@ -49,10 +52,6 @@ function ui_create() {
   createButton('update').mousePressed(function () {
     updateAction();
   });
-  createButton('clear').mousePressed(function () {
-    my.lastPressedX = undefined;
-    my.lastReleasedX = undefined;
-  });
   createButton('restore').mousePressed(function () {
     restoreAction();
   });
@@ -67,7 +66,7 @@ function updateAction() {
 }
 
 function ui_refEntryUpdate() {
-  let refEntry = my.pane.refs[my.pane.refIndex];
+  let refEntry = my.pane.refEntry();
   let str = '';
   if (refEntry) {
     refEntry.label = my.refLabel_input.value();

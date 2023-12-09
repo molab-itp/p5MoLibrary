@@ -8,9 +8,13 @@ class Pane {
     this.initZoom = this.z;
 
     // console.log('Pane', this.label, 'width', this.width, 'height', this.height);
-    // {label: '', pts: [[x,y,z], [x,y,z]]}
     //
-    this.refs = [];
+    this.refBox = {
+      //
+      width: this.backgImg.width,
+      height: this.backgImg.height,
+      refs: [],
+    };
     this.refIndex = 0;
     this.refLabel = '';
 
@@ -112,22 +116,16 @@ class Pane {
   }
 
   refEntry() {
-    let ent = this.refs[this.refIndex];
+    let ent = this.refBox.refs[this.refIndex];
     if (!ent) {
-      ent = {
-        label: '',
-        pts: [
-          [0, 0, 0],
-          [0, 0, 0],
-        ],
-      };
-      this.refs[this.refIndex] = ent;
+      ent = {};
+      this.refBox.refs[this.refIndex] = ent;
     }
     return ent;
   }
 
-  // this.refs = []; /
-  // { label: 'xx', pts: [[x,y,z], [x,y,z]] }
+  // this.refBox.refs = [];
+  //  { label: 'xx', pts: [[x,y,z], [x,y,z]] }
   // this.refIndex = 0;
   // this.refLabel = '';
   // this.zoomIndex = newValue;
@@ -135,14 +133,62 @@ class Pane {
   updateRefEntry(lastMouseEnts) {
     let ent = this.refEntry();
     ent.label = this.refLabel;
-    let index = 0;
-    let rr = (this.backgImg.width / this.width) * this.zoomRatio;
+
+    let backgImg = this.backgImg;
+    let w = backgImg.width;
+    let h = backgImg.height;
+    let r = h / w;
+
+    let dx = this.x;
+    let dy = this.y;
+    let dWidth = this.width;
+    let dHeight = floor(dWidth * r);
+    if (dHeight < this.height) {
+      dHeight = this.height;
+      dWidth = floor(dHeight / r);
+    }
+
+    let sx = this.panX;
+    let sy = this.panY;
+    let sWidth = floor(w * this.zoomRatio);
+    let sHeight = floor(h * this.zoomRatio);
+    if (this.width < dWidth) {
+      let dr = this.width / dWidth;
+      dWidth = this.width;
+      sWidth = floor(sWidth * dr);
+    }
+
+    let rw = sWidth / dWidth;
+    let rh = sHeight / dHeight;
+    // console.log('rw', rw, 'rh', rh);
+
+    // let index = 0;
+    let pts = [];
     for (let ment of lastMouseEnts) {
-      let x = ((ment.x - this.x) * rr + this.panX).toFixed(1);
-      let y = ((ment.y - this.y) * rr + this.panY).toFixed(1);
+      let x = floor((ment.x - dx) * rw) + sx;
+      let y = floor((ment.y - dy) * rh) + sy;
+      console.log(pts.length, 'x', x, 'y', y);
+      pts.push({ x, y });
+    }
+    console.log('before pts', JSON.stringify(pts));
+    if (pts[0].x > pts[1].x) {
+      let temp = pts[1].x;
+      pts[1].x = pts[0].x;
+      pts[0].x = temp;
+    }
+    if (pts[0].y > pts[1].y) {
+      let temp = pts[1].y;
+      pts[1].y = pts[0].y;
+      pts[0].y = temp;
+    }
+    console.log('after pts', JSON.stringify(pts));
+    {
+      let x = pts[0].x;
+      let y = pts[0].y;
+      let w = pts[1].x - x;
+      let h = pts[1].y - y;
       let z = this.zoomIndex;
-      ent.pts[index] = [x, y, z];
-      index++;
+      ent.pt = { x, y, w, h, z };
     }
   }
 }

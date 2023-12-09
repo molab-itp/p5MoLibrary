@@ -26,6 +26,10 @@ function setup() {
 
   ui_create();
 
+  clearLastMouseEnts();
+}
+
+function clearLastMouseEnts() {
   my.lastMouseEnts = [];
   my.lastMouseIndex = 0;
 }
