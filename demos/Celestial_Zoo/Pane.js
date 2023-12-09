@@ -64,13 +64,6 @@ class Pane {
 
     let cm = this.coordMap();
 
-    // let ww = this.backgImg.width;
-    // let hh = this.backgImg.height;
-    // let sWidth = floor(ww * this.zoomRatio);
-    // let sHeight = floor(hh * this.zoomRatio);
-
-    // this.panX = floor((ww - sWidth) * 0.5);
-    // this.panY = floor((hh - sHeight) * 0.5);
     this.panX = floor((cm.ww - cm.sWidth) * 0.5);
     this.panY = floor((cm.hh - cm.sHeight) * 0.5);
   }
@@ -104,29 +97,13 @@ class Pane {
     let cm = this.coordMap();
 
     let backgImg = this.backgImg;
-    // // zoom background image to the full width of the canvas
-    // let w = backgImg.width;
-    // let h = backgImg.height;
-    // let r = h / w;
+    // zoom background image to the full width of the canvas
 
     let dx = this.x;
     let dy = this.y;
-    // let dWidth = this.width;
-    // let dHeight = floor(dWidth * r);
-    // if (dHeight < this.height) {
-    //   dHeight = this.height;
-    //   dWidth = floor(dHeight / r);
-    // }
 
     let sx = this.panX;
     let sy = this.panY;
-    // let sWidth = floor(w * this.zoomRatio);
-    // let sHeight = floor(h * this.zoomRatio);
-    // if (this.width < dWidth) {
-    //   let dr = this.width / dWidth;
-    //   dWidth = this.width;
-    //   sWidth = floor(sWidth * dr);
-    // }
 
     image(backgImg, dx, dy, cm.dWidth, cm.dHeight, sx, sy, cm.sWidth, cm.sHeight);
   }
@@ -176,39 +153,18 @@ class Pane {
     if (lastMouseEnts.length < 2) return;
 
     let ent = this.refEntry();
-    // ent.label = this.refLabel;
-
-    // let backgImg = this.backgImg;
-    // let w = backgImg.width;
-    // let h = backgImg.height;
-    // let r = h / w;
 
     let dx = this.x;
     let dy = this.y;
-    // let dWidth = this.width;
-    // let dHeight = floor(dWidth * r);
-    // if (dHeight < this.height) {
-    //   dHeight = this.height;
-    //   dWidth = floor(dHeight / r);
-    // }
 
     let sx = this.panX;
     let sy = this.panY;
-    // let sWidth = floor(w * this.zoomRatio);
-    // let sHeight = floor(h * this.zoomRatio);
-    // if (this.width < dWidth) {
-    //   let dr = this.width / dWidth;
-    //   dWidth = this.width;
-    //   sWidth = floor(sWidth * dr);
-    // }
 
     let cm = this.coordMap();
-
     let rw = cm.sWidth / cm.dWidth;
     let rh = cm.sHeight / cm.dHeight;
     // console.log('rw', rw, 'rh', rh);
 
-    // let index = 0;
     let pts = [];
     for (let ment of lastMouseEnts) {
       let x = floor((ment.x - dx) * rw) + sx;
