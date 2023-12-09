@@ -6,9 +6,16 @@ class Pane {
     //
     Object.assign(this, props);
     this.initZoom = this.z;
+
     // console.log('Pane', this.label, 'width', this.width, 'height', this.height);
+    // {label: '', pts: [[x,y,z], [x,y,z]]}
     //
+    this.refs = [];
+    this.refIndex = 0;
+    this.refLabel = '';
+
     this.pan_init();
+
     if (this.initCentered) {
       this.pan_center();
     }
@@ -88,6 +95,7 @@ class Pane {
   }
 
   mousePressed() {
+    // console.log('Pane mousePressed', this.label);
     this.panX0 = mouseX;
     this.panY0 = mouseY;
   }
@@ -97,5 +105,44 @@ class Pane {
     this.panY += this.panY0 - mouseY;
     this.panX0 = mouseX;
     this.panY0 = mouseY;
+  }
+
+  mouseReleased() {
+    // console.log('Pane mouseReleased', this.label);
+  }
+
+  refEntry() {
+    let ent = this.refs[this.refIndex];
+    if (!ent) {
+      ent = {
+        label: '',
+        pts: [
+          [0, 0, 0],
+          [0, 0, 0],
+        ],
+      };
+      this.refs[this.refIndex] = ent;
+    }
+    return ent;
+  }
+
+  // this.refs = []; /
+  // { label: 'xx', pts: [[x,y,z], [x,y,z]] }
+  // this.refIndex = 0;
+  // this.refLabel = '';
+  // this.zoomIndex = newValue;
+  //
+  updateRefEntry(lastMouseEnts) {
+    let ent = this.refEntry();
+    ent.label = this.refLabel;
+    let index = 0;
+    let rr = (this.backgImg.width / this.width) * this.zoomRatio;
+    for (let ment of lastMouseEnts) {
+      let x = ((ment.x - this.x) * rr + this.panX).toFixed(1);
+      let y = ((ment.y - this.y) * rr + this.panY).toFixed(1);
+      let z = this.zoomIndex;
+      ent.pts[index] = [x, y, z];
+      index++;
+    }
   }
 }

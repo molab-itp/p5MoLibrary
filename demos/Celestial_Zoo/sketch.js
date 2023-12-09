@@ -11,7 +11,7 @@ function preload() {
 
 function setup() {
   //
-  my.canvas = createCanvas(windowWidth, windowHeight - 45);
+  my.canvas = createCanvas(windowWidth, windowHeight - 120);
   my.canvas.mousePressed(canvas_mousePressed);
   my.canvas.mouseReleased(canvas_mouseReleased);
   my.width = width;
@@ -25,6 +25,9 @@ function setup() {
   my.pane = my.pane1;
 
   ui_create();
+
+  my.lastMouseEnts = [];
+  my.lastMouseIndex = 0;
 }
 
 function create_pane1() {
@@ -37,9 +40,7 @@ function create_pane1() {
   let y = 0;
   let z = 4.5;
   let initCentered = 1;
-
   let width = floor(fwidth * r);
-
   my.pane1 = new Pane({ label, backgImg, x, y, z, width, height, initCentered });
 }
 
@@ -52,9 +53,7 @@ function create_pane2() {
   let x = 0;
   let y = 0;
   let z = 8;
-
   let width = floor(fwidth * r);
-
   my.pane2 = new Pane({ label, backgImg, x, y, z, width, height });
 }
 
@@ -67,21 +66,32 @@ function draw() {
   if (my.mouseTracking) {
     my.pane.mouseDragged();
   }
+  stroke(255);
+  strokeWeight(1);
+  for (let ment of my.lastMouseEnts) {
+    line(ment.x, 0, ment.x, height);
+    line(0, ment.y, width, ment.y);
+  }
 }
 
 function canvas_mousePressed() {
   // console.log('canvas_mousePressed');
   my.mouseTracking = 1;
   if (my.pane1.touchPoint(mouseX, mouseY)) {
-    my.pane = my.pane1;
+    setPane(my.pane1);
   } else if (my.pane2.touchPoint(mouseX, mouseY)) {
-    my.pane = my.pane2;
+    setPane(my.pane2);
   }
   my.pane.mousePressed();
+
+  let ment = { x: mouseX, y: mouseY };
+  my.lastMouseEnts[my.lastMouseIndex] = ment;
+  my.lastMouseIndex = (my.lastMouseIndex + 1) % 2;
 }
 
 function canvas_mouseReleased() {
   // console.log('canvas_mouseReleased');
+  my.pane.mouseReleased();
   my.mouseTracking = 0;
 }
 

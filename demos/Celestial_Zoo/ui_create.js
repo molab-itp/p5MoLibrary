@@ -11,11 +11,100 @@ function ui_create() {
   createButton('center').mousePressed(function () {
     my.pane.pan_center();
   });
-  let slider = createSlider(1, 14, my.pane.zoomIndex, 0.01).input(function () {
-    my.pane.pan_updateZoom(this.value());
+  {
+    my.zoom_slider = createSlider(1, 14, my.pane.zoomIndex, 0.01).input(function () {
+      my.pane.pan_updateZoom(this.value());
+    });
+    my.zoom_slider.style('width:500px');
+  }
+  createElement('br');
+  {
+    my.paneLabel = createSpan().id('id_paneLabel');
+    my.paneLabel.html(my.pane.label);
+  }
+  {
+    my.refIndex_input = createInput('' + my.pane.refIndex)
+      .id('id_refIndex')
+      .input(function () {
+        console.log('id_refIndex' + this.value());
+        my.pane.refIndex = parseFloat(this.value());
+      });
+    my.refIndex_input.size(30);
+  }
+  createButton('<•').mousePressed(function () {
+    previousRefAction();
   });
-  slider.style('width:500px');
+  createButton('•>').mousePressed(function () {
+    nextRefAction();
+  });
+  {
+    my.refLabel_input = createInput('' + my.pane.refLabel)
+      .id('id_refLabel')
+      .input(function () {
+        // console.log('id_refLabel ' + this.value());
+        my.pane.refLabel = this.value();
+      });
+    my.refLabel_input.size(60);
+  }
+  createButton('update').mousePressed(function () {
+    updateAction();
+  });
+  createButton('clear').mousePressed(function () {
+    my.lastPressedX = undefined;
+    my.lastReleasedX = undefined;
+  });
+  createButton('restore').mousePressed(function () {
+    restoreAction();
+  });
+  {
+    my.refEntryReport_div = createDiv().id('id_ptsReport');
+  }
 }
+
+function updateAction() {
+  my.pane.updateRefEntry(my.lastMouseEnts);
+  ui_refEntryUpdate();
+}
+
+function ui_refEntryUpdate() {
+  let refEntry = my.pane.refs[my.pane.refIndex];
+  let str = '';
+  if (refEntry) {
+    refEntry.label = my.refLabel_input.value();
+    str = JSON.stringify(refEntry);
+  }
+  my.refEntryReport_div.html(str);
+}
+
+function setPane(nPane) {
+  my.pane = nPane;
+  my.refIndex_input.value(my.pane.refIndex);
+  my.paneLabel.html(my.pane.label);
+  my.zoom_slider.value(my.pane.zoomIndex);
+  my.refLabel_input.value(my.pane.refLabel);
+}
+
+function previousRefAction() {
+  refAdjustDelta(-1);
+}
+
+function nextRefAction() {
+  refAdjustDelta(1);
+}
+
+function refAdjustDelta(delta) {
+  my.pane.refIndex += delta;
+  my.refIndex_input.value(my.pane.refIndex);
+  ui_refEntryUpdate();
+}
+
+function restoreAction() {
+  //
+}
+
+// function addAction() {
+//   //
+// }
 
 function ui_update() {
   //
