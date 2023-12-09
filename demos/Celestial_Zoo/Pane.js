@@ -16,7 +16,7 @@ class Pane {
       refs: [],
     };
     this.refIndex = 0;
-    this.refLabel = '';
+    // this.refLabel = '';
 
     this.pan_init();
 
@@ -60,42 +60,75 @@ class Pane {
 
   pan_center() {
     this.zoomIndex = this.initZoom;
-    let w = this.backgImg.width;
-    let h = this.backgImg.height;
-    let sWidth = floor(w * this.zoomRatio);
-    let sHeight = floor(h * this.zoomRatio);
-    this.panX = floor((w - sWidth) * 0.5);
-    this.panY = floor((h - sHeight) * 0.5);
-    // !!@ Need to correct center for dHeight < this.height
+    this.zoomRatio = 1 / this.zoomIndex;
+
+    let cm = this.coordMap();
+
+    // let ww = this.backgImg.width;
+    // let hh = this.backgImg.height;
+    // let sWidth = floor(ww * this.zoomRatio);
+    // let sHeight = floor(hh * this.zoomRatio);
+
+    // this.panX = floor((ww - sWidth) * 0.5);
+    // this.panY = floor((hh - sHeight) * 0.5);
+    this.panX = floor((cm.ww - cm.sWidth) * 0.5);
+    this.panY = floor((cm.hh - cm.sHeight) * 0.5);
   }
 
-  draw_backgImg() {
+  // { dWidth, dHeight, sWidth, sHeight, ww, hh };
+  coordMap() {
     let backgImg = this.backgImg;
-    // zoom background image to the full width of the canvas
-    let w = backgImg.width;
-    let h = backgImg.height;
-    let r = h / w;
+    let ww = backgImg.width;
+    let hh = backgImg.height;
+    let rr = hh / ww;
 
-    let dx = this.x;
-    let dy = this.y;
     let dWidth = this.width;
-    let dHeight = floor(dWidth * r);
+    let dHeight = floor(dWidth * rr);
     if (dHeight < this.height) {
       dHeight = this.height;
-      dWidth = floor(dHeight / r);
+      dWidth = floor(dHeight / rr);
     }
 
-    let sx = this.panX;
-    let sy = this.panY;
-    let sWidth = floor(w * this.zoomRatio);
-    let sHeight = floor(h * this.zoomRatio);
+    let sWidth = floor(ww * this.zoomRatio);
+    let sHeight = floor(hh * this.zoomRatio);
     if (this.width < dWidth) {
       let dr = this.width / dWidth;
       dWidth = this.width;
       sWidth = floor(sWidth * dr);
     }
 
-    image(backgImg, dx, dy, dWidth, dHeight, sx, sy, sWidth, sHeight);
+    return { dWidth, dHeight, sWidth, sHeight, ww, hh };
+  }
+
+  draw_backgImg() {
+    let cm = this.coordMap();
+
+    let backgImg = this.backgImg;
+    // // zoom background image to the full width of the canvas
+    // let w = backgImg.width;
+    // let h = backgImg.height;
+    // let r = h / w;
+
+    let dx = this.x;
+    let dy = this.y;
+    // let dWidth = this.width;
+    // let dHeight = floor(dWidth * r);
+    // if (dHeight < this.height) {
+    //   dHeight = this.height;
+    //   dWidth = floor(dHeight / r);
+    // }
+
+    let sx = this.panX;
+    let sy = this.panY;
+    // let sWidth = floor(w * this.zoomRatio);
+    // let sHeight = floor(h * this.zoomRatio);
+    // if (this.width < dWidth) {
+    //   let dr = this.width / dWidth;
+    //   dWidth = this.width;
+    //   sWidth = floor(sWidth * dr);
+    // }
+
+    image(backgImg, dx, dy, cm.dWidth, cm.dHeight, sx, sy, cm.sWidth, cm.sHeight);
   }
 
   mousePressed() {
@@ -118,10 +151,19 @@ class Pane {
   refEntry() {
     let ent = this.refBox.refs[this.refIndex];
     if (!ent) {
-      ent = {};
+      ent = { label: '' };
       this.refBox.refs[this.refIndex] = ent;
     }
     return ent;
+  }
+  get refLabel() {
+    let ent = this.refEntry();
+    return ent.label;
+  }
+
+  set refLabel(label) {
+    let ent = this.refEntry();
+    ent.label = label;
   }
 
   // this.refBox.refs = [];
@@ -131,35 +173,39 @@ class Pane {
   // this.zoomIndex = newValue;
   //
   updateRefEntry(lastMouseEnts) {
-    let ent = this.refEntry();
-    ent.label = this.refLabel;
+    if (lastMouseEnts.length < 2) return;
 
-    let backgImg = this.backgImg;
-    let w = backgImg.width;
-    let h = backgImg.height;
-    let r = h / w;
+    let ent = this.refEntry();
+    // ent.label = this.refLabel;
+
+    // let backgImg = this.backgImg;
+    // let w = backgImg.width;
+    // let h = backgImg.height;
+    // let r = h / w;
 
     let dx = this.x;
     let dy = this.y;
-    let dWidth = this.width;
-    let dHeight = floor(dWidth * r);
-    if (dHeight < this.height) {
-      dHeight = this.height;
-      dWidth = floor(dHeight / r);
-    }
+    // let dWidth = this.width;
+    // let dHeight = floor(dWidth * r);
+    // if (dHeight < this.height) {
+    //   dHeight = this.height;
+    //   dWidth = floor(dHeight / r);
+    // }
 
     let sx = this.panX;
     let sy = this.panY;
-    let sWidth = floor(w * this.zoomRatio);
-    let sHeight = floor(h * this.zoomRatio);
-    if (this.width < dWidth) {
-      let dr = this.width / dWidth;
-      dWidth = this.width;
-      sWidth = floor(sWidth * dr);
-    }
+    // let sWidth = floor(w * this.zoomRatio);
+    // let sHeight = floor(h * this.zoomRatio);
+    // if (this.width < dWidth) {
+    //   let dr = this.width / dWidth;
+    //   dWidth = this.width;
+    //   sWidth = floor(sWidth * dr);
+    // }
 
-    let rw = sWidth / dWidth;
-    let rh = sHeight / dHeight;
+    let cm = this.coordMap();
+
+    let rw = cm.sWidth / cm.dWidth;
+    let rh = cm.sHeight / cm.dHeight;
     // console.log('rw', rw, 'rh', rh);
 
     // let index = 0;
@@ -167,10 +213,8 @@ class Pane {
     for (let ment of lastMouseEnts) {
       let x = floor((ment.x - dx) * rw) + sx;
       let y = floor((ment.y - dy) * rh) + sy;
-      console.log(pts.length, 'x', x, 'y', y);
       pts.push({ x, y });
     }
-    console.log('before pts', JSON.stringify(pts));
     if (pts[0].x > pts[1].x) {
       let temp = pts[1].x;
       pts[1].x = pts[0].x;
@@ -181,7 +225,6 @@ class Pane {
       pts[1].y = pts[0].y;
       pts[0].y = temp;
     }
-    console.log('after pts', JSON.stringify(pts));
     {
       let x = pts[0].x;
       let y = pts[0].y;

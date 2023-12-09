@@ -26,11 +26,11 @@ function ui_create() {
     my.paneLabel.html(my.pane.label);
   }
   {
-    my.refIndex_input = createInput('' + my.pane.refIndex)
+    my.refIndex_input = createInput('' + (my.pane.refIndex + 1))
       .id('id_refIndex')
       .input(function () {
-        console.log('id_refIndex' + this.value());
-        my.pane.refIndex = parseFloat(this.value());
+        console.log('id_refIndex', this.value());
+        my.pane.refIndex = parseFloat(this.value()) - 1;
       });
     my.refIndex_input.size(30);
   }
@@ -69,7 +69,7 @@ function ui_refEntryUpdate() {
   let refEntry = my.pane.refEntry();
   let str = '';
   if (refEntry) {
-    refEntry.label = my.refLabel_input.value();
+    // refEntry.label = my.refLabel_input.value();
     str = JSON.stringify(refEntry);
   }
   my.refEntryReport_div.html(str);
@@ -77,13 +77,14 @@ function ui_refEntryUpdate() {
 
 function setPane(nPane) {
   my.pane = nPane;
-  my.refIndex_input.value(my.pane.refIndex);
+  my.refIndex_input.value(my.pane.refIndex + 1);
   my.paneLabel.html(my.pane.label);
   my.zoom_slider.value(my.pane.zoomIndex);
   my.refLabel_input.value(my.pane.refLabel);
 }
 
 function previousRefAction() {
+  if (my.pane.refIndex <= 0) return;
   refAdjustDelta(-1);
 }
 
@@ -93,7 +94,8 @@ function nextRefAction() {
 
 function refAdjustDelta(delta) {
   my.pane.refIndex += delta;
-  my.refIndex_input.value(my.pane.refIndex);
+  my.refIndex_input.value(my.pane.refIndex + 1);
+  my.refLabel_input.value(my.pane.refLabel);
   ui_refEntryUpdate();
 }
 
