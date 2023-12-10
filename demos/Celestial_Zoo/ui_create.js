@@ -56,9 +56,9 @@ function ui_create() {
       });
     my.refLabel_input.size(180);
   }
-  createButton('label').mousePressed(function () {
-    labelAction();
-  });
+  // createButton('label').mousePressed(function () {
+  //   labelAction();
+  // });
   createButton('update').mousePressed(function () {
     updateAction();
   });
@@ -71,14 +71,14 @@ function ui_create() {
 }
 
 // Copy label from other pane if our label is empty
-function labelAction() {
-  if (!my.pane.refLabel) {
-    let nlabel = my.pane == my.pane1 ? my.pane2.refLabel : my.pane1.refLabel;
-    if (nlabel) {
-      my.pane.refLabel = nlabel;
-    }
-  }
-}
+// function labelAction() {
+//   if (!my.pane.refLabel) {
+//     let nlabel = my.pane == my.pane1 ? my.pane2.refLabel : my.pane1.refLabel;
+//     if (nlabel) {
+//       my.pane.refLabel = nlabel;
+//     }
+//   }
+// }
 
 function addAction() {
   let n = my.pane1.refBox.refs.length;

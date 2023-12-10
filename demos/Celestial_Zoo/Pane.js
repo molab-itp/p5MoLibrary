@@ -83,9 +83,17 @@ class Pane {
 
   // Corrects to refBox store
   patchRefbox(refBox) {
+    let last = 0;
     for (let index = 0; index < refBox.refs.length; index++) {
       let ent = refBox.refs[index];
       ent.i = index + 1;
+      if (!ent.pt.w) {
+        last = index;
+      }
+    }
+    if (last) {
+      console.log('patchRefbox splice last', last);
+      refBox.refs.splice(last, 1);
     }
     this.refBox.label = refBox.label;
     this.refBox.refs = refBox.refs;
