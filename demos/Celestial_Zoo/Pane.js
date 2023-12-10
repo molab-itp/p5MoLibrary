@@ -67,14 +67,14 @@ class Pane {
     let refBox;
     let str = localStorage.getItem(this.label);
     if (!str) {
-      console.log(this.label, 'restore_drawing no str');
+      console.log(this.label, 'restore_localStorage no str');
       return;
     }
-    console.log('restore_drawing str.length', str.length);
+    // console.log('restore_localStorage str.length', str.length);
     try {
       refBox = JSON.parse(str);
     } catch (err) {
-      console.log('restore_drawing parse err', err);
+      console.log('restore_localStorage parse err', err);
       return;
     }
     this.refBox = refBox;
