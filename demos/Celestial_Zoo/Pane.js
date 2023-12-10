@@ -69,7 +69,9 @@ class Pane {
     this.refBox.label = this.label;
     let str = JSON.stringify(this.refBox);
     localStorage.setItem(this.label, str);
-    console.log('save_localStorage str.length', str.length);
+    // console.log('save_localStorage str.length', str.length);
+    let n = this.refBox.refs.length;
+    console.log(this.label, 'save_localStorage ', n, this.refBox.refs[n - 1].label);
   }
 
   touchPoint(x, y) {
@@ -172,10 +174,17 @@ class Pane {
     // console.log('Pane mouseReleased', this.label);
   }
 
+  // this.refBox.refs = [];
+  //  { label: 'xx', pts: { x, y, w, h, z } }
+  // this.refIndex = 0;
+  // this.refLabel = '';
+  // this.zoomIndex = newValue;
+  //
+
   refEntry() {
     let ent = this.refBox.refs[this.refIndex];
     if (!ent) {
-      ent = { label: '' };
+      ent = { label: '', pt: { x: 0, y: 0, w: 0, h: 0, z: 1 } };
       this.refBox.refs[this.refIndex] = ent;
     }
     return ent;
@@ -190,12 +199,6 @@ class Pane {
     ent.label = label;
   }
 
-  // this.refBox.refs = [];
-  //  { label: 'xx', pts: [[x,y,z], [x,y,z]] }
-  // this.refIndex = 0;
-  // this.refLabel = '';
-  // this.zoomIndex = newValue;
-  //
   updateRefEntry(lastMouseEnts) {
     let ent = this.refEntry();
 
@@ -244,5 +247,6 @@ class Pane {
       let z = this.zoomIndex;
       ent.pt = { x, y, w, h, z };
     }
+    // delete ent.pts;
   }
 }

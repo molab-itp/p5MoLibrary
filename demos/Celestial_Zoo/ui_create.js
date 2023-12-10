@@ -16,6 +16,7 @@ function ui_create() {
   });
   {
     my.zoom_slider = createSlider(1, 16, my.pane.zoomIndex, 0.01).input(function () {
+      clearLastMouseEnts();
       my.pane.pan_updateZoom(this.value());
     });
     my.zoom_slider.style('width:500px');
@@ -50,7 +51,7 @@ function ui_create() {
         // console.log('id_refLabel ' + this.value());
         my.pane.refLabel = this.value();
       });
-    my.refLabel_input.size(120);
+    my.refLabel_input.size(160);
   }
   createButton('update').mousePressed(function () {
     updateAction();
@@ -64,11 +65,14 @@ function ui_create() {
 }
 
 function dumpAction() {
-  console.log('let pane1 = ' + JSON.stringify(my.pane1.refBox, undefined, 2));
-  console.log('let pane2 = ' + JSON.stringify(my.pane2.refBox, undefined, 2));
+  let str = 'let pane1 = ' + JSON.stringify(my.pane1.refBox, undefined, 2);
+  let str2 = 'let pane2 = ' + JSON.stringify(my.pane2.refBox, undefined, 2);
+  str += '\n' + str2;
+  download('panes.js', str);
 }
 
 function focusAction() {
+  clearLastMouseEnts();
   my.pane1.focus();
   my.pane2.focus();
 }
@@ -97,8 +101,12 @@ function setPane(nPane) {
 }
 
 function previousRefAction() {
-  if (my.pane.refIndex <= 0) return;
-  refAdjustDelta(-1);
+  if (my.pane.refIndex == 0) {
+    // Wrap around to top
+    refAdjustDelta(my.pane1.refBox.refs.length - 1);
+  } else {
+    refAdjustDelta(-1);
+  }
 }
 
 function nextRefAction() {
@@ -138,3 +146,18 @@ function ui_present() {
 // https://editor.p5js.org/jht9629-nyu/sketches/rXhPgZ1k6
 // 2.2.3 circleX ui span coordinates xy colors rgb
 // reporting variable values, coorindates and colors
+
+// https://stackoverflow.com/questions/3665115/how-to-create-a-file-in-memory-for-user-to-download-but-not-through-server
+
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
