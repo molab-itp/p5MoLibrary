@@ -47,7 +47,7 @@ function ui_create() {
         // console.log('id_refLabel ' + this.value());
         my.pane.refLabel = this.value();
       });
-    my.refLabel_input.size(60);
+    my.refLabel_input.size(120);
   }
   createButton('update').mousePressed(function () {
     updateAction();

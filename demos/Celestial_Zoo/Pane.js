@@ -10,19 +10,44 @@ class Pane {
     // console.log('Pane', this.label, 'width', this.width, 'height', this.height);
     //
     this.refBox = {
-      //
+      label: '',
       width: this.backgImg.width,
       height: this.backgImg.height,
       refs: [],
     };
     this.refIndex = 0;
-    // this.refLabel = '';
+
+    this.restore_localStorage();
 
     this.pan_init();
 
     if (this.initCentered) {
       this.pan_center();
     }
+  }
+
+  restore_localStorage() {
+    let refBox;
+    let str = localStorage.getItem(this.label);
+    if (!str) {
+      console.log(this.label, 'restore_drawing no str');
+      return;
+    }
+    console.log('restore_drawing str.length', str.length);
+    try {
+      refBox = JSON.parse(str);
+    } catch (err) {
+      console.log('restore_drawing parse err', err);
+      return;
+    }
+    this.refBox = refBox;
+  }
+
+  save_localStorage() {
+    this.refBox.label = this.label;
+    let str = JSON.stringify(this.refBox);
+    localStorage.setItem(this.label, str);
+    console.log('save_localStorage str.length', str.length);
   }
 
   touchPoint(x, y) {
@@ -154,6 +179,12 @@ class Pane {
 
     let ent = this.refEntry();
 
+    this.updateEnt(ent, lastMouseEnts);
+
+    this.save_localStorage();
+  }
+
+  updateEnt(ent, lastMouseEnts) {
     let dx = this.x;
     let dy = this.y;
 
