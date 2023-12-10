@@ -1,7 +1,7 @@
 //
 
 class Pane {
-  // { label, backgImg, x, y, width, height, initZoom, initCentered }
+  // { label, backgImg, x, y, width, height, z, initCentered }
   constructor(props) {
     //
     Object.assign(this, props);
@@ -24,6 +24,22 @@ class Pane {
     if (this.initCentered) {
       this.pan_center();
     }
+  }
+
+  // this.refBox.refs = [];
+  //  { label, pts: { x, y, w, h, z }, i }
+  // this.refIndex = 0;
+  // this.zoomIndex = newValue;
+  //
+
+  refEntry() {
+    let ent = this.refBox.refs[this.refIndex];
+    if (!ent) {
+      let i = this.refBox.refs.length + 1;
+      ent = { label: '', pt: {}, i };
+      this.refBox.refs[this.refIndex] = ent;
+    }
+    return ent;
   }
 
   focus() {
@@ -62,11 +78,11 @@ class Pane {
       return;
     }
     this.refBox = refBox;
-    // put label at start of refBox
-    this.fixups(refBox);
+    // this.patchRefbox(refBox);
   }
 
-  fixups(refBox) {
+  // Corrects to refBox store
+  patchRefbox(refBox) {
     for (let index = 0; index < refBox.refs.length; index++) {
       let ent = refBox.refs[index];
       ent.i = index + 1;
@@ -183,23 +199,6 @@ class Pane {
 
   mouseReleased() {
     // console.log('Pane mouseReleased', this.label);
-  }
-
-  // this.refBox.refs = [];
-  //  { label: 'xx', pts: { x, y, w, h, z } }
-  // this.refIndex = 0;
-  // this.refLabel = '';
-  // this.zoomIndex = newValue;
-  //
-
-  refEntry() {
-    let ent = this.refBox.refs[this.refIndex];
-    if (!ent) {
-      let i = this.refBox.refs.length + 1;
-      ent = { label: '', pt: {}, i };
-      this.refBox.refs[this.refIndex] = ent;
-    }
-    return ent;
   }
 
   get refLabel() {
