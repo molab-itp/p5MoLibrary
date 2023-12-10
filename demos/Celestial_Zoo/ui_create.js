@@ -15,7 +15,7 @@ function ui_create() {
     clearLastMouseEnts();
   });
   {
-    my.zoom_slider = createSlider(1, 14, my.pane.zoomIndex, 0.01).input(function () {
+    my.zoom_slider = createSlider(1, 16, my.pane.zoomIndex, 0.01).input(function () {
       my.pane.pan_updateZoom(this.value());
     });
     my.zoom_slider.style('width:500px');
@@ -40,6 +40,9 @@ function ui_create() {
   createButton('•>').mousePressed(function () {
     nextRefAction();
   });
+  createButton('focus').mousePressed(function () {
+    focusAction();
+  });
   {
     my.refLabel_input = createInput('' + my.pane.refLabel)
       .id('id_refLabel')
@@ -55,9 +58,22 @@ function ui_create() {
   createButton('restore').mousePressed(function () {
     restoreAction();
   });
+  createButton('dump').mousePressed(function () {
+    dumpAction();
+  });
   {
     my.refEntryReport_div = createDiv().id('id_ptsReport');
   }
+}
+
+function dumpAction() {
+  console.log('let pane1 = ' + JSON.stringify(my.pane1.refBox, undefined, 2));
+  console.log('let pane2 = ' + JSON.stringify(my.pane2.refBox, undefined, 2));
+}
+
+function focusAction() {
+  my.pane1.focus();
+  my.pane2.focus();
 }
 
 function updateAction() {
@@ -93,7 +109,8 @@ function nextRefAction() {
 }
 
 function refAdjustDelta(delta) {
-  my.pane.refIndex += delta;
+  my.pane1.refIndex += delta;
+  my.pane2.refIndex += delta;
   my.refIndex_input.value(my.pane.refIndex + 1);
   my.refLabel_input.value(my.pane.refLabel);
   ui_refEntryUpdate();

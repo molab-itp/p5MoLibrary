@@ -26,6 +26,25 @@ class Pane {
     }
   }
 
+  focus() {
+    let ent = this.refEntry(); // this.refBox.refs[this.refIndex];
+    // console.log('focus ent', JSON.stringify(ent));
+
+    let pt = ent.pt;
+    if (pt == undefined) return;
+
+    this.zoomIndex = pt.z;
+    this.zoomRatio = 1 / this.zoomIndex;
+
+    let cm = this.coordMap();
+    // console.log('focus cm', JSON.stringify(cm));
+
+    let x = pt.x + pt.w * 0.5 - cm.sWidth * 0.5;
+    let y = pt.y + pt.h * 0.5 - cm.sHeight * 0.5;
+    this.panX = floor(x);
+    this.panY = floor(y);
+  }
+
   restore_localStorage() {
     let refBox;
     let str = localStorage.getItem(this.label);
@@ -175,11 +194,13 @@ class Pane {
   // this.zoomIndex = newValue;
   //
   updateRefEntry(lastMouseEnts) {
-    if (lastMouseEnts.length < 2) return;
-
     let ent = this.refEntry();
 
-    this.updateEnt(ent, lastMouseEnts);
+    if (lastMouseEnts.length >= 2) {
+      this.updateEnt(ent, lastMouseEnts);
+    } else {
+      ent.pt.z = this.zoomIndex;
+    }
 
     this.save_localStorage();
   }
