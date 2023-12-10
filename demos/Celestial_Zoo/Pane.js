@@ -201,6 +201,7 @@ class Pane {
     }
     return ent;
   }
+
   get refLabel() {
     let ent = this.refEntry();
     return ent.label;

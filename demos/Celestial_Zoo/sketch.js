@@ -88,9 +88,11 @@ function canvas_mousePressed() {
   }
   my.pane.mousePressed();
 
-  let ment = { x: mouseX, y: mouseY };
-  my.lastMouseEnts[my.lastMouseIndex] = ment;
-  my.lastMouseIndex = (my.lastMouseIndex + 1) % 2;
+  if (keyIsDown(SHIFT)) {
+    let ment = { x: mouseX, y: mouseY };
+    my.lastMouseEnts[my.lastMouseIndex] = ment;
+    my.lastMouseIndex = (my.lastMouseIndex + 1) % 2;
+  }
 }
 
 function canvas_mouseReleased() {
