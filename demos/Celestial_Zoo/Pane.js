@@ -63,13 +63,13 @@ class Pane {
     }
     this.refBox = refBox;
     // put label at start of refBox
-    // this.fixups()
+    this.fixups(refBox);
   }
 
-  fixups() {
+  fixups(refBox) {
     for (let index = 0; index < refBox.refs.length; index++) {
       let ent = refBox.refs[index];
-      ent.i = index;
+      ent.i = index + 1;
     }
     this.refBox.label = refBox.label;
     this.refBox.refs = refBox.refs;
@@ -195,7 +195,7 @@ class Pane {
   refEntry() {
     let ent = this.refBox.refs[this.refIndex];
     if (!ent) {
-      let i = this.refBox.refs.length;
+      let i = this.refBox.refs.length + 1;
       ent = { label: '', pt: {}, i };
       this.refBox.refs[this.refIndex] = ent;
     }
