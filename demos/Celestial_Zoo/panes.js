@@ -102,6 +102,72 @@ let pane1 = {
         z: 16,
       },
     },
+    {
+      label: 'Deimos',
+      pt: {
+        x: 2142,
+        y: 1701,
+        w: 67,
+        h: 59,
+        z: 16,
+      },
+    },
+    {
+      label: 'Mars trojans',
+      pt: {
+        x: 2175,
+        y: 1664,
+        w: 67,
+        h: 43,
+        z: 16,
+      },
+    },
+    {
+      label: 'Asteroid belt',
+      pt: {
+        x: 2016,
+        y: 1720,
+        w: 67,
+        h: 84,
+        z: 16,
+      },
+    },
+    {
+      label: 'Vesta',
+      pt: {
+        x: 2126,
+        y: 1617,
+        w: 59,
+        h: 50,
+        z: 16,
+      },
+    },
+    {
+      label: 'Ceres',
+    },
+    {
+      label: 'Pallas',
+      pt: {
+        x: 2066,
+        y: 1585,
+        w: 52,
+        h: 36,
+        z: 16,
+      },
+    },
+    {
+      label: 'Hygiea',
+      pt: {
+        x: 2079,
+        y: 1556,
+        w: 61,
+        h: 35,
+        z: 16,
+      },
+    },
+    {
+      label: '',
+    },
   ],
   label: 'pane1',
 };
@@ -206,6 +272,76 @@ let pane2 = {
         y: 1993,
         w: 173,
         h: 164,
+        z: 8,
+      },
+    },
+    {
+      label: 'Deimos',
+      pt: {
+        x: 26,
+        y: 2149,
+        w: 172,
+        h: 61,
+        z: 8,
+      },
+    },
+    {
+      label: 'Mars trojans',
+      pt: {
+        x: 24,
+        y: 2210,
+        w: 175,
+        h: 127,
+        z: 8,
+      },
+    },
+    {
+      label: 'Asteroid belt',
+      pt: {
+        x: 27,
+        y: 2337,
+        w: 170,
+        h: 232,
+        z: 8,
+      },
+    },
+    {
+      label: 'Vesta',
+      pt: {
+        x: 27,
+        y: 2560,
+        w: 172,
+        h: 150,
+        z: 8,
+      },
+    },
+    {
+      label: 'Ceres',
+      pt: {
+        x: 23,
+        y: 2689,
+        w: 175,
+        h: 207,
+        z: 8,
+      },
+    },
+    {
+      label: 'Pallas',
+      pt: {
+        x: 28,
+        y: 2893,
+        w: 174,
+        h: 129,
+        z: 8,
+      },
+    },
+    {
+      label: 'Hygiea',
+      pt: {
+        x: 29,
+        y: 3020,
+        w: 174,
+        h: 144,
         z: 8,
       },
     },
