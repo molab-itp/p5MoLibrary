@@ -59,7 +59,10 @@ class Pane {
       console.log('restore_drawing parse err', err);
       return;
     }
-    this.refBox = refBox;
+    // this.refBox = refBox;
+    // put label at start of refBox
+    this.refBox.label = refBox.label;
+    this.refBox.refs = refBox.refs;
   }
 
   save_localStorage() {

@@ -1,4 +1,5 @@
 let pane1 = {
+  label: 'pane1',
   width: 4800,
   height: 3200,
   refs: [
@@ -165,13 +166,10 @@ let pane1 = {
         z: 16,
       },
     },
-    {
-      label: '',
-    },
   ],
-  label: 'pane1',
 };
 let pane2 = {
+  label: 'pane2',
   width: 4800,
   height: 3200,
   refs: [
@@ -346,5 +344,4 @@ let pane2 = {
       },
     },
   ],
-  label: 'pane2',
 };
