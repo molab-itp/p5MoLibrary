@@ -184,7 +184,7 @@ class Pane {
   refEntry() {
     let ent = this.refBox.refs[this.refIndex];
     if (!ent) {
-      ent = { label: '', pt: { x: 0, y: 0, w: 0, h: 0, z: 1 } };
+      ent = { label: '', pt: {} };
       this.refBox.refs[this.refIndex] = ent;
     }
     return ent;

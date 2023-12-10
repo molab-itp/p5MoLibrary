@@ -51,7 +51,7 @@ function ui_create() {
         // console.log('id_refLabel ' + this.value());
         my.pane.refLabel = this.value();
       });
-    my.refLabel_input.size(160);
+    my.refLabel_input.size(180);
   }
   createButton('update').mousePressed(function () {
     updateAction();
@@ -119,6 +119,10 @@ function refAdjustDelta(delta) {
   my.refIndex_input.value(my.pane.refIndex + 1);
   my.refLabel_input.value(my.pane.refLabel);
   ui_refEntryUpdate();
+
+  if (my.pane1.refLabel && my.pane2.refLabel) {
+    focusAction();
+  }
 }
 
 function ui_update() {
