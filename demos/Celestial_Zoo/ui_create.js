@@ -55,9 +55,6 @@ function ui_create() {
   createButton('update').mousePressed(function () {
     updateAction();
   });
-  createButton('restore').mousePressed(function () {
-    restoreAction();
-  });
   createButton('dump').mousePressed(function () {
     dumpAction();
   });
@@ -115,14 +112,6 @@ function refAdjustDelta(delta) {
   my.refLabel_input.value(my.pane.refLabel);
   ui_refEntryUpdate();
 }
-
-function restoreAction() {
-  //
-}
-
-// function addAction() {
-//   //
-// }
 
 function ui_update() {
   //
