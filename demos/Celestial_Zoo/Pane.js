@@ -78,7 +78,7 @@ class Pane {
       return;
     }
     this.refBox = refBox;
-    // this.patchRefbox(refBox);
+    this.patchRefbox(refBox);
   }
 
   // Corrects to refBox store
