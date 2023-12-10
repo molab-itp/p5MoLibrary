@@ -35,6 +35,9 @@ function ui_create() {
       });
     my.refIndex_input.size(30);
   }
+  createButton('Add').mousePressed(function () {
+    addAction();
+  });
   createButton('<•').mousePressed(function () {
     previousRefAction();
   });
@@ -62,6 +65,15 @@ function ui_create() {
   {
     my.refEntryReport_div = createDiv().id('id_ptsReport');
   }
+}
+
+function addAction() {
+  let n = my.pane1.refBox.refs.length;
+  my.pane1.refIndex = n;
+  my.pane2.refIndex = n;
+  my.refIndex_input.value(my.pane.refIndex + 1);
+  my.refLabel_input.value(my.pane.refLabel);
+  ui_refEntryUpdate();
 }
 
 function dumpAction() {
