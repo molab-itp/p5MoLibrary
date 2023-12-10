@@ -27,11 +27,11 @@ class Pane {
   }
 
   focus() {
-    let ent = this.refEntry(); // this.refBox.refs[this.refIndex];
+    let ent = this.refEntry();
     // console.log('focus ent', JSON.stringify(ent));
 
     let pt = ent.pt;
-    if (pt == undefined) return;
+    if (!pt) return;
 
     this.zoomIndex = pt.z;
     this.zoomRatio = 1 / this.zoomIndex;
@@ -39,10 +39,12 @@ class Pane {
     let cm = this.coordMap();
     // console.log('focus cm', JSON.stringify(cm));
 
-    let x = pt.x + pt.w * 0.5 - cm.sWidth * 0.5;
-    let y = pt.y + pt.h * 0.5 - cm.sHeight * 0.5;
-    this.panX = floor(x);
-    this.panY = floor(y);
+    // let x = pt.x + pt.w * 0.5 - cm.sWidth * 0.5;
+    // let y = pt.y + pt.h * 0.5 - cm.sHeight * 0.5;
+    // this.panX = floor(x);
+    // this.panY = floor(y);
+    this.panX = floor(pt.x + (pt.w - cm.sWidth) * 0.5);
+    this.panY = floor(pt.y + (pt.h - cm.sHeight) * 0.5);
   }
 
   restore_localStorage() {
@@ -59,10 +61,19 @@ class Pane {
       console.log('restore_drawing parse err', err);
       return;
     }
-    // this.refBox = refBox;
+    this.refBox = refBox;
     // put label at start of refBox
+    // this.fixups()
+  }
+
+  fixups() {
+    for (let index = 0; index < refBox.refs.length; index++) {
+      let ent = refBox.refs[index];
+      ent.i = index;
+    }
     this.refBox.label = refBox.label;
     this.refBox.refs = refBox.refs;
+    this.save_localStorage();
   }
 
   save_localStorage() {
@@ -184,7 +195,8 @@ class Pane {
   refEntry() {
     let ent = this.refBox.refs[this.refIndex];
     if (!ent) {
-      ent = { label: '', pt: {} };
+      let i = this.refBox.refs.length;
+      ent = { label: '', pt: {}, i };
       this.refBox.refs[this.refIndex] = ent;
     }
     return ent;

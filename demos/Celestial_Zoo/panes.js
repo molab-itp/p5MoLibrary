@@ -12,6 +12,7 @@ let pane1 = {
         h: 177,
         z: 16,
       },
+      i: 0,
     },
     {
       label: "Halley's Comet",
@@ -22,6 +23,7 @@ let pane1 = {
         h: 66,
         z: 16,
       },
+      i: 1,
     },
     {
       label: 'Mercury',
@@ -32,6 +34,7 @@ let pane1 = {
         h: 78,
         z: 14,
       },
+      i: 2,
     },
     {
       label: '2020 AV 2',
@@ -42,6 +45,7 @@ let pane1 = {
         h: 53,
         z: 14,
       },
+      i: 3,
     },
     {
       label: 'Venus',
@@ -52,6 +56,7 @@ let pane1 = {
         h: 98,
         z: 14,
       },
+      i: 4,
     },
     {
       label: 'Earth',
@@ -62,6 +67,7 @@ let pane1 = {
         h: 166,
         z: 14,
       },
+      i: 5,
     },
     {
       label: 'Moon',
@@ -72,6 +78,7 @@ let pane1 = {
         h: 79,
         z: 14,
       },
+      i: 6,
     },
     {
       label: '2010 TK 7',
@@ -82,6 +89,7 @@ let pane1 = {
         h: 47,
         z: 14,
       },
+      i: 7,
     },
     {
       label: 'Mars',
@@ -92,6 +100,7 @@ let pane1 = {
         h: 112,
         z: 14,
       },
+      i: 8,
     },
     {
       label: 'Phobos',
@@ -102,6 +111,7 @@ let pane1 = {
         h: 92,
         z: 16,
       },
+      i: 9,
     },
     {
       label: 'Deimos',
@@ -112,6 +122,7 @@ let pane1 = {
         h: 59,
         z: 16,
       },
+      i: 10,
     },
     {
       label: 'Mars trojans',
@@ -122,6 +133,7 @@ let pane1 = {
         h: 43,
         z: 16,
       },
+      i: 11,
     },
     {
       label: 'Asteroid belt',
@@ -132,6 +144,7 @@ let pane1 = {
         h: 84,
         z: 16,
       },
+      i: 12,
     },
     {
       label: 'Vesta',
@@ -142,9 +155,11 @@ let pane1 = {
         h: 50,
         z: 16,
       },
+      i: 13,
     },
     {
       label: 'Ceres',
+      i: 14,
     },
     {
       label: 'Pallas',
@@ -155,6 +170,7 @@ let pane1 = {
         h: 36,
         z: 16,
       },
+      i: 15,
     },
     {
       label: 'Hygiea',
@@ -165,6 +181,7 @@ let pane1 = {
         h: 35,
         z: 16,
       },
+      i: 16,
     },
     {
       label: 'Jupiter',
@@ -175,6 +192,7 @@ let pane1 = {
         h: 153,
         z: 16,
       },
+      i: 17,
     },
     {
       label: 'Io',
@@ -185,6 +203,7 @@ let pane1 = {
         h: 44,
         z: 16,
       },
+      i: 18,
     },
     {
       label: 'Europa',
@@ -195,6 +214,7 @@ let pane1 = {
         h: 72,
         z: 16,
       },
+      i: 19,
     },
     {
       label: 'Ganymede',
@@ -205,6 +225,7 @@ let pane1 = {
         h: 38,
         z: 16,
       },
+      i: 20,
     },
     {
       label: 'Callisto',
@@ -215,6 +236,7 @@ let pane1 = {
         h: 66,
         z: 16,
       },
+      i: 21,
     },
     {
       label: 'Jupiter Trojans',
@@ -225,6 +247,7 @@ let pane1 = {
         h: 56,
         z: 16,
       },
+      i: 22,
     },
     {
       label: 'Saturn',
@@ -235,6 +258,7 @@ let pane1 = {
         h: 210,
         z: 9.87,
       },
+      i: 23,
     },
     {
       label: 'Tethys',
@@ -245,6 +269,7 @@ let pane1 = {
         h: 74,
         z: 9.87,
       },
+      i: 24,
     },
     {
       label: 'Dione',
@@ -255,6 +280,7 @@ let pane1 = {
         h: 56,
         z: 9.87,
       },
+      i: 25,
     },
     {
       label: 'Rhea',
@@ -265,6 +291,7 @@ let pane1 = {
         h: 59,
         z: 9.87,
       },
+      i: 26,
     },
     {
       label: 'Titan',
@@ -275,6 +302,7 @@ let pane1 = {
         h: 73,
         z: 9.87,
       },
+      i: 27,
     },
     {
       label: 'Iapetus',
@@ -285,6 +313,7 @@ let pane1 = {
         h: 48,
         z: 9.87,
       },
+      i: 28,
     },
     {
       label: 'Uranus',
@@ -295,6 +324,7 @@ let pane1 = {
         h: 95,
         z: 9.87,
       },
+      i: 29,
     },
     {
       label: 'Miranda',
@@ -305,6 +335,7 @@ let pane1 = {
         h: 54,
         z: 9.87,
       },
+      i: 30,
     },
     {
       label: 'Ariel',
@@ -315,6 +346,7 @@ let pane1 = {
         h: 42,
         z: 9.87,
       },
+      i: 31,
     },
     {
       label: 'Umbriel',
@@ -325,6 +357,7 @@ let pane1 = {
         h: 39,
         z: 16,
       },
+      i: 32,
     },
     {
       label: 'Titania',
@@ -335,6 +368,7 @@ let pane1 = {
         h: 67,
         z: 16,
       },
+      i: 33,
     },
     {
       label: 'Oberon',
@@ -345,6 +379,7 @@ let pane1 = {
         h: 53,
         z: 16,
       },
+      i: 34,
     },
     {
       label: 'Neptune',
@@ -355,6 +390,7 @@ let pane1 = {
         h: 105,
         z: 9.63,
       },
+      i: 35,
     },
     {
       label: 'Triton',
@@ -365,6 +401,7 @@ let pane1 = {
         h: 58,
         z: 9.63,
       },
+      i: 36,
     },
     {
       label: 'Triton',
@@ -375,6 +412,7 @@ let pane1 = {
         h: 61,
         z: 16,
       },
+      i: 37,
     },
     {
       label: 'Vanth',
@@ -385,6 +423,7 @@ let pane1 = {
         h: 60,
         z: 16,
       },
+      i: 38,
     },
     {
       label: 'Pluto',
@@ -395,6 +434,7 @@ let pane1 = {
         h: 69,
         z: 16,
       },
+      i: 39,
     },
     {
       label: 'Charon',
@@ -405,6 +445,7 @@ let pane1 = {
         h: 41,
         z: 16,
       },
+      i: 40,
     },
     {
       label: 'Salacia',
@@ -415,6 +456,7 @@ let pane1 = {
         h: 35,
         z: 16,
       },
+      i: 41,
     },
     {
       label: 'Huamea',
@@ -425,6 +467,7 @@ let pane1 = {
         h: 57,
         z: 16,
       },
+      i: 42,
     },
     {
       label: 'Arrokoth',
@@ -435,6 +478,7 @@ let pane1 = {
         h: 52,
         z: 16,
       },
+      i: 43,
     },
     {
       label: 'Makemake',
@@ -445,6 +489,7 @@ let pane1 = {
         h: 49,
         z: 16,
       },
+      i: 44,
     },
     {
       label: 'Gonggong',
@@ -455,6 +500,7 @@ let pane1 = {
         h: 53,
         z: 16,
       },
+      i: 45,
     },
     {
       label: 'Eris',
@@ -465,6 +511,7 @@ let pane1 = {
         h: 45,
         z: 16,
       },
+      i: 46,
     },
     {
       label: 'Sedna',
@@ -475,6 +522,7 @@ let pane1 = {
         h: 50,
         z: 16,
       },
+      i: 47,
     },
     {
       label: '21/Borisov',
@@ -485,6 +533,7 @@ let pane1 = {
         h: 54,
         z: 16,
       },
+      i: 48,
     },
     {
       label: "'Oumuamua",
@@ -495,6 +544,7 @@ let pane1 = {
         h: 50,
         z: 16,
       },
+      i: 49,
     },
     {
       label: 'Oort Cloud',
@@ -505,6 +555,7 @@ let pane1 = {
         h: 575,
         z: 4.83,
       },
+      i: 50,
     },
     {
       label: 'Alpha Centauri',
@@ -515,6 +566,7 @@ let pane1 = {
         h: 74,
         z: 16,
       },
+      i: 51,
     },
     {
       label: "Barnard's Star",
@@ -525,6 +577,7 @@ let pane1 = {
         h: 48,
         z: 16,
       },
+      i: 52,
     },
     {
       label: 'Luhman 16',
@@ -535,6 +588,7 @@ let pane1 = {
         h: 46,
         z: 16,
       },
+      i: 53,
     },
     {
       label: 'WISE 0855-0714',
@@ -545,6 +599,7 @@ let pane1 = {
         h: 61,
         z: 16,
       },
+      i: 54,
     },
     {
       label: 'Wolf 359',
@@ -555,6 +610,7 @@ let pane1 = {
         h: 51,
         z: 16,
       },
+      i: 55,
     },
     {
       label: 'Lalande 21185',
@@ -565,6 +621,7 @@ let pane1 = {
         h: 72,
         z: 16,
       },
+      i: 56,
     },
     {
       label: 'Sirius',
@@ -575,6 +632,7 @@ let pane1 = {
         h: 64,
         z: 16,
       },
+      i: 57,
     },
     {
       label: 'Luyten 726-8 (UV Ceti)',
@@ -585,6 +643,7 @@ let pane1 = {
         h: 49,
         z: 16,
       },
+      i: 58,
     },
     {
       label: 'Ran (Epslion Eridani)',
@@ -595,6 +654,7 @@ let pane1 = {
         h: 56,
         z: 16,
       },
+      i: 59,
     },
     {
       label: '61 Cygni',
@@ -605,6 +665,7 @@ let pane1 = {
         h: 58,
         z: 16,
       },
+      i: 60,
     },
     {
       label: 'Procyon',
@@ -615,6 +676,7 @@ let pane1 = {
         h: 51,
         z: 16,
       },
+      i: 61,
     },
     {
       label: 'Procyon',
@@ -625,6 +687,7 @@ let pane1 = {
         h: 53,
         z: 16,
       },
+      i: 62,
     },
     {
       label: "van Maanen's Star",
@@ -635,6 +698,7 @@ let pane1 = {
         h: 46,
         z: 16,
       },
+      i: 63,
     },
     {
       label: 'Altair',
@@ -645,6 +709,7 @@ let pane1 = {
         h: 47,
         z: 16,
       },
+      i: 64,
     },
     {
       label: 'Delta Pavonis',
@@ -655,6 +720,7 @@ let pane1 = {
         h: 65,
         z: 16,
       },
+      i: 65,
     },
     {
       label: 'Fomalhaut',
@@ -665,6 +731,7 @@ let pane1 = {
         h: 65,
         z: 16,
       },
+      i: 66,
     },
     {
       label: 'Vega',
@@ -675,6 +742,7 @@ let pane1 = {
         h: 58,
         z: 16,
       },
+      i: 67,
     },
     {
       label: 'Pollux',
@@ -685,6 +753,7 @@ let pane1 = {
         h: 66,
         z: 9.8,
       },
+      i: 68,
     },
     {
       label: 'Arcturus',
@@ -695,6 +764,7 @@ let pane1 = {
         h: 89,
         z: 16,
       },
+      i: 69,
     },
     {
       label: 'Capella',
@@ -705,6 +775,7 @@ let pane1 = {
         h: 67,
         z: 16,
       },
+      i: 70,
     },
     {
       label: 'Castor',
@@ -715,16 +786,18 @@ let pane1 = {
         h: 81,
         z: 16,
       },
+      i: 71,
     },
     {
       label: 'Aldebaran',
       pt: {
-        x: 1808,
-        y: 1684,
-        w: 73,
-        h: 68,
+        x: 1794,
+        y: 1682,
+        w: 92,
+        h: 81,
         z: 16,
       },
+      i: 72,
     },
     {
       label: 'Regulus',
@@ -735,6 +808,7 @@ let pane1 = {
         h: 76,
         z: 16,
       },
+      i: 73,
     },
     {
       label: 'Menkalinan',
@@ -745,6 +819,7 @@ let pane1 = {
         h: 56,
         z: 16,
       },
+      i: 74,
     },
     {
       label: 'Alioth (Epsilon Ursae Majoris)',
@@ -755,6 +830,7 @@ let pane1 = {
         h: 48,
         z: 16,
       },
+      i: 75,
     },
     {
       label: 'Mizar',
@@ -765,6 +841,7 @@ let pane1 = {
         h: 60,
         z: 16,
       },
+      i: 76,
     },
     {
       label: 'Gacrux',
@@ -775,6 +852,7 @@ let pane1 = {
         h: 65,
         z: 16,
       },
+      i: 77,
     },
     {
       label: 'Algol (Beta Persei)',
@@ -785,6 +863,7 @@ let pane1 = {
         h: 44,
         z: 16,
       },
+      i: 78,
     },
     {
       label: 'Alkaid (Eta Ursae Majoris)',
@@ -795,6 +874,7 @@ let pane1 = {
         h: 47,
         z: 16,
       },
+      i: 79,
     },
     {
       label: 'Alhena (Gamma Geminorum)',
@@ -805,6 +885,7 @@ let pane1 = {
         h: 48,
         z: 16,
       },
+      i: 80,
     },
     {
       label: 'Dubhe (Alpha Ursae Majoris)',
@@ -815,6 +896,7 @@ let pane1 = {
         h: 54,
         z: 16,
       },
+      i: 81,
     },
     {
       label: 'Elnath (Beta Tauri)',
@@ -825,6 +907,7 @@ let pane1 = {
         h: 48,
         z: 16,
       },
+      i: 82,
     },
     {
       label: 'Achernar',
@@ -835,6 +918,7 @@ let pane1 = {
         h: 48,
         z: 16,
       },
+      i: 83,
     },
     {
       label: 'Ginan',
@@ -845,6 +929,7 @@ let pane1 = {
         h: 43,
         z: 16,
       },
+      i: 84,
     },
     {
       label: 'Veritate (14 Andromededae)',
@@ -855,6 +940,7 @@ let pane1 = {
         h: 54,
         z: 16,
       },
+      i: 85,
     },
     {
       label: 'Musica (18 Delphini)',
@@ -865,6 +951,7 @@ let pane1 = {
         h: 39,
         z: 16,
       },
+      i: 86,
     },
     {
       label: 'Ogma (HD 149026)',
@@ -875,6 +962,7 @@ let pane1 = {
         h: 42,
         z: 16,
       },
+      i: 87,
     },
     {
       label: 'Spica (Alpha Virginis)',
@@ -885,6 +973,7 @@ let pane1 = {
         h: 72,
         z: 16,
       },
+      i: 88,
     },
     {
       label: 'Bellatrix',
@@ -895,6 +984,7 @@ let pane1 = {
         h: 50,
         z: 16,
       },
+      i: 89,
     },
     {
       label: 'Mimosa (Beta Crucis)',
@@ -905,6 +995,7 @@ let pane1 = {
         h: 48,
         z: 16,
       },
+      i: 90,
     },
     {
       label: 'Sargas (Theta Scoripii)',
@@ -915,6 +1006,7 @@ let pane1 = {
         h: 56,
         z: 16,
       },
+      i: 91,
     },
     {
       label: 'Canopus',
@@ -925,6 +1017,7 @@ let pane1 = {
         h: 57,
         z: 10.66,
       },
+      i: 92,
     },
     {
       label: 'Tonatiuh',
@@ -935,6 +1028,7 @@ let pane1 = {
         h: 56,
         z: 16,
       },
+      i: 93,
     },
     {
       label: 'Acrux',
@@ -945,6 +1039,7 @@ let pane1 = {
         h: 59,
         z: 16,
       },
+      i: 94,
     },
     {
       label: 'Polaris',
@@ -955,6 +1050,7 @@ let pane1 = {
         h: 58,
         z: 16,
       },
+      i: 95,
     },
     {
       label: 'Hadar (Beta Centauri)',
@@ -965,6 +1061,7 @@ let pane1 = {
         h: 56,
         z: 14.65,
       },
+      i: 96,
     },
     {
       label: 'Adhara (Epsilon Canis Majoris)',
@@ -975,6 +1072,7 @@ let pane1 = {
         h: 62,
         z: 14.65,
       },
+      i: 97,
     },
     {
       label: 'Pleiades',
@@ -985,6 +1083,7 @@ let pane1 = {
         h: 59,
         z: 16,
       },
+      i: 98,
     },
     {
       label: 'Antares',
@@ -995,6 +1094,7 @@ let pane1 = {
         h: 58,
         z: 11.49,
       },
+      i: 99,
     },
     {
       label: 'Shaula (Lambda Scorpii)',
@@ -1005,6 +1105,7 @@ let pane1 = {
         h: 48,
         z: 11.49,
       },
+      i: 100,
     },
     {
       label: 'Betelgeuse',
@@ -1015,6 +1116,12 @@ let pane1 = {
         h: 55,
         z: 16,
       },
+      i: 101,
+    },
+    {
+      label: '',
+      pt: {},
+      i: 102,
     },
   ],
 };
@@ -1032,6 +1139,7 @@ let pane2 = {
         h: 370,
         z: 8,
       },
+      i: 0,
     },
     {
       label: "Halley's Comet",
@@ -1042,6 +1150,7 @@ let pane2 = {
         h: 156,
         z: 8,
       },
+      i: 1,
     },
     {
       label: 'Mercury',
@@ -1052,6 +1161,7 @@ let pane2 = {
         h: 257,
         z: 8,
       },
+      i: 2,
     },
     {
       label: '2020 AV 2',
@@ -1062,6 +1172,7 @@ let pane2 = {
         h: 94,
         z: 8,
       },
+      i: 3,
     },
     {
       label: 'Venus',
@@ -1072,6 +1183,7 @@ let pane2 = {
         h: 186,
         z: 8,
       },
+      i: 4,
     },
     {
       label: 'Earth',
@@ -1082,6 +1194,7 @@ let pane2 = {
         h: 351,
         z: 8,
       },
+      i: 5,
     },
     {
       label: 'Moon',
@@ -1092,6 +1205,7 @@ let pane2 = {
         h: 265,
         z: 8,
       },
+      i: 6,
     },
     {
       label: '2010 TK7',
@@ -1102,6 +1216,7 @@ let pane2 = {
         h: 157,
         z: 8,
       },
+      i: 7,
     },
     {
       label: 'Mars',
@@ -1112,6 +1227,7 @@ let pane2 = {
         h: 238,
         z: 8,
       },
+      i: 8,
     },
     {
       label: 'Phobos',
@@ -1122,6 +1238,7 @@ let pane2 = {
         h: 164,
         z: 8,
       },
+      i: 9,
     },
     {
       label: 'Deimos',
@@ -1132,6 +1249,7 @@ let pane2 = {
         h: 61,
         z: 8,
       },
+      i: 10,
     },
     {
       label: 'Mars trojans',
@@ -1142,6 +1260,7 @@ let pane2 = {
         h: 127,
         z: 8,
       },
+      i: 11,
     },
     {
       label: 'Asteroid belt',
@@ -1152,6 +1271,7 @@ let pane2 = {
         h: 232,
         z: 8,
       },
+      i: 12,
     },
     {
       label: 'Vesta',
@@ -1162,6 +1282,7 @@ let pane2 = {
         h: 150,
         z: 8,
       },
+      i: 13,
     },
     {
       label: 'Ceres',
@@ -1172,6 +1293,7 @@ let pane2 = {
         h: 207,
         z: 8,
       },
+      i: 14,
     },
     {
       label: 'Pallas',
@@ -1182,6 +1304,7 @@ let pane2 = {
         h: 129,
         z: 8,
       },
+      i: 15,
     },
     {
       label: 'Hygiea',
@@ -1192,6 +1315,7 @@ let pane2 = {
         h: 144,
         z: 8,
       },
+      i: 16,
     },
     {
       label: 'Jupiter',
@@ -1202,6 +1326,7 @@ let pane2 = {
         h: 313,
         z: 8,
       },
+      i: 17,
     },
     {
       label: 'Io',
@@ -1212,6 +1337,7 @@ let pane2 = {
         h: 229,
         z: 8,
       },
+      i: 18,
     },
     {
       label: 'Europa',
@@ -1222,6 +1348,7 @@ let pane2 = {
         h: 229,
         z: 8,
       },
+      i: 19,
     },
     {
       label: 'Ganymede',
@@ -1232,6 +1359,7 @@ let pane2 = {
         h: 204,
         z: 8,
       },
+      i: 20,
     },
     {
       label: '    clearLastMouseEnts();',
@@ -1242,6 +1370,7 @@ let pane2 = {
         h: 156,
         z: 8,
       },
+      i: 21,
     },
     {
       label: 'Jupiter Trojans',
@@ -1252,6 +1381,7 @@ let pane2 = {
         h: 203,
         z: 8,
       },
+      i: 22,
     },
     {
       label: 'Saturn',
@@ -1262,6 +1392,7 @@ let pane2 = {
         h: 272,
         z: 8,
       },
+      i: 23,
     },
     {
       label: 'Tethys',
@@ -1272,6 +1403,7 @@ let pane2 = {
         h: 128,
         z: 8,
       },
+      i: 24,
     },
     {
       label: 'Dione',
@@ -1282,6 +1414,7 @@ let pane2 = {
         h: 121,
         z: 8,
       },
+      i: 25,
     },
     {
       label: 'Rhea',
@@ -1292,6 +1425,7 @@ let pane2 = {
         h: 174,
         z: 8,
       },
+      i: 26,
     },
     {
       label: 'Titan',
@@ -1302,6 +1436,7 @@ let pane2 = {
         h: 218,
         z: 8,
       },
+      i: 27,
     },
     {
       label: 'Iapetus',
@@ -1312,6 +1447,7 @@ let pane2 = {
         h: 154,
         z: 8,
       },
+      i: 28,
     },
     {
       label: 'Uranus',
@@ -1322,6 +1458,7 @@ let pane2 = {
         h: 200,
         z: 8,
       },
+      i: 29,
     },
     {
       label: 'Miranda',
@@ -1332,6 +1469,7 @@ let pane2 = {
         h: 125,
         z: 8,
       },
+      i: 30,
     },
     {
       label: 'Ariel',
@@ -1342,6 +1480,7 @@ let pane2 = {
         h: 102,
         z: 8,
       },
+      i: 31,
     },
     {
       label: 'Umbriel',
@@ -1352,6 +1491,7 @@ let pane2 = {
         h: 160,
         z: 8,
       },
+      i: 32,
     },
     {
       label: 'Titania',
@@ -1362,6 +1502,7 @@ let pane2 = {
         h: 134,
         z: 8,
       },
+      i: 33,
     },
     {
       label: 'Oberon',
@@ -1372,6 +1513,7 @@ let pane2 = {
         h: 211,
         z: 8,
       },
+      i: 34,
     },
     {
       label: 'Neptune',
@@ -1382,6 +1524,7 @@ let pane2 = {
         h: 294,
         z: 8,
       },
+      i: 35,
     },
     {
       label: 'Triton',
@@ -1392,6 +1535,7 @@ let pane2 = {
         h: 217,
         z: 8,
       },
+      i: 36,
     },
     {
       label: 'Orcus',
@@ -1402,6 +1546,7 @@ let pane2 = {
         h: 176,
         z: 8,
       },
+      i: 37,
     },
     {
       label: 'Vanth',
@@ -1412,6 +1557,7 @@ let pane2 = {
         h: 131,
         z: 8,
       },
+      i: 38,
     },
     {
       label: 'Pluto',
@@ -1422,6 +1568,7 @@ let pane2 = {
         h: 250,
         z: 8,
       },
+      i: 39,
     },
     {
       label: 'Charon',
@@ -1432,6 +1579,7 @@ let pane2 = {
         h: 158,
         z: 8,
       },
+      i: 40,
     },
     {
       label: 'Salacia',
@@ -1442,6 +1590,7 @@ let pane2 = {
         h: 130,
         z: 7.96,
       },
+      i: 41,
     },
     {
       label: 'Huamea',
@@ -1452,6 +1601,7 @@ let pane2 = {
         h: 201,
         z: 7.96,
       },
+      i: 42,
     },
     {
       label: 'Huamea',
@@ -1462,6 +1612,7 @@ let pane2 = {
         h: 165,
         z: 7.96,
       },
+      i: 43,
     },
     {
       label: 'Makemake',
@@ -1472,6 +1623,7 @@ let pane2 = {
         h: 175,
         z: 7.96,
       },
+      i: 44,
     },
     {
       label: 'Gonggong',
@@ -1482,6 +1634,7 @@ let pane2 = {
         h: 188,
         z: 7.96,
       },
+      i: 45,
     },
     {
       label: 'Eris',
@@ -1492,6 +1645,7 @@ let pane2 = {
         h: 254,
         z: 7.96,
       },
+      i: 46,
     },
     {
       label: 'Sedna',
@@ -1502,6 +1656,7 @@ let pane2 = {
         h: 257,
         z: 7.96,
       },
+      i: 47,
     },
     {
       label: '21/Borisov',
@@ -1512,6 +1667,7 @@ let pane2 = {
         h: 158,
         z: 7.96,
       },
+      i: 48,
     },
     {
       label: "'Oumuamua",
@@ -1522,6 +1678,7 @@ let pane2 = {
         h: 264,
         z: 7.96,
       },
+      i: 49,
     },
     {
       label: 'Oort Cloud',
@@ -1532,6 +1689,7 @@ let pane2 = {
         h: 288,
         z: 7.87,
       },
+      i: 50,
     },
     {
       label: 'Alpha Centauri',
@@ -1542,6 +1700,7 @@ let pane2 = {
         h: 248,
         z: 7.87,
       },
+      i: 51,
     },
     {
       label: "Barnard's Star",
@@ -1552,6 +1711,7 @@ let pane2 = {
         h: 248,
         z: 7.87,
       },
+      i: 52,
     },
     {
       label: 'Luhman 16',
@@ -1562,6 +1722,7 @@ let pane2 = {
         h: 219,
         z: 7.87,
       },
+      i: 53,
     },
     {
       label: 'WISE 0855-0714',
@@ -1572,6 +1733,7 @@ let pane2 = {
         h: 164,
         z: 7.87,
       },
+      i: 54,
     },
     {
       label: 'Wolf 359',
@@ -1582,6 +1744,7 @@ let pane2 = {
         h: 227,
         z: 7.87,
       },
+      i: 55,
     },
     {
       label: 'Lalande 21185',
@@ -1592,6 +1755,7 @@ let pane2 = {
         h: 186,
         z: 7.87,
       },
+      i: 56,
     },
     {
       label: 'Sirius',
@@ -1602,6 +1766,7 @@ let pane2 = {
         h: 260,
         z: 7.87,
       },
+      i: 57,
     },
     {
       label: 'Luyten 726-8 (UV Ceti)',
@@ -1612,6 +1777,7 @@ let pane2 = {
         h: 214,
         z: 7.87,
       },
+      i: 58,
     },
     {
       label: 'Ran (Epslion Eridani)',
@@ -1622,6 +1788,7 @@ let pane2 = {
         h: 200,
         z: 7.87,
       },
+      i: 59,
     },
     {
       label: '61 Cygni',
@@ -1632,6 +1799,7 @@ let pane2 = {
         h: 195,
         z: 7.87,
       },
+      i: 60,
     },
     {
       label: 'Procyon',
@@ -1642,6 +1810,7 @@ let pane2 = {
         h: 166,
         z: 7.87,
       },
+      i: 61,
     },
     {
       label: 'Tau Ceti',
@@ -1652,6 +1821,7 @@ let pane2 = {
         h: 197,
         z: 7.87,
       },
+      i: 62,
     },
     {
       label: "van Maanen's Star",
@@ -1662,6 +1832,7 @@ let pane2 = {
         h: 189,
         z: 7.87,
       },
+      i: 63,
     },
     {
       label: 'Altair',
@@ -1672,6 +1843,7 @@ let pane2 = {
         h: 216,
         z: 7.87,
       },
+      i: 64,
     },
     {
       label: 'Delta Pavonis',
@@ -1682,6 +1854,7 @@ let pane2 = {
         h: 194,
         z: 7.87,
       },
+      i: 65,
     },
     {
       label: 'Fomalhaut',
@@ -1692,16 +1865,18 @@ let pane2 = {
         h: 199,
         z: 7.87,
       },
+      i: 66,
     },
     {
-      label: 'Pollux',
+      label: 'Vega',
       pt: {
         x: 800,
-        y: 288,
-        w: 188,
-        h: 156,
+        y: 18,
+        w: 177,
+        h: 273,
         z: 7.87,
       },
+      i: 67,
     },
     {
       label: 'Pollux',
@@ -1712,6 +1887,7 @@ let pane2 = {
         h: 161,
         z: 7.87,
       },
+      i: 68,
     },
     {
       label: 'Arcturus',
@@ -1722,6 +1898,7 @@ let pane2 = {
         h: 173,
         z: 7.87,
       },
+      i: 69,
     },
     {
       label: 'Capella',
@@ -1732,6 +1909,7 @@ let pane2 = {
         h: 176,
         z: 7.87,
       },
+      i: 70,
     },
     {
       label: 'Castor',
@@ -1742,16 +1920,18 @@ let pane2 = {
         h: 188,
         z: 7.87,
       },
+      i: 71,
     },
     {
-      label: '',
+      label: 'Aldebaran',
       pt: {
-        x: 803,
-        y: 967,
-        w: 196,
+        x: 807,
+        y: 966,
+        w: 192,
         h: 159,
         z: 7.87,
       },
+      i: 72,
     },
     {
       label: 'Regulus',
@@ -1762,6 +1942,7 @@ let pane2 = {
         h: 198,
         z: 7.87,
       },
+      i: 73,
     },
     {
       label: 'Menkalinan',
@@ -1772,6 +1953,7 @@ let pane2 = {
         h: 196,
         z: 7.87,
       },
+      i: 74,
     },
     {
       label: 'Alioth (Epsilon Ursae Majoris)',
@@ -1782,6 +1964,7 @@ let pane2 = {
         h: 171,
         z: 7.87,
       },
+      i: 75,
     },
     {
       label: 'Mizar',
@@ -1792,6 +1975,7 @@ let pane2 = {
         h: 239,
         z: 7.87,
       },
+      i: 76,
     },
     {
       label: 'Gacrux',
@@ -1802,6 +1986,7 @@ let pane2 = {
         h: 189,
         z: 7.87,
       },
+      i: 77,
     },
     {
       label: 'Algol (Beta Persei)',
@@ -1812,6 +1997,7 @@ let pane2 = {
         h: 271,
         z: 7.87,
       },
+      i: 78,
     },
     {
       label: 'Alkaid (Eta Ursae Majoris)',
@@ -1822,6 +2008,7 @@ let pane2 = {
         h: 241,
         z: 7.87,
       },
+      i: 79,
     },
     {
       label: 'Alhena (Gamma Geminorum)',
@@ -1832,6 +2019,7 @@ let pane2 = {
         h: 203,
         z: 7.87,
       },
+      i: 80,
     },
     {
       label: 'Dubhe (Alpha Ursae Majoris)',
@@ -1842,6 +2030,7 @@ let pane2 = {
         h: 201,
         z: 7.87,
       },
+      i: 81,
     },
     {
       label: 'Elnath (Beta Tauri)',
@@ -1852,6 +2041,7 @@ let pane2 = {
         h: 221,
         z: 7.87,
       },
+      i: 82,
     },
     {
       label: 'Achernar',
@@ -1862,6 +2052,7 @@ let pane2 = {
         h: 261,
         z: 7.87,
       },
+      i: 83,
     },
     {
       label: 'Ginan',
@@ -1872,6 +2063,7 @@ let pane2 = {
         h: 163,
         z: 7.87,
       },
+      i: 84,
     },
     {
       label: 'Veritate (14 Andromededae)',
@@ -1882,6 +2074,7 @@ let pane2 = {
         h: 218,
         z: 7.87,
       },
+      i: 85,
     },
     {
       label: 'Musica (18 Delphini)',
@@ -1892,6 +2085,7 @@ let pane2 = {
         h: 147,
         z: 7.87,
       },
+      i: 86,
     },
     {
       label: 'Ogma (HD 149026)',
@@ -1902,6 +2096,7 @@ let pane2 = {
         h: 286,
         z: 7.87,
       },
+      i: 87,
     },
     {
       label: 'Spica (Alpha Virginis)',
@@ -1912,6 +2107,7 @@ let pane2 = {
         h: 399,
         z: 7.87,
       },
+      i: 88,
     },
     {
       label: 'Bellatrix',
@@ -1922,6 +2118,7 @@ let pane2 = {
         h: 160,
         z: 7.87,
       },
+      i: 89,
     },
     {
       label: 'Mimosa (Beta Crucis)',
@@ -1932,6 +2129,7 @@ let pane2 = {
         h: 149,
         z: 7.87,
       },
+      i: 90,
     },
     {
       label: 'Sargas (Theta Scorpii)',
@@ -1942,6 +2140,7 @@ let pane2 = {
         h: 166,
         z: 7.87,
       },
+      i: 91,
     },
     {
       label: 'Canopus',
@@ -1952,6 +2151,7 @@ let pane2 = {
         h: 157,
         z: 7.87,
       },
+      i: 92,
     },
     {
       label: 'Tonatiuh',
@@ -1962,6 +2162,7 @@ let pane2 = {
         h: 117,
         z: 7.87,
       },
+      i: 93,
     },
     {
       label: 'Acrux',
@@ -1972,6 +2173,7 @@ let pane2 = {
         h: 133,
         z: 7.87,
       },
+      i: 94,
     },
     {
       label: 'Polaris',
@@ -1982,6 +2184,7 @@ let pane2 = {
         h: 287,
         z: 7.78,
       },
+      i: 95,
     },
     {
       label: 'Hadar (Beta Centauri)',
@@ -1992,6 +2195,7 @@ let pane2 = {
         h: 187,
         z: 7.78,
       },
+      i: 96,
     },
     {
       label: 'Adhara (Epsilon Canis Majoris)',
@@ -2002,6 +2206,7 @@ let pane2 = {
         h: 318,
         z: 7.78,
       },
+      i: 97,
     },
     {
       label: 'Pleiades',
@@ -2012,6 +2217,7 @@ let pane2 = {
         h: 359,
         z: 7.78,
       },
+      i: 98,
     },
     {
       label: 'Antares',
@@ -2022,6 +2228,7 @@ let pane2 = {
         h: 227,
         z: 7.78,
       },
+      i: 99,
     },
     {
       label: 'Shaula (Lambda Scorpii)',
@@ -2032,6 +2239,7 @@ let pane2 = {
         h: 197,
         z: 7.78,
       },
+      i: 100,
     },
     {
       label: 'Betelgeuse',
@@ -2042,6 +2250,7 @@ let pane2 = {
         h: 253,
         z: 7.78,
       },
+      i: 101,
     },
   ],
 };
