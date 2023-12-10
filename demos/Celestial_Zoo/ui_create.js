@@ -56,14 +56,27 @@ function ui_create() {
       });
     my.refLabel_input.size(180);
   }
+  createButton('label').mousePressed(function () {
+    labelAction();
+  });
   createButton('update').mousePressed(function () {
     updateAction();
   });
-  createButton('dump').mousePressed(function () {
-    dumpAction();
+  createButton('download').mousePressed(function () {
+    downloadAction();
   });
   {
     my.refEntryReport_div = createDiv().id('id_ptsReport');
+  }
+}
+
+// Copy label from other pane if our label is empty
+function labelAction() {
+  if (!my.pane.refLabel) {
+    let nlabel = my.pane == my.pane1 ? my.pane2.refLabel : my.pane1.refLabel;
+    if (nlabel) {
+      my.pane.refLabel = nlabel;
+    }
   }
 }
 
@@ -76,7 +89,7 @@ function addAction() {
   ui_refEntryUpdate();
 }
 
-function dumpAction() {
+function downloadAction() {
   let str = 'let pane1 = ' + JSON.stringify(my.pane1.refBox, undefined, 2);
   let str2 = 'let pane2 = ' + JSON.stringify(my.pane2.refBox, undefined, 2);
   str += '\n' + str2;

@@ -70,35 +70,54 @@ function draw() {
   if (my.mouseTracking) {
     my.pane.mouseDragged();
   }
+  draw_crossHairs();
+}
+
+function draw_crossHairs() {
   stroke(255);
   strokeWeight(1);
   for (let ment of my.lastMouseEnts) {
     line(ment.x, 0, ment.x, height);
     line(0, ment.y, width, ment.y);
   }
+  if (my.shiftTracking) {
+    line(mouseX, 0, mouseX, height);
+    line(0, mouseY, width, mouseY);
+  }
 }
 
 function canvas_mousePressed() {
   // console.log('canvas_mousePressed');
-  my.mouseTracking = 1;
+
+  if (keyIsDown(SHIFT)) {
+    logMouseEnts();
+    my.shiftTracking = 1;
+  } else {
+    my.mouseTracking = 1;
+  }
+
   if (my.pane1.touchPoint(mouseX, mouseY)) {
     setPane(my.pane1);
   } else if (my.pane2.touchPoint(mouseX, mouseY)) {
     setPane(my.pane2);
   }
   my.pane.mousePressed();
-
-  if (keyIsDown(SHIFT)) {
-    let ment = { x: mouseX, y: mouseY };
-    my.lastMouseEnts[my.lastMouseIndex] = ment;
-    my.lastMouseIndex = (my.lastMouseIndex + 1) % 2;
-  }
 }
 
 function canvas_mouseReleased() {
   // console.log('canvas_mouseReleased');
+  if (my.shiftTracking) {
+    logMouseEnts();
+  }
   my.pane.mouseReleased();
   my.mouseTracking = 0;
+  my.shiftTracking = 0;
+}
+
+function logMouseEnts() {
+  let ment = { x: mouseX, y: mouseY };
+  my.lastMouseEnts[my.lastMouseIndex] = ment;
+  my.lastMouseIndex = (my.lastMouseIndex + 1) % 2;
 }
 
 // !!@ no canvas mouseDragged
