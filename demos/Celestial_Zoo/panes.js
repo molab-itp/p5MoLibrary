@@ -160,6 +160,13 @@ let pane1 = {
     {
       label: 'Ceres',
       i: 14,
+      pt: {
+        x: 2098,
+        y: 1643,
+        w: 54,
+        h: 48,
+        z: 16,
+      },
     },
     {
       label: 'Pallas',
