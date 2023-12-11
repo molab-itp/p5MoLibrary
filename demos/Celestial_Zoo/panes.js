@@ -4556,10 +4556,10 @@ let pane2 = {
     {
       label: 'Icarus (MACS J1159 Lensed Start 1)',
       pt: {
-        x: 4570,
-        y: 934,
-        w: 231,
-        h: 241,
+        x: 4568,
+        y: 935,
+        w: 202,
+        h: 238,
         z: 7.78,
       },
       i: 204,
