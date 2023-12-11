@@ -29,10 +29,12 @@ class Pane {
   }
 
   // this.refBox.refs = [];
-  //  { label, pts: { x, y, w, h, z }, i }
+  //  { label, pt: { x, y, w, h, z }, i }
   // this.refIndex = 0;
   // this.zoomIndex = newValue;
   //
+  //  { label, pts: [{ x, y, w, h, z }, { x, y, w, h, z }], i }
+  // this.ptsIndex = 0 // or 1
 
   refEntry() {
     let ent = this.refBox.refs[this.refIndex];

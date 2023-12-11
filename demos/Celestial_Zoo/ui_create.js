@@ -89,7 +89,37 @@ function addAction() {
   ui_refEntryUpdate();
 }
 
+// this.refBox.refs = [];
+//  { label, pt: { x, y, w, h, z }, i }
+// this.refIndex = 0;
+// this.zoomIndex = newValue;
+//
+//  { label, pts: [{ x, y, w, h, z }, { x, y, w, h, z }], i }
+// this.ptsIndex = 0 // or 1
+
 function downloadAction() {
+  let nrefBox = {
+    // label: '', //
+    refLabel: '',
+    refIndex: 0,
+    width: my.backgImg.width,
+    height: my.backgImg.height,
+    refs: [],
+  };
+  for (let index = 0; index < my.pane1.refBox.refs.length; index++) {
+    let ref1 = my.pane1.refBox.refs[index];
+    let ref2 = my.pane2.refBox.refs[index];
+    nrefBox.refs[index] = {
+      label: ref1.label,
+      pts: [ref2.pt, ref1.pt],
+      i: index + 1,
+    };
+  }
+  let str = 'let refBox_init = ' + JSON.stringify(nrefBox, undefined, 2);
+  downloadToFile('refBox_init.js', str);
+}
+
+function downloadAction_1() {
   let str = 'let pane1_refBox_init = ' + JSON.stringify(my.pane1.refBox, undefined, 2);
   let str2 = 'let pane2_refBox_init = ' + JSON.stringify(my.pane2.refBox, undefined, 2);
   str += '\n' + str2;
@@ -195,7 +225,7 @@ function ui_present() {
 
 // https://stackoverflow.com/questions/3665115/how-to-create-a-file-in-memory-for-user-to-download-but-not-through-server
 
-function download(filename, text) {
+function downloadToFile(filename, text) {
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
   element.setAttribute('download', filename);
