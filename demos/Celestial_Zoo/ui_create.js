@@ -90,8 +90,8 @@ function addAction() {
 }
 
 function downloadAction() {
-  let str = 'let pane1 = ' + JSON.stringify(my.pane1.refBox, undefined, 2);
-  let str2 = 'let pane2 = ' + JSON.stringify(my.pane2.refBox, undefined, 2);
+  let str = 'my.pane1_refBox_init = ' + JSON.stringify(my.pane1.refBox, undefined, 2);
+  let str2 = 'my.pane2_refBox_init = ' + JSON.stringify(my.pane2.refBox, undefined, 2);
   str += '\n' + str2;
   download('panes.js', str);
 }

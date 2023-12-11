@@ -1,7 +1,7 @@
 //
 
 class Pane {
-  // { label, backgImg, x, y, width, height, z, initCentered }
+  // { label, backgImg, x, y, width, height, z, initCentered, refBox }
   constructor(props) {
     //
     Object.assign(this, props);
@@ -9,15 +9,17 @@ class Pane {
 
     // console.log('Pane', this.label, 'width', this.width, 'height', this.height);
     //
-    this.refBox = {
-      label: '',
-      width: this.backgImg.width,
-      height: this.backgImg.height,
-      refs: [],
-    };
+    if (!this.refBox) {
+      this.refBox = {
+        label: '',
+        width: this.backgImg.width,
+        height: this.backgImg.height,
+        refs: [],
+      };
+    }
     this.refIndex = 0;
 
-    this.restore_localStorage();
+    // this.restore_localStorage();
 
     this.pan_init();
 
@@ -64,6 +66,7 @@ class Pane {
   }
 
   restore_localStorage() {
+    console.log(this.label, 'restore_localStorage');
     let refBox;
     let str = localStorage.getItem(this.label);
     if (!str) {

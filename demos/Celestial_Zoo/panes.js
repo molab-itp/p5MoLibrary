@@ -1,4 +1,4 @@
-let pane1 = {
+my.pane1_refBox_init = {
   label: 'pane1',
   width: 4800,
   height: 3200,
@@ -2315,7 +2315,7 @@ let pane1 = {
     },
   ],
 };
-let pane2 = {
+my.pane2_refBox_init = {
   label: 'pane2',
   width: 4800,
   height: 3200,

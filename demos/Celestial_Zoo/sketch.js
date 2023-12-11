@@ -2,8 +2,6 @@
 // https://github.com/molab-itp/98-MoGallery-p5js/tree/main/demos/Celestial_Zoo
 // Celestial_Zoo
 
-let my = {};
-
 function preload() {
   //
   my.backgImg = loadImage('../PlanetEarth/assets/The_Celestial_Zoo.png');
@@ -45,7 +43,8 @@ function create_pane1() {
   let z = 4.5;
   let initCentered = 1;
   let width = floor(fwidth * r);
-  my.pane1 = new Pane({ label, backgImg, x, y, z, width, height, initCentered });
+  let refBox = my.pane1_refBox_init;
+  my.pane1 = new Pane({ label, backgImg, x, y, z, width, height, initCentered, refBox });
 }
 
 function create_pane2() {
@@ -58,7 +57,8 @@ function create_pane2() {
   let y = 0;
   let z = 8;
   let width = floor(fwidth * r);
-  my.pane2 = new Pane({ label, backgImg, x, y, z, width, height });
+  let refBox = my.pane2_refBox_init;
+  my.pane2 = new Pane({ label, backgImg, x, y, z, width, height, refBox });
 }
 
 function draw() {
