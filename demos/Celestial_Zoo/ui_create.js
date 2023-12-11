@@ -128,14 +128,28 @@ function setPane(nPane) {
 function previousRefAction() {
   if (my.pane.refIndex == 0) {
     // Wrap around to top
-    refAdjustDelta(my.pane1.refBox.refs.length - 1);
+    refAdjustTo(my.pane.refBox.refs.length - 1);
   } else {
     refAdjustDelta(-1);
   }
 }
 
 function nextRefAction() {
-  refAdjustDelta(1);
+  let n = my.pane.refBox.refs.length - 1;
+  if (my.pane.refIndex == n) {
+    // Wrap around to botom
+    refAdjustTo(0);
+  } else {
+    refAdjustDelta(1);
+  }
+}
+
+function refAdjustTo(index) {
+  my.pane1.refIndex = index;
+  my.pane2.refIndex = index;
+  my.refIndex_input.value(my.pane.refIndex + 1);
+  my.refLabel_input.value(my.pane.refLabel);
+  ui_refEntryUpdate();
 }
 
 function refAdjustDelta(delta) {
