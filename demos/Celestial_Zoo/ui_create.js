@@ -15,7 +15,7 @@ function ui_create() {
     clearLastMouseEnts();
   });
   {
-    my.zoom_slider = createSlider(1, 16, my.pane.zoomIndex, 0.01).input(function () {
+    my.zoom_slider = createSlider(1, 32, my.pane.zoomIndex, 0.01).input(function () {
       clearLastMouseEnts();
       my.pane.pan_updateZoom(this.value());
     });
@@ -115,14 +115,16 @@ function ui_refEntryUpdate() {
     str = JSON.stringify(refEntry);
   }
   my.refEntryReport_div.html(str);
+
+  my.zoom_slider.value(my.pane.zoomIndex);
 }
 
 function setPane(nPane) {
   my.pane = nPane;
   my.refIndex_input.value(my.pane.refIndex + 1);
+  my.refLabel_input.value(my.pane.refLabel);
   my.paneLabel.html(my.pane.label);
   my.zoom_slider.value(my.pane.zoomIndex);
-  my.refLabel_input.value(my.pane.refLabel);
 }
 
 function previousRefAction() {
