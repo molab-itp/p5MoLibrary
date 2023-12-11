@@ -37,6 +37,12 @@ function setup() {
   my.scale = 2;
 }
 
+function draw() {
+  background(0);
+  draw_backgImg();
+  ui_update();
+}
+
 function draw_backgImg() {
   let backgImg = my.backgImgs[my.backgImgIndex];
   if (!backgImg) return;
@@ -64,15 +70,30 @@ function draw_backgImg() {
 }
 
 function mousePressed() {
+  //
+  if (keyIsDown(SHIFT)) {
+    my.shiftTracking = 1;
+  } else {
+    my.mouseTracking = 1;
+  }
+
   my.panX0 = mouseX;
   my.panY0 = mouseY;
 }
 
 function mouseDragged() {
-  my.panX += my.panX0 - mouseX;
-  my.panY += my.panY0 - mouseY;
-  my.panX0 = mouseX;
-  my.panY0 = mouseY;
+  if (my.shiftTracking) {
+    my.panX += my.panX0 - mouseX;
+    my.panY += my.panY0 - mouseY;
+    my.panX0 = mouseX;
+    my.panY0 = mouseY;
+  }
+}
+
+function mouseReleased() {
+  // console.log('mouseReleased');
+  my.mouseTracking = 0;
+  my.shiftTracking = 0;
 }
 
 // image(img, x, y, [width], [height])
@@ -136,12 +157,6 @@ function make_camBody() {
   my.camBody.setAngle(-1.5, 3.0, 0);
 }
 
-function draw() {
-  background(0);
-  draw_backgImg();
-  ui_update();
-}
-
 function nextBackgImg() {
   if (my.backgImgs.length <= 0) return;
   my.backgImgIndex = (my.backgImgIndex + 1) % my.backgImgs.length;
@@ -155,30 +170,30 @@ function nextDir() {
   // my.earth.angleYdir = newDir[1];
 }
 
-function mouseDragged_na() {
-  //
-  let newDir = dirStop;
-  // let delta = floor(width * 0.05);
-  let delta = 0;
-  if (mouseX - pmouseX > delta) {
-    newDir = dirRight;
-  } else if (mouseX - pmouseX < -delta) {
-    newDir = dirLeft;
-  } else if (mouseY - pmouseY > delta) {
-    newDir = dirDown;
-  } else if (mouseY - pmouseY < -delta) {
-    newDir = dirUp;
-  }
-  my.earth.setDir(newDir);
-}
+// function mouseDragged_na() {
+//   //
+//   let newDir = dirStop;
+//   // let delta = floor(width * 0.05);
+//   let delta = 0;
+//   if (mouseX - pmouseX > delta) {
+//     newDir = dirRight;
+//   } else if (mouseX - pmouseX < -delta) {
+//     newDir = dirLeft;
+//   } else if (mouseY - pmouseY > delta) {
+//     newDir = dirDown;
+//   } else if (mouseY - pmouseY < -delta) {
+//     newDir = dirUp;
+//   }
+//   my.earth.setDir(newDir);
+// }
 
-function mousePressed_na() {
-  nextBackgImg();
-}
+// function mousePressed_na() {
+//   nextBackgImg();
+// }
 
-function mousePressed_na() {
-  nextDir();
-}
+// function mousePressed_na() {
+//   nextDir();
+// }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/SJtBwJIcU
 // CC 58 - Earthquake Visualization 3D
