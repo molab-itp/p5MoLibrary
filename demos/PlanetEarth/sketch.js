@@ -7,10 +7,12 @@ function preload() {
   // my.earthImg = loadImage('assets/Da_Vinci.jpg');
   my.moonImg = loadImage('assets/moon.jpg');
   //
+  my.backgImgs.push(loadImage('assets/Manju.jpg'));
   my.backgImgs.push(loadImage('assets/plenty.jpeg'));
   my.backgImgs.push(loadImage('assets/sun.jpg'));
   my.backgImgs.push(loadImage('assets/The_Celestial_Zoo.png'));
   my.backgImgs.push(loadImage('assets/Da_Vinci.jpg'));
+  // Manju.jpg
 }
 
 function setup() {
@@ -113,11 +115,12 @@ function draw_backgImg_full() {
 function make_earth1() {
   let x = 0;
   let y = 0;
-  let h = my.height;
+  let h = floor(my.height * 0.5);
+  let w = floor(my.width * 1);
   let img = my.earthImg;
   let flushRight = 1;
   let orbitControl = 1;
-  my.earth = new HeavenlyBody({ x, y, width: my.width, height: h, img, flushRight, orbitControl });
+  my.earth = new HeavenlyBody({ x, y, width: w, height: h, img, flushRight, orbitControl });
   my.earth.label = 'earth';
   my.earth.setDir(dirRight);
 }
@@ -125,7 +128,7 @@ function make_earth1() {
 function make_body2() {
   let x = 0;
   let y = floor(my.height * 0.25);
-  let h = my.height / 2;
+  let h = floor(my.height * 0.5);
   let img = my.moonImg;
   let flushRight = 0;
   let orbitControl = 1;
