@@ -147,21 +147,22 @@ function nextRefAction() {
 function refAdjustTo(index) {
   my.pane1.refIndex = index;
   my.pane2.refIndex = index;
+  syncRefIndex();
+}
+
+function syncRefIndex() {
   my.refIndex_input.value(my.pane.refIndex + 1);
   my.refLabel_input.value(my.pane.refLabel);
   ui_refEntryUpdate();
+  if (my.pane1.refLabel && my.pane2.refLabel) {
+    focusAction();
+  }
 }
 
 function refAdjustDelta(delta) {
   my.pane1.refIndex += delta;
   my.pane2.refIndex += delta;
-  my.refIndex_input.value(my.pane.refIndex + 1);
-  my.refLabel_input.value(my.pane.refLabel);
-  ui_refEntryUpdate();
-
-  if (my.pane1.refLabel && my.pane2.refLabel) {
-    focusAction();
-  }
+  syncRefIndex();
 }
 
 function ui_update() {
