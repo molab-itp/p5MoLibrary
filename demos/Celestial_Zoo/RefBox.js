@@ -3,7 +3,7 @@ class RefBox {
   //   refIndex: 0,
   //   width: 4800,
   //   height: 3200,
-  //   refs: [{ label: '', pts: [{x,y,z,i}, {x,y,z,i}], i } ]
+  //   refs: [{ label: '', pts: [{ x, y, w, h, z }, { x, y, w, h, z }], i } ]
   //
   constructor(props) {
     //
