@@ -27,7 +27,7 @@ class Pane {
   pt() {
     let ent = this.refEntry();
     let pt = ent.pts[this.ptsIndex];
-    console.log(this.label, 'pt', JSON.stringify(pt));
+    // console.log(this.label, 'pt', JSON.stringify(pt));
     return pt;
   }
 
