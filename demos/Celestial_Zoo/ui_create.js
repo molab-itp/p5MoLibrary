@@ -34,10 +34,10 @@ function ui_create() {
   createButton('Add').mousePressed(function () {
     addAction();
   });
-  createButton('<•').mousePressed(function () {
+  createButton('←').mousePressed(function () {
     previousRefAction();
   });
-  createButton('•>').mousePressed(function () {
+  createButton('→').mousePressed(function () {
     nextRefAction();
   });
   createButton('focus').mousePressed(function () {
@@ -112,7 +112,7 @@ function previousRefAction() {
 
 function nextRefAction() {
   let n = my.refBox.refs.length - 1;
-  if (my.refIndex == n) {
+  if (my.refBox.refIndex == n) {
     // Wrap around to botom
     refAdjustTo(0);
   } else {
@@ -166,7 +166,6 @@ function ui_present() {
 // reporting variable values, coorindates and colors
 
 // https://stackoverflow.com/questions/3665115/how-to-create-a-file-in-memory-for-user-to-download-but-not-through-server
-
 function downloadToFile(filename, text) {
   var element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -179,3 +178,5 @@ function downloadToFile(filename, text) {
 
   document.body.removeChild(element);
 }
+
+// https://unicode.org/charts/nameslist/n_2190.html
