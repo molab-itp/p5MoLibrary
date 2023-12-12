@@ -28,7 +28,8 @@ function setup() {
 
   ui_create();
 
-  clearLastMouseEnts();
+  focusAction();
+  // clearLastMouseEnts();
 }
 
 function clearLastMouseEnts() {
@@ -40,29 +41,29 @@ function create_pane0() {
   let fwidth = my.width;
   let height = my.height;
   let backgImg = my.backgImg;
-  let r = 1 - my.paneRatio;
-  let x = 0;
-  let y = 0;
-  let z = 8;
-  let width = floor(fwidth * r);
+  let rr = 1 - my.paneRatio;
+  let x0 = 0;
+  let y0 = 0;
+  let z0 = 8;
+  let width = floor(fwidth * rr);
   let refBox = my.refBox;
   let ptsIndex = 0;
-  my.pane0 = new Pane({ backgImg, x, y, z, width, height, refBox, ptsIndex });
+  my.pane0 = new Pane({ backgImg, x0, y0, z0, width, height, refBox, ptsIndex });
 }
 
 function create_pane1() {
   let fwidth = my.width;
   let height = my.height;
   let backgImg = my.backgImg;
-  let r = my.paneRatio;
-  let x = floor(fwidth * (1 - r));
-  let y = 0;
-  let z = 4.5;
+  let rr = my.paneRatio;
+  let x0 = floor(fwidth * (1 - rr));
+  let y0 = 0;
+  let z0 = 4.5;
   let initCentered = 1;
-  let width = floor(fwidth * r);
+  let width = floor(fwidth * rr);
   let refBox = my.refBox;
   let ptsIndex = 1;
-  my.pane1 = new Pane({ backgImg, x, y, z, width, height, initCentered, refBox, ptsIndex });
+  my.pane1 = new Pane({ backgImg, x0, y0, z0, width, height, initCentered, refBox, ptsIndex });
 }
 
 function draw() {

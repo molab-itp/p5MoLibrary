@@ -26,7 +26,7 @@ function ui_create() {
     my.refIndex_input = createInput('' + (my.refBox.refIndex + 1))
       .id('id_refIndex')
       .input(function () {
-        console.log('id_refIndex', this.value());
+        // console.log('id_refIndex', this.value());
         my.refBox.refIndex = parseFloat(this.value()) - 1;
       });
     my.refIndex_input.size(30);
@@ -88,17 +88,17 @@ function updateAction() {
   ui_paneUpdate();
 }
 
+function setPane(nPane) {
+  my.pane = nPane;
+  ui_paneUpdate();
+}
+
 function ui_paneUpdate() {
   let pt = my.pane.pt();
   let str = '';
   str = my.pane.label + ' ' + JSON.stringify(pt);
   my.refEntryReport_div.html(str);
   my.zoom_slider.value(my.pane.zoomIndex);
-}
-
-function setPane(nPane) {
-  my.pane = nPane;
-  ui_paneUpdate();
 }
 
 function previousRefAction() {

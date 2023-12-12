@@ -1,11 +1,10 @@
 //
 
 class Pane {
-  // { backgImg, x, y, width, height, z, initCentered, refBox, ptsIndex }
+  // { backgImg, x0, y0, z0, width, height, initCentered, refBox, ptsIndex }
   constructor(props) {
     //
     Object.assign(this, props);
-    this.initZoom = this.z;
 
     // console.log('Pane', this.label, 'width', this.width, 'height', this.height);
 
@@ -49,10 +48,8 @@ class Pane {
   }
 
   touchPoint(x, y) {
-    let xhit = this.x < x && x < this.x + this.width;
-    let yhit = this.y < y && y < this.y + this.height;
-    // console.log('Pane', this.label, this.x, this.y);
-    // console.log('x', x, 'y', y, 'xhit', xhit, 'yhit', yhit);
+    let xhit = this.x0 < x && x < this.x0 + this.width;
+    let yhit = this.y0 < y && y < this.y0 + this.height;
     return xhit && yhit;
   }
 
@@ -61,14 +58,14 @@ class Pane {
     this.zoomIndex = newValue;
     this.zoomRatio = 1 / this.zoomIndex;
 
-    let w = this.backgImg.width;
-    let h = this.backgImg.height;
+    let ww = this.backgImg.width;
+    let hh = this.backgImg.height;
 
-    let oW = floor(w * oRatio * 0.5);
-    let oH = floor(h * oRatio * 0.5);
+    let oW = floor(ww * oRatio * 0.5);
+    let oH = floor(hh * oRatio * 0.5);
 
-    let nW = floor(w * this.zoomRatio * 0.5);
-    let nH = floor(h * this.zoomRatio * 0.5);
+    let nW = floor(ww * this.zoomRatio * 0.5);
+    let nH = floor(hh * this.zoomRatio * 0.5);
 
     this.panX = this.panX + oW - nW;
     this.panY = this.panY + oH - nH;
@@ -77,12 +74,12 @@ class Pane {
   pan_init() {
     this.panX = 0;
     this.panY = 0;
-    this.zoomIndex = this.initZoom;
+    this.zoomIndex = this.z0;
     this.zoomRatio = 1 / this.zoomIndex;
   }
 
   pan_center() {
-    this.zoomIndex = this.initZoom;
+    this.zoomIndex = this.z0;
     this.zoomRatio = 1 / this.zoomIndex;
 
     let cm = this.coordMap();
@@ -122,8 +119,8 @@ class Pane {
     let backgImg = this.backgImg;
     // zoom background image to the full width of the canvas
 
-    let dx = this.x;
-    let dy = this.y;
+    let dx = this.x0;
+    let dy = this.y0;
 
     let sx = this.panX;
     let sy = this.panY;
@@ -161,8 +158,8 @@ class Pane {
   }
 
   updateEnt(ent, lastMouseEnts) {
-    let dx = this.x;
-    let dy = this.y;
+    let dx = this.x0;
+    let dy = this.y0;
 
     let sx = this.panX;
     let sy = this.panY;
