@@ -23,15 +23,11 @@ function ui_create() {
   }
   createElement('br');
   {
-    my.paneLabel = createSpan().id('id_paneLabel');
-    my.paneLabel.html(my.pane.label);
-  }
-  {
-    my.refIndex_input = createInput('' + (my.pane.refIndex + 1))
+    my.refIndex_input = createInput('' + (my.refBox.refIndex + 1))
       .id('id_refIndex')
       .input(function () {
         console.log('id_refIndex', this.value());
-        my.pane.refIndex = parseFloat(this.value()) - 1;
+        my.refBox.refIndex = parseFloat(this.value()) - 1;
       });
     my.refIndex_input.size(30);
   }
@@ -48,17 +44,14 @@ function ui_create() {
     focusAction();
   });
   {
-    my.refLabel_input = createInput('' + my.pane.refLabel)
+    my.refLabel_input = createInput('' + my.refBox.refLabel)
       .id('id_refLabel')
       .input(function () {
         // console.log('id_refLabel ' + this.value());
-        my.pane.refLabel = this.value();
+        my.refBox.refLabel = this.value();
       });
     my.refLabel_input.size(180);
   }
-  // createButton('label').mousePressed(function () {
-  //   labelAction();
-  // });
   createButton('update').mousePressed(function () {
     updateAction();
   });
@@ -70,105 +63,56 @@ function ui_create() {
   }
 }
 
-// Copy label from other pane if our label is empty
-// function labelAction() {
-//   if (!my.pane.refLabel) {
-//     let nlabel = my.pane == my.pane1 ? my.pane2.refLabel : my.pane1.refLabel;
-//     if (nlabel) {
-//       my.pane.refLabel = nlabel;
-//     }
-//   }
-// }
-
 function addAction() {
-  let n = my.pane1.refBox.refs.length;
-  my.pane1.refIndex = n;
-  my.pane2.refIndex = n;
-  my.refIndex_input.value(my.pane.refIndex + 1);
-  my.refLabel_input.value(my.pane.refLabel);
-  ui_refEntryUpdate();
+  let n = my.refBox.refBox.refs.length;
+  my.refBox.refIndex = n;
+  my.refIndex_input.value(my.refBox.refIndex + 1);
+  my.refLabel_input.value(my.refBox.refLabel);
+  ui_paneUpdate();
 }
-
-// this.refBox.refs = [];
-//  { label, pt: { x, y, w, h, z }, i }
-// this.refIndex = 0;
-// this.zoomIndex = newValue;
-//
-//  { label, pts: [{ x, y, w, h, z }, { x, y, w, h, z }], i }
-// this.ptsIndex = 0 // or 1
 
 function downloadAction() {
-  let nrefBox = {
-    // label: '', //
-    refLabel: '',
-    refIndex: 0,
-    width: my.backgImg.width,
-    height: my.backgImg.height,
-    refs: [],
-  };
-  for (let index = 0; index < my.pane1.refBox.refs.length; index++) {
-    let ref1 = my.pane1.refBox.refs[index];
-    let ref2 = my.pane2.refBox.refs[index];
-    nrefBox.refs[index] = {
-      label: ref1.label,
-      pts: [ref2.pt, ref1.pt],
-      i: index + 1,
-    };
-  }
-  let str = 'let refBox_init = ' + JSON.stringify(nrefBox, undefined, 2);
+  // !!@ JSON.stringify refBox
+  let str = 'let refBox_init = ' + JSON.stringify(my.refBox, undefined, 2);
   downloadToFile('refBox_init.js', str);
-}
-
-function downloadAction_1() {
-  let str = 'let pane1_refBox_init = ' + JSON.stringify(my.pane1.refBox, undefined, 2);
-  let str2 = 'let pane2_refBox_init = ' + JSON.stringify(my.pane2.refBox, undefined, 2);
-  str += '\n' + str2;
-  download('panes.js', str);
 }
 
 function focusAction() {
   clearLastMouseEnts();
   my.pane1.focus();
-  my.pane2.focus();
+  my.pane0.focus();
 }
 
 function updateAction() {
   my.pane.updateRefEntry(my.lastMouseEnts);
-  ui_refEntryUpdate();
+  ui_paneUpdate();
 }
 
-function ui_refEntryUpdate() {
-  let refEntry = my.pane.refEntry();
+function ui_paneUpdate() {
+  let pt = my.pane.pt();
   let str = '';
-  if (refEntry) {
-    // refEntry.label = my.refLabel_input.value();
-    str = JSON.stringify(refEntry);
-  }
+  str = my.pane.label + ' ' + JSON.stringify(pt);
   my.refEntryReport_div.html(str);
-
   my.zoom_slider.value(my.pane.zoomIndex);
 }
 
 function setPane(nPane) {
   my.pane = nPane;
-  my.refIndex_input.value(my.pane.refIndex + 1);
-  my.refLabel_input.value(my.pane.refLabel);
-  my.paneLabel.html(my.pane.label);
-  my.zoom_slider.value(my.pane.zoomIndex);
+  ui_paneUpdate();
 }
 
 function previousRefAction() {
-  if (my.pane.refIndex == 0) {
+  if (my.refBox.refIndex == 0) {
     // Wrap around to top
-    refAdjustTo(my.pane.refBox.refs.length - 1);
+    refAdjustTo(my.refBox.refs.length - 1);
   } else {
     refAdjustDelta(-1);
   }
 }
 
 function nextRefAction() {
-  let n = my.pane.refBox.refs.length - 1;
-  if (my.pane.refIndex == n) {
+  let n = my.refBox.refs.length - 1;
+  if (my.refIndex == n) {
     // Wrap around to botom
     refAdjustTo(0);
   } else {
@@ -177,23 +121,21 @@ function nextRefAction() {
 }
 
 function refAdjustTo(index) {
-  my.pane1.refIndex = index;
-  my.pane2.refIndex = index;
+  my.refBox.refIndex = index;
   syncRefIndex();
 }
 
 function syncRefIndex() {
-  my.refIndex_input.value(my.pane.refIndex + 1);
-  my.refLabel_input.value(my.pane.refLabel);
-  ui_refEntryUpdate();
-  if (my.pane1.refLabel && my.pane2.refLabel) {
+  my.refIndex_input.value(my.refBox.refIndex + 1);
+  my.refLabel_input.value(my.refBox.refLabel);
+  ui_paneUpdate();
+  if (my.pane0.pt().z && my.pane1.pt().z) {
     focusAction();
   }
 }
 
 function refAdjustDelta(delta) {
-  my.pane1.refIndex += delta;
-  my.pane2.refIndex += delta;
+  my.refBox.refIndex += delta;
   syncRefIndex();
 }
 

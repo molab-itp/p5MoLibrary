@@ -18,9 +18,11 @@ function setup() {
   my.height = height;
   my.paneRatio = 12 / 16;
 
-  create_pane1();
+  my.refBox = new RefBox(refBox_init);
 
-  create_pane2();
+  create_pane0();
+
+  create_pane1();
 
   my.pane = my.pane1;
 
@@ -34,8 +36,21 @@ function clearLastMouseEnts() {
   my.lastMouseIndex = 0;
 }
 
+function create_pane0() {
+  let fwidth = my.width;
+  let height = my.height;
+  let backgImg = my.backgImg;
+  let r = 1 - my.paneRatio;
+  let x = 0;
+  let y = 0;
+  let z = 8;
+  let width = floor(fwidth * r);
+  let refBox = my.refBox;
+  let ptsIndex = 0;
+  my.pane0 = new Pane({ backgImg, x, y, z, width, height, refBox, ptsIndex });
+}
+
 function create_pane1() {
-  let label = 'pane1';
   let fwidth = my.width;
   let height = my.height;
   let backgImg = my.backgImg;
@@ -45,29 +60,16 @@ function create_pane1() {
   let z = 4.5;
   let initCentered = 1;
   let width = floor(fwidth * r);
-  let refBox = pane1_refBox_init;
-  my.pane1 = new Pane({ label, backgImg, x, y, z, width, height, initCentered, refBox });
-}
-
-function create_pane2() {
-  let label = 'pane2';
-  let fwidth = my.width;
-  let height = my.height;
-  let backgImg = my.backgImg;
-  let r = 1 - my.paneRatio;
-  let x = 0;
-  let y = 0;
-  let z = 8;
-  let width = floor(fwidth * r);
-  let refBox = pane2_refBox_init;
-  my.pane2 = new Pane({ label, backgImg, x, y, z, width, height, refBox });
+  let refBox = my.refBox;
+  let ptsIndex = 1;
+  my.pane1 = new Pane({ backgImg, x, y, z, width, height, initCentered, refBox, ptsIndex });
 }
 
 function draw() {
   //
   background(0);
+  my.pane0.draw_backgImg();
   my.pane1.draw_backgImg();
-  my.pane2.draw_backgImg();
   ui_update();
   if (my.mouseTracking) {
     my.pane.mouseDragged();
@@ -100,8 +102,8 @@ function canvas_mousePressed() {
 
   if (my.pane1.touchPoint(mouseX, mouseY)) {
     setPane(my.pane1);
-  } else if (my.pane2.touchPoint(mouseX, mouseY)) {
-    setPane(my.pane2);
+  } else if (my.pane0.touchPoint(mouseX, mouseY)) {
+    setPane(my.pane0);
   }
   my.pane.mousePressed();
 }

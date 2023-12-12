@@ -1,5 +1,4 @@
 let refBox_init = {
-  refLabel: '',
   refIndex: 0,
   width: 4800,
   height: 3200,

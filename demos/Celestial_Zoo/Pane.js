@@ -1,25 +1,13 @@
 //
 
 class Pane {
-  // { label, backgImg, x, y, width, height, z, initCentered, refBox }
+  // { backgImg, x, y, width, height, z, initCentered, refBox, ptsIndex }
   constructor(props) {
     //
     Object.assign(this, props);
     this.initZoom = this.z;
 
     // console.log('Pane', this.label, 'width', this.width, 'height', this.height);
-    //
-    if (!this.refBox) {
-      this.refBox = {
-        label: '',
-        width: this.backgImg.width,
-        height: this.backgImg.height,
-        refs: [],
-      };
-    }
-    this.refIndex = 0;
-
-    // this.restore_localStorage();
 
     this.pan_init();
 
@@ -28,30 +16,23 @@ class Pane {
     }
   }
 
-  // this.refBox.refs = [];
-  //  { label, pt: { x, y, w, h, z }, i }
-  // this.refIndex = 0;
-  // this.zoomIndex = newValue;
-  //
-  //  { label, pts: [{ x, y, w, h, z }, { x, y, w, h, z }], i }
-  // this.ptsIndex = 0 // or 1
-
   refEntry() {
-    let ent = this.refBox.refs[this.refIndex];
-    if (!ent) {
-      let i = this.refBox.refs.length + 1;
-      ent = { label: '', pt: {}, i };
-      this.refBox.refs[this.refIndex] = ent;
-    }
-    return ent;
+    return this.refBox.refEntry();
+  }
+
+  get label() {
+    return 'pane' + this.ptsIndex;
+  }
+
+  pt() {
+    let ent = this.refEntry();
+    let pt = ent.pts[this.ptsIndex];
+    console.log(this.label, 'pt', JSON.stringify(pt));
+    return pt;
   }
 
   focus() {
-    let ent = this.refEntry();
-    // console.log('focus ent', JSON.stringify(ent));
-
-    let pt = ent.pt;
-    if (!pt) return;
+    let pt = this.pt();
 
     this.zoomIndex = pt.z;
     this.zoomRatio = 1 / this.zoomIndex;
@@ -65,53 +46,6 @@ class Pane {
     // this.panY = floor(y);
     this.panX = floor(pt.x + (pt.w - cm.sWidth) * 0.5);
     this.panY = floor(pt.y + (pt.h - cm.sHeight) * 0.5);
-  }
-
-  restore_localStorage() {
-    console.log(this.label, 'restore_localStorage');
-    let refBox;
-    let str = localStorage.getItem(this.label);
-    if (!str) {
-      console.log(this.label, 'restore_localStorage no str');
-      return;
-    }
-    // console.log('restore_localStorage str.length', str.length);
-    try {
-      refBox = JSON.parse(str);
-    } catch (err) {
-      console.log('restore_localStorage parse err', err);
-      return;
-    }
-    this.refBox = refBox;
-    // this.patchRefbox(refBox);
-  }
-
-  // Corrects to refBox store
-  patchRefbox(refBox) {
-    let last = 0;
-    for (let index = 0; index < refBox.refs.length; index++) {
-      let ent = refBox.refs[index];
-      ent.i = index + 1;
-      if (!ent.pt.w) {
-        last = index;
-      }
-    }
-    if (last) {
-      console.log('patchRefbox splice last', last);
-      refBox.refs.splice(last, 1);
-    }
-    this.refBox.label = refBox.label;
-    this.refBox.refs = refBox.refs;
-    this.save_localStorage();
-  }
-
-  save_localStorage() {
-    this.refBox.label = this.label;
-    let str = JSON.stringify(this.refBox);
-    localStorage.setItem(this.label, str);
-    // console.log('save_localStorage str.length', str.length);
-    let n = this.refBox.refs.length;
-    console.log(this.label, 'save_localStorage ', n, this.refBox.refs[n - 1].label);
   }
 
   touchPoint(x, y) {
@@ -214,26 +148,16 @@ class Pane {
     // console.log('Pane mouseReleased', this.label);
   }
 
-  get refLabel() {
-    let ent = this.refEntry();
-    return ent.label;
-  }
-
-  set refLabel(label) {
-    let ent = this.refEntry();
-    ent.label = label;
-  }
-
   updateRefEntry(lastMouseEnts) {
     let ent = this.refEntry();
 
     if (lastMouseEnts.length >= 2) {
       this.updateEnt(ent, lastMouseEnts);
     } else {
-      ent.pt.z = this.zoomIndex;
+      ent.pts[this.ptsIndex].z = this.zoomIndex;
     }
 
-    this.save_localStorage();
+    this.refBox.save_localStorage();
   }
 
   updateEnt(ent, lastMouseEnts) {
@@ -270,7 +194,7 @@ class Pane {
       let w = pts[1].x - x;
       let h = pts[1].y - y;
       let z = this.zoomIndex;
-      ent.pt = { x, y, w, h, z };
+      ent.pts[this.ptsIndex] = { x, y, w, h, z };
     }
     // delete ent.pts;
   }
