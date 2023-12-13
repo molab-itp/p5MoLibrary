@@ -18,7 +18,7 @@ class RefBox {
     // }
     // this.refIndex = 0;
 
-    // this.restore_localStorage();
+    this.restore_localStorage();
   }
 
   refEntry() {
@@ -45,7 +45,7 @@ class RefBox {
   restore_localStorage() {
     console.log('restore_localStorage');
     let refBox;
-    let str = localStorage.getItem(this.label);
+    let str = localStorage.getItem('refBox');
     if (!str) {
       console.log('restore_localStorage no str');
       return;
@@ -61,26 +61,6 @@ class RefBox {
     // this.patchRefbox();
   }
 
-  // Corrects to refBox store
-  patchRefbox() {
-    let refBox = this;
-    let last = 0;
-    for (let index = 0; index < refBox.refs.length; index++) {
-      let ent = refBox.refs[index];
-      ent.i = index + 1;
-      if (!ent.pts[this.ptsIndex].w) {
-        last = index;
-      }
-    }
-    if (last) {
-      console.log('patchRefbox splice last', last);
-      refBox.refs.splice(last, 1);
-    }
-    refBox.label = refBox.label;
-    refBox.refs = refBox.refs;
-    this.save_localStorage();
-  }
-
   save_localStorage() {
     let str = JSON.stringify(my.refBox);
     localStorage.setItem('refBox', str);
@@ -89,3 +69,23 @@ class RefBox {
     console.log('save_localStorage ', n, this.refs[n - 1].label);
   }
 }
+
+// // Corrects to refBox store
+// patchRefbox() {
+//   let refBox = this;
+//   let last = 0;
+//   for (let index = 0; index < refBox.refs.length; index++) {
+//     let ent = refBox.refs[index];
+//     ent.i = index + 1;
+//     if (!ent.pts[this.ptsIndex].w) {
+//       last = index;
+//     }
+//   }
+//   if (last) {
+//     console.log('patchRefbox splice last', last);
+//     refBox.refs.splice(last, 1);
+//   }
+//   refBox.label = refBox.label;
+//   refBox.refs = refBox.refs;
+//   this.save_localStorage();
+// }

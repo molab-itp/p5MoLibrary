@@ -11,7 +11,7 @@ function preload() {
 
 function setup() {
   //
-  my.canvas = createCanvas(windowWidth, windowHeight - 120);
+  my.canvas = createCanvas(windowWidth, windowHeight - 90);
   my.canvas.mousePressed(canvas_mousePressed);
   my.canvas.mouseReleased(canvas_mouseReleased);
   my.width = width;
