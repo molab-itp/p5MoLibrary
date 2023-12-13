@@ -65,8 +65,10 @@ class RefBox {
     let str = JSON.stringify(my.refBox);
     localStorage.setItem('refBox', str);
     // console.log('save_localStorage str.length', str.length);
-    let n = this.refs.length;
-    console.log('save_localStorage ', n, this.refs[n - 1].label);
+    // let n = this.refs.length;
+    // console.log('save_localStorage ', n, this.refs[n - 1].label);
+    let ii = this.refIndex;
+    console.log('save_localStorage ', ii + 1, this.refs[ii].label);
   }
 }
 

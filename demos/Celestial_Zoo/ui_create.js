@@ -43,6 +43,9 @@ function ui_create() {
   createButton('focus').mousePressed(function () {
     focusAction();
   });
+  createButton('update').mousePressed(function () {
+    updateAction();
+  });
   {
     my.refLabel_input = createInput('' + my.refBox.refLabel)
       .id('id_refLabel')
@@ -52,9 +55,6 @@ function ui_create() {
       });
     my.refLabel_input.size(180);
   }
-  createButton('update').mousePressed(function () {
-    updateAction();
-  });
   createButton('download').mousePressed(function () {
     downloadAction();
   });
