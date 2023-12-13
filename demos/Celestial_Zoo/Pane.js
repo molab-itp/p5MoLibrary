@@ -37,7 +37,7 @@ class Pane {
   }
 
   render_backgImg() {
-    let cm = this.coordMap();
+    let cm = this.canvasMap();
     let backgImg = this.backgImg;
     // zoom background image to the full width of the canvas
     let dx = this.x0;
@@ -68,7 +68,7 @@ class Pane {
     this.zoomIndex = pt.z;
     this.zoomRatio = 1 / this.zoomIndex;
 
-    let cm = this.coordMap();
+    let cm = this.canvasMap();
     // console.log('focus cm', JSON.stringify(cm));
 
     // let x = pt.x + pt.w * 0.5 - cm.sWidth * 0.5;
@@ -79,7 +79,7 @@ class Pane {
     this.panY = floor(pt.y + (pt.h - cm.sHeight) * 0.5);
     // console.log('focus pt', JSON.stringify(pt));
 
-    let spt = this.ptToScreen(pt);
+    let spt = this.ptToCanvas(pt);
     this.fRect.x0 = spt.x;
     this.fRect.y0 = spt.y;
     this.fRect.width = spt.w;
@@ -121,14 +121,14 @@ class Pane {
     this.zoomIndex = this.z0;
     this.zoomRatio = 1 / this.zoomIndex;
 
-    let cm = this.coordMap();
+    let cm = this.canvasMap();
 
     this.panX = floor((cm.ww - cm.sWidth) * 0.5);
     this.panY = floor((cm.hh - cm.sHeight) * 0.5);
   }
 
   // { dWidth, dHeight, sWidth, sHeight, ww, hh };
-  coordMap() {
+  canvasMap() {
     let backgImg = this.backgImg;
     let ww = backgImg.width;
     let hh = backgImg.height;
@@ -181,10 +181,10 @@ class Pane {
     this.refBox.save_localStorage();
   }
 
-  ptToScreen(pt) {
+  ptToCanvas(pt) {
     // map from screen to image coordinates
 
-    let cm = this.coordMap();
+    let cm = this.canvasMap();
     let wr = cm.dWidth / cm.sWidth;
     let hr = cm.dHeight / cm.sHeight;
 
@@ -202,7 +202,7 @@ class Pane {
   updateEnt(ent, lastMouseEnts) {
     // map from  image to screen coordinates
 
-    let cm = this.coordMap();
+    let cm = this.canvasMap();
     let rw = cm.sWidth / cm.dWidth;
     let rh = cm.sHeight / cm.dHeight;
 
