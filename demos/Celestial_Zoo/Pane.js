@@ -13,6 +13,38 @@ class Pane {
     if (this.initCentered) {
       this.pan_center();
     }
+
+    this.fRect_init();
+  }
+
+  render() {
+    this.render_backgImg();
+    this.fRect.render();
+  }
+
+  fRect_init() {
+    //
+    let x0 = 0;
+    let y0 = 0;
+    let width = 0;
+    let height = 0;
+    let stroke = color(234, 171, 126); // color('yellow');
+    let strokeWeight = 2;
+    let shadowBlur = 15;
+    let shadowColor = color(234, 171, 126); // color('white');
+
+    this.fRect = new Rect({ x0, y0, width, height, stroke, strokeWeight, shadowBlur, shadowColor });
+  }
+
+  render_backgImg() {
+    let cm = this.coordMap();
+    let backgImg = this.backgImg;
+    // zoom background image to the full width of the canvas
+    let dx = this.x0;
+    let dy = this.y0;
+    let sx = this.panX;
+    let sy = this.panY;
+    image(backgImg, dx, dy, cm.dWidth, cm.dHeight, sx, sy, cm.sWidth, cm.sHeight);
   }
 
   refEntry() {
@@ -45,6 +77,13 @@ class Pane {
     // this.panY = floor(y);
     this.panX = floor(pt.x + (pt.w - cm.sWidth) * 0.5);
     this.panY = floor(pt.y + (pt.h - cm.sHeight) * 0.5);
+    // console.log('focus pt', JSON.stringify(pt));
+
+    let spt = this.ptToScreen(pt);
+    this.fRect.x0 = spt.x;
+    this.fRect.y0 = spt.y;
+    this.fRect.width = spt.w;
+    this.fRect.height = spt.h;
   }
 
   touchPoint(x, y) {
@@ -113,21 +152,6 @@ class Pane {
     return { dWidth, dHeight, sWidth, sHeight, ww, hh };
   }
 
-  draw_backgImg() {
-    let cm = this.coordMap();
-
-    let backgImg = this.backgImg;
-    // zoom background image to the full width of the canvas
-
-    let dx = this.x0;
-    let dy = this.y0;
-
-    let sx = this.panX;
-    let sy = this.panY;
-
-    image(backgImg, dx, dy, cm.dWidth, cm.dHeight, sx, sy, cm.sWidth, cm.sHeight);
-  }
-
   mousePressed() {
     // console.log('Pane mousePressed', this.label);
     this.panX0 = mouseX;
@@ -157,22 +181,35 @@ class Pane {
     this.refBox.save_localStorage();
   }
 
-  updateEnt(ent, lastMouseEnts) {
-    let dx = this.x0;
-    let dy = this.y0;
+  ptToScreen(pt) {
+    // map from screen to image coordinates
 
-    let sx = this.panX;
-    let sy = this.panY;
+    let cm = this.coordMap();
+    let wr = cm.dWidth / cm.sWidth;
+    let hr = cm.dHeight / cm.sHeight;
+
+    // let x = floor((ment.x - this.x0) * rw) + this.panX;
+    // let y = floor((ment.y - this.y0) * rh) + this.panY;
+
+    let x = floor((pt.x - this.panX) * wr + this.x0);
+    let y = floor((pt.y - this.panY) * hr + this.y0);
+    let w = floor(pt.w * wr);
+    let h = floor(pt.h * hr);
+
+    return { x, y, w, h };
+  }
+
+  updateEnt(ent, lastMouseEnts) {
+    // map from  image to screen coordinates
 
     let cm = this.coordMap();
     let rw = cm.sWidth / cm.dWidth;
     let rh = cm.sHeight / cm.dHeight;
-    // console.log('rw', rw, 'rh', rh);
 
     let pts = [];
     for (let ment of lastMouseEnts) {
-      let x = floor((ment.x - dx) * rw) + sx;
-      let y = floor((ment.y - dy) * rh) + sy;
+      let x = floor((ment.x - this.x0) * rw) + this.panX;
+      let y = floor((ment.y - this.y0) * rh) + this.panY;
       pts.push({ x, y });
     }
     if (pts[0].x > pts[1].x) {
@@ -185,14 +222,11 @@ class Pane {
       pts[1].y = pts[0].y;
       pts[0].y = temp;
     }
-    {
-      let x = pts[0].x;
-      let y = pts[0].y;
-      let w = pts[1].x - x;
-      let h = pts[1].y - y;
-      let z = this.zoomIndex;
-      ent.pts[this.ptsIndex] = { x, y, w, h, z };
-    }
-    // delete ent.pts;
+    let x = pts[0].x;
+    let y = pts[0].y;
+    let w = pts[1].x - x;
+    let h = pts[1].y - y;
+    let z = this.zoomIndex;
+    ent.pts[this.ptsIndex] = { x, y, w, h, z };
   }
 }

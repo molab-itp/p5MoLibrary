@@ -32,6 +32,18 @@ function setup() {
   // clearLastMouseEnts();
 }
 
+function draw() {
+  //
+  background(0);
+  my.pane0.render();
+  my.pane1.render();
+  ui_update();
+  if (my.mouseTracking) {
+    my.pane.mouseDragged();
+  }
+  draw_crossHairs();
+}
+
 function clearLastMouseEnts() {
   my.lastMouseEnts = [];
   my.lastMouseIndex = 0;
@@ -64,18 +76,6 @@ function create_pane1() {
   let refBox = my.refBox;
   let ptsIndex = 1;
   my.pane1 = new Pane({ backgImg, x0, y0, z0, width, height, initCentered, refBox, ptsIndex });
-}
-
-function draw() {
-  //
-  background(0);
-  my.pane0.draw_backgImg();
-  my.pane1.draw_backgImg();
-  ui_update();
-  if (my.mouseTracking) {
-    my.pane.mouseDragged();
-  }
-  draw_crossHairs();
 }
 
 function draw_crossHairs() {
