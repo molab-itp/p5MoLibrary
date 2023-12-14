@@ -8,6 +8,11 @@ class Pane {
 
     // console.log('Pane', this.label, 'width', this.width, 'height', this.height);
 
+    // panX
+    // panY
+    // zoomIndex
+    // zoomRatio
+
     this.pan_init();
 
     if (this.initCentered) {
@@ -15,12 +20,31 @@ class Pane {
     }
 
     this.fRect_init();
+
+    this.anim_init();
   }
 
   render() {
     this.render_backgImg();
+    if (!this.anim.running) {
+      this.focus_fRect();
+      this.fRect.render();
+    }
+    this.anim.stepValues();
+  }
+
+  focus() {
+    this.anim.initValues();
+    this.focus_pan();
     this.focus_fRect();
-    this.fRect.render();
+    this.anim.endValues();
+  }
+
+  anim_init() {
+    let target = this;
+    let duration = 1.0;
+    let targetProps = { panX: 1, panY: 1, zoomIndex: 1, zoomRatio: 1 };
+    this.anim = new Anim({ target, duration, targetProps });
   }
 
   fRect_init() {
@@ -61,11 +85,6 @@ class Pane {
     let pt = ent.pts[this.ptsIndex];
     // console.log(this.label, 'pt', JSON.stringify(pt));
     return pt;
-  }
-
-  focus() {
-    this.focus_pan();
-    this.focus_fRect();
   }
 
   focus_pan() {
