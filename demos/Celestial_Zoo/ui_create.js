@@ -64,7 +64,7 @@ function ui_create() {
 }
 
 function addAction() {
-  let n = my.refBox.refBox.refs.length;
+  let n = my.refBox.refs.length;
   my.refBox.refIndex = n;
   my.refIndex_input.value(my.refBox.refIndex + 1);
   my.refLabel_input.value(my.refBox.refLabel);
