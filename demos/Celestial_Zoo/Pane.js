@@ -19,36 +19,49 @@ class Pane {
       this.pan_center();
     }
 
-    this.fRect_init();
+    this.focusRect_init();
 
     this.anim_init();
   }
 
   render() {
     this.render_backgImg();
-    if (!this.anim.running) {
-      this.focus_fRect();
-      this.fRect.render();
-    }
     this.anim.stepValues();
+    if (this.anim.running) {
+      // this.focus_pan();
+    } else {
+      this.focus_focusRect();
+      this.focusRect.render();
+    }
   }
+
+  // let targetProps = { panX: 1, panY: 1, zoomIndex: 1 };
+  // pan_updateZoom(newValue) {
 
   focus() {
     this.anim.initValues();
     this.focus_pan();
-    this.focus_fRect();
-    this.anim.endValues();
+    this.focus_focusRect();
+    if (this.ptsIndex == 1) {
+      let endZoomIndex = this.zoomIndex;
+      this.zoomIndex = 4.0;
+      this.anim.addChange(1); // Zoom out
+      this.anim.addChange(1); // pause
+      this.zoomIndex = endZoomIndex;
+      this.anim.addChange(0.5); // zoom in
+    } else {
+      this.anim.addChange(1.0);
+    }
   }
 
   anim_init() {
     let target = this;
-    let duration = 1.0;
-    let targetProps = { panX: 1, panY: 1, zoomIndex: 1, zoomRatio: 1 };
-    this.anim = new Anim({ target, duration, targetProps });
+    // let duration = 1.0;
+    let targetProps = { panX: 1, panY: 1, zoomIndex: 1 };
+    this.anim = new Anim({ target, targetProps });
   }
 
-  fRect_init() {
-    //
+  focusRect_init() {
     let x0 = 0;
     let y0 = 0;
     let width = 0;
@@ -57,8 +70,7 @@ class Pane {
     let strokeWeight = 2;
     let shadowBlur = 15;
     let shadowColor = color(234, 171, 126); // color('white');
-
-    this.fRect = new Rect({ x0, y0, width, height, stroke, strokeWeight, shadowBlur, shadowColor });
+    this.focusRect = new Rect({ x0, y0, width, height, stroke, strokeWeight, shadowBlur, shadowColor });
   }
 
   render_backgImg() {
@@ -70,6 +82,23 @@ class Pane {
     let sx = this.panX;
     let sy = this.panY;
     image(backgImg, dx, dy, cm.dWidth, cm.dHeight, sx, sy, cm.sWidth, cm.sHeight);
+  }
+
+  set zoomIndex(newValue) {
+    this._zoomIndex = newValue;
+    this.zoomRatio = 1 / newValue;
+  }
+
+  get zoomIndex() {
+    return this._zoomIndex;
+  }
+
+  set panZoomIndex(newValue) {
+    pan_updateZoom(newValue);
+  }
+
+  get panZoomIndex() {
+    return this._zoomIndex;
   }
 
   refEntry() {
@@ -90,7 +119,7 @@ class Pane {
   focus_pan() {
     let pt = this.pt();
     this.zoomIndex = pt.z;
-    this.zoomRatio = 1 / this.zoomIndex;
+    // this.zoomRatio = 1 / this.zoomIndex;
     let cm = this.canvasMap();
     // console.log('focus cm', JSON.stringify(cm));
     // let x = pt.x + pt.w * 0.5 - cm.sWidth * 0.5;
@@ -102,13 +131,13 @@ class Pane {
     // console.log('focus pt', JSON.stringify(pt));
   }
 
-  focus_fRect() {
+  focus_focusRect() {
     let pt = this.pt();
     let spt = this.ptToCanvas(pt);
-    this.fRect.x0 = spt.x;
-    this.fRect.y0 = spt.y;
-    this.fRect.width = spt.w;
-    this.fRect.height = spt.h;
+    this.focusRect.x0 = spt.x;
+    this.focusRect.y0 = spt.y;
+    this.focusRect.width = spt.w;
+    this.focusRect.height = spt.h;
   }
 
   touchPoint(x, y) {
@@ -120,7 +149,7 @@ class Pane {
   pan_updateZoom(newValue) {
     let oRatio = this.zoomRatio;
     this.zoomIndex = newValue;
-    this.zoomRatio = 1 / this.zoomIndex;
+    // this.zoomRatio = 1 / this.zoomIndex;
 
     let ww = this.backgImg.width;
     let hh = this.backgImg.height;
@@ -144,7 +173,7 @@ class Pane {
 
   pan_center() {
     this.zoomIndex = this.z0;
-    this.zoomRatio = 1 / this.zoomIndex;
+    // this.zoomRatio = 1 / this.zoomIndex;
 
     let cm = this.canvasMap();
 

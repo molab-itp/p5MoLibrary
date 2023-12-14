@@ -8,11 +8,12 @@ class Anim {
     Object.assign(this, props);
     this.duration *= 1000; // Convert to millisec
     this.running = 0;
+    this.started = 0;
   }
 
   // target
   // tragetProps { panX, panY, zoomIndex, zoomRatio  }
-  //   startValues
+  //   initValues
   //   endValues
   //     start + (end - start) * perCent
   // startTime
@@ -20,50 +21,62 @@ class Anim {
   // Establish starting values for tragetProps
   // and start time for animation
   initValues() {
-    this._startValues = {};
-    this._endValues = {};
+    let values = {};
+    this.changes = [];
     for (let prop in this.targetProps) {
       let val = this.target[prop];
-      this._startValues[prop] = val;
-      this._endValues[prop] = val;
+      values[prop] = val;
     }
+    this.changes.push({ values });
+    //
     this.startTime = Date.now();
     this.running = 1;
+    this.changeIndex = 0;
   }
 
   // Establish ending values for tragetProps
-  endValues() {
+  addChange(duration) {
+    let values = {};
     for (let prop in this.targetProps) {
-      this._endValues[prop] = this.target[prop];
-      this.target[prop] = this._startValues[prop];
+      values[prop] = this.target[prop];
     }
+    duration *= 1000;
+    this.changes.push({ duration, values });
   }
 
   // Update targetProps in target object for given duration
   stepValues() {
-    if (!this.duration || !this.running) {
+    let last = this.changes[this.changeIndex];
+    let next = this.changes[this.changeIndex + 1];
+    if (!this.running) {
       return;
     }
-    let perCent = (Date.now() - this.startTime) / this.duration;
-    if (perCent > 1.0) perCent = 1.0;
-    // console.log('perCent', perCent);
-    for (let prop in this.targetProps) {
-      let start = this._startValues[prop];
-      let end = this._endValues[prop];
-      let val = start + (end - start) * perCent;
-      // console.log('start', start, 'end', end, 'val', val);
-      this.target[prop] = val;
+    let duration = next.duration;
+    let perCent = (Date.now() - this.startTime) / duration;
+    if (perCent > 1.0) {
+      perCent = 1.0;
+      this.changeIndex++;
+      this.startTime = Date.now();
+      if (this.changeIndex >= this.changes.length - 1) {
+        this.running = 0;
+      }
     }
-    if (perCent >= 1.0) {
-      this.running = 0;
+    // console.log('perCent', perCent);
+    let lastValues = last.values;
+    let nextValues = next.values;
+    for (let prop in this.targetProps) {
+      let start = lastValues[prop];
+      let end = nextValues[prop];
+      let val = start + (end - start) * perCent;
+      // console.log('prop', prop, 'start', start, 'end', end, 'val', val);
+      this.target[prop] = val;
     }
   }
 
   // Update targetProps to the ending values and mark animation as done
   finish() {
     for (let prop in this.targetProps) {
-      let val = this._endValues[prop];
-      this.target[prop] = val;
+      this.target[prop] = this._endValues[prop];
     }
     this.running = 0;
   }

@@ -12,6 +12,7 @@ class Rect {
     strokeWeight(this.strokeWeight);
     drawingContext.shadowBlur = this.shadowBlur; // 12;
     drawingContext.shadowColor = this.shadowColor; // color(207, 7, 99);
-    rect(this.x0, this.y0, this.width, this.height, 5);
+    let corner = 5;
+    rect(this.x0, this.y0, this.width, this.height, corner);
   }
 }
