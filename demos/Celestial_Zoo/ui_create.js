@@ -72,7 +72,6 @@ function addAction() {
 }
 
 function downloadAction() {
-  // !!@ JSON.stringify refBox
   let str = 'let refBox_init = ' + JSON.stringify(my.refBox, undefined, 2);
   downloadToFile('refBox_init.js', str);
 }

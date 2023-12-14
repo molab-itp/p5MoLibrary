@@ -63,14 +63,16 @@ class Pane {
   }
 
   focus() {
-    let pt = this.pt();
+    this.focus_pan();
+    this.focus_fRect();
+  }
 
+  focus_pan() {
+    let pt = this.pt();
     this.zoomIndex = pt.z;
     this.zoomRatio = 1 / this.zoomIndex;
-
     let cm = this.canvasMap();
     // console.log('focus cm', JSON.stringify(cm));
-
     // let x = pt.x + pt.w * 0.5 - cm.sWidth * 0.5;
     // let y = pt.y + pt.h * 0.5 - cm.sHeight * 0.5;
     // this.panX = floor(x);
@@ -78,7 +80,10 @@ class Pane {
     this.panX = floor(pt.x + (pt.w - cm.sWidth) * 0.5);
     this.panY = floor(pt.y + (pt.h - cm.sHeight) * 0.5);
     // console.log('focus pt', JSON.stringify(pt));
+  }
 
+  focus_fRect() {
+    let pt = this.pt();
     let spt = this.ptToCanvas(pt);
     this.fRect.x0 = spt.x;
     this.fRect.y0 = spt.y;
