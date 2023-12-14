@@ -19,6 +19,7 @@ class Pane {
 
   render() {
     this.render_backgImg();
+    this.focus_fRect();
     this.fRect.render();
   }
 
