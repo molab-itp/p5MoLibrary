@@ -45,11 +45,11 @@ class Pane {
     if (this.ptsIndex == 1) {
       let nzoomIndex = 4.0;
       if (this.zoomIndex < 4.0) nzoomIndex = 1.5;
-      this.anim.addChange(1, { panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex }); // Pause
+      this.anim.addChange(3, { panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex }); // Pause
       this.focus_pan();
       this.focus_focusRect();
-      this.anim.addChange(1, { panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex });
-      this.anim.addChange(0, { panZoomIndex: this.zoomIndex });
+      this.anim.addChange(1, { panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex }); // pan and zoom
+      this.anim.addChange(0, { panZoomIndex: this.zoomIndex }); // Pause
       this.anim.addChange(1, { panZoomIndex: nzoomIndex }); // Zoom out
       this.anim.addChange(1, { panZoomIndex: nzoomIndex }); // Pause
       this.anim.addChange(0.5, { panZoomIndex: this.zoomIndex }); // zoom in
