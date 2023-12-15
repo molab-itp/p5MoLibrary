@@ -25,8 +25,8 @@ class Pane {
   }
 
   render() {
-    this.render_backgImg();
     this.anim.stepValues();
+    this.render_backgImg();
     if (this.anim.running) {
       // this.focus_pan();
     } else {
@@ -39,26 +39,33 @@ class Pane {
   // pan_updateZoom(newValue) {
 
   focus() {
-    this.anim.initValues();
-    this.focus_pan();
-    this.focus_focusRect();
+    this.anim.initValues({ panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex });
+    // this.focus_pan();
+    // this.focus_focusRect();
     if (this.ptsIndex == 1) {
-      let endZoomIndex = this.zoomIndex;
-      this.zoomIndex = 4.0;
-      this.anim.addChange(1); // Zoom out
-      this.anim.addChange(1); // pause
-      this.zoomIndex = endZoomIndex;
-      this.anim.addChange(0.5); // zoom in
+      let nzoomIndex = 4.0;
+      if (this.zoomIndex < 4.0) nzoomIndex = 1.5;
+      this.anim.addChange(1, { panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex }); // Pause
+      this.focus_pan();
+      this.focus_focusRect();
+      this.anim.addChange(1, { panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex });
+      this.anim.addChange(0, { panZoomIndex: this.zoomIndex });
+      this.anim.addChange(1, { panZoomIndex: nzoomIndex }); // Zoom out
+      this.anim.addChange(1, { panZoomIndex: nzoomIndex }); // Pause
+      this.anim.addChange(0.5, { panZoomIndex: this.zoomIndex }); // zoom in
     } else {
-      this.anim.addChange(1.0);
+      this.focus_pan();
+      this.focus_focusRect();
+      this.anim.addChange(1.0, { panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex });
     }
   }
 
   anim_init() {
     let target = this;
     // let duration = 1.0;
-    let targetProps = { panX: 1, panY: 1, zoomIndex: 1 };
-    this.anim = new Anim({ target, targetProps });
+    // let targetProps = { panX: 1, panY: 1, zoomIndex: 1 };
+    // this.anim = new Anim({ target, targetProps });
+    this.anim = new Anim({ target });
   }
 
   focusRect_init() {
@@ -94,7 +101,7 @@ class Pane {
   }
 
   set panZoomIndex(newValue) {
-    pan_updateZoom(newValue);
+    this.pan_updateZoom(newValue);
   }
 
   get panZoomIndex() {
