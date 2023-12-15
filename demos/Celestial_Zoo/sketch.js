@@ -30,7 +30,7 @@ function setup() {
 
   focusAction();
 
-  my.animLoop = new Anim({ target: my, duration: 10, action: nextRefAction, loop: 1 });
+  my.animLoop = new Anim({ target: my, duration: 15, action: nextRefAction, loop: 1 });
   my.animLoop.start();
 
   // clearLastMouseEnts();
