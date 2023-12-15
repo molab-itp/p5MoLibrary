@@ -1,45 +1,53 @@
 //
 class Anim {
-  // { duration, target, tragetProps }
-  //    eg: tragetProps: { panX:1, panY:1, zoomIndex:1, zoomRatio:1 }
+  // { target, loop, duration, action }
+  //    eg: values: { panX:1, panY:1, zoomIndex:1, zoomRatio:1 }
   //
   constructor(props) {
     //
     Object.assign(this, props);
-    this.duration *= 1000; // Convert to millisec
+    // convert duration from seconds to milliseconds
+    this.duration *= 1000;
     this.running = 0;
     this.started = 0;
   }
 
+  start() {
+    this.startTime = Date.now();
+    this.running = 1;
+  }
+
+  step() {
+    let now = Date.now();
+    let lapse = now - this.startTime;
+    if (lapse > this.duration) {
+      this.startTime = now;
+      this.running = this.loop;
+      if (this.action) {
+        this.action();
+      }
+    }
+  }
+
   // target
-  // tragetProps { panX, panY, zoomIndex, zoomRatio  }
+  // values { panX, panY, zoomIndex, zoomRatio  }
   //   initValues
   //   endValues
   //     start + (end - start) * perCent
   // startTime
 
-  // Establish starting values for tragetProps
-  // and start time for animation
+  // Establish starting values
   initValues(values) {
     this.changes = [];
-    // let values = {};
-    // for (let prop in this.targetProps) {
-    //   let val = this.target[prop];
-    //   values[prop] = val;
-    // }
     this.changes.push({ values });
-    //
     this.startTime = Date.now();
     this.running = 1;
     this.changeIndex = 0;
   }
 
-  // Establish ending values for tragetProps
+  // Establish ending values for values
   addChange(duration, values) {
-    // let values = {};
-    // for (let prop in this.targetProps) {
-    //   values[prop] = this.target[prop];
-    // }
+    // convert duration from seconds to milliseconds
     duration *= 1000;
     this.changes.push({ duration, values });
     // console.log('addChange changes n', this.changes.length, 'running', this.running);
@@ -70,14 +78,15 @@ class Anim {
     }
     // console.log('perCent', perCent);
     for (let prop in nextValues) {
-      let start = lastValues[prop];
-      if (start == undefined) {
-        // console.log(this.target.ptsIndex, 'changeIndex', this.changeIndex, 'continue prop', prop, 'start', start);
+      let last = lastValues[prop];
+      let next = nextValues[prop];
+      if (last == undefined) {
+        // console.log(this.target.ptsIndex, 'changeIndex', this.changeIndex, 'continue prop', prop, 'last', last);
+        this.target[prop] = next;
         continue;
       }
-      let end = nextValues[prop];
-      let val = start + (end - start) * perCent;
-      // console.log('prop', prop, 'start', starts, 'end', end, 'val', val);
+      let val = last + (next - last) * perCent;
+      // console.log('prop', prop, 'last', last, 'next', next, 'val', val);
       this.target[prop] = val;
     }
   }

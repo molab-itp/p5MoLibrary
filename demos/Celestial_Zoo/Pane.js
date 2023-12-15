@@ -61,11 +61,7 @@ class Pane {
   }
 
   anim_init() {
-    let target = this;
-    // let duration = 1.0;
-    // let targetProps = { panX: 1, panY: 1, zoomIndex: 1 };
-    // this.anim = new Anim({ target, targetProps });
-    this.anim = new Anim({ target });
+    this.anim = new Anim({ target: this });
   }
 
   focusRect_init() {

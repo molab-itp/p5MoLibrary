@@ -29,6 +29,10 @@ function setup() {
   ui_create();
 
   focusAction();
+
+  my.animLoop = new Anim({ target: my, duration: 10, action: nextRefAction, loop: 1 });
+  my.animLoop.start();
+
   // clearLastMouseEnts();
 }
 
@@ -42,6 +46,7 @@ function draw() {
     my.pane.mouseDragged();
   }
   draw_crossHairs();
+  my.animLoop.step();
 }
 
 function clearLastMouseEnts() {
