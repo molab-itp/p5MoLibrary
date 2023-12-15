@@ -29,6 +29,10 @@ class Anim {
     }
   }
 
+  restart() {
+    this.startTime = Date.now();
+  }
+
   // target
   // values { panX, panY, zoomIndex, zoomRatio  }
   //   initValues

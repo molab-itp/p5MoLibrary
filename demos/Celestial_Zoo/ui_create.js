@@ -35,12 +35,15 @@ function ui_create() {
     addAction();
   });
   createButton('←').mousePressed(function () {
+    my.animLoop.restart();
     previousRefAction();
   });
   createButton('→').mousePressed(function () {
+    my.animLoop.restart();
     nextRefAction();
   });
   createButton('focus').mousePressed(function () {
+    my.animLoop.restart();
     focusAction();
   });
   createButton('update').mousePressed(function () {
