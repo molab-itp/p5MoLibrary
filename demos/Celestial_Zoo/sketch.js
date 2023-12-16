@@ -17,6 +17,7 @@ function setup() {
   my.width = width;
   my.height = height;
   my.paneRatio = 12 / 16;
+  my.isPortrait = height > width;
 
   my.refBox = new RefBox(refBox_init);
 
@@ -39,8 +40,8 @@ function setup() {
 function draw() {
   //
   background(0);
-  my.pane0.render();
   my.pane1.render();
+  my.pane0.render();
   ui_update();
   if (my.mouseTracking) {
     my.pane.mouseDragged();
@@ -51,14 +52,12 @@ function draw() {
 }
 
 function drawCycleCount() {
-  //
   let lapse = my.animLoop.lapse();
   let { x0, y0, width, height } = my.pane0;
-  let h = floor(height * 0.05);
+  let h = floor(height * 0.025);
   let y = y0 + height - h;
   let x = x0;
-  let str = formatNum(lapse).padStart(6, '0');
-  str = str.substring(0, 4);
+  let str = Number(lapse).toFixed(1).padStart(4, '0');
   str = str + ' ' + my.cycleCount;
   fill(0);
   noStroke();
@@ -87,6 +86,11 @@ function create_pane0() {
   let z0 = 8;
   let width = floor(fwidth * rr);
   let refBox = my.refBox;
+  if (my.isPortrait) {
+    width = floor(my.width * (3 / 9));
+    height = floor(my.height * (6 / 16));
+    y0 = my.height - height;
+  }
   let ptsIndex = 0;
   my.pane0 = new Pane({ backgImg, x0, y0, z0, width, height, refBox, ptsIndex });
 }
@@ -102,6 +106,10 @@ function create_pane1() {
   let initCentered = 1;
   let width = floor(fwidth * rr);
   let refBox = my.refBox;
+  if (my.isPortrait) {
+    width = my.width;
+    x0 = 0;
+  }
   let ptsIndex = 1;
   my.pane1 = new Pane({ backgImg, x0, y0, z0, width, height, initCentered, refBox, ptsIndex });
 }
