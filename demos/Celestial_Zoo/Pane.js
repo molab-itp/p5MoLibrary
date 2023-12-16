@@ -255,7 +255,7 @@ class Pane {
   }
 
   updateEnt(ent, lastMouseEnts) {
-    // map from  image to screen coordinates
+    // map from image to screen coordinates
     let cm = this.canvasMap();
     let rw = cm.sWidth / cm.dWidth;
     let rh = cm.sHeight / cm.dHeight;

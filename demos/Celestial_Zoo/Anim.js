@@ -32,6 +32,12 @@ class Anim {
     this.startTime = Date.now();
   }
 
+  lapse() {
+    let now = Date.now();
+    let lapse = now - this.startTime;
+    return lapse / 1000.0;
+  }
+
   // target
   // values { panX, panY, zoomIndex, zoomRatio  }
   //   initValues

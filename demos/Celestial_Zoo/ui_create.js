@@ -113,6 +113,7 @@ function previousRefAction() {
 }
 
 function nextRefAction() {
+  my.cycleCount++;
   let n = my.refBox.refs.length - 1;
   if (my.refBox.refIndex == n) {
     // Wrap around to botom

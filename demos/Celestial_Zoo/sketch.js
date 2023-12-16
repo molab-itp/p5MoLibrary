@@ -33,7 +33,7 @@ function setup() {
   my.animLoop = new Anim({ target: my, duration: 15, action: nextRefAction, loop: 1 });
   my.animLoop.start();
 
-  // clearLastMouseEnts();
+  my.cycleCount = 0;
 }
 
 function draw() {
@@ -47,6 +47,29 @@ function draw() {
   }
   draw_crossHairs();
   my.animLoop.step();
+  drawCycleCount();
+}
+
+function drawCycleCount() {
+  //
+  let lapse = my.animLoop.lapse();
+  let { x0, y0, width, height } = my.pane0;
+  let h = floor(height * 0.05);
+  let y = y0 + height - h;
+  let x = x0;
+  let str = formatNum(lapse).padStart(6, '0');
+  str = str.substring(0, 4);
+  str = str + ' ' + my.cycleCount;
+  fill(0);
+  noStroke();
+  rect(x, y, width, h);
+  fill(255);
+  textSize(h);
+  text(str, x, y + h);
+}
+
+function formatNum(num) {
+  return Number(num).toLocaleString();
 }
 
 function clearLastMouseEnts() {
@@ -137,3 +160,10 @@ function logMouseEnts() {
 // image(img, dx, dy, dWidth, dHeight, sx, sy, [sWidth], [sHeight], [fit], [xAlign], [yAlign])
 
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
+
+// https://commons.wikimedia.org/wiki/File:The_Celestial_Zoo_infographic_wikimedia.png
+// Infographic listing 210 notable astronomical objects marked on a central
+// logarithmic map of the observable universe. A small view and some distinguishing
+// features are included for each astronomical object
+
+// https://en.wikipedia.org/wiki/Astronomical_object
