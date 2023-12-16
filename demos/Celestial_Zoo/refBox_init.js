@@ -1,5 +1,5 @@
 let refBox_init = {
-  refIndex: 109,
+  refIndex: 0,
   width: 4800,
   height: 3200,
   refs: [
@@ -107,10 +107,10 @@ let refBox_init = {
       label: 'Earth',
       pts: [
         {
-          x: 26,
-          y: 1075,
-          w: 170,
-          h: 325,
+          x: 23,
+          y: 1072,
+          w: 189,
+          h: 328,
           z: 8,
         },
         {
@@ -127,10 +127,10 @@ let refBox_init = {
       label: 'Moon',
       pts: [
         {
-          x: 24,
-          y: 1411,
-          w: 172,
-          h: 231,
+          x: 21,
+          y: 1407,
+          w: 190,
+          h: 236,
           z: 8,
         },
         {
@@ -167,9 +167,9 @@ let refBox_init = {
       label: 'Mars',
       pts: [
         {
-          x: 23,
-          y: 1788,
-          w: 178,
+          x: 21,
+          y: 1786,
+          w: 188,
           h: 219,
           z: 8,
         },
@@ -187,10 +187,10 @@ let refBox_init = {
       label: 'Phobos',
       pts: [
         {
-          x: 24,
-          y: 2013,
-          w: 180,
-          h: 133,
+          x: 20,
+          y: 2005,
+          w: 192,
+          h: 146,
           z: 8,
         },
         {
@@ -227,10 +227,10 @@ let refBox_init = {
       label: 'Mars trojans',
       pts: [
         {
-          x: 24,
+          x: 20,
           y: 2210,
-          w: 175,
-          h: 127,
+          w: 186,
+          h: 131,
           z: 8,
         },
         {
@@ -247,10 +247,10 @@ let refBox_init = {
       label: 'Asteroid belt',
       pts: [
         {
-          x: 27,
-          y: 2337,
-          w: 170,
-          h: 232,
+          x: 25,
+          y: 2339,
+          w: 188,
+          h: 222,
           z: 8,
         },
         {
@@ -267,10 +267,10 @@ let refBox_init = {
       label: 'Vesta',
       pts: [
         {
-          x: 25,
-          y: 2569,
-          w: 180,
-          h: 134,
+          x: 21,
+          y: 2563,
+          w: 188,
+          h: 146,
           z: 8,
         },
         {
@@ -287,10 +287,10 @@ let refBox_init = {
       label: 'Ceres',
       pts: [
         {
-          x: 22,
-          y: 2715,
-          w: 175,
-          h: 168,
+          x: 18,
+          y: 2711,
+          w: 190,
+          h: 177,
           z: 8,
         },
         {
@@ -547,10 +547,10 @@ let refBox_init = {
       label: 'Titan',
       pts: [
         {
-          x: 212,
-          y: 1934,
-          w: 180,
-          h: 201,
+          x: 210,
+          y: 1933,
+          w: 188,
+          h: 203,
           z: 8,
         },
         {
@@ -707,10 +707,10 @@ let refBox_init = {
       label: 'Neptune',
       pts: [
         {
-          x: 413,
-          y: 26,
-          w: 179,
-          h: 279,
+          x: 410,
+          y: 22,
+          w: 188,
+          h: 282,
           z: 8,
         },
         {
@@ -787,9 +787,9 @@ let refBox_init = {
       label: 'Pluto',
       pts: [
         {
-          x: 412,
+          x: 408,
           y: 802,
-          w: 181,
+          w: 189,
           h: 234,
           z: 8,
         },
@@ -954,11 +954,11 @@ let refBox_init = {
           z: 7.96,
         },
         {
-          x: 2832,
-          y: 1718,
-          w: 60,
-          h: 50,
-          z: 16,
+          x: 2840,
+          y: 1720,
+          w: 38,
+          h: 28,
+          z: 32,
         },
       ],
       i: 48,
@@ -2887,10 +2887,10 @@ let refBox_init = {
       label: 'Whirlpool Galaxy (M51a)',
       pts: [
         {
-          x: 3776,
-          y: 286,
-          w: 197,
-          h: 260,
+          x: 3777,
+          y: 312,
+          w: 190,
+          h: 228,
           z: 7.78,
         },
         {
@@ -2947,10 +2947,10 @@ let refBox_init = {
       label: 'Caldwell 101 (NGC 6744)',
       pts: [
         {
-          x: 3775,
-          y: 880,
-          w: 193,
-          h: 232,
+          x: 3778,
+          y: 905,
+          w: 188,
+          h: 195,
           z: 7.78,
         },
         {
@@ -3107,10 +3107,10 @@ let refBox_init = {
       label: 'Powehi (M87*)',
       pts: [
         {
-          x: 3773,
-          y: 2840,
-          w: 195,
-          h: 336,
+          x: 3772,
+          y: 2878,
+          w: 197,
+          h: 284,
           z: 7.78,
         },
         {
@@ -3147,10 +3147,10 @@ let refBox_init = {
       label: 'Messier 100',
       pts: [
         {
-          x: 3970,
-          y: 271,
-          w: 206,
-          h: 249,
+          x: 3972,
+          y: 294,
+          w: 199,
+          h: 223,
           z: 7.78,
         },
         {
@@ -3168,9 +3168,9 @@ let refBox_init = {
       pts: [
         {
           x: 3975,
-          y: 499,
-          w: 198,
-          h: 192,
+          y: 518,
+          w: 192,
+          h: 178,
           z: 7.78,
         },
         {

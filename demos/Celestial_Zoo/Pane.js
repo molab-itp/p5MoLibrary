@@ -122,7 +122,6 @@ class Pane {
   focus_pan() {
     let pt = this.pt();
     this.zoomIndex = pt.z;
-    // this.zoomRatio = 1 / this.zoomIndex;
     let cm = this.canvasMap();
     // console.log('focus cm', JSON.stringify(cm));
     // let x = pt.x + pt.w * 0.5 - cm.sWidth * 0.5;
@@ -152,7 +151,6 @@ class Pane {
   pan_updateZoom(newValue) {
     let oRatio = this.zoomRatio;
     this.zoomIndex = newValue;
-    // this.zoomRatio = 1 / this.zoomIndex;
 
     let ww = this.backgImg.width;
     let hh = this.backgImg.height;
@@ -176,7 +174,6 @@ class Pane {
 
   pan_center() {
     this.zoomIndex = this.z0;
-    // this.zoomRatio = 1 / this.zoomIndex;
 
     let cm = this.canvasMap();
 
@@ -245,6 +242,7 @@ class Pane {
     let wr = cm.dWidth / cm.sWidth;
     let hr = cm.dHeight / cm.sHeight;
 
+    // solve for ment.x
     // let x = floor((ment.x - this.x0) * rw) + this.panX;
     // let y = floor((ment.y - this.y0) * rh) + this.panY;
 
@@ -258,11 +256,9 @@ class Pane {
 
   updateEnt(ent, lastMouseEnts) {
     // map from  image to screen coordinates
-
     let cm = this.canvasMap();
     let rw = cm.sWidth / cm.dWidth;
     let rh = cm.sHeight / cm.dHeight;
-
     let pts = [];
     for (let ment of lastMouseEnts) {
       let x = floor((ment.x - this.x0) * rw) + this.panX;

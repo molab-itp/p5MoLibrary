@@ -1,7 +1,6 @@
 //
 class Anim {
   // { target, loop, duration, action }
-  //    eg: values: { panX:1, panY:1, zoomIndex:1, zoomRatio:1 }
   //
   constructor(props) {
     //
@@ -41,6 +40,7 @@ class Anim {
   // startTime
 
   // Establish starting values
+  //  eg: values: { panX:1, panY:1, zoomIndex:1, zoomRatio:1 }
   initValues(values) {
     this.changes = [];
     this.changes.push({ values });
@@ -105,11 +105,11 @@ class Anim {
   }
 
   // Update targetProps to the ending values and mark animation as done
-  finish() {
-    for (let prop in this.targetProps) {
-      this.target[prop] = this._endValues[prop];
-    }
-    this.running = 0;
-    console.log('finish changeIndex', this.changeIndex, 'running', this.running);
-  }
+  // finish() {
+  //   for (let prop in this.targetProps) {
+  //     this.target[prop] = this._endValues[prop];
+  //   }
+  //   this.running = 0;
+  //   console.log('finish changeIndex', this.changeIndex, 'running', this.running);
+  // }
 }
