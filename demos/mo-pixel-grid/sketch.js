@@ -9,7 +9,7 @@ let my = {
   showVideo: 1,
   scrollOnStart: 0,
   scrollStopSecs: 4,
-  nstep: 16,
+  nstep: 8,
   margin: 0.1,
   byPixel: 0,
   run: 1,

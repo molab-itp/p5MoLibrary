@@ -87,9 +87,10 @@ function create_pane0() {
   let width = floor(fwidth * rr);
   let refBox = my.refBox;
   if (my.isPortrait) {
-    width = floor(my.width * (3 / 9));
+    // width = floor(my.width * (3 / 9));
+    width = my.width;
     height = floor(my.height * (6 / 16));
-    y0 = my.height - height;
+    // y0 = my.height - height;
   }
   let ptsIndex = 0;
   my.pane0 = new Pane({ backgImg, x0, y0, z0, width, height, refBox, ptsIndex });
