@@ -7,18 +7,18 @@ function draw_layer_host(img) {
   let colr;
   while (more) {
     // colr = img.get(my.vx, my.vy);
-    let row = pixs[my.vyi];
-    if (!row) {
+    let pix = pixs[my.vyi];
+    if (!pix) {
       console.log('no my.vyi', my.vyi);
       break;
     }
-    // console.log('row', row);
-    let item = row.ops[my.vxi];
+    // console.log('pix', pix);
+    let item = pix.row[my.vxi];
     if (!item) {
       console.log('no my.vxi', my.vxi, 'my.vyi', my.vyi);
       break;
     }
-    //   "ops": [ {
+    //   "row": [ {
     //           "c": [ 75, 74, 79, 255 ],
     //           "h": 54, "r": 1, "w": 54, "x": 0, "y": 0
     //       },
@@ -40,7 +40,7 @@ function draw_layer_host(img) {
     // }
     my.vx += my.stepPx;
     my.vxi += 1;
-    if (my.vxi >= row.ops.length) {
+    if (my.vxi >= pix.row.length) {
       my.vx = 0;
       my.vxi = 0;
       my.vy += my.stepPx;

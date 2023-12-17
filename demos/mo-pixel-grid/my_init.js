@@ -1,8 +1,11 @@
 function my_init() {
   init_query();
   my.layer = createGraphics(my.width, my.height);
-  my.vx = 0;
-  my.vy = 0;
+  // my.vx = 0;
+  // my.vy = 0;
+  // my.vxi = 0;
+  // my.vyi = 0;
+
   my.drawOps = [];
   my.colr = [0, 0, 0];
   my.uid = -1;
@@ -34,20 +37,26 @@ function init_query() {
   }
 }
 
+// my.vx = x - (x % my.stepPx);
+// my.vy = y - (y % my.stepPx);
+// my.vxi = floor(my.vx / my.stepPx);
+// my.vyi = floor(my.vy / my.stepPx);
+
 function init_nstep() {
-  my.stepPx = floor(my.vwidth / my.nstep);
+  // my.stepPx = floor(my.vwidth / my.nstep);
+  my.stepPx = floor(my.vheight / my.nstep);
   my.innerPx = floor(my.stepPx * (1 - my.margin));
   my.crossWt = my.stepPx - my.innerPx;
   if (!my.query || !my.query.byLine) {
     my.byLine = my.nstep > 16;
   }
   my.vx = 0;
-  // my.vy = width / 2;
   my.vy = 0;
   my.vxi = 0;
   my.vyi = 0;
 }
 
+// !!@ Move to lib
 // return null or url query as object
 // eg. query='abc=foo&def=%5Basf%5D&xyz=5'
 // params={abc: "foo", def: "[asf]", xyz: "5"}

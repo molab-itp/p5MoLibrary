@@ -24,7 +24,7 @@ function dstore_signin() {
       let uid = fb_.auth.currentUser.uid;
       console.log('dstore_signin uid=', uid);
       my.uid = uid;
-      dstore_signin_update();
+      dstore_active_update();
       dstore_log_onValue();
       dstore_pix_onChild();
     })
@@ -49,15 +49,15 @@ function dstore_log_onValue() {
   });
 }
 
-function dstore_signin_update() {
+function dstore_active_update() {
   let path = `${my.dbStoreRootPath}/log/${my.uid}`;
-  console.log('dstore_signin_update path=', path);
+  console.log('dstore_active_update path=', path);
   let ref = fb_.ref(fb_.database, path);
   let now = new Date();
   const updates = {};
   updates[`date_s`] = now.toISOString();
-  updates[`date_i`] = now.getTime();
-  updates[`count_i`] = fb_.increment(1);
+  updates['date_i'] = now.getTime();
+  updates['count_i'] = fb_.increment(1);
   updates['name_s'] = my.guestName || null;
   updates['host_s'] = my.hostName || null;
   fb_.update(ref, updates);
@@ -81,9 +81,7 @@ function dstore_pix_onChild() {
     // Array.isArray(gVal) --> true
     // Array of
     // {
-    //   "count_i": 93,
-    //   "date_i": 1702796259458,
-    //   "ops": [ {
+    //   "row": [ {
     //           "c": [ 75, 74, 79, 255 ],
     //           "h": 54,
     //           "r": 1,
@@ -101,8 +99,7 @@ function dstore_pix_onChild() {
     my.receivedPixs = val;
     // onChildChanged DK1Lcj16BFhDPgdvGGkVP9FS3Xy2
     // {
-    //   "date_i": 1692677048708,
-    //   "ops": [
+    //   "row": [
     //       { "c": [ 135, 132, 133, 255 ],
     //          "h": 27, "r": 1, "w": 27, "x": 0, "y": 0
     //       },
@@ -116,18 +113,20 @@ function dstore_pix_onChild() {
   });
 }
 
-function dstore_pix_update(seq, ops) {
+function dstore_pix_update(irow, row) {
   if (!my.uid) {
     console.log('dstore_pix_update no uid', my.uid);
     return;
   }
-  let path = `${my.dbStoreRootPath}/pix/${my.uid}/${seq}`;
+  let path = `${my.dbStoreRootPath}/pix/${my.uid}/${irow}`;
   let ref = fb_.ref(fb_.database, path);
   const updates = {};
-  updates[`date_i`] = Date.now();
-  updates[`ops`] = ops;
-  updates[`count_i`] = fb_.increment(1);
+  // updates['date_i'] = Date.now();
+  // updates['count_i'] = fb_.increment(1);
+  updates['row'] = row;
   fb_.update(ref, updates);
+
+  dstore_active_update();
 }
 
 function dstore_removeAll() {
