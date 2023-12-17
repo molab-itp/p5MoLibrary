@@ -1,5 +1,5 @@
 // incrementally draw grid of pixel rects from given image img
-function draw_layer_host(img) {
+function draw_layer_host() {
   let pixs = my.receivedPixs;
   if (!pixs) return;
   let layer = my.layer;
@@ -34,20 +34,22 @@ function draw_layer_host(img) {
     layer.fill(colr);
     layer.noStroke();
     // layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
-    layer.rect(item.x, item.y, item.w, item.h);
-    // if (!my.run) {
-    //   break;
-    // }
-    my.vx += my.stepPx;
+    // layer.rect(item.x, item.y, item.w, item.h);
+    let x = my.vxi * my.stepPx;
+    let y = my.vyi * my.stepPx;
+    let w = my.innerPx;
+    let h = my.innerPx;
+    layer.rect(x, y, w, h);
+    // my.vx += my.stepPx;
     my.vxi += 1;
     if (my.vxi >= pix.row.length) {
-      my.vx = 0;
+      // my.vx = 0;
       my.vxi = 0;
-      my.vy += my.stepPx;
+      // my.vy += my.stepPx;
       my.vyi += 1;
       if (my.vyi >= pixs.length) {
         more = 0;
-        my.vy = 0;
+        // my.vy = 0;
         my.vyi = 0;
       }
     }

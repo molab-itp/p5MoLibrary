@@ -13,7 +13,8 @@ function draw_layer_guest(img) {
     layer.fill(colr);
     layer.noStroke();
     layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
-    draw_record_rect(colr, my.vx, my.vy, my.innerPx, my.innerPx);
+    // draw_record_rect(colr, my.vx, my.vy, my.innerPx, my.innerPx);
+    draw_record_rect(colr, my.vxi);
     if (!my.run) {
       if (my.track_xy_updated) {
         draw_record_flush(my.vyi);
@@ -59,16 +60,19 @@ function draw_layer_guest(img) {
 
 // layer.fill(colr);
 // layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
-function draw_record_rect(c, x, y, w, h) {
+// function draw_record_rect(c, x, y, w, h) {
+function draw_record_rect(c, ix) {
   if (my.store) {
-    let op = { r: 1, c, x, y, w, h };
-    my.drawOps.push(op);
+    // let op = { r: 1, c, x, y, w, h };
+    // my.pixRow.push(op);
+    let item = { c };
+    my.pixRow[ix] = item;
   }
 }
 
-function draw_record_flush(seq) {
+function draw_record_flush(irow) {
   if (my.store) {
-    dstore_pix_update(seq, my.drawOps);
+    dstore_pix_update(irow, my.pixRow);
   }
-  my.drawOps = [];
+  // my.pixRow = [];
 }

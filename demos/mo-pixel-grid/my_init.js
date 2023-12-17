@@ -6,7 +6,7 @@ function my_init() {
   // my.vxi = 0;
   // my.vyi = 0;
 
-  my.drawOps = [];
+  my.pixRow = [];
   my.colr = [0, 0, 0];
   my.uid = -1;
   my.pub_uid = -1;
