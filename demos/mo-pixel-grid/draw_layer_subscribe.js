@@ -57,19 +57,20 @@ function draw_layer_subscribe() {
 
   function draw_shape(x, y) {
     // console.log('draw_shape my.pub_index', my.pub_index);
-    let w = my.innerPx;
-    let h = my.innerPx;
-    if (my.pub_index == 0) {
-      layer.rect(x, y, w, h);
-    } else if (my.pub_index == 1) {
-      layer.ellipse(x + w / 2, y + h / 2, w, h);
+    let ww = my.innerPx;
+    let hh = my.innerPx;
+    let ns = my.pub_index % 3;
+    if (ns == 0) {
+      layer.rect(x, y, ww, hh);
+    } else if (ns == 1) {
+      layer.ellipse(x + ww / 2, y + hh / 2, ww, hh);
     } else {
       // triangle(x1, y1, x2, y2, x3, y3)
-      let x1 = x + w / 2;
+      let x1 = x + ww / 2;
       let y1 = y;
       let x2 = x;
-      let y2 = y + h;
-      let x3 = x + w;
+      let y2 = y + hh;
+      let x3 = x + ww;
       let y3 = y2;
       layer.triangle(x1, y1, x2, y2, x3, y3);
     }

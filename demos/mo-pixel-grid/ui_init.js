@@ -17,7 +17,7 @@ function ui_init_controls() {
     create_myVideo();
   }
 
-  my.verBtn = createButton('v' + my.version);
+  my.verBtn = createButton('v' + my.version.substring(2));
   my.verBtn.mousePressed(function () {
     ui_toggle_scroll();
   });
