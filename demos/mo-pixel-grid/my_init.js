@@ -9,6 +9,7 @@ function my_init() {
   my.drawOps = [];
   my.colr = [0, 0, 0];
   my.uid = -1;
+  my.pub_uid = -1;
   if (my.scrollOnStart) {
     ui_toggle_scroll();
   }

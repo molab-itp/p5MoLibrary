@@ -73,11 +73,9 @@ function dstore_pix_onChild() {
   fb_.onChildAdded(ref, (data) => {
     let key = data.key;
     let val = data.val();
-    console.log('dstore_pix_onChild Added key val=', key, val);
-    console.log('dstore_pix_onChild Added typeof val=', typeof val);
-    my.receivedPixs = val;
-    // For debugging
-    window.gVal = val;
+    console.log('dstore_pix_onChild Added key=', key, 'val=', val);
+    // console.log('dstore_pix_onChild Added typeof val=', typeof val);
+    receivedKey(key, val);
     // Array.isArray(gVal) --> true
     // Array of
     // {
@@ -91,25 +89,32 @@ function dstore_pix_onChild() {
     //       },
   });
 
-  fb_.onChildChanged(ref, (data) => {
-    let key = data.key;
-    let val = data.val();
-    console.log('dstore_pix_onChild Changed key val=', key, val);
-    console.log('dstore_pix_onChild Changed typeof val=', typeof val);
+  function receivedKey(key, val) {
+    my.pub_uid = key;
     my.receivedPixs = val;
+    // For debugging
+    window.gVal = val;
     // onChildChanged DK1Lcj16BFhDPgdvGGkVP9FS3Xy2
     // {
     //   "row": [
     //       { "c": [ 135, 132, 133, 255 ],
     //          "h": 27, "r": 1, "w": 27, "x": 0, "y": 0
     //       },
+  }
+
+  fb_.onChildChanged(ref, (data) => {
+    let key = data.key;
+    let val = data.val();
+    console.log('dstore_pix_onChild Changed key=', key, 'val=', val);
+    // console.log('dstore_pix_onChild Changed typeof val=', typeof val);
+    receivedKey(key, val);
   });
 
   fb_.onChildRemoved(ref, (data) => {
     let key = data.key;
     let val = data.val();
-    console.log('dstore_pix_onChild Removed key val=', key, val);
-    console.log('dstore_pix_onChild Removed typeof val=', typeof val);
+    console.log('dstore_pix_onChild Removed key=', key, 'val=', val);
+    // console.log('dstore_pix_onChild Removed typeof val=', typeof val);
   });
 }
 

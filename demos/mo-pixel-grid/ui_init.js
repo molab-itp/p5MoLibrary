@@ -111,10 +111,14 @@ function video_ready() {
 }
 
 function ui_update() {
-  ui_update_xy();
-  ui_update_rgb();
+  if (my.hostName) {
+    ui_update_pub_info();
+  } else {
+    ui_update_xy();
+    ui_update_rgb();
+  }
   ui_break('break1');
-  ui_update_info();
+  ui_update_names();
   my.ui_last = ui_break('break2');
 }
 
@@ -123,6 +127,12 @@ function ui_update_xy() {
   let y = my.vy;
   let str = ` x: ${x} y: ${y}`;
   my.report = ui_span('report', str);
+}
+
+function ui_update_pub_info() {
+  if (my.pub_uid) {
+    ui_span('pub_uid', 'pub_uid:' + my.pub_uid);
+  }
 }
 
 function ui_update_rgb() {
@@ -145,7 +155,7 @@ function ui_update_rgb() {
   spanb.elt.style.color = 'white';
 }
 
-function ui_update_info() {
+function ui_update_names() {
   // ui_span('updateCount', ' uc:' + my.updateCount);
   // ui_span('nitems', ' ni:' + my.nitems);
   if (my.guestName) {
