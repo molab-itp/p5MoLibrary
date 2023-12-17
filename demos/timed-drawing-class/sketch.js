@@ -1,6 +1,6 @@
 // https://github.com/jht9629-nyu/my-p5js-repo-2023/tree/main/p5-projects/timed-drawing-class
 // timed-drawing
-// my.version update required here and in index.html ?v=xx to see github pages update
+// my.version update required here and in index.html ?v=035 to see github pages update
 
 let my = { version: 21, width: 640, height: 480 };
 // let my = { width: 640 / 2, height: 480 / 2 };

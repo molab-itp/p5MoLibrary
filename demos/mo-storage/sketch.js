@@ -201,7 +201,7 @@ function demo_getDownloadURL(path) {
 // from origin 'http://127.0.0.1:5502' has been blocked by CORS policy:
 // No 'Access-Control-Allow-Origin' header is present on the requested resource.
 //
-// sketch.js?v=9:30     GET https://firebasestorage.googleapis.com/v0/b/molab-485f5.appspot.com/o/GNhzoQknS1OHY8DA1Fvygmltr902%2F1.jpeg?alt=media&token=acea55e8-08ba-45d9-9858-73eb604cf38a
+// GET https://firebasestorage.googleapis.com/v0/b/molab-485f5.appspot.com/o/GNhzoQknS1OHY8DA1Fvygmltr902%2F1.jpeg?alt=media&token=acea55e8-08ba-45d9-9858-73eb604cf38a
 // net::ERR_FAILED 200
 
 let d_error;
@@ -274,14 +274,14 @@ function demo_list(bucket) {
 
 // fullPath GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg
 // itemRef Reference {_service: FirebaseStorageImpl, _location: Location}
-// sketch.js?v=9:31 fullPath GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg
-// sketch.js?v=9:30 itemRef Reference {_service: FirebaseStorageImpl, _location: Location}
-// sketch.js?v=9:31 fullPath GNhzoQknS1OHY8DA1Fvygmltr902/1z.jpeg
-// sketch.js?v=9:30 itemRef Reference {_service: FirebaseStorageImpl, _location: Location}
-// sketch.js?v=9:31 fullPath GNhzoQknS1OHY8DA1Fvygmltr902/2.jpeg
-// sketch.js?v=9:30 itemRef Reference {_service: FirebaseStorageImpl, _location: Location}
-// sketch.js?v=9:31 fullPath GNhzoQknS1OHY8DA1Fvygmltr902/2z.jpeg
-// sketch.js?v=9:30 itemRef Reference {_service: FirebaseStorageImpl, _location: Location}
-// sketch.js?v=9:31 fullPath GNhzoQknS1OHY8DA1Fvygmltr902/3.jpeg
-// sketch.js?v=9:30 itemRef Reference {_service: FirebaseStorageImpl, _location: Location}
-// sketch.js?v=9:31 fullPath GNhzoQknS1OHY8DA1Fvygmltr902/3z.jpeg
+// 31 fullPath GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg
+// 30 itemRef Reference {_service: FirebaseStorageImpl, _location: Location}
+// 31 fullPath GNhzoQknS1OHY8DA1Fvygmltr902/1z.jpeg
+// 30 itemRef Reference {_service: FirebaseStorageImpl, _location: Location}
+// 31 fullPath GNhzoQknS1OHY8DA1Fvygmltr902/2.jpeg
+// 30 itemRef Reference {_service: FirebaseStorageImpl, _location: Location}
+// 31 fullPath GNhzoQknS1OHY8DA1Fvygmltr902/2z.jpeg
+// 30 itemRef Reference {_service: FirebaseStorageImpl, _location: Location}
+// 31 fullPath GNhzoQknS1OHY8DA1Fvygmltr902/3.jpeg
+// 30 itemRef Reference {_service: FirebaseStorageImpl, _location: Location}
+// 31 fullPath GNhzoQknS1OHY8DA1Fvygmltr902/3z.jpeg
