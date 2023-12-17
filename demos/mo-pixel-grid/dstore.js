@@ -65,8 +65,10 @@ function dstore_log_onValue() {
       ent.index = index;
       index++;
     }
-    my.nitems = Object.keys(data).length;
-    my.updateCount += 1;
+    my.nlog = index;
+
+    // my.nitems = Object.keys(data).length;
+    // my.updateCount += 1;
 
     ui_update();
   });

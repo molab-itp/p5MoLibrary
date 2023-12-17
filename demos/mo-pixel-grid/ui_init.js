@@ -64,6 +64,8 @@ function ui_init_controls() {
     init_subscribe();
   });
 
+  ui_span('nlog', ' nlog:' + my.nlog);
+
   createElement('br');
 }
 
@@ -111,6 +113,9 @@ function video_ready() {
 }
 
 function ui_update() {
+  //
+  ui_span('nlog', ' nlog:' + my.nlog);
+
   if (my.subscribeName) {
     ui_update_pub_info();
   } else {

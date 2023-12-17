@@ -6,7 +6,6 @@ function draw_layer_subscribe() {
   more = 1;
   let colr;
   while (more) {
-    // colr = img.get(my.vx, my.vy);
     let pix = pixs[my.vyi];
     if (!pix) {
       console.log('no my.vyi', my.vyi);
@@ -18,7 +17,6 @@ function draw_layer_subscribe() {
       console.log('no my.vxi', my.vxi, 'my.vyi', my.vyi);
       break;
     }
-
     // console.log('item', item);
     let colr = item.c;
     if (!colr) {
@@ -48,17 +46,26 @@ function draw_layer_subscribe() {
     // console.log('draw_shape my.pub_index', my.pub_index);
     let ww = my.innerPx;
     let hh = my.innerPx;
-    let ns = my.pub_index % 3;
+    let ns = my.pub_index % 4;
     if (ns == 0) {
       layer.rect(x, y, ww, hh);
     } else if (ns == 1) {
       layer.ellipse(x + ww / 2, y + hh / 2, ww, hh);
-    } else {
+    } else if (ns == 2) {
       // triangle(x1, y1, x2, y2, x3, y3)
       let x1 = x + ww / 2;
       let y1 = y;
       let x2 = x;
       let y2 = y + hh;
+      let x3 = x + ww;
+      let y3 = y2;
+      layer.triangle(x1, y1, x2, y2, x3, y3);
+    } else {
+      // triangle(x1, y1, x2, y2, x3, y3)
+      let x1 = x + ww / 2;
+      let y1 = y + hh;
+      let x2 = x;
+      let y2 = y;
       let x3 = x + ww;
       let y3 = y2;
       layer.triangle(x1, y1, x2, y2, x3, y3);

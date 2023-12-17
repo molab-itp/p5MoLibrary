@@ -1,16 +1,16 @@
 function my_init() {
+  //
   init_query();
+
   my.layer = createGraphics(my.width, my.height);
-  // my.vx = 0;
-  // my.vy = 0;
-  // my.vxi = 0;
-  // my.vyi = 0;
 
   my.pixRows = [];
   my.colr = [0, 0, 0];
   my.uid = -1;
   my.pub_uid = -1;
   my.pub_name = '?';
+  my.nlog = -1;
+
   if (my.scrollOnStart) {
     ui_toggle_scroll();
   }
