@@ -40,9 +40,25 @@ function dstore_log_onValue() {
   fb_.onValue(ref, function (snap) {
     let key = snap.key;
     let data = snap.val();
-    console.log('dstore_log_onValue key data=', key, data);
+    console.log('dstore_log_onValue key=' + key, 'data=', data);
     data = data || {};
-    my.storeLogData = data;
+
+    my.store_log = data;
+    // {
+    //   "DK1Lcj16BFhDPgdvGGkVP9FS3Xy2": {
+    //       "count_i": 1,
+    //       "date_i": 1702830308444,
+    //       "date_s": "2023-12-17T16:25:08.444Z",
+    //       "host_s": "sjht"
+    //   },
+    //   "i3iHgmvAVgWNz2ib1HUOFCOCKrt2": {
+    //       "count_i": 488,
+    //       "date_i": 1702830197911,
+    //       "date_s": "2023-12-17T16:23:17.911Z",
+    //       "name_s": "pjht2"
+    //   }
+    // }
+
     my.nitems = Object.keys(data).length;
     my.updateCount += 1;
     ui_update();

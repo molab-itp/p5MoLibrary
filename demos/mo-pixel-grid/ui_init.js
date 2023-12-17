@@ -130,9 +130,16 @@ function ui_update_xy() {
 }
 
 function ui_update_pub_info() {
-  if (my.pub_uid) {
-    ui_span('pub_uid', 'pub_uid:' + my.pub_uid);
+  if (my.store_log) {
+    let ent = my.store_log[my.pub_uid];
+    // console.log('ui_update_pub_info ent', ent);
+    my.pub_name = '?';
+    if (ent) {
+      my.pub_name = ent.name_s;
+    }
   }
+  ui_span('pub_name', ' pub_name:' + my.pub_name);
+  ui_span('pub_uid', ' pub_uid:' + my.pub_uid);
 }
 
 function ui_update_rgb() {
