@@ -53,6 +53,7 @@ function ui_init_controls() {
   my.storeChk = createCheckbox('Store', my.store);
   my.storeChk.style('display:inline');
   my.storeChk.changed(function () {
+    dstore_signin_update();
     my.store = this.checked();
   });
 
