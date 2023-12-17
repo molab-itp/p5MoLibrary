@@ -1,33 +1,36 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/7Wjlo3pPU
 // mo-pixel-grid
 
-// http://127.0.0.1:5502/demos/mo-pixel-grid/index.html?h=me
+// http://127.0.0.1:5502/demos/mo-pixel-grid/index.html?sub=me
 //
-// my.guestName = my.query.g;
-// my.hostName = my.query.h;
+// my.publishName = my.query.pub;
+// my.subscribeName = my.query.sub;
 // my.nstep = my.query.nstep || my.nstep;
 // my.perFrame = my.query.perFrame || my.perFrame;
 // my.byLine = my.query.byLine || my.byLine;
 
-let my = {
-  version: 27, // update to verify change on mobile
-  vwidth: 480, // Aspect ratio of video capture
-  vheight: 640,
-  face: 1,
-  showVideo: 1,
-  scrollOnStart: 0,
-  scrollStopSecs: 4,
-  nstep: 8,
-  margin: 0.1,
-  byPixel: 0,
-  run: 1,
-  store: 0,
-  host: 0,
-  perFrame: 6,
-  dbStoreRootPath: 'm0-@r-@w-',
-};
+let my = {};
+
+function my_init0() {
+  my.version = 27; // update to verify change on mobile
+  my.vwidth = 480; // Aspect ratio of video capture
+  my.vheight = 640;
+  my.face = 1;
+  my.showVideo = 1;
+  my.scrollOnStart = 0;
+  my.scrollStopSecs = 4;
+  my.nstep = 8;
+  my.margin = 0.1;
+  my.byPixel = 0;
+  my.run = 1;
+  my.store = 0;
+  my.subscribe = 0;
+  my.perFrame = 6;
+  my.dbStoreRootPath = 'm0-@r-@w-';
+}
 
 function setup() {
+  my_init0();
   my_init();
 
   my.canvas = createCanvas(my.width, my.height);
@@ -50,7 +53,7 @@ function draw_host() {
 
   check_scroll();
 
-  draw_layer_host();
+  draw_layer_subscribe();
 }
 
 function draw_guest() {
@@ -69,7 +72,7 @@ function draw_guest() {
     image(img, 0, 0);
   }
 
-  draw_layer_guest(img);
+  draw_layer_publish(img);
 }
 
 function canvas_mouseReleased() {

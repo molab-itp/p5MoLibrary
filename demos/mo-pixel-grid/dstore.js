@@ -58,8 +58,8 @@ function dstore_active_update() {
   updates[`date_s`] = now.toISOString();
   updates['date_i'] = now.getTime();
   updates['count_i'] = fb_.increment(1);
-  updates['name_s'] = my.guestName || null;
-  updates['host_s'] = my.hostName || null;
+  updates['name_s'] = my.publishName || null;
+  updates['host_s'] = my.subscribeName || null;
   fb_.update(ref, updates);
 }
 
@@ -128,6 +128,7 @@ function dstore_pix_update(irow, row) {
   const updates = {};
   // updates['date_i'] = Date.now();
   // updates['count_i'] = fb_.increment(1);
+  updates['i'] = irow;
   updates['row'] = row;
   fb_.update(ref, updates);
 

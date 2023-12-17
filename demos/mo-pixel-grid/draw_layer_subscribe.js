@@ -1,5 +1,5 @@
 // incrementally draw grid of pixel rects from given image img
-function draw_layer_host() {
+function draw_layer_subscribe() {
   let pixs = my.receivedPixs;
   if (!pixs) return;
   let layer = my.layer;

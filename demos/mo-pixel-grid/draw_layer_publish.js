@@ -1,5 +1,5 @@
 // incrementally draw grid of pixel rects from given image img
-function draw_layer_guest(img) {
+function draw_layer_publish(img) {
   let layer = my.layer;
   more = 1;
   let colr;
@@ -14,7 +14,7 @@ function draw_layer_guest(img) {
     layer.noStroke();
     layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
     // draw_record_rect(colr, my.vx, my.vy, my.innerPx, my.innerPx);
-    draw_record_rect(colr, my.vxi);
+    draw_record_rect(colr, my.vxi, my.vyi);
     if (!my.run) {
       if (my.track_xy_updated) {
         draw_record_flush(my.vyi);
@@ -61,18 +61,22 @@ function draw_layer_guest(img) {
 // layer.fill(colr);
 // layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
 // function draw_record_rect(c, x, y, w, h) {
-function draw_record_rect(c, ix) {
+function draw_record_rect(c, ix, iy) {
   if (my.store) {
     // let op = { r: 1, c, x, y, w, h };
-    // my.pixRow.push(op);
+    // my.pixRows.push(op);
+    let row = my.pixRows[iy];
+    if (!row) {
+      row = [];
+      my.pixRows[iy] = row;
+    }
     let item = { c };
-    my.pixRow[ix] = item;
+    row[ix] = item;
   }
 }
 
 function draw_record_flush(irow) {
   if (my.store) {
-    dstore_pix_update(irow, my.pixRow);
+    dstore_pix_update(irow, my.pixRows[irow]);
   }
-  // my.pixRow = [];
 }

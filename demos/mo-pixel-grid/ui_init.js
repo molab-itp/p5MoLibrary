@@ -13,7 +13,7 @@ function ui_init() {
 }
 
 function ui_init_controls() {
-  if (!my.hostName) {
+  if (!my.subscribeName) {
     create_myVideo();
   }
 
@@ -32,7 +32,7 @@ function ui_init_controls() {
 
   createElement('br');
 
-  if (!my.hostName) {
+  if (!my.subscribeName) {
     my.faceChk = createCheckbox('Face', my.face);
     my.faceChk.style('display:inline');
     my.faceChk.changed(faceChk_action);
@@ -57,10 +57,10 @@ function ui_init_controls() {
     my.store = this.checked();
   });
 
-  my.hostChk = createCheckbox('Host', my.host);
-  my.hostChk.style('display:inline');
-  my.hostChk.changed(function () {
-    my.host = this.checked();
+  my.subscribeChk = createCheckbox('Subcribe', my.subscribe);
+  my.subscribeChk.style('display:inline');
+  my.subscribeChk.changed(function () {
+    my.subscribe = this.checked();
     init_host();
   });
 
@@ -68,8 +68,8 @@ function ui_init_controls() {
 }
 
 function init_host() {
-  console.log('init_host', my.host);
-  my.draw_func = my.host ? draw_host : draw_guest;
+  console.log('init_host', my.subscribe);
+  my.draw_func = my.subscribe ? draw_host : draw_guest;
 }
 
 function ui_nstep_selection() {
@@ -111,7 +111,7 @@ function video_ready() {
 }
 
 function ui_update() {
-  if (my.hostName) {
+  if (my.subscribeName) {
     ui_update_pub_info();
   } else {
     ui_update_xy();
@@ -156,13 +156,11 @@ function ui_update_rgb() {
 }
 
 function ui_update_names() {
-  // ui_span('updateCount', ' uc:' + my.updateCount);
-  // ui_span('nitems', ' ni:' + my.nitems);
-  if (my.guestName) {
-    ui_span('guestName', ' guestName:' + my.guestName);
+  if (my.publishName) {
+    ui_span('publishName', ' publishName:' + my.publishName);
   }
-  if (my.hostName) {
-    ui_span('hostName', ' hostName:' + my.hostName);
+  if (my.subscribeName) {
+    ui_span('subscribeName', ' subscribeName:' + my.subscribeName);
   }
   if (my.uid) {
     ui_span('uid', ' uid:' + my.uid);

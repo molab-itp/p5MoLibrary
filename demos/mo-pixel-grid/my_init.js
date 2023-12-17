@@ -6,7 +6,7 @@ function my_init() {
   // my.vxi = 0;
   // my.vyi = 0;
 
-  my.pixRow = [];
+  my.pixRows = [];
   my.colr = [0, 0, 0];
   my.uid = -1;
   my.pub_uid = -1;
@@ -19,22 +19,22 @@ function my_init() {
 function init_query() {
   my.query = get_url_params();
   if (my.query) {
-    my.guestName = my.query.g;
-    my.hostName = my.query.h;
+    my.publishName = my.query.pub;
+    my.subscribeName = my.query.sub;
     my.nstep = my.query.nstep || my.nstep;
     my.perFrame = my.query.perFrame || my.perFrame;
     my.byLine = my.query.byLine || my.byLine;
   }
-  if (my.hostName) {
+  if (my.subscribeName) {
     my.draw_func = draw_host;
     my.width = displayWidth;
     my.height = displayHeight;
-    my.host = 1;
+    my.subscribe = 1;
   } else {
     my.draw_func = draw_guest;
     my.width = my.vwidth;
     my.height = my.vheight;
-    my.host = 0;
+    my.subscribe = 0;
   }
 }
 
