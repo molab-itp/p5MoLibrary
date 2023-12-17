@@ -18,9 +18,6 @@ function draw_layer_subscribe() {
       console.log('no my.vxi', my.vxi, 'my.vyi', my.vyi);
       break;
     }
-    //   "row": [ {
-    //           "c": [ 75, 74, 79, 255 ],
-    //       },
 
     // console.log('item', item);
     let colr = item.c;
@@ -30,26 +27,18 @@ function draw_layer_subscribe() {
     }
     // console.log('colr', colr, typeof colr);
     my.colr = colr;
+    colr[3] = 50;
     layer.fill(colr);
     layer.noStroke();
-    // layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
-    // layer.rect(item.x, item.y, item.w, item.h);
     let x = my.vxi * my.stepPx;
     let y = my.vyi * my.stepPx;
-    // let w = my.innerPx;
-    // let h = my.innerPx;
-    // layer.rect(x, y, w, h);
     draw_shape(x, y);
-    // my.vx += my.stepPx;
     my.vxi += 1;
     if (my.vxi >= pix.row.length) {
-      // my.vx = 0;
       my.vxi = 0;
-      // my.vy += my.stepPx;
       my.vyi += 1;
       if (my.vyi >= pixs.length) {
         more = 0;
-        // my.vy = 0;
         my.vyi = 0;
       }
     }
