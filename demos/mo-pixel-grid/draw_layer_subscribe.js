@@ -20,7 +20,6 @@ function draw_layer_subscribe() {
     }
     //   "row": [ {
     //           "c": [ 75, 74, 79, 255 ],
-    //           "h": 54, "r": 1, "w": 54, "x": 0, "y": 0
     //       },
 
     // console.log('item', item);
@@ -37,9 +36,10 @@ function draw_layer_subscribe() {
     // layer.rect(item.x, item.y, item.w, item.h);
     let x = my.vxi * my.stepPx;
     let y = my.vyi * my.stepPx;
-    let w = my.innerPx;
-    let h = my.innerPx;
-    layer.rect(x, y, w, h);
+    // let w = my.innerPx;
+    // let h = my.innerPx;
+    // layer.rect(x, y, w, h);
+    draw_shape(x, y);
     // my.vx += my.stepPx;
     my.vxi += 1;
     if (my.vxi >= pix.row.length) {
@@ -55,6 +55,25 @@ function draw_layer_subscribe() {
     }
   }
 
+  function draw_shape(x, y) {
+    // console.log('draw_shape my.pub_index', my.pub_index);
+    let w = my.innerPx;
+    let h = my.innerPx;
+    if (my.pub_index == 0) {
+      layer.rect(x, y, w, h);
+    } else if (my.pub_index == 1) {
+      layer.ellipse(x + w / 2, y + h / 2, w, h);
+    } else {
+      // triangle(x1, y1, x2, y2, x3, y3)
+      let x1 = x + w / 2;
+      let y1 = y;
+      let x2 = x;
+      let y2 = y + h;
+      let x3 = x + w;
+      let y3 = y2;
+      layer.triangle(x1, y1, x2, y2, x3, y3);
+    }
+  }
   // console.log('1 colr', colr, typeof colr);
 
   // draw layer to canvas

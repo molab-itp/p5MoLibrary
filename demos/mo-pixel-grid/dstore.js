@@ -1,17 +1,14 @@
+//
 // my dbStoreRootPath: 'm0-@r-@w-',
-// storeLogData/log {
+// dbStoreRootPath/log {
 //   DK1Lcj16BFhDPgdvGGkVP9FS3Xy2: {
 //     count_i: 1,
 //     date_i: 1692655136999,
 //     date_s: '2023-08-21T21:58:56.999Z',
 //   },
 // },
-// storeLogData/pix
+// dbStoreRootPath/pix
 //
-// query:
-//  g -> guestName
-//  h -> hostName
-
 function dstore_init() {
   my.updateCount = 0;
   dstore_signin();
@@ -47,20 +44,30 @@ function dstore_log_onValue() {
     // {
     //   "DK1Lcj16BFhDPgdvGGkVP9FS3Xy2": {
     //       "count_i": 1,
-    //       "date_i": 1702830308444,
-    //       "date_s": "2023-12-17T16:25:08.444Z",
-    //       "host_s": "sjht"
+    //       "date_i": 1702834244712,
+    //       "date_s": "2023-12-17T17:30:44.712Z"
     //   },
     //   "i3iHgmvAVgWNz2ib1HUOFCOCKrt2": {
-    //       "count_i": 488,
-    //       "date_i": 1702830197911,
-    //       "date_s": "2023-12-17T16:23:17.911Z",
+    //       "count_i": 3357,
+    //       "date_i": 1702832662136,
+    //       "date_s": "2023-12-17T17:04:22.136Z",
     //       "name_s": "pjht2"
+    //   },
+    //   "oydFETqRDFW7xYpfmH8WS9CHr963": {
+    //       "count_i": 329,
+    //       "date_i": 1702833594204,
+    //       "date_s": "2023-12-17T17:19:54.204Z"
     //   }
     // }
-
+    let index = 0;
+    for (let prop in my.store_log) {
+      let ent = my.store_log[prop];
+      ent.index = index;
+      index++;
+    }
     my.nitems = Object.keys(data).length;
     my.updateCount += 1;
+
     ui_update();
   });
 }
@@ -75,7 +82,7 @@ function dstore_active_update() {
   updates['date_i'] = now.getTime();
   updates['count_i'] = fb_.increment(1);
   updates['name_s'] = my.publishName || null;
-  updates['host_s'] = my.subscribeName || null;
+  // updates['host_s'] = my.subscribeName || null;
   fb_.update(ref, updates);
 }
 
@@ -97,11 +104,6 @@ function dstore_pix_onChild() {
     // {
     //   "row": [ {
     //           "c": [ 75, 74, 79, 255 ],
-    //           "h": 54,
-    //           "r": 1,
-    //           "w": 54,
-    //           "x": 0,
-    //           "y": 0
     //       },
   });
 
@@ -114,8 +116,14 @@ function dstore_pix_onChild() {
     // {
     //   "row": [
     //       { "c": [ 135, 132, 133, 255 ],
-    //          "h": 27, "r": 1, "w": 27, "x": 0, "y": 0
     //       },
+
+    if (my.pub_uid) {
+      let ent = my.store_log[my.pub_uid];
+      if (ent) {
+        my.pub_index = ent.index;
+      }
+    }
   }
 
   fb_.onChildChanged(ref, (data) => {
