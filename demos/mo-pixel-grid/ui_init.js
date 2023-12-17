@@ -75,7 +75,10 @@ function init_host() {
 function ui_nstep_selection() {
   createSpan(' nstep:');
   let aSel = createSelect();
-  let opts = [16, 32, 64, 128, 8, 4, 2, 1];
+  let opts = [8, 16, 32, 64, 128, 4, 2, 1];
+  // !!@ mstep set to 8 but 16 sometimes taking effect in db update
+  // let my = { nstep: 8,
+  // let opts = [16, 32, 64, 128, 8, 4, 2, 1];
   for (let ent of opts) {
     aSel.option(ent, ent);
   }

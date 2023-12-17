@@ -82,6 +82,11 @@ function track_xy() {
   let y = mouseY;
   my.vx = x - (x % my.stepPx);
   my.vy = y - (y % my.stepPx);
+  my.vxi = floor(my.vx / my.stepPx);
+  my.vyi = floor(my.vy / my.stepPx);
+  // my.vx += my.stepPx;
+  // my.vxi += 1;
+  // if (my.vx >= my.vwidth) {
 }
 
 function mouseDragged() {

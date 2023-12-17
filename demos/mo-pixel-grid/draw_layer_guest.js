@@ -11,6 +11,7 @@ function draw_layer_guest(img) {
     layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
     draw_record_rect(colr, my.vx, my.vy, my.innerPx, my.innerPx);
     if (!my.run) {
+      draw_record_flush(my.vyi);
       break;
     }
     my.vx += my.stepPx;

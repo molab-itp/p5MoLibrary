@@ -8,45 +8,48 @@ function draw_layer_host(img) {
   while (more) {
     // colr = img.get(my.vx, my.vy);
     let row = pixs[my.vyi];
-    if (!row) continue;
-
+    if (!row) {
+      console.log('no my.vyi', my.vyi);
+      break;
+    }
     // console.log('row', row);
     let item = row.ops[my.vxi];
-    if (!item) continue;
+    if (!item) {
+      console.log('no my.vxi', my.vxi, 'my.vyi', my.vyi);
+      break;
+    }
+    //   "ops": [ {
+    //           "c": [ 75, 74, 79, 255 ],
+    //           "h": 54, "r": 1, "w": 54, "x": 0, "y": 0
+    //       },
 
     // console.log('item', item);
     let colr = item.c;
-    if (!colr) continue;
-
+    if (!colr) {
+      console.log('no colr my.vxi', my.vxi, 'my.vyi', my.vyi);
+      break;
+    }
     // console.log('colr', colr, typeof colr);
-
     my.colr = colr;
     layer.fill(colr);
     layer.noStroke();
-    layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
-    draw_record_rect(colr, my.vx, my.vy, my.innerPx, my.innerPx);
-    if (!my.run) {
-      break;
-    }
+    // layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
+    layer.rect(item.x, item.y, item.w, item.h);
+    // if (!my.run) {
+    //   break;
+    // }
     my.vx += my.stepPx;
     my.vxi += 1;
-    if (my.vx >= my.vwidth) {
-      draw_record_flush(my.vyi);
+    if (my.vxi >= row.ops.length) {
       my.vx = 0;
       my.vxi = 0;
       my.vy += my.stepPx;
       my.vyi += 1;
-      if (my.vy >= my.vheight) {
+      if (my.vyi >= pixs.length) {
         more = 0;
         my.vy = 0;
         my.vyi = 0;
       }
-      if (my.byLine) {
-        more = 0;
-      }
-    }
-    if (!my.byLine) {
-      more = 0;
     }
   }
 
@@ -54,30 +57,4 @@ function draw_layer_host(img) {
 
   // draw layer to canvas
   image(layer, 0, 0);
-
-  // Draw cross-hair
-  if (!my.byLine && colr) {
-    strokeWeight(my.crossWt);
-    stroke(colr);
-    let x = my.vx + my.innerPx / 2;
-    let y = my.vy + my.innerPx / 2;
-    line(x, 0, x, my.height);
-    line(0, y, my.width, y);
-  }
-}
-
-// layer.fill(colr);
-// layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
-function draw_record_rect(c, x, y, w, h) {
-  if (my.store) {
-    let op = { r: 1, c, x, y, w, h };
-    my.drawOps.push(op);
-  }
-}
-
-function draw_record_flush(seq) {
-  if (my.store) {
-    dstore_pix_update(seq, my.drawOps);
-  }
-  my.drawOps = [];
 }
