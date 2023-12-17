@@ -84,9 +84,7 @@ function track_xy() {
   my.vy = y - (y % my.stepPx);
   my.vxi = floor(my.vx / my.stepPx);
   my.vyi = floor(my.vy / my.stepPx);
-  // my.vx += my.stepPx;
-  // my.vxi += 1;
-  // if (my.vx >= my.vwidth) {
+  my.track_xy_updated = 1;
 }
 
 function mouseDragged() {

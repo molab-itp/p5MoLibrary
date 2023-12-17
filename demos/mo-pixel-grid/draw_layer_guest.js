@@ -4,14 +4,21 @@ function draw_layer_guest(img) {
   more = 1;
   let colr;
   while (more) {
-    colr = img.get(my.vx, my.vy);
+    if (my.showVideo) {
+      colr = img.get(my.vx, my.vy);
+    } else {
+      colr = [0, 0, 0];
+    }
     my.colr = colr;
     layer.fill(colr);
     layer.noStroke();
     layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
     draw_record_rect(colr, my.vx, my.vy, my.innerPx, my.innerPx);
     if (!my.run) {
-      draw_record_flush(my.vyi);
+      if (my.track_xy_updated) {
+        draw_record_flush(my.vyi);
+        my.track_xy_updated = 0;
+      }
       break;
     }
     my.vx += my.stepPx;
