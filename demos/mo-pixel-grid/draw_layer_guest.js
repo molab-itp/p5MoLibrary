@@ -1,5 +1,5 @@
 // incrementally draw grid of pixel rects from given image img
-function draw_layer(img) {
+function draw_layer_guest(img) {
   let layer = my.layer;
   more = 1;
   let colr;

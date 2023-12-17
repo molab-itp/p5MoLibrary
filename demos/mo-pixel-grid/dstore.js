@@ -74,12 +74,31 @@ function dstore_pix_onChild() {
     let key = data.key;
     let val = data.val();
     console.log('dstore_pix_onChild Added key val=', key, val);
+    console.log('dstore_pix_onChild Added typeof val=', typeof val);
+    my.receivedPixs = val;
+    // For debugging
+    window.gVal = val;
+    // Array.isArray(gVal) --> true
+    // Array of
+    // {
+    //   "count_i": 93,
+    //   "date_i": 1702796259458,
+    //   "ops": [ {
+    //           "c": [ 75, 74, 79, 255 ],
+    //           "h": 54,
+    //           "r": 1,
+    //           "w": 54,
+    //           "x": 0,
+    //           "y": 0
+    //       },
   });
 
   fb_.onChildChanged(ref, (data) => {
     let key = data.key;
     let val = data.val();
     console.log('dstore_pix_onChild Changed key val=', key, val);
+    console.log('dstore_pix_onChild Changed typeof val=', typeof val);
+    my.receivedPixs = val;
     // onChildChanged DK1Lcj16BFhDPgdvGGkVP9FS3Xy2
     // {
     //   "date_i": 1692677048708,
@@ -93,6 +112,7 @@ function dstore_pix_onChild() {
     let key = data.key;
     let val = data.val();
     console.log('dstore_pix_onChild Removed key val=', key, val);
+    console.log('dstore_pix_onChild Removed typeof val=', typeof val);
   });
 }
 
@@ -125,4 +145,14 @@ function dstore_removeAll() {
     });
 }
 
-// https://console.firebase.google.com/u/0/project/molab-485f5/database/molab-485f5-default-rtdb/data/~2Fm0-update-web
+// https://console.firebase.google.com/u/0/project/molab-485f5/database/molab-485f5-default-rtdb/data
+
+// https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0
+
+// https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0#read_data_once_with_an_observer
+
+// https://firebase.google.com/docs/reference/js/database.datasnapshot?authuser=0
+
+// https://firebase.google.com/docs/reference/js/database?authuser=0
+
+// https://firebase.google.com/docs/reference/js/database.md?authuser=0#onchildadded

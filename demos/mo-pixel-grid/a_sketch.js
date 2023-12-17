@@ -1,6 +1,14 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/7Wjlo3pPU
 // mo-pixel-grid
 
+// http://127.0.0.1:5502/demos/mo-pixel-grid/index.html?h=me
+//
+// my.guestName = my.query.g;
+// my.hostName = my.query.h;
+// my.nstep = my.query.nstep || my.nstep;
+// my.perFrame = my.query.perFrame || my.perFrame;
+// my.byLine = my.query.byLine || my.byLine;
+
 let my = {
   version: 27, // update to verify change on mobile
   vwidth: 480, // Aspect ratio of video capture
@@ -38,9 +46,11 @@ function draw() {
 }
 
 function draw_host() {
-  console.log('draw_host');
+  // console.log('draw_host');
 
   check_scroll();
+
+  draw_layer_host();
 }
 
 function draw_guest() {
@@ -59,7 +69,7 @@ function draw_guest() {
     image(img, 0, 0);
   }
 
-  draw_layer(img);
+  draw_layer_guest(img);
 }
 
 function canvas_mouseReleased() {
