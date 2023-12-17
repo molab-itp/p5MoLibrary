@@ -26,12 +26,12 @@ function init_query() {
     my.byLine = my.query.byLine || my.byLine;
   }
   if (my.subscribeName) {
-    my.draw_func = draw_host;
+    my.draw_func = draw_subscribe;
     my.width = displayWidth;
     my.height = displayHeight;
     my.subscribe = 1;
   } else {
-    my.draw_func = draw_guest;
+    my.draw_func = draw_publish;
     my.width = my.vwidth;
     my.height = my.vheight;
     my.subscribe = 0;

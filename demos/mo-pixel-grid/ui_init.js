@@ -61,15 +61,15 @@ function ui_init_controls() {
   my.subscribeChk.style('display:inline');
   my.subscribeChk.changed(function () {
     my.subscribe = this.checked();
-    init_host();
+    init_subscribe();
   });
 
   createElement('br');
 }
 
-function init_host() {
-  console.log('init_host', my.subscribe);
-  my.draw_func = my.subscribe ? draw_host : draw_guest;
+function init_subscribe() {
+  console.log('init_subscribe', my.subscribe);
+  my.draw_func = my.subscribe ? draw_subscribe : draw_publish;
 }
 
 function ui_nstep_selection() {
