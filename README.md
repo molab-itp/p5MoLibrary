@@ -2,21 +2,24 @@
 
 View images from MoGallery firebase database using p5js
 
-- test
+- alpha
 
-  - [demos/Celestial_Zoo](demos/Celestial_Zoo?v=037)
-  - [demos/PlanetEarth](demos/PlanetEarth?v=037)
-  - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v=037)
-  - [demos/mo-storage](demos/mo-storage)
+  - [demos/Celestial_Zoo](demos/Celestial_Zoo?v=038)
   - [demos/mo-pixel-grid](demos/mo-pixel-grid)
+
+- beta
+
+  - [demos/PlanetEarth](demos/PlanetEarth?v=038)
+  - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v=038)
+  - [demos/mo-storage](demos/mo-storage)
   - [demos/timed-drawing-class](demos/timed-drawing-class)
 
-- validate
+- gamma
 
   - [demos/createImg-board](demos/createImg-board/)
   - [demos/createImg-slide-show](demos/createImg-slide-show)
 
-[on github.io](https://molab-itp.github.io/98-MoGallery-p5js/?v=037)
+[on github.io](https://molab-itp.github.io/98-MoGallery-p5js/?v=038)
 
 <!--
 - hold
