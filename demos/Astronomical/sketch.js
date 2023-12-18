@@ -18,6 +18,7 @@ function setup() {
   my.height = height;
   my.paneRatio = 12 / 16;
   my.isPortrait = height > width;
+  my.runFlag = 0;
 
   my.refBox = new RefBox(refBox_init);
 
@@ -29,10 +30,12 @@ function setup() {
 
   ui_create();
 
-  focusAction();
+  my.animLoop = new Anim({ target: my, duration: 15, action: nextRefAction, loop: my.runFlag });
+  if (my.runFlag) {
+    my.animLoop.start();
+  }
 
-  my.animLoop = new Anim({ target: my, duration: 15, action: nextRefAction, loop: 1 });
-  my.animLoop.start();
+  focusAction();
 
   my.cycleCount = 0;
 }

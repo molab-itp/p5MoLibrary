@@ -5,6 +5,17 @@ function ui_create() {
   createSpan().id('id_panY');
   createSpan().id('id_zoom');
   createElement('br');
+  my.runFlagChk = createCheckbox('run', my.runFlag).changed(function () {
+    my.runFlag = this.checked();
+    my.animLoop.loop = my.runFlag;
+    my.animLoop.running = my.runFlag;
+    if (my.runFlag) {
+      my.animLoop.restart();
+    }
+    focusAction();
+  });
+  my.runFlagChk.style('display:inline');
+
   createButton('zero').mousePressed(function () {
     my.pane.pan_init();
   });
@@ -81,8 +92,13 @@ function downloadAction() {
 
 function focusAction() {
   clearLastMouseEnts();
-  my.pane1.focus();
-  my.pane0.focus();
+  if (my.animLoop && my.animLoop.running) {
+    my.pane1.focus_animated();
+    my.pane0.focus_animated();
+  } else {
+    my.pane1.focus();
+    my.pane0.focus();
+  }
 }
 
 function updateAction() {
