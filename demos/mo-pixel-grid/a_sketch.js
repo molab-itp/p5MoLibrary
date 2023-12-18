@@ -1,8 +1,8 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/7Wjlo3pPU
 // mo-pixel-grid
 
-// http://127.0.0.1:5502/demos/mo-pixel-grid/index.html?sub=sjht
-// http://127.0.0.1:5502/demos/mo-pixel-grid/index.html?pub=pjht
+// http://127.0.0.1:5502/demos/mo-pixel-grid/index.html?sub=sjht1
+// http://127.0.0.1:5502/demos/mo-pixel-grid/index.html?pub=pjht1
 //
 // my.publishName = my.query.pub;
 // my.subscribeName = my.query.sub;

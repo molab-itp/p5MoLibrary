@@ -31,6 +31,7 @@ function init_query() {
     my.width = displayWidth;
     my.height = displayHeight;
     my.subscribe = 1;
+    my.margin = 0;
   } else {
     my.draw_func = draw_publish;
     my.width = my.vwidth;
