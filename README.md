@@ -4,9 +4,9 @@ View images from MoGallery firebase database using p5js
 
 - test
 
-  - [demos/Celestial_Zoo](demos/Celestial_Zoo?v=036)
-  - [demos/PlanetEarth](demos/PlanetEarth?v=036)
-  - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v=036)
+  - [demos/Celestial_Zoo](demos/Celestial_Zoo?v=037)
+  - [demos/PlanetEarth](demos/PlanetEarth?v=037)
+  - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v=037)
   - [demos/mo-storage](demos/mo-storage)
   - [demos/mo-pixel-grid](demos/mo-pixel-grid)
   - [demos/timed-drawing-class](demos/timed-drawing-class)
@@ -16,7 +16,7 @@ View images from MoGallery firebase database using p5js
   - [demos/createImg-board](demos/createImg-board/)
   - [demos/createImg-slide-show](demos/createImg-slide-show)
 
-[on github.io](https://molab-itp.github.io/98-MoGallery-p5js/?v=036)
+[on github.io](https://molab-itp.github.io/98-MoGallery-p5js/?v=037)
 
 <!--
 - hold
