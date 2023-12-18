@@ -4,8 +4,8 @@ View images from MoGallery firebase database using p5js
 
 - alpha
 
-  - [demos/Celestial_Zoo](demos/Celestial_Zoo?v=038)
-  - [demos/mo-pixel-grid](demos/mo-pixel-grid)
+  - [demos/Astronomical](demos/Astronomical?v=038)
+  - [demos/mo-pixel-grid](demos/mo-pixel-grid?v=038)
 
 - beta
 
