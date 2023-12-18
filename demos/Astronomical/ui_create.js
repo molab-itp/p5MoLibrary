@@ -72,6 +72,9 @@ function ui_create() {
   createButton('download').mousePressed(function () {
     downloadAction();
   });
+  createButton('random').mousePressed(function () {
+    randomAction();
+  });
   {
     my.refEntryReport_div = createDiv().id('id_ptsReport');
   }
@@ -155,6 +158,11 @@ function syncRefIndex() {
 
 function refAdjustDelta(delta) {
   my.refBox.refIndex += delta;
+  syncRefIndex();
+}
+
+function randomAction() {
+  my.refBox.refIndex = floor(random(0, my.refBox.refs.length));
   syncRefIndex();
 }
 

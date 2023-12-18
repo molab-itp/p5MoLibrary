@@ -13,7 +13,7 @@
 let my = {};
 
 function my_setup() {
-  my.version = '?v=038'; // update to verify change on mobile
+  my.version = '?v=039'; // update to verify change on mobile
   my.vwidth = 480; // Aspect ratio of video capture
   my.vheight = 640;
   my.face = 1;
