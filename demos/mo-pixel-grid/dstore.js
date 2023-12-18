@@ -10,31 +10,27 @@
 // dbStoreRootPath/pix
 //
 function dstore_init() {
-  my.updateCount = 0;
-  dstore_signin();
-}
-
-function dstore_signin() {
-  fb_
-    .signInAnonymously(fb_.auth)
+  let { signInAnonymously, auth } = fb_;
+  signInAnonymously(auth)
     .then(() => {
-      let uid = fb_.auth.currentUser.uid;
-      console.log('dstore_signin uid=', uid);
+      let uid = auth.currentUser.uid;
+      console.log('dstore_init uid=', uid);
       my.uid = uid;
       dstore_active_update();
       dstore_log_onValue();
       dstore_pix_onChild();
     })
     .catch((error) => {
-      console.log('dstore_signin error', error);
+      console.log('dstore_init error', error);
     });
 }
 
 function dstore_log_onValue() {
   // Setup listener for changes to firebase db
+  let { database, ref, onValue } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/log`;
-  let ref = fb_.ref(fb_.database, path);
-  fb_.onValue(ref, function (snap) {
+  let aref = ref(database, path);
+  onValue(aref, function (snap) {
     let key = snap.key;
     let data = snap.val();
     console.log('dstore_log_onValue key=' + key, 'data=', data);
@@ -42,22 +38,13 @@ function dstore_log_onValue() {
 
     my.store_log = data;
     // {
-    //   "DK1Lcj16BFhDPgdvGGkVP9FS3Xy2": {
-    //       "count_i": 1,
-    //       "date_i": 1702834244712,
-    //       "date_s": "2023-12-17T17:30:44.712Z"
-    //   },
     //   "i3iHgmvAVgWNz2ib1HUOFCOCKrt2": {
     //       "count_i": 3357,
     //       "date_i": 1702832662136,
     //       "date_s": "2023-12-17T17:04:22.136Z",
     //       "name_s": "pjht2"
     //   },
-    //   "oydFETqRDFW7xYpfmH8WS9CHr963": {
-    //       "count_i": 329,
-    //       "date_i": 1702833594204,
-    //       "date_s": "2023-12-17T17:19:54.204Z"
-    //   }
+    // ...
     // }
     let index = 0;
     for (let prop in my.store_log) {
@@ -67,46 +54,57 @@ function dstore_log_onValue() {
     }
     my.nlog = index;
 
-    // my.nitems = Object.keys(data).length;
-    // my.updateCount += 1;
-
     ui_update();
   });
 }
 
 function dstore_active_update() {
+  let { database, ref, update, increment } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/log/${my.uid}`;
   console.log('dstore_active_update path=', path);
-  let ref = fb_.ref(fb_.database, path);
+  let aref = ref(database, path);
   let now = new Date();
   const updates = {};
   updates[`date_s`] = now.toISOString();
   updates['date_i'] = now.getTime();
-  updates['count_i'] = fb_.increment(1);
+  updates['count_i'] = increment(1);
   updates['name_s'] = my.publishName || null;
   // updates['host_s'] = my.subscribeName || null;
-  fb_.update(ref, updates);
+  update(aref, updates);
 }
 
 function dstore_pix_onChild() {
-  // import { getDatabase, ref, onChildAdded, onChildChanged, onChildRemoved }
+  let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   // from "firebase/database";
   let path = `${my.dbStoreRootPath}/pix`;
-  console.log('dstore_pix_onChild path', path);
-  let ref = fb_.ref(fb_.database, path);
+  // console.log('dstore_pix_onChild path', path);
 
-  fb_.onChildAdded(ref, (data) => {
+  let aref = ref(database, path);
+
+  onChildAdded(aref, (data) => {
     let key = data.key;
     let val = data.val();
     console.log('dstore_pix_onChild Added key=', key, 'val=', val);
     // console.log('dstore_pix_onChild Added typeof val=', typeof val);
     receivedKey(key, val);
-    // Array.isArray(gVal) --> true
     // Array of
-    // {
-    //   "row": [ {
-    //           "c": [ 75, 74, 79, 255 ],
-    //       },
+    // { "row": [ { "c": [ 75, 74, 79, 255 ], }, ... ]
+    // } ...
+  });
+
+  onChildChanged(aref, (data) => {
+    let key = data.key;
+    let val = data.val();
+    console.log('dstore_pix_onChild Changed key=', key, 'val=', val);
+    // console.log('dstore_pix_onChild Changed typeof val=', typeof val);
+    receivedKey(key, val);
+  });
+
+  onChildRemoved(aref, (data) => {
+    let key = data.key;
+    let val = data.val();
+    console.log('dstore_pix_onChild Removed key=', key, 'val=', val);
+    // console.log('dstore_pix_onChild Removed typeof val=', typeof val);
   });
 
   function receivedKey(key, val) {
@@ -127,45 +125,29 @@ function dstore_pix_onChild() {
       }
     }
   }
-
-  fb_.onChildChanged(ref, (data) => {
-    let key = data.key;
-    let val = data.val();
-    console.log('dstore_pix_onChild Changed key=', key, 'val=', val);
-    // console.log('dstore_pix_onChild Changed typeof val=', typeof val);
-    receivedKey(key, val);
-  });
-
-  fb_.onChildRemoved(ref, (data) => {
-    let key = data.key;
-    let val = data.val();
-    console.log('dstore_pix_onChild Removed key=', key, 'val=', val);
-    // console.log('dstore_pix_onChild Removed typeof val=', typeof val);
-  });
 }
 
 function dstore_pix_update(irow, row) {
+  let { database, ref, update } = fb_.fbase;
   if (!my.uid) {
     console.log('dstore_pix_update no uid', my.uid);
     return;
   }
   let path = `${my.dbStoreRootPath}/pix/${my.uid}/${irow}`;
-  let ref = fb_.ref(fb_.database, path);
+  let aref = ref(database, path);
   const updates = {};
-  // updates['date_i'] = Date.now();
-  // updates['count_i'] = fb_.increment(1);
   updates['i'] = irow;
   updates['row'] = row;
-  fb_.update(ref, updates);
+  update(aref, updates);
 
   dstore_active_update();
 }
 
 function dstore_removeAll() {
+  let { database, ref, set } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/pix`;
-  let ref = fb_.ref(fb_.database, path);
-  fb_
-    .set(ref, {})
+  let aref = ref(database, path);
+  set(aref, {})
     .then(() => {
       // Data saved successfully!
       console.log('dstore_removeAll OK');

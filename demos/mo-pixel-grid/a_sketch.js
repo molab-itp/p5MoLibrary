@@ -40,6 +40,10 @@ function setup() {
 
   ui_init();
 
+  let config = fb_.init('jht9629');
+  // ui_log('config.projectId', config.projectId);
+  console.log('config.projectId', config.projectId);
+
   dstore_init();
 }
 

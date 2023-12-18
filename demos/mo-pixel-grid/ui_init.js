@@ -101,13 +101,14 @@ function faceChk_action() {
   create_myVideo();
 }
 
+// !!@ Move to lib
 function create_myVideo() {
   let options = { video: { facingMode: my.facingMode } };
   my.video = createCapture(options);
   my.video.size(my.vwidth, my.vheight);
   my.video.hide();
 }
-
+// !!@ Move to lib
 function video_ready() {
   return my.video.loadedmetadata && my.video.width > 0 && my.video.height > 0;
 }
