@@ -4,11 +4,11 @@ function draw_layer_subscribe() {
   if (!pixs) return;
   let layer = my.layer;
   more = 1;
-  let colr;
   while (more) {
     let pix = pixs[my.vyi];
     if (!pix) {
       console.log('no my.vyi', my.vyi);
+      my.vyi = 0;
       break;
     }
     // console.log('pix', pix);
@@ -38,6 +38,7 @@ function draw_layer_subscribe() {
       if (my.vyi >= pixs.length) {
         more = 0;
         my.vyi = 0;
+        // my.pub_index = (my.pub_index + 1) % 4;
       }
     }
   }
