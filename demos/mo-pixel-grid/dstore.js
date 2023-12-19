@@ -1,6 +1,6 @@
 //
 // my dbStoreRootPath: 'm0-@r-@w-',
-// dbStoreRootPath/log {
+// dbStoreRootPath/lobby {
 //   DK1Lcj16BFhDPgdvGGkVP9FS3Xy2: {
 //     count_i: 1,
 //     date_i: 1692655136999,
@@ -14,29 +14,29 @@ function dstore_init() {
   signInAnonymously(auth)
     .then(() => {
       let uid = auth.currentUser.uid;
-      console.log('dstore_init uid=', uid);
+      ui_log(my, 'dstore_init uid=', uid);
       my.uid = uid;
-      dstore_active_update();
-      dstore_log_onValue();
+      dstore_lobby_update();
+      dstore_lobby_onValue();
       dstore_pix_onChild();
     })
     .catch((error) => {
-      console.log('dstore_init error', error);
+      ui_log(my, 'dstore_init error', error);
     });
 }
 
-function dstore_log_onValue() {
+function dstore_lobby_onValue() {
   // Setup listener for changes to firebase db
   let { database, ref, onValue } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/log`;
+  let path = `${my.dbStoreRootPath}/lobby`;
   let aref = ref(database, path);
   onValue(aref, function (snap) {
     let key = snap.key;
     let data = snap.val();
-    console.log('dstore_log_onValue key=' + key, 'data=', data);
+    ui_log(my, 'dstore_lobby_onValue key=' + key, 'data=', data);
     data = data || {};
 
-    my.store_log = data;
+    my.stored_lobby = data;
     // {
     //   "i3iHgmvAVgWNz2ib1HUOFCOCKrt2": {
     //       "count_i": 3357,
@@ -46,9 +46,10 @@ function dstore_log_onValue() {
     //   },
     // ...
     // }
+
     let index = 0;
-    for (let prop in my.store_log) {
-      let ent = my.store_log[prop];
+    for (let prop in my.stored_lobby) {
+      let ent = my.stored_lobby[prop];
       ent.index = index;
       index++;
     }
@@ -58,18 +59,17 @@ function dstore_log_onValue() {
   });
 }
 
-function dstore_active_update() {
+function dstore_lobby_update() {
   let { database, ref, update, increment } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/log/${my.uid}`;
-  console.log('dstore_active_update path=', path);
+  let path = `${my.dbStoreRootPath}/lobby/${my.uid}`;
+  ui_log(my, 'dstore_lobby_update path=', path);
   let aref = ref(database, path);
   let now = new Date();
   const updates = {};
   updates[`date_s`] = now.toISOString();
   updates['date_i'] = now.getTime();
   updates['count_i'] = increment(1);
-  updates['name_s'] = my.publishName || null;
-  // updates['host_s'] = my.subscribeName || null;
+  updates['name_s'] = my.name || null;
   update(aref, updates);
 }
 
@@ -77,15 +77,14 @@ function dstore_pix_onChild() {
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   // from "firebase/database";
   let path = `${my.dbStoreRootPath}/pix`;
-  // console.log('dstore_pix_onChild path', path);
+  // ui_log(my, 'dstore_pix_onChild path=', path);
 
   let aref = ref(database, path);
 
   onChildAdded(aref, (data) => {
     let key = data.key;
     let val = data.val();
-    console.log('dstore_pix_onChild Added key=', key, 'val=', val);
-    // console.log('dstore_pix_onChild Added typeof val=', typeof val);
+    ui_log(my, 'dstore_pix_onChild Added key=', key, 'val=', val);
     receivedKey(key, val);
     // Array of
     // { "row": [ { "c": [ 75, 74, 79, 255 ], }, ... ]
@@ -95,20 +94,18 @@ function dstore_pix_onChild() {
   onChildChanged(aref, (data) => {
     let key = data.key;
     let val = data.val();
-    console.log('dstore_pix_onChild Changed key=', key, 'val=', val);
-    // console.log('dstore_pix_onChild Changed typeof val=', typeof val);
+    ui_log(my, 'dstore_pix_onChild Changed key=', key, 'val=', val);
     receivedKey(key, val);
   });
 
   onChildRemoved(aref, (data) => {
     let key = data.key;
     let val = data.val();
-    console.log('dstore_pix_onChild Removed key=', key, 'val=', val);
-    // console.log('dstore_pix_onChild Removed typeof val=', typeof val);
+    ui_log(my, 'dstore_pix_onChild Removed key=', key, 'val=', val);
   });
 
   function receivedKey(key, val) {
-    my.pub_uid = key;
+    my.sub_uid = key;
     my.receivedPixs = val;
     // For debugging
     window.gVal = val;
@@ -118,19 +115,24 @@ function dstore_pix_onChild() {
     //       { "c": [ 135, 132, 133, 255 ],
     //       },
 
-    if (my.pub_uid) {
-      let ent = my.store_log[my.pub_uid];
+    if (my.sub_uid) {
+      let ent = my.stored_lobby[my.sub_uid];
       if (ent) {
         my.pub_index = ent.index;
       }
     }
+
+    if (!my.stored_pixs) {
+      my.stored_pixs = {};
+    }
+    my.stored_pixs[key] = val;
   }
 }
 
 function dstore_pix_update(irow, row) {
   let { database, ref, update } = fb_.fbase;
   if (!my.uid) {
-    console.log('dstore_pix_update no uid', my.uid);
+    ui_log(my, 'dstore_pix_update no uid', my.uid);
     return;
   }
   let path = `${my.dbStoreRootPath}/pix/${my.uid}/${irow}`;
@@ -140,21 +142,21 @@ function dstore_pix_update(irow, row) {
   updates['row'] = row;
   update(aref, updates);
 
-  dstore_active_update();
+  dstore_lobby_update();
 }
 
-function dstore_removeAll() {
+function dstore_pix_removeAll() {
   let { database, ref, set } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/pix`;
   let aref = ref(database, path);
   set(aref, {})
     .then(() => {
       // Data saved successfully!
-      console.log('dstore_removeAll OK');
+      ui_log(my, 'dstore_removeAll OK');
     })
     .catch((error) => {
       // The write failed...
-      console.log('dstore_removeAll error', error);
+      ui_log(my, 'dstore_removeAll error', error);
     });
 }
 

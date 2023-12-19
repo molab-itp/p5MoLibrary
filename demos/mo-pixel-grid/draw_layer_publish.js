@@ -3,19 +3,23 @@ function draw_layer_publish(img) {
   let layer = my.layer;
   more = 1;
   let colr;
+  // let rx = floor(random(0, my.stepPx));
+  // let ry = floor(random(0, my.stepPx));
+  let rx = floor(my.stepPx * 0.5);
+  let ry = floor(my.stepPx * 0.5);
   while (more) {
-    if (my.showVideo) {
-      colr = img.get(my.vx, my.vy);
+    if (my.videoFlag) {
+      colr = img.get(my.vx + rx, my.vy + ry);
     } else {
       colr = [0, 0, 0];
     }
-    my.colr = colr;
+    my.videoColor = colr;
     layer.fill(colr);
     layer.noStroke();
     layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
     // draw_record_rect(colr, my.vx, my.vy, my.innerPx, my.innerPx);
     draw_record_rect(colr, my.vxi, my.vyi);
-    if (!my.run) {
+    if (!my.runFlag) {
       if (my.track_xy_updated) {
         draw_record_flush(my.vyi);
         my.track_xy_updated = 0;
@@ -43,26 +47,13 @@ function draw_layer_publish(img) {
       more = 0;
     }
   }
-
-  // draw layer to canvas
-  image(layer, 0, 0);
-
-  // Draw cross-hair
-  if (!my.byLine) {
-    strokeWeight(my.crossWt);
-    stroke(colr);
-    let x = my.vx + my.innerPx / 2;
-    let y = my.vy + my.innerPx / 2;
-    line(x, 0, x, my.height);
-    line(0, y, my.width, y);
-  }
 }
 
 // layer.fill(colr);
 // layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
 // function draw_record_rect(c, x, y, w, h) {
 function draw_record_rect(c, ix, iy) {
-  if (my.store) {
+  if (my.storeFlag) {
     // let op = { r: 1, c, x, y, w, h };
     // my.pixRows.push(op);
     let row = my.pixRows[iy];
@@ -76,7 +67,7 @@ function draw_record_rect(c, ix, iy) {
 }
 
 function draw_record_flush(irow) {
-  if (my.store) {
+  if (my.storeFlag) {
     dstore_pix_update(irow, my.pixRows[irow]);
   }
 }

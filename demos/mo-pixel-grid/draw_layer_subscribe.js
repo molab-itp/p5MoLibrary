@@ -1,4 +1,4 @@
-// incrementally draw grid of pixel rects from given image img
+// incrementally draw grid of pixel rects from storage
 function draw_layer_subscribe() {
   let pixs = my.receivedPixs;
   if (!pixs) return;
@@ -24,8 +24,8 @@ function draw_layer_subscribe() {
       break;
     }
     // console.log('colr', colr, typeof colr);
-    my.colr = colr;
-    colr[3] = 50;
+    // my.videoColor = colr;
+    // colr[3] = 50;
     layer.fill(colr);
     layer.noStroke();
     let x = my.vxi * my.stepPx;
@@ -75,5 +75,5 @@ function draw_layer_subscribe() {
   // console.log('1 colr', colr, typeof colr);
 
   // draw layer to canvas
-  image(layer, 0, 0);
+  // image(layer, 0, 0);
 }

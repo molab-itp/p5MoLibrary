@@ -5,14 +5,14 @@ function my_init() {
   my.layer = createGraphics(my.width, my.height);
 
   my.pixRows = [];
-  my.colr = [0, 0, 0];
+  // my.videoColor = [0, 0, 0];
   my.uid = -1;
-  my.pub_uid = -1;
-  my.pub_name = '?';
+  my.sub_uid = -1;
+  my.sub_name = '?';
   my.nlog = -1;
 
   if (my.scrollOnStart) {
-    ui_toggle_scroll();
+    ui_toggle_scroll(my);
   }
   init_nstep();
 }
@@ -20,23 +20,21 @@ function my_init() {
 function init_query() {
   my.query = get_url_params();
   if (my.query) {
-    my.publishName = my.query.pub;
-    my.subscribeName = my.query.sub;
+    my.name = my.query.name;
+    my.storeFlag = parseFloat(my.query.store || my.storeFlag);
     my.nstep = my.query.nstep || my.nstep;
     my.perFrame = my.query.perFrame || my.perFrame;
     my.byLine = my.query.byLine || my.byLine;
   }
-  if (my.subscribeName) {
-    my.draw_func = draw_subscribe;
-    my.width = displayWidth;
-    my.height = displayHeight;
-    my.subscribe = 1;
-    my.margin = 0;
-  } else {
-    my.draw_func = draw_publish;
+  if (my.storeFlag) {
     my.width = my.vwidth;
     my.height = my.vheight;
-    my.subscribe = 0;
+  } else {
+    my.width = my.vwidth;
+    my.height = my.vheight;
+    // my.width = displayWidth;
+    // my.height = displayHeight;
+    // my.margin = 0;
   }
 }
 
@@ -57,30 +55,4 @@ function init_nstep() {
   my.vy = 0;
   my.vxi = 0;
   my.vyi = 0;
-}
-
-// !!@ Move to lib
-// return null or url query as object
-// eg. query='abc=foo&def=%5Basf%5D&xyz=5'
-// params={abc: "foo", def: "[asf]", xyz: "5"}
-function get_url_params() {
-  let query = window.location.search;
-  // console.log('query |' + query + '|');
-  console.log('get_url_params query.length=', query.length);
-  if (query.length < 1) return null;
-  let params = params_query(query);
-  console.log('get_url_params params=', params);
-  return params;
-  // let store = params['store'];
-  // console.log('nstore', store);
-  // return store;
-}
-
-// https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
-function params_query(query) {
-  // eg. query='abc=foo&def=%5Basf%5D&xyz=5'
-  // params={abc: "foo", def: "[asf]", xyz: "5"}
-  const urlParams = new URLSearchParams(query);
-  const params = Object.fromEntries(urlParams);
-  return params;
 }

@@ -4,8 +4,8 @@
 // http://127.0.0.1:5502/demos/mo-pixel-grid/index.html?sub=sjht1
 // http://127.0.0.1:5502/demos/mo-pixel-grid/index.html?pub=pjht1
 //
-// my.publishName = my.query.pub;
-// my.subscribeName = my.query.sub;
+// my.name = my.query.name;
+// my.publish = my.query.pub;
 // my.nstep = my.query.nstep || my.nstep;
 // my.perFrame = my.query.perFrame || my.perFrame;
 // my.byLine = my.query.byLine || my.byLine;
@@ -16,17 +16,18 @@ function my_setup() {
   my.version = '?v=039'; // update to verify change on mobile
   my.vwidth = 480; // Aspect ratio of video capture
   my.vheight = 640;
-  my.face = 1;
-  my.showVideo = 1;
+  my.storeFlag = 0;
+  my.runFlag = 1;
+  my.faceFlag = 1;
+  my.videoFlag = 1;
+  my.debugFlag = 1;
   my.scrollOnStart = 0;
   my.scrollStopSecs = 4;
   my.nstep = 8;
   my.margin = 0.1;
   my.byPixel = 0;
-  my.run = 1;
-  my.store = 0;
-  my.subscribe = 0;
-  my.perFrame = 6;
+  // my.subscribe = 0;
+  my.perFrame = 12;
   my.dbStoreRootPath = 'm0-@r-@w-';
 }
 
@@ -42,42 +43,54 @@ function setup() {
 
   let config = fb_.init('jht9629');
   // ui_log('config.projectId', config.projectId);
-  console.log('config.projectId', config.projectId);
+  ui_log(my, 'config.projectId', config.projectId);
 
   dstore_init();
 }
 
 function draw() {
-  my.draw_func();
+  draw_frame();
 
   ui_update();
 }
 
-function draw_subscribe() {
-  // console.log('draw_subscribe');
+function draw_frame() {
+  if (my.videoFlag && !video_ready(my)) return;
 
-  check_scroll();
-
-  draw_layer_subscribe();
-}
-
-function draw_publish() {
-  if (!video_ready()) return;
-
-  check_scroll();
-
-  if (frameCount % my.perFrame != 0) return;
+  ui_check_scroll(my);
 
   background(0);
 
-  // faster to get entire video frame as an image
-  let img = my.video.get();
-
-  if (my.showVideo) {
-    image(img, 0, 0);
+  if (my.videoFlag) {
+    // faster to get entire video frame as an image
+    my.videoImg = my.video.get();
+    image(my.videoImg, 0, 0);
   }
 
-  draw_layer_publish(img);
+  if (
+    frameCount % my.perFrame == 0 && //
+    my.storeFlag &&
+    my.videoImg
+  ) {
+    draw_layer_publish(my.videoImg);
+  }
+
+  if (!my.storeFlag) {
+    draw_layer_subscribe();
+  }
+
+  // draw layer to canvas
+  image(my.layer, 0, 0);
+
+  // Draw cross-hair
+  if (!my.byLine && my.videoColor) {
+    strokeWeight(my.crossWt);
+    stroke(my.videoColor);
+    let x = my.vx + my.innerPx / 2;
+    let y = my.vy + my.innerPx / 2;
+    line(x, 0, x, my.height);
+    line(0, y, my.width, y);
+  }
 }
 
 function canvas_mouseReleased() {

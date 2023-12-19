@@ -162,6 +162,7 @@ function ui_break(id) {
   return elm;
 }
 
+// !!@ Move to Lib
 function ui_span(id, html) {
   let span = select('#' + id);
   if (document.fullscreenElement) {
@@ -177,6 +178,7 @@ function ui_span(id, html) {
   return span;
 }
 
+// !!@ Move to Lib
 function ui_log(...args) {
   // if (! my.debugLog) return
   console.log(...args);
@@ -191,6 +193,7 @@ function ui_log(...args) {
   my.logDiv.html(my.logLines.join('<br/>'));
 }
 
+// !!@ Move to Lib
 function ui_error(...args) {
   ui_log(...args);
 }
