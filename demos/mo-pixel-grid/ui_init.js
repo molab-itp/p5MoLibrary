@@ -35,7 +35,9 @@ function ui_init_control_1() {
 
   my.debugChk = createCheckbox('Debug', my.debugFlag);
   my.debugChk.style('display:inline');
-  my.debugChk.changed(debugFlag_changed);
+  my.debugChk.changed(function () {
+    debugFlag_changed(this.checked());
+  });
 
   my.nextBtn = createButton(' Next');
   my.nextBtn.mousePressed(function () {
@@ -54,7 +56,9 @@ function ui_init_control_2() {
   if (my.storeFlag) {
     my.faceChk = createCheckbox('Face', my.faceFlag);
     my.faceChk.style('display:inline');
-    my.faceChk.changed(faceFlag_changed);
+    my.faceChk.changed(function () {
+      faceFlag_changed(this.checked());
+    });
   }
 
   my.videoChk = createCheckbox('Video', my.videoFlag);
@@ -71,7 +75,9 @@ function ui_init_control_2() {
 
   my.storeFlagChk = createCheckbox('Store', my.storeFlag);
   my.storeFlagChk.style('display:inline');
-  my.storeFlagChk.changed(storeFlag_changed);
+  my.storeFlagChk.changed(function () {
+    storeFlag_changed(this.checked());
+  });
 
   ui_span(my, 'nlobby', ' nlobby:' + my.nlobby);
 
@@ -89,7 +95,9 @@ function ui_nstep_selection() {
     aSel.option(ent, ent);
   }
   aSel.selected(my.nstep);
-  aSel.changed(nstep_updateAction);
+  aSel.changed(function () {
+    nstep_changed(this.checked());
+  });
   my.nstep_selection = aSel;
 }
 
@@ -170,28 +178,28 @@ function debugNextAction() {
   dstore_nextPixs();
 }
 
-function nstep_updateAction() {
-  my.nstep = parseFloat(this.value());
+function nstep_changed(newValue) {
+  my.nstep = parseFloat(newValue);
   console.log('ui_nstep_selection', my.nstep);
   init_nstep();
   my.layer.clear();
 }
 
-function storeFlag_changed() {
-  my.storeFlag = this.checked();
+function storeFlag_changed(newValue) {
+  my.storeFlag = newValue;
   // dstore_lobby_update();
   // create_myVideo(my);
 }
 
-function faceFlag_changed() {
-  my.faceFlag = this.checked();
+function faceFlag_changed(newValue) {
+  my.faceFlag = newValue;
   my.facingMode = my.faceFlag ? 'user' : 'environment';
   console.log('my.facingMode', my.facingMode);
   create_myVideo(my);
 }
 
-function debugFlag_changed() {
-  my.debugFlag = this.checked();
+function debugFlag_changed(newValue) {
+  my.debugFlag = newValue;
   my.debug_div.elt.classList.toggle('hidden');
   // console.log('my.logTags', my.logTags);
   if (!my.logTags) return;
