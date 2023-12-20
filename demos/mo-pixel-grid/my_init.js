@@ -7,9 +7,9 @@ function my_init() {
   my.pixRows = [];
   // my.videoColor = [0, 0, 0];
   my.uid = -1;
-  my.sub_uid = -1;
+  // my.sub_uid = -1;
   my.sub_name = '?';
-  my.nlog = -1;
+  my.nlobby = -1;
 
   if (my.scrollOnStart) {
     ui_toggle_scroll(my);
@@ -55,4 +55,12 @@ function init_nstep() {
   my.vy = 0;
   my.vxi = 0;
   my.vyi = 0;
+}
+
+function update_nstep(n) {
+  console.log('update_nstep n', n);
+  my.nstep = n;
+  init_nstep();
+  my.nstep_selection.selected(my.nstep);
+  // my.layer.clear();
 }

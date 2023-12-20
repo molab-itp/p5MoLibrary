@@ -1,6 +1,6 @@
 // incrementally draw grid of pixel rects from storage
 function draw_layer_subscribe() {
-  let pixs = my.receivedPixs;
+  let pixs = dstore_receivedPixs();
   if (!pixs) return;
   let layer = my.layer;
   more = 1;
@@ -9,6 +9,7 @@ function draw_layer_subscribe() {
     if (!pix) {
       console.log('no my.vyi', my.vyi);
       my.vyi = 0;
+      // continue;
       break;
     }
     // console.log('pix', pix);
@@ -38,16 +39,15 @@ function draw_layer_subscribe() {
       if (my.vyi >= pixs.length) {
         more = 0;
         my.vyi = 0;
-        // my.pub_index = (my.pub_index + 1) % 4;
       }
     }
   }
 
   function draw_shape(x, y) {
-    // console.log('draw_shape my.pub_index', my.pub_index);
+    // console.log('draw_shape my.sub_index', my.sub_index);
     let ww = my.innerPx;
     let hh = my.innerPx;
-    let ns = my.pub_index % 4;
+    let ns = my.sub_index % 4;
     if (ns == 0) {
       layer.rect(x, y, ww, hh);
     } else if (ns == 1) {

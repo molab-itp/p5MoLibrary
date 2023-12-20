@@ -67,7 +67,7 @@ function draw_record_rect(c, ix, iy) {
 }
 
 function draw_record_flush(irow) {
-  if (my.storeFlag) {
+  if (my.storeFlag && irow >= 0) {
     dstore_pix_update(irow, my.pixRows[irow]);
   }
 }

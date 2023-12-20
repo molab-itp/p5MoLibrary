@@ -14,7 +14,7 @@ function dstore_init() {
   signInAnonymously(auth)
     .then(() => {
       let uid = auth.currentUser.uid;
-      ui_log(my, 'dstore_init uid=', uid);
+      ui_log(my, 'dstore_init', uid);
       my.uid = uid;
       dstore_lobby_update();
       dstore_lobby_onValue();
@@ -33,7 +33,7 @@ function dstore_lobby_onValue() {
   onValue(aref, function (snap) {
     let key = snap.key;
     let data = snap.val();
-    ui_log(my, 'dstore_lobby_onValue key=' + key, 'data=', data);
+    ui_log(my, 'dstore_lobby_onValue', key, 'data=', data);
     data = data || {};
 
     my.stored_lobby = data;
@@ -53,7 +53,7 @@ function dstore_lobby_onValue() {
       ent.index = index;
       index++;
     }
-    my.nlog = index;
+    my.nlobby = index;
 
     ui_update();
   });
@@ -62,7 +62,7 @@ function dstore_lobby_onValue() {
 function dstore_lobby_update() {
   let { database, ref, update, increment } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/lobby/${my.uid}`;
-  ui_log(my, 'dstore_lobby_update path=', path);
+  ui_log(my, 'dstore_lobby_update', path);
   let aref = ref(database, path);
   let now = new Date();
   const updates = {};
@@ -84,7 +84,7 @@ function dstore_pix_onChild() {
   onChildAdded(aref, (data) => {
     let key = data.key;
     let val = data.val();
-    ui_log(my, 'dstore_pix_onChild Added key=', key, 'val=', val);
+    ui_log(my, 'dstore_pix_onChild Added', key, 'val=', val);
     receivedKey(key, val);
     // Array of
     // { "row": [ { "c": [ 75, 74, 79, 255 ], }, ... ]
@@ -94,39 +94,56 @@ function dstore_pix_onChild() {
   onChildChanged(aref, (data) => {
     let key = data.key;
     let val = data.val();
-    ui_log(my, 'dstore_pix_onChild Changed key=', key, 'val=', val);
+    ui_log(my, 'dstore_pix_onChild Changed', key, 'val=', val);
     receivedKey(key, val);
   });
 
   onChildRemoved(aref, (data) => {
     let key = data.key;
     let val = data.val();
-    ui_log(my, 'dstore_pix_onChild Removed key=', key, 'val=', val);
+    ui_log(my, 'dstore_pix_onChild Removed', key, 'val=', val);
+    if (my.stored_pixs) {
+      delete my.stored_pixs[key];
+      if (key == my.sub_uid) {
+        my.sub_uid = null;
+      }
+    }
   });
 
   function receivedKey(key, val) {
-    my.sub_uid = key;
-    my.receivedPixs = val;
-    // For debugging
-    window.gVal = val;
-    // onChildChanged DK1Lcj16BFhDPgdvGGkVP9FS3Xy2
-    // {
-    //   "row": [
-    //       { "c": [ 135, 132, 133, 255 ],
-    //       },
-
-    if (my.sub_uid) {
-      let ent = my.stored_lobby[my.sub_uid];
-      if (ent) {
-        my.pub_index = ent.index;
-      }
+    if (!my.sub_uid) {
+      my.sub_uid = key;
+      console.log('receivedKey my.sub_uid', my.sub_uid);
     }
-
     if (!my.stored_pixs) {
       my.stored_pixs = {};
     }
     my.stored_pixs[key] = val;
   }
+}
+
+function dstore_receivedPixs() {
+  if (!my.stored_pixs) {
+    return null;
+  }
+  return my.stored_pixs[my.sub_uid];
+}
+
+function dstore_nextPixs() {
+  console.log('dstore_nextPixs my.sub_uid', my.sub_uid);
+  // for (let key in my.stored_pixs) {
+  //   let ent = my.stored_pixs[key];
+  //   console.log('dstore_nextPixs key', key, ent);
+  // }
+  let keys = Object.keys(my.stored_pixs);
+  // console.log('dstore_nextPixs keys', keys);
+  let index = keys.indexOf(my.sub_uid);
+  // console.log('dstore_nextPixs index', index);
+  index = (index + 1) % keys.length;
+  my.sub_uid = keys[index];
+  let pixs = my.stored_pixs[my.sub_uid];
+  // console.log('pixs', pixs.length);
+  update_nstep(pixs.length);
 }
 
 function dstore_pix_update(irow, row) {

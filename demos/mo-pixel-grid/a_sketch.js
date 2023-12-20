@@ -20,7 +20,7 @@ function my_setup() {
   my.runFlag = 1;
   my.faceFlag = 1;
   my.videoFlag = 1;
-  my.debugFlag = 1;
+  my.debugFlag = 0;
   my.scrollOnStart = 0;
   my.scrollStopSecs = 4;
   my.nstep = 8;

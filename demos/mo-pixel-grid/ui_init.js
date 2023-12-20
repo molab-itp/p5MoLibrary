@@ -5,6 +5,8 @@ function ui_init() {
   //
   ui_init_control_1();
 
+  ui_init_debug_pane();
+
   ui_init_control_2();
 
   ui_update();
@@ -33,11 +35,16 @@ function ui_init_control_1() {
 
   my.debugChk = createCheckbox('Debug', my.debugFlag);
   my.debugChk.style('display:inline');
-  my.debugChk.changed(debugFlagChk_action);
+  my.debugChk.changed(debugFlag_update);
 
   my.nextBtn = createButton(' Next');
   my.nextBtn.mousePressed(function () {
     debugNextAction();
+  });
+
+  my.clearBtn = createButton(' Clear');
+  my.clearBtn.mousePressed(function () {
+    ui_log_clear(my);
   });
 
   createElement('br');
@@ -47,7 +54,7 @@ function ui_init_control_2() {
   if (my.storeFlag) {
     my.faceChk = createCheckbox('Face', my.faceFlag);
     my.faceChk.style('display:inline');
-    my.faceChk.changed(faceFlagChk_action);
+    my.faceChk.changed(faceFlag_update);
   }
 
   my.videoChk = createCheckbox('Video', my.videoFlag);
@@ -64,16 +71,9 @@ function ui_init_control_2() {
 
   my.storeFlagChk = createCheckbox('Store', my.storeFlag);
   my.storeFlagChk.style('display:inline');
-  my.storeFlagChk.changed(storeFlagChk_action);
+  my.storeFlagChk.changed(storeFlag_update);
 
-  // my.subscribeChk = createCheckbox('Subcribe', my.subscribe);
-  // my.subscribeChk.style('display:inline');
-  // my.subscribeChk.changed(function () {
-  //   my.subscribe = this.checked();
-  //   init_subscribe();
-  // });
-
-  ui_span(my, 'nlog', ' nlog:' + my.nlog);
+  ui_span(my, 'nlobby', ' nlobby:' + my.nlobby);
 
   createElement('br');
 }
@@ -90,11 +90,12 @@ function ui_nstep_selection() {
   }
   aSel.selected(my.nstep);
   aSel.changed(nstep_updateAction);
+  my.nstep_selection = aSel;
 }
 
 function ui_update() {
   ui_update_begin();
-  ui_span(my, 'nlog', ' nlog:' + my.nlog);
+  ui_span(my, 'nlobby', ' nlobby:' + my.nlobby);
   ui_update_sub_info();
   ui_break(my);
   ui_update_xy();
@@ -119,16 +120,18 @@ function ui_update_sub_info() {
       sub_name = ent.name_s || sub_name;
     }
   }
+  let sub_uid = my.sub_uid || '?';
   ui_span(my, 'sub_name', ' sub_name:' + sub_name);
-  ui_span(my, 'sub_uid', ' uid:' + my.sub_uid);
+  ui_span(my, 'sub_uid', ' uid:' + sub_uid);
 }
 
 function ui_update_rgb() {
-  if (!my.videoColor) return;
+  let colr = my.videoColor;
+  if (!colr) colr = [0, 0, 0];
 
-  let r = my.videoColor[0];
-  let g = my.videoColor[1];
-  let b = my.videoColor[2];
+  let r = colr[0];
+  let g = colr[1];
+  let b = colr[2];
 
   let spanrgb = ui_span(my, 'rgb', ` &nbsp&nbsp&nbsp&nbsp`);
   let spanr = ui_span(my, 'r', ` r: ${r} &nbsp`);
@@ -154,7 +157,18 @@ function ui_update_names() {
   }
 }
 
+function ui_init_debug_pane() {
+  my.debug_div = ui_div('debug', 'Hello');
+  if (!my.debugFlag) {
+    my.debug_div.elt.classList.toggle('hidden');
+  }
+}
+
 // --
+
+function debugNextAction() {
+  dstore_nextPixs();
+}
 
 function nstep_updateAction() {
   my.nstep = parseFloat(this.value());
@@ -163,29 +177,51 @@ function nstep_updateAction() {
   my.layer.clear();
 }
 
-function debugNextAction() {
-  //
-}
-
-function storeFlagChk_action() {
+function storeFlag_update() {
   my.storeFlag = this.checked();
-  dstore_lobby_update();
-  create_myVideo(my);
+  // dstore_lobby_update();
+  // create_myVideo(my);
 }
 
-function faceFlagChk_action() {
+function faceFlag_update() {
   my.faceFlag = this.checked();
   my.facingMode = my.faceFlag ? 'user' : 'environment';
   console.log('my.facingMode', my.facingMode);
   create_myVideo(my);
 }
 
-function debugFlagChk_action() {
+function debugFlag_update() {
   my.debugFlag = this.checked();
+  my.debug_div.elt.classList.toggle('hidden');
   // console.log('my.logTags', my.logTags);
   if (!my.logTags) return;
+  let div = ui_div_empty('debug');
   for (let key in my.logTags) {
     let ent = my.logTags[key];
-    console.log('my.logTags key=', key, 'ent', ent);
+    // console.log('my.logTags key=', key, 'ent', ent);
+    let span = createSpan(key);
+
+    let chk = createCheckbox('console', ent.console);
+    chk.style('display:inline');
+    chk.changed(function () {
+      ent.console = this.checked();
+    });
+
+    let chk2 = createCheckbox('log', ent.log);
+    chk2.style('display:inline');
+    chk2.changed(function () {
+      ent.log = this.checked();
+    });
+
+    let spanCount = createSpan(' count=' + ent.count);
+
+    div.child(createElement('br'));
+    div.child(span);
+    div.child(chk);
+    div.child(chk2);
+    div.child(spanCount);
+
+    div.child(createElement('br'));
   }
+  div.child(createElement('br'));
 }
