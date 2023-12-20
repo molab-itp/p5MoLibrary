@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <!-- v2023-02-08 18:01:45 -->
+    <main></main>
+
+    <!-- Documentation reference -->
+    <!-- https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en -->
+
+    <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
+    <script type="module">
+      import {
+        initializeApp, //
+      } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
+      import {
+        getAuth,
+        signInAnonymously, //
+      } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
+      import {
+        getStorage,
+        ref,
+        listAll,
+        getDownloadURL,
+        uploadBytes,
+        list,
+      } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js';
+
+      // Your web app's Firebase configuration
+      // jht9629
+      const firebaseConfig = {
+        apiKey: 'AIzaSyDLxi_fvCG2kzD2eJ4MxEZbOJ_GFSpIVe0',
+        authDomain: 'molab-485f5.firebaseapp.com',
+        databaseURL: 'https://molab-485f5-default-rtdb.firebaseio.com',
+        projectId: 'molab-485f5',
+        storageBucket: 'molab-485f5.appspot.com',
+        messagingSenderId: '219508380677',
+        appId: '1:219508380677:web:b5d846a150e7d60368b86c',
+        measurementId: 'G-40F0BN8L7L',
+      };
+      // Your web app's Firebase configuration
+      // jht1493
+      const firebaseConfig1 = {
+        apiKey: 'AIzaSyBl4dTlon41lMW1b3CgJ7LphBH_fi6RETo',
+        authDomain: 'molab-2022.firebaseapp.com',
+        databaseURL: 'https://molab-2022-default-rtdb.firebaseio.com',
+        projectId: 'molab-2022',
+        storageBucket: 'molab-2022.appspot.com',
+        messagingSenderId: '1007268220063',
+        appId: '1:1007268220063:web:a69f608f35ca3f8d9a26aa',
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      const auth = getAuth();
+
+      // Export from module to window global for p5js access
+      const fb_ = {};
+      window.fb_ = fb_;
+      fb_.app = app;
+      fb_.auth = auth;
+      fb_.signInAnonymously = signInAnonymously;
+      fb_.storage = getStorage();
+      fb_.ref = ref;
+      fb_.listAll = listAll;
+      fb_.getDownloadURL = getDownloadURL;
+      fb_.uploadBytes = uploadBytes;
+      fb_.list = list;
+      //
+    </script>
+
+    <!-- <script src="sketch.js?v={{vers}}"></script> -->
+    <script src="sketch.js"></script>
+  </body>
+</html>
