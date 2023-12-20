@@ -33,8 +33,9 @@ function dstore_lobby_onValue() {
   onValue(aref, function (snap) {
     let key = snap.key;
     let data = snap.val();
-    ui_log(my, 'dstore_lobby_onValue', key, 'data=', data);
+    // ui_log(my, 'dstore_lobby_onValue', key, 'data=', data);
     data = data || {};
+    ui_log(my, 'dstore_lobby_onValue', key, 'n=', Object.keys(data).length);
 
     my.stored_lobby = data;
     // {
@@ -84,7 +85,8 @@ function dstore_pix_onChild() {
   onChildAdded(aref, (data) => {
     let key = data.key;
     let val = data.val();
-    ui_log(my, 'dstore_pix_onChild Added', key, 'val=', val);
+    // ui_log(my, 'dstore_pix_onChild Added', key, 'val=', val);
+    ui_log(my, 'dstore_pix_onChild Added', key, 'n=', val.length);
     receivedKey(key, val);
     // Array of
     // { "row": [ { "c": [ 75, 74, 79, 255 ], }, ... ]
@@ -94,14 +96,16 @@ function dstore_pix_onChild() {
   onChildChanged(aref, (data) => {
     let key = data.key;
     let val = data.val();
-    ui_log(my, 'dstore_pix_onChild Changed', key, 'val=', val);
+    // ui_log(my, 'dstore_pix_onChild Changed', key, 'val=', val);
+    ui_log(my, 'dstore_pix_onChild Changed', key, 'n=', val.length);
     receivedKey(key, val);
   });
 
   onChildRemoved(aref, (data) => {
     let key = data.key;
     let val = data.val();
-    ui_log(my, 'dstore_pix_onChild Removed', key, 'val=', val);
+    // ui_log(my, 'dstore_pix_onChild Removed', key, 'val=', val);
+    ui_log(my, 'dstore_pix_onChild Removed', key, 'n=', val.length);
     if (my.stored_pixs) {
       delete my.stored_pixs[key];
       if (key == my.sub_uid) {
@@ -131,10 +135,6 @@ function dstore_receivedPixs() {
 
 function dstore_nextPixs() {
   console.log('dstore_nextPixs my.sub_uid', my.sub_uid);
-  // for (let key in my.stored_pixs) {
-  //   let ent = my.stored_pixs[key];
-  //   console.log('dstore_nextPixs key', key, ent);
-  // }
   let keys = Object.keys(my.stored_pixs);
   // console.log('dstore_nextPixs keys', keys);
   let index = keys.indexOf(my.sub_uid);
