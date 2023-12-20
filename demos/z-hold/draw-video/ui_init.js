@@ -36,7 +36,7 @@ function faceChk_action() {
   my.facingMode = my.face ? 'user' : 'environment';
   console.log('my.facingMode', my.facingMode);
   my.video.remove();
-  create_myVideo();
+  video_create();
 }
 
 function ui_update() {
@@ -63,7 +63,7 @@ function ui_span(id, html) {
 }
 
 // create the vidoe capture element based on my.facingMode
-function create_myVideo() {
+function video_create() {
   let options = { video: { facingMode: my.facingMode } };
   my.video = createCapture(options);
   my.video.size(my.vwidth, my.vheight);

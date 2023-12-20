@@ -18,7 +18,8 @@ function ui_init() {
 }
 
 function ui_init_control_1() {
-  create_myVideo(my);
+  //
+  video_create(my);
 
   my.versionBtn = createButton('v' + my.version.substring(2));
   my.versionBtn.mousePressed(function () {
@@ -53,13 +54,12 @@ function ui_init_control_1() {
 }
 
 function ui_init_control_2() {
-  if (my.storeFlag) {
-    my.faceChk = createCheckbox('Face', my.faceFlag);
-    my.faceChk.style('display:inline');
-    my.faceChk.changed(function () {
-      faceFlag_changed(this.checked());
-    });
-  }
+  //
+  my.faceChk = createCheckbox('Face', my.faceFlag);
+  my.faceChk.style('display:inline');
+  my.faceChk.changed(function () {
+    faceFlag_changed(this.checked());
+  });
 
   my.videoChk = createCheckbox('Video', my.videoFlag);
   my.videoChk.style('display:inline');
@@ -79,7 +79,7 @@ function ui_init_control_2() {
     storeFlag_changed(this.checked());
   });
 
-  ui_span(my, 'nlobby', ' nlobby:' + my.nlobby);
+  ui_span('nlobby', ' nlobby:' + my.nlobby);
 
   createElement('br');
 }
@@ -103,7 +103,7 @@ function ui_nstep_selection() {
 
 function ui_update() {
   ui_update_begin();
-  ui_span(my, 'nlobby', ' nlobby:' + my.nlobby);
+  ui_span('nlobby', ' nlobby:' + my.nlobby);
   ui_update_sub_info();
   ui_break(my);
   ui_update_xy();
@@ -117,7 +117,7 @@ function ui_update_xy() {
   let x = my.vx;
   let y = my.vy;
   let str = ` x: ${x} y: ${y}`;
-  my.report = ui_span(my, 'report', str);
+  my.report = ui_span('report', str);
 }
 
 function ui_update_sub_info() {
@@ -129,8 +129,8 @@ function ui_update_sub_info() {
     }
   }
   let sub_uid = my.sub_uid || '?';
-  ui_span(my, 'sub_name', ' sub_name:' + sub_name);
-  ui_span(my, 'sub_uid', ' uid:' + sub_uid);
+  ui_span('sub_name', ' sub_name:' + sub_name);
+  ui_span('sub_uid', ' uid:' + sub_uid);
 }
 
 function ui_update_rgb() {
@@ -141,10 +141,10 @@ function ui_update_rgb() {
   let g = colr[1];
   let b = colr[2];
 
-  let spanrgb = ui_span(my, 'rgb', ` &nbsp&nbsp&nbsp&nbsp`);
-  let spanr = ui_span(my, 'r', ` r: ${r} &nbsp`);
-  let spang = ui_span(my, 'g', ` g: ${g} &nbsp`);
-  let spanb = ui_span(my, 'b', ` b: ${b} &nbsp`);
+  let spanrgb = ui_span('rgb', ` &nbsp&nbsp&nbsp&nbsp`);
+  let spanr = ui_span('r', ` r: ${r} &nbsp`);
+  let spang = ui_span('g', ` g: ${g} &nbsp`);
+  let spanb = ui_span('b', ` b: ${b} &nbsp`);
 
   spanrgb.elt.style.backgroundColor = `rgb(${r},${g},${b})`;
   spanr.elt.style.backgroundColor = `rgb(${r},0,0)`;
@@ -158,10 +158,10 @@ function ui_update_rgb() {
 
 function ui_update_names() {
   if (my.name) {
-    ui_span(my, 'name', ' name:' + my.name);
+    ui_span('name', ' name:' + my.name);
   }
   if (my.uid) {
-    ui_span(my, 'uid', ' uid:' + my.uid);
+    ui_span('uid', ' uid:' + my.uid);
   }
 }
 
@@ -188,14 +188,14 @@ function nstep_changed(newValue) {
 function storeFlag_changed(newValue) {
   my.storeFlag = newValue;
   // dstore_lobby_update();
-  // create_myVideo(my);
+  // video_create(my);
 }
 
 function faceFlag_changed(newValue) {
   my.faceFlag = newValue;
   my.facingMode = my.faceFlag ? 'user' : 'environment';
   console.log('my.facingMode', my.facingMode);
-  create_myVideo(my);
+  video_create(my);
 }
 
 function debugFlag_changed(newValue) {

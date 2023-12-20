@@ -14,7 +14,7 @@ function ui_init() {
 
 function ui_init_controls() {
   if (!my.replayName) {
-    create_myVideo();
+    video_create();
   }
 
   my.verBtn = createButton(my.version.substring(1));
@@ -123,7 +123,7 @@ function create_resolution_selection() {
     my.rezScale = nval;
     init_layer();
     my.video.remove();
-    create_myVideo();
+    video_create();
   });
 }
 
@@ -132,7 +132,7 @@ function faceChk_action() {
   my.facingMode = my.face ? 'user' : 'environment';
   console.log('my.facingMode', my.facingMode);
   my.video.remove();
-  create_myVideo();
+  video_create();
 }
 
 function ui_update() {

@@ -1,4 +1,4 @@
-function create_myVideo() {
+function video_create() {
   let options = { video: { facingMode: my.facingMode } };
   my.video = createCapture(options);
   my.video.size(my.vwidth, my.vheight);

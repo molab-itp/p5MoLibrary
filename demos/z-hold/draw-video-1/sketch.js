@@ -27,7 +27,7 @@ function setup() {
 
   ui_init();
 
-  create_myVideo();
+  video_create();
 }
 
 function draw() {
