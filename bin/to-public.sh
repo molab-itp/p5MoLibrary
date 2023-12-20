@@ -2,7 +2,7 @@
 cd ${0%/*}
 
 # rsync folder to public 
-destRepo=p5MoLibrary
+destRepo=p5moLibrary
 
 delete=--delete
 test=
@@ -14,7 +14,7 @@ excludes="--exclude-from to-public-exclude.txt"
 
 source=../
 
-destRepo=p5MoLibrary-jht9629-nyu
+destRepo=p5moLibrary-jht9629-nyu
 rpath=../../$destRepo
 
 echo $verbose $delete $test

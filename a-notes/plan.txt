@@ -65,7 +65,7 @@ demos/mo-storage
 [x] image blob from firebase storage
 
 # --
-https://molab-itp.github.io/p5MoLibrary/demos/mo-pixel-grid/
+https://molab-itp.github.io/p5moLibrary/demos/mo-pixel-grid/
 [x] y position in dbbase is off by 1
   0 --> 30
 [x] 2x2 option

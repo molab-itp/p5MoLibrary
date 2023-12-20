@@ -1,6 +1,6 @@
 // https://editor.p5js.org/jht9629-gmail/sketches/VWbtyZTnx
 // mo-storage-dashboard
-// https://molab-itp.github.io/p5MoLibrary/demos/mo-storage-dashboard
+// https://molab-itp.github.io/p5moLibrary/demos/mo-storage-dashboard
 
 let my = {};
 function my_setup() {

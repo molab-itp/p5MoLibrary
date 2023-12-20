@@ -1,0 +1,23 @@
+//
+export function video_create(my) {
+  // console.log('video_create my.video', my.video);
+  if (my.video) {
+    my.video.remove();
+  }
+  let options = { video: { facingMode: my.facingMode } };
+  my.video = createCapture(options);
+  my.video.size(my.vwidth, my.vheight);
+  my.video.hide();
+}
+//
+export function video_ready(my) {
+  return (
+    my.video && //
+    my.video.loadedmetadata &&
+    my.video.width > 0 &&
+    my.video.height > 0
+  );
+}
+
+window.video_create = video_create;
+window.video_ready = video_ready;
