@@ -35,7 +35,7 @@ function ui_init_control_1() {
 
   my.debugChk = createCheckbox('Debug', my.debugFlag);
   my.debugChk.style('display:inline');
-  my.debugChk.changed(debugFlag_update);
+  my.debugChk.changed(debugFlag_changed);
 
   my.nextBtn = createButton(' Next');
   my.nextBtn.mousePressed(function () {
@@ -54,7 +54,7 @@ function ui_init_control_2() {
   if (my.storeFlag) {
     my.faceChk = createCheckbox('Face', my.faceFlag);
     my.faceChk.style('display:inline');
-    my.faceChk.changed(faceFlag_update);
+    my.faceChk.changed(faceFlag_changed);
   }
 
   my.videoChk = createCheckbox('Video', my.videoFlag);
@@ -71,7 +71,7 @@ function ui_init_control_2() {
 
   my.storeFlagChk = createCheckbox('Store', my.storeFlag);
   my.storeFlagChk.style('display:inline');
-  my.storeFlagChk.changed(storeFlag_update);
+  my.storeFlagChk.changed(storeFlag_changed);
 
   ui_span(my, 'nlobby', ' nlobby:' + my.nlobby);
 
@@ -158,7 +158,7 @@ function ui_update_names() {
 }
 
 function ui_init_debug_pane() {
-  my.debug_div = ui_div('debug', 'Hello');
+  my.debug_div = ui_div('debug', 'Welcome to the debug pane');
   if (!my.debugFlag) {
     my.debug_div.elt.classList.toggle('hidden');
   }
@@ -177,20 +177,20 @@ function nstep_updateAction() {
   my.layer.clear();
 }
 
-function storeFlag_update() {
+function storeFlag_changed() {
   my.storeFlag = this.checked();
   // dstore_lobby_update();
   // create_myVideo(my);
 }
 
-function faceFlag_update() {
+function faceFlag_changed() {
   my.faceFlag = this.checked();
   my.facingMode = my.faceFlag ? 'user' : 'environment';
   console.log('my.facingMode', my.facingMode);
   create_myVideo(my);
 }
 
-function debugFlag_update() {
+function debugFlag_changed() {
   my.debugFlag = this.checked();
   my.debug_div.elt.classList.toggle('hidden');
   // console.log('my.logTags', my.logTags);
