@@ -1,12 +1,12 @@
 // https://editor.p5js.org/jht9629-nyu/sketches
-// https://github.com/molab-itp/p5moLibrary/tree/main/demos/Celestial_Zoo
+// https://github.com/molab-itp/p5MoLibrary/tree/main/demos/Celestial_Zoo
 // Celestial_Zoo
 
 let my = {};
 
 function preload() {
   //
-  my.backgImg = loadImage('../PlanetEarth/assets/The_Celestial_Zoo.png');
+  my.backgImg = loadImage('../../assets/The_Celestial_Zoo.png');
 }
 
 function setup() {

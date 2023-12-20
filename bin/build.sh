@@ -21,7 +21,7 @@ test=
 verbose=
 # verbose=v
 source=../src
-rdest=../build
+rdest=../docs
 rsync -razO$verbose $excludes $delete $test "$source/" "$rdest/"
 
 # Process files in build to expand build version etc.

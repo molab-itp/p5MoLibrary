@@ -1,17 +1,17 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
-// https://github.com/molab-itp/p5moLibrary/tree/main/demos/PlanetEarth
+// https://github.com/molab-itp/p5MoLibrary/tree/main/demos/PlanetEarth
 // PlanetEarth
 
 function preload() {
-  my.earthImg = loadImage('assets/world-ultra.jpg');
+  my.earthImg = loadImage('../../assets/world-ultra.jpg');
   // my.earthImg = loadImage('assets/Da_Vinci.jpg');
-  my.moonImg = loadImage('assets/moon.jpg');
+  my.moonImg = loadImage('../../assets/moon.jpg');
   //
-  my.backgImgs.push(loadImage('assets/Manju.jpg'));
-  my.backgImgs.push(loadImage('assets/plenty.jpeg'));
-  my.backgImgs.push(loadImage('assets/sun.jpg'));
-  my.backgImgs.push(loadImage('assets/The_Celestial_Zoo.png'));
-  my.backgImgs.push(loadImage('assets/Da_Vinci.jpg'));
+  my.backgImgs.push(loadImage('../../assets/Manju.jpg'));
+  my.backgImgs.push(loadImage('../../assets/plenty.jpeg'));
+  my.backgImgs.push(loadImage('../../assets/sun.jpg'));
+  my.backgImgs.push(loadImage('../../assets/The_Celestial_Zoo.png'));
+  my.backgImgs.push(loadImage('../../assets/Da_Vinci.jpg'));
   // Manju.jpg
 }
 
