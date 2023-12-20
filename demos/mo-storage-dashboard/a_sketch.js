@@ -2,43 +2,43 @@
 // mo-storage-dashboard
 // https://molab-itp.github.io/98-MoGallery-p5js/demos/mo-storage-dashboard
 
-let my = {
+let my = {};
+function my_setup() {
   // update to verify change on mobile
-  version: '?v=041',
+  my.version = '?v=041';
   // Aspect ratio of video capture/
   // will be scaled by rezScale
-  width: 480,
-  height: 640,
-  vFlip: 0,
-  facingMode: 'user',
-  face: 1,
-  showVideo: 1,
-  soundEnable: 0,
-  fcount: 1,
-  record: 0,
-  replay: 0,
-  uid: '-none-',
-  // scale: 16,
-  rezScale: 1,
-  // imageQuality: 0.01,
-  imageQuality: 1,
-  captionScale: 32,
-  interval: 1,
-  debugLog: 1,
-  count_base: 100,
-  count_max: 5,
-  colors: ['red', 'green', 'gold'],
-  colorIndex: 1,
-  logLinesMax: 3,
-  clipsName: 'clips',
-  recordCountDown: {
+  my.width = 480;
+  my.height = 640;
+  my.vFlip = 0;
+  my.facingMode = 'user';
+  my.face = 1;
+  my.showVideo = 1;
+  my.soundEnable = 0;
+  my.fcount = 1;
+  my.record = 0;
+  my.replay = 0;
+  my.uid = '-none-';
+  my.rezScale = 1; // scale = 16;
+  my.imageQuality = 1; // imageQuality = 0.01;
+  my.captionScale = 32;
+  my.interval = 1;
+  my.debugLog = 1;
+  my.count_base = 100;
+  my.count_max = 5;
+  my.colors = ['red', 'green', 'gold'];
+  my.colorIndex = 1;
+  my.logLinesMax = 3;
+  my.clipsName = 'clips';
+  my.recordCountDown = {
     max: 3,
     next_secs: 0,
-  },
-};
+  };
+}
 
 function setup() {
   console.log('mo-storage-video setup');
+  my_setup();
 
   my_init();
 
