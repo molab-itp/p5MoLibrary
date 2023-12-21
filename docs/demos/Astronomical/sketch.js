@@ -18,7 +18,7 @@ function setup() {
   my.height = height;
   my.paneRatio = 12 / 16;
   my.isPortrait = height > width;
-  my.runFlag = 0;
+  my.runFlag = 1;
 
   my.refBox = new RefBox(refBox_init);
 
