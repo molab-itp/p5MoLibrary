@@ -13,6 +13,9 @@ if [ ! -e "$dest/node_modules" ]; then
   popd > /dev/null
 fi
 
+# separate docs folder for pages too confusing with duplicated files
+# do version update in place on src directory
+
 # # Copy src files to build
 # excludes="--exclude .DS_Store  --exclude external/media"
 # delete=--delete

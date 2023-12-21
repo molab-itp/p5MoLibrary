@@ -101,7 +101,7 @@ function ui_nstep_selection() {
   }
   aSel.selected(my.nstep);
   aSel.changed(function () {
-    nstep_changed(this.checked());
+    nstep_changed(this.value());
   });
   my.nstep_selection = aSel;
 }

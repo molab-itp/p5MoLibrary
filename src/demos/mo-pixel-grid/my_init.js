@@ -21,10 +21,11 @@ function init_query() {
   my.query = get_url_params();
   if (my.query) {
     my.name = my.query.name;
+    my.room_name = my.query.room || my.room_name;
     my.storeFlag = parseFloat(my.query.store || my.storeFlag);
-    my.nstep = my.query.nstep || my.nstep;
-    my.perFrame = my.query.perFrame || my.perFrame;
-    my.byLine = my.query.byLine || my.byLine;
+    my.nstep = parseFloat(my.query.nstep || my.nstep);
+    my.perFrame = parseFloat(my.query.perFrame || my.perFrame);
+    my.byLine = parseFloat(my.query.byLine || my.byLine);
   }
   if (my.storeFlag) {
     my.width = my.vwidth;
