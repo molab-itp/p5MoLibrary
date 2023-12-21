@@ -145,3 +145,10 @@ function ui_div_empty(id) {
   return div;
 }
 window.ui_div_empty = ui_div_empty;
+
+function ui_createCheckbox(label, value) {
+  let chk = createCheckbox(label, value);
+  chk.style('display:inline');
+  return chk;
+}
+window.ui_createCheckbox = ui_createCheckbox;

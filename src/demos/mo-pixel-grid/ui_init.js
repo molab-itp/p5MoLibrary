@@ -34,8 +34,7 @@ function ui_init_control_1() {
   ui_nstep_selection();
   // ui_perFrame_selection();
 
-  my.debugChk = createCheckbox('Debug', my.debugFlag);
-  my.debugChk.style('display:inline');
+  my.debugChk = ui_createCheckbox('Debug', my.debugFlag);
   my.debugChk.changed(function () {
     debugFlag_changed(this.checked());
   });
@@ -54,27 +53,33 @@ function ui_init_control_1() {
 }
 
 function ui_init_control_2() {
+  {
+    my.room_name_input = createInput('' + my.room_name)
+      .id('id_room_name')
+      .input(function () {
+        // console.log('id_refIndex', this.value());
+        my.room_name = this.value();
+      });
+    my.room_name_input.size(60);
+  }
+
   //
-  my.faceChk = createCheckbox('Face', my.faceFlag);
-  my.faceChk.style('display:inline');
+  my.faceChk = ui_createCheckbox('Face', my.faceFlag);
   my.faceChk.changed(function () {
     faceFlag_changed(this.checked());
   });
 
-  my.videoChk = createCheckbox('Video', my.videoFlag);
-  my.videoChk.style('display:inline');
+  my.videoChk = ui_createCheckbox('Video', my.videoFlag);
   my.videoChk.changed(function () {
     my.videoFlag = this.checked();
   });
 
-  my.runFlagChk = createCheckbox('Run', my.runFlag);
-  my.runFlagChk.style('display:inline');
+  my.runFlagChk = ui_createCheckbox('Run', my.runFlag);
   my.runFlagChk.changed(function () {
     my.runFlag = this.checked();
   });
 
-  my.storeFlagChk = createCheckbox('Store', my.storeFlag);
-  my.storeFlagChk.style('display:inline');
+  my.storeFlagChk = ui_createCheckbox('Store', my.storeFlag);
   my.storeFlagChk.changed(function () {
     storeFlag_changed(this.checked());
   });
@@ -209,14 +214,14 @@ function debugFlag_changed(newValue) {
     // console.log('my.logTags key=', key, 'ent', ent);
     let span = createSpan(key);
 
-    let chk = createCheckbox('console', ent.console);
-    chk.style('display:inline');
+    let chk = ui_createCheckbox('console', ent.console);
+    // chk.style('display:inline');
     chk.changed(function () {
       ent.console = this.checked();
     });
 
-    let chk2 = createCheckbox('log', ent.log);
-    chk2.style('display:inline');
+    let chk2 = ui_createCheckbox('log', ent.log);
+    // chk2.style('display:inline');
     chk2.changed(function () {
       ent.log = this.checked();
     });

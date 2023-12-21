@@ -2,21 +2,13 @@
 
 - p5js Library for multi-user experiences on portable and large screens
 
-- alpha
-
   - [demos/Astronomical](demos/Astronomical?v={{vers}})
-  - [demos/mo-pixel-grid](demos/mo-pixel-grid?v={{vers}})
-
-- beta
-
-  - [demos/PlanetEarth](demos/PlanetEarth?v={{vers}})
-  - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v={{vers}})
-  - [demos/mo-storage](demos/mo-storage)
-  - [demos/timed-drawing-class](demos/timed-drawing-class)
-
-- gamma
-
   - [demos/createImg-board](demos/createImg-board/)
   - [demos/createImg-slide-show](demos/createImg-slide-show)
+  - [demos/mo-pixel-grid](demos/mo-pixel-grid?v={{vers}})
+  - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v={{vers}})
+  - [demos/mo-storage](demos/mo-storage)
+  - [demos/PlanetEarth](demos/PlanetEarth?v={{vers}})
+  - [demos/timed-drawing-class](demos/timed-drawing-class)
 
 [github.io](https://molab-itp.github.io/p5moLibrary/?v={{vers}})

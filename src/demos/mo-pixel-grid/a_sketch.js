@@ -30,6 +30,7 @@ function my_setup() {
   my.perFrame = 12;
   my.dbStoreRootPath = 'm0-@r-@w-';
   my.sub_index = 0;
+  my.room_name = 'room0';
 }
 
 function setup() {

@@ -28,14 +28,15 @@ function dstore_init() {
 function dstore_lobby_onValue() {
   // Setup listener for changes to firebase db
   let { database, ref, onValue } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/lobby`;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/lobby`;
   let aref = ref(database, path);
   onValue(aref, function (snap) {
     let key = snap.key;
     let data = snap.val();
     // ui_log(my, 'dstore_lobby_onValue', key, 'data=', data);
     data = data || {};
-    ui_log(my, 'dstore_lobby_onValue', key, 'n=', Object.keys(data).length);
+    // ui_log(my, 'dstore_lobby_onValue', key, 'n=', Object.keys(data).length);
+    console.log('dstore_lobby_onValue', key, 'n=', Object.keys(data).length);
 
     my.stored_lobby = data;
     // {
@@ -62,7 +63,7 @@ function dstore_lobby_onValue() {
 
 function dstore_lobby_update() {
   let { database, ref, update, increment } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/lobby/${my.uid}`;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/lobby/${my.uid}`;
   ui_log(my, 'dstore_lobby_update', path);
   let aref = ref(database, path);
   let now = new Date();
@@ -77,7 +78,7 @@ function dstore_lobby_update() {
 function dstore_pix_onChild() {
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   // from "firebase/database";
-  let path = `${my.dbStoreRootPath}/pix`;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/pix`;
   // ui_log(my, 'dstore_pix_onChild path=', path);
 
   let aref = ref(database, path);
@@ -135,6 +136,7 @@ function dstore_receivedPixs() {
 
 function dstore_nextPixs() {
   console.log('dstore_nextPixs my.sub_uid', my.sub_uid);
+  if (!my.stored_pixs) return;
   let keys = Object.keys(my.stored_pixs);
   // console.log('dstore_nextPixs keys', keys);
   let index = keys.indexOf(my.sub_uid);
@@ -143,7 +145,9 @@ function dstore_nextPixs() {
   my.sub_uid = keys[index];
   let pixs = my.stored_pixs[my.sub_uid];
   // console.log('pixs', pixs.length);
-  update_nstep(pixs.length);
+  if (pixs) {
+    update_nstep(pixs.length);
+  }
 }
 
 function dstore_pix_update(irow, row) {
@@ -152,7 +156,7 @@ function dstore_pix_update(irow, row) {
     ui_log(my, 'dstore_pix_update no uid', my.uid);
     return;
   }
-  let path = `${my.dbStoreRootPath}/pix/${my.uid}/${irow}`;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/pix/${my.uid}/${irow}`;
   let aref = ref(database, path);
   const updates = {};
   updates['i'] = irow;
@@ -162,9 +166,10 @@ function dstore_pix_update(irow, row) {
   dstore_lobby_update();
 }
 
+// db goes to read-only mode when nstep=128
 function dstore_pix_removeAll() {
   let { database, ref, set } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/pix`;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/pix`;
   let aref = ref(database, path);
   set(aref, {})
     .then(() => {
