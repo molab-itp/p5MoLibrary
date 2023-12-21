@@ -2,4 +2,4 @@
 
 - p5js library for multi-user experiences on portable screens and large screens
 
-[on github.io](https://molab-itp.github.io/p5moLibrary/?v={{vers}})
+[github.io](https://molab-itp.github.io/p5moLibrary/)

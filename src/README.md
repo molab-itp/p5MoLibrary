@@ -19,4 +19,4 @@
   - [demos/createImg-board](demos/createImg-board/)
   - [demos/createImg-slide-show](demos/createImg-slide-show)
 
-[on github.io](https://molab-itp.github.io/p5moLibrary/?v={{vers}})
+[github.io](https://molab-itp.github.io/p5moLibrary/?v={{vers}})
