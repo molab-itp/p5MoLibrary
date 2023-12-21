@@ -36,7 +36,7 @@ export function build_ver_run(src_path, buildnum_path, build_ver, buildnum_files
   console.log('build_ver_run updateBuild', updateBuild);
 
   // const from_str = '\\?v=1';
-  const from_str = '\\?v=d+';
+  const from_str = '\\?v=\\d+';
   const to_str = '?v=' + build_ver.next;
 
   const re = new RegExp(from_str, 'g');
