@@ -4,13 +4,13 @@
 
 - alpha
 
-  - [demos/Astronomical](demos/Astronomical?v=3)
-  - [demos/mo-pixel-grid](demos/mo-pixel-grid?v=3)
+  - [demos/Astronomical](demos/Astronomical?v=4)
+  - [demos/mo-pixel-grid](demos/mo-pixel-grid?v=4)
 
 - beta
 
-  - [demos/PlanetEarth](demos/PlanetEarth?v=3)
-  - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v=3)
+  - [demos/PlanetEarth](demos/PlanetEarth?v=4)
+  - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v=4)
   - [demos/mo-storage](demos/mo-storage)
   - [demos/timed-drawing-class](demos/timed-drawing-class)
 
@@ -19,4 +19,4 @@
   - [demos/createImg-board](demos/createImg-board/)
   - [demos/createImg-slide-show](demos/createImg-slide-show)
 
-[on github.io](https://molab-itp.github.io/p5moLibrary/?v=3)
+[github.io](https://molab-itp.github.io/p5moLibrary/?v=4)
