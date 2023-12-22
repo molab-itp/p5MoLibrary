@@ -3,11 +3,11 @@
 //
 function ui_init() {
   //
-  ui_init_control_1();
+  ui_init_row_1();
 
-  ui_init_control_2();
+  ui_init_row_2();
 
-  ui_init_control_3();
+  ui_init_row_3();
 
   ui_init_debug_pane();
 
@@ -19,9 +19,8 @@ function ui_init() {
   belt.insertBefore(melt, null);
 }
 
-function ui_init_control_1() {
+function ui_init_row_1() {
   //
-  video_create(my);
 
   my.versionBtn = createButton('v' + my.version.substring(2));
   my.versionBtn.mousePressed(function () {
@@ -41,7 +40,7 @@ function ui_init_control_1() {
   createElement('br');
 }
 
-function ui_init_control_2() {
+function ui_init_row_2() {
   //
   my.debugChk = ui_createCheckbox('Debug', my.debugFlag);
   my.debugChk.changed(function () {
@@ -74,7 +73,7 @@ function ui_init_control_2() {
   createElement('br');
 }
 
-function ui_init_control_3() {
+function ui_init_row_3() {
   //
 
   my.room_name_input = createInput('' + my.room_name)

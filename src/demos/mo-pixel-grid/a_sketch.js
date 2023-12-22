@@ -49,6 +49,8 @@ function setup() {
 
   ui_init();
 
+  video_create(my);
+
   let config = fb_.init('jht9629');
   // ui_log('config.projectId', config.projectId);
   ui_log(my, 'config.projectId', config.projectId);
