@@ -105,6 +105,11 @@ function ui_init_control_3() {
     ui_log_clear(my);
   });
 
+  my.reloadBtn = createButton('Update');
+  my.reloadBtn.mousePressed(function () {
+    location.reload();
+  });
+
   createElement('br');
 }
 
@@ -138,8 +143,8 @@ function ui_update() {
 }
 
 function ui_update_xy() {
-  let x = my.vx;
-  let y = my.vy;
+  let x = my.track_xi * my.stepPx;
+  let y = my.track_yi * my.stepPx;
   let str = ` x: ${x} y: ${y}`;
   my.report = ui_span('report', str);
 }
