@@ -43,6 +43,11 @@ function ui_init_control_1() {
 
 function ui_init_control_2() {
   //
+  my.debugChk = ui_createCheckbox('Debug', my.debugFlag);
+  my.debugChk.changed(function () {
+    debugFlag_changed(this.checked());
+  });
+
   my.faceChk = ui_createCheckbox('Face', my.faceFlag);
   my.faceChk.changed(function () {
     faceFlag_changed(this.checked());
@@ -71,10 +76,6 @@ function ui_init_control_2() {
 
 function ui_init_control_3() {
   //
-  my.reloadBtn = createButton('Update');
-  my.reloadBtn.mousePressed(function () {
-    location.reload();
-  });
 
   my.room_name_input = createInput('' + my.room_name)
     .id('id_room_name')
@@ -91,11 +92,6 @@ function ui_init_control_3() {
       my.name = this.value();
     });
   my.name_input.size(60);
-
-  my.debugChk = ui_createCheckbox('Debug', my.debugFlag);
-  my.debugChk.changed(function () {
-    debugFlag_changed(this.checked());
-  });
 
   // my.nextBtn = createButton(' Next');
   // my.nextBtn.mousePressed(function () {
