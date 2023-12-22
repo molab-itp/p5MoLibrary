@@ -150,15 +150,15 @@ function ui_update_xy() {
 
 // function ui_update_sub_info() {
 //   let sub_name = '?';
-//   if (my.stored_agent && my.sub_uid) {
-//     let ent = my.stored_agent[my.sub_uid];
+//   if (my.stored_agent && my.agent_uid) {
+//     let ent = my.stored_agent[my.agent_uid];
 //     if (ent) {
 //       sub_name = ent.name_s || sub_name;
 //     }
 //   }
-//   let sub_uid = my.sub_uid || '?';
+//   let agent_uid = my.agent_uid || '?';
 //   ui_span('sub_name', ' sub_name:' + sub_name);
-//   ui_span('sub_uid', ' uid:' + sub_uid);
+//   ui_span('agent_uid', ' uid:' + agent_uid);
 // }
 
 function ui_update_rgb() {

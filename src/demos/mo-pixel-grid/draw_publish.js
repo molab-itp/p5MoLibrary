@@ -1,28 +1,31 @@
 // incrementally draw grid of pixel rects from given image img
-function draw_layer_publish(img) {
+function draw_publish(img) {
+  console.log('draw_publish img', img);
+
   if (!img) return;
   let layer = my.publishLayer;
-  draw_layer_publish_layer(layer, img);
+  draw_publish_layer(layer, img);
   // image(layer, 0, 0);
 }
 
-function draw_layer_publish_layer(layer, img) {
+function draw_publish_layer(layer, img) {
+  console.log('draw_publish_layer layer', layer, 'img', img);
   more = 1;
   let colr;
-  // let rx = floor(random(0, my.stepPx));
-  // let ry = floor(random(0, my.stepPx));
-  let rx = floor(my.stepPx * 0.5);
-  let ry = floor(my.stepPx * 0.5);
+  let cx = floor(my.stepPx * 0.5);
+  let cy = floor(my.stepPx * 0.5);
   while (more) {
     if (my.videoFlag) {
-      colr = img.get(my.vx + rx, my.vy + ry);
+      colr = img.get(my.vx + cx, my.vy + cy);
     } else {
       colr = [0, 0, 0];
     }
+    console.log('my.vxi', my.vxi, 'my.vyi', my.vyi, 'colr', colr);
+
     layer.fill(colr);
     layer.noStroke();
     layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
-    draw_record_rect(colr, my.vxi, my.vyi);
+    draw_record_rect(my.vxi, my.vyi, colr);
     my.vx += my.stepPx;
     my.vxi += 1;
     if (my.vx >= my.vwidth) {
@@ -46,13 +49,10 @@ function draw_layer_publish_layer(layer, img) {
   }
 }
 
-// layer.fill(colr);
-// layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
-// function draw_record_rect(c, x, y, w, h) {
-function draw_record_rect(c, ix, iy) {
+function draw_record_rect(ix, iy, c) {
+  console.log('ix', ix, 'iy', iy, 'c', c);
   if (my.storeFlag) {
     // let op = { r: 1, c, x, y, w, h };
-    // my.pixRows.push(op);
     let row = my.pixRows[iy];
     if (!row) {
       row = [];

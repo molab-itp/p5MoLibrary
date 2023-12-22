@@ -161,8 +161,8 @@ function dstore_pix_onChild() {
     ui_log(my, 'dstore_pix_onChild Removed', key, 'n=', val.length);
     if (my.stored_pixs) {
       delete my.stored_pixs[key];
-      if (key == my.sub_uid) {
-        my.sub_uid = null;
+      if (key == my.agent_uid) {
+        my.agent_uid = null;
       }
     }
   });
@@ -171,9 +171,9 @@ function dstore_pix_onChild() {
     let key = data.key;
     let val = data.val();
     ui_log(my, msg, key, 'n=', val.length);
-    if (!my.sub_uid) {
-      my.sub_uid = key;
-      console.log('receivedPixKey my.sub_uid', my.sub_uid);
+    if (!my.agent_uid) {
+      my.agent_uid = key;
+      console.log('receivedPixKey my.agent_uid', my.agent_uid);
     }
     if (!my.stored_pixs) {
       my.stored_pixs = {};
@@ -186,19 +186,19 @@ function dstore_pix_onChild() {
 //   if (!my.stored_pixs) {
 //     return null;
 //   }
-//   return my.stored_pixs[my.sub_uid];
+//   return my.stored_pixs[my.agent_uid];
 // }
 
 // function dstore_nextPixs() {
-//   console.log('dstore_nextPixs my.sub_uid', my.sub_uid);
+//   console.log('dstore_nextPixs my.agent_uid', my.agent_uid);
 //   if (!my.stored_pixs) return;
 //   let keys = Object.keys(my.stored_pixs);
 //   // console.log('dstore_nextPixs keys', keys);
-//   let index = keys.indexOf(my.sub_uid);
+//   let index = keys.indexOf(my.agent_uid);
 //   // console.log('dstore_nextPixs index', index);
 //   index = (index + 1) % keys.length;
-//   my.sub_uid = keys[index];
-//   let pixs = my.stored_pixs[my.sub_uid];
+//   my.agent_uid = keys[index];
+//   let pixs = my.stored_pixs[my.agent_uid];
 //   // console.log('pixs', pixs.length);
 //   if (pixs) {
 //     update_nstep(pixs.length);

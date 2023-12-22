@@ -18,7 +18,7 @@ function my_setup() {
   my.vheight = 640;
   my.exposeFlag = 0;
   my.storeFlag = 0;
-  my.runFlag = 1;
+  my.runFlag = 0;
   my.faceFlag = 1;
   my.videoFlag = 1;
   my.debugFlag = 0;
@@ -65,9 +65,7 @@ function anim_init() {
     action: updateAction,
     loop: 1,
   });
-  if (my.runFlag) {
-    my.animLoop.start();
-  }
+  my.animLoop.start();
 }
 
 function draw() {
@@ -91,18 +89,8 @@ function draw_frame() {
     image(my.videoImg, 0, 0);
   }
 
-  if (
-    frameCount % my.perFrame == 0 && //
-    my.storeFlag &&
-    my.videoImg
-  ) {
-    // draw_layer_publish(my.videoImg);
-  } else {
-    // image(my.layer, 0, 0);
-  }
-
   if (!my.storeFlag || !my.isPortrait) {
-    draw_layer_subscribe();
+    draw_received();
   }
 
   draw_cross_hair();
@@ -111,7 +99,7 @@ function draw_frame() {
 function updateAction() {
   // console.log('updateAction my.vx', my.vx, 'my.vy', my.vy, 'my.vwidth', my.vwidth);
   if (my.storeFlag) {
-    draw_layer_publish(my.videoImg);
+    draw_publish(my.videoImg);
   }
   if (my.runFlag) {
     draw_cross_hair_update();

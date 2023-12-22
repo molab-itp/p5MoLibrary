@@ -1,36 +1,41 @@
 // incrementally draw grid of pixel rects from storage
-function draw_layer_subscribe() {
-  // console.log('draw_layer_subscribe my.stored_agent', my.stored_agent);
+function draw_received() {
+  // console.log('draw_received my.stored_agent', my.stored_agent);
   // let layer = my.layer;
   if (!my.stored_agent) {
     return;
   }
   my.x0 = 0;
   my.y0 = 0;
-  if (my.uid) draw_sub_uid(my.uid);
-  for (let sub_uid in my.stored_agent) {
-    // console.log('draw_layer_subscribe ub_uid', sub_uid);
-    if (sub_uid != my.uid) draw_sub_uid(sub_uid);
+  // Render my pix first
+  if (my.uid) {
+    draw_received_uid(my.uid);
+  }
+  for (let agent_uid in my.stored_agent) {
+    // console.log('draw_received ub_uid', agent_uid);
+    if (agent_uid != my.uid) {
+      draw_received_uid(agent_uid);
+    }
   }
 }
 
-function draw_sub_uid(sub_uid) {
-  let agentEnt = my.stored_agent[sub_uid];
-  // console.log('draw_layer_subscribe agentEnt', agentEnt);
+function draw_received_uid(agent_uid) {
+  let agentEnt = my.stored_agent[agent_uid];
+  // console.log('draw_received agentEnt', agentEnt);
   if (!agentEnt) return;
-  // console.log('draw_layer_subscribe agentEnt', agentEnt);
+  // console.log('draw_received agentEnt', agentEnt);
   let layer = agentEnt.layer;
   if (!layer) return;
   if (my.stored_pixs) {
-    let pixs = my.stored_pixs[sub_uid];
-    // console.log('sub_uid', sub_uid, 'pix', pix);
+    let pixs = my.stored_pixs[agent_uid];
+    // console.log('agent_uid', agent_uid, 'pixs', pixs);
     if (!pixs) {
-      // console.log('sub_uid', sub_uid, 'pixs', pixs);
+      // console.log('agent_uid', agent_uid, 'pixs', pixs);
       return;
     }
-    console.log('sub_uid', sub_uid, 'pix n', pixs.length);
+    // console.log('agent_uid', agent_uid, 'pix n', pixs.length);
     // layer.clear();
-    draw_layer_pix_layer(layer, pixs);
+    draw_received_layer(layer, pixs);
     // draw layer to canvas
   }
   image(layer, my.x0, my.y0);
@@ -42,8 +47,9 @@ function draw_sub_uid(sub_uid) {
   }
 }
 
-function draw_layer_pix_layer(layer, pixs) {
+function draw_received_layer(layer, pixs) {
   if (!pixs) return;
+  // console.log('draw_received_layer pix n', pixs.length);
   let stepPx = floor(my.vheight / pixs.length);
   let innerPx = floor(stepPx * (1 - my.margin));
   more = 1;
@@ -69,7 +75,7 @@ function draw_layer_pix_layer(layer, pixs) {
       // console.log('no colr vxi', vxi, 'vyi', vyi);
       break;
     }
-    // console.log('colr', colr, typeof colr);
+    // console.log('draw_received_layer colr', colr, typeof colr);
     // my.videoColor = colr;
     // colr[3] = 50;
     layer.fill(colr);
