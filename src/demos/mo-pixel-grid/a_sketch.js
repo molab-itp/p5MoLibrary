@@ -75,14 +75,16 @@ function draw_frame() {
     my.videoImg
   ) {
     draw_layer_publish(my.videoImg);
+  } else {
+    image(my.layer, 0, 0);
   }
 
-  if (!my.storeFlag) {
+  if (!my.storeFlag || !my.isPortrait) {
     draw_layer_subscribe();
   }
 
   // draw layer to canvas
-  image(my.layer, 0, 0);
+  // image(my.layer, 0, 0);
 
   // Draw cross-hair
   if (!my.byLine && my.videoColor) {
@@ -90,8 +92,8 @@ function draw_frame() {
     stroke(my.videoColor);
     let x = my.vx + my.innerPx / 2;
     let y = my.vy + my.innerPx / 2;
-    line(x, 0, x, my.height);
-    line(0, y, my.width, y);
+    line(x, 0, x, my.vheight);
+    line(0, y, my.vwidth, y);
   }
 }
 

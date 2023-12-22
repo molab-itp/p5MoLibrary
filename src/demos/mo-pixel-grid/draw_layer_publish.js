@@ -1,6 +1,11 @@
 // incrementally draw grid of pixel rects from given image img
 function draw_layer_publish(img) {
   let layer = my.layer;
+  draw_layer_publish_layer(layer, img);
+  image(layer, 0, 0);
+}
+
+function draw_layer_publish_layer(layer, img) {
   more = 1;
   let colr;
   // let rx = floor(random(0, my.stepPx));
@@ -43,9 +48,9 @@ function draw_layer_publish(img) {
         more = 0;
       }
     }
-    if (!my.byLine) {
-      more = 0;
-    }
+    // if (!my.byLine) {
+    //   more = 0;
+    // }
   }
 }
 

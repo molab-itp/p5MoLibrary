@@ -1,27 +1,62 @@
 // incrementally draw grid of pixel rects from storage
 function draw_layer_subscribe() {
-  let pixs = dstore_receivedPixs();
-  if (!pixs) return;
   let layer = my.layer;
+  if (!my.stored_pixs) {
+    return;
+  }
+  my.x0 = 0;
+  if (my.storeFlag) {
+    my.x0 = my.vwidth;
+  }
+  my.y0 = 0;
+  for (let sub_uid in my.stored_pixs) {
+    let pixs = my.stored_pixs[sub_uid];
+    // console.log('sub_uid', sub_uid, 'pix', pix);
+    if (!pixs) {
+      console.log('sub_uid', sub_uid, 'pixs', pixs);
+      continue;
+    }
+    // console.log('sub_uid', sub_uid, 'pix n', pixs.length);
+    layer.clear();
+    draw_layer_pix_layer(layer, pixs);
+    // draw layer to canvas
+    image(layer, my.x0, my.y0);
+
+    my.x0 += my.vwidth;
+    if (my.x0 > width) {
+      my.x0 = 0;
+      my.y0 += my.vheight;
+    }
+  }
+  // my.stored_pixs[my.sub_uid]
+  // let pixs = dstore_receivedPixs();
+}
+
+function draw_layer_pix_layer(layer, pixs) {
+  if (!pixs) return;
+  let stepPx = floor(my.vheight / pixs.length);
+  let innerPx = floor(stepPx * (1 - my.margin));
   more = 1;
+  let vyi = 0;
+  let vxi = 0;
   while (more) {
-    let pix = pixs[my.vyi];
+    let pix = pixs[vyi];
     if (!pix) {
-      console.log('no my.vyi', my.vyi);
-      my.vyi = 0;
+      console.log('no vyi', vyi);
+      vyi = 0;
       // continue;
       break;
     }
     // console.log('pix', pix);
-    let item = pix.row[my.vxi];
+    let item = pix.row[vxi];
     if (!item) {
-      console.log('no my.vxi', my.vxi, 'my.vyi', my.vyi);
+      // console.log('no vxi', vxi, 'vyi', vyi);
       break;
     }
     // console.log('item', item);
     let colr = item.c;
     if (!colr) {
-      console.log('no colr my.vxi', my.vxi, 'my.vyi', my.vyi);
+      // console.log('no colr vxi', vxi, 'vyi', vyi);
       break;
     }
     // console.log('colr', colr, typeof colr);
@@ -29,24 +64,24 @@ function draw_layer_subscribe() {
     // colr[3] = 50;
     layer.fill(colr);
     layer.noStroke();
-    let x = my.vxi * my.stepPx;
-    let y = my.vyi * my.stepPx;
-    draw_shape(x, y);
-    my.vxi += 1;
-    if (my.vxi >= pix.row.length) {
-      my.vxi = 0;
-      my.vyi += 1;
-      if (my.vyi >= pixs.length) {
+    let x = vxi * stepPx;
+    let y = vyi * stepPx;
+    draw_shape(x, y, innerPx);
+    vxi += 1;
+    if (vxi >= pix.row.length) {
+      vxi = 0;
+      vyi += 1;
+      if (vyi >= pixs.length) {
         more = 0;
-        my.vyi = 0;
+        vyi = 0;
       }
     }
   }
 
-  function draw_shape(x, y) {
+  function draw_shape(x, y, innerPx) {
     // console.log('draw_shape my.sub_index', my.sub_index);
-    let ww = my.innerPx;
-    let hh = my.innerPx;
+    let ww = innerPx;
+    let hh = innerPx;
     let ns = my.sub_index % 4;
     if (ns == 0) {
       layer.rect(x, y, ww, hh);
@@ -73,7 +108,4 @@ function draw_layer_subscribe() {
     }
   }
   // console.log('1 colr', colr, typeof colr);
-
-  // draw layer to canvas
-  // image(layer, 0, 0);
 }

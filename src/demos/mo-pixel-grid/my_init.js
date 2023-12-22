@@ -27,12 +27,16 @@ function init_query() {
     my.perFrame = parseFloat(my.query.perFrame || my.perFrame);
     my.byLine = parseFloat(my.query.byLine || my.byLine);
   }
-  if (my.storeFlag) {
+
+  my.isPortrait = height > width;
+  //   my.canvas = createCanvas(windowWidth, windowHeight - 90);
+
+  if (my.isPortrait) {
     my.width = my.vwidth;
     my.height = my.vheight;
   } else {
-    my.width = my.vwidth;
-    my.height = my.vheight;
+    my.width = windowWidth;
+    my.height = windowHeight - 90;
     // my.width = displayWidth;
     // my.height = displayHeight;
     // my.margin = 0;

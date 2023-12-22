@@ -36,7 +36,7 @@ function dstore_lobby_onValue() {
     // ui_log(my, 'dstore_lobby_onValue', key, 'data=', data);
     data = data || {};
     // ui_log(my, 'dstore_lobby_onValue', key, 'n=', Object.keys(data).length);
-    console.log('dstore_lobby_onValue', key, 'n=', Object.keys(data).length);
+    // console.log('dstore_lobby_onValue', key, 'n=', Object.keys(data).length);
 
     my.stored_lobby = data;
     // {
@@ -75,11 +75,20 @@ function dstore_lobby_update() {
   update(aref, updates);
 }
 
-function dstore_pix_onChild() {
+function dstore_pix_onChild(sub_uid) {
+  //
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   // from "firebase/database";
   let path = `${my.dbStoreRootPath}/${my.room_name}/pix`;
-  // ui_log(my, 'dstore_pix_onChild path=', path);
+
+  // !!@ sub_uid not used yet.
+  // to keep focus on a given device we'd have to update listners
+  // as sub_uid changes.
+  //
+  if (sub_uid) {
+    path += '/' + sub_uid;
+  }
+  ui_log(my, 'dstore_pix_onChild path=', path);
 
   let aref = ref(database, path);
 
