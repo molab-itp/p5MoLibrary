@@ -17,7 +17,7 @@ function my_setup() {
   my.vwidth = 480; // Aspect ratio of video capture
   my.vheight = 640;
   my.storeFlag = 0;
-  my.runFlag = 0;
+  my.runFlag = 1;
   my.faceFlag = 1;
   my.videoFlag = 1;
   my.debugFlag = 0;
@@ -32,6 +32,9 @@ function my_setup() {
   my.sub_index = 0;
   my.room_name = 'room0';
   my.updateRate = 0.2;
+  // my.updateCount = 0;
+  // my.updateCountMax = 5 / my.updateRate;
+  my.nstepScale = 2;
 }
 
 function setup() {
@@ -50,6 +53,10 @@ function setup() {
 
   dstore_init();
 
+  anim_init();
+}
+
+function anim_init() {
   my.animLoop = new Anim({
     target: my, //
     duration: my.updateRate,
@@ -110,6 +117,31 @@ function updateAction() {
   }
 }
 
+function updateStepScaleChange() {
+  // my.updateCount = (my.updateCount + 1) % my.updateCountMax;
+  // if (my.updateCount == 0) {
+  my.nstep *= my.nstepScale;
+  if (my.nstep > 32 || my.nstep < 1) {
+    my.nstepScale = 1 / my.nstepScale;
+    my.nstep *= my.nstepScale;
+    my.nstep *= my.nstepScale;
+  }
+  if (my.nstep > 16) {
+    my.animLoop.updateDuration(0.05);
+  } else if (my.nstep > 8) {
+    my.animLoop.updateDuration(0.1);
+  } else if (my.nstep > 4) {
+    my.animLoop.updateDuration(0.2);
+  } else {
+    my.animLoop.updateDuration(1);
+  }
+
+  init_nstep();
+  // if (my.nstep == 1) {
+  //   my.sub_index = (my.sub_index + 1) % 2;
+  // }
+}
+
 function draw_cross_hair() {
   let layer = my.crossHairLayer;
   image(layer, 0, 0);
@@ -135,6 +167,7 @@ function draw_cross_hair_update() {
     if (my.vy + my.stepPx > my.vheight) {
       my.vy = 0;
       my.vyi = 0;
+      updateStepScaleChange();
     }
   }
   let x = floor(my.vx + my.innerPx * 0.5);

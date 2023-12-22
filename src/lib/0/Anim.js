@@ -16,6 +16,11 @@ export class Anim {
     this.running = 1;
   }
 
+  updateDuration(newDuration) {
+    // convert duration from seconds to milliseconds
+    this.duration = newDuration * 1000;
+  }
+
   restart() {
     if (this.running) {
       this.start();

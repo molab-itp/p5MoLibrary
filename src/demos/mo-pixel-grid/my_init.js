@@ -58,6 +58,11 @@ function init_query() {
 
 function init_nstep() {
   // my.stepPx = floor(my.vwidth / my.nstep);
+  if (my.nstep < 4) {
+    my.margin = 0;
+  } else {
+    my.margin = 0.1;
+  }
   my.stepPx = floor(my.vheight / my.nstep);
   my.innerPx = floor(my.stepPx * (1 - my.margin));
   my.crossWt = my.stepPx - my.innerPx;
