@@ -97,9 +97,8 @@ function draw_frame() {
 }
 
 function updateAction() {
-  // console.log('updateAction my.vx', my.vx, 'my.vy', my.vy, 'my.vwidth', my.vwidth);
   if (my.storeFlag) {
-    draw_publish(my.videoImg);
+    draw_send(my.videoImg);
   }
   if (my.runFlag) {
     draw_cross_hair_update();
@@ -141,27 +140,28 @@ function draw_cross_hair_update() {
   if (!my.videoImg) return;
   let layer = my.crossHairLayer;
   layer.clear();
+  let vx = my.track_xi * my.stepPx;
+  let vy = my.track_yi * my.stepPx;
   if (my.track_xy_updated) {
     my.track_xy_updated = 0;
   } else {
-    my.vx += my.stepPx;
-    my.vxi += 1;
-    if (my.vx + my.stepPx > my.vwidth) {
-      my.vx = 0;
-      my.vxi = 0;
-      my.vy += my.stepPx;
-      my.vyi += 1;
+    my.track_xi += 1;
+    vx = my.track_xi * my.stepPx;
+    if (vx + my.stepPx > my.vwidth) {
+      my.track_xi = 0;
+      my.track_yi += 1;
     }
     // Need to check out side prior if for when nstep changes
     // in middle of top to bottom scan
-    if (my.vy + my.stepPx > my.vheight) {
-      my.vy = 0;
-      my.vyi = 0;
+    if (vy + my.stepPx > my.vheight) {
+      my.track_yi = 0;
       updateStepScaleChange();
     }
   }
-  let x = floor(my.vx + my.innerPx * 0.5);
-  let y = floor(my.vy + my.innerPx * 0.5);
+  vx = my.track_xi * my.stepPx;
+  vy = my.track_yi * my.stepPx;
+  let x = floor(vx + my.innerPx * 0.5);
+  let y = floor(vy + my.innerPx * 0.5);
   let colr = my.videoImg.get(x, y);
   my.videoColor = colr;
   layer.strokeWeight(my.crossWt);
@@ -170,7 +170,7 @@ function draw_cross_hair_update() {
   layer.line(0, y, my.vwidth, y);
   layer.fill(colr);
   layer.noStroke();
-  layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
+  layer.rect(vx, vy, my.innerPx, my.innerPx);
 }
 
 function canvas_mouseReleased() {
@@ -181,10 +181,10 @@ function canvas_mouseReleased() {
 function track_xy() {
   let x = mouseX;
   let y = mouseY;
-  my.vx = x - (x % my.stepPx);
-  my.vy = y - (y % my.stepPx);
-  my.vxi = floor(my.vx / my.stepPx);
-  my.vyi = floor(my.vy / my.stepPx);
+  let vx = x - (x % my.stepPx);
+  let vy = y - (y % my.stepPx);
+  my.track_xi = floor(vx / my.stepPx);
+  my.track_yi = floor(vy / my.stepPx);
   my.track_xy_updated = 1;
   draw_cross_hair_update();
 }

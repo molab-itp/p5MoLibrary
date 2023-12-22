@@ -60,11 +60,11 @@ function dstore_agent_onValue() {
   // }
 
   onChildAdded(aref, (data) => {
-    receivedLobbyKey('dstore_agent_onChild Added', data);
+    receivedAgentKey('dstore_agent_onChild Added', data);
   });
 
   onChildChanged(aref, (data) => {
-    receivedLobbyKey('dstore_agent_onChild Changed', data);
+    receivedAgentKey('dstore_agent_onChild Changed', data);
   });
 
   onChildRemoved(aref, (data) => {
@@ -77,7 +77,7 @@ function dstore_agent_onValue() {
     }
   });
 
-  function receivedLobbyKey(msg, data) {
+  function receivedAgentKey(msg, data) {
     let key = data.key;
     let val = data.val();
     ui_log(my, msg, key, 'n=', Object.keys(val).length);
@@ -119,7 +119,7 @@ function dstore_agent_update() {
   updates['name_s'] = my.name || null;
   let c = my.videoColor;
   if (!c) c = [0, 0, 0];
-  updates['chip'] = { x: my.vxi, y: my.vyi, s: my.stepPx, c: c };
+  updates['chip'] = { x: my.track_xi, y: my.track_yi, s: my.stepPx, c: c };
   update(aref, updates);
 }
 

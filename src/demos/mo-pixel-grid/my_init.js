@@ -15,10 +15,10 @@ function my_init() {
     ui_toggle_scroll(my);
   }
 
-  my.vx = 0;
-  my.vy = 0;
-  my.vxi = 0;
-  my.vyi = 0;
+  my.track_xi = 0;
+  my.track_yi = 0;
+  my.send_xi = 0;
+  my.send_yi = 0;
 
   init_nstep();
 }
@@ -60,10 +60,6 @@ function init_nstep() {
   my.crossWt = my.stepPx - my.innerPx;
   my.byPixel = my.nstep < 16;
   my.byLine = my.nstep >= 16;
-  // my.vx = 0;
-  // my.vy = 0;
-  // my.vxi = 0;
-  // my.vyi = 0;
 }
 
 function update_nstep(n) {
