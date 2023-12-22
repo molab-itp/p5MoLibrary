@@ -18,7 +18,7 @@ function my_setup() {
   my.vheight = 640;
   my.exposeFlag = 0;
   my.storeFlag = 0;
-  my.runFlag = 0;
+  my.runFlag = 1;
   my.faceFlag = 1;
   my.videoFlag = 1;
   my.debugFlag = 0;

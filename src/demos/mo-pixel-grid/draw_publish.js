@@ -1,10 +1,8 @@
 // incrementally draw grid of pixel rects from given image img
 function draw_publish(img) {
-  console.log('draw_publish img', img);
-
+  // console.log('draw_publish img', img);
   if (!img) return;
-  let layer = my.publishLayer;
-  draw_publish_layer(layer, img);
+  draw_publish_layer(my.publishLayer, img);
   // image(layer, 0, 0);
 }
 
@@ -20,7 +18,7 @@ function draw_publish_layer(layer, img) {
     } else {
       colr = [0, 0, 0];
     }
-    console.log('my.vxi', my.vxi, 'my.vyi', my.vyi, 'colr', colr);
+    console.log('draw_publish_layer my.vxi', my.vxi, 'my.vyi', my.vyi, 'colr', colr);
 
     layer.fill(colr);
     layer.noStroke();
@@ -50,7 +48,7 @@ function draw_publish_layer(layer, img) {
 }
 
 function draw_record_rect(ix, iy, c) {
-  console.log('ix', ix, 'iy', iy, 'c', c);
+  console.log('draw_record_rect ix', ix, 'iy', iy, 'c', c);
   if (my.storeFlag) {
     // let op = { r: 1, c, x, y, w, h };
     let row = my.pixRows[iy];
