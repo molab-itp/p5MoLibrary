@@ -1,8 +1,9 @@
 // incrementally draw grid of pixel rects from given image img
 function draw_layer_publish(img) {
-  let layer = my.layer;
+  if (!img) return;
+  let layer = my.publishLayer;
   draw_layer_publish_layer(layer, img);
-  image(layer, 0, 0);
+  // image(layer, 0, 0);
 }
 
 function draw_layer_publish_layer(layer, img) {
@@ -18,19 +19,10 @@ function draw_layer_publish_layer(layer, img) {
     } else {
       colr = [0, 0, 0];
     }
-    my.videoColor = colr;
     layer.fill(colr);
     layer.noStroke();
     layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
-    // draw_record_rect(colr, my.vx, my.vy, my.innerPx, my.innerPx);
     draw_record_rect(colr, my.vxi, my.vyi);
-    if (!my.runFlag) {
-      if (my.track_xy_updated) {
-        draw_record_flush(my.vyi);
-        my.track_xy_updated = 0;
-      }
-      break;
-    }
     my.vx += my.stepPx;
     my.vxi += 1;
     if (my.vx >= my.vwidth) {
@@ -48,9 +40,9 @@ function draw_layer_publish_layer(layer, img) {
         more = 0;
       }
     }
-    // if (!my.byLine) {
-    //   more = 0;
-    // }
+    if (my.byPixel) {
+      more = 0;
+    }
   }
 }
 

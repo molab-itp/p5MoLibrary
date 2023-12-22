@@ -2,11 +2,13 @@ function my_init() {
   //
   init_query();
 
-  my.layer = createGraphics(my.width, my.height);
+  my.layer = createGraphics(my.vwidth, my.vheight);
+  my.crossHairLayer = createGraphics(my.vwidth, my.vheight);
+  my.publishLayer = createGraphics(my.vwidth, my.vheight);
 
   my.pixRows = [];
   // my.videoColor = [0, 0, 0];
-  my.uid = -1;
+  my.uid = 0;
   // my.sub_uid = -1;
   my.sub_name = '?';
   my.nlobby = -1;
@@ -14,6 +16,12 @@ function my_init() {
   if (my.scrollOnStart) {
     ui_toggle_scroll(my);
   }
+
+  my.vx = 0;
+  my.vy = 0;
+  my.vxi = 0;
+  my.vyi = 0;
+
   init_nstep();
 }
 
@@ -24,8 +32,8 @@ function init_query() {
     my.room_name = my.query.room || my.room_name;
     my.storeFlag = parseFloat(my.query.store || my.storeFlag);
     my.nstep = parseFloat(my.query.nstep || my.nstep);
-    my.perFrame = parseFloat(my.query.perFrame || my.perFrame);
-    my.byLine = parseFloat(my.query.byLine || my.byLine);
+    // my.perFrame = parseFloat(my.query.perFrame || my.perFrame);
+    // my.byLine = parseFloat(my.query.byLine || my.byLine);
   }
 
   my.isPortrait = height > width;
@@ -53,13 +61,12 @@ function init_nstep() {
   my.stepPx = floor(my.vheight / my.nstep);
   my.innerPx = floor(my.stepPx * (1 - my.margin));
   my.crossWt = my.stepPx - my.innerPx;
-  if (!my.query || !my.query.byLine) {
-    my.byLine = my.nstep > 16;
-  }
-  my.vx = 0;
-  my.vy = 0;
-  my.vxi = 0;
-  my.vyi = 0;
+  my.byPixel = my.nstep < 16;
+  my.byLine = my.nstep >= 16;
+  // my.vx = 0;
+  // my.vy = 0;
+  // my.vxi = 0;
+  // my.vyi = 0;
 }
 
 function update_nstep(n) {

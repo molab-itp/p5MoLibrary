@@ -1,25 +1,32 @@
 // incrementally draw grid of pixel rects from storage
 function draw_layer_subscribe() {
-  let layer = my.layer;
-  if (!my.stored_pixs) {
+  // console.log('draw_layer_subscribe my.stored_lobby', my.stored_lobby);
+  // let layer = my.layer;
+  if (!my.stored_lobby) {
     return;
   }
-  my.x0 = 0;
-  if (my.storeFlag) {
-    my.x0 = my.vwidth;
-  }
+  my.x0 = my.vwidth;
   my.y0 = 0;
-  for (let sub_uid in my.stored_pixs) {
-    let pixs = my.stored_pixs[sub_uid];
-    // console.log('sub_uid', sub_uid, 'pix', pix);
-    if (!pixs) {
-      console.log('sub_uid', sub_uid, 'pixs', pixs);
-      continue;
+  for (let sub_uid in my.stored_lobby) {
+    // console.log('draw_layer_subscribe ub_uid', sub_uid);
+    let lobbyEnt = my.stored_lobby[sub_uid];
+    // console.log('draw_layer_subscribe lobbyEnt', lobbyEnt);
+    if (!lobbyEnt) continue;
+    // console.log('draw_layer_subscribe lobbyEnt', lobbyEnt);
+    let layer = lobbyEnt.layer;
+    if (!layer) continue;
+    if (my.stored_pixs) {
+      let pixs = my.stored_pixs[sub_uid];
+      // console.log('sub_uid', sub_uid, 'pix', pix);
+      if (!pixs) {
+        // console.log('sub_uid', sub_uid, 'pixs', pixs);
+        continue;
+      }
+      console.log('sub_uid', sub_uid, 'pix n', pixs.length);
+      // layer.clear();
+      draw_layer_pix_layer(layer, pixs);
+      // draw layer to canvas
     }
-    // console.log('sub_uid', sub_uid, 'pix n', pixs.length);
-    layer.clear();
-    draw_layer_pix_layer(layer, pixs);
-    // draw layer to canvas
     image(layer, my.x0, my.y0);
 
     my.x0 += my.vwidth;
@@ -28,8 +35,6 @@ function draw_layer_subscribe() {
       my.y0 += my.vheight;
     }
   }
-  // my.stored_pixs[my.sub_uid]
-  // let pixs = dstore_receivedPixs();
 }
 
 function draw_layer_pix_layer(layer, pixs) {
@@ -66,7 +71,7 @@ function draw_layer_pix_layer(layer, pixs) {
     layer.noStroke();
     let x = vxi * stepPx;
     let y = vyi * stepPx;
-    draw_shape(x, y, innerPx);
+    draw_sub_shape(layer, x, y, innerPx);
     vxi += 1;
     if (vxi >= pix.row.length) {
       vxi = 0;
@@ -78,34 +83,35 @@ function draw_layer_pix_layer(layer, pixs) {
     }
   }
 
-  function draw_shape(x, y, innerPx) {
-    // console.log('draw_shape my.sub_index', my.sub_index);
-    let ww = innerPx;
-    let hh = innerPx;
-    let ns = my.sub_index % 4;
-    if (ns == 0) {
-      layer.rect(x, y, ww, hh);
-    } else if (ns == 1) {
-      layer.ellipse(x + ww / 2, y + hh / 2, ww, hh);
-    } else if (ns == 2) {
-      // triangle(x1, y1, x2, y2, x3, y3)
-      let x1 = x + ww / 2;
-      let y1 = y;
-      let x2 = x;
-      let y2 = y + hh;
-      let x3 = x + ww;
-      let y3 = y2;
-      layer.triangle(x1, y1, x2, y2, x3, y3);
-    } else {
-      // triangle(x1, y1, x2, y2, x3, y3)
-      let x1 = x + ww / 2;
-      let y1 = y + hh;
-      let x2 = x;
-      let y2 = y;
-      let x3 = x + ww;
-      let y3 = y2;
-      layer.triangle(x1, y1, x2, y2, x3, y3);
-    }
-  }
   // console.log('1 colr', colr, typeof colr);
+}
+
+function draw_sub_shape(layer, x, y, innerPx) {
+  // console.log('draw_shape my.sub_index', my.sub_index);
+  let ww = innerPx;
+  let hh = innerPx;
+  let ns = my.sub_index % 4;
+  if (ns == 0) {
+    layer.rect(x, y, ww, hh);
+  } else if (ns == 1) {
+    layer.ellipse(x + ww / 2, y + hh / 2, ww, hh);
+  } else if (ns == 2) {
+    // triangle(x1, y1, x2, y2, x3, y3)
+    let x1 = x + ww / 2;
+    let y1 = y;
+    let x2 = x;
+    let y2 = y + hh;
+    let x3 = x + ww;
+    let y3 = y2;
+    layer.triangle(x1, y1, x2, y2, x3, y3);
+  } else {
+    // triangle(x1, y1, x2, y2, x3, y3)
+    let x1 = x + ww / 2;
+    let y1 = y + hh;
+    let x2 = x;
+    let y2 = y;
+    let x3 = x + ww;
+    let y3 = y2;
+    layer.triangle(x1, y1, x2, y2, x3, y3);
+  }
 }

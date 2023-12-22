@@ -27,44 +27,88 @@ function dstore_init() {
 
 function dstore_lobby_onValue() {
   // Setup listener for changes to firebase db
-  let { database, ref, onValue } = fb_.fbase;
+  // let { database, ref, onValue } = fb_.fbase;
+  let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/${my.room_name}/lobby`;
   let aref = ref(database, path);
-  onValue(aref, function (snap) {
-    let key = snap.key;
-    let data = snap.val();
-    // ui_log(my, 'dstore_lobby_onValue', key, 'data=', data);
-    data = data || {};
-    // ui_log(my, 'dstore_lobby_onValue', key, 'n=', Object.keys(data).length);
-    // console.log('dstore_lobby_onValue', key, 'n=', Object.keys(data).length);
+  // onValue(aref, function (snap) {
+  //   let key = snap.key;
+  //   let data = snap.val();
+  //   // ui_log(my, 'dstore_lobby_onValue', key, 'data=', data);
+  //   data = data || {};
+  //   // ui_log(my, 'dstore_lobby_onValue', key, 'n=', Object.keys(data).length);
+  //   console.log('dstore_lobby_onValue|', key, '|n=', Object.keys(data).length);
 
-    my.stored_lobby = data;
-    // {
-    //   "i3iHgmvAVgWNz2ib1HUOFCOCKrt2": {
-    //       "count_i": 3357,
-    //       "date_i": 1702832662136,
-    //       "date_s": "2023-12-17T17:04:22.136Z",
-    //       "name_s": "pjht2"
-    //   },
-    // ...
-    // }
+  if (!my.stored_lobby) {
+    my.stored_lobby = {};
+  }
 
-    let index = 0;
-    for (let prop in my.stored_lobby) {
-      let ent = my.stored_lobby[prop];
-      ent.index = index;
-      index++;
-    }
-    my.nlobby = index;
+  // {
+  //   "count_i": 259,
+  //   "date_i": 1703217063651,
+  //   "date_s": "2023-12-22T03:51:03.651Z",
+  //   "pt": {
+  //       "c": [
+  //           0,
+  //           0,
+  //           0
+  //       ],
+  //       "s": 80,
+  //       "x": 0,
+  //       "y": 0
+  //   }
+  // }
 
-    ui_update();
+  onChildAdded(aref, (data) => {
+    let key = data.key;
+    let val = data.val();
+    ui_log(my, 'dstore_lobby_onChild Added', key, 'val=', val);
+    receivedKey(key, val);
   });
+
+  onChildChanged(aref, (data) => {
+    let key = data.key;
+    let val = data.val();
+    // ui_log(my, 'dstore_lobby_onChild Changed', key, 'val=', val);
+    receivedKey(key, val);
+  });
+
+  onChildRemoved(aref, (data) => {
+    let key = data.key;
+    let val = data.val();
+    // ui_log(my, 'dstore_pix_onChild Removed', key, 'val=', val);
+    ui_log(my, 'dstore_lobby_onChild Removed', key, 'val=', val);
+    if (my.stored_lobby) {
+      delete my.stored_lobby[key];
+    }
+  });
+
+  function receivedKey(key, val) {
+    let ent = my.stored_lobby[key];
+    if (!ent) {
+      let index = Object.keys(my.stored_lobby).length;
+      let layer = createGraphics(my.vwidth, my.vheight);
+      ent = { index, layer };
+      my.stored_lobby[key] = ent;
+    }
+    ent.serverValues = val;
+    let pt = val.pt;
+    let x = pt.x * pt.s;
+    let y = pt.y * pt.s;
+    let innerPx = floor(pt.s * (1 - my.margin));
+    let layer = ent.layer;
+    layer.fill(pt.c);
+    layer.noStroke();
+    draw_sub_shape(layer, x, y, innerPx);
+  }
 }
 
 function dstore_lobby_update() {
+  // ui_log(my, 'dstore_lobby_update my.uid', my.uid);
+  if (!my.uid) return;
   let { database, ref, update, increment } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/${my.room_name}/lobby/${my.uid}`;
-  ui_log(my, 'dstore_lobby_update', path);
+  // ui_log(my, 'dstore_lobby_update', path);
   let aref = ref(database, path);
   let now = new Date();
   const updates = {};
@@ -72,6 +116,9 @@ function dstore_lobby_update() {
   updates['date_i'] = now.getTime();
   updates['count_i'] = increment(1);
   updates['name_s'] = my.name || null;
+  let c = my.videoColor;
+  if (!c) c = [0, 0, 0];
+  updates['pt'] = { x: my.vxi, y: my.vyi, s: my.stepPx, c: c };
   update(aref, updates);
 }
 
@@ -80,16 +127,7 @@ function dstore_pix_onChild(sub_uid) {
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   // from "firebase/database";
   let path = `${my.dbStoreRootPath}/${my.room_name}/pix`;
-
-  // !!@ sub_uid not used yet.
-  // to keep focus on a given device we'd have to update listners
-  // as sub_uid changes.
-  //
-  if (sub_uid) {
-    path += '/' + sub_uid;
-  }
   ui_log(my, 'dstore_pix_onChild path=', path);
-
   let aref = ref(database, path);
 
   onChildAdded(aref, (data) => {
@@ -188,6 +226,21 @@ function dstore_pix_removeAll() {
     .catch((error) => {
       // The write failed...
       ui_log(my, 'dstore_removeAll error', error);
+    });
+}
+
+function dstore_removePubPixs() {
+  let { database, ref, set } = fb_.fbase;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/pix/${my.uid}`;
+  let aref = ref(database, path);
+  set(aref, {})
+    .then(() => {
+      // Data saved successfully!
+      ui_log(my, 'dstore_removePubPixs OK');
+    })
+    .catch((error) => {
+      // The write failed...
+      ui_log(my, 'dstore_removePubPixs error', error);
     });
 }
 

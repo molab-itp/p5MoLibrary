@@ -46,6 +46,7 @@ function ui_init_control_1() {
 
   my.clearBtn = createButton(' Clear');
   my.clearBtn.mousePressed(function () {
+    dstore_removePubPixs();
     ui_log_clear(my);
   });
 
@@ -77,6 +78,9 @@ function ui_init_control_2() {
   my.runFlagChk = ui_createCheckbox('Run', my.runFlag);
   my.runFlagChk.changed(function () {
     my.runFlag = this.checked();
+    if (my.runFlag) {
+      my.animLoop.start();
+    }
   });
 
   my.storeFlagChk = ui_createCheckbox('Store', my.storeFlag);
@@ -162,12 +166,10 @@ function ui_update_rgb() {
 }
 
 function ui_update_names() {
-  if (my.name) {
-    ui_span('name', ' name:' + my.name);
-  }
-  if (my.uid) {
-    ui_span('uid', ' uid:' + my.uid);
-  }
+  let name = my.name || '?';
+  ui_span('name', ' name:' + name);
+  let uid = my.uid || '?';
+  ui_span('uid', ' uid:' + uid);
 }
 
 function ui_init_debug_pane() {

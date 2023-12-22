@@ -17,7 +17,7 @@ function my_setup() {
   my.vwidth = 480; // Aspect ratio of video capture
   my.vheight = 640;
   my.storeFlag = 0;
-  my.runFlag = 1;
+  my.runFlag = 0;
   my.faceFlag = 1;
   my.videoFlag = 1;
   my.debugFlag = 0;
@@ -27,10 +27,11 @@ function my_setup() {
   my.margin = 0.1;
   my.byPixel = 0;
   // my.subscribe = 0;
-  my.perFrame = 12;
+  my.perFrame = 30;
   my.dbStoreRootPath = 'm0-@r-@w-';
   my.sub_index = 0;
   my.room_name = 'room0';
+  my.updateRate = 0.2;
 }
 
 function setup() {
@@ -48,12 +49,24 @@ function setup() {
   ui_log(my, 'config.projectId', config.projectId);
 
   dstore_init();
+
+  my.animLoop = new Anim({
+    target: my, //
+    duration: my.updateRate,
+    action: updateAction,
+    loop: 1,
+  });
+  if (my.runFlag) {
+    my.animLoop.start();
+  }
 }
 
 function draw() {
   draw_frame();
 
   ui_update();
+
+  my.animLoop.step();
 }
 
 function draw_frame() {
@@ -74,27 +87,67 @@ function draw_frame() {
     my.storeFlag &&
     my.videoImg
   ) {
-    draw_layer_publish(my.videoImg);
+    // draw_layer_publish(my.videoImg);
   } else {
-    image(my.layer, 0, 0);
+    // image(my.layer, 0, 0);
   }
 
   if (!my.storeFlag || !my.isPortrait) {
     draw_layer_subscribe();
   }
 
-  // draw layer to canvas
-  // image(my.layer, 0, 0);
+  draw_cross_hair();
+}
 
-  // Draw cross-hair
-  if (!my.byLine && my.videoColor) {
-    strokeWeight(my.crossWt);
-    stroke(my.videoColor);
-    let x = my.vx + my.innerPx / 2;
-    let y = my.vy + my.innerPx / 2;
-    line(x, 0, x, my.vheight);
-    line(0, y, my.vwidth, y);
+function updateAction() {
+  // console.log('updateAction my.vx', my.vx, 'my.vy', my.vy, 'my.vwidth', my.vwidth);
+  if (my.storeFlag) {
+    draw_layer_publish(my.videoImg);
   }
+  if (my.runFlag) {
+    draw_cross_hair_update();
+    dstore_lobby_update();
+  }
+}
+
+function draw_cross_hair() {
+  let layer = my.crossHairLayer;
+  image(layer, 0, 0);
+}
+
+function draw_cross_hair_update() {
+  if (!my.videoImg) return;
+  let layer = my.crossHairLayer;
+  layer.clear();
+  if (my.track_xy_updated) {
+    my.track_xy_updated = 0;
+  } else {
+    my.vx += my.stepPx;
+    my.vxi += 1;
+    if (my.vx + my.stepPx > my.vwidth) {
+      my.vx = 0;
+      my.vxi = 0;
+      my.vy += my.stepPx;
+      my.vyi += 1;
+    }
+    // Need to check out side prior if for when nstep changes
+    // in middle of top to bottom scan
+    if (my.vy + my.stepPx > my.vheight) {
+      my.vy = 0;
+      my.vyi = 0;
+    }
+  }
+  let x = floor(my.vx + my.innerPx * 0.5);
+  let y = floor(my.vy + my.innerPx * 0.5);
+  let colr = my.videoImg.get(x, y);
+  my.videoColor = colr;
+  layer.strokeWeight(my.crossWt);
+  layer.stroke(colr);
+  layer.line(x, 0, x, my.vheight);
+  layer.line(0, y, my.vwidth, y);
+  layer.fill(colr);
+  layer.noStroke();
+  layer.rect(my.vx, my.vy, my.innerPx, my.innerPx);
 }
 
 function canvas_mouseReleased() {
@@ -110,6 +163,7 @@ function track_xy() {
   my.vxi = floor(my.vx / my.stepPx);
   my.vyi = floor(my.vy / my.stepPx);
   my.track_xy_updated = 1;
+  draw_cross_hair_update();
 }
 
 function mouseDragged() {
