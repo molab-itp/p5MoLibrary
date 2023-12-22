@@ -60,17 +60,11 @@ function dstore_lobby_onValue() {
   // }
 
   onChildAdded(aref, (data) => {
-    let key = data.key;
-    let val = data.val();
-    ui_log(my, 'dstore_lobby_onChild Added', key, 'val=', val);
-    receivedLobbyKey(key, val);
+    receivedLobbyKey('dstore_lobby_onChild Added', key, val);
   });
 
   onChildChanged(aref, (data) => {
-    let key = data.key;
-    let val = data.val();
-    // ui_log(my, 'dstore_lobby_onChild Changed', key, 'val=', val);
-    receivedLobbyKey(key, val);
+    receivedLobbyKey('dstore_lobby_onChild Changed', data);
   });
 
   onChildRemoved(aref, (data) => {
@@ -83,13 +77,17 @@ function dstore_lobby_onValue() {
     }
   });
 
-  function receivedLobbyKey(key, val) {
+  function receivedLobbyKey(msg, data) {
+    let key = data.key;
+    let val = data.val();
+    ui_log(my, msg, key, 'val=', val);
     let ent = my.stored_lobby[key];
     if (!ent) {
       let index = Object.keys(my.stored_lobby).length;
       let layer = createGraphics(my.vwidth, my.vheight);
       ent = { index, layer };
       my.stored_lobby[key] = ent;
+      my.nlobby = index + 1;
     }
     ent.serverValues = val;
     let pt = val.pt;
@@ -125,7 +123,22 @@ function dstore_lobby_update() {
   update(aref, updates);
 }
 
-function dstore_pix_onChild(sub_uid) {
+function dstore_lobby_remove() {
+  let { database, ref, set } = fb_.fbase;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/lobby/${my.uid}`;
+  let aref = ref(database, path);
+  set(aref, {})
+    .then(() => {
+      // Data saved successfully!
+      ui_log(my, 'dstore_lobby_remove OK');
+    })
+    .catch((error) => {
+      // The write failed...
+      ui_log(my, 'dstore_lobby_remove error', error);
+    });
+}
+
+function dstore_pix_onChild() {
   //
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   // from "firebase/database";
@@ -134,22 +147,11 @@ function dstore_pix_onChild(sub_uid) {
   let aref = ref(database, path);
 
   onChildAdded(aref, (data) => {
-    let key = data.key;
-    let val = data.val();
-    // ui_log(my, 'dstore_pix_onChild Added', key, 'val=', val);
-    ui_log(my, 'dstore_pix_onChild Added', key, 'n=', val.length);
-    receivedKey(key, val);
-    // Array of
-    // { "row": [ { "c": [ 75, 74, 79, 255 ], }, ... ]
-    // } ...
+    receivedPixKey('dstore_pix_onChild Added', data);
   });
 
   onChildChanged(aref, (data) => {
-    let key = data.key;
-    let val = data.val();
-    // ui_log(my, 'dstore_pix_onChild Changed', key, 'val=', val);
-    ui_log(my, 'dstore_pix_onChild Changed', key, 'n=', val.length);
-    receivedKey(key, val);
+    receivedPixKey('dstore_pix_onChild Changed', data);
   });
 
   onChildRemoved(aref, (data) => {
@@ -165,10 +167,13 @@ function dstore_pix_onChild(sub_uid) {
     }
   });
 
-  function receivedKey(key, val) {
+  function receivedPixKey(msg, data) {
+    let key = data.key;
+    let val = data.val();
+    ui_log(my, msg, key, 'n=', val.length);
     if (!my.sub_uid) {
       my.sub_uid = key;
-      console.log('receivedKey my.sub_uid', my.sub_uid);
+      console.log('receivedPixKey my.sub_uid', my.sub_uid);
     }
     if (!my.stored_pixs) {
       my.stored_pixs = {};
@@ -177,28 +182,28 @@ function dstore_pix_onChild(sub_uid) {
   }
 }
 
-function dstore_receivedPixs() {
-  if (!my.stored_pixs) {
-    return null;
-  }
-  return my.stored_pixs[my.sub_uid];
-}
+// function dstore_receivedPixs() {
+//   if (!my.stored_pixs) {
+//     return null;
+//   }
+//   return my.stored_pixs[my.sub_uid];
+// }
 
-function dstore_nextPixs() {
-  console.log('dstore_nextPixs my.sub_uid', my.sub_uid);
-  if (!my.stored_pixs) return;
-  let keys = Object.keys(my.stored_pixs);
-  // console.log('dstore_nextPixs keys', keys);
-  let index = keys.indexOf(my.sub_uid);
-  // console.log('dstore_nextPixs index', index);
-  index = (index + 1) % keys.length;
-  my.sub_uid = keys[index];
-  let pixs = my.stored_pixs[my.sub_uid];
-  // console.log('pixs', pixs.length);
-  if (pixs) {
-    update_nstep(pixs.length);
-  }
-}
+// function dstore_nextPixs() {
+//   console.log('dstore_nextPixs my.sub_uid', my.sub_uid);
+//   if (!my.stored_pixs) return;
+//   let keys = Object.keys(my.stored_pixs);
+//   // console.log('dstore_nextPixs keys', keys);
+//   let index = keys.indexOf(my.sub_uid);
+//   // console.log('dstore_nextPixs index', index);
+//   index = (index + 1) % keys.length;
+//   my.sub_uid = keys[index];
+//   let pixs = my.stored_pixs[my.sub_uid];
+//   // console.log('pixs', pixs.length);
+//   if (pixs) {
+//     update_nstep(pixs.length);
+//   }
+// }
 
 function dstore_pix_update(irow, row) {
   let { database, ref, update } = fb_.fbase;
@@ -232,18 +237,18 @@ function dstore_pix_removeAll() {
     });
 }
 
-function dstore_removePubPixs() {
+function dstore_pix_remove() {
   let { database, ref, set } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/${my.room_name}/pix/${my.uid}`;
   let aref = ref(database, path);
   set(aref, {})
     .then(() => {
       // Data saved successfully!
-      ui_log(my, 'dstore_removePubPixs OK');
+      ui_log(my, 'dstore_pix_remove OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log(my, 'dstore_removePubPixs error', error);
+      ui_log(my, 'dstore_pix_remove error', error);
     });
 }
 

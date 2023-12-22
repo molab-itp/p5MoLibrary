@@ -23,7 +23,7 @@ function my_setup() {
   my.debugFlag = 0;
   my.scrollOnStart = 0;
   my.scrollStopSecs = 4;
-  my.nstep = 8;
+  my.nstep = 16;
   my.margin = 0.1;
   my.byPixel = 0;
   // my.subscribe = 0;
@@ -121,13 +121,12 @@ function updateStepScaleChange() {
   // my.updateCount = (my.updateCount + 1) % my.updateCountMax;
   // if (my.updateCount == 0) {
   my.nstep *= my.nstepScale;
-  if (my.nstep > 32 || my.nstep < 1) {
+  if (my.nstep >= 32 || my.nstep < 8) {
     my.nstepScale = 1 / my.nstepScale;
-    my.nstep *= my.nstepScale;
-    my.nstep *= my.nstepScale;
+    my.nstep *= my.nstepScale * 2;
   }
   if (my.nstep > 16) {
-    my.animLoop.updateDuration(0.05);
+    my.animLoop.updateDuration(0.02);
   } else if (my.nstep > 8) {
     my.animLoop.updateDuration(0.1);
   } else if (my.nstep > 4) {
@@ -137,6 +136,7 @@ function updateStepScaleChange() {
   }
 
   init_nstep();
+
   // if (my.nstep == 1) {
   //   my.sub_index = (my.sub_index + 1) % 2;
   // }

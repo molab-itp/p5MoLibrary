@@ -7,9 +7,7 @@ function my_init() {
   my.publishLayer = createGraphics(my.vwidth, my.vheight);
 
   my.pixRows = [];
-  // my.videoColor = [0, 0, 0];
   my.uid = 0;
-  // my.sub_uid = -1;
   my.sub_name = '?';
   my.nlobby = -1;
 
@@ -47,14 +45,8 @@ function init_query() {
     my.height = windowHeight - 90;
     // my.width = displayWidth;
     // my.height = displayHeight;
-    // my.margin = 0;
   }
 }
-
-// my.vx = x - (x % my.stepPx);
-// my.vy = y - (y % my.stepPx);
-// my.vxi = floor(my.vx / my.stepPx);
-// my.vyi = floor(my.vy / my.stepPx);
 
 function init_nstep() {
   // my.stepPx = floor(my.vwidth / my.nstep);

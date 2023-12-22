@@ -1,6 +1,6 @@
 # [p5moLibrary](https://github.com/molab-itp/p5moLibrary)
 
-- p5js Library for multi-user experiences on portable and large screens
+- a p5js Library for multi-human experiences on handheld and large screens
 
   - [demos/Astronomical](demos/Astronomical?v=15)
   - [demos/createImg-board](demos/createImg-board/)

@@ -39,14 +39,15 @@ function ui_init_control_1() {
     debugFlag_changed(this.checked());
   });
 
-  my.nextBtn = createButton(' Next');
-  my.nextBtn.mousePressed(function () {
-    debugNextAction();
-  });
+  // my.nextBtn = createButton(' Next');
+  // my.nextBtn.mousePressed(function () {
+  //   debugNextAction();
+  // });
 
   my.clearBtn = createButton(' Clear');
   my.clearBtn.mousePressed(function () {
-    dstore_removePubPixs();
+    dstore_pix_remove();
+    dstore_lobby_remove();
     ui_log_clear(my);
   });
 
@@ -181,9 +182,9 @@ function ui_init_debug_pane() {
 
 // --
 
-function debugNextAction() {
-  dstore_nextPixs();
-}
+// function debugNextAction() {
+//   dstore_nextPixs();
+// }
 
 function nstep_changed(newValue) {
   my.nstep = parseFloat(newValue);

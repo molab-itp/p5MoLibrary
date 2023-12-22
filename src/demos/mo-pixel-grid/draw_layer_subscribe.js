@@ -5,35 +5,40 @@ function draw_layer_subscribe() {
   if (!my.stored_lobby) {
     return;
   }
-  my.x0 = my.vwidth;
+  my.x0 = 0;
   my.y0 = 0;
+  if (my.uid) draw_sub_uid(my.uid);
   for (let sub_uid in my.stored_lobby) {
     // console.log('draw_layer_subscribe ub_uid', sub_uid);
-    let lobbyEnt = my.stored_lobby[sub_uid];
-    // console.log('draw_layer_subscribe lobbyEnt', lobbyEnt);
-    if (!lobbyEnt) continue;
-    // console.log('draw_layer_subscribe lobbyEnt', lobbyEnt);
-    let layer = lobbyEnt.layer;
-    if (!layer) continue;
-    if (my.stored_pixs) {
-      let pixs = my.stored_pixs[sub_uid];
-      // console.log('sub_uid', sub_uid, 'pix', pix);
-      if (!pixs) {
-        // console.log('sub_uid', sub_uid, 'pixs', pixs);
-        continue;
-      }
-      console.log('sub_uid', sub_uid, 'pix n', pixs.length);
-      // layer.clear();
-      draw_layer_pix_layer(layer, pixs);
-      // draw layer to canvas
-    }
-    image(layer, my.x0, my.y0);
+    if (sub_uid != my.uid) draw_sub_uid(sub_uid);
+  }
+}
 
-    my.x0 += my.vwidth;
-    if (my.x0 > width) {
-      my.x0 = 0;
-      my.y0 += my.vheight;
+function draw_sub_uid(sub_uid) {
+  let lobbyEnt = my.stored_lobby[sub_uid];
+  // console.log('draw_layer_subscribe lobbyEnt', lobbyEnt);
+  if (!lobbyEnt) return;
+  // console.log('draw_layer_subscribe lobbyEnt', lobbyEnt);
+  let layer = lobbyEnt.layer;
+  if (!layer) return;
+  if (my.stored_pixs) {
+    let pixs = my.stored_pixs[sub_uid];
+    // console.log('sub_uid', sub_uid, 'pix', pix);
+    if (!pixs) {
+      // console.log('sub_uid', sub_uid, 'pixs', pixs);
+      return;
     }
+    console.log('sub_uid', sub_uid, 'pix n', pixs.length);
+    // layer.clear();
+    draw_layer_pix_layer(layer, pixs);
+    // draw layer to canvas
+  }
+  image(layer, my.x0, my.y0);
+
+  my.x0 += my.vwidth;
+  if (my.x0 > width) {
+    my.x0 = 0;
+    my.y0 += my.vheight;
   }
 }
 
