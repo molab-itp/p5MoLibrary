@@ -60,7 +60,7 @@ function dstore_lobby_onValue() {
   // }
 
   onChildAdded(aref, (data) => {
-    receivedLobbyKey('dstore_lobby_onChild Added', key, val);
+    receivedLobbyKey('dstore_lobby_onChild Added', data);
   });
 
   onChildChanged(aref, (data) => {
@@ -71,7 +71,7 @@ function dstore_lobby_onValue() {
     let key = data.key;
     let val = data.val();
     // ui_log(my, 'dstore_pix_onChild Removed', key, 'val=', val);
-    ui_log(my, 'dstore_lobby_onChild Removed', key, 'val=', val);
+    ui_log(my, 'dstore_lobby_onChild Removed', key, 'n=', Object.keys(val).length);
     if (my.stored_lobby) {
       delete my.stored_lobby[key];
     }
@@ -80,7 +80,7 @@ function dstore_lobby_onValue() {
   function receivedLobbyKey(msg, data) {
     let key = data.key;
     let val = data.val();
-    ui_log(my, msg, key, 'val=', val);
+    ui_log(my, msg, key, 'n=', Object.keys(val).length);
     let ent = my.stored_lobby[key];
     if (!ent) {
       let index = Object.keys(my.stored_lobby).length;

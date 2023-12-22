@@ -33,7 +33,7 @@ window.ui_log_clear = ui_log_clear;
 function ui_logTagEntry(key) {
   let ent = my.logTags[key];
   if (!ent) {
-    ent = { count: 0, console: 1, log: 1 };
+    ent = { count: 0, console: 0, log: 1 };
     my.logTags[key] = ent;
   }
   return ent;
