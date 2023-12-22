@@ -1,6 +1,6 @@
 //
 // my dbStoreRootPath: 'm0-@r-@w-',
-// dbStoreRootPath/lobby {
+// dbStoreRootPath/agent {
 //   DK1Lcj16BFhDPgdvGGkVP9FS3Xy2: {
 //     count_i: 1,
 //     date_i: 1692655136999,
@@ -16,8 +16,8 @@ function dstore_init() {
       let uid = auth.currentUser.uid;
       ui_log(my, 'dstore_init', uid);
       my.uid = uid;
-      dstore_lobby_update();
-      dstore_lobby_onValue();
+      dstore_agent_update();
+      dstore_agent_onValue();
       dstore_pix_onChild();
     })
     .catch((error) => {
@@ -25,22 +25,22 @@ function dstore_init() {
     });
 }
 
-function dstore_lobby_onValue() {
+function dstore_agent_onValue() {
   // Setup listener for changes to firebase db
   // let { database, ref, onValue } = fb_.fbase;
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.room_name}/lobby`;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/agent`;
   let aref = ref(database, path);
   // onValue(aref, function (snap) {
   //   let key = snap.key;
   //   let data = snap.val();
-  //   // ui_log(my, 'dstore_lobby_onValue', key, 'data=', data);
+  //   // ui_log(my, 'dstore_agent_onValue', key, 'data=', data);
   //   data = data || {};
-  //   // ui_log(my, 'dstore_lobby_onValue', key, 'n=', Object.keys(data).length);
-  //   console.log('dstore_lobby_onValue|', key, '|n=', Object.keys(data).length);
+  //   // ui_log(my, 'dstore_agent_onValue', key, 'n=', Object.keys(data).length);
+  //   console.log('dstore_agent_onValue|', key, '|n=', Object.keys(data).length);
 
-  if (!my.stored_lobby) {
-    my.stored_lobby = {};
+  if (!my.stored_agent) {
+    my.stored_agent = {};
   }
 
   // {
@@ -60,20 +60,20 @@ function dstore_lobby_onValue() {
   // }
 
   onChildAdded(aref, (data) => {
-    receivedLobbyKey('dstore_lobby_onChild Added', data);
+    receivedLobbyKey('dstore_agent_onChild Added', data);
   });
 
   onChildChanged(aref, (data) => {
-    receivedLobbyKey('dstore_lobby_onChild Changed', data);
+    receivedLobbyKey('dstore_agent_onChild Changed', data);
   });
 
   onChildRemoved(aref, (data) => {
     let key = data.key;
     let val = data.val();
     // ui_log(my, 'dstore_pix_onChild Removed', key, 'val=', val);
-    ui_log(my, 'dstore_lobby_onChild Removed', key, 'n=', Object.keys(val).length);
-    if (my.stored_lobby) {
-      delete my.stored_lobby[key];
+    ui_log(my, 'dstore_agent_onChild Removed', key, 'n=', Object.keys(val).length);
+    if (my.stored_agent) {
+      delete my.stored_agent[key];
     }
   });
 
@@ -81,35 +81,35 @@ function dstore_lobby_onValue() {
     let key = data.key;
     let val = data.val();
     ui_log(my, msg, key, 'n=', Object.keys(val).length);
-    let ent = my.stored_lobby[key];
+    let ent = my.stored_agent[key];
     if (!ent) {
-      let index = Object.keys(my.stored_lobby).length;
+      let index = Object.keys(my.stored_agent).length;
       let layer = createGraphics(my.vwidth, my.vheight);
       ent = { index, layer };
-      my.stored_lobby[key] = ent;
-      my.nlobby = index + 1;
+      my.stored_agent[key] = ent;
+      my.nagent = index + 1;
     }
     ent.serverValues = val;
-    let pt = val.pt;
-    if (!pt) {
+    let chip = val.chip;
+    if (!chip) {
       return;
     }
-    let x = pt.x * pt.s;
-    let y = pt.y * pt.s;
-    let innerPx = floor(pt.s * (1 - my.margin));
+    let x = chip.x * chip.s;
+    let y = chip.y * chip.s;
+    let innerPx = floor(chip.s * (1 - my.margin));
     let layer = ent.layer;
-    layer.fill(pt.c);
+    layer.fill(chip.c);
     layer.noStroke();
     draw_sub_shape(layer, x, y, innerPx);
   }
 }
 
-function dstore_lobby_update() {
-  // ui_log(my, 'dstore_lobby_update my.uid', my.uid);
+function dstore_agent_update() {
+  // ui_log(my, 'dstore_agent_update my.uid', my.uid);
   if (!my.uid) return;
   let { database, ref, update, increment } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.room_name}/lobby/${my.uid}`;
-  // ui_log(my, 'dstore_lobby_update', path);
+  let path = `${my.dbStoreRootPath}/${my.room_name}/agent/${my.uid}`;
+  // ui_log(my, 'dstore_agent_update', path);
   let aref = ref(database, path);
   let now = new Date();
   const updates = {};
@@ -119,22 +119,22 @@ function dstore_lobby_update() {
   updates['name_s'] = my.name || null;
   let c = my.videoColor;
   if (!c) c = [0, 0, 0];
-  updates['pt'] = { x: my.vxi, y: my.vyi, s: my.stepPx, c: c };
+  updates['chip'] = { x: my.vxi, y: my.vyi, s: my.stepPx, c: c };
   update(aref, updates);
 }
 
-function dstore_lobby_remove() {
+function dstore_agent_remove() {
   let { database, ref, set } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.room_name}/lobby/${my.uid}`;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/agent/${my.uid}`;
   let aref = ref(database, path);
   set(aref, {})
     .then(() => {
       // Data saved successfully!
-      ui_log(my, 'dstore_lobby_remove OK');
+      ui_log(my, 'dstore_agent_remove OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log(my, 'dstore_lobby_remove error', error);
+      ui_log(my, 'dstore_agent_remove error', error);
     });
 }
 
@@ -218,7 +218,7 @@ function dstore_pix_update(irow, row) {
   updates['row'] = row;
   update(aref, updates);
 
-  dstore_lobby_update();
+  dstore_agent_update();
 }
 
 // db goes to read-only mode when nstep=128

@@ -1,25 +1,25 @@
 // incrementally draw grid of pixel rects from storage
 function draw_layer_subscribe() {
-  // console.log('draw_layer_subscribe my.stored_lobby', my.stored_lobby);
+  // console.log('draw_layer_subscribe my.stored_agent', my.stored_agent);
   // let layer = my.layer;
-  if (!my.stored_lobby) {
+  if (!my.stored_agent) {
     return;
   }
   my.x0 = 0;
   my.y0 = 0;
   if (my.uid) draw_sub_uid(my.uid);
-  for (let sub_uid in my.stored_lobby) {
+  for (let sub_uid in my.stored_agent) {
     // console.log('draw_layer_subscribe ub_uid', sub_uid);
     if (sub_uid != my.uid) draw_sub_uid(sub_uid);
   }
 }
 
 function draw_sub_uid(sub_uid) {
-  let lobbyEnt = my.stored_lobby[sub_uid];
-  // console.log('draw_layer_subscribe lobbyEnt', lobbyEnt);
-  if (!lobbyEnt) return;
-  // console.log('draw_layer_subscribe lobbyEnt', lobbyEnt);
-  let layer = lobbyEnt.layer;
+  let agentEnt = my.stored_agent[sub_uid];
+  // console.log('draw_layer_subscribe agentEnt', agentEnt);
+  if (!agentEnt) return;
+  // console.log('draw_layer_subscribe agentEnt', agentEnt);
+  let layer = agentEnt.layer;
   if (!layer) return;
   if (my.stored_pixs) {
     let pixs = my.stored_pixs[sub_uid];

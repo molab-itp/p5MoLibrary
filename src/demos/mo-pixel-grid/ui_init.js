@@ -36,7 +36,7 @@ function ui_init_control_1() {
     exposeFlag_changed(this.checked());
   });
 
-  ui_span('nlobby', ' nlobby:' + my.nlobby);
+  ui_span('nagent', ' nagent:' + my.nagent);
 
   createElement('br');
 }
@@ -105,7 +105,7 @@ function ui_init_control_3() {
   my.clearBtn = createButton(' Clear');
   my.clearBtn.mousePressed(function () {
     dstore_pix_remove();
-    dstore_lobby_remove();
+    dstore_agent_remove();
     ui_log_clear(my);
   });
 
@@ -131,7 +131,7 @@ function ui_nstep_selection() {
 
 function ui_update() {
   ui_update_begin();
-  ui_span('nlobby', ' nlobby:' + my.nlobby);
+  ui_span('nagent', ' nagent:' + my.nagent);
   // ui_update_sub_info();
   // ui_break(my);
   ui_update_names();
@@ -150,8 +150,8 @@ function ui_update_xy() {
 
 // function ui_update_sub_info() {
 //   let sub_name = '?';
-//   if (my.stored_lobby && my.sub_uid) {
-//     let ent = my.stored_lobby[my.sub_uid];
+//   if (my.stored_agent && my.sub_uid) {
+//     let ent = my.stored_agent[my.sub_uid];
 //     if (ent) {
 //       sub_name = ent.name_s || sub_name;
 //     }
@@ -215,7 +215,7 @@ function nstep_changed(newValue) {
 
 function storeFlag_changed(newValue) {
   my.storeFlag = newValue;
-  // dstore_lobby_update();
+  // dstore_agent_update();
   // video_create(my);
 }
 

@@ -115,7 +115,7 @@ function updateAction() {
   }
   if (my.runFlag) {
     draw_cross_hair_update();
-    dstore_lobby_update();
+    dstore_agent_update();
   }
 }
 

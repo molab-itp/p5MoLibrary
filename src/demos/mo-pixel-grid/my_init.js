@@ -9,7 +9,7 @@ function my_init() {
   my.pixRows = [];
   my.uid = 0;
   my.sub_name = '?';
-  my.nlobby = -1;
+  my.nagent = -1;
 
   if (my.scrollOnStart) {
     ui_toggle_scroll(my);
