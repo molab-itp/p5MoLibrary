@@ -16,6 +16,7 @@ function my_setup() {
   my.version = '?v=15'; // update to verify change on mobile
   my.vwidth = 480; // Aspect ratio of video capture
   my.vheight = 640;
+  my.exposeFlag = 0;
   my.storeFlag = 0;
   my.runFlag = 1;
   my.faceFlag = 1;
@@ -35,6 +36,7 @@ function my_setup() {
   // my.updateCount = 0;
   // my.updateCountMax = 5 / my.updateRate;
   my.nstepScale = 2;
+  my.name = '?';
 }
 
 function setup() {

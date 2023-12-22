@@ -5,9 +5,11 @@ function ui_init() {
   //
   ui_init_control_1();
 
-  ui_init_debug_pane();
-
   ui_init_control_2();
+
+  ui_init_control_3();
+
+  ui_init_debug_pane();
 
   ui_update();
 
@@ -26,46 +28,26 @@ function ui_init_control_1() {
     ui_toggle_scroll(my);
   });
 
-  my.reloadBtn = createButton('Reload');
-  my.reloadBtn.mousePressed(function () {
-    location.reload();
-  });
-
   ui_nstep_selection();
   // ui_perFrame_selection();
 
-  my.debugChk = ui_createCheckbox('Debug', my.debugFlag);
-  my.debugChk.changed(function () {
-    debugFlag_changed(this.checked());
+  my.exposeChk = ui_createCheckbox('Expose', my.exposeFlag);
+  my.exposeChk.changed(function () {
+    exposeFlag_changed(this.checked());
   });
 
-  // my.nextBtn = createButton(' Next');
-  // my.nextBtn.mousePressed(function () {
-  //   debugNextAction();
-  // });
-
-  my.clearBtn = createButton(' Clear');
-  my.clearBtn.mousePressed(function () {
-    dstore_pix_remove();
-    dstore_lobby_remove();
-    ui_log_clear(my);
-  });
+  ui_span('nlobby', ' nlobby:' + my.nlobby);
 
   createElement('br');
 }
 
 function ui_init_control_2() {
-  {
-    my.room_name_input = createInput('' + my.room_name)
-      .id('id_room_name')
-      .input(function () {
-        // console.log('id_refIndex', this.value());
-        my.room_name = this.value();
-      });
-    my.room_name_input.size(60);
-  }
-
   //
+  my.reloadBtn = createButton('Update');
+  my.reloadBtn.mousePressed(function () {
+    location.reload();
+  });
+
   my.faceChk = ui_createCheckbox('Face', my.faceFlag);
   my.faceChk.changed(function () {
     faceFlag_changed(this.checked());
@@ -89,7 +71,43 @@ function ui_init_control_2() {
     storeFlag_changed(this.checked());
   });
 
-  ui_span('nlobby', ' nlobby:' + my.nlobby);
+  createElement('br');
+}
+
+function ui_init_control_3() {
+  //
+  my.room_name_input = createInput('' + my.room_name)
+    .id('id_room_name')
+    .input(function () {
+      // console.log('id_refIndex', this.value());
+      my.room_name = this.value();
+    });
+  my.room_name_input.size(60);
+
+  my.name_input = createInput('' + my.name)
+    .id('id_name_input')
+    .input(function () {
+      // console.log('id_refIndex', this.value());
+      my.name = this.value();
+    });
+  my.name_input.size(60);
+
+  my.debugChk = ui_createCheckbox('Debug', my.debugFlag);
+  my.debugChk.changed(function () {
+    debugFlag_changed(this.checked());
+  });
+
+  // my.nextBtn = createButton(' Next');
+  // my.nextBtn.mousePressed(function () {
+  //   debugNextAction();
+  // });
+
+  my.clearBtn = createButton(' Clear');
+  my.clearBtn.mousePressed(function () {
+    dstore_pix_remove();
+    dstore_lobby_remove();
+    ui_log_clear(my);
+  });
 
   createElement('br');
 }
@@ -114,12 +132,12 @@ function ui_nstep_selection() {
 function ui_update() {
   ui_update_begin();
   ui_span('nlobby', ' nlobby:' + my.nlobby);
-  ui_update_sub_info();
+  // ui_update_sub_info();
+  // ui_break(my);
+  ui_update_names();
   ui_break(my);
   ui_update_xy();
   ui_update_rgb();
-  ui_break(my);
-  ui_update_names();
   my.ui_last = ui_break(my);
 }
 
@@ -130,18 +148,18 @@ function ui_update_xy() {
   my.report = ui_span('report', str);
 }
 
-function ui_update_sub_info() {
-  let sub_name = '?';
-  if (my.stored_lobby && my.sub_uid) {
-    let ent = my.stored_lobby[my.sub_uid];
-    if (ent) {
-      sub_name = ent.name_s || sub_name;
-    }
-  }
-  let sub_uid = my.sub_uid || '?';
-  ui_span('sub_name', ' sub_name:' + sub_name);
-  ui_span('sub_uid', ' uid:' + sub_uid);
-}
+// function ui_update_sub_info() {
+//   let sub_name = '?';
+//   if (my.stored_lobby && my.sub_uid) {
+//     let ent = my.stored_lobby[my.sub_uid];
+//     if (ent) {
+//       sub_name = ent.name_s || sub_name;
+//     }
+//   }
+//   let sub_uid = my.sub_uid || '?';
+//   ui_span('sub_name', ' sub_name:' + sub_name);
+//   ui_span('sub_uid', ' uid:' + sub_uid);
+// }
 
 function ui_update_rgb() {
   let colr = my.videoColor;
@@ -152,6 +170,8 @@ function ui_update_rgb() {
   let b = colr[2];
 
   let spanrgb = ui_span('rgb', ` &nbsp&nbsp&nbsp&nbsp`);
+  if (!spanrgb) return;
+
   let spanr = ui_span('r', ` r: ${r} &nbsp`);
   let spang = ui_span('g', ` g: ${g} &nbsp`);
   let spanb = ui_span('b', ` b: ${b} &nbsp`);
@@ -182,9 +202,9 @@ function ui_init_debug_pane() {
 
 // --
 
-// function debugNextAction() {
-//   dstore_nextPixs();
-// }
+function exposeFlag_changed(newValue) {
+  my.exposeFlag = newValue;
+}
 
 function nstep_changed(newValue) {
   my.nstep = parseFloat(newValue);
