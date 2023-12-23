@@ -97,10 +97,7 @@ function dstore_agent_onValue() {
     let x = chip.x * chip.s;
     let y = chip.y * chip.s;
     let innerPx = floor(chip.s * (1 - my.margin));
-    let layer = ent.layer;
-    layer.fill(chip.c);
-    layer.noStroke();
-    draw_sub_shape(layer, x, y, innerPx);
+    draw_received_shape(ent.layer, x, y, chip.c, innerPx);
   }
 }
 

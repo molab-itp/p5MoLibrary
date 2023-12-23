@@ -34,9 +34,7 @@ function draw_received_uid(agent_uid) {
       return;
     }
     // console.log('agent_uid', agent_uid, 'pix n', pixs.length);
-    // layer.clear();
     draw_received_layer(layer, pixs);
-    // draw layer to canvas
   }
   image(layer, my.x0, my.y0);
 
@@ -60,7 +58,6 @@ function draw_received_layer(layer, pixs) {
     if (!pix) {
       console.log('no vyi', vyi);
       vyi = 0;
-      // continue;
       break;
     }
     // console.log('pix', pix);
@@ -76,13 +73,9 @@ function draw_received_layer(layer, pixs) {
       break;
     }
     // console.log('draw_received_layer colr', colr, typeof colr);
-    // my.videoColor = colr;
-    // colr[3] = 50;
-    layer.fill(colr);
-    layer.noStroke();
     let x = vxi * stepPx;
     let y = vyi * stepPx;
-    draw_sub_shape(layer, x, y, innerPx);
+    draw_received_shape(layer, x, y, colr, innerPx);
     vxi += 1;
     if (vxi >= pix.row.length) {
       vxi = 0;
@@ -93,11 +86,12 @@ function draw_received_layer(layer, pixs) {
       }
     }
   }
-
   // console.log('1 colr', colr, typeof colr);
 }
 
-function draw_sub_shape(layer, x, y, innerPx) {
+function draw_received_shape(layer, x, y, colr, innerPx) {
+  layer.fill(colr);
+  layer.noStroke();
   // console.log('draw_shape my.sub_index', my.sub_index);
   let ww = innerPx;
   let hh = innerPx;
@@ -116,7 +110,6 @@ function draw_sub_shape(layer, x, y, innerPx) {
     let y3 = y2;
     layer.triangle(x1, y1, x2, y2, x3, y3);
   } else {
-    // triangle(x1, y1, x2, y2, x3, y3)
     let x1 = x + ww / 2;
     let y1 = y + hh;
     let x2 = x;
