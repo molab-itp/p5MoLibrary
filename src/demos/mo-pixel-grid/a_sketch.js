@@ -16,9 +16,10 @@ function my_setup() {
   my.version = '?v=16'; // update to verify change on mobile
   my.vwidth = 480; // Aspect ratio of video capture
   my.vheight = 640;
+  my.scrollFlag = 0;
   my.exposeFlag = 0;
   my.storeFlag = 0;
-  my.runFlag = 1;
+  my.scanFlag = 1;
   my.faceFlag = 1;
   my.videoFlag = 1;
   my.debugFlag = 0;
@@ -102,7 +103,7 @@ function updateAction() {
   if (my.storeFlag) {
     draw_send(my.videoImg);
   }
-  if (my.runFlag) {
+  if (my.scanFlag) {
     draw_cross_hair_update();
     dstore_agent_update();
   }
@@ -195,7 +196,8 @@ function mouseDragged() {
   // console.log('mouseDragged');
   track_xy();
   // required to prevent touch drag moving canvas on mobile
-  return false;
+  // return false;
+  return my.scrollFlag;
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/twgS6eWRZ

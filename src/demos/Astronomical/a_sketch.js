@@ -18,7 +18,7 @@ function setup() {
   my.height = height;
   my.paneRatio = 12 / 16;
   my.isPortrait = height > width;
-  my.runFlag = 1;
+  my.scanFlag = 1;
 
   my.refBox = new RefBox(refBox_init);
 
@@ -30,8 +30,8 @@ function setup() {
 
   ui_create();
 
-  my.animLoop = new Anim({ target: my, duration: 15, action: nextRefAction, loop: my.runFlag });
-  if (my.runFlag) {
+  my.animLoop = new Anim({ target: my, duration: 15, action: nextRefAction, loop: my.scanFlag });
+  if (my.scanFlag) {
     my.animLoop.start();
   }
 

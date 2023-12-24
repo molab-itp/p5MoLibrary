@@ -5,16 +5,16 @@ function ui_create() {
   createSpan().id('id_panY');
   createSpan().id('id_zoom');
   createElement('br');
-  my.runFlagChk = createCheckbox('run', my.runFlag).changed(function () {
-    my.runFlag = this.checked();
-    my.animLoop.loop = my.runFlag;
-    my.animLoop.running = my.runFlag;
-    if (my.runFlag) {
+  my.scanFlagChk = createCheckbox('run', my.scanFlag).changed(function () {
+    my.scanFlag = this.checked();
+    my.animLoop.loop = my.scanFlag;
+    my.animLoop.running = my.scanFlag;
+    if (my.scanFlag) {
       my.animLoop.restart();
     }
     focusAction();
   });
-  my.runFlagChk.style('display:inline');
+  my.scanFlagChk.style('display:inline');
 
   createButton('zero').mousePressed(function () {
     my.pane.pan_init();

@@ -47,6 +47,11 @@ function ui_init_row_2() {
     debugFlag_changed(this.checked());
   });
 
+  my.scrollFlagChk = ui_createCheckbox('Scroll', my.scrollFlag);
+  my.scrollFlagChk.changed(function () {
+    scrollFlag_changed(this.checked());
+  });
+
   my.faceChk = ui_createCheckbox('Face', my.faceFlag);
   my.faceChk.changed(function () {
     faceFlag_changed(this.checked());
@@ -57,10 +62,10 @@ function ui_init_row_2() {
     my.videoFlag = this.checked();
   });
 
-  my.runFlagChk = ui_createCheckbox('Run', my.runFlag);
-  my.runFlagChk.changed(function () {
-    my.runFlag = this.checked();
-    if (my.runFlag) {
+  my.scanFlagChk = ui_createCheckbox('Scan', my.scanFlag);
+  my.scanFlagChk.changed(function () {
+    my.scanFlag = this.checked();
+    if (my.scanFlag) {
       my.animLoop.start();
     }
   });
@@ -201,6 +206,10 @@ function ui_init_debug_pane() {
 }
 
 // --
+
+function scrollFlag_changed(newValue) {
+  my.scrollFlag = newValue;
+}
 
 function exposeFlag_changed(newValue) {
   my.exposeFlag = newValue;
