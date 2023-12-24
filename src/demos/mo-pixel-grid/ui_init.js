@@ -14,21 +14,19 @@ function ui_init() {
   ui_update();
 
   // Move the canvas below all the ui elements
-  let belt = document.querySelector('body');
-  let melt = document.querySelector('main');
-  belt.insertBefore(melt, null);
+  let body_elt = document.querySelector('body');
+  let main_elt = document.querySelector('main');
+  body_elt.insertBefore(main_elt, null);
 }
 
 function ui_init_row_1() {
   //
-
   my.versionBtn = createButton('v' + my.version.substring(2));
   my.versionBtn.mousePressed(function () {
     ui_toggle_scroll(my);
   });
 
   ui_nstep_selection();
-  // ui_perFrame_selection();
 
   my.exposeChk = ui_createCheckbox('Expose', my.exposeFlag);
   my.exposeChk.changed(function () {
@@ -59,15 +57,12 @@ function ui_init_row_2() {
 
   my.videoChk = ui_createCheckbox('Video', my.videoFlag);
   my.videoChk.changed(function () {
-    my.videoFlag = this.checked();
+    videoFlag_changed(this.checked());
   });
 
   my.scanFlagChk = ui_createCheckbox('Scan', my.scanFlag);
   my.scanFlagChk.changed(function () {
-    my.scanFlag = this.checked();
-    if (my.scanFlag) {
-      my.animLoop.start();
-    }
+    scanFlag_changed(this.checked());
   });
 
   my.storeFlagChk = ui_createCheckbox('Store', my.storeFlag);
@@ -206,6 +201,17 @@ function ui_init_debug_pane() {
 }
 
 // --
+
+function scanFlag_changed(newValue) {
+  my.scanFlag = newValue;
+  if (my.scanFlag) {
+    my.animLoop.start();
+  }
+}
+
+function videoFlag_changed(newValue) {
+  my.videoFlag = newValue;
+}
 
 function scrollFlag_changed(newValue) {
   my.scrollFlag = newValue;

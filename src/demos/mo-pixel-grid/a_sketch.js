@@ -16,7 +16,7 @@ function my_setup() {
   my.version = '?v=17'; // update to verify change on mobile
   my.vwidth = 480; // Aspect ratio of video capture
   my.vheight = 640;
-  my.scrollFlag = 0;
+  my.scrollFlag = false;
   my.exposeFlag = 0;
   my.storeFlag = 0;
   my.scanFlag = 1;
@@ -28,14 +28,11 @@ function my_setup() {
   my.nstep = 16;
   my.margin = 0.1;
   my.byPixel = 0;
-  // my.subscribe = 0;
   my.perFrame = 30;
   my.dbStoreRootPath = 'm0-@r-@w-';
   my.sub_index = 0;
   my.room_name = 'room0';
   my.updateRate = 0.2;
-  // my.updateCount = 0;
-  // my.updateCountMax = 5 / my.updateRate;
   my.nstepScale = 2;
   my.name = '?';
 }
@@ -52,8 +49,8 @@ function setup() {
 
   video_create(my);
 
-  let config = fb_.init('jht9629');
-  // ui_log('config.projectId', config.projectId);
+  // let config = fb_.init('jht9629');
+  let config = fb_.init('jht1493');
   ui_log(my, 'config.projectId', config.projectId);
 
   dstore_init();
