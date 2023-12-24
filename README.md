@@ -2,4 +2,4 @@
 
 - a p5js Library for multi-human experiences on handheld and large screens
 
-[github.io](https://molab-itp.github.io/p5moLibrary/src?v=16)
+[github.io](https://molab-itp.github.io/p5moLibrary/src?v=17)
