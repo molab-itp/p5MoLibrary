@@ -1,9 +1,8 @@
 //
 // my dbStoreRootPath: 'm0-@r-@w-',
-// dbStoreRootPath/agent {
+// dbStoreRootPath/device {
 //   DK1Lcj16BFhDPgdvGGkVP9FS3Xy2: {
 //     count_i: 1,
-//     date_i: 1692655136999,
 //     date_s: '2023-08-21T21:58:56.999Z',
 //   },
 // },
@@ -16,8 +15,8 @@ function dstore_init() {
       let uid = auth.currentUser.uid;
       ui_log(my, 'dstore_init', uid);
       my.uid = uid;
-      dstore_agent_update();
-      dstore_agent_onValue();
+      dstore_device_update();
+      dstore_device_onValue();
       dstore_pix_onChild();
     })
     .catch((error) => {
@@ -25,29 +24,20 @@ function dstore_init() {
     });
 }
 
-function dstore_agent_onValue() {
+function dstore_device_onValue() {
   // Setup listener for changes to firebase db
   // let { database, ref, onValue } = fb_.fbase;
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.room_name}/agent`;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/device`;
   let aref = ref(database, path);
-  // onValue(aref, function (snap) {
-  //   let key = snap.key;
-  //   let data = snap.val();
-  //   // ui_log(my, 'dstore_agent_onValue', key, 'data=', data);
-  //   data = data || {};
-  //   // ui_log(my, 'dstore_agent_onValue', key, 'n=', Object.keys(data).length);
-  //   console.log('dstore_agent_onValue|', key, '|n=', Object.keys(data).length);
-
-  if (!my.stored_agent) {
-    my.stored_agent = {};
+  if (!my.stored_device) {
+    my.stored_device = {};
   }
 
   // {
   //   "count_i": 259,
-  //   "date_i": 1703217063651,
   //   "date_s": "2023-12-22T03:51:03.651Z",
-  //   "pt": {
+  //   "clip": {
   //       "c": [
   //           0,
   //           0,
@@ -60,34 +50,34 @@ function dstore_agent_onValue() {
   // }
 
   onChildAdded(aref, (data) => {
-    receivedAgentKey('dstore_agent_onChild Added', data);
+    receivedDeviceKey('dstore_device_onChild Added', data);
   });
 
   onChildChanged(aref, (data) => {
-    receivedAgentKey('dstore_agent_onChild Changed', data);
+    receivedDeviceKey('dstore_device_onChild Changed', data);
   });
 
   onChildRemoved(aref, (data) => {
     let key = data.key;
     let val = data.val();
     // ui_log(my, 'dstore_pix_onChild Removed', key, 'val=', val);
-    ui_log(my, 'dstore_agent_onChild Removed', key, 'n=', Object.keys(val).length);
-    if (my.stored_agent) {
-      delete my.stored_agent[key];
+    ui_log(my, 'dstore_device_onChild Removed', key, 'n=', Object.keys(val).length);
+    if (my.stored_device) {
+      delete my.stored_device[key];
     }
   });
 
-  function receivedAgentKey(msg, data) {
+  function receivedDeviceKey(msg, data) {
     let key = data.key;
     let val = data.val();
     ui_log(my, msg, key, 'n=', Object.keys(val).length);
-    let ent = my.stored_agent[key];
+    let ent = my.stored_device[key];
     if (!ent) {
-      let index = Object.keys(my.stored_agent).length;
+      let index = Object.keys(my.stored_device).length;
       let layer = createGraphics(my.vwidth, my.vheight);
       ent = { index, layer };
-      my.stored_agent[key] = ent;
-      my.nagent = index + 1;
+      my.stored_device[key] = ent;
+      my.ndevice = index + 1;
     }
     ent.serverValues = val;
     let chip = val.chip;
@@ -101,17 +91,17 @@ function dstore_agent_onValue() {
   }
 }
 
-function dstore_agent_update() {
-  // ui_log(my, 'dstore_agent_update my.uid', my.uid);
+function dstore_device_update() {
+  // ui_log(my, 'dstore_device_update my.uid', my.uid);
   if (!my.uid) return;
   let { database, ref, update, increment } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.room_name}/agent/${my.uid}`;
-  // ui_log(my, 'dstore_agent_update', path);
+  let path = `${my.dbStoreRootPath}/${my.room_name}/device/${my.uid}`;
+  // ui_log(my, 'dstore_device_update', path);
   let aref = ref(database, path);
   let now = new Date();
   const updates = {};
   updates[`date_s`] = now.toISOString();
-  updates['date_i'] = now.getTime();
+  // updates['date_i'] = now.getTime();
   updates['count_i'] = increment(1);
   updates['name_s'] = my.name || null;
   let c = my.videoColor;
@@ -120,18 +110,18 @@ function dstore_agent_update() {
   update(aref, updates);
 }
 
-function dstore_agent_remove() {
+function dstore_device_remove() {
   let { database, ref, set } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.room_name}/agent/${my.uid}`;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/device/${my.uid}`;
   let aref = ref(database, path);
   set(aref, {})
     .then(() => {
       // Data saved successfully!
-      ui_log(my, 'dstore_agent_remove OK');
+      ui_log(my, 'dstore_device_remove OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log(my, 'dstore_agent_remove error', error);
+      ui_log(my, 'dstore_device_remove error', error);
     });
 }
 
@@ -158,8 +148,8 @@ function dstore_pix_onChild() {
     ui_log(my, 'dstore_pix_onChild Removed', key, 'n=', val.length);
     if (my.stored_pixs) {
       delete my.stored_pixs[key];
-      if (key == my.agent_uid) {
-        my.agent_uid = null;
+      if (key == my.device_uid) {
+        my.device_uid = null;
       }
     }
   });
@@ -168,9 +158,9 @@ function dstore_pix_onChild() {
     let key = data.key;
     let val = data.val();
     ui_log(my, msg, key, 'n=', val.length);
-    if (!my.agent_uid) {
-      my.agent_uid = key;
-      console.log('receivedPixKey my.agent_uid', my.agent_uid);
+    if (!my.device_uid) {
+      my.device_uid = key;
+      console.log('receivedPixKey my.device_uid', my.device_uid);
     }
     if (!my.stored_pixs) {
       my.stored_pixs = {};
@@ -183,19 +173,19 @@ function dstore_pix_onChild() {
 //   if (!my.stored_pixs) {
 //     return null;
 //   }
-//   return my.stored_pixs[my.agent_uid];
+//   return my.stored_pixs[my.device_uid];
 // }
 
 // function dstore_nextPixs() {
-//   console.log('dstore_nextPixs my.agent_uid', my.agent_uid);
+//   console.log('dstore_nextPixs my.device_uid', my.device_uid);
 //   if (!my.stored_pixs) return;
 //   let keys = Object.keys(my.stored_pixs);
 //   // console.log('dstore_nextPixs keys', keys);
-//   let index = keys.indexOf(my.agent_uid);
+//   let index = keys.indexOf(my.device_uid);
 //   // console.log('dstore_nextPixs index', index);
 //   index = (index + 1) % keys.length;
-//   my.agent_uid = keys[index];
-//   let pixs = my.stored_pixs[my.agent_uid];
+//   my.device_uid = keys[index];
+//   let pixs = my.stored_pixs[my.device_uid];
 //   // console.log('pixs', pixs.length);
 //   if (pixs) {
 //     update_nstep(pixs.length);
@@ -215,7 +205,7 @@ function dstore_pix_update(irow, row) {
   updates['row'] = row;
   update(aref, updates);
 
-  dstore_agent_update();
+  dstore_device_update();
 }
 
 // db goes to read-only mode when nstep=128

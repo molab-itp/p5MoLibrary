@@ -33,7 +33,7 @@ function ui_init_row_1() {
     exposeFlag_changed(this.checked());
   });
 
-  ui_span('nagent', ' nagent:' + my.nagent);
+  ui_span('ndevice', ' ndevice:' + my.ndevice);
 
   createElement('br');
 }
@@ -100,7 +100,7 @@ function ui_init_row_3() {
   my.clearBtn = createButton(' Clear');
   my.clearBtn.mousePressed(function () {
     dstore_pix_remove();
-    dstore_agent_remove();
+    dstore_device_remove();
     ui_log_clear(my);
   });
 
@@ -131,7 +131,7 @@ function ui_nstep_selection() {
 
 function ui_update() {
   ui_update_begin();
-  ui_span('nagent', ' nagent:' + my.nagent);
+  ui_span('ndevice', ' ndevice:' + my.ndevice);
   // ui_update_sub_info();
   // ui_break(my);
   ui_update_names();
@@ -150,15 +150,15 @@ function ui_update_xy() {
 
 // function ui_update_sub_info() {
 //   let sub_name = '?';
-//   if (my.stored_agent && my.agent_uid) {
-//     let ent = my.stored_agent[my.agent_uid];
+//   if (my.stored_device && my.device_uid) {
+//     let ent = my.stored_device[my.device_uid];
 //     if (ent) {
 //       sub_name = ent.name_s || sub_name;
 //     }
 //   }
-//   let agent_uid = my.agent_uid || '?';
+//   let device_uid = my.device_uid || '?';
 //   ui_span('sub_name', ' sub_name:' + sub_name);
-//   ui_span('agent_uid', ' uid:' + agent_uid);
+//   ui_span('device_uid', ' uid:' + device_uid);
 // }
 
 function ui_update_rgb() {
@@ -230,7 +230,7 @@ function nstep_changed(newValue) {
 
 function storeFlag_changed(newValue) {
   my.storeFlag = newValue;
-  // dstore_agent_update();
+  // dstore_device_update();
   // video_create(my);
 }
 
@@ -271,6 +271,11 @@ function debugFlag_changed(newValue) {
     div.child(chk);
     div.child(chk2);
     div.child(spanCount);
+
+    div.child(createElement('br'));
+
+    let span2 = createSpan(ent.lines[0]);
+    div.child(span2);
 
     div.child(createElement('br'));
   }

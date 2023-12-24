@@ -48,20 +48,15 @@ export class Pane {
 
   focus_animated() {
     this.anim.initValues({ panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex });
-    // this.focus_pan();
-    // this.focus_focusRect();
     if (this.ptsIndex == 1) {
-      // let nzoomIndex = 4.0;
-      // if (this.zoomIndex < 4.0) nzoomIndex = 1.5;
-      let nzoomIndex = 1.0;
+      let zoomOutIndex = 2.0;
       this.anim.addChange(3, { panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex }); // Pause
       this.focus_pan();
       this.focus_focusRect();
       this.anim.addChange(1, { panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex }); // pan and zoom
       this.anim.addChange(0, { panZoomIndex: this.zoomIndex }); // Pause
-      this.anim.addChange(2, { panZoomIndex: nzoomIndex }); // Zoom out
-      // this.anim.addChange(1, { panZoomIndex: nzoomIndex }); // Zoom out
-      this.anim.addChange(2, { panZoomIndex: nzoomIndex }); // Pause
+      this.anim.addChange(2, { panZoomIndex: zoomOutIndex }); // Zoom out
+      this.anim.addChange(2, { panZoomIndex: zoomOutIndex }); // Pause
       this.anim.addChange(1, { panZoomIndex: this.zoomIndex }); // zoom in
     } else {
       this.focus_pan();

@@ -102,7 +102,7 @@ function updateAction() {
   }
   if (my.scanFlag) {
     draw_cross_hair_update();
-    dstore_agent_update();
+    dstore_device_update();
   }
 }
 

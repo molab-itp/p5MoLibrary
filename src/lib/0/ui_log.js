@@ -1,6 +1,5 @@
 //
 function ui_log(my, ...args) {
-  // if (! my.debugLog) return
   if (!my.logLines) {
     ui_log_init(my);
   }
@@ -11,18 +10,22 @@ function ui_log(my, ...args) {
     console.log(...args);
   }
   if (ent.log) {
-    my.logLines.push(args.join(' '));
-    if (my.logLines.length > my.logLinesMax) {
-      // console.log('before my.logLines[0]', my.logLines[0]);
-      my.logLines.splice(0, 1);
-      // console.log('after my.logLines[0]', my.logLines[0]);
-    }
-    let str = my.logLines.join('<br/>');
+    let str = args.join(' ');
+    ui_log_add(my, my.logLines, str);
+    ui_log_add(my, ent.lines, str);
+    str = my.logLines.join('<br/>');
     my.logDiv.html(str);
     // console.log('str', str);
   }
 }
 window.ui_log = ui_log;
+
+function ui_log_add(my, lines, str) {
+  lines.push(str);
+  if (lines.length > my.logLinesMax) {
+    lines.splice(0, 1);
+  }
+}
 
 function ui_log_clear(my) {
   my.logLines = [];
@@ -33,7 +36,7 @@ window.ui_log_clear = ui_log_clear;
 function ui_logTagEntry(key) {
   let ent = my.logTags[key];
   if (!ent) {
-    ent = { count: 0, console: 0, log: 1 };
+    ent = { count: 0, console: 0, log: 1, lines: [] };
     my.logTags[key] = ent;
   }
   return ent;
@@ -43,7 +46,7 @@ function ui_log_init(my) {
   my.logLines = [];
   my.logDiv = createDiv('');
   if (!my.logLinesMax) {
-    my.logLinesMax = 2;
+    my.logLinesMax = 5;
   }
   if (!my.logTags) {
     my.logTags = {};

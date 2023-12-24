@@ -1,8 +1,8 @@
 // incrementally draw grid of pixel rects from storage
 function draw_received() {
-  // console.log('draw_received my.stored_agent', my.stored_agent);
+  // console.log('draw_received my.stored_device', my.stored_device);
   // let layer = my.layer;
-  if (!my.stored_agent) {
+  if (!my.stored_device) {
     return;
   }
   my.x0 = 0;
@@ -11,29 +11,29 @@ function draw_received() {
   if (my.uid) {
     draw_received_uid(my.uid);
   }
-  for (let agent_uid in my.stored_agent) {
-    // console.log('draw_received ub_uid', agent_uid);
-    if (agent_uid != my.uid) {
-      draw_received_uid(agent_uid);
+  for (let device_uid in my.stored_device) {
+    // console.log('draw_received ub_uid', device_uid);
+    if (device_uid != my.uid) {
+      draw_received_uid(device_uid);
     }
   }
 }
 
-function draw_received_uid(agent_uid) {
-  let agentEnt = my.stored_agent[agent_uid];
-  // console.log('draw_received agentEnt', agentEnt);
-  if (!agentEnt) return;
-  // console.log('draw_received agentEnt', agentEnt);
-  let layer = agentEnt.layer;
+function draw_received_uid(device_uid) {
+  let deviceEnt = my.stored_device[device_uid];
+  // console.log('draw_received deviceEnt', deviceEnt);
+  if (!deviceEnt) return;
+  // console.log('draw_received deviceEnt', deviceEnt);
+  let layer = deviceEnt.layer;
   if (!layer) return;
   if (my.stored_pixs) {
-    let pixs = my.stored_pixs[agent_uid];
-    // console.log('agent_uid', agent_uid, 'pixs', pixs);
+    let pixs = my.stored_pixs[device_uid];
+    // console.log('device_uid', device_uid, 'pixs', pixs);
     if (!pixs) {
-      // console.log('agent_uid', agent_uid, 'pixs', pixs);
+      // console.log('device_uid', device_uid, 'pixs', pixs);
       return;
     }
-    // console.log('agent_uid', agent_uid, 'pix n', pixs.length);
+    // console.log('device_uid', device_uid, 'pix n', pixs.length);
     draw_received_layer(layer, pixs);
   }
   image(layer, my.x0, my.y0);
@@ -92,7 +92,7 @@ function draw_received_layer(layer, pixs) {
 function draw_received_shape(layer, x, y, colr, innerPx) {
   layer.fill(colr);
   layer.noStroke();
-  // console.log('draw_shape my.sub_index', my.sub_index);
+  // console.log('draw_received_shape x', x, y);
   let ww = innerPx;
   let hh = innerPx;
   let ns = my.sub_index % 4;
