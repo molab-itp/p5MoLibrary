@@ -2,13 +2,13 @@
 
 - a p5js Library for multi-human experiences on handheld and large screens
 
-  - [demos/Astronomical](demos/Astronomical?v=18)
+  - [demos/Astronomical](demos/Astronomical?v=19)
   - [demos/createImg-board](demos/createImg-board/)
   - [demos/createImg-slide-show](demos/createImg-slide-show)
-  - [demos/mo-pixel-grid](demos/mo-pixel-grid?v=18)
-  - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v=18)
+  - [demos/mo-pixel-grid](demos/mo-pixel-grid?v=19)
+  - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v=19)
   - [demos/mo-storage](demos/mo-storage)
-  - [demos/PlanetEarth](demos/PlanetEarth?v=18)
+  - [demos/PlanetEarth](demos/PlanetEarth?v=19)
   - [demos/timed-drawing-class](demos/timed-drawing-class)
 
-[github.io](https://molab-itp.github.io/p5moLibrary/src?v=18)
+[github.io](https://molab-itp.github.io/p5moLibrary/src?v=19)
