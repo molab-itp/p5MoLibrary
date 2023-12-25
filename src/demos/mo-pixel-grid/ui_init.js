@@ -31,7 +31,7 @@ function ui_init_row_1() {
     exposeFlag_changed(this.checked());
   });
 
-  ui_span('ndevice', ' ndevice:' + my.ndevice);
+  ui_span(my, 'ndevice', ' ndevice:' + my.ndevice);
 
   createElement('br');
 }
@@ -73,14 +73,14 @@ function ui_init_row_2() {
 
 function ui_init_row_3() {
   //
-  my.room_name_input = createInput('' + my.room_name)
+  my.room_name_input = ui_createInput(my, '' + my.room_name)
     .id('id_room_name')
     .input(function () {
       my.room_name = this.value();
     });
   my.room_name_input.size(60);
 
-  my.name_input = createInput('' + my.name)
+  my.name_input = ui_createInput(my, '' + my.name)
     .id('id_name_input')
     .input(function () {
       my.name = this.value();
@@ -89,12 +89,12 @@ function ui_init_row_3() {
 
   ui_nstep_selection();
 
-  my.updateBtn = createButton('Update');
+  my.updateBtn = ui_createButton(my, 'Update');
   my.updateBtn.mousePressed(function () {
     updateBtn_action();
   });
 
-  my.clearBtn = createButton(' Clear');
+  my.clearBtn = ui_createButton(my, ' Clear');
   my.clearBtn.mousePressed(clearBtn_action);
 
   createElement('br');
@@ -102,7 +102,7 @@ function ui_init_row_3() {
 
 function ui_nstep_selection() {
   createSpan(' nstep:');
-  let aSel = createSelect();
+  let aSel = ui_createSelect(my);
   let opts = [8, 16, 32, 64, 128, 4, 2, 1];
   // !!@ mstep set to 8 but 16 sometimes taking effect in db update
   // let my = { nstep: 8,
@@ -119,7 +119,7 @@ function ui_nstep_selection() {
 
 function ui_update() {
   ui_update_begin();
-  ui_span('ndevice', ' ndevice:' + my.ndevice);
+  ui_span(my, 'ndevice', ' ndevice:' + my.ndevice);
   // ui_update_sub_info();
   // ui_break(my);
   ui_update_names();
@@ -133,7 +133,7 @@ function ui_update_xy() {
   let x = my.track_xi * my.stepPx;
   let y = my.track_yi * my.stepPx;
   let str = ` x: ${x} y: ${y}`;
-  my.report = ui_span('report', str);
+  my.report = ui_span(my, 'report', str);
 }
 
 function ui_update_rgb() {
@@ -144,12 +144,12 @@ function ui_update_rgb() {
   let g = colr[1];
   let b = colr[2];
 
-  let spanrgb = ui_span('rgb', ` &nbsp&nbsp&nbsp&nbsp`);
+  let spanrgb = ui_span(my, 'rgb', ` &nbsp&nbsp&nbsp&nbsp`);
   if (!spanrgb) return;
 
-  let spanr = ui_span('r', ` r: ${r} &nbsp`);
-  let spang = ui_span('g', ` g: ${g} &nbsp`);
-  let spanb = ui_span('b', ` b: ${b} &nbsp`);
+  let spanr = ui_span(my, 'r', ` r: ${r} &nbsp`);
+  let spang = ui_span(my, 'g', ` g: ${g} &nbsp`);
+  let spanb = ui_span(my, 'b', ` b: ${b} &nbsp`);
 
   spanrgb.elt.style.backgroundColor = `rgb(${r},${g},${b})`;
   spanr.elt.style.backgroundColor = `rgb(${r},0,0)`;
@@ -163,9 +163,9 @@ function ui_update_rgb() {
 
 function ui_update_names() {
   // let name = my.name || '?';
-  // ui_span('name', ' name:' + name);
+  // ui_span(my, 'name', ' name:' + name);
   let uid = my.uid || '?';
-  ui_span('uid', ' uid:' + uid);
+  ui_span(my, 'uid', ' uid:' + uid);
 }
 
 // --
