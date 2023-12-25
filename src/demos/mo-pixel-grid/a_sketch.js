@@ -13,7 +13,7 @@
 let my = {};
 
 function my_setup() {
-  my.version = '?v=19'; // update to verify change on mobile
+  my.version = '?v=20'; // update to verify change on mobile
   my.vwidth = 480; // Aspect ratio of video capture
   my.vheight = 640;
   my.scrollFlag = false;
