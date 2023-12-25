@@ -97,6 +97,13 @@ function dstore_device_update() {
   // console.log('dstore_device_update my.uid', my.uid);
   ui_log(my, 'dstore_device_update my.uid', my.uid);
   if (!my.uid) return;
+
+  // if (!my.stored_device) {
+  //   console.log('dstore_device_update NO my.stored_device', my.stored_device);
+  //   // Wait until we receive device into to track activity
+  //   return;
+  // }
+
   let { database, ref, update, increment } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/${my.room_name}/device/${my.uid}`;
   // ui_log(my, 'dstore_device_update', path);
@@ -111,14 +118,22 @@ function dstore_device_update() {
   let c = my.videoColor;
   if (!c) c = [0, 0, 0];
   let chip = { x, y, s, c };
-  let activity = dstore_device_activity(my.uid, date_s);
 
-  update(aref, { date_s, count_i, name_s, chip, activity });
+  let updates = { date_s, count_i, name_s, chip };
+
+  // Acivity is only updated if present in recently received server info
+  let activity = dstore_device_activity(my.uid, date_s);
+  if (activity) {
+    updates.activity = activity;
+  }
+  update(aref, updates);
 }
 
 function dstore_device_activity(key, date_s) {
   // ui_log(my, 'dstore_device_activity key', key, date_s);
   let activity = dstore_initActivity(key, date_s);
+  if (!activity) return null;
+
   let ent = activity[0];
   if (!my.activityLogTimeWindow) {
     my.activityLogTimeWindow = 1000;
@@ -128,7 +143,7 @@ function dstore_device_activity(key, date_s) {
   let pastTime = new Date(ent.date_s).getTime();
   let ndiff = nowTime - pastTime;
   if (ndiff > my.activityLogTimeWindow) {
-    // Create a new entry begining of the activity log
+    // Create a new entry at head of the activity log
     let duration = 0;
     ent = { date_s, duration };
     activity.unshift(ent);
@@ -138,7 +153,7 @@ function dstore_device_activity(key, date_s) {
     ent.duration += ndiff;
   }
   if (activity.length > my.activityLogMax) {
-    // Delete the last entry
+    // Delete the last entry to keep to max number permitted
     activity.splice(-1, 1);
   }
   return activity;
@@ -147,12 +162,17 @@ function dstore_device_activity(key, date_s) {
 function dstore_initActivity(key, date_s) {
   let duration = 0;
   let initAcivity = [{ date_s, duration }];
-  if (!my.stored_device) return initAcivity;
+  // return null
+  // if no server info received yet or no entry for this device
+  if (!my.stored_device) return null;
+
   let ent = my.stored_device[key];
-  if (!ent) return initAcivity;
+  if (!ent) return null;
+
   let activity = ent.serverValues.activity;
   if (!activity) return initAcivity;
   if (activity.length == 0) return initAcivity;
+
   return activity;
 }
 

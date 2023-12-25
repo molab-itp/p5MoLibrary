@@ -8,7 +8,7 @@ function ui_init() {
   ui_init_row_1();
 
   my.container = ui_div(my, 'container', '');
-  // my.container.elt.classList.toggle('hidden');
+  my.container.elt.classList.toggle('hidden');
   my.ui_container = my.container;
 
   ui_init_row_2();
@@ -79,15 +79,15 @@ function ui_init_row_2() {
 
 function ui_init_row_3() {
   //
-  my.room_name_input = ui_createInput(my, '' + my.room_name)
-    .id('id_room_name')
+  my.room_name_input = ui_createInput(my, 'id_room_name_input', '' + my.room_name)
+    // .id('id_room_name')
     .input(function () {
       my.room_name = this.value();
     });
   my.room_name_input.size(60);
 
-  my.name_input = ui_createInput(my, '' + my.name)
-    .id('id_name_input')
+  my.name_input = ui_createInput(my, 'id_name_input', '' + my.name)
+    // .id('id_name_input')
     .input(function () {
       my.name = this.value();
     });
@@ -107,8 +107,8 @@ function ui_init_row_3() {
 }
 
 function ui_nstep_selection() {
-  ui_span(my, 'nstep', ' nstep:');
-  let aSel = ui_createSelect(my);
+  ui_span(my, 'nstep_label', ' nstep:');
+  let aSel = ui_createSelect(my, 'nstep_select');
   let opts = [8, 16, 32, 64, 128, 4, 2, 1];
   // !!@ mstep set to 8 but 16 sometimes taking effect in db update
   // let my = { nstep: 8,
