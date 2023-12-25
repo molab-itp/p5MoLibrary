@@ -1,12 +1,7 @@
 //
 // my dbStoreRootPath: 'm0-@r-@w-',
-// dbStoreRootPath/device {
-//   DK1Lcj16BFhDPgdvGGkVP9FS3Xy2: {
-//     count_i: 1,
-//     date_s: '2023-08-21T21:58:56.999Z',
-//   },
-// },
-// dbStoreRootPath/pix
+// dbStoreRootPath/room0/device {
+// dbStoreRootPath/room0/pix
 //
 function dstore_init() {
   let { signInAnonymously, auth } = fb_;
@@ -24,27 +19,27 @@ function dstore_init() {
     });
 }
 
+// device {
+//   "count_i": 259,
+//   "date_s": "2023-12-22T03:51:03.651Z",
+//   activity: [ ... ]
+//   "chip": {
+//       "c": [
+//           0,
+//           0,
+//           0
+//       ],
+//       "s": 80,
+//       "x": 0,
+//       "y": 0
+//   } // end chip
+// }
+
 function dstore_device_onValue() {
-  // Setup listener for changes to firebase db
-  // let { database, ref, onValue } = fb_.fbase;
+  // Setup listener for changes to firebase db device
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/${my.room_name}/device`;
   let aref = ref(database, path);
-
-  // {
-  //   "count_i": 259,
-  //   "date_s": "2023-12-22T03:51:03.651Z",
-  //   "chip": {
-  //       "c": [
-  //           0,
-  //           0,
-  //           0
-  //       ],
-  //       "s": 80,
-  //       "x": 0,
-  //       "y": 0
-  //   }
-  // }
 
   onChildAdded(aref, (data) => {
     receivedDeviceKey('dstore_device_onChild Added', data);
@@ -56,67 +51,53 @@ function dstore_device_onValue() {
   });
 
   onChildRemoved(aref, (data) => {
-    let key = data.key;
-    let val = data.val();
-    // ui_log(my, 'dstore_pix_onChild Removed', key, 'val=', val);
-    ui_log(my, 'dstore_device_onChild Removed', key, 'n=', Object.keys(val).length);
-    if (my.stored_device) {
-      delete my.stored_device[key];
-      my.ndevice = Object.keys(my.stored_device).length;
-    }
-    if (my.stored_pixs) {
-      delete my.stored_pixs[key];
-    }
+    receivedDeviceKey('dstore_device_onChild Removed', data, { remove: 1 });
   });
 
-  function receivedDeviceKey(msg, data) {
-    if (!my.stored_device) {
-      my.stored_device = {};
-    }
+  function receivedDeviceKey(msg, data, remove) {
     let key = data.key;
     let val = data.val();
     ui_log(my, msg, key, 'n=', Object.keys(val).length);
-    let ent = my.stored_device[key];
-    if (!ent) {
-      // First use of device, add to stored_device
+    if (remove) {
+      if (my.stored_device) {
+        delete my.stored_device[key];
+        my.ndevice = Object.keys(my.stored_device).length;
+      }
+      if (my.stored_pixs) {
+        delete my.stored_pixs[key];
+      }
+      return;
+    }
+    if (!my.stored_device) {
+      my.stored_device = {};
+    }
+    let device = my.stored_device[key];
+    if (!device) {
+      // First use of device, add to my.stored_device
       let index = Object.keys(my.stored_device).length;
       let layer = createGraphics(my.vwidth, my.vheight);
       let crossLayer = createGraphics(my.vwidth, my.vheight);
-      ent = { index, layer, crossLayer };
-      my.stored_device[key] = ent;
+      device = { index, layer, crossLayer };
+      my.stored_device[key] = device;
       my.ndevice = index + 1;
     }
-    ent.serverValues = val;
-    // let chip = val.chip;
-    // if (!chip) {
-    //   return;
-    // }
-    // let x = chip.x * chip.s;
-    // let y = chip.y * chip.s;
-    // let c = chip.c;
-    // let innerPx = floor(chip.s * (1 - my.margin));
-    // draw_received_shape(ent.layer, x, y, c, innerPx);
+    device.serverValues = val;
   }
 }
 
-// inputs
+// inputs:
+// my.uid
 // my.name
 // for chip
-// let x = my.track_xi;
-// let y = my.track_yi;
-// let s = my.stepPx;
-// let c = my.videoColor;
+//   let x = my.track_xi;
+//   let y = my.track_yi;
+//   let s = my.stepPx;
+//   let c = my.videoColor;
 
 function dstore_device_update() {
   // console.log('dstore_device_update my.uid', my.uid);
   ui_log(my, 'dstore_device_update my.uid', my.uid);
   if (!my.uid) return;
-
-  // if (!my.stored_device) {
-  //   console.log('dstore_device_update NO my.stored_device', my.stored_device);
-  //   // Wait until we receive device into to track activity
-  //   return;
-  // }
 
   let { database, ref, update, increment } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/${my.room_name}/device/${my.uid}`;
@@ -136,68 +117,67 @@ function dstore_device_update() {
   let updates = { date_s, count_i, name_s, chip };
 
   // Acivity is only updated if present in recently received server info
-  let activity = dstore_device_activity(my.uid, date_s);
-  if (activity) {
-    updates.activity = activity;
+  let activities = dstore_device_activities(my.uid, date_s);
+  if (activities) {
+    updates.activity = activities;
   }
   update(aref, updates);
 }
 
-function dstore_device_activity(key, date_s) {
-  // ui_log(my, 'dstore_device_activity key', key, date_s);
-  let activity = dstore_initActivity(key, date_s);
-  if (!activity) return null;
+function dstore_device_activities(key, date_s) {
+  // ui_log(my, 'dstore_device_activities key', key, date_s);
+  let activities = dstore_initActivities(key, date_s);
+  if (!activities) return null;
 
-  let ent = activity[0];
+  let activity = activities[0];
   if (!my.activityLogTimeWindow) {
     my.activityLogTimeWindow = 1000;
     my.activityLogMax = 3;
   }
   let nowTime = new Date(date_s).getTime();
-  let pastTime = new Date(ent.date_s).getTime();
+  let pastTime = new Date(activity.date_s).getTime();
   let ndiff = nowTime - pastTime;
   if (ndiff > my.activityLogTimeWindow) {
     // Create a new entry at head of the activity log
     let duration = 0;
-    ent = { date_s, duration };
-    activity.unshift(ent);
+    activity = { date_s, duration };
+    activities.unshift(activity);
   } else {
     // Update the first entry with new duration and date
-    ent.date_s = date_s;
-    ent.duration += ndiff;
+    activity.date_s = date_s;
+    activity.duration += ndiff;
   }
-  if (activity.length > my.activityLogMax) {
+  if (activities.length > my.activityLogMax) {
     // Delete the last entry to keep to max number permitted
-    activity.splice(-1, 1);
+    activities.splice(-1, 1);
   }
-  return activity;
+  return activities;
 }
 
-function dstore_initActivity(key, date_s) {
+function dstore_initActivities(key, date_s) {
   let duration = 0;
-  let initAcivity = [{ date_s, duration }];
-  // return null
-  // if no server info received yet or no entry for this device
+  let initActivities = [{ date_s, duration }];
+  // return null if no server info received yet
+  //  or no entry for this device
   if (!my.stored_device) return null;
 
-  let ent = my.stored_device[key];
-  if (!ent) return null;
+  let device = my.stored_device[key];
+  if (!device) return null;
 
-  let activity = ent.serverValues.activity;
-  if (!activity) return initAcivity;
-  if (activity.length == 0) return initAcivity;
+  let activities = device.serverValues.activity;
+  if (!activities) return initActivities;
+  if (activities.length == 0) return initActivities;
 
-  return activity;
+  return activities;
 }
 
-// ent from stored_device
-function dstore_device_isActive(deviceEnt) {
-  let activity = deviceEnt.serverValues.activity;
-  if (!activity) return 0;
-  if (activity.length <= 0) return 0;
-  let ent = activity[0];
-  let lapse = Date.now() - new Date(ent.date_s);
-  // console.log('dstore_device_isActive deviceEnt.index', deviceEnt.index, 'lapse', lapse, my.activityLogTimeWindow);
+function dstore_device_isActive(device) {
+  let activities = device.serverValues.activity;
+  if (!activities) return 0;
+  if (activities.length <= 0) return 0;
+  let activity = activities[0];
+  let lapse = Date.now() - new Date(activity.date_s);
+  // console.log('dstore_device_isActive device.index', device.index, 'lapse', lapse, my.activityLogTimeWindow);
   return lapse < my.activityLogTimeWindow;
 }
 
@@ -208,7 +188,7 @@ function dstore_device_remove() {
   set(aref, {})
     .then(() => {
       // Data saved successfully!
-      ui_log(my, 'dstore_device_remove OK');
+      // ui_log(my, 'dstore_device_remove OK');
     })
     .catch((error) => {
       // The write failed...
@@ -233,19 +213,17 @@ function dstore_pix_onChild() {
   });
 
   onChildRemoved(aref, (data) => {
-    let key = data.key;
-    let val = data.val();
-    // ui_log(my, 'dstore_pix_onChild Removed', key, 'val=', val);
-    ui_log(my, 'dstore_pix_onChild Removed', key, 'n=', val.length);
-    if (my.stored_pixs) {
-      delete my.stored_pixs[key];
-    }
+    receivedPixKey('dstore_pix_onChild Removed', data, { remove: 1 });
   });
 
-  function receivedPixKey(msg, data) {
+  function receivedPixKey(msg, data, remove) {
     let key = data.key;
     let val = data.val();
     ui_log(my, msg, key, 'n=', val.length);
+    if (remove) {
+      delete my.stored_pixs[key];
+      return;
+    }
     if (!my.stored_pixs) {
       my.stored_pixs = {};
     }
@@ -276,7 +254,7 @@ function dstore_pix_removeAll() {
   set(aref, {})
     .then(() => {
       // Data saved successfully!
-      ui_log(my, 'dstore_removeAll OK');
+      // ui_log(my, 'dstore_removeAll OK');
     })
     .catch((error) => {
       // The write failed...
@@ -291,7 +269,7 @@ function dstore_pix_remove() {
   set(aref, {})
     .then(() => {
       // Data saved successfully!
-      ui_log(my, 'dstore_pix_remove OK');
+      // ui_log(my, 'dstore_pix_remove OK');
     })
     .catch((error) => {
       // The write failed...
