@@ -93,7 +93,7 @@ function draw_frame() {
     draw_received();
   }
 
-  draw_cross_hair();
+  // draw_cross_hair();
 }
 
 function updateAction() {
@@ -138,8 +138,8 @@ function draw_cross_hair() {
 
 function draw_cross_hair_update() {
   if (!my.videoImg) return;
-  let layer = my.crossHairLayer;
-  layer.clear();
+  // let layer = my.crossHairLayer;
+  // layer.clear();
   let vx = my.track_xi * my.stepPx;
   let vy = my.track_yi * my.stepPx;
   if (my.track_xy_updated) {
@@ -150,6 +150,7 @@ function draw_cross_hair_update() {
     if (vx + my.stepPx > my.vwidth) {
       my.track_xi = 0;
       my.track_yi += 1;
+      vy = my.track_yi * my.stepPx;
     }
     // Need to check out side prior if for when nstep changes
     // in middle of top to bottom scan
@@ -164,13 +165,13 @@ function draw_cross_hair_update() {
   let y = floor(vy + my.innerPx * 0.5);
   let colr = my.videoImg.get(x, y);
   my.videoColor = colr;
-  layer.strokeWeight(my.crossWt);
-  layer.stroke(colr);
-  layer.line(x, 0, x, my.vheight);
-  layer.line(0, y, my.vwidth, y);
-  layer.fill(colr);
-  layer.noStroke();
-  layer.rect(vx, vy, my.innerPx, my.innerPx);
+  // layer.strokeWeight(my.crossWt);
+  // layer.stroke(colr);
+  // layer.line(x, 0, x, my.vheight);
+  // layer.line(0, y, my.vwidth, y);
+  // layer.fill(colr);
+  // layer.noStroke();
+  // layer.rect(vx, vy, my.innerPx, my.innerPx);
 }
 
 function canvas_mouseReleased() {

@@ -11,33 +11,16 @@ function draw_received() {
   if (my.uid) {
     draw_received_uid(my.uid);
   }
-  for (let device_uid in my.stored_device) {
-    // console.log('draw_received ub_uid', device_uid);
-    if (device_uid != my.uid) {
-      draw_received_uid(device_uid);
+  for (let uid in my.stored_device) {
+    // console.log('draw_received ub_uid', uid);
+    if (uid != my.uid) {
+      draw_received_uid(uid);
     }
   }
 }
 
-function draw_received_uid(device_uid) {
-  let deviceEnt = my.stored_device[device_uid];
-  // console.log('draw_received deviceEnt', deviceEnt);
-  if (!deviceEnt) return;
-  // console.log('draw_received deviceEnt', deviceEnt);
-  let layer = deviceEnt.layer;
-  if (!layer) return;
-  if (my.stored_pixs) {
-    let pixs = my.stored_pixs[device_uid];
-    // console.log('device_uid', device_uid, 'pixs', pixs);
-    if (!pixs) {
-      // console.log('device_uid', device_uid, 'pixs', pixs);
-      return;
-    }
-    // console.log('device_uid', device_uid, 'pix n', pixs.length);
-    draw_received_layer(layer, pixs);
-  }
-  image(layer, my.x0, my.y0);
-
+function draw_received_uid(uid) {
+  draw_received_image(uid);
   my.x0 += my.vwidth;
   if (my.x0 > width) {
     my.x0 = 0;
@@ -45,7 +28,51 @@ function draw_received_uid(device_uid) {
   }
 }
 
-function draw_received_layer(layer, pixs) {
+function draw_received_image(uid) {
+  let deviceEnt = my.stored_device[uid];
+  // console.log('draw_received deviceEnt', deviceEnt);
+  if (!deviceEnt) return;
+  if (my.stored_pixs) {
+    let pixs = my.stored_pixs[uid];
+    // console.log('uid', uid, 'pixs', pixs);
+    if (pixs) {
+      // console.log('uid', uid, 'pix n', pixs.length);
+      draw_received_deviceEnt(deviceEnt, pixs);
+    }
+  }
+  image(deviceEnt.layer, my.x0, my.y0);
+  draw_received_cross(deviceEnt);
+  image(deviceEnt.crossLayer, my.x0, my.y0);
+}
+
+function draw_received_cross(deviceEnt) {
+  let crossLayer = deviceEnt.crossLayer;
+  crossLayer.clear();
+  if (!dstore_device_isActive(deviceEnt)) {
+    return;
+  }
+  // Draw the chip on layer that persists
+  let chip = deviceEnt.serverValues.chip;
+  let stepPx = chip.s;
+  let x = chip.x * stepPx;
+  let y = chip.y * stepPx;
+  let colr = chip.c;
+  let innerPx = floor(stepPx * (1 - my.margin));
+  draw_received_shape(deviceEnt.layer, x, y, colr, innerPx);
+
+  // Draw the cross hairs on cleared crossLayer
+  x = floor(x + innerPx * 0.5);
+  y = floor(y + innerPx * 0.5);
+
+  let crossWt = chip.s - innerPx;
+  crossLayer.strokeWeight(crossWt);
+  crossLayer.stroke(colr);
+  crossLayer.line(x, 0, x, my.vheight);
+  crossLayer.line(0, y, my.vwidth, y);
+}
+
+function draw_received_deviceEnt(deviceEnt, pixs) {
+  let layer = deviceEnt.layer;
   if (!pixs) return;
   // console.log('draw_received_layer pix n', pixs.length);
   let stepPx = floor(my.vheight / pixs.length);
@@ -61,6 +88,10 @@ function draw_received_layer(layer, pixs) {
       break;
     }
     // console.log('pix', pix);
+    if (pix.s) {
+      stepPx = pixs.x;
+      innerPx = floor(stepPx * (1 - my.margin));
+    }
     let item = pix.row[vxi];
     if (!item) {
       // console.log('no vxi', vxi, 'vyi', vyi);

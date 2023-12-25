@@ -4,7 +4,7 @@ function my_init() {
 
   my.layer = createGraphics(my.vwidth, my.vheight);
   my.crossHairLayer = createGraphics(my.vwidth, my.vheight);
-  my.publishLayer = createGraphics(my.vwidth, my.vheight);
+  // my.publishLayer = createGraphics(my.vwidth, my.vheight);
 
   my.uid = 0;
   my.sub_name = '?';

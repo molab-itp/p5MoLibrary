@@ -62,6 +62,10 @@ function dstore_device_onValue() {
     ui_log(my, 'dstore_device_onChild Removed', key, 'n=', Object.keys(val).length);
     if (my.stored_device) {
       delete my.stored_device[key];
+      my.ndevice = Object.keys(my.stored_device).length;
+    }
+    if (my.stored_pixs) {
+      delete my.stored_pixs[key];
     }
   });
 
@@ -74,24 +78,34 @@ function dstore_device_onValue() {
     ui_log(my, msg, key, 'n=', Object.keys(val).length);
     let ent = my.stored_device[key];
     if (!ent) {
+      // First use of device, add to stored_device
       let index = Object.keys(my.stored_device).length;
       let layer = createGraphics(my.vwidth, my.vheight);
-      ent = { index, layer };
+      let crossLayer = createGraphics(my.vwidth, my.vheight);
+      ent = { index, layer, crossLayer };
       my.stored_device[key] = ent;
       my.ndevice = index + 1;
     }
     ent.serverValues = val;
-    let chip = val.chip;
-    if (!chip) {
-      return;
-    }
-    let x = chip.x * chip.s;
-    let y = chip.y * chip.s;
-    let c = chip.c;
-    let innerPx = floor(chip.s * (1 - my.margin));
-    draw_received_shape(ent.layer, x, y, c, innerPx);
+    // let chip = val.chip;
+    // if (!chip) {
+    //   return;
+    // }
+    // let x = chip.x * chip.s;
+    // let y = chip.y * chip.s;
+    // let c = chip.c;
+    // let innerPx = floor(chip.s * (1 - my.margin));
+    // draw_received_shape(ent.layer, x, y, c, innerPx);
   }
 }
+
+// inputs
+// my.name
+// for chip
+// let x = my.track_xi;
+// let y = my.track_yi;
+// let s = my.stepPx;
+// let c = my.videoColor;
 
 function dstore_device_update() {
   // console.log('dstore_device_update my.uid', my.uid);
@@ -176,6 +190,17 @@ function dstore_initActivity(key, date_s) {
   return activity;
 }
 
+// ent from stored_device
+function dstore_device_isActive(deviceEnt) {
+  let activity = deviceEnt.serverValues.activity;
+  if (!activity) return 0;
+  if (activity.length <= 0) return 0;
+  let ent = activity[0];
+  let lapse = Date.now() - new Date(ent.date_s);
+  // console.log('dstore_device_isActive deviceEnt.index', deviceEnt.index, 'lapse', lapse, my.activityLogTimeWindow);
+  return lapse < my.activityLogTimeWindow;
+}
+
 function dstore_device_remove() {
   let { database, ref, set } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/${my.room_name}/device/${my.uid}`;
@@ -228,7 +253,7 @@ function dstore_pix_onChild() {
   }
 }
 
-function dstore_pix_update(irow, row) {
+function dstore_pix_update(irow, stepPx, row) {
   let { database, ref, update } = fb_.fbase;
   if (!my.uid) {
     ui_log(my, 'dstore_pix_update no uid', my.uid);
@@ -237,7 +262,8 @@ function dstore_pix_update(irow, row) {
   let path = `${my.dbStoreRootPath}/${my.room_name}/pix/${my.uid}/${irow}`;
   let aref = ref(database, path);
   let i = irow;
-  update(aref, { i, row });
+  let s = stepPx;
+  update(aref, { i, s, row });
 
   dstore_device_update();
 }
