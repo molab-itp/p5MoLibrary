@@ -92,8 +92,6 @@ function draw_frame() {
   if (!my.storeFlag || !my.isPortrait) {
     draw_received();
   }
-
-  // draw_cross_hair();
 }
 
 function updateAction() {

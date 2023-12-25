@@ -36,7 +36,7 @@ function draw_received_image(uid) {
     let pixs = my.stored_pixs[uid];
     // console.log('uid', uid, 'pixs', pixs);
     if (pixs) {
-      // console.log('uid', uid, 'pix n', pixs.length);
+      // console.log('draw_received_image uid', uid, 'pix n', pixs.length);
       draw_received_deviceEnt(deviceEnt, pixs);
     }
   }
@@ -74,7 +74,7 @@ function draw_received_cross(deviceEnt) {
 function draw_received_deviceEnt(deviceEnt, pixs) {
   let layer = deviceEnt.layer;
   if (!pixs) return;
-  // console.log('draw_received_layer pix n', pixs.length);
+  // console.log('draw_received_deviceEnt pix n', pixs.length);
   let stepPx = floor(my.vheight / pixs.length);
   let innerPx = floor(stepPx * (1 - my.margin));
   more = 1;
@@ -89,23 +89,25 @@ function draw_received_deviceEnt(deviceEnt, pixs) {
     }
     // console.log('pix', pix);
     if (pix.s) {
-      stepPx = pixs.x;
+      stepPx = pix.s;
       innerPx = floor(stepPx * (1 - my.margin));
     }
     let item = pix.row[vxi];
     if (!item) {
-      // console.log('no vxi', vxi, 'vyi', vyi);
+      console.log('no vxi', vxi, 'vyi', vyi);
       break;
     }
     // console.log('item', item);
     let colr = item.c;
     if (!colr) {
-      // console.log('no colr vxi', vxi, 'vyi', vyi);
+      console.log('no colr vxi', vxi, 'vyi', vyi);
       break;
     }
-    // console.log('draw_received_layer colr', colr, typeof colr);
+    // console.log('draw_received_deviceEnt colr', colr, typeof colr);
     let x = vxi * stepPx;
     let y = vyi * stepPx;
+    // console.log('draw_received_deviceEnt x', x, y);
+
     draw_received_shape(layer, x, y, colr, innerPx);
     vxi += 1;
     if (vxi >= pix.row.length) {
