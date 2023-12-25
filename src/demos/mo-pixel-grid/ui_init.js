@@ -3,7 +3,13 @@
 //
 function ui_init() {
   //
+  ui_begin();
+
   ui_init_row_1();
+
+  my.container = ui_div(my, 'container', '');
+  // my.container.elt.classList.toggle('hidden');
+  my.ui_container = my.container;
 
   ui_init_row_2();
 
@@ -21,54 +27,54 @@ function ui_init() {
 
 function ui_init_row_1() {
   //
-  my.versionBtn = createButton('v' + my.version.substring(2));
+  my.versionBtn = ui_createButton(my, 'v' + my.version.substring(2));
   my.versionBtn.mousePressed(function () {
     ui_toggle_scroll(my);
   });
 
-  my.exposeChk = ui_createCheckbox('Expose', my.exposeFlag);
+  my.exposeChk = ui_createCheckbox(my, 'Expose', my.exposeFlag);
   my.exposeChk.changed(function () {
     exposeFlag_changed(this.checked());
   });
 
   ui_span(my, 'ndevice', ' ndevice:' + my.ndevice);
 
-  createElement('br');
+  ui_break(my);
 }
 
 function ui_init_row_2() {
   //
-  my.debugChk = ui_createCheckbox('Debug', my.debugFlag);
+  my.debugChk = ui_createCheckbox(my, 'Debug', my.debugFlag);
   my.debugChk.changed(function () {
     ui_debugFlag_changed(my, this.checked());
   });
 
-  my.scrollFlagChk = ui_createCheckbox('Scroll', my.scrollFlag);
+  my.scrollFlagChk = ui_createCheckbox(my, 'Scroll', my.scrollFlag);
   my.scrollFlagChk.changed(function () {
     scrollFlag_changed(this.checked());
   });
 
-  my.faceChk = ui_createCheckbox('Face', my.faceFlag);
+  my.faceChk = ui_createCheckbox(my, 'Face', my.faceFlag);
   my.faceChk.changed(function () {
     faceFlag_changed(this.checked());
   });
 
-  my.videoChk = ui_createCheckbox('Video', my.videoFlag);
+  my.videoChk = ui_createCheckbox(my, 'Video', my.videoFlag);
   my.videoChk.changed(function () {
     videoFlag_changed(this.checked());
   });
 
-  my.scanFlagChk = ui_createCheckbox('Scan', my.scanFlag);
+  my.scanFlagChk = ui_createCheckbox(my, 'Scan', my.scanFlag);
   my.scanFlagChk.changed(function () {
     scanFlag_changed(this.checked());
   });
 
-  my.storeFlagChk = ui_createCheckbox('Store', my.storeFlag);
+  my.storeFlagChk = ui_createCheckbox(my, 'Store', my.storeFlag);
   my.storeFlagChk.changed(function () {
     storeFlag_changed(this.checked());
   });
 
-  createElement('br');
+  ui_break(my);
 }
 
 function ui_init_row_3() {
@@ -97,11 +103,11 @@ function ui_init_row_3() {
   my.clearBtn = ui_createButton(my, ' Clear');
   my.clearBtn.mousePressed(clearBtn_action);
 
-  createElement('br');
+  ui_break(my);
 }
 
 function ui_nstep_selection() {
-  createSpan(' nstep:');
+  ui_span(my, 'nstep', ' nstep:');
   let aSel = ui_createSelect(my);
   let opts = [8, 16, 32, 64, 128, 4, 2, 1];
   // !!@ mstep set to 8 but 16 sometimes taking effect in db update
@@ -120,8 +126,6 @@ function ui_nstep_selection() {
 function ui_update() {
   ui_update_begin();
   ui_span(my, 'ndevice', ' ndevice:' + my.ndevice);
-  // ui_update_sub_info();
-  // ui_break(my);
   ui_update_names();
   ui_break(my);
   ui_update_xy();
@@ -196,6 +200,7 @@ function scrollFlag_changed(newValue) {
 
 function exposeFlag_changed(newValue) {
   my.exposeFlag = newValue;
+  my.container.elt.classList.toggle('hidden');
 }
 
 function nstep_changed(newValue) {

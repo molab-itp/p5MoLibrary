@@ -84,19 +84,3 @@ function ui_check_scroll(my) {
 window.ui_check_scroll = ui_check_scroll;
 
 //
-
-function ui_update_begin() {
-  my.ui_id_index = 0;
-}
-window.ui_update_begin = ui_update_begin;
-
-function ui_break(my) {
-  my.ui_id_index++;
-  let id = 'break' + my.ui_id_index;
-  let elm = select('#' + id);
-  if (!elm) {
-    elm = createElement('br').id(id);
-  }
-  return elm;
-}
-window.ui_break = ui_break;

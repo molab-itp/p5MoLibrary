@@ -19,7 +19,7 @@ function ui_debugFlag_changed(my, newValue) {
     // console.log('my.logTags key=', key, 'ent', ent);
     let span = createSpan(key);
 
-    let chk = ui_createCheckbox('console', ent.console);
+    let chk = createCheckbox('console', ent.console);
     // chk.style('display:inline');
     chk.changed(function () {
       ent.console = this.checked();
