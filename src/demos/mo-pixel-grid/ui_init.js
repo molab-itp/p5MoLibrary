@@ -9,7 +9,7 @@ function ui_init() {
 
   ui_init_row_3();
 
-  ui_init_debug_pane();
+  ui_init_debug_pane(my);
 
   ui_update();
 
@@ -26,8 +26,6 @@ function ui_init_row_1() {
     ui_toggle_scroll(my);
   });
 
-  ui_nstep_selection();
-
   my.exposeChk = ui_createCheckbox('Expose', my.exposeFlag);
   my.exposeChk.changed(function () {
     exposeFlag_changed(this.checked());
@@ -42,7 +40,7 @@ function ui_init_row_2() {
   //
   my.debugChk = ui_createCheckbox('Debug', my.debugFlag);
   my.debugChk.changed(function () {
-    debugFlag_changed(this.checked());
+    ui_debugFlag_changed(my, this.checked());
   });
 
   my.scrollFlagChk = ui_createCheckbox('Scroll', my.scrollFlag);
@@ -75,11 +73,9 @@ function ui_init_row_2() {
 
 function ui_init_row_3() {
   //
-
   my.room_name_input = createInput('' + my.room_name)
     .id('id_room_name')
     .input(function () {
-      // console.log('id_refIndex', this.value());
       my.room_name = this.value();
     });
   my.room_name_input.size(60);
@@ -87,27 +83,19 @@ function ui_init_row_3() {
   my.name_input = createInput('' + my.name)
     .id('id_name_input')
     .input(function () {
-      // console.log('id_refIndex', this.value());
       my.name = this.value();
     });
   my.name_input.size(60);
 
-  // my.nextBtn = createButton(' Next');
-  // my.nextBtn.mousePressed(function () {
-  //   debugNextAction();
-  // });
+  ui_nstep_selection();
+
+  my.updateBtn = createButton('Update');
+  my.updateBtn.mousePressed(function () {
+    updateBtn_action();
+  });
 
   my.clearBtn = createButton(' Clear');
-  my.clearBtn.mousePressed(function () {
-    dstore_pix_remove();
-    dstore_device_remove();
-    ui_log_clear(my);
-  });
-
-  my.reloadBtn = createButton('Update');
-  my.reloadBtn.mousePressed(function () {
-    location.reload();
-  });
+  my.clearBtn.mousePressed(clearBtn_action);
 
   createElement('br');
 }
@@ -148,19 +136,6 @@ function ui_update_xy() {
   my.report = ui_span('report', str);
 }
 
-// function ui_update_sub_info() {
-//   let sub_name = '?';
-//   if (my.stored_device && my.device_uid) {
-//     let ent = my.stored_device[my.device_uid];
-//     if (ent) {
-//       sub_name = ent.name_s || sub_name;
-//     }
-//   }
-//   let device_uid = my.device_uid || '?';
-//   ui_span('sub_name', ' sub_name:' + sub_name);
-//   ui_span('device_uid', ' uid:' + device_uid);
-// }
-
 function ui_update_rgb() {
   let colr = my.videoColor;
   if (!colr) colr = [0, 0, 0];
@@ -187,20 +162,22 @@ function ui_update_rgb() {
 }
 
 function ui_update_names() {
-  let name = my.name || '?';
-  ui_span('name', ' name:' + name);
+  // let name = my.name || '?';
+  // ui_span('name', ' name:' + name);
   let uid = my.uid || '?';
   ui_span('uid', ' uid:' + uid);
 }
 
-function ui_init_debug_pane() {
-  my.debug_div = ui_div('debug', 'Welcome to the debug pane');
-  if (!my.debugFlag) {
-    my.debug_div.elt.classList.toggle('hidden');
-  }
+// --
+
+function updateBtn_action() {
+  location.reload();
 }
 
-// --
+function clearBtn_action() {
+  dstore_clear();
+  ui_log_clear(my);
+}
 
 function scanFlag_changed(newValue) {
   my.scanFlag = newValue;
@@ -239,45 +216,4 @@ function faceFlag_changed(newValue) {
   my.facingMode = my.faceFlag ? 'user' : 'environment';
   console.log('my.facingMode', my.facingMode);
   video_create(my);
-}
-
-function debugFlag_changed(newValue) {
-  my.debugFlag = newValue;
-  my.debug_div.elt.classList.toggle('hidden');
-  // console.log('my.logTags', my.logTags);
-  if (!my.logTags) return;
-  let div = ui_div_empty('debug');
-  for (let key in my.logTags) {
-    let ent = my.logTags[key];
-    // console.log('my.logTags key=', key, 'ent', ent);
-    let span = createSpan(key);
-
-    let chk = ui_createCheckbox('console', ent.console);
-    // chk.style('display:inline');
-    chk.changed(function () {
-      ent.console = this.checked();
-    });
-
-    let chk2 = ui_createCheckbox('log', ent.log);
-    // chk2.style('display:inline');
-    chk2.changed(function () {
-      ent.log = this.checked();
-    });
-
-    let spanCount = createSpan(' count=' + ent.count);
-
-    div.child(createElement('br'));
-    div.child(span);
-    div.child(chk);
-    div.child(chk2);
-    div.child(spanCount);
-
-    div.child(createElement('br'));
-
-    let span2 = createSpan(ent.lines[0]);
-    div.child(span2);
-
-    div.child(createElement('br'));
-  }
-  div.child(createElement('br'));
 }

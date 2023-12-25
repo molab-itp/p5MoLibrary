@@ -6,7 +6,6 @@ function my_init() {
   my.crossHairLayer = createGraphics(my.vwidth, my.vheight);
   my.publishLayer = createGraphics(my.vwidth, my.vheight);
 
-  my.pixRows = [];
   my.uid = 0;
   my.sub_name = '?';
   my.ndevice = -1;
@@ -35,7 +34,6 @@ function init_query() {
   }
 
   my.isPortrait = height > width;
-  //   my.canvas = createCanvas(windowWidth, windowHeight - 90);
 
   if (my.isPortrait) {
     my.width = my.vwidth;

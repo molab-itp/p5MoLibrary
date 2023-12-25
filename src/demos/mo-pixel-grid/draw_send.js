@@ -49,6 +49,9 @@ function draw_record_rect(ix, iy, c) {
   // console.log('draw_record_rect ix', ix, 'iy', iy, 'c', c);
   if (my.storeFlag) {
     // let op = { r: 1, c, x, y, w, h };
+    if (!my.pixRows) {
+      my.pixRows = [];
+    }
     let row = my.pixRows[iy];
     if (!row) {
       row = [];
