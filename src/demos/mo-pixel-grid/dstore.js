@@ -162,7 +162,7 @@ function updateTimeGap(activities) {
     let nowTime = new Date(nowEnt.date_s).getTime();
     let pastEnt = activities[index];
     let pastTime = new Date(pastEnt.date_s).getTime();
-    nowEnt.gap = nowTime - pastTime;
+    nowEnt.gap = nowTime - pastTime - nowEnt.time;
     nowEnt.gap_s = convertTimeToSeconds(nowEnt.gap);
   }
 }
