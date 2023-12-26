@@ -8,12 +8,12 @@
 // console.log('fb_fstore');
 
 import {
-  getStorage,
-  ref,
   getDownloadURL,
-  uploadBytes,
+  getStorage,
   list,
   listAll,
+  ref,
+  uploadBytes,
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js';
 
 function init() {
@@ -23,11 +23,11 @@ function init() {
 
 export const fstore = {
   init,
-  ref,
   getDownloadURL,
-  uploadBytes,
   list,
   listAll,
+  ref,
+  uploadBytes,
 };
 
 //

@@ -15,7 +15,7 @@ function ui_init() {
 
   ui_init_row_3();
 
-  ui_init_debug_pane(my);
+  ui_init_logSummary_div(my);
 
   ui_update();
 
@@ -32,8 +32,8 @@ function ui_init_row_1() {
     ui_toggle_scroll(my);
   });
 
-  my.exposeChk = ui_createCheckbox(my, 'Expose', my.exposeFlag);
-  my.exposeChk.changed(function () {
+  my.settingsChk = ui_createCheckbox(my, 'Settings', my.settingsFlag);
+  my.settingsChk.changed(function () {
     exposeFlag_changed(this.checked());
   });
 
@@ -44,9 +44,14 @@ function ui_init_row_1() {
 
 function ui_init_row_2() {
   //
-  my.debugChk = ui_createCheckbox(my, 'Debug', my.debugFlag);
-  my.debugChk.changed(function () {
-    ui_debugFlag_changed(my, this.checked());
+  my.logSummaryChk = ui_createCheckbox(my, 'LogSummary', my.logSummaryFlag);
+  my.logSummaryChk.changed(function () {
+    ui_logSummaryFlag_changed(my, this.checked());
+  });
+
+  my.logDetailChk = ui_createCheckbox(my, 'LogDetail', my.logDetailFlag);
+  my.logDetailChk.changed(function () {
+    ui_logDetailFlag_changed(my, this.checked());
   });
 
   my.scrollFlagChk = ui_createCheckbox(my, 'Scroll', my.scrollFlag);
@@ -100,8 +105,8 @@ function ui_init_row_3() {
     updateBtn_action();
   });
 
-  my.clearBtn = ui_createButton(my, ' Clear');
-  my.clearBtn.mousePressed(clearBtn_action);
+  my.removeBtn = ui_createButton(my, ' Remove');
+  my.removeBtn.mousePressed(removeBtn_action);
 
   ui_break(my);
 }
@@ -178,8 +183,8 @@ function updateBtn_action() {
   location.reload();
 }
 
-function clearBtn_action() {
-  dstore_clear();
+function removeBtn_action() {
+  dstore_remove();
   ui_log_clear(my);
 }
 
@@ -199,7 +204,7 @@ function scrollFlag_changed(newValue) {
 }
 
 function exposeFlag_changed(newValue) {
-  my.exposeFlag = newValue;
+  my.settingsFlag = newValue;
   my.container.elt.classList.toggle('hidden');
 }
 

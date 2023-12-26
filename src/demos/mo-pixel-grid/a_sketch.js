@@ -17,12 +17,13 @@ function my_setup() {
   my.vwidth = 480; // Aspect ratio of video capture
   my.vheight = 640;
   my.scrollFlag = false;
-  my.exposeFlag = 0;
+  my.settingsFlag = 0;
   my.storeFlag = 0;
   my.scanFlag = 1;
   my.faceFlag = 1;
   my.videoFlag = 1;
-  my.debugFlag = 0;
+  my.logSummaryFlag = 0;
+  my.logDetailFlag = 0;
   my.scrollOnStart = 0;
   my.scrollStopSecs = 4;
   my.nstep = 16;

@@ -1,13 +1,14 @@
 //
 // Expose firebase api to non-import code p5js script.js
 // via variable fb_.xxxx
+// fb_.init
 // fb_.app
 // fb_.auth
 // fb_.signInAnonymously
-// ...
+//
 
 // Documentation starting reference
-// <!-- https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en -->
+//    https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en
 
 // console.log('fb_config');
 
@@ -46,16 +47,16 @@ let configs = {
   jht9629: firebaseConfig_jht9629,
   jht1493: firebaseConfig_jht1493,
 };
-// Initialize Firebase
-// const app = initializeApp(firebaseConfig_jht9629);
+
+// Initialize Firebase is performed by init function
 
 function init(config) {
-  // config = config || firebaseConfig_jht1493;
-  // typeof stringVariable === "string"
+  // if config object provided or config key, use it
   if (typeof config == 'string') {
     // console.log('fb_config config string', config);
     config = configs[config];
   }
+  // if config object not found, default to firebaseConfig_jht9629
   config = config || firebaseConfig_jht9629;
   // console.log('fb_config config', config);
   // console.log('fb_config config.projectId', config.projectId);
@@ -74,8 +75,10 @@ import { fbase } from './fb_fbase.js?v=20';
 const fb_ = {
   init,
   signInAnonymously,
-  fstore,
   fbase,
+  fstore,
 };
 
 window.fb_ = fb_;
+
+// https://firebase.google.com/docs/projects/api-keys

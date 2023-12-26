@@ -9,8 +9,8 @@ import './Rect.js?v=20';
 import './RefBox.js?v=20';
 import './get_url_params.js?v=20';
 import './video_create.js?v=20';
-import './ui_log.js?v=20';
-import './ui_debug.js?v=20';
+import './ui_logDetail.js?v=20';
+import './ui_logSummary.js?v=20';
 import './ui_span.js?v=20';
 
 // console.log('a_main Anim ', Anim);

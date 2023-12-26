@@ -184,13 +184,13 @@ function ui_log(...args) {
   console.log(...args);
   if (!my.logLines) {
     my.logLines = [];
-    my.logDiv = createDiv('');
+    my.logSummary_div = createDiv('');
   }
   my.logLines.push(args.join(' '));
   if (my.logLines.length > my.logLinesMax) {
     my.logLines.splice(0, 1);
   }
-  my.logDiv.html(my.logLines.join('<br/>'));
+  my.logSummary_div.html(my.logLines.join('<br/>'));
 }
 
 // !!@ Move to Lib

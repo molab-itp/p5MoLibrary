@@ -1,4 +1,11 @@
 //
+function ui_logDetailFlag_changed(my, newValue) {
+  my.logDetailFlag = newValue;
+  ui_set_hidden(my.logDetail_div, my.logDetailFlag);
+}
+window.ui_logDetailFlag_changed = ui_logDetailFlag_changed;
+
+// Updates my.logDetail_div with running log
 function ui_log(my, ...args) {
   if (!my.logLines) {
     ui_log_init(my);
@@ -13,7 +20,7 @@ function ui_log(my, ...args) {
   ui_log_add(my, my.logLines, str);
   ui_log_add(my, ent.lines, str);
   str = my.logLines.join('<br/>');
-  my.logDiv.html(str);
+  my.logDetail_div.html(str);
   // console.log('str', str);
 }
 window.ui_log = ui_log;
@@ -27,7 +34,7 @@ function ui_log_add(my, lines, str) {
 
 function ui_log_clear(my) {
   my.logLines = [];
-  my.logDiv.html('');
+  my.logDetail_div.html('');
 }
 window.ui_log_clear = ui_log_clear;
 
@@ -42,7 +49,6 @@ function ui_logTagEntry(key) {
 
 function ui_log_init(my) {
   my.logLines = [];
-  my.logDiv = createDiv('');
   if (!my.logLinesMax) {
     my.logLinesMax = 5;
   }
@@ -56,7 +62,7 @@ function ui_error(...args) {
 }
 window.ui_error = ui_error;
 
-//
+// --
 
 function ui_toggle_scroll(my) {
   if (window.scrollY > 0) {

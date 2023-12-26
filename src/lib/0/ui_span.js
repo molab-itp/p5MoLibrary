@@ -36,7 +36,7 @@ window.ui_div = ui_div;
 function ui_div_empty(my, id) {
   let div = ui_element(my, id);
   if (!div) {
-    div = createDiv().id(id);
+    div = createDiv();
     ui_fresh_element(my, div);
   } else {
     let children = div.child();

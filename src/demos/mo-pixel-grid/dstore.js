@@ -277,7 +277,7 @@ function dstore_pix_remove() {
     });
 }
 
-function dstore_clear() {
+function dstore_remove() {
   dstore_device_remove();
   dstore_pix_remove();
   delete my.stored_device;

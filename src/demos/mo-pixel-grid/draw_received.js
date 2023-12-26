@@ -29,52 +29,24 @@ function draw_received_uid(uid) {
 }
 
 function draw_received_image(uid) {
-  let deviceEnt = my.stored_device[uid];
-  // console.log('draw_received deviceEnt', deviceEnt);
-  if (!deviceEnt) return;
+  let device = my.stored_device[uid];
+  // console.log('draw_received device', device);
+  if (!device) return;
   if (my.stored_pixs) {
     let pixs = my.stored_pixs[uid];
     // console.log('uid', uid, 'pixs', pixs);
-    if (pixs) {
-      // console.log('draw_received_image uid', uid, 'pix n', pixs.length);
-      draw_received_deviceEnt(deviceEnt, pixs);
-    }
+    // console.log('draw_received_image uid', uid, 'pix n', pixs.length);
+    draw_received_device(device, pixs);
   }
-  image(deviceEnt.layer, my.x0, my.y0);
-  draw_received_cross(deviceEnt);
-  image(deviceEnt.crossLayer, my.x0, my.y0);
+  image(device.layer, my.x0, my.y0);
+  draw_received_cross(device);
+  image(device.crossLayer, my.x0, my.y0);
 }
 
-function draw_received_cross(deviceEnt) {
-  let crossLayer = deviceEnt.crossLayer;
-  crossLayer.clear();
-  if (!dstore_device_isActive(deviceEnt)) {
-    return;
-  }
-  // Draw the chip on layer that persists
-  let chip = deviceEnt.serverValues.chip;
-  let stepPx = chip.s;
-  let x = chip.x * stepPx;
-  let y = chip.y * stepPx;
-  let colr = chip.c;
-  let innerPx = floor(stepPx * (1 - my.margin));
-  draw_received_shape(deviceEnt.layer, x, y, colr, innerPx);
-
-  // Draw the cross hairs on cleared crossLayer
-  x = floor(x + innerPx * 0.5);
-  y = floor(y + innerPx * 0.5);
-
-  let crossWt = chip.s - innerPx;
-  crossLayer.strokeWeight(crossWt);
-  crossLayer.stroke(colr);
-  crossLayer.line(x, 0, x, my.vheight);
-  crossLayer.line(0, y, my.vwidth, y);
-}
-
-function draw_received_deviceEnt(deviceEnt, pixs) {
-  let layer = deviceEnt.layer;
+function draw_received_device(device, pixs) {
   if (!pixs) return;
-  // console.log('draw_received_deviceEnt pix n', pixs.length);
+  // console.log('draw_received_device pix n', pixs.length);
+  let layer = device.layer;
   let stepPx = floor(my.vheight / pixs.length);
   let innerPx = floor(stepPx * (1 - my.margin));
   more = 1;
@@ -87,7 +59,7 @@ function draw_received_deviceEnt(deviceEnt, pixs) {
       vyi = 0;
       break;
     }
-    // console.log('pix', pix);
+    // console.log('draw_received_device pix', pix);
     if (pix.s) {
       stepPx = pix.s;
       innerPx = floor(stepPx * (1 - my.margin));
@@ -103,10 +75,10 @@ function draw_received_deviceEnt(deviceEnt, pixs) {
       console.log('no colr vxi', vxi, 'vyi', vyi);
       break;
     }
-    // console.log('draw_received_deviceEnt colr', colr, typeof colr);
+    // console.log('draw_received_device colr', colr, typeof colr);
     let x = vxi * stepPx;
     let y = vyi * stepPx;
-    // console.log('draw_received_deviceEnt x', x, y);
+    // console.log('draw_received_device x', x, y);
 
     draw_received_shape(layer, x, y, colr, innerPx);
     vxi += 1;
@@ -119,7 +91,32 @@ function draw_received_deviceEnt(deviceEnt, pixs) {
       }
     }
   }
-  // console.log('1 colr', colr, typeof colr);
+}
+
+function draw_received_cross(device) {
+  let crossLayer = device.crossLayer;
+  crossLayer.clear();
+  if (!dstore_device_isActive(device)) {
+    return;
+  }
+  // Draw the chip on layer that persists
+  let chip = device.serverValues.chip;
+  let stepPx = chip.s;
+  let colr = chip.c;
+  let x = chip.x * stepPx;
+  let y = chip.y * stepPx;
+  let innerPx = floor(stepPx * (1 - my.margin));
+  draw_received_shape(device.layer, x, y, colr, innerPx);
+
+  // Draw the cross hairs on cleared crossLayer
+  x = floor(x + innerPx * 0.5);
+  y = floor(y + innerPx * 0.5);
+
+  let crossWt = stepPx - innerPx;
+  crossLayer.strokeWeight(crossWt);
+  crossLayer.stroke(colr);
+  crossLayer.line(x, 0, x, my.vheight);
+  crossLayer.line(0, y, my.vwidth, y);
 }
 
 function draw_received_shape(layer, x, y, colr, innerPx) {
