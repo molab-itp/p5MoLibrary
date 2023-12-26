@@ -12,5 +12,6 @@ import './video_create.js?v=20';
 import './ui_logDetail.js?v=20';
 import './ui_logSummary.js?v=20';
 import './ui_span.js?v=20';
+import './dtime.js?v=20';
 
 // console.log('a_main Anim ', Anim);

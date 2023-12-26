@@ -12,7 +12,7 @@ function dstore_init() {
       my.uid = uid;
       dstore_device_update();
       dstore_device_onChild();
-      dstore_pix_onChild();
+      dstore_pixgrid_onChild();
     })
     .catch((error) => {
       ui_log(my, 'dstore_init error', error);
@@ -20,7 +20,7 @@ function dstore_init() {
 }
 
 // device {
-//   "count_i": 259,
+//   "count": 259,
 //   "date_s": "2023-12-22T03:51:03.651Z",
 //   activity: [ ... ]
 //   "chip": {
@@ -63,8 +63,8 @@ function dstore_device_onChild() {
         delete my.stored_device[key];
         my.ndevice = Object.keys(my.stored_device).length;
       }
-      if (my.stored_pixs) {
-        delete my.stored_pixs[key];
+      if (my.stored_pixgrids) {
+        delete my.stored_pixgrids[key];
       }
       return;
     }
@@ -105,7 +105,7 @@ function dstore_device_update() {
   let aref = ref(database, path);
 
   let date_s = new Date().toISOString();
-  let count_i = increment(1);
+  let count = increment(1);
   let name_s = my.name || null;
   let x = my.track_xi;
   let y = my.track_yi;
@@ -114,7 +114,7 @@ function dstore_device_update() {
   if (!c) c = [0, 0, 0];
   let chip = { x, y, s, c };
 
-  let updates = { date_s, count_i, name_s, chip };
+  let updates = { date_s, count, name_s, chip };
 
   // Acivity is only updated if present in recently received server info
   let activities = dstore_device_activities(my.uid, date_s);
@@ -154,45 +154,6 @@ function dstore_device_activities(key, date_s) {
     activities.splice(-1, 1);
   }
   return activities;
-}
-
-function updateTimeGap(activities) {
-  for (let index = 1; index < activities.length; index++) {
-    let nowEnt = activities[index - 1];
-    let nowTime = new Date(nowEnt.date_s).getTime();
-    let pastEnt = activities[index];
-    let pastTime = new Date(pastEnt.date_s).getTime();
-    nowEnt.gap = nowTime - pastTime - nowEnt.time;
-    nowEnt.gap_s = convertTimeToSeconds(nowEnt.gap);
-  }
-}
-
-function convertTimeToSeconds(time) {
-  let str = '';
-  let secs = time / 1000;
-  let mins = floor(secs / 60);
-  // console.log('mins', mins);
-  secs -= mins * 60;
-  let hours = floor(mins / 60);
-  // console.log('hours', hours);
-  mins -= hours * 60;
-  let days = floor(hours / 24);
-  // console.log('days', days);
-  hours -= days * 24;
-  if (secs != 0) {
-    secs = secs.toFixed(3);
-    str = secs + ' secs';
-  }
-  if (mins != 0) {
-    str = mins + ' mins ' + str;
-  }
-  if (hours != 0) {
-    str = hours + ' hours ' + str;
-  }
-  if (days != 0) {
-    str = days + ' days ' + str;
-  }
-  return str;
 }
 
 function dstore_initActivities(key, date_s) {
@@ -237,24 +198,24 @@ function dstore_device_remove() {
     });
 }
 
-function dstore_pix_onChild() {
+function dstore_pixgrid_onChild() {
   //
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   // from "firebase/database";
-  let path = `${my.dbStoreRootPath}/${my.room_name}/pix`;
-  ui_log(my, 'dstore_pix_onChild path=', path);
+  let path = `${my.dbStoreRootPath}/${my.room_name}/pixgrid`;
+  ui_log(my, 'dstore_pixgrid_onChild path=', path);
   let aref = ref(database, path);
 
   onChildAdded(aref, (data) => {
-    receivedPixKey('dstore_pix_onChild Added', data);
+    receivedPixKey('dstore_pixgrid_onChild Added', data);
   });
 
   onChildChanged(aref, (data) => {
-    receivedPixKey('dstore_pix_onChild Changed', data);
+    receivedPixKey('dstore_pixgrid_onChild Changed', data);
   });
 
   onChildRemoved(aref, (data) => {
-    receivedPixKey('dstore_pix_onChild Removed', data, { remove: 1 });
+    receivedPixKey('dstore_pixgrid_onChild Removed', data, { remove: 1 });
   });
 
   function receivedPixKey(msg, data, remove) {
@@ -262,23 +223,23 @@ function dstore_pix_onChild() {
     let val = data.val();
     ui_log(my, msg, key, 'n=', val.length);
     if (remove) {
-      delete my.stored_pixs[key];
+      delete my.stored_pixgrids[key];
       return;
     }
-    if (!my.stored_pixs) {
-      my.stored_pixs = {};
+    if (!my.stored_pixgrids) {
+      my.stored_pixgrids = {};
     }
-    my.stored_pixs[key] = val;
+    my.stored_pixgrids[key] = val;
   }
 }
 
-function dstore_pix_update(irow, stepPx, row) {
+function dstore_pixgrid_update(irow, stepPx, row) {
   let { database, ref, update } = fb_.fbase;
   if (!my.uid) {
-    ui_log(my, 'dstore_pix_update no uid', my.uid);
+    ui_log(my, 'dstore_pixgrid_update no uid', my.uid);
     return;
   }
-  let path = `${my.dbStoreRootPath}/${my.room_name}/pix/${my.uid}/${irow}`;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/pixgrid/${my.uid}/${irow}`;
   let aref = ref(database, path);
   let i = irow;
   let s = stepPx;
@@ -288,9 +249,9 @@ function dstore_pix_update(irow, stepPx, row) {
 }
 
 // db goes to read-only mode when nstep=128
-function dstore_pix_removeAll() {
+function dstore_pixgrid_removeAll() {
   let { database, ref, set } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.room_name}/pix`;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/pixgrid`;
   let aref = ref(database, path);
   set(aref, {})
     .then(() => {
@@ -303,26 +264,26 @@ function dstore_pix_removeAll() {
     });
 }
 
-function dstore_pix_remove() {
+function dstore_pixgrid_remove() {
   let { database, ref, set } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.room_name}/pix/${my.uid}`;
+  let path = `${my.dbStoreRootPath}/${my.room_name}/pixgrid/${my.uid}`;
   let aref = ref(database, path);
   set(aref, {})
     .then(() => {
       // Data saved successfully!
-      // ui_log(my, 'dstore_pix_remove OK');
+      // ui_log(my, 'dstore_pixgrid_remove OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log(my, 'dstore_pix_remove error', error);
+      ui_log(my, 'dstore_pixgrid_remove error', error);
     });
 }
 
 function dstore_remove() {
   dstore_device_remove();
-  dstore_pix_remove();
+  dstore_pixgrid_remove();
   delete my.stored_device;
-  delete my.stored_pixs;
+  delete my.stored_pixgrids;
 }
 
 // https://console.firebase.google.com/u/0/project/molab-485f5/database/molab-485f5-default-rtdb/data

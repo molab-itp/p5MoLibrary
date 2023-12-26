@@ -32,8 +32,8 @@ function draw_received_image(uid) {
   let device = my.stored_device[uid];
   // console.log('draw_received device', device);
   if (!device) return;
-  if (my.stored_pixs) {
-    let pixs = my.stored_pixs[uid];
+  if (my.stored_pixgrids) {
+    let pixs = my.stored_pixgrids[uid];
     // console.log('uid', uid, 'pixs', pixs);
     // console.log('draw_received_image uid', uid, 'pix n', pixs.length);
     draw_received_device(device, pixs);
@@ -55,7 +55,7 @@ function draw_received_device(device, pixs) {
   while (more) {
     let pix = pixs[vyi];
     if (!pix) {
-      console.log('no vyi', vyi);
+      console.log('draw_received_device no vyi', vyi);
       vyi = 0;
       break;
     }
@@ -72,7 +72,7 @@ function draw_received_device(device, pixs) {
     // console.log('item', item);
     let colr = item.c;
     if (!colr) {
-      console.log('no colr vxi', vxi, 'vyi', vyi);
+      console.log('draw_received_device no colr vxi', vxi, 'vyi', vyi);
       break;
     }
     // console.log('draw_received_device colr', colr, typeof colr);

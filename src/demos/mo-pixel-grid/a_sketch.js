@@ -17,7 +17,7 @@ function my_setup() {
   my.vwidth = 480; // Aspect ratio of video capture
   my.vheight = 640;
   my.scrollFlag = false;
-  my.settingsFlag = 0;
+  my.settingsFlag = 1;
   my.storeFlag = 0;
   my.scanFlag = 1;
   my.faceFlag = 1;

@@ -7,9 +7,10 @@ function ui_init() {
 
   ui_init_row_1();
 
-  my.container = ui_div(my, 'container', '');
-  my.container.elt.classList.toggle('hidden');
-  my.ui_container = my.container;
+  my.container_div = ui_div(my, 'container', '');
+  ui_set_hidden(my.container_div, my.settingsFlag);
+
+  my.ui_container = my.container_div;
 
   ui_init_row_2();
 
@@ -34,7 +35,7 @@ function ui_init_row_1() {
 
   my.settingsChk = ui_checkbox(my, 'Settings', my.settingsFlag);
   my.settingsChk.changed(function () {
-    exposeFlag_changed(this.checked());
+    settingsFlag_changed(this.checked());
   });
 
   ui_span(my, 'ndevice', ' ndevice:' + my.ndevice);
@@ -203,9 +204,9 @@ function scrollFlag_changed(newValue) {
   my.scrollFlag = newValue;
 }
 
-function exposeFlag_changed(newValue) {
+function settingsFlag_changed(newValue) {
   my.settingsFlag = newValue;
-  my.container.elt.classList.toggle('hidden');
+  ui_set_hidden(my.container_div, my.settingsFlag);
 }
 
 function nstep_changed(newValue) {
