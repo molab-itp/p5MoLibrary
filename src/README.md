@@ -8,7 +8,7 @@
   - [demos/mo-pixel-grid](demos/mo-pixel-grid?v=21)
   - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v=21)
   - [demos/mo-storage](demos/mo-storage)
-  - [demos/PlanetEarth](demos/PlanetEarth?v=21)
+  - [demos/Heavenly3D](demos/Heavenly3D?v=21)
   - [demos/timed-drawing-class](demos/timed-drawing-class)
 
 [github.io](https://molab-itp.github.io/p5moLibrary/src?v=21)

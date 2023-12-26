@@ -1,6 +1,6 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
-// https://github.com/molab-itp/p5MoLibrary/tree/main/demos/PlanetEarth
-// PlanetEarth
+// Heavenly3D
+// https://github.com/molab-itp/p5MoLibrary/tree/main/demos/Heavenly3D
 
 function preload() {
   my.earthImg = loadImage('../../assets/world-ultra.jpg');
@@ -223,4 +223,8 @@ function nextDir() {
 
 // https://en.wikipedia.org/wiki/Vitruvian_Man
 // https://upload.wikimedia.org/wikipedia/commons/2/22/Da_Vinci_Vitruve_Luc_Viatour.jpg
-//  demos/PlanetEarth/assets/Da_Vinci.jpg
+//  demos/Heavenly3D/assets/Da_Vinci.jpg
+
+// Manju.jpg
+// https://en.wikipedia.org/wiki/Mandala
+// https://en.wikipedia.org/wiki/File:Manjuvajramandala_con_43_divinit%C3%A0_-_Unknown_-_Google_Cultural_Institute.jpg
