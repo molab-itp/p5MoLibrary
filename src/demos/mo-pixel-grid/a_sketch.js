@@ -62,7 +62,7 @@ function setup() {
 function anim_init() {
   my.animLoop = new Anim({
     target: my, //
-    duration: my.updateRate,
+    time: my.updateRate,
     action: updateAction,
     loop: 1,
   });
@@ -114,13 +114,13 @@ function updateStepScaleChange() {
     my.nstep *= my.nstepScale * 2;
   }
   if (my.nstep > 16) {
-    my.animLoop.updateDuration(0.02);
+    my.animLoop.updateTime(0.02);
   } else if (my.nstep > 8) {
-    my.animLoop.updateDuration(0.1);
+    my.animLoop.updateTime(0.1);
   } else if (my.nstep > 4) {
-    my.animLoop.updateDuration(0.2);
+    my.animLoop.updateTime(0.2);
   } else {
-    my.animLoop.updateDuration(1);
+    my.animLoop.updateTime(1);
   }
 
   init_nstep();

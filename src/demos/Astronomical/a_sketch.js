@@ -30,7 +30,7 @@ function setup() {
 
   ui_create();
 
-  my.animLoop = new Anim({ target: my, duration: 15, action: nextRefAction, loop: my.scanFlag });
+  my.animLoop = new Anim({ target: my, time: 15, action: nextRefAction, loop: my.scanFlag });
   if (my.scanFlag) {
     my.animLoop.start();
   }

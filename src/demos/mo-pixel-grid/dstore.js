@@ -139,14 +139,16 @@ function dstore_device_activities(key, date_s) {
   let ndiff = nowTime - pastTime;
   if (ndiff > my.activityLogTimeMax) {
     // Create a new entry at head of the activity log
-    let duration = 0;
-    activity = { date_s, duration };
+    let time = 0;
+    activity = { date_s, time };
     activities.unshift(activity);
   } else {
-    // Update the first entry with new duration and date
+    // Update the first entry with new time and date
     activity.date_s = date_s;
-    activity.duration += ndiff;
+    activity.time += ndiff;
+    activity.time_s = convertTimeToSeconds(activity.time);
   }
+  updateTimeGap(activities);
   if (activities.length > my.activityLogMax) {
     // Delete the last entry to keep to max number permitted
     activities.splice(-1, 1);
@@ -154,9 +156,48 @@ function dstore_device_activities(key, date_s) {
   return activities;
 }
 
+function updateTimeGap(activities) {
+  for (let index = 1; index < activities.length; index++) {
+    let nowEnt = activities[index - 1];
+    let nowTime = new Date(nowEnt.date_s).getTime();
+    let pastEnt = activities[index];
+    let pastTime = new Date(pastEnt.date_s).getTime();
+    nowEnt.gap = nowTime - pastTime;
+    nowEnt.gap_s = convertTimeToSeconds(nowEnt.gap);
+  }
+}
+
+function convertTimeToSeconds(time) {
+  let str = '';
+  let secs = time / 1000;
+  let mins = floor(secs / 60);
+  // console.log('mins', mins);
+  secs -= mins * 60;
+  let hours = floor(mins / 60);
+  // console.log('hours', hours);
+  mins -= hours * 60;
+  let days = floor(hours / 24);
+  // console.log('days', days);
+  hours -= days * 24;
+  if (secs != 0) {
+    secs = secs.toFixed(3);
+    str = secs + ' secs';
+  }
+  if (mins != 0) {
+    str = mins + ' mins ' + str;
+  }
+  if (hours != 0) {
+    str = hours + ' hours ' + str;
+  }
+  if (days != 0) {
+    str = days + ' days ' + str;
+  }
+  return str;
+}
+
 function dstore_initActivities(key, date_s) {
-  let duration = 0;
-  let initActivities = [{ date_s, duration }];
+  let time = 0;
+  let initActivities = [{ date_s, time }];
   // return null if no server info received yet
   //  or no entry for this device
   if (!my.stored_device) return null;

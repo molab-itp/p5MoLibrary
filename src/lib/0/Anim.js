@@ -1,12 +1,12 @@
 //
 export class Anim {
-  // { target, loop, duration, action }
+  // { target, loop, time, action }
   //
   constructor(props) {
     //
     Object.assign(this, props);
-    // convert duration from seconds to milliseconds
-    this.duration *= 1000;
+    // convert time from seconds to milliseconds
+    this.time *= 1000;
     this.running = 0;
     // this.started = 0;
   }
@@ -16,9 +16,9 @@ export class Anim {
     this.running = 1;
   }
 
-  updateDuration(newDuration) {
-    // convert duration from seconds to milliseconds
-    this.duration = newDuration * 1000;
+  updateTime(newTime) {
+    // convert time from seconds to milliseconds
+    this.time = newTime * 1000;
   }
 
   restart() {
@@ -30,7 +30,7 @@ export class Anim {
   step() {
     let now = Date.now();
     let lapse = now - this.startTime;
-    if (lapse > this.duration) {
+    if (lapse > this.time) {
       this.startTime = now;
       this.running = this.loop;
       if (this.action && this.running) {
@@ -63,14 +63,14 @@ export class Anim {
   }
 
   // Establish ending values for values
-  addChange(duration, values) {
-    // convert duration from seconds to milliseconds
-    duration *= 1000;
-    this.changes.push({ duration, values });
+  addChange(time, values) {
+    // convert time from seconds to milliseconds
+    time *= 1000;
+    this.changes.push({ time, values });
     // console.log('addChange changes n', this.changes.length, 'running', this.running);
   }
 
-  // Update targetProps in target object for given duration
+  // Update targetProps in target object for given time
   stepValues() {
     if (!this.running) {
       // console.log('stepValues return changeIndex', this.changeIndex, 'running', this.running);
@@ -80,15 +80,15 @@ export class Anim {
     let next = this.changes[this.changeIndex + 1];
     let lastValues = last.values;
     let nextValues = next.values;
-    let duration = next.duration;
-    if (duration <= 0) {
+    let time = next.time;
+    if (time <= 0) {
       for (let prop in nextValues) {
         this.target[prop] = nextValues[prop];
       }
       this.nextChange();
       return;
     }
-    let perCent = (Date.now() - this.startTime) / duration;
+    let perCent = (Date.now() - this.startTime) / time;
     if (perCent >= 1.0) {
       perCent = 1.0;
       this.nextChange();
