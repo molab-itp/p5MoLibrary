@@ -3,8 +3,6 @@ function draw_send(img) {
   // console.log('draw_send img', img);
   if (!img) return;
   draw_send_image(img);
-  // draw_send_layer(my.publishLayer, img);
-  // image(layer, 0, 0);
 }
 
 function draw_send_image(img) {
@@ -21,9 +19,6 @@ function draw_send_image(img) {
     } else {
       colr = [0, 0, 0];
     }
-    // layer.fill(colr);
-    // layer.noStroke();
-    // layer.rect(vx, vy, my.innerPx, my.innerPx);
     draw_record_rect(my.send_xi, my.send_yi, colr);
     my.send_xi += 1;
     vx = my.send_xi * my.stepPx;

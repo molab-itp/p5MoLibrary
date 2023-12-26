@@ -11,7 +11,7 @@ function dstore_init() {
       ui_log(my, 'dstore_init', uid);
       my.uid = uid;
       dstore_device_update();
-      dstore_device_onValue();
+      dstore_device_onChild();
       dstore_pix_onChild();
     })
     .catch((error) => {
@@ -35,7 +35,7 @@ function dstore_init() {
 //   } // end chip
 // }
 
-function dstore_device_onValue() {
+function dstore_device_onChild() {
   // Setup listener for changes to firebase db device
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/${my.room_name}/device`;
@@ -130,14 +130,14 @@ function dstore_device_activities(key, date_s) {
   if (!activities) return null;
 
   let activity = activities[0];
-  if (!my.activityLogTimeWindow) {
-    my.activityLogTimeWindow = 1000;
+  if (!my.activityLogTimeMax) {
+    my.activityLogTimeMax = 1000;
     my.activityLogMax = 3;
   }
   let nowTime = new Date(date_s).getTime();
   let pastTime = new Date(activity.date_s).getTime();
   let ndiff = nowTime - pastTime;
-  if (ndiff > my.activityLogTimeWindow) {
+  if (ndiff > my.activityLogTimeMax) {
     // Create a new entry at head of the activity log
     let duration = 0;
     activity = { date_s, duration };
@@ -177,8 +177,8 @@ function dstore_device_isActive(device) {
   if (activities.length <= 0) return 0;
   let activity = activities[0];
   let lapse = Date.now() - new Date(activity.date_s);
-  // console.log('dstore_device_isActive device.index', device.index, 'lapse', lapse, my.activityLogTimeWindow);
-  return lapse < my.activityLogTimeWindow;
+  // console.log('dstore_device_isActive device.index', device.index, 'lapse', lapse, my.activityLogTimeMax);
+  return lapse < my.activityLogTimeMax;
 }
 
 function dstore_device_remove() {
