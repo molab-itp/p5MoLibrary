@@ -32,7 +32,7 @@ function ui_init_row_1() {
     ui_toggle_scroll(my);
   });
 
-  my.settingsChk = ui_createCheckbox(my, 'Settings', my.settingsFlag);
+  my.settingsChk = ui_checkbox(my, 'Settings', my.settingsFlag);
   my.settingsChk.changed(function () {
     exposeFlag_changed(this.checked());
   });
@@ -44,37 +44,37 @@ function ui_init_row_1() {
 
 function ui_init_row_2() {
   //
-  my.logSummaryChk = ui_createCheckbox(my, 'LogSummary', my.logSummaryFlag);
+  my.logSummaryChk = ui_checkbox(my, 'LogSummary', my.logSummaryFlag);
   my.logSummaryChk.changed(function () {
     ui_logSummaryFlag_changed(my, this.checked());
   });
 
-  my.logDetailChk = ui_createCheckbox(my, 'LogDetail', my.logDetailFlag);
+  my.logDetailChk = ui_checkbox(my, 'LogDetail', my.logDetailFlag);
   my.logDetailChk.changed(function () {
     ui_logDetailFlag_changed(my, this.checked());
   });
 
-  my.scrollFlagChk = ui_createCheckbox(my, 'Scroll', my.scrollFlag);
+  my.scrollFlagChk = ui_checkbox(my, 'Scroll', my.scrollFlag);
   my.scrollFlagChk.changed(function () {
     scrollFlag_changed(this.checked());
   });
 
-  my.faceChk = ui_createCheckbox(my, 'Face', my.faceFlag);
+  my.faceChk = ui_checkbox(my, 'Face', my.faceFlag);
   my.faceChk.changed(function () {
     faceFlag_changed(this.checked());
   });
 
-  my.videoChk = ui_createCheckbox(my, 'Video', my.videoFlag);
+  my.videoChk = ui_checkbox(my, 'Video', my.videoFlag);
   my.videoChk.changed(function () {
     videoFlag_changed(this.checked());
   });
 
-  my.scanFlagChk = ui_createCheckbox(my, 'Scan', my.scanFlag);
+  my.scanFlagChk = ui_checkbox(my, 'Scan', my.scanFlag);
   my.scanFlagChk.changed(function () {
     scanFlag_changed(this.checked());
   });
 
-  my.storeFlagChk = ui_createCheckbox(my, 'Store', my.storeFlag);
+  my.storeFlagChk = ui_checkbox(my, 'Store', my.storeFlag);
   my.storeFlagChk.changed(function () {
     storeFlag_changed(this.checked());
   });
@@ -84,14 +84,14 @@ function ui_init_row_2() {
 
 function ui_init_row_3() {
   //
-  my.room_name_input = ui_createInput(my, 'id_room_name_input', '' + my.room_name)
+  my.room_name_input = ui_input(my, 'id_room_name_input', '' + my.room_name)
     // .id('id_room_name')
     .input(function () {
       my.room_name = this.value();
     });
   my.room_name_input.size(60);
 
-  my.name_input = ui_createInput(my, 'id_name_input', '' + my.name)
+  my.name_input = ui_input(my, 'id_name_input', '' + my.name)
     // .id('id_name_input')
     .input(function () {
       my.name = this.value();
@@ -113,7 +113,7 @@ function ui_init_row_3() {
 
 function ui_nstep_selection() {
   ui_span(my, 'nstep_label', ' nstep:');
-  let aSel = ui_createSelect(my, 'nstep_select');
+  let aSel = ui_select(my, 'nstep_select');
   let opts = [8, 16, 32, 64, 128, 4, 2, 1];
   // !!@ mstep set to 8 but 16 sometimes taking effect in db update
   // let my = { nstep: 8,

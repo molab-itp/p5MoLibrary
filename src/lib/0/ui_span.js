@@ -49,7 +49,7 @@ function ui_div_empty(my, id) {
 }
 window.ui_div_empty = ui_div_empty;
 
-function ui_createCheckbox(my, label, value) {
+function ui_checkbox(my, label, value) {
   let chk = ui_element(my, label);
   if (!chk) {
     chk = createCheckbox(label, value);
@@ -58,7 +58,7 @@ function ui_createCheckbox(my, label, value) {
   }
   return chk;
 }
-window.ui_createCheckbox = ui_createCheckbox;
+window.ui_checkbox = ui_checkbox;
 
 function ui_createButton(my, label) {
   let element = ui_element(my, label);
@@ -70,7 +70,7 @@ function ui_createButton(my, label) {
 }
 window.ui_createButton = ui_createButton;
 
-function ui_createSelect(my, id) {
+function ui_select(my, id) {
   let element = ui_element(my, id);
   if (!element) {
     element = createSelect();
@@ -78,9 +78,9 @@ function ui_createSelect(my, id) {
   }
   return element;
 }
-window.ui_createSelect = ui_createSelect;
+window.ui_select = ui_select;
 
-function ui_createInput(my, id, text) {
+function ui_input(my, id, text) {
   let element = ui_element(my, id);
   if (!element) {
     element = createInput(text);
@@ -88,7 +88,7 @@ function ui_createInput(my, id, text) {
   }
   return element;
 }
-window.ui_createInput = ui_createInput;
+window.ui_input = ui_input;
 
 function ui_begin() {
   my.ui_id_index = 1;
