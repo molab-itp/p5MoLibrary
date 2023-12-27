@@ -29,8 +29,8 @@ function localStore_get() {
   if (!str) {
     return;
   }
-  console.log('localStore_get str', str);
-  // console.log('localStore_get n str', str.length);
+  // console.log('localStore_get str', str);
+  console.log('localStore_get n str', str.length);
   let values = JSON.parse(str);
   for (let prop in values) {
     my[prop] = values[prop];
@@ -39,7 +39,7 @@ function localStore_get() {
 
 function localStore_set() {
   let values = {};
-  for (let prop in my.storageProps) {
+  for (let prop in my.storeProps) {
     values[prop] = my[prop];
   }
   let str = JSON.stringify(values);
@@ -50,7 +50,7 @@ function localStore_set() {
 function init_query() {
   my.query = get_url_params();
   if (my.query) {
-    my.name = my.query.name;
+    my.name = my.query.name || my.name;
     my.roomName = my.query.room || my.roomName;
     my.storeFlag = parseFloat(my.query.store || my.storeFlag);
     my.nstep = parseFloat(my.query.nstep || my.nstep);

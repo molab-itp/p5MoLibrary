@@ -23,7 +23,7 @@ function my_setup() {
   my.perFrame = 30;
   my.shapeIndex = 0;
   my.updateTime = 0.2;
-  my.storageProps = {
+  my.storeProps = {
     roomName: 1,
     name: 1,
     nstep: 1,
