@@ -87,7 +87,7 @@ function nstep_init() {
 }
 
 function update_nstep(n) {
-  // console.log('update_nstep n', n);
+  console.log('update_nstep n', n);
   my.nstep = n;
   nstep_init();
   my.nstep_selection.selected(my.nstep);
