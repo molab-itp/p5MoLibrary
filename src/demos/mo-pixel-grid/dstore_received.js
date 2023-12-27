@@ -1,8 +1,8 @@
 // incrementally draw grid of pixel rects from storage
 function dstore_received() {
-  // console.log('dstore_received my.stored_device', my.stored_device);
+  // console.log('dstore_received my.stored_devices', my.stored_devices);
   // let layer = my.layer;
-  if (!my.stored_device) {
+  if (!my.stored_devices) {
     return;
   }
   my.x0 = 0;
@@ -11,7 +11,7 @@ function dstore_received() {
   if (my.uid) {
     dstore_received_uid(my.uid);
   }
-  for (let uid in my.stored_device) {
+  for (let uid in my.stored_devices) {
     // console.log('dstore_received ub_uid', uid);
     if (uid != my.uid) {
       dstore_received_uid(uid);
@@ -29,7 +29,7 @@ function dstore_received_uid(uid) {
 }
 
 function dstore_received_image(uid) {
-  let device = my.stored_device[uid];
+  let device = my.stored_devices[uid];
   // console.log('dstore_received device', device);
   if (!device) return;
   if (my.stored_pixgrids) {

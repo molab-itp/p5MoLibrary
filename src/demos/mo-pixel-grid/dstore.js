@@ -58,27 +58,27 @@ function dstore_device_onChild() {
     let val = data.val();
     ui_log(my, msg, key, 'n=', Object.keys(val).length);
     if (remove) {
-      if (my.stored_device) {
-        delete my.stored_device[key];
-        my.ndevice = Object.keys(my.stored_device).length;
+      if (my.stored_devices) {
+        delete my.stored_devices[key];
+        my.ndevice = Object.keys(my.stored_devices).length;
       }
       if (my.stored_pixgrids) {
         delete my.stored_pixgrids[key];
       }
       return;
     }
-    if (!my.stored_device) {
-      my.stored_device = {};
+    if (!my.stored_devices) {
+      my.stored_devices = {};
     }
-    let device = my.stored_device[key];
+    let device = my.stored_devices[key];
     if (!device) {
-      // First use of device, add to my.stored_device
+      // First use of device, add to my.stored_devices
       let uid = key;
-      let index = Object.keys(my.stored_device).length;
+      let index = Object.keys(my.stored_devices).length;
       let layer = createGraphics(my.vwidth, my.vheight);
       let crossLayer = createGraphics(my.vwidth, my.vheight);
       device = { uid, index, layer, crossLayer };
-      my.stored_device[key] = device;
+      my.stored_devices[key] = device;
       my.ndevice = index + 1;
     }
     device.serverValues = val;
@@ -163,9 +163,9 @@ function dstore_initActivities(key, date_s) {
   let initActivities = [{ date_s, time }];
   // return null if no server info received yet
   //  or no entry for this device
-  if (!my.stored_device) return null;
+  if (!my.stored_devices) return null;
 
-  let device = my.stored_device[key];
+  let device = my.stored_devices[key];
   if (!device) return null;
 
   let activities = device.serverValues.activity;
@@ -290,7 +290,7 @@ function dstore_pixgrid_remove() {
 function dstore_remove() {
   dstore_device_remove();
   dstore_pixgrid_remove();
-  delete my.stored_device;
+  delete my.stored_devices;
   delete my.stored_pixgrids;
 }
 
