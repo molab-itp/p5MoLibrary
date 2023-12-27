@@ -1,13 +1,13 @@
 //
 
-function ui_init_logSummary_div(my) {
+function ui_logSummary_div(my) {
   my.logSummary_div = ui_div(my, 'logSummary', 'Welcome to the debug pane');
   ui_set_hidden(my.logSummary_div, my.logSummaryFlag);
 
   my.logDetail_div = ui_div(my, 'logDetail', '');
   ui_set_hidden(my.logDetail_div, my.logDetailFlag);
 }
-window.ui_init_logSummary_div = ui_init_logSummary_div;
+window.ui_logSummary_div = ui_logSummary_div;
 
 function ui_set_hidden(element, flag) {
   if (flag) {

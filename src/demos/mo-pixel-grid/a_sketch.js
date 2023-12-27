@@ -94,8 +94,7 @@ function nstepIndex_update() {
 
   // console.log('nstepIndex', my.nstepIndex, 'nstep', my.nstep);
 
-  // nstep_init();
-  update_nstep(my.nstep);
+  nstep_update(my.nstep);
 }
 
 function draw_cross_hair() {

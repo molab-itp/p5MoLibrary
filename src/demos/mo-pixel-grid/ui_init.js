@@ -16,7 +16,7 @@ function ui_init() {
 
   ui_init_row_3();
 
-  ui_init_logSummary_div(my);
+  ui_logSummary_div(my);
 
   ui_update();
 
@@ -128,21 +128,21 @@ function ui_nstep_selection() {
 function ui_update() {
   ui_begin_update(my);
   ui_span(my, 'ndevice', ' ndevice:' + my.ndevice);
-  ui_update_names();
+  ui_init_update_names();
   ui_break(my);
-  ui_update_xy();
-  ui_update_rgb();
+  ui_init_update_xy();
+  ui_init_update_rgb();
   my.ui_last = ui_break(my);
 }
 
-function ui_update_xy() {
+function ui_init_update_xy() {
   let x = my.track_xi * my.stepPx;
   let y = my.track_yi * my.stepPx;
   let str = ` x: ${x} y: ${y}`;
   my.report = ui_span(my, 'report', str);
 }
 
-function ui_update_rgb() {
+function ui_init_update_rgb() {
   let colr = my.videoColor;
   if (!colr) colr = [0, 0, 0];
 
@@ -167,7 +167,7 @@ function ui_update_rgb() {
   spanb.elt.style.color = 'white';
 }
 
-function ui_update_names() {
+function ui_init_update_names() {
   // let name = my.name || '?';
   // ui_span(my, 'name', ' name:' + name);
   let uid = my.uid || '?';

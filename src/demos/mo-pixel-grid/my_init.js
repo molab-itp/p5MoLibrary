@@ -73,12 +73,12 @@ function init_query() {
 }
 
 function nstep_init() {
-  // my.stepPx = floor(my.vwidth / my.nstep);
   if (my.nstep < 4) {
     my.margin = 0;
   } else {
     my.margin = 0.1;
   }
+  // my.stepPx = floor(my.vwidth / my.nstep);
   my.stepPx = floor(my.vheight / my.nstep);
   my.innerPx = floor(my.stepPx * (1 - my.margin));
   my.crossWt = my.stepPx - my.innerPx;
@@ -86,8 +86,8 @@ function nstep_init() {
   my.byLine = my.nstep >= 16;
 }
 
-function update_nstep(n) {
-  console.log('update_nstep n', n);
+function nstep_update(n) {
+  // console.log('nstep_update n', n);
   my.nstep = n;
   nstep_init();
   my.nstep_selection.selected(my.nstep);

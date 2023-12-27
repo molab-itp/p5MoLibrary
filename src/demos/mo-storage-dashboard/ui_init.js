@@ -136,11 +136,11 @@ function faceChk_action() {
 }
 
 function ui_update() {
-  ui_update_info();
+  ui_init_update_info();
   my.ui_last = ui_break('break1');
 }
 
-function ui_update_info() {
+function ui_init_update_info() {
   // ui_span('updateCount', ' uc:' + my.updateCount);
   // ui_span('nitems', ' ni:' + my.nitems);
   if (my.guestName) {
