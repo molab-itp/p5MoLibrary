@@ -131,8 +131,8 @@ function dstore_device_activities(key, date_s) {
 
   let activity = activities[0];
   if (!my.activityLogTimeMax) {
-    my.activityLogTimeMax = 1000;
-    my.activityLogMax = 3;
+    my.activityLogTimeMax = 2000;
+    my.activityLogMax = 9;
   }
   let nowTime = new Date(date_s).getTime();
   let pastTime = new Date(activity.date_s).getTime();
