@@ -173,14 +173,20 @@ function dstore_initActivities(key, date_s) {
   return activities;
 }
 
-function dstore_device_isActive(device) {
+function dstore_device_activityGapTime(device) {
   let activities = device.serverValues.activity;
   if (!activities) return 0;
   if (activities.length <= 0) return 0;
   let activity = activities[0];
-  let lapse = Date.now() - new Date(activity.date_s);
-  // console.log('dstore_device_isActive device.index', device.index, 'lapse', lapse, my.activityLogTimeMax);
-  return lapse < my.activityLogTimeMax;
+  let gapTime = Date.now() - new Date(activity.date_s);
+  // console.log('dstore_device_activityGapTime device.index', device.index, 'gapTime', gapTime);
+  return gapTime;
+}
+
+function dstore_device_isActive(device) {
+  let gapTime = dstore_device_activityGapTime(device);
+  // console.log('dstore_device_isActive device.index', device.index, 'gapTime', lapgapTimese, my.activityLogTimeMax);
+  return gapTime < my.activityLogTimeMax;
 }
 
 function dstore_device_remove() {
