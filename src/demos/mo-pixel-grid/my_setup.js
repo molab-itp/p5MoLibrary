@@ -6,7 +6,10 @@ function my_setup() {
   my.dbStoreRootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
   my.name = '';
-  my.nstep = 16;
+  my.nstepCycle = [8, 16, 32, 64];
+  my.updateTimes = [0.2, 0.1, 0.02, 0.01];
+  my.nstepIndex = 0;
+  my.nstepDir = 1;
   my.margin = 0.1;
   my.settingsFlag = 1;
   my.logSummaryFlag = 0;
@@ -18,11 +21,9 @@ function my_setup() {
   my.scrollFlag = false;
   my.scrollOnStartFlag = 0;
   my.scrollStopSecs = 4;
-  my.nstepScale = 2;
   my.byPixel = 0;
   my.perFrame = 30;
   my.shapeIndex = 0;
-  my.updateTime = 0.2;
   my.storeProps = {
     roomName: 1,
     name: 1,

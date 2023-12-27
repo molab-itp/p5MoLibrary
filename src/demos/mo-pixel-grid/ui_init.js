@@ -192,6 +192,7 @@ function updateBtn_action() {
 function removeBtn_action() {
   dstore_remove();
   ui_log_clear(my);
+  localStorage.clear();
 }
 
 function scanFlag_changed(newValue) {

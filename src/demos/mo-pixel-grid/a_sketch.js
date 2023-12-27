@@ -80,20 +80,19 @@ function updateAction() {
 }
 
 function updateStepScaleChange() {
-  my.nstep *= my.nstepScale;
-  if (my.nstep >= 32 || my.nstep < 8) {
-    my.nstepScale = 1 / my.nstepScale;
-    my.nstep *= my.nstepScale * 2;
+  my.nstepIndex += my.nstepDir;
+  if (my.nstepIndex < 0 || my.nstepIndex >= my.nstepCycle.length) {
+    // my.nstepDir *= -1;
+    // my.nstepIndex += my.nstepDir * 2;
+    my.nstepIndex = 0;
   }
-  if (my.nstep > 16) {
-    my.animLoop.updateTime(0.02);
-  } else if (my.nstep > 8) {
-    my.animLoop.updateTime(0.1);
-  } else if (my.nstep > 4) {
-    my.animLoop.updateTime(0.2);
-  } else {
-    my.animLoop.updateTime(1);
-  }
+  my.nstep = my.nstepCycle[my.nstepIndex];
+
+  my.updateTime = my.updateTimes[my.nstepIndex];
+
+  my.animLoop.updateTime(my.updateTime);
+
+  // console.log('nstepIndex', my.nstepIndex, 'nstep', my.nstep);
 
   init_nstep();
 }

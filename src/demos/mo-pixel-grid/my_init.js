@@ -1,5 +1,7 @@
 function my_init() {
   //
+  my.nstep = my.nstepCycle[my.nstepIndex];
+  my.updateTime = my.updateTimes[my.nstepIndex];
 
   localStore_get();
 
