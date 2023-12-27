@@ -7,9 +7,8 @@ function dstore_init() {
   let { signInAnonymously, auth } = fb_;
   signInAnonymously(auth)
     .then(() => {
-      let uid = auth.currentUser.uid;
-      ui_log(my, 'dstore_init', uid);
-      my.uid = uid;
+      my.uid = auth.currentUser.uid;
+      ui_log(my, 'dstore_init', my.uid);
       dstore_device_update();
       dstore_device_onChild();
       dstore_pixgrid_onChild();
@@ -39,18 +38,18 @@ function dstore_device_onChild() {
   // Setup listener for changes to firebase db device
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/${my.room_name}/device`;
-  let aref = ref(database, path);
+  let refPath = ref(database, path);
 
-  onChildAdded(aref, (data) => {
+  onChildAdded(refPath, (data) => {
     receivedDeviceKey('dstore_device_onChild Added', data);
   });
 
-  onChildChanged(aref, (data) => {
+  onChildChanged(refPath, (data) => {
     // console.log('dstore_device_onChild Changed', data);
     receivedDeviceKey('dstore_device_onChild Changed', data);
   });
 
-  onChildRemoved(aref, (data) => {
+  onChildRemoved(refPath, (data) => {
     receivedDeviceKey('dstore_device_onChild Removed', data, { remove: 1 });
   });
 
@@ -102,7 +101,7 @@ function dstore_device_update() {
   let { database, ref, update, increment } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/${my.room_name}/device/${my.uid}`;
   // ui_log(my, 'dstore_device_update', path);
-  let aref = ref(database, path);
+  let refPath = ref(database, path);
 
   let date_s = new Date().toISOString();
   let count = increment(1);
@@ -121,7 +120,7 @@ function dstore_device_update() {
   if (activities) {
     updates.activity = activities;
   }
-  update(aref, updates);
+  update(refPath, updates);
 }
 
 function dstore_device_activities(key, date_s) {
@@ -192,8 +191,8 @@ function dstore_device_isActive(device) {
 function dstore_device_remove() {
   let { database, ref, set } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/${my.room_name}/device/${my.uid}`;
-  let aref = ref(database, path);
-  set(aref, {})
+  let refPath = ref(database, path);
+  set(refPath, {})
     .then(() => {
       // Data saved successfully!
       // ui_log(my, 'dstore_device_remove OK');
@@ -210,17 +209,17 @@ function dstore_pixgrid_onChild() {
   // from "firebase/database";
   let path = `${my.dbStoreRootPath}/${my.room_name}/pixgrid`;
   ui_log(my, 'dstore_pixgrid_onChild path=', path);
-  let aref = ref(database, path);
+  let refPath = ref(database, path);
 
-  onChildAdded(aref, (data) => {
+  onChildAdded(refPath, (data) => {
     receivedPixKey('dstore_pixgrid_onChild Added', data);
   });
 
-  onChildChanged(aref, (data) => {
+  onChildChanged(refPath, (data) => {
     receivedPixKey('dstore_pixgrid_onChild Changed', data);
   });
 
-  onChildRemoved(aref, (data) => {
+  onChildRemoved(refPath, (data) => {
     receivedPixKey('dstore_pixgrid_onChild Removed', data, { remove: 1 });
   });
 
@@ -246,10 +245,10 @@ function dstore_pixgrid_update(irow, stepPx, row) {
     return;
   }
   let path = `${my.dbStoreRootPath}/${my.room_name}/pixgrid/${my.uid}/${irow}`;
-  let aref = ref(database, path);
+  let refPath = ref(database, path);
   let i = irow;
   let s = stepPx;
-  update(aref, { i, s, row });
+  update(refPath, { i, s, row });
 
   dstore_device_update();
 }
@@ -258,8 +257,8 @@ function dstore_pixgrid_update(irow, stepPx, row) {
 function dstore_pixgrid_removeAll() {
   let { database, ref, set } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/${my.room_name}/pixgrid`;
-  let aref = ref(database, path);
-  set(aref, {})
+  let refPath = ref(database, path);
+  set(refPath, {})
     .then(() => {
       // Data saved successfully!
       // ui_log(my, 'dstore_removeAll OK');
@@ -273,8 +272,8 @@ function dstore_pixgrid_removeAll() {
 function dstore_pixgrid_remove() {
   let { database, ref, set } = fb_.fbase;
   let path = `${my.dbStoreRootPath}/${my.room_name}/pixgrid/${my.uid}`;
-  let aref = ref(database, path);
-  set(aref, {})
+  let refPath = ref(database, path);
+  set(refPath, {})
     .then(() => {
       // Data saved successfully!
       // ui_log(my, 'dstore_pixgrid_remove OK');
