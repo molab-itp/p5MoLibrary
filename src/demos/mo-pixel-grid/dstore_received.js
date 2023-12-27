@@ -1,3 +1,4 @@
+//
 // incrementally draw grid of pixel rects from storage
 function dstore_received() {
   // console.log('dstore_received my.stored_devices', my.stored_devices);
