@@ -12,32 +12,6 @@
 
 let my = {};
 
-function my_setup() {
-  my.version = '?v=21'; // update to verify change on mobile
-  my.vwidth = 480; // Aspect ratio of video capture
-  my.vheight = 640;
-  my.scrollFlag = false;
-  my.settingsFlag = 1;
-  my.storeFlag = 0;
-  my.scanFlag = 1;
-  my.faceFlag = 1;
-  my.videoFlag = 1;
-  my.logSummaryFlag = 0;
-  my.logDetailFlag = 0;
-  my.scrollOnStart = 0;
-  my.scrollStopSecs = 4;
-  my.nstep = 16;
-  my.margin = 0.1;
-  my.byPixel = 0;
-  my.perFrame = 30;
-  my.dbStoreRootPath = 'm0-@r-@w-';
-  my.sub_index = 0;
-  my.roomName = 'room0';
-  my.updateRate = 0.2;
-  my.nstepScale = 2;
-  my.name = '';
-}
-
 function setup() {
   my_setup();
   my_init();
@@ -62,7 +36,7 @@ function setup() {
 function anim_init() {
   my.animLoop = new Anim({
     target: my, //
-    time: my.updateRate,
+    time: my.updateTime,
     action: updateAction,
     loop: 1,
   });
@@ -106,8 +80,6 @@ function updateAction() {
 }
 
 function updateStepScaleChange() {
-  // my.updateCount = (my.updateCount + 1) % my.updateCountMax;
-  // if (my.updateCount == 0) {
   my.nstep *= my.nstepScale;
   if (my.nstep >= 32 || my.nstep < 8) {
     my.nstepScale = 1 / my.nstepScale;
@@ -124,10 +96,6 @@ function updateStepScaleChange() {
   }
 
   init_nstep();
-
-  // if (my.nstep == 1) {
-  //   my.sub_index = (my.sub_index + 1) % 2;
-  // }
 }
 
 function draw_cross_hair() {
@@ -137,8 +105,6 @@ function draw_cross_hair() {
 
 function draw_cross_hair_update() {
   if (!my.videoImg) return;
-  // let layer = my.crossHairLayer;
-  // layer.clear();
   let vx = my.track_xi * my.stepPx;
   let vy = my.track_yi * my.stepPx;
   if (my.track_xy_updated) {
@@ -164,13 +130,6 @@ function draw_cross_hair_update() {
   let y = floor(vy + my.innerPx * 0.5);
   let colr = my.videoImg.get(x, y);
   my.videoColor = colr;
-  // layer.strokeWeight(my.crossWt);
-  // layer.stroke(colr);
-  // layer.line(x, 0, x, my.vheight);
-  // layer.line(0, y, my.vwidth, y);
-  // layer.fill(colr);
-  // layer.noStroke();
-  // layer.rect(vx, vy, my.innerPx, my.innerPx);
 }
 
 function canvas_mouseReleased() {

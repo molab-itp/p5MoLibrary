@@ -185,7 +185,8 @@ function name_changed(newValue) {
 }
 
 function updateBtn_action() {
-  location.reload();
+  localStore_set();
+  // location.reload();
 }
 
 function removeBtn_action() {

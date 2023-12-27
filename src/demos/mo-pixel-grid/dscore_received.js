@@ -125,7 +125,7 @@ function dscore_received_shape(layer, x, y, colr, innerPx) {
   // console.log('dscore_received_shape x', x, y);
   let ww = innerPx;
   let hh = innerPx;
-  let ns = my.sub_index % 4;
+  let ns = my.shapeIndex % 4;
   if (ns == 0) {
     layer.rect(x, y, ww, hh);
   } else if (ns == 1) {

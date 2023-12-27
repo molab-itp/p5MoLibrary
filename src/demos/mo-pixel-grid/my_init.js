@@ -1,5 +1,8 @@
 function my_init() {
   //
+
+  localStore_get();
+
   init_query();
 
   my.layer = createGraphics(my.vwidth, my.vheight);
@@ -7,10 +10,9 @@ function my_init() {
   // my.publishLayer = createGraphics(my.vwidth, my.vheight);
 
   my.uid = 0;
-  my.sub_name = '?';
   my.ndevice = -1;
 
-  if (my.scrollOnStart) {
+  if (my.scrollOnStartFlag) {
     ui_toggle_scroll(my);
   }
 
@@ -20,6 +22,29 @@ function my_init() {
   my.send_yi = 0;
 
   init_nstep();
+}
+
+function localStore_get() {
+  let str = localStorage.getItem('mo-pixel-grid');
+  if (!str) {
+    return;
+  }
+  console.log('localStore_get str', str);
+  // console.log('localStore_get n str', str.length);
+  let values = JSON.parse(str);
+  for (let prop in values) {
+    my[prop] = values[prop];
+  }
+}
+
+function localStore_set() {
+  let values = {};
+  for (let prop in my.storageProps) {
+    values[prop] = my[prop];
+  }
+  let str = JSON.stringify(values);
+  localStorage.setItem('mo-pixel-grid', str);
+  console.log('localStore_set n str', str.length);
 }
 
 function init_query() {
@@ -32,9 +57,7 @@ function init_query() {
     // my.perFrame = parseFloat(my.query.perFrame || my.perFrame);
     // my.byLine = parseFloat(my.query.byLine || my.byLine);
   }
-
   my.isPortrait = height > width;
-
   if (my.isPortrait) {
     my.width = my.vwidth;
     my.height = my.vheight;
@@ -65,5 +88,4 @@ function update_nstep(n) {
   my.nstep = n;
   init_nstep();
   my.nstep_selection.selected(my.nstep);
-  // my.layer.clear();
 }
