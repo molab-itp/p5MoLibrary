@@ -85,26 +85,22 @@ function ui_init_row_2() {
 
 function ui_init_row_3() {
   //
-  my.room_name_input = ui_input(my, 'id_room_name_input', '' + my.room_name)
-    // .id('id_room_name')
-    .input(function () {
-      my.room_name = this.value();
-    });
-  my.room_name_input.size(60);
+  my.roomName_input = ui_input(my, 'id_roomName_input', '' + my.roomName);
+  my.roomName_input.input(function () {
+    roomName_changed(this.value());
+  });
+  my.roomName_input.size(60);
 
-  my.name_input = ui_input(my, 'id_name_input', '' + my.name)
-    // .id('id_name_input')
-    .input(function () {
-      my.name = this.value();
-    });
+  my.name_input = ui_input(my, 'id_name_input', '' + my.name);
+  my.name_input.input(function () {
+    name_changed(this.value());
+  });
   my.name_input.size(60);
 
   ui_nstep_selection();
 
   my.updateBtn = ui_createButton(my, 'Update');
-  my.updateBtn.mousePressed(function () {
-    updateBtn_action();
-  });
+  my.updateBtn.mousePressed(updateBtn_action);
 
   my.removeBtn = ui_createButton(my, ' Remove');
   my.removeBtn.mousePressed(removeBtn_action);
@@ -179,6 +175,14 @@ function ui_update_names() {
 }
 
 // --
+
+function roomName_changed(newValue) {
+  my.roomName = newValue;
+}
+
+function name_changed(newValue) {
+  my.name = newValue;
+}
 
 function updateBtn_action() {
   location.reload();

@@ -37,7 +37,7 @@ function dstore_init() {
 function dstore_device_onChild() {
   // Setup listener for changes to firebase db device
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.room_name}/device`;
+  let path = `${my.dbStoreRootPath}/${my.roomName}/device`;
   let refPath = ref(database, path);
 
   onChildAdded(refPath, (data) => {
@@ -99,18 +99,17 @@ function dstore_device_update() {
   if (!my.uid) return;
 
   let { database, ref, update, increment } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.room_name}/device/${my.uid}`;
+  let path = `${my.dbStoreRootPath}/${my.roomName}/device/${my.uid}`;
   // ui_log(my, 'dstore_device_update', path);
   let refPath = ref(database, path);
 
   let date_s = new Date().toISOString();
   let count = increment(1);
-  let name_s = my.name || null;
+  let name_s = my.name || '';
   let x = my.track_xi;
   let y = my.track_yi;
   let s = my.stepPx;
-  let c = my.videoColor;
-  if (!c) c = [0, 0, 0];
+  let c = my.videoColor || [0, 0, 0];
   let chip = { x, y, s, c };
 
   let updates = { date_s, count, name_s, chip };
@@ -119,6 +118,8 @@ function dstore_device_update() {
   let activities = dstore_device_activities(my.uid, date_s);
   if (activities) {
     updates.activity = activities;
+    updates.time = activities[0].time;
+    updates.time_s = activities[0].time_s;
   }
   update(refPath, updates);
 }
@@ -139,7 +140,8 @@ function dstore_device_activities(key, date_s) {
   if (ndiff > my.activityLogTimeMax) {
     // Create a new entry at head of the activity log
     let time = 0;
-    activity = { date_s, time };
+    let time_s = '';
+    activity = { date_s, time, time_s };
     activities.unshift(activity);
   } else {
     // Update the first entry with new time and date
@@ -190,7 +192,7 @@ function dstore_device_isActive(device) {
 
 function dstore_device_remove() {
   let { database, ref, set } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.room_name}/device/${my.uid}`;
+  let path = `${my.dbStoreRootPath}/${my.roomName}/device/${my.uid}`;
   let refPath = ref(database, path);
   set(refPath, {})
     .then(() => {
@@ -207,7 +209,7 @@ function dstore_pixgrid_onChild() {
   //
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   // from "firebase/database";
-  let path = `${my.dbStoreRootPath}/${my.room_name}/pixgrid`;
+  let path = `${my.dbStoreRootPath}/${my.roomName}/pixgrid`;
   ui_log(my, 'dstore_pixgrid_onChild path=', path);
   let refPath = ref(database, path);
 
@@ -244,7 +246,7 @@ function dstore_pixgrid_update(irow, stepPx, row) {
     ui_log(my, 'dstore_pixgrid_update no uid', my.uid);
     return;
   }
-  let path = `${my.dbStoreRootPath}/${my.room_name}/pixgrid/${my.uid}/${irow}`;
+  let path = `${my.dbStoreRootPath}/${my.roomName}/pixgrid/${my.uid}/${irow}`;
   let refPath = ref(database, path);
   let i = irow;
   let s = stepPx;
@@ -256,7 +258,7 @@ function dstore_pixgrid_update(irow, stepPx, row) {
 // db goes to read-only mode when nstep=128
 function dstore_pixgrid_removeAll() {
   let { database, ref, set } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.room_name}/pixgrid`;
+  let path = `${my.dbStoreRootPath}/${my.roomName}/pixgrid`;
   let refPath = ref(database, path);
   set(refPath, {})
     .then(() => {
@@ -271,7 +273,7 @@ function dstore_pixgrid_removeAll() {
 
 function dstore_pixgrid_remove() {
   let { database, ref, set } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.room_name}/pixgrid/${my.uid}`;
+  let path = `${my.dbStoreRootPath}/${my.roomName}/pixgrid/${my.uid}`;
   let refPath = ref(database, path);
   set(refPath, {})
     .then(() => {

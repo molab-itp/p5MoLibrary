@@ -1,6 +1,6 @@
 // incrementally draw grid of pixel rects from storage
-function draw_received() {
-  // console.log('draw_received my.stored_device', my.stored_device);
+function dscore_received() {
+  // console.log('dscore_received my.stored_device', my.stored_device);
   // let layer = my.layer;
   if (!my.stored_device) {
     return;
@@ -9,18 +9,18 @@ function draw_received() {
   my.y0 = 0;
   // Render my pix first
   if (my.uid) {
-    draw_received_uid(my.uid);
+    dscore_received_uid(my.uid);
   }
   for (let uid in my.stored_device) {
-    // console.log('draw_received ub_uid', uid);
+    // console.log('dscore_received ub_uid', uid);
     if (uid != my.uid) {
-      draw_received_uid(uid);
+      dscore_received_uid(uid);
     }
   }
 }
 
-function draw_received_uid(uid) {
-  draw_received_image(uid);
+function dscore_received_uid(uid) {
+  dscore_received_image(uid);
   my.x0 += my.vwidth;
   if (my.x0 > width) {
     my.x0 = 0;
@@ -28,24 +28,24 @@ function draw_received_uid(uid) {
   }
 }
 
-function draw_received_image(uid) {
+function dscore_received_image(uid) {
   let device = my.stored_device[uid];
-  // console.log('draw_received device', device);
+  // console.log('dscore_received device', device);
   if (!device) return;
   if (my.stored_pixgrids) {
     let pixs = my.stored_pixgrids[uid];
     // console.log('uid', uid, 'pixs', pixs);
-    // console.log('draw_received_image uid', uid, 'pix n', pixs.length);
-    draw_received_device(device, pixs);
+    // console.log('dscore_received_image uid', uid, 'pix n', pixs.length);
+    dscore_received_device(device, pixs);
   }
   image(device.layer, my.x0, my.y0);
-  draw_received_cross(device);
+  dscore_received_cross(device);
   image(device.crossLayer, my.x0, my.y0);
 }
 
-function draw_received_device(device, pixs) {
+function dscore_received_device(device, pixs) {
   if (!pixs) return;
-  // console.log('draw_received_device pix n', pixs.length);
+  // console.log('dscore_received_device pix n', pixs.length);
   let layer = device.layer;
   let stepPx = floor(my.vheight / pixs.length);
   let innerPx = floor(stepPx * (1 - my.margin));
@@ -55,11 +55,11 @@ function draw_received_device(device, pixs) {
   while (more) {
     let pix = pixs[vyi];
     if (!pix) {
-      console.log('draw_received_device no vyi', vyi);
+      console.log('dscore_received_device no vyi', vyi);
       vyi = 0;
       break;
     }
-    // console.log('draw_received_device pix', pix);
+    // console.log('dscore_received_device pix', pix);
     if (pix.s) {
       stepPx = pix.s;
       innerPx = floor(stepPx * (1 - my.margin));
@@ -72,15 +72,15 @@ function draw_received_device(device, pixs) {
     // console.log('item', item);
     let colr = item.c;
     if (!colr) {
-      console.log('draw_received_device no colr vxi', vxi, 'vyi', vyi);
+      console.log('dscore_received_device no colr vxi', vxi, 'vyi', vyi);
       break;
     }
-    // console.log('draw_received_device colr', colr, typeof colr);
+    // console.log('dscore_received_device colr', colr, typeof colr);
     let x = vxi * stepPx;
     let y = vyi * stepPx;
-    // console.log('draw_received_device x', x, y);
+    // console.log('dscore_received_device x', x, y);
 
-    draw_received_shape(layer, x, y, colr, innerPx);
+    dscore_received_shape(layer, x, y, colr, innerPx);
     vxi += 1;
     if (vxi >= pix.row.length) {
       vxi = 0;
@@ -93,7 +93,7 @@ function draw_received_device(device, pixs) {
   }
 }
 
-function draw_received_cross(device) {
+function dscore_received_cross(device) {
   let crossLayer = device.crossLayer;
   crossLayer.clear();
   if (!dstore_device_isActive(device)) {
@@ -106,7 +106,7 @@ function draw_received_cross(device) {
   let x = chip.x * stepPx;
   let y = chip.y * stepPx;
   let innerPx = floor(stepPx * (1 - my.margin));
-  draw_received_shape(device.layer, x, y, colr, innerPx);
+  dscore_received_shape(device.layer, x, y, colr, innerPx);
 
   // Draw the cross hairs on cleared crossLayer
   x = floor(x + innerPx * 0.5);
@@ -119,10 +119,10 @@ function draw_received_cross(device) {
   crossLayer.line(0, y, my.vwidth, y);
 }
 
-function draw_received_shape(layer, x, y, colr, innerPx) {
+function dscore_received_shape(layer, x, y, colr, innerPx) {
   layer.fill(colr);
   layer.noStroke();
-  // console.log('draw_received_shape x', x, y);
+  // console.log('dscore_received_shape x', x, y);
   let ww = innerPx;
   let hh = innerPx;
   let ns = my.sub_index % 4;

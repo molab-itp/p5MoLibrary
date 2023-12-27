@@ -1,12 +1,12 @@
 // incrementally draw grid of pixel rects from given image img
-function draw_send(img) {
-  // console.log('draw_send img', img);
+function dscore_send(img) {
+  // console.log('dscore_send img', img);
   if (!img) return;
-  draw_send_image(img);
+  dscore_send_image(img);
 }
 
-function draw_send_image(img) {
-  // console.log('draw_send_image img', img);
+function dscore_send_image(img) {
+  // console.log('dscore_send_image img', img);
   more = 1;
   let colr;
   let cx = floor(my.stepPx * 0.5);

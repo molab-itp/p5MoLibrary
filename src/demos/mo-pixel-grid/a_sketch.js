@@ -32,10 +32,10 @@ function my_setup() {
   my.perFrame = 30;
   my.dbStoreRootPath = 'm0-@r-@w-';
   my.sub_index = 0;
-  my.room_name = 'room0';
+  my.roomName = 'room0';
   my.updateRate = 0.2;
   my.nstepScale = 2;
-  my.name = '?';
+  my.name = '';
 }
 
 function setup() {
@@ -91,13 +91,13 @@ function draw_frame() {
   }
 
   if (!my.storeFlag || !my.isPortrait) {
-    draw_received();
+    dscore_received();
   }
 }
 
 function updateAction() {
   if (my.storeFlag) {
-    draw_send(my.videoImg);
+    dscore_send(my.videoImg);
   }
   if (my.scanFlag) {
     draw_cross_hair_update();

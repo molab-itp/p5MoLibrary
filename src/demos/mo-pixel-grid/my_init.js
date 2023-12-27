@@ -26,7 +26,7 @@ function init_query() {
   my.query = get_url_params();
   if (my.query) {
     my.name = my.query.name;
-    my.room_name = my.query.room || my.room_name;
+    my.roomName = my.query.room || my.roomName;
     my.storeFlag = parseFloat(my.query.store || my.storeFlag);
     my.nstep = parseFloat(my.query.nstep || my.nstep);
     // my.perFrame = parseFloat(my.query.perFrame || my.perFrame);
