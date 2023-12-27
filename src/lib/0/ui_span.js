@@ -90,15 +90,15 @@ function ui_input(my, id, text) {
 }
 window.ui_input = ui_input;
 
-function ui_begin() {
+function ui_begin(my) {
   my.ui_id_index = 1;
 }
 window.ui_begin = ui_begin;
 
-function ui_update_begin() {
+function ui_begin_update(my) {
   my.ui_id_index = 1001;
 }
-window.ui_update_begin = ui_update_begin;
+window.ui_begin_update = ui_begin_update;
 
 function ui_element(my, id) {
   // console.log('ui_element id', id);

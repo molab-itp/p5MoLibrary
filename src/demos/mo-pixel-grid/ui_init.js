@@ -3,7 +3,7 @@
 //
 function ui_init() {
   //
-  ui_begin();
+  ui_begin(my);
 
   ui_init_row_1();
 
@@ -126,7 +126,7 @@ function ui_nstep_selection() {
 }
 
 function ui_update() {
-  ui_update_begin();
+  ui_begin_update(my);
   ui_span(my, 'ndevice', ' ndevice:' + my.ndevice);
   ui_update_names();
   ui_break(my);
