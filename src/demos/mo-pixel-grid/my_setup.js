@@ -1,6 +1,6 @@
 //
 function my_setup() {
-  my.version = '?v=23'; // update to verify change on mobile
+  my.version = '?v=24'; // update to verify change on mobile
   my.vwidth = 480; // Aspect ratio of video capture
   my.vheight = 640;
   my.dbStoreRootPath = 'm0-@r-@w-';
