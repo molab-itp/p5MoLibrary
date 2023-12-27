@@ -23,7 +23,7 @@ function my_init() {
   my.send_xi = 0;
   my.send_yi = 0;
 
-  init_nstep();
+  nstep_init();
 }
 
 function localStore_get() {
@@ -59,7 +59,8 @@ function init_query() {
     // my.perFrame = parseFloat(my.query.perFrame || my.perFrame);
     // my.byLine = parseFloat(my.query.byLine || my.byLine);
   }
-  my.isPortrait = height > width;
+  // my.isPortrait = height > width;
+  my.isPortrait = windowHeight > windowWidth;
   if (my.isPortrait) {
     my.width = my.vwidth;
     my.height = my.vheight;
@@ -71,7 +72,7 @@ function init_query() {
   }
 }
 
-function init_nstep() {
+function nstep_init() {
   // my.stepPx = floor(my.vwidth / my.nstep);
   if (my.nstep < 4) {
     my.margin = 0;
@@ -86,8 +87,8 @@ function init_nstep() {
 }
 
 function update_nstep(n) {
-  console.log('update_nstep n', n);
+  // console.log('update_nstep n', n);
   my.nstep = n;
-  init_nstep();
+  nstep_init();
   my.nstep_selection.selected(my.nstep);
 }

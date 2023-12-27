@@ -73,10 +73,11 @@ function dstore_device_onChild() {
     let device = my.stored_device[key];
     if (!device) {
       // First use of device, add to my.stored_device
+      let uid = key;
       let index = Object.keys(my.stored_device).length;
       let layer = createGraphics(my.vwidth, my.vheight);
       let crossLayer = createGraphics(my.vwidth, my.vheight);
-      device = { index, layer, crossLayer };
+      device = { uid, index, layer, crossLayer };
       my.stored_device[key] = device;
       my.ndevice = index + 1;
     }

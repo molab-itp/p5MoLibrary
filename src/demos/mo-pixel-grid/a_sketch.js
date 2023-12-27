@@ -65,13 +65,13 @@ function draw_frame() {
   }
 
   if (!my.storeFlag || !my.isPortrait) {
-    dscore_received();
+    dstore_received();
   }
 }
 
 function updateAction() {
   if (my.storeFlag) {
-    dscore_send(my.videoImg);
+    dstore_send(my.videoImg);
   }
   if (my.scanFlag) {
     draw_cross_hair_update();
@@ -79,7 +79,7 @@ function updateAction() {
   }
 }
 
-function updateStepScaleChange() {
+function nstepIndex_update() {
   my.nstepIndex += my.nstepDir;
   if (my.nstepIndex < 0 || my.nstepIndex >= my.nstepCycle.length) {
     // my.nstepDir *= -1;
@@ -94,7 +94,8 @@ function updateStepScaleChange() {
 
   // console.log('nstepIndex', my.nstepIndex, 'nstep', my.nstep);
 
-  init_nstep();
+  // nstep_init();
+  update_nstep(my.nstep);
 }
 
 function draw_cross_hair() {
@@ -120,7 +121,7 @@ function draw_cross_hair_update() {
     // in middle of top to bottom scan
     if (vy + my.stepPx > my.vheight) {
       my.track_yi = 0;
-      updateStepScaleChange();
+      nstepIndex_update();
     }
   }
   vx = my.track_xi * my.stepPx;

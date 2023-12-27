@@ -102,8 +102,8 @@ function ui_init_row_3() {
   my.updateBtn = ui_createButton(my, 'Update');
   my.updateBtn.mousePressed(updateBtn_action);
 
-  my.removeBtn = ui_createButton(my, ' Remove');
-  my.removeBtn.mousePressed(removeBtn_action);
+  my.resetBtn = ui_createButton(my, ' Reset');
+  my.resetBtn.mousePressed(resetBtn_action);
 
   ui_break(my);
 }
@@ -189,10 +189,11 @@ function updateBtn_action() {
   // location.reload();
 }
 
-function removeBtn_action() {
+function resetBtn_action() {
   dstore_remove();
   ui_log_clear(my);
   localStorage.clear();
+  location.reload();
 }
 
 function scanFlag_changed(newValue) {
@@ -218,7 +219,7 @@ function settingsFlag_changed(newValue) {
 function nstep_changed(newValue) {
   my.nstep = parseFloat(newValue);
   console.log('ui_nstep_selection', my.nstep);
-  init_nstep();
+  nstep_init();
   my.layer.clear();
 }
 
