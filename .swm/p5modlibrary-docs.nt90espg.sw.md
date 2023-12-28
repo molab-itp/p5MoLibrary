@@ -4,23 +4,9 @@ title: p5modLibrary docs
 
 mo-pixel-grid example using lib.
 
-The indexl.html includes the library. When the script is in p5js editor, this link will be directly to github pages for the library.
+The <SwmPath>[src/demos/mo-pixel-grid/index.html](/src/demos/mo-pixel-grid/index.html)</SwmPath> includes the library. When the script is in p5js editor, this link will be directly to github pages for the library.
 
 &nbsp;
-
-<SwmSnippet path="/src/demos/mo-pixel-grid/index.html" line="36">
-
----
-
-&nbsp;
-
-```html
-<script type="module" src="../../lib/0/a_main.js?v=26"></script>
-```
-
----
-
-</SwmSnippet>
 
 Access to firebase using the library begins in mo-pixel-grid / a_sketch.js with the fb\_.init call. There are two free firebase config accounts that you can use. If one goes over quota, switch to the other or create your own firebase account and pass the config object to fb\_.init (!!@ need example of this)
 
