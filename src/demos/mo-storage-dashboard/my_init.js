@@ -2,9 +2,13 @@ function my_init() {
   //
   pixelDensity(1);
 
-  // my.dbStoreRootPath = '-mo-storage-video-@w-';
-  my.dbStoreRootPath = '-mo-storage-dashboard-@w-';
-  console.log('my.dbStoreRootPath', my.dbStoreRootPath);
+  // my.dstore_rootPath
+ = '-mo-storage-video-@w-';
+  my.dstore_rootPath
+ = '-mo-storage-dashboard-@w-';
+  console.log('my.dstore_rootPath
+', my.dstore_rootPath
+);
 
   init_clipsName();
 
@@ -28,7 +32,8 @@ function my_init() {
   }
 
   // image are store in sequence
-  // {my.dbStoreRootPath}/clips/${nums}${my.imagExt}
+  // {my.dstore_rootPath
+}/clips/${nums}${my.imagExt}
   my.image_seq_pad = 3;
 
   init_layer();

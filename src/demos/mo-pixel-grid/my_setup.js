@@ -3,11 +3,13 @@ function my_setup() {
   my.version = '?v=25'; // update to verify change on mobile
   my.vwidth = 480; // Aspect ratio of video capture
   my.vheight = 640;
-  my.dbStoreRootPath = 'm0-@r-@w-';
+  my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
-  my.name = '';
-  my.nstepCycle = [8, 16, 32, 64];
-  my.updateTimes = [0.2, 0.1, 0.02, 0.01];
+  my.nameDevice = '';
+  my.nstepCycle = [8, 16, 32];
+  my.updateTimes = [0.2, 0.1, 0.02];
+  // my.nstepCycle = [8, 16, 32, 64];
+  // my.updateTimes = [0.2, 0.1, 0.02, 0.01];
   my.nstepIndex = 0;
   my.nstepDir = 1;
   my.margin = 0.1;

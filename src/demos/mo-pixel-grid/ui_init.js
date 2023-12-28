@@ -1,5 +1,5 @@
 //
-// my.canvas is create before ui_init call
+// my.canvas is created before ui_init call
 //
 function ui_init() {
   //
@@ -18,7 +18,7 @@ function ui_init() {
 
   ui_logSummary_div(my);
 
-  ui_update();
+  ui_init_update();
 
   // Move the canvas below all the ui elements
   let body_elt = document.querySelector('body');
@@ -91,11 +91,11 @@ function ui_init_row_3() {
   });
   my.roomName_input.size(60);
 
-  my.name_input = ui_input(my, 'id_name_input', '' + my.name);
-  my.name_input.input(function () {
+  my.nameDevice_input = ui_input(my, 'id_name_input', '' + my.nameDevice);
+  my.nameDevice_input.input(function () {
     name_changed(this.value());
   });
-  my.name_input.size(60);
+  my.nameDevice_input.size(60);
 
   ui_nstep_selection();
 
@@ -125,7 +125,7 @@ function ui_nstep_selection() {
   my.nstep_selection = aSel;
 }
 
-function ui_update() {
+function ui_init_update() {
   ui_begin_update(my);
   ui_span(my, 'ndevice', ' ndevice:' + my.ndevice);
   ui_init_update_names();
@@ -168,7 +168,7 @@ function ui_init_update_rgb() {
 }
 
 function ui_init_update_names() {
-  // let name = my.name || '?';
+  // let name = my.nameDevice || '?';
   // ui_span(my, 'name', ' name:' + name);
   let uid = my.uid || '?';
   ui_span(my, 'uid', ' uid:' + uid);
@@ -181,7 +181,7 @@ function roomName_changed(newValue) {
 }
 
 function name_changed(newValue) {
-  my.name = newValue;
+  my.nameDevice = newValue;
 }
 
 function updateBtn_action() {
@@ -225,8 +225,6 @@ function nstep_changed(newValue) {
 
 function storeFlag_changed(newValue) {
   my.storeFlag = newValue;
-  // dstore_device_update();
-  // video_create(my);
 }
 
 function faceFlag_changed(newValue) {

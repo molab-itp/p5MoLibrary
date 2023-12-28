@@ -17,7 +17,7 @@
 
 // inputs:
 // my.uid
-// my.name
+// my.nameDevice
 // for chip
 //   let x = my.track_xi;
 //   let y = my.track_yi;
@@ -30,13 +30,13 @@ function dstore_device_update() {
   if (!my.uid) return;
 
   let { database, ref, update, increment } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.roomName}/device/${my.uid}`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/device/${my.uid}`;
   // ui_log(my, 'dstore_device_update', path);
   let refPath = ref(database, path);
 
   let date_s = new Date().toISOString();
   let count = increment(1);
-  let name_s = my.name || '';
+  let name_s = my.nameDevice || '';
   let x = my.track_xi;
   let y = my.track_yi;
   let s = my.stepPx;
@@ -123,7 +123,7 @@ function dstore_device_isActive(device) {
 
 function dstore_device_remove() {
   let { database, ref, set } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.roomName}/device/${my.uid}`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/device/${my.uid}`;
   let refPath = ref(database, path);
   set(refPath, {})
     .then(() => {

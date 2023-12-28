@@ -74,7 +74,7 @@ function setup() {
   });
   splatBtn.style('font-size:42px');
 
-  ui_update();
+  ui_init_update();
 }
 
 function draw() {
@@ -127,7 +127,7 @@ function received_gallery(data, opts) {
     }
     img.style('width: ' + iwidth + 'px;');
 
-    ui_update();
+    ui_init_update();
   }
 }
 
@@ -138,7 +138,7 @@ function ui_remove_all() {
   splatBtn.remove();
 }
 
-function ui_update() {
+function ui_init_update() {
   ui_span('date', a_version + formatDate());
   ui_span('updateCount', ' updateCount:' + updateCount);
   ui_span('nitems', ' nitems:' + nitems);

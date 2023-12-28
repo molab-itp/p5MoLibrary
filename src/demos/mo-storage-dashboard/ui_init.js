@@ -4,7 +4,7 @@
 function ui_init() {
   ui_init_controls();
 
-  ui_update();
+  ui_init_update();
 
   // Move the canvas below all the ui elements
   let belt = document.querySelector('body');
@@ -135,7 +135,7 @@ function faceChk_action() {
   video_create();
 }
 
-function ui_update() {
+function ui_init_update() {
   ui_init_update_info();
   my.ui_last = ui_break('break1');
 }

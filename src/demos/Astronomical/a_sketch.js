@@ -45,7 +45,7 @@ function draw() {
   background(0);
   my.pane1.render();
   my.pane0.render();
-  ui_update(my);
+  ui_init_update();
   if (my.mouseTracking) {
     my.pane.mouseDragged();
   }

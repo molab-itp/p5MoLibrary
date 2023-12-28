@@ -47,7 +47,7 @@ function ui_create() {
   });
 }
 
-function ui_update() {
+function ui_init_update() {
   //
   if (!ui_present()) return;
 

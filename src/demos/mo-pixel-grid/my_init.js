@@ -52,7 +52,7 @@ function localStore_set() {
 function init_query() {
   my.query = get_url_params();
   if (my.query) {
-    my.name = my.query.name || my.name;
+    my.nameDevice = my.query.name || my.nameDevice;
     my.roomName = my.query.room || my.roomName;
     my.storeFlag = parseFloat(my.query.store || my.storeFlag);
     my.nstep = parseFloat(my.query.nstep || my.nstep);

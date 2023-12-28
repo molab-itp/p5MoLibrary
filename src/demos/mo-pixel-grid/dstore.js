@@ -24,7 +24,7 @@ function dstore_init() {
 function dstore_device_onChild() {
   // Setup listener for changes to firebase db device
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.roomName}/device`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/device`;
   let refPath = ref(database, path);
 
   onChildAdded(refPath, (data) => {
@@ -76,7 +76,7 @@ function dstore_pixgrid_onChild() {
   //
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   // from "firebase/database";
-  let path = `${my.dbStoreRootPath}/${my.roomName}/pixgrid`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/pixgrid`;
   ui_log(my, 'dstore_pixgrid_onChild path=', path);
   let refPath = ref(database, path);
 
@@ -113,7 +113,7 @@ function dstore_pixgrid_update(irow, stepPx, row) {
     ui_log(my, 'dstore_pixgrid_update no uid', my.uid);
     return;
   }
-  let path = `${my.dbStoreRootPath}/${my.roomName}/pixgrid/${my.uid}/${irow}`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/pixgrid/${my.uid}/${irow}`;
   let refPath = ref(database, path);
   let i = irow;
   let s = stepPx;
@@ -125,7 +125,7 @@ function dstore_pixgrid_update(irow, stepPx, row) {
 // db goes to read-only mode when nstep=128
 function dstore_pixgrid_removeAll() {
   let { database, ref, set } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.roomName}/pixgrid`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/pixgrid`;
   let refPath = ref(database, path);
   set(refPath, {})
     .then(() => {
@@ -140,7 +140,7 @@ function dstore_pixgrid_removeAll() {
 
 function dstore_pixgrid_remove() {
   let { database, ref, set } = fb_.fbase;
-  let path = `${my.dbStoreRootPath}/${my.roomName}/pixgrid/${my.uid}`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/pixgrid/${my.uid}`;
   let refPath = ref(database, path);
   set(refPath, {})
     .then(() => {

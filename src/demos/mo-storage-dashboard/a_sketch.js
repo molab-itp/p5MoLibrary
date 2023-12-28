@@ -59,7 +59,7 @@ function draw() {
   //
   draw_update();
 
-  ui_update();
+  ui_init_update();
 
   sound_draw();
 }

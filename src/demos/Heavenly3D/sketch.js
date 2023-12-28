@@ -42,7 +42,7 @@ function setup() {
 function draw() {
   background(0);
   draw_backgImg();
-  ui_update();
+  ui_init_update();
 }
 
 function draw_backgImg() {

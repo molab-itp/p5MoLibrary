@@ -4,7 +4,7 @@
 // http://127.0.0.1:5502/demos/mo-pixel-grid/index.html?sub=sjht1
 // http://127.0.0.1:5502/demos/mo-pixel-grid/index.html?pub=pjht1
 //
-// my.name = my.query.name;
+// my.nameDevice = my.query.name;
 // my.publish = my.query.pub;
 // my.nstep = my.query.nstep || my.nstep;
 // my.perFrame = my.query.perFrame || my.perFrame;
@@ -46,7 +46,7 @@ function anim_init() {
 function draw() {
   draw_frame();
 
-  ui_update();
+  ui_init_update();
 
   my.animLoop.step();
 }

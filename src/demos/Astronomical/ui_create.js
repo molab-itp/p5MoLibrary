@@ -166,7 +166,7 @@ function randomAction() {
   syncRefIndex();
 }
 
-function ui_update() {
+function ui_init_update() {
   //
   if (!ui_present()) return;
   let pane = my.pane;
