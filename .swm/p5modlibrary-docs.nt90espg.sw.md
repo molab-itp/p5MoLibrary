@@ -15,7 +15,7 @@ The indexl.html includes the library. When the script is in p5js editor, this li
 &nbsp;
 
 ```html
-<script type="module" src="../../lib/0/a_main.js?v=25"></script>
+<script type="module" src="../../lib/0/a_main.js?v=26"></script>
 ```
 
 ---
