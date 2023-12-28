@@ -2,7 +2,9 @@
 title: Astronomical
 ---
 
-<SwmPath>[src/demos/Astronomical/](/src/demos/Astronomical/)</SwmPath>
+<SwmPath>[src/demos/Astronomical/index.html](/src/demos/Astronomical/index.html)</SwmPath>
+
+&nbsp;
 
 &nbsp;
 
