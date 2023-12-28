@@ -26,7 +26,7 @@ function setup() {
 
   let config = fb_.init('jht9629');
   // let config = fb_.init('jht1493');
-  ui_log(my, 'config.projectId', config.projectId);
+  ui_log(my, 'config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   dstore_init();
 

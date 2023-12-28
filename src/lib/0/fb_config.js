@@ -51,20 +51,24 @@ let configs = {
 // Initialize Firebase is performed by init function
 
 function init(config) {
-  // if config object provided or config key, use it
-  if (typeof config == 'string') {
+  // config is object or string key into configs
+  let configLabel;
+  let nconfig = config;
+  if (typeof nconfig == 'string') {
     // console.log('fb_config config string', config);
-    config = configs[config];
+    configLabel = nconfig;
+    nconfig = configs[config];
   }
   // if config object not found, default to firebaseConfig_jht9629
-  config = config || firebaseConfig_jht9629;
+  nconfig = nconfig || firebaseConfig_jht9629;
+  nconfig.configLabel = configLabel;
   // console.log('fb_config config', config);
   // console.log('fb_config config.projectId', config.projectId);
-  fb_.app = initializeApp(config);
+  fb_.app = initializeApp(nconfig);
   fb_.auth = getAuth();
   fb_.fbase.init();
   fb_.fstore.init();
-  return config;
+  return nconfig;
 }
 
 import { fstore } from './fb_fstore.js?v=27';
