@@ -8,7 +8,7 @@ The <SwmPath>[src/demos/mo-pixel-grid/index.html](/src/demos/mo-pixel-grid/index
 
 &nbsp;
 
-Access to firebase using the library begins in mo-pixel-grid / a_sketch.js with the fb\_.init call. There are two free firebase config accounts that you can use `jht1493` or `jht9629` . If one goes over quota, switch to the other or create your own firebase account and pass the config object to fb\_.init (!!@ need example of this)
+Access to firebase using the library begins in mo-pixel-grid / a_sketch.js with the fb\_.init call. There are two free firebase config accounts that you can use `jht1493` or `jht9629` . If one goes over quota, switch to the other or create your own firebase account and pass the config object to fb\_.init !!@ need example of this
 
 <SwmSnippet path="src/demos/mo-pixel-grid/a_sketch.js" line="27">
 
