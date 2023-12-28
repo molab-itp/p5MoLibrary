@@ -1,5 +1,5 @@
 ---
-title: p5modLibrary docs
+title: mo-pixel-grid
 ---
 
 **src/mo-pixel-grid** example uses the library in the **lib** directory.
