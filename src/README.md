@@ -3,6 +3,7 @@
 - a p5js Library for multi device experiences on handheld and large screens
 
   - [demos/Astronomical](demos/Astronomical?v=27)
+  - [demos/BlackFacts](demos/BlackFacts?v=27)
   - [demos/createImg-board](demos/createImg-board/)
   - [demos/createImg-slide-show](demos/createImg-slide-show)
   - [demos/mo-pixel-grid](demos/mo-pixel-grid?v=27)
