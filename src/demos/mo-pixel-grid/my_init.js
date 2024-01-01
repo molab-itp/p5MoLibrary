@@ -59,7 +59,7 @@ function init_query() {
     // my.perFrame = parseFloat(my.query.perFrame || my.perFrame);
     // my.byLine = parseFloat(my.query.byLine || my.byLine);
   }
-  // my.isPortrait = height > width;
+  console.log('init_query windowHeight', windowHeight, 'windowWidth', windowWidth);
   my.isPortrait = windowHeight > windowWidth;
   if (my.isPortrait) {
     my.width = my.vwidth;

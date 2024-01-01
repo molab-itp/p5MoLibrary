@@ -156,6 +156,8 @@ function mouseDragged() {
 }
 
 function windowResized() {
+  console.log('windowResized windowHeight', windowHeight, 'windowWidth', windowWidth);
+  my.isPortrait = windowHeight > windowWidth;
   if (my.isPortrait) {
     return;
   }
