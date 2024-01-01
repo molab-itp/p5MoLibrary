@@ -33,15 +33,15 @@ The query append to each `src=` reference in index file is to force reload from 
 
 <SwmPath>[src/demos/mo-pixel-grid/a_sketch.js](/src/demos/mo-pixel-grid/a_sketch.js)</SwmPath> Access to firebase begins in with the fb\_.init call. There are two free firebase config accounts that you can use `jht1493` or `jht9629` . If one goes over quota, switch to the other or create your own firebase account and pass the config object to fb\_.init
 
-<SwmSnippet path="src/demos/mo-pixel-grid/a_sketch.js" line="27">
+<SwmSnippet path="/src/demos/mo-pixel-grid/a_sketch.js" line="27">
 
 ---
 
 establish the connection to firebase using config`'jht9629'` or `'jht1493'`.
 
 ```
-  let config = fb_.init('jht9629');
-  // let config = fb_.init('jht1493');
+  // let config = fb_.init('jht9629');
+  let config = fb_.init('jht1493');
 ```
 
 ---
