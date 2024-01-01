@@ -156,6 +156,9 @@ function mouseDragged() {
 }
 
 function windowResized() {
+  if (my.isPortrait) {
+    return;
+  }
   resizeCanvas(windowWidth, windowHeight);
   console.log('windowResized width', width, 'height', height);
 }
