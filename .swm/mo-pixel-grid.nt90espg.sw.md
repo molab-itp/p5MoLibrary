@@ -8,14 +8,14 @@ title: mo-pixel-grid
 
 <SwmToken path="/src/demos/mo-pixel-grid/dstore_device.js" pos="33:17:17" line-data="  let path = `${my.dstore_rootPath}/${my.roomName}/device/${my.uid}`;">`roomName`</SwmToken>
 
-<SwmSnippet path="/src/demos/mo-pixel-grid/dstore_device.js" line="33">
+<SwmSnippet path="src/demos/mo-pixel-grid/dstore_device.js" line="33">
 
 ---
 
 firebase realtime database path for list of devices
 
-```javascript
-let path = `${my.dstore_rootPath}/${my.roomName}/device/${my.uid}`;
+```
+  let path = `${my.dstore_rootPath}/${my.roomName}/device/${my.uid}`;
 ```
 
 ---
