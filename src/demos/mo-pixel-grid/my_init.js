@@ -60,8 +60,8 @@ function init_query() {
     // my.byLine = parseFloat(my.query.byLine || my.byLine);
   }
   console.log('init_query windowHeight', windowHeight, 'windowWidth', windowWidth);
-  my.isPortrait = windowHeight > windowWidth;
-  if (my.isPortrait) {
+  // my.isPortrait = windowHeight > windowWidth;
+  if (isPortraitView()) {
     my.width = my.vwidth;
     my.height = my.vheight * 4;
   } else {
@@ -70,6 +70,10 @@ function init_query() {
     // my.width = displayWidth;
     // my.height = displayHeight;
   }
+}
+
+function isPortraitView() {
+  return windowHeight > windowWidth;
 }
 
 function nstep_init() {

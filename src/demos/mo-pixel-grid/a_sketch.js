@@ -152,13 +152,13 @@ function mouseDragged() {
   track_xy();
   // required to prevent touch drag moving canvas on mobile
   // return false;
-  return my.scrollFlag;
+  return my.scrollFlag ? true : false;
 }
 
 function windowResized() {
   console.log('windowResized windowHeight', windowHeight, 'windowWidth', windowWidth);
-  my.isPortrait = windowHeight > windowWidth;
-  if (my.isPortrait) {
+  // my.isPortrait = windowHeight > windowWidth;
+  if (isPortraitView()) {
     return;
   }
   resizeCanvas(windowWidth, windowHeight);

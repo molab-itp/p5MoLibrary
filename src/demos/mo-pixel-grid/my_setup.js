@@ -22,7 +22,7 @@ function my_setup() {
   my.faceFlag = 1;
   my.videoFlag = 1;
   my.storeFlag = 0;
-  my.scrollFlag = false;
+  my.scrollFlag = 1;
   my.scrollOnStartFlag = 0;
   my.scrollStopSecs = 4;
   my.byPixel = 0;
@@ -30,6 +30,7 @@ function my_setup() {
   my.shapeIndex = 0;
   my.storeProps = {
     roomName: 1,
+    nameDevice: 1,
     name: 1,
     nstep: 1,
     margin: 1,
