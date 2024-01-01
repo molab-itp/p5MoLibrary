@@ -8,8 +8,10 @@ function my_setup() {
   my.nameDevice = '';
   // my.nstepCycle = [8, 16, 32];
   // my.updateTimes = [0.2, 0.1, 0.02];
-  my.nstepCycle = [8, 16, 32, 64, 128];
-  my.updateTimes = [0.2, 0.1, 0.02, 0.01, 0.01];
+  // my.nstepCycle = [8, 16, 32, 64, 128];
+  // my.updateTimes = [0.2, 0.1, 0.02, 0.01, 0.01];
+  my.nstepCycle = [8, 16, 32, 64];
+  my.updateTimes = [0.2, 0.1, 0.05, 0.02];
   my.nstepIndex = 0;
   my.nstepDir = 1;
   my.margin = 0.1;

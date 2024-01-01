@@ -2,7 +2,7 @@
 title: mo-pixel-grid
 ---
 
-**src/mo-pixel-grid** example uses the firebase library in the **lib** directory.
+**src/mo-pixel-grid** uses the firebase library in the **lib** directory.
 
 The <SwmPath>[src/demos/mo-pixel-grid/index.html](/src/demos/mo-pixel-grid/index.html)</SwmPath> includes the library. When the script is in p5js editor, this link will be directly to the github pages for the library.
 

@@ -155,5 +155,9 @@ function mouseDragged() {
   return my.scrollFlag;
 }
 
+function resized() {
+  //
+}
+
 // https://editor.p5js.org/jht9629-nyu/sketches/twgS6eWRZ
 // pixel-grid

@@ -138,6 +138,8 @@ function ui_init_update() {
 function ui_init_update_xy() {
   let x = my.track_xi * my.stepPx;
   let y = my.track_yi * my.stepPx;
+  x = (x + '').padStart(3, 0);
+  y = (y + '').padStart(3, 0);
   let str = ` x: ${x} y: ${y}`;
   my.report = ui_span(my, 'report', str);
 }
