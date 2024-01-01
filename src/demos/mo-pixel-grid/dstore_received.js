@@ -17,13 +17,18 @@ function dstore_received() {
     if (uid != my.uid) {
       dstore_received_uid(uid);
     }
+    // console.log('dstore_received my.y0', my.y0);
+    if (my.y0 >= height) {
+      break;
+    }
   }
 }
 
 function dstore_received_uid(uid) {
+  // console.log('dstore_received_uid uid', uid, my.x0, my.y0);
   dstore_received_image(uid);
   my.x0 += my.vwidth;
-  if (my.x0 > width) {
+  if (my.x0 >= width) {
     my.x0 = 0;
     my.y0 += my.vheight;
   }

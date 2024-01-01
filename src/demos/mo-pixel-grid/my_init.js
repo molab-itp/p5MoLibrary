@@ -63,10 +63,10 @@ function init_query() {
   my.isPortrait = windowHeight > windowWidth;
   if (my.isPortrait) {
     my.width = my.vwidth;
-    my.height = my.vheight;
+    my.height = my.vheight * 4;
   } else {
     my.width = windowWidth;
-    my.height = windowHeight - 90;
+    my.height = windowHeight;
     // my.width = displayWidth;
     // my.height = displayHeight;
   }

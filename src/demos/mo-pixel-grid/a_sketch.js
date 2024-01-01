@@ -64,7 +64,7 @@ function draw_frame() {
     image(my.videoImg, 0, 0);
   }
 
-  if (!my.storeFlag || !my.isPortrait) {
+  if (!my.storeFlag) {
     dstore_received();
   }
 }
@@ -155,8 +155,9 @@ function mouseDragged() {
   return my.scrollFlag;
 }
 
-function resized() {
-  //
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  console.log('windowResized width', width, 'height', height);
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/twgS6eWRZ
