@@ -5,7 +5,7 @@ import { join } from 'path';
 import { enum_files, writeBuildFile, writeSrcBuildFile } from './enum_files.js';
 
 // default to dev build
-let updateBuild = 0;
+let updateBuild = 1;
 // --prod --> 1
 // --dev  --> 0
 
