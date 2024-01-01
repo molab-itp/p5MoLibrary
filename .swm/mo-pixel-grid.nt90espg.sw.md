@@ -8,10 +8,6 @@ title: mo-pixel-grid
 
 <SwmToken path="/src/demos/mo-pixel-grid/dstore_device.js" pos="33:17:17" line-data="  let path = `${my.dstore_rootPath}/${my.roomName}/device/${my.uid}`;">`roomName`</SwmToken>
 
-&nbsp;
-
-&nbsp;
-
 <SwmSnippet path="/src/demos/mo-pixel-grid/dstore_device.js" line="33">
 
 ---
