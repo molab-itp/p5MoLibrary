@@ -52,7 +52,7 @@ establish the connection to firebase using config`'jht9629'` or `'jht1493'`.
 
 creating your own firebase account and pass the config object to fb\_.init&nbsp;
 
-<SwmToken path="/src/demos/mo-pixel-grid/a_sketch.js" pos="27:9:9" line-data="  let config = fb_.init(&#39;jht9629&#39;);">`init`</SwmToken>
+<SwmToken path="/src/demos/mo-pixel-grid/a_sketch.js" pos="27:11:11" line-data="  // let config = fb_.init(&#39;jht9629&#39;);">`init`</SwmToken>
 
 &nbsp;
 
