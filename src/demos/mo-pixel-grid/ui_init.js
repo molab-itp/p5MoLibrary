@@ -29,9 +29,10 @@ function ui_init() {
 function ui_init_row_1() {
   //
   my.versionBtn = ui_createButton(my, 'v' + my.version.substring(2));
-  my.versionBtn.mousePressed(function () {
-    ui_toggle_scroll(my);
-  });
+  my.versionBtn.mousePressed(versionBtn_action);
+  // my.versionBtn.mousePressed(function () {
+  //   ui_toggle_scroll(my);
+  // });
 
   my.settingsChk = ui_checkbox(my, 'Settings', my.settingsFlag);
   my.settingsChk.changed(function () {
@@ -93,13 +94,13 @@ function ui_init_row_3() {
   my.roomName_input.input(function () {
     roomName_changed(this.value());
   });
-  my.roomName_input.size(60);
+  my.roomName_input.size(100);
 
   my.nameDevice_input = ui_input(my, 'id_name_input', '' + my.nameDevice);
   my.nameDevice_input.input(function () {
     name_changed(this.value());
   });
-  my.nameDevice_input.size(60);
+  my.nameDevice_input.size(100);
 
   ui_nstep_selection();
 
@@ -190,12 +191,9 @@ function ui_init_update_names() {
 
 // --
 
-function roomName_changed(newValue) {
-  my.roomName = newValue;
-}
-
-function name_changed(newValue) {
-  my.nameDevice = newValue;
+function versionBtn_action() {
+  let fs = fullscreen();
+  fullscreen(!fs);
 }
 
 function updateBtn_action() {
@@ -208,6 +206,16 @@ function resetBtn_action() {
   ui_log_clear(my);
   localStorage.clear();
   location.reload();
+}
+
+// --
+
+function roomName_changed(newValue) {
+  my.roomName = newValue;
+}
+
+function name_changed(newValue) {
+  my.nameDevice = newValue;
 }
 
 function scanFlag_changed(newValue) {
