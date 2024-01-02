@@ -21,8 +21,6 @@ my.getOffset
 # --
 [] upload canvas sequence
 
-
-
 # --
 [x] store by y index, not y coord
 // index for pix/{uid}/n

@@ -293,7 +293,7 @@ class DrawPoints {
     this.startTimedDraw();
     this.save_drawing();
   }
-}
+} // DrawPoints
 
 // ABCDEFGHILKMNOPQRTSTUVWXYZ
 // {}[]:,"+
