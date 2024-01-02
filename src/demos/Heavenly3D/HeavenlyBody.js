@@ -2,7 +2,7 @@
 // Create an p5 instance to allow 3D to be layer on 2D canvas
 
 class HeavenlyBody {
-  // {x, y, width, height, img, flushRight, orbitControl, capture, label}
+  // {x, y, width, height, img, orbitControl, capture, label}
   constructor(props) {
     //
     Object.assign(this, props);
@@ -22,7 +22,7 @@ class HeavenlyBody {
     this.detailX = 24 * 4;
     this.detailY = 16 * 4;
 
-    this.aRadius = floor(this.height * 0.38);
+    this.aRadius = floor(this.height * 0.47);
 
     // Create an p5 instance to allow 3D to be layer on 2D canvas
     const HeavenlyBody_sketch = (aInst) => {
@@ -45,10 +45,7 @@ class HeavenlyBody {
     //
     let w = this.width;
     let h = this.height;
-    this.aCanvas = aInst.createCanvas(h, h, WEBGL);
-    if (this.flushRight) {
-      this.x = w - h;
-    }
+    this.aCanvas = aInst.createCanvas(w, h, WEBGL);
     this.aCanvas.position(this.x, this.y);
     aInst.clear();
     aInst.noStroke();
@@ -98,5 +95,12 @@ class HeavenlyBody {
     this.angleX = x;
     this.angleY = y;
     this.angleZ = z;
+  }
+
+  pointInside(x, y) {
+    let inX = x >= this.x && x <= this.x + this.width;
+    let inY = y >= this.y && y <= this.y + this.height;
+    // console.log(this.label, 'x y', x, y, inX, inY);
+    return inX & inY;
   }
 }

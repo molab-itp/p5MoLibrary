@@ -1,5 +1,5 @@
 //
-function ui_create() {
+function ui_init() {
   //
   createSpan().id('id_angleX');
   createSpan().id('id_angleY');
@@ -42,15 +42,19 @@ function ui_create() {
   createButton('North Pole').mousePressed(function () {
     my.focusBody.setAngle(-1.5, 0.0, 0); // North Pole
   });
-  createButton('backG').mousePressed(function () {
+  createElement('br');
+  createButton('next img').mousePressed(function () {
     nextBackgImg();
   });
+  let panScaleSlider = createSlider(1, 32, my.panScale, 0.01);
+  panScaleSlider.input(function () {
+    my.panScale = parseFloat(this.value());
+  });
+  panScaleSlider.style('width:300px');
 }
 
 function ui_init_update() {
   //
-  if (!ui_present()) return;
-
   let focus = my.focusBody;
   if (!focus) return;
 
@@ -62,10 +66,6 @@ function ui_init_update() {
 
   let angleZ = focus.angleZ.toFixed(4);
   select('#id_angleZ').html('[angleZ=' + angleZ + '] ');
-}
-
-function ui_present() {
-  return select('#id_angleX');
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/rXhPgZ1k6
