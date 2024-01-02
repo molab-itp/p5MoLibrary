@@ -5,7 +5,7 @@ title: Astronomical
 <SwmPath>[src/demos/Astronomical/index.html](/src/demos/Astronomical/index.html)</SwmPath>
 
 A big screen presentation of infographic listing 210 notable astronomical objects from\
-<https://en.wikipedia.org/wiki/Astronomical_object> and <https://commons.wikimedia.org/wiki/File:The_Celestial_Zoo_infographic_wikimedia.png>&nbsp;\
+<https://en.wikipedia.org/wiki/Astronomical_object> and <https://commons.wikimedia.org/wiki/File:The_Celestial_Zoo_infographic_wikimedia.png>\
 "Infographic listing 210 notable astronomical objects marked on a central logarithmic map of the observable universe. A small view and some distinguishing features are included for each astronomical object "
 
 JSON is created to mark regions, saved in local storage, and downloaded to file which is incorporated back into the sketch as <SwmToken path="/src/demos/Astronomical/refBox_init.js" pos="1:2:2" line-data="let refBox_init = {">`refBox_init`</SwmToken>
@@ -14,7 +14,7 @@ JSON is created to mark regions, saved in local storage, and downloaded to file 
 
 ---
 
-area of pair of regions that identify an astrononmical object&nbsp;
+pair of regions that identify an astrononmical object&nbsp;
 
 ```
 let refBox_init = {

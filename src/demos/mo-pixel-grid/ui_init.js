@@ -60,6 +60,10 @@ function ui_init_row_2() {
     scrollFlag_changed(this.checked());
   });
 
+  if (isPortraitView()) {
+    ui_break(my);
+  }
+
   my.faceChk = ui_checkbox(my, 'Face', my.faceFlag);
   my.faceChk.changed(function () {
     faceFlag_changed(this.checked());
@@ -98,6 +102,10 @@ function ui_init_row_3() {
   my.nameDevice_input.size(60);
 
   ui_nstep_selection();
+
+  if (isPortraitView()) {
+    ui_break(my);
+  }
 
   my.updateBtn = ui_createButton(my, 'Update');
   my.updateBtn.mousePressed(updateBtn_action);
@@ -151,6 +159,10 @@ function ui_init_update_rgb() {
   let r = colr[0];
   let g = colr[1];
   let b = colr[2];
+
+  if (isPortraitView()) {
+    ui_break(my);
+  }
 
   let spanrgb = ui_span(my, 'rgb', ` &nbsp&nbsp&nbsp&nbsp`);
   if (!spanrgb) return;
