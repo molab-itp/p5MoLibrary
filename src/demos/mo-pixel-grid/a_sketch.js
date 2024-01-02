@@ -1,14 +1,5 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/7Wjlo3pPU
-// mo-pixel-grid
-
-// http://127.0.0.1:5502/demos/mo-pixel-grid/index.html?sub=sjht1
-// http://127.0.0.1:5502/demos/mo-pixel-grid/index.html?pub=pjht1
-//
-// my.nameDevice = my.query.name;
-// my.publish = my.query.pub;
-// my.nstep = my.query.nstep || my.nstep;
-// my.perFrame = my.query.perFrame || my.perFrame;
-// my.byLine = my.query.byLine || my.byLine;
+// mo-pixel-grid jht9629 fb_firebase.js
 
 let my = {};
 
