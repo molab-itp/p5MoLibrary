@@ -1,8 +1,12 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
 // Heavenly3D
-// https://github.com/molab-itp/p5MoLibrary/tree/main/demos/Heavenly3D
+// https://github.com/molab-itp/p5moLibrary/tree/main/src/demos/Heavenly3D
+
+let my = {};
 
 function preload() {
+  my.backgImgs = [];
+
   my.earthImg = loadImage('../../assets/world-ultra.jpg');
   // my.earthImg = loadImage('assets/Da_Vinci.jpg');
   my.moonImg = loadImage('../../assets/moon.jpg');
@@ -16,6 +20,9 @@ function preload() {
 }
 
 function setup() {
+  //
+  my_setup();
+
   createCanvas(windowWidth, windowHeight - 70);
 
   my.width = width;
@@ -31,12 +38,15 @@ function setup() {
 
   // my.focusBody = my.camBody;
   my.focusBody = my.earth;
+  init_pan();
+  my.panScale = 2;
+}
 
+function init_pan() {
   my.panX = 0;
   my.panXStep = 1;
   my.panY = 0;
   my.panYStep = 1;
-  my.scale = 2;
 }
 
 function draw() {
@@ -49,35 +59,35 @@ function draw_backgImg() {
   let backgImg = my.backgImgs[my.backgImgIndex];
   if (!backgImg) return;
   // Scale background image to the full width of the canvas
-  let w = backgImg.width;
-  let h = backgImg.height;
-  let r = h / w;
-  let scale = my.scale;
+  let ww = backgImg.width;
+  let hh = backgImg.height;
+  let rr = hh / ww;
+  let scale = my.panScale;
 
   let dx = 0;
   let dy = 0;
   let dWidth = my.width;
-  let dHeight = floor(dWidth * r);
+  let dHeight = floor(dWidth * rr);
   if (dHeight < my.height) {
     dHeight = my.height;
-    dWidth = floor(dHeight / r);
+    dWidth = floor(dHeight / rr);
   }
 
   let sx = my.panX;
   let sy = my.panY;
-  let sWidth = floor(w / scale);
-  let sHeight = floor(h / scale);
+  let sWidth = floor(ww / scale);
+  let sHeight = floor(hh / scale);
 
   image(backgImg, dx, dy, dWidth, dHeight, sx, sy, sWidth, sHeight);
 }
 
 function mousePressed() {
   //
-  if (keyIsDown(SHIFT)) {
-    my.shiftTracking = 1;
-  } else {
-    my.mouseTracking = 1;
-  }
+  // if (keyIsDown(SHIFT)) {
+  my.shiftTracking = 1;
+  // } else {
+  //   my.mouseTracking = 1;
+  // }
 
   my.panX0 = mouseX;
   my.panY0 = mouseY;
@@ -94,7 +104,7 @@ function mouseDragged() {
 
 function mouseReleased() {
   // console.log('mouseReleased');
-  my.mouseTracking = 0;
+  // my.mouseTracking = 0;
   my.shiftTracking = 0;
 }
 
@@ -162,6 +172,7 @@ function make_camBody() {
 
 function nextBackgImg() {
   if (my.backgImgs.length <= 0) return;
+  init_pan();
   my.backgImgIndex = (my.backgImgIndex + 1) % my.backgImgs.length;
 }
 
