@@ -1,3 +1,4 @@
+/* make the buttons bigger on small screens */
 @media only screen and (max-width: 600px) {
   body,
   button,

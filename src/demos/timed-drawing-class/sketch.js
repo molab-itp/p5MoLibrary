@@ -2,11 +2,13 @@
 // timed-drawing
 // my.version update required here and in index.html ?v=34 to see github pages update
 
-let my = { version: 21, width: 640, height: 480 };
-// let my = { width: 640 / 2, height: 480 / 2 };
+let my = {};
 let drawPoints;
 
 function my_init() {
+  my.version = '?v=34';
+  my.width = 640;
+  my.height = 480;
   my.save_label = 'plea';
   my.lapse = 5; // seconds to re-draw points
   // my.xoffset = my.width / 2;
@@ -80,8 +82,8 @@ function draw() {
 
 function ui_init() {
   let msg = [
-    '(' + my.version + ') drag mouse on left side of canvas to create line drawing',
-    'press startTimedDraw to re-draw on right in ' + drawPoints.lapse + ' seconds',
+    '(' + my.version.substring(1) + ') drag mouse on the canvas to create line drawing',
+    'press startTimedDraw to re-draw it in ' + drawPoints.lapse + ' seconds',
   ];
   createDiv(msg.join('<br/>'));
 
