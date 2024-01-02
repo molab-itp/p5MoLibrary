@@ -1,12 +1,12 @@
 // https://github.com/jht9629-nyu/my-p5js-repo-2023/tree/main/p5-projects/timed-drawing-class
 // timed-drawing
-// my.version update required here and in index.html ?v=34 to see github pages update
+// my.version update required here and in index.html ?v=35 to see github pages update
 
 let my = {};
 let drawPoints;
 
 function my_init() {
-  my.version = '?v=34';
+  my.version = '?v=35';
   my.width = 640;
   my.height = 480;
   my.save_label = 'plea';
