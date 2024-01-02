@@ -152,7 +152,10 @@ function mouseDragged() {
   track_xy();
   // required to prevent touch drag moving canvas on mobile
   // return false;
-  return my.scrollFlag ? true : false;
+
+  let onCanvas = mouseX >= 0 && mouseX < width && mouseY >= 0 && mouseY < height;
+  // return false; // required to prevent touch drag moving canvas on mobile
+  return my.scrollFlag ? true : !onCanvas;
 }
 
 function windowResized() {

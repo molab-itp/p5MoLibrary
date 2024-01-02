@@ -54,9 +54,9 @@ function setup() {
 function mouseDragged() {
   // console.log('mouseDragged');
   drawPoints.mouseDragged();
-  let onCancas = mouseX >= 0 && mouseX < width && mouseY >= 0 && mouseY < height;
+  let onCanvas = mouseX >= 0 && mouseX < width && mouseY >= 0 && mouseY < height;
   // return false; // required to prevent touch drag moving canvas on mobile
-  return !onCancas;
+  return !onCanvas;
 }
 
 function canvas_mouseReleased() {
