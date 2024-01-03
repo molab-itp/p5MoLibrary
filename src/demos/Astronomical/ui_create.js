@@ -76,7 +76,7 @@ function ui_create() {
     randomAction();
   });
   {
-    my.refEntryReport_div = createDiv().id('id_ptsReport');
+    my.refEntryReport_div = createDiv().id('id_refReport');
   }
 }
 
@@ -115,9 +115,9 @@ function setPane(nPane) {
 }
 
 function ui_paneUpdate() {
-  let pt = my.pane.pt();
+  let rg = my.pane.region();
   let str = '';
-  str = my.pane.label + ' ' + JSON.stringify(pt);
+  str = my.pane.label + ' ' + JSON.stringify(rg);
   my.refEntryReport_div.html(str);
   my.zoom_slider.value(my.pane.zoomIndex);
 }
@@ -151,7 +151,7 @@ function syncRefIndex() {
   my.refIndex_input.value(my.refBox.refIndex + 1);
   my.refLabel_input.value(my.refBox.refLabel);
   ui_paneUpdate();
-  if (my.pane0.pt().z && my.pane1.pt().z) {
+  if (my.pane0.region().z && my.pane1.region().z) {
     focusAction();
   }
 }

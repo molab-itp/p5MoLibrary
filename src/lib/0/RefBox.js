@@ -3,7 +3,7 @@ export class RefBox {
   //   refIndex: 0,
   //   width: 4800,
   //   height: 3200,
-  //   refs: [{ label: '', pts: [{ x, y, w, h, z }, { x, y, w, h, z }], i } ]
+  //   refs: [{ label: '', regions: [{ x, y, w, h, z }, { x, y, w, h, z }], i } ]
   //
   constructor(props) {
     //
@@ -26,7 +26,7 @@ export class RefBox {
     let ent = this.refs[refIndex];
     if (!ent) {
       let i = this.refs.length + 1;
-      ent = { label: '', pts: [{}, {}], i };
+      ent = { label: '', regions: [{}, {}], i };
       this.refs[refIndex] = ent;
     }
     return ent;
@@ -79,7 +79,7 @@ export class RefBox {
 //   for (let index = 0; index < refBox.refs.length; index++) {
 //     let ent = refBox.refs[index];
 //     ent.i = index + 1;
-//     if (!ent.pts[this.ptsIndex].w) {
+//     if (!ent.regions[this.regionIndex].w) {
 //       last = index;
 //     }
 //   }

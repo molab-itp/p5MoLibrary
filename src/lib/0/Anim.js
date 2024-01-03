@@ -98,7 +98,7 @@ export class Anim {
       let last = lastValues[prop];
       let next = nextValues[prop];
       if (last == undefined) {
-        // console.log(this.target.ptsIndex, 'changeIndex', this.changeIndex, 'continue prop', prop, 'last', last);
+        // console.log(this.target.regionIndex, 'changeIndex', this.changeIndex, 'continue prop', prop, 'last', last);
         this.target[prop] = next;
         continue;
       }
@@ -114,7 +114,7 @@ export class Anim {
     if (this.changeIndex >= this.changes.length - 1) {
       this.running = 0;
     }
-    // console.log(this.target.ptsIndex, 'stepValues changeIndex', this.changeIndex, 'running', this.running);
+    // console.log(this.target.regionIndex, 'stepValues changeIndex', this.changeIndex, 'running', this.running);
   }
 
   // Update targetProps to the ending values and mark animation as done

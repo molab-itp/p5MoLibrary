@@ -5,7 +5,7 @@ let refBox_init = {
   refs: [
     {
       label: 'Sun',
-      pts: [
+      regions: [
         {
           x: 24,
           y: 25,
@@ -25,7 +25,7 @@ let refBox_init = {
     },
     {
       label: "Halley's Comet",
-      pts: [
+      regions: [
         {
           x: 23,
           y: 407,
@@ -45,7 +45,7 @@ let refBox_init = {
     },
     {
       label: 'Mercury',
-      pts: [
+      regions: [
         {
           x: 26,
           y: 557,
@@ -65,7 +65,7 @@ let refBox_init = {
     },
     {
       label: '2020 AV 2',
-      pts: [
+      regions: [
         {
           x: 24,
           y: 811,
@@ -85,7 +85,7 @@ let refBox_init = {
     },
     {
       label: 'Venus',
-      pts: [
+      regions: [
         {
           x: 22,
           y: 895,
@@ -105,7 +105,7 @@ let refBox_init = {
     },
     {
       label: 'Earth',
-      pts: [
+      regions: [
         {
           x: 23,
           y: 1072,
@@ -125,7 +125,7 @@ let refBox_init = {
     },
     {
       label: 'Moon',
-      pts: [
+      regions: [
         {
           x: 21,
           y: 1407,
@@ -145,7 +145,7 @@ let refBox_init = {
     },
     {
       label: '2010 TK 7',
-      pts: [
+      regions: [
         {
           x: 26,
           y: 1655,
@@ -165,7 +165,7 @@ let refBox_init = {
     },
     {
       label: 'Mars',
-      pts: [
+      regions: [
         {
           x: 21,
           y: 1786,
@@ -185,7 +185,7 @@ let refBox_init = {
     },
     {
       label: 'Phobos',
-      pts: [
+      regions: [
         {
           x: 20,
           y: 2005,
@@ -205,7 +205,7 @@ let refBox_init = {
     },
     {
       label: 'Deimos',
-      pts: [
+      regions: [
         {
           x: 26,
           y: 2149,
@@ -225,7 +225,7 @@ let refBox_init = {
     },
     {
       label: 'Mars trojans',
-      pts: [
+      regions: [
         {
           x: 20,
           y: 2210,
@@ -245,7 +245,7 @@ let refBox_init = {
     },
     {
       label: 'Asteroid belt',
-      pts: [
+      regions: [
         {
           x: 25,
           y: 2339,
@@ -265,7 +265,7 @@ let refBox_init = {
     },
     {
       label: 'Vesta',
-      pts: [
+      regions: [
         {
           x: 21,
           y: 2563,
@@ -285,7 +285,7 @@ let refBox_init = {
     },
     {
       label: 'Ceres',
-      pts: [
+      regions: [
         {
           x: 18,
           y: 2711,
@@ -305,7 +305,7 @@ let refBox_init = {
     },
     {
       label: 'Pallas',
-      pts: [
+      regions: [
         {
           x: 28,
           y: 2893,
@@ -325,7 +325,7 @@ let refBox_init = {
     },
     {
       label: 'Hygiea',
-      pts: [
+      regions: [
         {
           x: 24,
           y: 3026,
@@ -345,7 +345,7 @@ let refBox_init = {
     },
     {
       label: 'Jupiter',
-      pts: [
+      regions: [
         {
           x: 214,
           y: 26,
@@ -365,7 +365,7 @@ let refBox_init = {
     },
     {
       label: 'Io',
-      pts: [
+      regions: [
         {
           x: 216,
           y: 338,
@@ -385,7 +385,7 @@ let refBox_init = {
     },
     {
       label: 'Europa',
-      pts: [
+      regions: [
         {
           x: 213,
           y: 556,
@@ -405,7 +405,7 @@ let refBox_init = {
     },
     {
       label: 'Ganymede',
-      pts: [
+      regions: [
         {
           x: 209,
           y: 754,
@@ -425,7 +425,7 @@ let refBox_init = {
     },
     {
       label: 'Callisto',
-      pts: [
+      regions: [
         {
           x: 214,
           y: 939,
@@ -445,7 +445,7 @@ let refBox_init = {
     },
     {
       label: 'Jupiter Trojans',
-      pts: [
+      regions: [
         {
           x: 214,
           y: 1077,
@@ -465,7 +465,7 @@ let refBox_init = {
     },
     {
       label: 'Saturn',
-      pts: [
+      regions: [
         {
           x: 215,
           y: 1275,
@@ -485,7 +485,7 @@ let refBox_init = {
     },
     {
       label: 'Tethys',
-      pts: [
+      regions: [
         {
           x: 213,
           y: 1539,
@@ -505,7 +505,7 @@ let refBox_init = {
     },
     {
       label: 'Dione',
-      pts: [
+      regions: [
         {
           x: 215,
           y: 1664,
@@ -525,7 +525,7 @@ let refBox_init = {
     },
     {
       label: 'Rhea',
-      pts: [
+      regions: [
         {
           x: 216,
           y: 1782,
@@ -545,7 +545,7 @@ let refBox_init = {
     },
     {
       label: 'Titan',
-      pts: [
+      regions: [
         {
           x: 210,
           y: 1933,
@@ -565,7 +565,7 @@ let refBox_init = {
     },
     {
       label: 'Iapetus',
-      pts: [
+      regions: [
         {
           x: 214,
           y: 2142,
@@ -585,7 +585,7 @@ let refBox_init = {
     },
     {
       label: 'Uranus',
-      pts: [
+      regions: [
         {
           x: 211,
           y: 2295,
@@ -605,7 +605,7 @@ let refBox_init = {
     },
     {
       label: 'Miranda',
-      pts: [
+      regions: [
         {
           x: 217,
           y: 2488,
@@ -625,7 +625,7 @@ let refBox_init = {
     },
     {
       label: 'Ariel',
-      pts: [
+      regions: [
         {
           x: 215,
           y: 2613,
@@ -645,7 +645,7 @@ let refBox_init = {
     },
     {
       label: 'Umbriel',
-      pts: [
+      regions: [
         {
           x: 212,
           y: 2697,
@@ -665,7 +665,7 @@ let refBox_init = {
     },
     {
       label: 'Titania',
-      pts: [
+      regions: [
         {
           x: 216,
           y: 2854,
@@ -685,7 +685,7 @@ let refBox_init = {
     },
     {
       label: 'Oberon',
-      pts: [
+      regions: [
         {
           x: 214,
           y: 2996,
@@ -705,7 +705,7 @@ let refBox_init = {
     },
     {
       label: 'Neptune',
-      pts: [
+      regions: [
         {
           x: 410,
           y: 22,
@@ -725,7 +725,7 @@ let refBox_init = {
     },
     {
       label: 'Triton',
-      pts: [
+      regions: [
         {
           x: 408,
           y: 307,
@@ -745,7 +745,7 @@ let refBox_init = {
     },
     {
       label: 'Triton',
-      pts: [
+      regions: [
         {
           x: 411,
           y: 519,
@@ -765,7 +765,7 @@ let refBox_init = {
     },
     {
       label: 'Vanth',
-      pts: [
+      regions: [
         {
           x: 412,
           y: 694,
@@ -785,7 +785,7 @@ let refBox_init = {
     },
     {
       label: 'Pluto',
-      pts: [
+      regions: [
         {
           x: 408,
           y: 802,
@@ -805,7 +805,7 @@ let refBox_init = {
     },
     {
       label: 'Charon',
-      pts: [
+      regions: [
         {
           x: 413,
           y: 1041,
@@ -825,7 +825,7 @@ let refBox_init = {
     },
     {
       label: 'Salacia',
-      pts: [
+      regions: [
         {
           x: 414,
           y: 1196,
@@ -845,7 +845,7 @@ let refBox_init = {
     },
     {
       label: 'Huamea',
-      pts: [
+      regions: [
         {
           x: 414,
           y: 1314,
@@ -865,7 +865,7 @@ let refBox_init = {
     },
     {
       label: 'Arrokoth',
-      pts: [
+      regions: [
         {
           x: 410,
           y: 1512,
@@ -885,7 +885,7 @@ let refBox_init = {
     },
     {
       label: 'Makemake',
-      pts: [
+      regions: [
         {
           x: 409,
           y: 1670,
@@ -905,7 +905,7 @@ let refBox_init = {
     },
     {
       label: 'Gonggong',
-      pts: [
+      regions: [
         {
           x: 412,
           y: 1845,
@@ -925,7 +925,7 @@ let refBox_init = {
     },
     {
       label: 'Eris',
-      pts: [
+      regions: [
         {
           x: 412,
           y: 2018,
@@ -945,7 +945,7 @@ let refBox_init = {
     },
     {
       label: 'Sedna',
-      pts: [
+      regions: [
         {
           x: 411,
           y: 2251,
@@ -965,7 +965,7 @@ let refBox_init = {
     },
     {
       label: '21/Borisov',
-      pts: [
+      regions: [
         {
           x: 411,
           y: 2488,
@@ -985,7 +985,7 @@ let refBox_init = {
     },
     {
       label: "'Oumuamua",
-      pts: [
+      regions: [
         {
           x: 413,
           y: 2642,
@@ -1005,7 +1005,7 @@ let refBox_init = {
     },
     {
       label: 'Oort Cloud',
-      pts: [
+      regions: [
         {
           x: 409,
           y: 2913,
@@ -1025,7 +1025,7 @@ let refBox_init = {
     },
     {
       label: 'Alpha Centauri',
-      pts: [
+      regions: [
         {
           x: 610,
           y: 24,
@@ -1045,7 +1045,7 @@ let refBox_init = {
     },
     {
       label: "Barnard's Star",
-      pts: [
+      regions: [
         {
           x: 610,
           y: 262,
@@ -1065,7 +1065,7 @@ let refBox_init = {
     },
     {
       label: 'Luhman 16',
-      pts: [
+      regions: [
         {
           x: 608,
           y: 492,
@@ -1085,7 +1085,7 @@ let refBox_init = {
     },
     {
       label: 'WISE 0855-0714',
-      pts: [
+      regions: [
         {
           x: 609,
           y: 710,
@@ -1105,7 +1105,7 @@ let refBox_init = {
     },
     {
       label: 'Wolf 359',
-      pts: [
+      regions: [
         {
           x: 609,
           y: 878,
@@ -1125,7 +1125,7 @@ let refBox_init = {
     },
     {
       label: 'Lalande 21185',
-      pts: [
+      regions: [
         {
           x: 609,
           y: 1083,
@@ -1145,7 +1145,7 @@ let refBox_init = {
     },
     {
       label: 'Sirius',
-      pts: [
+      regions: [
         {
           x: 608,
           y: 1251,
@@ -1165,7 +1165,7 @@ let refBox_init = {
     },
     {
       label: 'Luyten 726-8 (UV Ceti)',
-      pts: [
+      regions: [
         {
           x: 605,
           y: 1501,
@@ -1185,7 +1185,7 @@ let refBox_init = {
     },
     {
       label: 'Ran (Epslion Eridani)',
-      pts: [
+      regions: [
         {
           x: 610,
           y: 1707,
@@ -1205,7 +1205,7 @@ let refBox_init = {
     },
     {
       label: '61 Cygni',
-      pts: [
+      regions: [
         {
           x: 611,
           y: 1908,
@@ -1225,7 +1225,7 @@ let refBox_init = {
     },
     {
       label: 'Procyon',
-      pts: [
+      regions: [
         {
           x: 606,
           y: 2075,
@@ -1245,7 +1245,7 @@ let refBox_init = {
     },
     {
       label: 'Procyon',
-      pts: [
+      regions: [
         {
           x: 609,
           y: 2238,
@@ -1265,7 +1265,7 @@ let refBox_init = {
     },
     {
       label: "van Maanen's Star",
-      pts: [
+      regions: [
         {
           x: 609,
           y: 2407,
@@ -1285,7 +1285,7 @@ let refBox_init = {
     },
     {
       label: 'Altair',
-      pts: [
+      regions: [
         {
           x: 611,
           y: 2580,
@@ -1305,7 +1305,7 @@ let refBox_init = {
     },
     {
       label: 'Delta Pavonis',
-      pts: [
+      regions: [
         {
           x: 607,
           y: 2787,
@@ -1325,7 +1325,7 @@ let refBox_init = {
     },
     {
       label: 'Fomalhaut',
-      pts: [
+      regions: [
         {
           x: 611,
           y: 2975,
@@ -1345,7 +1345,7 @@ let refBox_init = {
     },
     {
       label: 'Vega',
-      pts: [
+      regions: [
         {
           x: 800,
           y: 18,
@@ -1365,7 +1365,7 @@ let refBox_init = {
     },
     {
       label: 'Pollux',
-      pts: [
+      regions: [
         {
           x: 804,
           y: 287,
@@ -1385,7 +1385,7 @@ let refBox_init = {
     },
     {
       label: 'Arcturus',
-      pts: [
+      regions: [
         {
           x: 802,
           y: 442,
@@ -1405,7 +1405,7 @@ let refBox_init = {
     },
     {
       label: 'Capella',
-      pts: [
+      regions: [
         {
           x: 803,
           y: 616,
@@ -1425,7 +1425,7 @@ let refBox_init = {
     },
     {
       label: 'Castor',
-      pts: [
+      regions: [
         {
           x: 804,
           y: 781,
@@ -1445,7 +1445,7 @@ let refBox_init = {
     },
     {
       label: 'Aldebaran',
-      pts: [
+      regions: [
         {
           x: 807,
           y: 966,
@@ -1465,7 +1465,7 @@ let refBox_init = {
     },
     {
       label: 'Regulus',
-      pts: [
+      regions: [
         {
           x: 801,
           y: 1119,
@@ -1485,7 +1485,7 @@ let refBox_init = {
     },
     {
       label: 'Menkalinan',
-      pts: [
+      regions: [
         {
           x: 802,
           y: 1319,
@@ -1505,7 +1505,7 @@ let refBox_init = {
     },
     {
       label: 'Alioth (Epsilon Ursae Majoris)',
-      pts: [
+      regions: [
         {
           x: 799,
           y: 1513,
@@ -1525,7 +1525,7 @@ let refBox_init = {
     },
     {
       label: 'Mizar',
-      pts: [
+      regions: [
         {
           x: 801,
           y: 1680,
@@ -1545,7 +1545,7 @@ let refBox_init = {
     },
     {
       label: 'Gacrux',
-      pts: [
+      regions: [
         {
           x: 805,
           y: 1916,
@@ -1565,7 +1565,7 @@ let refBox_init = {
     },
     {
       label: 'Algol (Beta Persei)',
-      pts: [
+      regions: [
         {
           x: 803,
           y: 2102,
@@ -1585,7 +1585,7 @@ let refBox_init = {
     },
     {
       label: 'Alkaid (Eta Ursae Majoris)',
-      pts: [
+      regions: [
         {
           x: 795,
           y: 2367,
@@ -1605,7 +1605,7 @@ let refBox_init = {
     },
     {
       label: 'Alhena (Gamma Geminorum)',
-      pts: [
+      regions: [
         {
           x: 804,
           y: 2586,
@@ -1625,7 +1625,7 @@ let refBox_init = {
     },
     {
       label: 'Dubhe (Alpha Ursae Majoris)',
-      pts: [
+      regions: [
         {
           x: 804,
           y: 2770,
@@ -1645,7 +1645,7 @@ let refBox_init = {
     },
     {
       label: 'Elnath (Beta Tauri)',
-      pts: [
+      regions: [
         {
           x: 801,
           y: 2972,
@@ -1665,7 +1665,7 @@ let refBox_init = {
     },
     {
       label: 'Achernar',
-      pts: [
+      regions: [
         {
           x: 1005,
           y: 21,
@@ -1685,7 +1685,7 @@ let refBox_init = {
     },
     {
       label: 'Ginan',
-      pts: [
+      regions: [
         {
           x: 1006,
           y: 272,
@@ -1705,7 +1705,7 @@ let refBox_init = {
     },
     {
       label: 'Veritate (14 Andromededae)',
-      pts: [
+      regions: [
         {
           x: 1005,
           y: 429,
@@ -1725,7 +1725,7 @@ let refBox_init = {
     },
     {
       label: 'Musica (18 Delphini)',
-      pts: [
+      regions: [
         {
           x: 1006,
           y: 644,
@@ -1745,7 +1745,7 @@ let refBox_init = {
     },
     {
       label: 'Ogma (HD 149026)',
-      pts: [
+      regions: [
         {
           x: 1003,
           y: 778,
@@ -1765,7 +1765,7 @@ let refBox_init = {
     },
     {
       label: 'Spica (Alpha Virginis)',
-      pts: [
+      regions: [
         {
           x: 1002,
           y: 1933,
@@ -1785,7 +1785,7 @@ let refBox_init = {
     },
     {
       label: 'Bellatrix',
-      pts: [
+      regions: [
         {
           x: 1003,
           y: 2327,
@@ -1805,7 +1805,7 @@ let refBox_init = {
     },
     {
       label: 'Mimosa (Beta Crucis)',
-      pts: [
+      regions: [
         {
           x: 1009,
           y: 2478,
@@ -1825,7 +1825,7 @@ let refBox_init = {
     },
     {
       label: 'Sargas (Theta Scoripii)',
-      pts: [
+      regions: [
         {
           x: 1006,
           y: 2614,
@@ -1845,7 +1845,7 @@ let refBox_init = {
     },
     {
       label: 'Canopus',
-      pts: [
+      regions: [
         {
           x: 1006,
           y: 2773,
@@ -1865,7 +1865,7 @@ let refBox_init = {
     },
     {
       label: 'Tonatiuh',
-      pts: [
+      regions: [
         {
           x: 1006,
           y: 2927,
@@ -1885,7 +1885,7 @@ let refBox_init = {
     },
     {
       label: 'Acrux',
-      pts: [
+      regions: [
         {
           x: 1006,
           y: 3038,
@@ -1905,7 +1905,7 @@ let refBox_init = {
     },
     {
       label: 'Polaris',
-      pts: [
+      regions: [
         {
           x: 1205,
           y: 26,
@@ -1925,7 +1925,7 @@ let refBox_init = {
     },
     {
       label: 'Hadar (Beta Centauri)',
-      pts: [
+      regions: [
         {
           x: 1205,
           y: 299,
@@ -1945,7 +1945,7 @@ let refBox_init = {
     },
     {
       label: 'Adhara (Epsilon Canis Majoris)',
-      pts: [
+      regions: [
         {
           x: 1201,
           y: 485,
@@ -1965,7 +1965,7 @@ let refBox_init = {
     },
     {
       label: 'Pleiades',
-      pts: [
+      regions: [
         {
           x: 1205,
           y: 2401,
@@ -1985,7 +1985,7 @@ let refBox_init = {
     },
     {
       label: 'Antares',
-      pts: [
+      regions: [
         {
           x: 1206,
           y: 2759,
@@ -2005,7 +2005,7 @@ let refBox_init = {
     },
     {
       label: 'Shaula (Lambda Scorpii)',
-      pts: [
+      regions: [
         {
           x: 1207,
           y: 2973,
@@ -2025,7 +2025,7 @@ let refBox_init = {
     },
     {
       label: 'Betelgeuse',
-      pts: [
+      regions: [
         {
           x: 1405,
           y: 16,
@@ -2045,7 +2045,7 @@ let refBox_init = {
     },
     {
       label: 'Rigel',
-      pts: [
+      regions: [
         {
           x: 1400,
           y: 276,
@@ -2065,7 +2065,7 @@ let refBox_init = {
     },
     {
       label: 'Regor (Gamma Velorum)',
-      pts: [
+      regions: [
         {
           x: 1402,
           y: 2666,
@@ -2085,7 +2085,7 @@ let refBox_init = {
     },
     {
       label: 'Meissa',
-      pts: [
+      regions: [
         {
           x: 1403,
           y: 2970,
@@ -2105,7 +2105,7 @@ let refBox_init = {
     },
     {
       label: 'Mintaka',
-      pts: [
+      regions: [
         {
           x: 1599,
           y: 19,
@@ -2125,7 +2125,7 @@ let refBox_init = {
     },
     {
       label: 'Allnitak',
-      pts: [
+      regions: [
         {
           x: 1599,
           y: 242,
@@ -2145,7 +2145,7 @@ let refBox_init = {
     },
     {
       label: 'Horsehead Nebula',
-      pts: [
+      regions: [
         {
           x: 1598,
           y: 2798,
@@ -2165,7 +2165,7 @@ let refBox_init = {
     },
     {
       label: 'Alnilam',
-      pts: [
+      regions: [
         {
           x: 1598,
           y: 2988,
@@ -2185,7 +2185,7 @@ let refBox_init = {
     },
     {
       label: 'Lich (PSR B1257*12)',
-      pts: [
+      regions: [
         {
           x: 1797,
           y: 18,
@@ -2205,7 +2205,7 @@ let refBox_init = {
     },
     {
       label: 'Ring Nebula',
-      pts: [
+      regions: [
         {
           x: 1798,
           y: 2928,
@@ -2225,7 +2225,7 @@ let refBox_init = {
     },
     {
       label: 'Deneb',
-      pts: [
+      regions: [
         {
           x: 1993,
           y: 17,
@@ -2245,7 +2245,7 @@ let refBox_init = {
     },
     {
       label: 'UY Scuti',
-      pts: [
+      regions: [
         {
           x: 1994,
           y: 2940,
@@ -2265,7 +2265,7 @@ let refBox_init = {
     },
     {
       label: 'Omega Nebula',
-      pts: [
+      regions: [
         {
           x: 2192,
           y: 8,
@@ -2285,7 +2285,7 @@ let refBox_init = {
     },
     {
       label: 'Eagle Nebula',
-      pts: [
+      regions: [
         {
           x: 2185,
           y: 2972,
@@ -2305,7 +2305,7 @@ let refBox_init = {
     },
     {
       label: 'Messier 4',
-      pts: [
+      regions: [
         {
           x: 2396,
           y: 10,
@@ -2325,7 +2325,7 @@ let refBox_init = {
     },
     {
       label: 'Carina Nebula',
-      pts: [
+      regions: [
         {
           x: 2402,
           y: 2953,
@@ -2345,7 +2345,7 @@ let refBox_init = {
     },
     {
       label: 'Eta Carinae',
-      pts: [
+      regions: [
         {
           x: 2604,
           y: 16,
@@ -2365,7 +2365,7 @@ let refBox_init = {
     },
     {
       label: 'Perseus Arm',
-      pts: [
+      regions: [
         {
           x: 2606,
           y: 2927,
@@ -2385,7 +2385,7 @@ let refBox_init = {
     },
     {
       label: 'Omega Centauri',
-      pts: [
+      regions: [
         {
           x: 2808,
           y: 22,
@@ -2405,7 +2405,7 @@ let refBox_init = {
     },
     {
       label: 'Terzan 1',
-      pts: [
+      regions: [
         {
           x: 2803,
           y: 2953,
@@ -2425,7 +2425,7 @@ let refBox_init = {
     },
     {
       label: 'Messier 13',
-      pts: [
+      regions: [
         {
           x: 2997,
           y: 18,
@@ -2445,7 +2445,7 @@ let refBox_init = {
     },
     {
       label: 'Messier 80',
-      pts: [
+      regions: [
         {
           x: 2994,
           y: 213,
@@ -2465,7 +2465,7 @@ let refBox_init = {
     },
     {
       label: 'Milky Way Galaxy',
-      pts: [
+      regions: [
         {
           x: 2993,
           y: 2821,
@@ -2485,7 +2485,7 @@ let refBox_init = {
     },
     {
       label: 'Large Magellanic Cloud',
-      pts: [
+      regions: [
         {
           x: 3200,
           y: 22,
@@ -2505,7 +2505,7 @@ let refBox_init = {
     },
     {
       label: 'Small Magellanic Cloud',
-      pts: [
+      regions: [
         {
           x: 3202,
           y: 307,
@@ -2525,7 +2525,7 @@ let refBox_init = {
     },
     {
       label: 'Andromeda',
-      pts: [
+      regions: [
         {
           x: 3196,
           y: 2703,
@@ -2545,7 +2545,7 @@ let refBox_init = {
     },
     {
       label: 'Messier 110',
-      pts: [
+      regions: [
         {
           x: 3197,
           y: 2972,
@@ -2565,7 +2565,7 @@ let refBox_init = {
     },
     {
       label: 'Messier 32',
-      pts: [
+      regions: [
         {
           x: 3388,
           y: 14,
@@ -2585,7 +2585,7 @@ let refBox_init = {
     },
     {
       label: 'Triangulum Galaxy',
-      pts: [
+      regions: [
         {
           x: 3383,
           y: 199,
@@ -2605,7 +2605,7 @@ let refBox_init = {
     },
     {
       label: 'WLM Galazy',
-      pts: [
+      regions: [
         {
           x: 3391,
           y: 482,
@@ -2625,7 +2625,7 @@ let refBox_init = {
     },
     {
       label: 'NGC 300',
-      pts: [
+      regions: [
         {
           x: 3381,
           y: 2458,
@@ -2645,7 +2645,7 @@ let refBox_init = {
     },
     {
       label: 'The Whale Galaxy (NGC 55)',
-      pts: [
+      regions: [
         {
           x: 3389,
           y: 2673,
@@ -2665,7 +2665,7 @@ let refBox_init = {
     },
     {
       label: 'Footprint Galaxy (GR 8)',
-      pts: [
+      regions: [
         {
           x: 3387,
           y: 2880,
@@ -2685,7 +2685,7 @@ let refBox_init = {
     },
     {
       label: 'Maffei 2',
-      pts: [
+      regions: [
         {
           x: 3385,
           y: 2991,
@@ -2705,7 +2705,7 @@ let refBox_init = {
     },
     {
       label: 'Caldwell 5 (IC 342)',
-      pts: [
+      regions: [
         {
           x: 3583,
           y: 19,
@@ -2725,7 +2725,7 @@ let refBox_init = {
     },
     {
       label: 'Sculptor Galaxy',
-      pts: [
+      regions: [
         {
           x: 3578,
           y: 229,
@@ -2745,7 +2745,7 @@ let refBox_init = {
     },
     {
       label: 'NGC 2976',
-      pts: [
+      regions: [
         {
           x: 3582,
           y: 473,
@@ -2765,7 +2765,7 @@ let refBox_init = {
     },
     {
       label: 'Cigar Galaxy (M82)',
-      pts: [
+      regions: [
         {
           x: 3579,
           y: 689,
@@ -2785,7 +2785,7 @@ let refBox_init = {
     },
     {
       label: "Bode's Galaxy (M81)",
-      pts: [
+      regions: [
         {
           x: 3579,
           y: 2230,
@@ -2805,7 +2805,7 @@ let refBox_init = {
     },
     {
       label: 'Centaurus A',
-      pts: [
+      regions: [
         {
           x: 3581,
           y: 2461,
@@ -2825,7 +2825,7 @@ let refBox_init = {
     },
     {
       label: 'Circinus Galaxy',
-      pts: [
+      regions: [
         {
           x: 3580,
           y: 2715,
@@ -2845,7 +2845,7 @@ let refBox_init = {
     },
     {
       label: 'Black Eye Galaxy (M64)',
-      pts: [
+      regions: [
         {
           x: 3584,
           y: 2900,
@@ -2865,7 +2865,7 @@ let refBox_init = {
     },
     {
       label: 'Pinwheel Galaxy (M101)',
-      pts: [
+      regions: [
         {
           x: 3777,
           y: 17,
@@ -2885,7 +2885,7 @@ let refBox_init = {
     },
     {
       label: 'Whirlpool Galaxy (M51a)',
-      pts: [
+      regions: [
         {
           x: 3777,
           y: 312,
@@ -2905,7 +2905,7 @@ let refBox_init = {
     },
     {
       label: 'Bubble Galaxy (NGC 3221)',
-      pts: [
+      regions: [
         {
           x: 3778,
           y: 541,
@@ -2925,7 +2925,7 @@ let refBox_init = {
     },
     {
       label: 'Sunflower Galaxy (M63)',
-      pts: [
+      regions: [
         {
           x: 3778,
           y: 685,
@@ -2945,7 +2945,7 @@ let refBox_init = {
     },
     {
       label: 'Caldwell 101 (NGC 6744)',
-      pts: [
+      regions: [
         {
           x: 3778,
           y: 905,
@@ -2965,7 +2965,7 @@ let refBox_init = {
     },
     {
       label: 'Sombrero Galaxy',
-      pts: [
+      regions: [
         {
           x: 3778,
           y: 1098,
@@ -2985,7 +2985,7 @@ let refBox_init = {
     },
     {
       label: "Sarah's Galaxy (NGC 3628)",
-      pts: [
+      regions: [
         {
           x: 3772,
           y: 1396,
@@ -3005,7 +3005,7 @@ let refBox_init = {
     },
     {
       label: 'NGC 4314',
-      pts: [
+      regions: [
         {
           x: 3776,
           y: 1633,
@@ -3025,7 +3025,7 @@ let refBox_init = {
     },
     {
       label: 'Antennae Galaxies',
-      pts: [
+      regions: [
         {
           x: 3771,
           y: 1825,
@@ -3045,7 +3045,7 @@ let refBox_init = {
     },
     {
       label: 'NGC 2841',
-      pts: [
+      regions: [
         {
           x: 3774,
           y: 2113,
@@ -3065,7 +3065,7 @@ let refBox_init = {
     },
     {
       label: 'Cetus A (M77)',
-      pts: [
+      regions: [
         {
           x: 3776,
           y: 2340,
@@ -3085,7 +3085,7 @@ let refBox_init = {
     },
     {
       label: 'Eyes Galaxies',
-      pts: [
+      regions: [
         {
           x: 3774,
           y: 2566,
@@ -3105,7 +3105,7 @@ let refBox_init = {
     },
     {
       label: 'Powehi (M87*)',
-      pts: [
+      regions: [
         {
           x: 3772,
           y: 2878,
@@ -3125,7 +3125,7 @@ let refBox_init = {
     },
     {
       label: 'Virgo Cluster',
-      pts: [
+      regions: [
         {
           x: 3972,
           y: 12,
@@ -3145,7 +3145,7 @@ let refBox_init = {
     },
     {
       label: 'Messier 100',
-      pts: [
+      regions: [
         {
           x: 3972,
           y: 294,
@@ -3165,7 +3165,7 @@ let refBox_init = {
     },
     {
       label: 'Siamese Twins (NGC 4567 and NGC 4568)',
-      pts: [
+      regions: [
         {
           x: 3975,
           y: 518,
@@ -3185,7 +3185,7 @@ let refBox_init = {
     },
     {
       label: 'NGC 1300',
-      pts: [
+      regions: [
         {
           x: 3975,
           y: 688,
@@ -3205,7 +3205,7 @@ let refBox_init = {
     },
     {
       label: 'Fornax Cluster',
-      pts: [
+      regions: [
         {
           x: 3973,
           y: 934,
@@ -3225,7 +3225,7 @@ let refBox_init = {
     },
     {
       label: 'Medusa Galaxy Merger',
-      pts: [
+      regions: [
         {
           x: 3966,
           y: 1127,
@@ -3245,7 +3245,7 @@ let refBox_init = {
     },
     {
       label: 'Centaurus Cluster',
-      pts: [
+      regions: [
         {
           x: 3974,
           y: 1289,
@@ -3265,7 +3265,7 @@ let refBox_init = {
     },
     {
       label: 'Hydra Cluster (Abell 1060)',
-      pts: [
+      regions: [
         {
           x: 3973,
           y: 1428,
@@ -3285,7 +3285,7 @@ let refBox_init = {
     },
     {
       label: 'Northern Local Supervoid',
-      pts: [
+      regions: [
         {
           x: 3973,
           y: 1632,
@@ -3305,7 +3305,7 @@ let refBox_init = {
     },
     {
       label: 'NGC 6745',
-      pts: [
+      regions: [
         {
           x: 3971,
           y: 1803,
@@ -3325,7 +3325,7 @@ let refBox_init = {
     },
     {
       label: 'NGC 1614',
-      pts: [
+      regions: [
         {
           x: 3976,
           y: 2050,
@@ -3345,7 +3345,7 @@ let refBox_init = {
     },
     {
       label: 'Atoms for Peace Galaxy (NGC 7252)',
-      pts: [
+      regions: [
         {
           x: 3972,
           y: 2203,
@@ -3365,7 +3365,7 @@ let refBox_init = {
     },
     {
       label: 'Pavo-Indus Supercluster',
-      pts: [
+      regions: [
         {
           x: 3975,
           y: 2467,
@@ -3385,7 +3385,7 @@ let refBox_init = {
     },
     {
       label: 'KBC Void',
-      pts: [
+      regions: [
         {
           x: 3977,
           y: 2693,
@@ -3405,7 +3405,7 @@ let refBox_init = {
     },
     {
       label: 'Mice Galaxies',
-      pts: [
+      regions: [
         {
           x: 3975,
           y: 2931,
@@ -3425,7 +3425,7 @@ let refBox_init = {
     },
     {
       label: 'Southern Local Supervoid',
-      pts: [
+      regions: [
         {
           x: 4167,
           y: 9,
@@ -3445,7 +3445,7 @@ let refBox_init = {
     },
     {
       label: 'Penguin Galaxy (NGC 2936)',
-      pts: [
+      regions: [
         {
           x: 4171,
           y: 216,
@@ -3465,7 +3465,7 @@ let refBox_init = {
     },
     {
       label: 'NGC 5256',
-      pts: [
+      regions: [
         {
           x: 4172,
           y: 424,
@@ -3485,7 +3485,7 @@ let refBox_init = {
     },
     {
       label: 'NGC 7319',
-      pts: [
+      regions: [
         {
           x: 4175,
           y: 558,
@@ -3505,7 +3505,7 @@ let refBox_init = {
     },
     {
       label: 'Sculptor Wall',
-      pts: [
+      regions: [
         {
           x: 4177,
           y: 679,
@@ -3525,7 +3525,7 @@ let refBox_init = {
     },
     {
       label: 'Tadpole Galaxy',
-      pts: [
+      regions: [
         {
           x: 4173,
           y: 827,
@@ -3545,7 +3545,7 @@ let refBox_init = {
     },
     {
       label: 'Coma Wall (CfA2 Great Wall)',
-      pts: [
+      regions: [
         {
           x: 4177,
           y: 1088,
@@ -3565,7 +3565,7 @@ let refBox_init = {
     },
     {
       label: 'Arp 147',
-      pts: [
+      regions: [
         {
           x: 4174,
           y: 1362,
@@ -3585,7 +3585,7 @@ let refBox_init = {
     },
     {
       label: "Mayall's Object",
-      pts: [
+      regions: [
         {
           x: 4177,
           y: 1586,
@@ -3605,7 +3605,7 @@ let refBox_init = {
     },
     {
       label: 'Cartwheel Galaxy',
-      pts: [
+      regions: [
         {
           x: 4176,
           y: 1777,
@@ -3625,7 +3625,7 @@ let refBox_init = {
     },
     {
       label: 'Leo Supercluster',
-      pts: [
+      regions: [
         {
           x: 4175,
           y: 2084,
@@ -3645,7 +3645,7 @@ let refBox_init = {
     },
     {
       label: 'Arp 194 (UGC 6945)',
-      pts: [
+      regions: [
         {
           x: 4175,
           y: 2260,
@@ -3665,7 +3665,7 @@ let refBox_init = {
     },
     {
       label: "Hoag's Object",
-      pts: [
+      regions: [
         {
           x: 4175,
           y: 2517,
@@ -3685,7 +3685,7 @@ let refBox_init = {
     },
     {
       label: 'The Bird Galaxies (ESO 693-8)',
-      pts: [
+      regions: [
         {
           x: 4176,
           y: 2737,
@@ -3705,7 +3705,7 @@ let refBox_init = {
     },
     {
       label: 'Shapley Supercluster',
-      pts: [
+      regions: [
         {
           x: 4176,
           y: 2932,
@@ -3725,7 +3725,7 @@ let refBox_init = {
     },
     {
       label: 'Bootes void',
-      pts: [
+      regions: [
         {
           x: 4373,
           y: 27,
@@ -3745,7 +3745,7 @@ let refBox_init = {
     },
     {
       label: 'Horologium Reticulum Supercluster',
-      pts: [
+      regions: [
         {
           x: 4374,
           y: 306,
@@ -3765,7 +3765,7 @@ let refBox_init = {
     },
     {
       label: 'Corona Borealis Supercluster',
-      pts: [
+      regions: [
         {
           x: 4372,
           y: 541,
@@ -3785,7 +3785,7 @@ let refBox_init = {
     },
     {
       label: 'Corona Borealis Supercluster',
-      pts: [
+      regions: [
         {
           x: 4372,
           y: 743,
@@ -3805,7 +3805,7 @@ let refBox_init = {
     },
     {
       label: 'Gaint Void',
-      pts: [
+      regions: [
         {
           x: 4372,
           y: 1014,
@@ -3825,7 +3825,7 @@ let refBox_init = {
     },
     {
       label: 'Caelum Supercluster',
-      pts: [
+      regions: [
         {
           x: 4373,
           y: 1248,
@@ -3845,7 +3845,7 @@ let refBox_init = {
     },
     {
       label: 'Bullet Cluster',
-      pts: [
+      regions: [
         {
           x: 4372,
           y: 1470,
@@ -3865,7 +3865,7 @@ let refBox_init = {
     },
     {
       label: 'ASASSN-15lh',
-      pts: [
+      regions: [
         {
           x: 4373,
           y: 1769,
@@ -3885,7 +3885,7 @@ let refBox_init = {
     },
     {
       label: "Pandora's Cluster (Abell 2744)",
-      pts: [
+      regions: [
         {
           x: 4373,
           y: 2052,
@@ -3905,7 +3905,7 @@ let refBox_init = {
     },
     {
       label: 'Saraswati Supercluster',
-      pts: [
+      regions: [
         {
           x: 4373,
           y: 2199,
@@ -3925,7 +3925,7 @@ let refBox_init = {
     },
     {
       label: 'BOSS Great Wall',
-      pts: [
+      regions: [
         {
           x: 4374,
           y: 2388,
@@ -3945,7 +3945,7 @@ let refBox_init = {
     },
     {
       label: 'El Gordo Cluster',
-      pts: [
+      regions: [
         {
           x: 4373,
           y: 2649,
@@ -3965,7 +3965,7 @@ let refBox_init = {
     },
     {
       label: 'U1.11 LQG',
-      pts: [
+      regions: [
         {
           x: 4372,
           y: 2910,
@@ -3985,7 +3985,7 @@ let refBox_init = {
     },
     {
       label: 'Huge-LQG',
-      pts: [
+      regions: [
         {
           x: 4574,
           y: 28,
@@ -4005,7 +4005,7 @@ let refBox_init = {
     },
     {
       label: 'Giant GRB Ring',
-      pts: [
+      regions: [
         {
           x: 4572,
           y: 244,
@@ -4025,7 +4025,7 @@ let refBox_init = {
     },
     {
       label: 'Clowes-Campusano LQG (CCLQG)',
-      pts: [
+      regions: [
         {
           x: 4574,
           y: 418,
@@ -4045,7 +4045,7 @@ let refBox_init = {
     },
     {
       label: 'Tonantzintla (TON 618)',
-      pts: [
+      regions: [
         {
           x: 4571,
           y: 668,
@@ -4065,7 +4065,7 @@ let refBox_init = {
     },
     {
       label: 'Icarus (MACS J1159 Lensed Start 1)',
-      pts: [
+      regions: [
         {
           x: 4571,
           y: 938,
@@ -4085,7 +4085,7 @@ let refBox_init = {
     },
     {
       label: 'Hercules-Corona Borealis Great Walll',
-      pts: [
+      regions: [
         {
           x: 4575,
           y: 1174,
@@ -4105,7 +4105,7 @@ let refBox_init = {
     },
     {
       label: 'ULAS J1342*0928',
-      pts: [
+      regions: [
         {
           x: 4571,
           y: 1437,
@@ -4125,7 +4125,7 @@ let refBox_init = {
     },
     {
       label: 'GRB 090423',
-      pts: [
+      regions: [
         {
           x: 4570,
           y: 1643,
@@ -4145,7 +4145,7 @@ let refBox_init = {
     },
     {
       label: 'GN-z11',
-      pts: [
+      regions: [
         {
           x: 4575,
           y: 1846,
@@ -4165,7 +4165,7 @@ let refBox_init = {
     },
     {
       label: 'Cosmic Microwave Background',
-      pts: [
+      regions: [
         {
           x: 4572,
           y: 2057,
@@ -4185,7 +4185,7 @@ let refBox_init = {
     },
     {
       label: 'Big Bang',
-      pts: [
+      regions: [
         {
           x: 4569,
           y: 2448,

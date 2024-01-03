@@ -95,8 +95,8 @@ function create_pane0() {
     height = floor(my.height * (6 / 16));
     // y0 = my.height - height;
   }
-  let ptsIndex = 0;
-  my.pane0 = new Pane({ backgImg, x0, y0, z0, width, height, refBox, ptsIndex });
+  let regionIndex = 0;
+  my.pane0 = new Pane({ backgImg, x0, y0, z0, width, height, refBox, regionIndex });
 }
 
 function create_pane1() {
@@ -114,8 +114,8 @@ function create_pane1() {
     width = my.width;
     x0 = 0;
   }
-  let ptsIndex = 1;
-  my.pane1 = new Pane({ backgImg, x0, y0, z0, width, height, initCentered, refBox, ptsIndex });
+  let regionIndex = 1;
+  my.pane1 = new Pane({ backgImg, x0, y0, z0, width, height, initCentered, refBox, regionIndex });
 }
 
 function draw_crossHairs() {

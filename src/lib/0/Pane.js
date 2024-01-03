@@ -1,7 +1,7 @@
 //
 
 export class Pane {
-  // { backgImg, x0, y0, z0, width, height, initCentered, refBox, ptsIndex }
+  // { backgImg, x0, y0, z0, width, height, initCentered, refBox, regionIndex }
   constructor(props) {
     //
     Object.assign(this, props);
@@ -48,7 +48,7 @@ export class Pane {
 
   focus_animated() {
     this.anim.initValues({ panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex });
-    if (this.ptsIndex == 1) {
+    if (this.regionIndex == 1) {
       let zoomOutIndex = 2.0;
       this.anim.addChange(3, { panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex }); // Pause
       this.focus_pan();
@@ -114,37 +114,37 @@ export class Pane {
   }
 
   get label() {
-    return 'pane' + this.ptsIndex;
+    return 'pane' + this.regionIndex;
   }
 
-  pt() {
+  region() {
     let ent = this.refEntry();
-    let pt = ent.pts[this.ptsIndex];
-    // console.log(this.label, 'pt', JSON.stringify(pt));
-    return pt;
+    let rg = ent.regions[this.regionIndex];
+    // console.log(this.label, 'rg', JSON.stringify(rg));
+    return rg;
   }
 
   focus_pan() {
-    let pt = this.pt();
-    this.zoomIndex = pt.z;
+    let rg = this.region();
+    this.zoomIndex = rg.z;
     let cm = this.canvasMap();
     // console.log('focus cm', JSON.stringify(cm));
-    // let x = pt.x + pt.w * 0.5 - cm.sWidth * 0.5;
-    // let y = pt.y + pt.h * 0.5 - cm.sHeight * 0.5;
+    // let x = rg.x + rg.w * 0.5 - cm.sWidth * 0.5;
+    // let y = rg.y + rg.h * 0.5 - cm.sHeight * 0.5;
     // this.panX = floor(x);
     // this.panY = floor(y);
-    this.panX = floor(pt.x + (pt.w - cm.sWidth) * 0.5);
-    this.panY = floor(pt.y + (pt.h - cm.sHeight) * 0.5);
-    // console.log('focus pt', JSON.stringify(pt));
+    this.panX = floor(rg.x + (rg.w - cm.sWidth) * 0.5);
+    this.panY = floor(rg.y + (rg.h - cm.sHeight) * 0.5);
+    // console.log('focus rg', JSON.stringify(rg));
   }
 
   focus_focusRect() {
-    let pt = this.pt();
-    let spt = this.ptToCanvas(pt);
-    this.focusRect.x0 = spt.x;
-    this.focusRect.y0 = spt.y;
-    this.focusRect.width = spt.w;
-    this.focusRect.height = spt.h;
+    let rg = this.region();
+    let srg = this.rgToCanvas(rg);
+    this.focusRect.x0 = srg.x;
+    this.focusRect.y0 = srg.y;
+    this.focusRect.width = srg.w;
+    this.focusRect.height = srg.h;
   }
 
   touchPoint(x, y) {
@@ -234,13 +234,13 @@ export class Pane {
     if (lastMouseEnts.length >= 2) {
       this.updateEnt(ent, lastMouseEnts);
     } else {
-      ent.pts[this.ptsIndex].z = this.zoomIndex;
+      ent.regions[this.regionIndex].z = this.zoomIndex;
     }
 
     this.refBox.save_localStorage();
   }
 
-  ptToCanvas(pt) {
+  rgToCanvas(rg) {
     // map from screen to image coordinates
 
     let cm = this.canvasMap();
@@ -251,10 +251,10 @@ export class Pane {
     // let x = floor((ment.x - this.x0) * rw) + this.panX;
     // let y = floor((ment.y - this.y0) * rh) + this.panY;
 
-    let x = floor((pt.x - this.panX) * wr + this.x0);
-    let y = floor((pt.y - this.panY) * hr + this.y0);
-    let w = floor(pt.w * wr);
-    let h = floor(pt.h * hr);
+    let x = floor((rg.x - this.panX) * wr + this.x0);
+    let y = floor((rg.y - this.panY) * hr + this.y0);
+    let w = floor(rg.w * wr);
+    let h = floor(rg.h * hr);
 
     return { x, y, w, h };
   }
@@ -264,28 +264,28 @@ export class Pane {
     let cm = this.canvasMap();
     let rw = cm.sWidth / cm.dWidth;
     let rh = cm.sHeight / cm.dHeight;
-    let pts = [];
+    let regions = [];
     for (let ment of lastMouseEnts) {
       let x = floor((ment.x - this.x0) * rw) + this.panX;
       let y = floor((ment.y - this.y0) * rh) + this.panY;
-      pts.push({ x, y });
+      regions.push({ x, y });
     }
-    if (pts[0].x > pts[1].x) {
-      let temp = pts[1].x;
-      pts[1].x = pts[0].x;
-      pts[0].x = temp;
+    if (regions[0].x > regions[1].x) {
+      let temp = regions[1].x;
+      regions[1].x = regions[0].x;
+      regions[0].x = temp;
     }
-    if (pts[0].y > pts[1].y) {
-      let temp = pts[1].y;
-      pts[1].y = pts[0].y;
-      pts[0].y = temp;
+    if (regions[0].y > regions[1].y) {
+      let temp = regions[1].y;
+      regions[1].y = regions[0].y;
+      regions[0].y = temp;
     }
-    let x = pts[0].x;
-    let y = pts[0].y;
-    let w = pts[1].x - x;
-    let h = pts[1].y - y;
+    let x = regions[0].x;
+    let y = regions[0].y;
+    let w = regions[1].x - x;
+    let h = regions[1].y - y;
     let z = this.zoomIndex;
-    ent.pts[this.ptsIndex] = { x, y, w, h, z };
+    ent.regions[this.regionIndex] = { x, y, w, h, z };
   }
 }
 
