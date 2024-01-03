@@ -10,7 +10,7 @@
   - [demos/mo-pixel-grid](demos/mo-pixel-grid?v=40)
   - [demos/mo-storage-1](demos/mo-storage-1)
   - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v=40)
-  - [demos/timed-drawing-class](demos/timed-drawing-class)
+  - [demos/timed-drawing](demos/timed-drawing)
 
 # [github.io](https://molab-itp.github.io/p5moLibrary/src?v=40)
 
