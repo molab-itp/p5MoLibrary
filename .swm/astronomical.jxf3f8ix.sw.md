@@ -24,16 +24,4 @@ let refBox_init = {
 
 </SwmSnippet>
 
-```javascript
-src/lib/0/RefBox.js
-  //   refs: [{ label: '', pts: [{ x, y, w, h, z }, { x, y, w, h, z }], i } ]
-  //   refs: [{ label: '', regions: [{ x, y, w, h, z }, { x, y, w, h, z }], i } ]
-  pts --> regions
-
-export class Pane {
-  ptsIndex --> regionIndex
-  pt() { --> region()
-
-```
-
 <SwmMeta version="3.0.0" repo-id="Z2l0aHViJTNBJTNBcDVtb0xpYnJhcnklM0ElM0Ftb2xhYi1pdHA=" repo-name="p5moLibrary"><sup>Powered by [Swimm](https://app.swimm.io/)</sup></SwmMeta>
