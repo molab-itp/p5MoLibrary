@@ -62,7 +62,21 @@ reference to p5js sketch that mirrors this code
 
 <SwmToken path="/src/demos/Heavenly3D/a_sketch.js" pos="12:11:11" line-data="  my.earthImg = loadImage(&#39;../../assets/world-ultra.jpg&#39;);">`assets`</SwmToken> assests folder reference in p5js sketch is replaces with assets-p5js-editor contents and path updated in the sketch.
 
-&nbsp;
+<SwmPath>[src/demos/Heavenly3D/index.html](/src/demos/Heavenly3D/index.html)</SwmPath> back to index.hmtl - note modifications notes for p5 sketch sync
+
+<SwmSnippet path="/src/demos/Heavenly3D/index.html" line="20">
+
+---
+
+changes to make when code is put in p5js editor
+
+```html
+remove ?v=36
+```
+
+---
+
+</SwmSnippet>
 
 &nbsp;
 
