@@ -1,6 +1,6 @@
 //
 function my_setup() {
-  my.version = '?v=38'; // update to verify change on mobile
+  my.version = '?v=39'; // update to verify change on mobile
   my.vwidth = 480; // Aspect ratio of video capture
   my.vheight = 640;
   my.dstore_rootPath = 'm0-@r-@w-';

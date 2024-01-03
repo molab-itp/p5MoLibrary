@@ -10,8 +10,8 @@ title: Native Americans
 
 use of BlackFacts youtube video player&nbsp;
 
-```markdown
-- [Native Americans Exhibition Trailer](demos/BlackFacts?v=36&playlist=hpjNGTYvpxw)
+```
+- [Native Americans Exhibition Trailer](demos/BlackFacts?playlist=hpjNGTYvpxw)
 ```
 
 ---
