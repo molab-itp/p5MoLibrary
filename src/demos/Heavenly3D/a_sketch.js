@@ -9,16 +9,20 @@ function preload() {
   my.backgImgs = [];
   my.panScale = 3;
 
-  my.earthImg = loadImage('../../assets/world-ultra.jpg');
-  // my.earthImg = loadImage('../../assets/Da_Vinci.jpg');
+  let path = '../../assets';
+  if (windowWidth <= 600) path = '../../assets-p5js-editor';
+  console.log('path', path);
+
+  my.earthImg = loadImage(path + '/world-ultra.jpg');
+  // my.earthImg = loadImage(path+'/Da_Vinci.jpg');
   //
-  my.moonImg = loadImage('../../assets/moon.jpg');
+  my.moonImg = loadImage(path + '/moon.jpg');
   //
-  my.backgImgs.push(loadImage('../../assets/Manju.jpg'));
-  my.backgImgs.push(loadImage('../../assets/plenty.jpeg'));
-  my.backgImgs.push(loadImage('../../assets/sun.jpg'));
-  my.backgImgs.push(loadImage('../../assets/The_Celestial_Zoo.png'));
-  my.backgImgs.push(loadImage('../../assets/Da_Vinci.jpg'));
+  my.backgImgs.push(loadImage(path + '/Manju.jpg'));
+  my.backgImgs.push(loadImage(path + '/plenty.jpeg'));
+  my.backgImgs.push(loadImage(path + '/sun.jpg'));
+  my.backgImgs.push(loadImage(path + '/The_Celestial_Zoo.png'));
+  my.backgImgs.push(loadImage(path + '/Da_Vinci.jpg'));
 }
 
 function setup() {
