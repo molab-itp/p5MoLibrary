@@ -2,21 +2,22 @@
 // Create an p5 instance to allow 3D to be layer on 2D canvas
 
 class HeavenlyBody {
-  // {x, y, width, height, img, orbitControl, capture, label}
+  // {x, y, width, height, img, orbitControl, capture, label, step}
   constructor(props) {
-    //
     Object.assign(this, props);
-    //
+
+    if (!this.step) this.step = 0.002;
+
     this.angleX = 0;
-    this.angleXstep = 0.001;
+    this.angleXstep = this.step; // 0.001;
     this.angleXdir = 1;
-    //
+
     this.angleY = 2.8; // Africa
-    this.angleYstep = 0.001;
+    this.angleYstep = this.step;
     this.angleYdir = 0;
 
     this.angleZ = 0;
-    this.angleZstep = 0.001;
+    this.angleZstep = this.step;
     this.angleZdir = 0;
 
     this.detailX = 24 * 4;
@@ -104,3 +105,7 @@ class HeavenlyBody {
     return inX & inY;
   }
 }
+
+// https://p5js.org/reference/#/p5/p5
+
+// https://github.com/processing/p5.js/wiki/p5.js-overview#instantiation--namespace
