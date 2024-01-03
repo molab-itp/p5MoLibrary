@@ -2,11 +2,11 @@
 title: BlackFacts
 ---
 
-<SwmPath>[src/demos/BlackFacts/index.html](/src/demos/BlackFacts/index.html)</SwmPath> BlackFacts Video Player
+<SwmPath>[src/demo/BlackFacts/index.html](/src/demo/BlackFacts/index.html)</SwmPath> BlackFacts Video Player
 
 github pages reference
 
-<https://molab-itp.github.io/p5moLibrary/src/demos/BlackFacts/?v=36>
+<https://molab-itp.github.io/p5moLibrary/src/demo/BlackFacts/?v=36>
 
 ![](https://firebasestorage.googleapis.com/v0/b/swimmio.appspot.com/o/repositories%2FZ2l0aHViJTNBJTNBcDVtb0xpYnJhcnklM0ElM0Ftb2xhYi1pdHA%3D%2Fef4cebad-84b5-4677-abdd-fb844f2f8915.png?alt=media&token=c21d0920-d09f-486b-9b97-5df76b95572f)swimm image reference
 

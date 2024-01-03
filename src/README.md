@@ -2,19 +2,19 @@
 
 - a p5js Library for multi device experiences on handheld and large screens
 
-  - [demos/Astronomical](demos/Astronomical?v=40)
-  - [demos/BlackFacts](demos/BlackFacts?v=40)
-  - [demos/firebase-gallery-1](demos/firebase-gallery-1/)
-  - [demos/firebase-gallery-2](demos/firebase-gallery-2)
-  - [demos/Heavenly3D](demos/Heavenly3D?v=40)
-  - [demos/mo-pixel-grid](demos/mo-pixel-grid?v=40)
-  - [demos/mo-storage-1](demos/mo-storage-1)
-  - [demos/mo-storage-dashboard](demos/mo-storage-dashboard?v=40)
-  - [demos/timed-drawing](demos/timed-drawing)
+  - [demo/Astronomical](demo/Astronomical?v=40)
+  - [demo/BlackFacts](demo/BlackFacts?v=40)
+  - [demo/firebase-gallery-1](demo/firebase-gallery-1/)
+  - [demo/firebase-gallery-2](demo/firebase-gallery-2)
+  - [demo/Heavenly3D](demo/Heavenly3D?v=40)
+  - [demo/mo-pixel-grid](demo/mo-pixel-grid?v=40)
+  - [demo/mo-storage-1](demo/mo-storage-1)
+  - [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=40)
+  - [demo/timed-drawing](demo/timed-drawing)
 
 # [github.io](https://molab-itp.github.io/p5moLibrary/src?v=40)
 
-- [Native Americans Exhibition Trailer](demos/BlackFacts?playlist=hpjNGTYvpxw)
+- [Native Americans Exhibition Trailer](demo/BlackFacts?playlist=hpjNGTYvpxw)
 
 <!--
 # https://www.youtube.com/watch?v=hpjNGTYvpxw

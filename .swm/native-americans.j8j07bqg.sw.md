@@ -11,7 +11,7 @@ title: Native Americans
 use of BlackFacts youtube video player&nbsp;
 
 ```markdown
-- [Native Americans Exhibition Trailer](demos/BlackFacts?playlist=hpjNGTYvpxw)
+- [Native Americans Exhibition Trailer](demo/BlackFacts?playlist=hpjNGTYvpxw)
 ```
 
 ---
@@ -22,7 +22,7 @@ use of BlackFacts youtube video player&nbsp;
 
 swimm youtube reference - fails to play
 
-<https://molab-itp.github.io/p5moLibrary/src/demos/BlackFacts/?v=36&playlist=hpjNGTYvpxw>
+<https://molab-itp.github.io/p5moLibrary/src/demo/BlackFacts/?v=36&playlist=hpjNGTYvpxw>
 
 &nbsp;
 
