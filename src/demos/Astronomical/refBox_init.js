@@ -367,10 +367,10 @@ let refBox_init = {
       label: 'Io',
       regions: [
         {
-          x: 216,
-          y: 338,
-          w: 182,
-          h: 210,
+          x: 212,
+          y: 334,
+          w: 194,
+          h: 214,
           z: 8,
         },
         {
