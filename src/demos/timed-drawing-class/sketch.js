@@ -5,7 +5,7 @@ let my = {};
 let drawPoints;
 
 function my_init() {
-  my.version = '?v=36';
+  my.version = '?v=37';
   my.width = 640;
   my.height = 480;
   my.save_label = 'plea';
