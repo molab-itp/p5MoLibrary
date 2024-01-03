@@ -1,22 +1,24 @@
 export class RefBox {
   //
-  //   refIndex: 0,
-  //   width: 4800,
-  //   height: 3200,
-  //   refs: [{ label: '', regions: [{ x, y, w, h, z }, { x, y, w, h, z }], i } ]
-  //
+  //  storageLabel: 'refBox1',
+  //  refIndex: 0,
+  //  width: 4800,
+  //  height: 3200,
+  //  refs: [{ label: '', regions: [{ x, y, w, h, z }, { x, y, w, h, z }], i } ]
+
+  // { storageLabel, refIndex, width, height, refs }
   constructor(props) {
     //
     Object.assign(this, props);
 
-    // if (!this.refBox) {
-    //   this.refBox = {
-    //     width: this.backgImg.width,
-    //     height: this.backgImg.height,
-    //     refs: [],
-    //   };
-    // }
-    // this.refIndex = 0;
+    if (!this.storageLabel) {
+      // width and height needed if no storageLabel
+      // this.width = this.backgImg.width;
+      // this.height = this.backgImg.height;
+      this.storageLabel = 'refBox1';
+      this.refIndex = 0;
+      this.refs = [];
+    }
 
     this.restore_localStorage();
   }
@@ -26,7 +28,7 @@ export class RefBox {
     let ent = this.refs[refIndex];
     if (!ent) {
       let i = this.refs.length + 1;
-      ent = { label: '', regions: [{}, {}], i };
+      ent = { label: '', i, regions: [{}, {}] };
       this.refs[refIndex] = ent;
     }
     return ent;
@@ -45,12 +47,12 @@ export class RefBox {
   restore_localStorage() {
     console.log('restore_localStorage');
     let refBox;
-    let str = localStorage.getItem('refBox');
+    let str = localStorage.getItem(this.storageLabel);
     if (!str) {
-      console.log('restore_localStorage no str');
+      console.log('restore_localStorage no str', this.storageLabel);
       return;
     }
-    // console.log('restore_localStorage str.length', str.length);
+    console.log('restore_localStorage storageLabel', this.storageLabel, 'str.length', str.length);
     try {
       refBox = JSON.parse(str);
     } catch (err) {
@@ -62,9 +64,10 @@ export class RefBox {
   }
 
   save_localStorage() {
-    let str = JSON.stringify(my.refBox);
-    localStorage.setItem('refBox', str);
-    // console.log('save_localStorage str.length', str.length);
+    let refBox = this;
+    let str = JSON.stringify(refBox);
+    localStorage.setItem(this.storageLabel, str);
+    console.log('save_localStorage storageLabel', this.storageLabel, 'str.length', str.length);
     // let n = this.refs.length;
     // console.log('save_localStorage ', n, this.refs[n - 1].label);
     let ii = this.refIndex;

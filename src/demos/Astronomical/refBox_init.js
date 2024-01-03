@@ -1,4 +1,5 @@
 let refBox_init = {
+  storageLabel: 'refBox1',
   refIndex: 0,
   width: 4800,
   height: 3200,

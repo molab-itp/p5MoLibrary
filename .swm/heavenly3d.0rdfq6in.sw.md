@@ -1,8 +1,7 @@
 ---
 title: Heavenly3D
 ---
-
-<SwmPath>[src/demos/Heavenly3D/index.html](/src/demos/Heavenly3D/index.html)</SwmPath> <SwmToken path="/src/demos/Heavenly3D/index.html" pos="13:7:7" line-data="    &lt;script src=&quot;HeavenlyBody.js?v=38&quot;&gt;&lt;/script&gt;">`HeavenlyBody`</SwmToken> class is used to integrate WEBGL with 2D canvas.&nbsp;&nbsp;
+<SwmPath>[src/demos/Heavenly3D/index.html](/src/demos/Heavenly3D/index.html)</SwmPath> <SwmToken path="/src/demos/Heavenly3D/index.html" pos="13:7:7" line-data="    &lt;script src=&quot;HeavenlyBody.js?v=40&quot;&gt;&lt;/script&gt;">`HeavenlyBody`</SwmToken> class is used to integrate WEBGL with 2D canvas.&nbsp;&nbsp;
 
 <SwmSnippet path="/src/demos/Heavenly3D/HeavenlyBody.js" line="4">
 
@@ -78,6 +77,18 @@ remove ?v=
 
 </SwmSnippet>
 
-&nbsp;
+<SwmSnippet path="/src/demos/Heavenly3D/a_sketch.js" line="35">
+
+---
+
+setup the image panning and zooming
+
+```javascript
+  init_pan();
+```
+
+---
+
+</SwmSnippet>
 
 <SwmMeta version="3.0.0" repo-id="Z2l0aHViJTNBJTNBcDVtb0xpYnJhcnklM0ElM0Ftb2xhYi1pdHA=" repo-name="p5moLibrary"><sup>Powered by [Swimm](https://app.swimm.io/)</sup></SwmMeta>

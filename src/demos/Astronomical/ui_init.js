@@ -1,5 +1,5 @@
 //
-function ui_create() {
+function ui_init() {
   //
   createSpan().id('id_panX');
   createSpan().id('id_panY');

@@ -1,5 +1,5 @@
 // https://editor.p5js.org/jht9629-nyu/sketches
-// https://github.com/molab-itp/p5MoLibrary/tree/main/demos/Celestial_Zoo
+// https://github.com/molab-itp/p5MoLibrary/tree/main/demo/Celestial_Zoo
 // Celestial_Zoo
 
 let my = {};
@@ -28,7 +28,7 @@ function setup() {
 
   my.pane = my.pane1;
 
-  ui_create();
+  ui_init();
 
   my.animLoop = new Anim({ target: my, time: 15, action: nextRefAction, loop: my.scanFlag });
   if (my.scanFlag) {
