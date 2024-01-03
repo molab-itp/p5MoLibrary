@@ -18,28 +18,28 @@ class HeavenlyBody {
 
 </SwmSnippet>
 
-<SwmSnippet path="/src/demos/Heavenly3D/a_sketch.js" line="35">
+<SwmSnippet path="src/demos/Heavenly3D/a_sketch.js" line="35">
 
 ---
 
 use of HeavelyBody to create my.earth instance
 
-```javascript
-make_earth();
+```
+  make_earth();
 ```
 
 ---
 
 </SwmSnippet>
 
-<SwmSnippet path="/src/demos/Heavenly3D/make.js" line="20">
+<SwmSnippet path="src/demos/Heavenly3D/make.js" line="20">
 
 ---
 
 object literal passed to HeavelyBody to create my.earth
 
-```javascript
-my.earth = new HeavenlyBody({ x, y, width, height, img, orbitControl });
+```
+  my.earth = new HeavenlyBody({ x, y, width, height, img, orbitControl });
 ```
 
 ---
