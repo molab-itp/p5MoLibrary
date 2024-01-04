@@ -170,3 +170,6 @@ function fb_signIn() {
 // setInterval will flood out draw when saving and replaying
 // setInterval(update_interval, my.interval * 1000);
 // frameRate(2);
+
+// image(img, x, y, [width], [height])
+// image(img, dx, dy, dWidth, dHeight, sx, sy, [sWidth], [sHeight], [fit], [xAlign], [yAlign])

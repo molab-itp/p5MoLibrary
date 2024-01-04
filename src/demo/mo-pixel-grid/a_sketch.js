@@ -25,12 +25,7 @@ function setup() {
 }
 
 function anim_init() {
-  my.animLoop = new Anim({
-    target: my, //
-    time: my.updateTime,
-    action: updateAction,
-    loop: 1,
-  });
+  my.animLoop = new Anim({ target: my, time: my.updateTime, loop: 1 });
   my.animLoop.start();
 }
 
@@ -39,7 +34,7 @@ function draw() {
 
   ui_init_update();
 
-  my.animLoop.step();
+  my.animLoop.step({ action: updateAction });
 }
 
 function draw_frame() {

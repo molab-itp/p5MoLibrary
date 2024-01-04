@@ -1,6 +1,6 @@
 // https://editor.p5js.org/jht9629-nyu/sketches ----
 // https://github.com/molab-itp/p5moLibrary
-// Display regions of a Astronomical infographic with panning and zooming animation
+// Display regions of a Astronomical infographic with animated panning and zooming
 
 let my = {};
 
@@ -30,14 +30,14 @@ function setup() {
 
   ui_init();
 
-  my.animLoop = new Anim({ target: my, time: 15, action: nextRefAction, loop: my.scanFlag });
+  my.animLoop = new Anim({ target: my, time: 15 });
   if (my.scanFlag) {
     my.animLoop.start();
   }
 
   focusAction();
 
-  my.cycleCount = 0;
+  my.cycleCount = 1;
 }
 
 function draw() {
@@ -50,7 +50,7 @@ function draw() {
     my.pane.mouseDragged();
   }
   draw_crossHairs();
-  my.animLoop.step();
+  my.animLoop.step({ action: nextRefAction, loop: my.scanFlag });
   drawCycleCount();
 }
 
@@ -72,45 +72,6 @@ function drawCycleCount() {
 
 function formatNum(num) {
   return Number(num).toLocaleString();
-}
-
-function create_pane0() {
-  let fwidth = my.width;
-  let height = my.height;
-  let backgImg = my.backgImg;
-  let rr = 1 - my.paneRatio;
-  let x0 = 0;
-  let y0 = 0;
-  let z0 = 8;
-  let width = floor(fwidth * rr);
-  let refBox = my.refBox;
-  if (my.isPortrait) {
-    // width = floor(my.width * (3 / 9));
-    width = my.width;
-    height = floor(my.height * (6 / 16));
-    // y0 = my.height - height;
-  }
-  let regionIndex = 0;
-  my.pane0 = new Pane({ backgImg, x0, y0, z0, width, height, refBox, regionIndex });
-}
-
-function create_pane1() {
-  let fwidth = my.width;
-  let height = my.height;
-  let backgImg = my.backgImg;
-  let rr = my.paneRatio;
-  let x0 = floor(fwidth * (1 - rr));
-  let y0 = 0;
-  let z0 = 4.5;
-  let initCentered = 1;
-  let width = floor(fwidth * rr);
-  let refBox = my.refBox;
-  if (my.isPortrait) {
-    width = my.width;
-    x0 = 0;
-  }
-  let regionIndex = 1;
-  my.pane1 = new Pane({ backgImg, x0, y0, z0, width, height, initCentered, refBox, regionIndex });
 }
 
 function draw_crossHairs() {
@@ -167,9 +128,6 @@ function saveMouseXY() {
 
 // !!@ no canvas mouseDragged
 // my.canvas.mouseDragged(canvas_mouseDragged);
-
-// image(img, x, y, [width], [height])
-// image(img, dx, dy, dWidth, dHeight, sx, sy, [sWidth], [sHeight], [fit], [xAlign], [yAlign])
 
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
 

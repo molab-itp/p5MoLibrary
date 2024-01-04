@@ -138,6 +138,7 @@ function nextRefAction() {
     // Wrap around to botom
     refAdjustTo(0);
   } else {
+    // Advance to next ref
     refAdjustDelta(1);
   }
 }
@@ -185,13 +186,6 @@ function ui_present() {
   return select('#id_panX');
 }
 
-// https://editor.p5js.org/jht9629-nyu/sketches/bG2JhGUBX
-// 3.5 circleX ui span buttons slider checkbox
-
-// https://editor.p5js.org/jht9629-nyu/sketches/rXhPgZ1k6
-// 2.2.3 circleX ui span coordinates xy colors rgb
-// reporting variable values, coorindates and colors
-
 // https://stackoverflow.com/questions/3665115/how-to-create-a-file-in-memory-for-user-to-download-but-not-through-server
 function downloadToFile(filename, text) {
   var element = document.createElement('a');
@@ -207,3 +201,11 @@ function downloadToFile(filename, text) {
 }
 
 // https://unicode.org/charts/nameslist/n_2190.html
+// Arrows
+
+// https://editor.p5js.org/jht9629-nyu/sketches/bG2JhGUBX
+// 3.5 circleX ui span buttons slider checkbox
+
+// https://editor.p5js.org/jht9629-nyu/sketches/rXhPgZ1k6
+// 2.2.3 circleX ui span coordinates xy colors rgb
+// reporting variable values, coorindates and colors

@@ -27,14 +27,21 @@ export class Anim {
     }
   }
 
-  step() {
+  // { action, loop  }
+  step(args) {
+    let action = this.action;
+    let loop = this.loop;
+    if (args) {
+      if (args.action != undefined) action = args.action;
+      if (args.loop != undefined) loop = args.loop;
+    }
     let now = Date.now();
     let lapse = now - this.startTime;
     if (lapse > this.time) {
       this.startTime = now;
-      this.running = this.loop;
-      if (this.action && this.running) {
-        this.action();
+      this.running = loop;
+      if (action && this.running) {
+        action();
       }
     }
   }
@@ -62,7 +69,7 @@ export class Anim {
     this.changeIndex = 0;
   }
 
-  // Establish ending values for values
+  // Establish ending values
   addChange(time, values) {
     // convert time from seconds to milliseconds
     time *= 1000;

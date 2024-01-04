@@ -92,6 +92,9 @@ export class Pane {
     image(backgImg, dx, dy, cm.dWidth, cm.dHeight, sx, sy, cm.sWidth, cm.sHeight);
   }
 
+  // image(img, x, y, [width], [height])
+  // image(img, dx, dy, dWidth, dHeight, sx, sy, [sWidth], [sHeight], [fit], [xAlign], [yAlign])
+
   set zoomIndex(newValue) {
     this._zoomIndex = newValue;
     this.zoomRatio = 1 / newValue;
@@ -140,11 +143,11 @@ export class Pane {
 
   focus_focusRect() {
     let rg = this.region();
-    let srg = this.rgToCanvas(rg);
-    this.focusRect.x0 = srg.x;
-    this.focusRect.y0 = srg.y;
-    this.focusRect.width = srg.w;
-    this.focusRect.height = srg.h;
+    let crg = this.rgToCanvas(rg);
+    this.focusRect.x0 = crg.x;
+    this.focusRect.y0 = crg.y;
+    this.focusRect.width = crg.w;
+    this.focusRect.height = crg.h;
   }
 
   touchPoint(x, y) {

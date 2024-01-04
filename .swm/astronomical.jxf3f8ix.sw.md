@@ -23,8 +23,8 @@ let refBox_init = {
 
 <SwmPath>[src/demo/Astronomical/index.html](/src/demo/Astronomical/index.html)</SwmPath>
 
-includes lib/0/a_main.js for RefBox, Pane, Anim and others classes
+includes `a_main.js` for RefBox, Pane, Anim and Rect
 
-<SwmPath>[src/lib/0/a_main.js](/src/lib/0/a_main.js)</SwmPath>
+<SwmPath>[src/lib/0/a_main.js](/src/lib/0/a_main.js)</SwmPath>&nbsp;
 
 <SwmMeta version="3.0.0" repo-id="Z2l0aHViJTNBJTNBcDVtb0xpYnJhcnklM0ElM0Ftb2xhYi1pdHA=" repo-name="p5moLibrary"><sup>Powered by [Swimm](https://app.swimm.io/)</sup></SwmMeta>
