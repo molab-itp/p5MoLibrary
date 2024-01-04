@@ -4,14 +4,15 @@
 
 let my = {};
 
-function my_init() {
+function my_setup() {
   my.version = '?v=41';
   my.width = 640;
   my.height = 480;
   my.save_label = 'plea';
-  my.lapse = 5; // seconds to re-draw points
-  // my.xoffset = my.width / 2;
+  // seconds to re-draw points
+  my.lapse = 5;
   my.xoffset = 0;
+  // my.xoffset = my.width / 2;
   my.draw_specs = [
     { color: 'red', strokeWeight: 12 },
     { color: 'green', strokeWeight: 7 },
@@ -20,8 +21,9 @@ function my_init() {
   my.draw_color = 'white';
   my.strokeWeight = 10;
   my.run = 1;
-  // npoint_limit = 200; // limit number of points in drawing
+  // limit number of points in drawing
   my.npoint_limit = 0; // no limit
+  // npoint_limit = 200;
   my.timedDrawing = 0;
   my.staticDrawing = 1;
 
@@ -34,7 +36,7 @@ function my_init() {
 }
 
 function setup() {
-  my_init();
+  my_setup();
 
   my.canvas = createCanvas(my.width, my.height);
 
@@ -133,18 +135,6 @@ function ui_init() {
     my.drawPoints.clear_url();
   });
 }
-
-// function touchStarted(event) {
-//   // console.log('touchStarted event', event);
-//   // prevent default
-//   // return false; // stops buttons on google Pixel phone
-// }
-
-// function canvas_touchStarted() {
-//   console.log('canvas_touchStarted');
-//   // prevent default
-//   return false;
-// }
 
 // return seconds since start of sketch
 function secsTime() {
