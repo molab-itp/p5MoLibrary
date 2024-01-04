@@ -11,7 +11,7 @@ function preload() {
 
   let path = '../../assets';
   // on mobile device, switch to lower rez graphics
-  if (windowWidth <= 600) path = '../../assets-lorez';
+  if (windowWidth <= 600) path = '../../assets-lowrez';
   console.log('path', path);
 
   my.earthImg = loadImage(path + '/world-ultra.jpg');

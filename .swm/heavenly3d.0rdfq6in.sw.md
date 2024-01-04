@@ -59,7 +59,7 @@ reference to p5js sketch that mirrors this code
 
 </SwmSnippet>
 
-<SwmToken path="/src/demo/Heavenly3D/a_sketch.js" pos="12:9:9" line-data="  let path = &#39;../../assets&#39;;">`assets`</SwmToken>assests folder reference in p5js sketch is replaces with assets-lorez contents and path updated in the sketch.
+<SwmToken path="/src/demo/Heavenly3D/a_sketch.js" pos="12:9:9" line-data="  let path = &#39;../../assets&#39;;">`assets`</SwmToken>assests folder reference in p5js sketch is replaces with assets-lowrez contents and path updated in the sketch.
 
 <SwmPath>[src/demo/Heavenly3D/index.html](/src/demo/Heavenly3D/index.html)</SwmPath> back to index.hmtl - note modifications notes for p5 sketch sync
 
