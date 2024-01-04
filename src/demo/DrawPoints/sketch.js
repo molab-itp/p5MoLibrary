@@ -3,7 +3,6 @@
 // https://github.com/molab-itp/p5moLibrary
 
 let my = {};
-let drawPoints;
 
 function my_init() {
   my.version = '?v=41';
@@ -39,10 +38,10 @@ function setup() {
 
   my.canvas = createCanvas(my.width, my.height);
 
-  drawPoints = new DrawPoints(my);
+  my.drawPoints = new DrawPoints(my);
 
   let urlParams = get_url_params();
-  drawPoints.restore_drawing(urlParams);
+  my.drawPoints.restore_drawing(urlParams);
 
   ui_init();
 
@@ -53,88 +52,85 @@ function setup() {
 
 function mouseDragged() {
   // console.log('mouseDragged');
-  drawPoints.mouseDragged();
-  let onCanvas = mouseX >= 0 && mouseX < width && mouseY >= 0 && mouseY < height;
+  my.drawPoints.mouseDragged();
+  let inX = mouseX >= 0 && mouseX < width;
+  let inY = mouseY >= 0 && mouseY < height;
+  let onCanvas = inX && inY;
   // return false; // required to prevent touch drag moving canvas on mobile
   return !onCanvas;
 }
 
 function canvas_mouseReleased() {
   // console.log('canvas_mouseReleased');
-  drawPoints.mouseReleased();
+  my.drawPoints.mouseReleased();
 }
 
 function canvas_touchEnded() {
   // console.log('canvas_touchEnded');
-  drawPoints.mouseReleased();
+  my.drawPoints.mouseReleased();
 }
-
-// function touchEnded() {
-//   // console.log('touchEnded');
-//   drawPoints.mouseReleased();
-// }
 
 function draw() {
   background(0);
 
-  drawPoints.prepareOutput();
+  my.drawPoints.prepareOutput();
 
-  image(drawPoints.output, 0, 0);
+  image(my.drawPoints.output, 0, 0);
 }
 
 function ui_init() {
   let msg = [
     '(' + my.version.substring(1) + ') drag mouse on the canvas to create line drawing',
-    'press startTimedDraw to re-draw it in ' + drawPoints.lapse + ' seconds',
+    'press startTimedDraw to re-draw it in ' + my.drawPoints.lapse + ' seconds',
   ];
   createDiv(msg.join('<br/>'));
 
-  let runCheckBox = createCheckbox('Run ', drawPoints.run).changed(function () {
-    drawPoints.run = this.checked();
+  let runCheckBox = createCheckbox('Run ', my.drawPoints.run).changed(function () {
+    my.drawPoints.run = this.checked();
   });
   runCheckBox.style('display:inline;');
 
   createButton('startTimedDraw').mousePressed(function () {
-    drawPoints.startTimedDraw();
+    my.drawPoints.startTimedDraw();
   });
   createButton('stopTimedDraw').mousePressed(function () {
-    drawPoints.stopTimedDraw();
+    my.drawPoints.stopTimedDraw();
   });
   createButton('clearDrawing').mousePressed(function () {
-    drawPoints.clearDrawing();
+    my.drawPoints.clearDrawing();
   });
 
   createElement('br');
 
   // createSlider(min, max, oldVal, step)
-  let lapse_slider = createSlider(0, 30, drawPoints.lapse).input(function () {
-    drawPoints.lapse = this.value();
+  let lapse_slider = createSlider(0, 30, my.drawPoints.lapse).input(function () {
+    my.drawPoints.lapse = this.value();
     // console.log('create_slider aVal ', aVal, 'type', typeof aVal);
-    valSpan.html(formatNumber(drawPoints.lapse) + '');
-    drawPoints.startTimedDraw();
+    valSpan.html(formatNumber(my.drawPoints.lapse) + '');
+    my.drawPoints.startTimedDraw();
   });
   lapse_slider.style('width:50%');
-  let valSpan = createSpan(drawPoints.lapse + '');
+  let valSpan = createSpan(my.drawPoints.lapse + '');
 
   createElement('br');
   createSpan('save_label: ');
 
-  createInput(drawPoints.save_label).input(function () {
-    drawPoints.save_label = this.value();
+  createInput(my.drawPoints.save_label).input(function () {
+    my.drawPoints.save_label = this.value();
     // save_drawing(); // too many saves
   });
 
   createButton('restore').mousePressed(function () {
-    drawPoints.restore_drawing();
+    my.drawPoints.restore_drawing();
   });
   createButton('save').mousePressed(function () {
-    drawPoints.save_drawing();
+    my.drawPoints.save_drawing();
   });
   createButton('save_url').mousePressed(function () {
-    drawPoints.save_drawing({ url: 1 });
+    my.drawPoints.save_drawing({ url: 1 });
   });
   createButton('clear_url').mousePressed(function () {
-    drawPoints.clear_url();
+    my.drawPoints.clear_url();
   });
 }
 

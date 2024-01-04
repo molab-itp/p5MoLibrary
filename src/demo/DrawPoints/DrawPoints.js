@@ -188,6 +188,7 @@ class DrawPoints {
     return store;
   }
 
+  // { url: 1 } save to url
   save_drawing(url) {
     let store = {
       version: 3,
@@ -196,29 +197,30 @@ class DrawPoints {
       height: this.height,
       drawings: this.drawings,
     };
-
     this.shrink_drawings(store);
-
     let str = JSON.stringify(store);
     localStorage.setItem(this.save_label, str);
     console.log('save_drawing str.length', str.length);
-
     if (url) {
-      let url = new URL(window.location.href);
-      // url.search = '?store=' + encodeURIComponent(str);
-      let str = '?label=' + encodeURIComponent(this.save_label);
-      str += '&version=' + encodeURIComponent(store.version + '');
-      str += '&width=' + encodeURIComponent(store.width + '');
-      str += '&height=' + encodeURIComponent(store.height + '');
-      let dstr = JSON.stringify(store.drawings);
-      str += '&drawings=' + shrink_encode(dstr);
-      url.search = str;
-      console.log(url.href);
-      window.location = url.href;
+      this.save_to_url();
     }
     // Report full string size. Typically %50 more
     // let full = JSON.stringify(this.drawings);
     // console.log('save_drawing full.length', full.length);
+  }
+
+  save_to_url() {
+    let url = new URL(window.location.href);
+    // url.search = '?store=' + encodeURIComponent(str);
+    let str = '?label=' + encodeURIComponent(this.save_label);
+    str += '&version=' + encodeURIComponent(store.version + '');
+    str += '&width=' + encodeURIComponent(store.width + '');
+    str += '&height=' + encodeURIComponent(store.height + '');
+    let dstr = JSON.stringify(store.drawings);
+    str += '&drawings=' + shrink_encode(dstr);
+    url.search = str;
+    console.log(url.href);
+    window.location = url.href;
   }
 
   clear_url() {
@@ -297,8 +299,10 @@ class DrawPoints {
   }
 } // DrawPoints
 
-// ABCDEFGHILKMNOPQRTSTUVWXYZ
+// encode a few characters to reduce size of url &drawings= param
 // {}[]:,"+
+// --> mapped to upper case letters
+// ABCDEFGHILKMNOPQRTSTUVWXYZ
 
 let char0_index = 'A'.charCodeAt(0);
 // let encode_chars = '{}[]:,"+';
