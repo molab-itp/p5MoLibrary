@@ -129,7 +129,7 @@ function ui_init() {
     my.drawPoints.save_drawing();
   });
   createButton('save_url').mousePressed(function () {
-    my.drawPoints.save_drawing({ url: 1 });
+    my.drawPoints.save_to_url();
   });
   createButton('clear_url').mousePressed(function () {
     my.drawPoints.clear_url();

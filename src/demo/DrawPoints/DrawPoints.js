@@ -3,7 +3,7 @@ class DrawPoints {
   constructor(props) {
     console.log('DrawPoints props', props);
     Object.assign(this, props);
-
+    this.version = 1;
     this.drawings = [];
     this.drawing_index = 0;
     this.points = null;
@@ -121,14 +121,11 @@ class DrawPoints {
 
   clearDrawing() {
     console.log('clearDrawing');
-
     this.drawings = [];
     this.points = null;
     this.npoints = 0;
     this.timedDrawing = 0;
-
     this.output.clear();
-
     // this.save_drawing();
   }
 
@@ -148,7 +145,6 @@ class DrawPoints {
     this.calc_npoints();
     this.output.clear();
     console.log('restore_drawing this.npoints', this.npoints);
-
     if (urlParams) {
       this.xoffset = 0;
       this.staticDrawing = 0;
@@ -188,34 +184,35 @@ class DrawPoints {
     return store;
   }
 
-  // { url: 1 } save to url
-  save_drawing(url) {
-    let store = {
-      version: 3,
-      // label: this.save_label,
-      width: this.width,
-      height: this.height,
-      drawings: this.drawings,
-    };
-    this.shrink_drawings(store);
+  save_drawing() {
+    let store = this.prepareStore();
     let str = JSON.stringify(store);
     localStorage.setItem(this.save_label, str);
     console.log('save_drawing str.length', str.length);
-    if (url) {
-      this.save_to_url();
-    }
     // Report full string size. Typically %50 more
     // let full = JSON.stringify(this.drawings);
     // console.log('save_drawing full.length', full.length);
   }
 
+  prepareStore() {
+    let store = {
+      version: this.version,
+      width: this.width,
+      height: this.height,
+      drawings: this.drawings,
+    };
+    this.shrink_drawings(store);
+    return store;
+  }
+
   save_to_url() {
+    let store = this.prepareStore();
     let url = new URL(window.location.href);
     // url.search = '?store=' + encodeURIComponent(str);
     let str = '?label=' + encodeURIComponent(this.save_label);
-    str += '&version=' + encodeURIComponent(store.version + '');
-    str += '&width=' + encodeURIComponent(store.width + '');
-    str += '&height=' + encodeURIComponent(store.height + '');
+    str += '&version=' + encodeURIComponent(this.version + '');
+    str += '&width=' + encodeURIComponent(this.width + '');
+    str += '&height=' + encodeURIComponent(this.height + '');
     let dstr = JSON.stringify(store.drawings);
     str += '&drawings=' + shrink_encode(dstr);
     url.search = str;
