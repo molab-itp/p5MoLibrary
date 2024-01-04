@@ -23,11 +23,11 @@ function ui_init() {
     my.pane.pan_center();
   });
   createButton('clear').mousePressed(function () {
-    clearLastMouseEnts();
+    clearMouseXY();
   });
   {
     my.zoom_slider = createSlider(1, 32, my.pane.zoomIndex, 0.01).input(function () {
-      clearLastMouseEnts();
+      clearMouseXY();
       my.pane.pan_updateZoom(this.value());
     });
     my.zoom_slider.style('width:500px');
@@ -94,7 +94,7 @@ function downloadAction() {
 }
 
 function focusAction() {
-  clearLastMouseEnts();
+  clearMouseXY();
   if (my.animLoop && my.animLoop.running) {
     my.pane1.focus_animated();
     my.pane0.focus_animated();
@@ -105,7 +105,7 @@ function focusAction() {
 }
 
 function updateAction() {
-  my.pane.updateRefEntry(my.lastMouseEnts);
+  my.pane.updateRefEntry(my.mouseXYs);
   ui_paneUpdate();
 }
 

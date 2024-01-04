@@ -1,6 +1,7 @@
 // https://editor.p5js.org/jht9629-gmail/sketches/VWbtyZTnx
 // mo-storage-dashboard
 // https://molab-itp.github.io/p5moLibrary/demo/mo-storage-dashboard
+// record and play back audio and image sequence to firebase
 
 let my = {};
 function my_setup() {

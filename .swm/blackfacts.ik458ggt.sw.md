@@ -12,7 +12,7 @@ github pages reference
 
 src/assets/2024-01-03-Thaddeus-Stevens.png
 
-src/assets-p5js-editor/2024-01-03-Thaddeus-Stevens.png
+src/assets-lorez/2024-01-03-Thaddeus-Stevens.png
 
 &nbsp;
 

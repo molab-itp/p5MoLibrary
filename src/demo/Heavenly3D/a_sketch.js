@@ -1,6 +1,6 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/6VM5IMP4m
 // Heavenly3D
-// https://github.com/molab-itp/p5moLibrary/tree/main/src/demo/Heavenly3D
+// https://github.com/molab-itp/p5moLibrary
 
 let my = {};
 
@@ -10,7 +10,8 @@ function preload() {
   my.panScale = 3;
 
   let path = '../../assets';
-  if (windowWidth <= 600) path = '../../assets-p5js-editor';
+  // on mobile device, switch to lower rez graphics
+  if (windowWidth <= 600) path = '../../assets-lorez';
   console.log('path', path);
 
   my.earthImg = loadImage(path + '/world-ultra.jpg');
@@ -70,7 +71,6 @@ function setFocus(body) {
 // --
 
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
-// https://github.com/molab-itp/98-MoGallery-p5js/tree/main/demo/PlanetEarth
 // PlanetEarth
 
 // https://editor.p5js.org/jht9629-nyu/sketches/SJtBwJIcU

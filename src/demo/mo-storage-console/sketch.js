@@ -1,4 +1,6 @@
-// mo-storage
+// mo-storage-console
+// explore firebase storage api - display info in console
+// basic library interface in index.html
 
 let my = {};
 

@@ -1,6 +1,6 @@
 // https://editor.p5js.org/jht1493/sketches/sM0Hl8r8N
 // Firebase createImg-slide-show
-// Display images from Firebase storage as a slide show
+// Display images from Firebase storage as a slide show using createImg
 
 // storage key for list of images
 let storeKey = 'mo-1/gallery-@r-';

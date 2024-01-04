@@ -228,11 +228,11 @@ export class Pane {
     // console.log('Pane mouseReleased', this.label);
   }
 
-  updateRefEntry(lastMouseEnts) {
+  updateRefEntry(mouseXYs) {
     let ent = this.refEntry();
 
-    if (lastMouseEnts.length >= 2) {
-      this.updateEnt(ent, lastMouseEnts);
+    if (mouseXYs.length >= 2) {
+      this.updateEnt(ent, mouseXYs);
     } else {
       ent.regions[this.regionIndex].z = this.zoomIndex;
     }
@@ -259,13 +259,13 @@ export class Pane {
     return { x, y, w, h };
   }
 
-  updateEnt(ent, lastMouseEnts) {
+  updateEnt(ent, mouseXYs) {
     // map from image to screen coordinates
     let cm = this.canvasMap();
     let rw = cm.sWidth / cm.dWidth;
     let rh = cm.sHeight / cm.dHeight;
     let regions = [];
-    for (let ment of lastMouseEnts) {
+    for (let ment of mouseXYs) {
       let x = floor((ment.x - this.x0) * rw) + this.panX;
       let y = floor((ment.y - this.y0) * rh) + this.panY;
       regions.push({ x, y });

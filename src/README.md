@@ -8,7 +8,7 @@
   - [demo/firebase-gallery-2](demo/firebase-gallery-2)
   - [demo/Heavenly3D](demo/Heavenly3D?v=40)
   - [demo/mo-pixel-grid](demo/mo-pixel-grid?v=40)
-  - [demo/mo-storage-1](demo/mo-storage-1)
+  - [demo/mo-storage-console](demo/mo-storage-console)
   - [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=40)
   - [demo/timed-drawing](demo/timed-drawing)
 

@@ -1,5 +1,6 @@
-// https://github.com/jht9629-nyu/my-p5js-repo-2023/tree/main/p5-projects/timed-drawing
+// https for sketch
 // timed-drawing
+// https://github.com/molab-itp/p5moLibrary
 
 let my = {};
 let drawPoints;

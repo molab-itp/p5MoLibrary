@@ -1,6 +1,6 @@
 // https://editor.p5js.org/jht1493/sketches/5LgILr8RF
 // Firebase-createImg-board
-// Display images from Firebase storage as a bill board
+// Display images from Firebase storage as a billboard using createImg
 
 // https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/
 // https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/?gallery=ims-web

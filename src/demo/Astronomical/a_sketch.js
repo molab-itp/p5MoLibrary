@@ -1,6 +1,6 @@
-// https://editor.p5js.org/jht9629-nyu/sketches
-// https://github.com/molab-itp/p5MoLibrary/tree/main/demo/Celestial_Zoo
-// Celestial_Zoo
+// https://editor.p5js.org/jht9629-nyu/sketches ----
+// https://github.com/molab-itp/p5moLibrary
+// Display regions of a Astronomical infographic with panning and zooming animation
 
 let my = {};
 
@@ -74,11 +74,6 @@ function formatNum(num) {
   return Number(num).toLocaleString();
 }
 
-function clearLastMouseEnts() {
-  my.lastMouseEnts = [];
-  my.lastMouseIndex = 0;
-}
-
 function create_pane0() {
   let fwidth = my.width;
   let height = my.height;
@@ -121,7 +116,7 @@ function create_pane1() {
 function draw_crossHairs() {
   stroke(255);
   strokeWeight(1);
-  for (let ment of my.lastMouseEnts) {
+  for (let ment of my.mouseXYs) {
     line(ment.x, 0, ment.x, height);
     line(0, ment.y, width, ment.y);
   }
@@ -135,7 +130,7 @@ function canvas_mousePressed() {
   // console.log('canvas_mousePressed');
 
   if (keyIsDown(SHIFT)) {
-    logMouseEnts();
+    saveMouseXY();
     my.shiftTracking = 1;
   } else {
     my.mouseTracking = 1;
@@ -152,17 +147,22 @@ function canvas_mousePressed() {
 function canvas_mouseReleased() {
   // console.log('canvas_mouseReleased');
   if (my.shiftTracking) {
-    logMouseEnts();
+    saveMouseXY();
   }
   my.pane.mouseReleased();
   my.mouseTracking = 0;
   my.shiftTracking = 0;
 }
 
-function logMouseEnts() {
+function clearMouseXY() {
+  my.mouseXYs = [];
+  my.mouseXYindex = 0;
+}
+
+function saveMouseXY() {
   let ment = { x: mouseX, y: mouseY };
-  my.lastMouseEnts[my.lastMouseIndex] = ment;
-  my.lastMouseIndex = (my.lastMouseIndex + 1) % 2;
+  my.mouseXYs[my.mouseXYindex] = ment;
+  my.mouseXYindex = (my.mouseXYindex + 1) % 2;
 }
 
 // !!@ no canvas mouseDragged
