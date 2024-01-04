@@ -52,6 +52,8 @@ function setup() {
 
   createElement('br');
 
+  createDiv('press mouse and drag to draw');
+  createDiv('buttons to upload and download canvas to firebase');
   // show all
   // demo_listAll('');
   // show all items for this id
@@ -59,6 +61,9 @@ function setup() {
 }
 
 function draw() {
+  if (!mouseIsPressed) return;
+  if (mouseX < 0 || mouseX > width) return;
+  if (mouseY < 0 || mouseY > height) return;
   let cl = random(['red', 'green', 'yellow']);
   stroke(cl);
   let sw = 4;
@@ -183,7 +188,8 @@ function demo_getDownloadURL(path) {
 
 // fixed cors using online gsutil
 // https://stackoverflow.com/questions/37760695/firebase-storage-and-access-control-allow-origin
-// https://console.cloud.google.com/welcome?project=dbsample-8eb08
+// https://console.cloud.google.com/welcome?project=molab-2022
+// top right button "Activate Cloud Shell"
 // [
 //   {
 //     "origin": ["*"],

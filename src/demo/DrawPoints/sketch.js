@@ -1,5 +1,5 @@
 // https for sketch
-// timed-drawing
+// DrawPoints
 // https://github.com/molab-itp/p5moLibrary
 
 let my = {};
@@ -198,7 +198,7 @@ function prevent_scrolling() {
 // https://www.buildingh.org
 
 // https://editor.p5js.org/jht9629-nyu/sketches/MbS5C3j-F
-// Necessary-forgery-timed-drawing
+// Necessary-forgery-DrawPoints
 
 // convert to my.
 // startTimedDraw as slider changes
@@ -209,7 +209,7 @@ function prevent_scrolling() {
 
 // project files created with p5.vscode "Create p5.js Project"
 // https://editor.p5js.org/jht9629-nyu/sketches/-t2O5JfBr
-// timed-drawing
+// DrawPoints
 // !!@ p5.js/0.10.2
 
 // TRY: use storeItem / getItem to save drawing locally
