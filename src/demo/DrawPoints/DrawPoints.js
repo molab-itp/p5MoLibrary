@@ -38,8 +38,10 @@ class DrawPoints {
     let ncolors = this.draw_specs.length;
     let npoints = this.npoints;
     let now = secsTime() - this.startTime;
-    // let progress = now / this.lapse; // take lapse seconds per single drawing
-    let progress = now / (this.lapse / ncolors); // take lapse seconds n drawings
+    // take lapse seconds n drawings
+    let progress = now / (this.lapse / ncolors);
+    //- take lapse seconds per single drawing
+    //- let progress = now / this.lapse;
     let stopIndex = int(npoints * progress) % (npoints * ncolors);
     let spec = this.draw_specs[0];
     let stepper = (ipoint) => {
