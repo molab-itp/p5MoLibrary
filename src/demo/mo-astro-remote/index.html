@@ -34,11 +34,10 @@
   <!-- <script type="module" src="../../lib/0/a_main.js?v=41"></script> -->
   <script type="module" src="../../lib/0/fb_config.js?v=41"></script>
   <!-- sharing code from other project -->
-  <script src="../mo-pixel-grid/dstore_device.js?v=41"></script>
+  <script src="../mo-pixel-grid/dstore_device_update.js?v=41"></script>
   <script src="../mo-pixel-grid/dstore_device_onChild.js?v=41"></script>
-  <!-- <script src="../../lib/0/ui_logDetail.js?v=41"></script>
-  <script src="../../lib/0/ui_logSummary.js?v=41"></script>
-  <script src="../../lib/0/ui_span.js?v=41"></script> -->
+  <script src="../../lib/0/updateTimeGap.js?v=41"></script>
+  <script src="./dstore_astro_onChild.js?v=41"></script>
 
   <script>
     let my = {};
@@ -58,8 +57,11 @@
       // console.log('Hello');
       let config = fb_.init('jht1493');
       console.log('?v=41 config.projectId', config.projectId, 'configLabel', config.configLabel);
+
       my.dstore_rootPath = 'm0-@r-@w-';
       my.roomName = 'room0';
+      my.astro_index = 0;
+
       dstore_init();
     });
     ui_log(my, 'Hello ui_log');
@@ -70,8 +72,13 @@
         .then(() => {
           my.uid = auth.currentUser.uid;
           ui_log(my, 'dstore_init', my.uid);
+
           dstore_device_update();
           dstore_device_onChild();
+          dstore_astro_onChild();
+          // Initial read of mo-astro
+          // dstore_astro_update(0);
+
           // dstore_pixgrid_onChild();
         })
         .catch((error) => {
@@ -81,14 +88,21 @@
 
     function next_action() {
       ui_log(my, 'next_action');
+      my.astro_index = (my.astro_index + 1) % 210;
+      dstore_astro_update();
     }
 
     function previous_action() {
       ui_log(my, 'previous_action');
+      my.astro_index = (my.astro_index - 1 + 210) % 210;
+      dstore_astro_update();
     }
 
     function random_action() {
       ui_log(my, 'random_action');
+      // my.astro_index = int(random(0, 210));
+      my.astro_index = Math.floor(Math.random() * 210);
+      dstore_astro_update();
     }
 
     function ui_log(my, ...args) {

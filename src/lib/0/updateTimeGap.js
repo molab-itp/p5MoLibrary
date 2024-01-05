@@ -14,13 +14,13 @@ window.updateTimeGap = updateTimeGap;
 function convertTimeToSeconds(time) {
   let str = '';
   let secs = time / 1000;
-  let mins = floor(secs / 60);
+  let mins = Math.floor(secs / 60);
   // console.log('mins', mins);
   secs -= mins * 60;
-  let hours = floor(mins / 60);
+  let hours = Math.floor(mins / 60);
   // console.log('hours', hours);
   mins -= hours * 60;
-  let days = floor(hours / 24);
+  let days = Math.floor(hours / 24);
   // console.log('days', days);
   hours -= days * 24;
   if (secs != 0) {

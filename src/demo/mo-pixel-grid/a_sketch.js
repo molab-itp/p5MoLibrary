@@ -24,6 +24,21 @@ function setup() {
   anim_init();
 }
 
+function dstore_init() {
+  let { signInAnonymously, auth } = fb_;
+  signInAnonymously(auth)
+    .then(() => {
+      my.uid = auth.currentUser.uid;
+      ui_log(my, 'dstore_init', my.uid);
+      dstore_device_update();
+      dstore_device_onChild();
+      dstore_pixgrid_onChild();
+    })
+    .catch((error) => {
+      ui_log(my, 'dstore_init error', error);
+    });
+}
+
 function anim_init() {
   my.animLoop = new Anim({ target: my, time: my.updateTime, loop: 1 });
   my.animLoop.start();
