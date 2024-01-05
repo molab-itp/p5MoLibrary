@@ -42,8 +42,9 @@ function dstore_device_update() {
   let s = my.stepPx;
   let c = my.videoColor || [0, 0, 0];
   let chip = { x, y, s, c };
+  let userAgent = navigator.userAgent;
 
-  let updates = { date_s, count, name_s, chip };
+  let updates = { date_s, count, name_s, chip, userAgent };
 
   // Acivity is only updated if present in recently received server info
   let activities = dstore_device_activities(my.uid, date_s);
