@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../../lib/0/style.css?v=41" /> -->
+    <style>
+      @media only screen and (max-width: 600px) {
+        body,
+        button,
+        select,
+        input {
+          font-size: 5vw;
+        }
+      }
+    </style>
+
+    <title>mo-astro-remote</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>mo-astro-remote</h1>
+    </header>
+    <main>
+      <button id="button">Click me!</button>
+    </main>
+  </body>
+
+  <!-- <script type="module" src="../../lib/0/a_main.js?v=41"></script> -->
+  <script type="module" src="../../lib/0/fb_config.js?v=41"></script>
+
+  <script>
+    const btn = document.querySelector('#button');
+    btn.addEventListener('click', function () {
+      alert('Hello class!');
+    });
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+      // console.log('DOM fully loaded and parsed');
+      // console.log('Hello');
+      let config = fb_.init('jht1493');
+      console.log('config.projectId', config.projectId, 'configLabel', config.configLabel);
+    });
+
+    //
+  </script>
+</html>
