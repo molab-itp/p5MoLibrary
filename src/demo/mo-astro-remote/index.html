@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
@@ -26,25 +24,80 @@
       <h1>mo-astro-remote</h1>
     </header>
     <main>
-      <button id="button">Click me!</button>
+      <!-- <button id="id_button">Click me!</button> -->
+      <button id="id_button_next">Next</button>
+      <button id="id_button_previous">Previous</button>
+      <button id="id_button_random">Random</button>
     </main>
   </body>
 
   <!-- <script type="module" src="../../lib/0/a_main.js?v=41"></script> -->
   <script type="module" src="../../lib/0/fb_config.js?v=41"></script>
+  <script src="../mo-pixel-grid/dstore_device.js?v=41"></script>
+  <script src="../mo-pixel-grid/dstore_device_onChild.js?v=41"></script>
+  <!-- <script src="../../lib/0/ui_logDetail.js?v=41"></script>
+  <script src="../../lib/0/ui_logSummary.js?v=41"></script>
+  <script src="../../lib/0/ui_span.js?v=41"></script> -->
 
   <script>
-    const btn = document.querySelector('#button');
-    btn.addEventListener('click', function () {
-      alert('Hello class!');
-    });
+    let my = {};
+
+    // const btn = document.querySelector('#button');
+    // id_button.addEventListener('click', button_action);
+    // function button_action() {
+    //   alert('Hello class! ');
+    // }
+
+    id_button_next.addEventListener('click', next_action);
+    id_button_previous.addEventListener('click', previous_action);
+    id_button_random.addEventListener('click', random_action);
 
     document.addEventListener('DOMContentLoaded', (event) => {
       // console.log('DOM fully loaded and parsed');
       // console.log('Hello');
       let config = fb_.init('jht1493');
-      console.log('config.projectId', config.projectId, 'configLabel', config.configLabel);
+      console.log('?v=41 config.projectId', config.projectId, 'configLabel', config.configLabel);
+      my.dstore_rootPath = 'm0-@r-@w-';
+      my.roomName = 'room0';
+      dstore_init();
     });
+    ui_log(my, 'Hello ui_log');
+
+    function dstore_init() {
+      let { signInAnonymously, auth } = fb_;
+      signInAnonymously(auth)
+        .then(() => {
+          my.uid = auth.currentUser.uid;
+          ui_log(my, 'dstore_init', my.uid);
+          dstore_device_update();
+          dstore_device_onChild();
+          // dstore_pixgrid_onChild();
+        })
+        .catch((error) => {
+          ui_log(my, 'dstore_init error', error);
+        });
+    }
+
+    function next_action() {
+      ui_log(my, 'next_action');
+    }
+
+    function previous_action() {
+      ui_log(my, 'previous_action');
+    }
+
+    function random_action() {
+      ui_log(my, 'random_action');
+    }
+
+    function ui_log(my, ...args) {
+      console.log(...args);
+    }
+
+    function ui_error(...args) {
+      ui_log(...args);
+      alert(...args);
+    }
 
     //
   </script>

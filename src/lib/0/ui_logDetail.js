@@ -10,6 +10,9 @@ function ui_log(my, ...args) {
   if (!my.logLines) {
     ui_log_init(my);
   }
+  if (!my.logDetail_div) {
+    ui_logSummary_div(my);
+  }
   let key = args[0];
   let ent = ui_logTagEntry(key);
   ent.count++;
@@ -59,6 +62,7 @@ function ui_log_init(my) {
 
 function ui_error(...args) {
   ui_log(...args);
+  alert(...args);
 }
 window.ui_error = ui_error;
 

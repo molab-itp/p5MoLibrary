@@ -37,11 +37,14 @@ function dstore_device_update() {
   let date_s = new Date().toISOString();
   let count = increment(1);
   let name_s = my.nameDevice || '';
-  let x = my.track_xi;
-  let y = my.track_yi;
-  let s = my.stepPx;
-  let c = my.videoColor || [0, 0, 0];
-  let chip = { x, y, s, c };
+  let chip = null;
+  if (my.videoColor) {
+    let c = my.videoColor;
+    let x = my.track_xi;
+    let y = my.track_yi;
+    let s = my.stepPx;
+    chip = { x, y, s, c };
+  }
   let userAgent = navigator.userAgent;
 
   let updates = { date_s, count, name_s, chip, userAgent };
@@ -120,19 +123,4 @@ function dstore_device_isActive(device) {
   let gapTime = dstore_device_activityGapTime(device);
   // console.log('dstore_device_isActive device.index', device.index, 'gapTime', lapgapTimese, my.activityLogTimeMax);
   return gapTime < my.activityLogTimeMax;
-}
-
-function dstore_device_remove() {
-  let { database, ref, set } = fb_.fbase;
-  let path = `${my.dstore_rootPath}/${my.roomName}/device/${my.uid}`;
-  let refPath = ref(database, path);
-  set(refPath, {})
-    .then(() => {
-      // Data saved successfully!
-      // ui_log(my, 'dstore_device_remove OK');
-    })
-    .catch((error) => {
-      // The write failed...
-      ui_log(my, 'dstore_device_remove error', error);
-    });
 }

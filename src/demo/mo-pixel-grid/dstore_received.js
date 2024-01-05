@@ -115,6 +115,10 @@ function dstore_received_cross(device) {
   }
   // Draw the chip on layer that persists
   let chip = device.serverValues.chip;
+  if (!chip) {
+    return;
+  }
+
   let stepPx = chip.s;
   let colr = chip.c;
   let x = chip.x * stepPx;
