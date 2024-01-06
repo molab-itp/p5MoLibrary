@@ -12,13 +12,17 @@ let zoom = 1;
 let panX = 0;
 let panY = 0;
 
-init();
+// init();
 
-function init() {
+function js_image_viewer_init(imagePath) {
   canvasEl = document.getElementById('canvas');
   ctx = canvasEl.getContext('2d');
 
-  loadImage(`https://loremflickr.com/320/240`, 320, 240).then((img) => {
+  // loadImage(`https://loremflickr.com/320/240`, 320, 240).then((img) => {
+  if (!imagePath) {
+    imagePath = '../../../assets/The_Celestial_Zoo.png';
+  }
+  loadImage(imagePath, 4800, 3200).then((img) => {
     image = img;
     ctx.drawImage(img, 0, 0);
     setupListeners(canvasEl);
