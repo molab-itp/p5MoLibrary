@@ -95,13 +95,13 @@ function downloadAction() {
 
 function focusAction() {
   clearMouseXY();
-  if (my.animLoop && my.animLoop.running) {
-    my.pane1.focus_animated();
-    my.pane0.focus_animated();
-  } else {
-    my.pane1.focus();
-    my.pane0.focus();
-  }
+  // if (my.animLoop && my.animLoop.running) {
+  my.pane1.focus_animated();
+  my.pane0.focus_animated();
+  // } else {
+  //   my.pane1.focus();
+  //   my.pane0.focus();
+  // }
 }
 
 function updateAction() {
