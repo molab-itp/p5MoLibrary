@@ -28,6 +28,7 @@
       <button id="id_button_next">Next</button>
       <button id="id_button_previous">Previous</button>
       <button id="id_button_random">Random</button>
+      <div id="id_astro_num"></div>
     </main>
   </body>
 
@@ -75,7 +76,7 @@
 
           dstore_device_update();
           dstore_device_onChild();
-          dstore_astro_onChild({});
+          dstore_astro_onChild({ mo_astro_index_changed });
           // Initial read of mo-astro
           // dstore_astro_update(0);
 
@@ -84,6 +85,11 @@
         .catch((error) => {
           ui_log(my, 'dstore_init error', error);
         });
+    }
+
+    function mo_astro_index_changed(oldValue, newValue) {
+      console.log('mo_astro_index_changed oldValue', oldValue, 'newValue', newValue);
+      id_astro_num.innerHTML = 'astro num=' + (newValue + 1) + '';
     }
 
     function next_action() {
