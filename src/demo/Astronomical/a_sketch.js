@@ -38,6 +38,15 @@ function setup() {
   focusAction();
 
   my.cycleCount = 1;
+
+  let config = fb_.init('jht1493');
+  console.log('?v=41 config.projectId', config.projectId, 'configLabel', config.configLabel);
+
+  my.dstore_rootPath = 'm0-@r-@w-';
+  my.roomName = 'room0';
+  my.astro_index = 0;
+
+  dstore_init();
 }
 
 function draw() {
@@ -52,6 +61,24 @@ function draw() {
   draw_crossHairs();
   my.animLoop.step({ action: nextRefAction, loop: my.scanFlag });
   drawCycleCount();
+}
+
+function dstore_init() {
+  // console.log('dstore_init ');
+  let { signInAnonymously, auth } = fb_;
+  signInAnonymously(auth)
+    .then(() => {
+      my.uid = auth.currentUser.uid;
+      // console.log('dstore_init my.uid', my.uid);
+      ui_log(my, 'dstore_init', my.uid);
+
+      dstore_device_update();
+      dstore_device_onChild();
+      dstore_astro_onChild();
+    })
+    .catch((error) => {
+      ui_log(my, 'dstore_init error', error);
+    });
 }
 
 function drawCycleCount() {

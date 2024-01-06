@@ -41,7 +41,7 @@ function dstore_device_onChild() {
       let index = Object.keys(my.stored_devices).length;
       let layer;
       let crossLayer;
-      if (window.createGraphics) {
+      if (window.createGraphics && my.vwidth) {
         layer = createGraphics(my.vwidth, my.vheight);
         crossLayer = createGraphics(my.vwidth, my.vheight);
       }
