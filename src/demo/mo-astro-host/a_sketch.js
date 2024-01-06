@@ -43,7 +43,7 @@ function setup() {
   // dstore interface
 
   let config = fb_.init('jht1493');
-  console.log('?v=42 config.projectId', config.projectId, 'configLabel', config.configLabel);
+  console.log('?v=43 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
