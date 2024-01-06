@@ -5,14 +5,15 @@
   - [demo/Astronomical](demo/Astronomical?v=45)
   - [demo/BlackFacts](demo/BlackFacts?v=45)
   - [demo/Heavenly3D](demo/Heavenly3D?v=45)
+  - [demo/DrawPoints](demo/DrawPoints)
   - [demo/mo-astro-host](demo/mo-astro-host/)
   - [demo/mo-astro-remote-0](demo/mo-astro-remote-0/)
+  - [demo/mo-astro-remote-1](demo/mo-astro-remote-1/)
   - [demo/mo-gallery-1](demo/mo-gallery-1/)
   - [demo/mo-gallery-2](demo/mo-gallery-2)
   - [demo/mo-pixel-grid](demo/mo-pixel-grid?v=45)
-  - [demo/mo-storage-console](demo/mo-storage-console)
+  - [demo/mo-storage-console](demo/mo-storage-console?v=45)
   - [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=45)
-  - [demo/DrawPoints](demo/DrawPoints)
 
 # [github.io](https://molab-itp.github.io/p5moLibrary/src?v=45)
 

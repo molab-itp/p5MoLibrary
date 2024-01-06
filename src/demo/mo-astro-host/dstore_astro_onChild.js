@@ -44,8 +44,9 @@ function dstore_astro_update() {
 
   let { database, ref, update, increment } = fb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-astro`;
-  // ui_log(my, 'dstore_astro_update', path);
   let refPath = ref(database, path);
+  // ui_log(my, 'dstore_astro_update', path);
+
   let index = my.astro_index;
   let count = increment(1);
   let dpath = `device/${my.uid}/count`;

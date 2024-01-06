@@ -58,4 +58,5 @@ function dstore_init() {
 function mo_astro_index_changed(newValue, oldValue) {
   console.log('mo_astro_index_changed newValue', newValue, 'oldValue', oldValue);
   refAdjustTo(newValue);
+  my.astro_index = newValue;
 }
