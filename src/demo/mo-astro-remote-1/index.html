@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- <link rel="stylesheet" type="text/css" href="style.css" /> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../../lib/0/style.css?v=45" /> -->
+    <style>
+      @media only screen and (max-width: 600px) {
+        body,
+        button,
+        select,
+        input {
+          font-size: 5vw;
+        }
+      }
+    </style>
+
+    <title>mo-astro-remote</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>mo-astro-remote</h1>
+    </header>
+    <main>
+      <!-- <button id="id_button">Click me!</button> -->
+      <button id="id_button_previous">Previous</button>
+      <button id="id_button_next">Next</button>
+      <button id="id_button_random">Random</button>
+      <button id="id_button_first">First</button>
+      <div id="id_astro_num"></div>
+    </main>
+  </body>
+
+  <!-- <script type="module" src="../../lib/0/a_main.js?v=45"></script> -->
+  <script type="module" src="../../lib/0/fb_config.js?v=45"></script>
+  <!-- sharing code from other project -->
+  <script src="../mo-astro-host/dstore_astro_onChild.js?v=45"></script>
+  <script src="../mo-pixel-grid/dstore_device_update.js?v=45"></script>
+  <script src="../mo-pixel-grid/dstore_device_onChild.js?v=45"></script>
+  <script src="../mo-pixel-grid/dstore_updateTimeGap.js?v=45"></script>
+
+  <script>
+    let my = {};
+
+    id_button_next.addEventListener('click', next_action);
+    id_button_previous.addEventListener('click', previous_action);
+    id_button_first.addEventListener('click', first_action);
+    id_button_random.addEventListener('click', random_action);
+
+    document.addEventListener('DOMContentLoaded', document_loaded);
+    ui_log(my, 'Hello ui_log');
+
+    function document_loaded() {
+      // console.log('DOM fully loaded and parsed');
+      // console.log('Hello');
+      let config = fb_.init('jht1493');
+      console.log('?v=45 config.projectId', config.projectId, 'configLabel', config.configLabel);
+
+      my.dstore_rootPath = 'm0-@r-@w-';
+      my.roomName = 'room0';
+      my.astro_index = 0;
+
+      dstore_init();
+    }
+
+    function dstore_init() {
+      let { signInAnonymously, auth } = fb_;
+      signInAnonymously(auth)
+        .then(() => {
+          my.uid = auth.currentUser.uid;
+          ui_log(my, 'dstore_init', my.uid);
+
+          dstore_device_update();
+          dstore_device_onChild();
+          dstore_astro_onChild({ mo_astro_index_changed });
+        })
+        .catch((error) => {
+          ui_log(my, 'dstore_init error', error);
+        });
+    }
+
+    function mo_astro_index_changed(newValue, oldValue) {
+      console.log('mo_astro_index_changed newValue', newValue, 'oldValue', oldValue);
+      id_astro_num.innerHTML = 'astro num=' + (newValue + 1) + '';
+    }
+
+    function first_action() {
+      ui_log(my, 'first_action');
+      my.astro_index = 0;
+      dstore_astro_update();
+    }
+
+    function next_action() {
+      ui_log(my, 'next_action');
+      my.astro_index = (my.astro_index + 1) % 210;
+      dstore_astro_update();
+    }
+
+    function previous_action() {
+      ui_log(my, 'previous_action');
+      my.astro_index = (my.astro_index - 1 + 210) % 210;
+      dstore_astro_update();
+    }
+
+    function random_action() {
+      ui_log(my, 'random_action');
+      // my.astro_index = int(random(0, 210));
+      my.astro_index = Math.floor(Math.random() * 210);
+      dstore_astro_update();
+    }
+
+    function ui_log(my, ...args) {
+      console.log(...args);
+    }
+
+    function ui_error(...args) {
+      ui_log(...args);
+      alert(...args);
+    }
+
+    //
+  </script>
+</html>

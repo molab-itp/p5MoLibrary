@@ -95,7 +95,7 @@ function downloadAction() {
 
 function focusAction() {
   clearMouseXY();
-  if (my.animLoop && my.animLoop.running) {
+  if (my.scanFlag) {
     my.pane1.focus_animated();
     my.pane0.focus_animated();
   } else {

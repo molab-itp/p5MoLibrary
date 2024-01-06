@@ -1,4 +1,30 @@
 //
+function astro_setup() {
+  //
+  my.canvas = createCanvas(windowWidth, windowHeight - 90);
+  my.canvas.mousePressed(canvas_mousePressed);
+  my.canvas.mouseReleased(canvas_mouseReleased);
+  my.width = width;
+  my.height = height;
+  my.paneRatio = 12 / 16;
+  my.isPortrait = height > width;
+  my.scanFlag = 1;
+
+  my.refBox = new RefBox(refBox_init);
+
+  create_pane0();
+
+  create_pane1();
+
+  my.pane = my.pane1;
+
+  ui_init();
+
+  focusAction();
+
+  my.cycleCount = 1;
+}
+
 function create_pane0() {
   let fwidth = my.width;
   let height = my.height;

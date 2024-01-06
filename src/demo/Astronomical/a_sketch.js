@@ -11,33 +11,12 @@ function preload() {
 
 function setup() {
   //
-  my.canvas = createCanvas(windowWidth, windowHeight - 90);
-  my.canvas.mousePressed(canvas_mousePressed);
-  my.canvas.mouseReleased(canvas_mouseReleased);
-  my.width = width;
-  my.height = height;
-  my.paneRatio = 12 / 16;
-  my.isPortrait = height > width;
-  my.scanFlag = 1;
-
-  my.refBox = new RefBox(refBox_init);
-
-  create_pane0();
-
-  create_pane1();
-
-  my.pane = my.pane1;
-
-  ui_init();
+  astro_setup();
 
   my.animLoop = new Anim({ target: my, time: 15 });
   if (my.scanFlag) {
     my.animLoop.start();
   }
-
-  focusAction();
-
-  my.cycleCount = 1;
 }
 
 function draw() {
@@ -50,8 +29,9 @@ function draw() {
     my.pane.mouseDragged();
   }
   draw_crossHairs();
-  my.animLoop.step({ action: nextRefAction, loop: my.scanFlag });
   drawCycleCount();
+
+  my.animLoop.step({ action: nextRefAction, loop: my.scanFlag });
 }
 
 function drawCycleCount() {
@@ -86,48 +66,6 @@ function draw_crossHairs() {
     line(0, mouseY, width, mouseY);
   }
 }
-
-function canvas_mousePressed() {
-  // console.log('canvas_mousePressed');
-
-  if (keyIsDown(SHIFT)) {
-    saveMouseXY();
-    my.shiftTracking = 1;
-  } else {
-    my.mouseTracking = 1;
-  }
-
-  if (my.pane1.touchPoint(mouseX, mouseY)) {
-    setPane(my.pane1);
-  } else if (my.pane0.touchPoint(mouseX, mouseY)) {
-    setPane(my.pane0);
-  }
-  my.pane.mousePressed();
-}
-
-function canvas_mouseReleased() {
-  // console.log('canvas_mouseReleased');
-  if (my.shiftTracking) {
-    saveMouseXY();
-  }
-  my.pane.mouseReleased();
-  my.mouseTracking = 0;
-  my.shiftTracking = 0;
-}
-
-function clearMouseXY() {
-  my.mouseXYs = [];
-  my.mouseXYindex = 0;
-}
-
-function saveMouseXY() {
-  let ment = { x: mouseX, y: mouseY };
-  my.mouseXYs[my.mouseXYindex] = ment;
-  my.mouseXYindex = (my.mouseXYindex + 1) % 2;
-}
-
-// !!@ no canvas mouseDragged
-// my.canvas.mouseDragged(canvas_mouseDragged);
 
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
 
