@@ -54,24 +54,6 @@ function draw() {
   drawCycleCount();
 }
 
-function dstore_init() {
-  // console.log('dstore_init ');
-  let { signInAnonymously, auth } = fb_;
-  signInAnonymously(auth)
-    .then(() => {
-      my.uid = auth.currentUser.uid;
-      // console.log('dstore_init my.uid', my.uid);
-      ui_log(my, 'dstore_init', my.uid);
-
-      dstore_device_update();
-      dstore_device_onChild();
-      dstore_astro_onChild();
-    })
-    .catch((error) => {
-      ui_log(my, 'dstore_init error', error);
-    });
-}
-
 function drawCycleCount() {
   let lapse = my.animLoop.lapse();
   let { x0, y0, width, height } = my.pane0;

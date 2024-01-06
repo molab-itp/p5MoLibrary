@@ -46,15 +46,15 @@ function ui_init() {
     addAction();
   });
   createButton('←').mousePressed(function () {
-    my.animLoop.restart();
+    // my.animLoop.restart();
     previousRefAction();
   });
   createButton('→').mousePressed(function () {
-    my.animLoop.restart();
+    // my.animLoop.restart();
     nextRefAction();
   });
   createButton('focus').mousePressed(function () {
-    my.animLoop.restart();
+    // my.animLoop.restart();
     focusAction();
   });
   createButton('update').mousePressed(function () {

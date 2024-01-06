@@ -1,5 +1,5 @@
 //
-function dstore_astro_onChild() {
+function dstore_astro_onChild({ mo_astro_index_changed }) {
   // Setup listener for changes to firebase db device
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-astro`;
@@ -27,7 +27,11 @@ function dstore_astro_onChild() {
       return;
     }
     if (key == 'index') {
+      let oldValue = my.astro_index;
       my.astro_index = val;
+      if (mo_astro_index_changed) {
+        mo_astro_index_changed(oldValue, my.astro_index);
+      }
     }
   }
 }

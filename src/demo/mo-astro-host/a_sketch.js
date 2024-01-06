@@ -78,11 +78,15 @@ function dstore_init() {
 
       dstore_device_update();
       dstore_device_onChild();
-      dstore_astro_onChild();
+      dstore_astro_onChild({ mo_astro_index_changed });
     })
     .catch((error) => {
       ui_log(my, 'dstore_init error', error);
     });
+}
+
+function mo_astro_index_changed(oldValue, newValue) {
+  console.log('mo_astro_index_changed oldValue', oldValue, 'newValue', newValue);
 }
 
 function drawCycleCount() {
