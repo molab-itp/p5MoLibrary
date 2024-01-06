@@ -30,9 +30,6 @@ function ui_init_row_1() {
   //
   my.versionBtn = ui_createButton(my, 'v' + my.version.substring(2));
   my.versionBtn.mousePressed(versionBtn_action);
-  // my.versionBtn.mousePressed(function () {
-  //   ui_toggle_scroll(my);
-  // });
 
   my.settingsChk = ui_checkbox(my, 'Settings', my.settingsFlag);
   my.settingsChk.changed(function () {
