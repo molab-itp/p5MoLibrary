@@ -12,6 +12,5 @@ import './video_create.js?v=44';
 import './ui_logDetail.js?v=44';
 import './ui_logSummary.js?v=44';
 import './ui_span.js?v=44';
-// import './updateTimeGap.js?v=44';
 
 // console.log('a_main Anim ', Anim);
