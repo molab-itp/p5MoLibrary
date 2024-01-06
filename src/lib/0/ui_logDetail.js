@@ -44,8 +44,7 @@ window.ui_log_clear = ui_log_clear;
 function ui_logTagEntry(key) {
   let ent = my.logTags[key];
   if (!ent) {
-    // !!@ log aloud ui_logTagEntry
-    let console = 1;
+    let console = my.logLoud ? 1 : 0;
     ent = { count: 0, console, lines: [] };
     my.logTags[key] = ent;
   }

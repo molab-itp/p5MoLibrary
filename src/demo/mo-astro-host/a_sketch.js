@@ -1,6 +1,7 @@
 // https://editor.p5js.org/jht9629-nyu/sketches ----
 // https://github.com/molab-itp/p5moLibrary
 // Display regions of a Astronomical infographic with animated panning and zooming
+// controlled by mo-astro-remote
 
 let my = {};
 
@@ -30,14 +31,26 @@ function setup() {
 
   ui_init();
 
-  my.animLoop = new Anim({ target: my, time: 15 });
-  if (my.scanFlag) {
-    my.animLoop.start();
-  }
+  // my.animLoop = new Anim({ target: my, time: 15 });
+  // if (my.scanFlag) {
+  //   my.animLoop.start();
+  // }
 
   focusAction();
 
   my.cycleCount = 1;
+
+  // dstore interface
+
+  let config = fb_.init('jht1493');
+  console.log('?v=41 config.projectId', config.projectId, 'configLabel', config.configLabel);
+
+  my.dstore_rootPath = 'm0-@r-@w-';
+  my.roomName = 'room0';
+  my.astro_index = 0;
+  my.logLoud = 1;
+
+  dstore_init();
 }
 
 function draw() {
@@ -50,8 +63,8 @@ function draw() {
     my.pane.mouseDragged();
   }
   draw_crossHairs();
-  my.animLoop.step({ action: nextRefAction, loop: my.scanFlag });
-  drawCycleCount();
+  // my.animLoop.step({ action: nextRefAction, loop: my.scanFlag });
+  // drawCycleCount();
 }
 
 function dstore_init() {
