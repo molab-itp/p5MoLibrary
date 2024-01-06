@@ -77,10 +77,6 @@
           dstore_device_update();
           dstore_device_onChild();
           dstore_astro_onChild({ mo_astro_index_changed });
-          // Initial read of mo-astro
-          // dstore_astro_update(0);
-
-          // dstore_pixgrid_onChild();
         })
         .catch((error) => {
           ui_log(my, 'dstore_init error', error);
