@@ -25,9 +25,10 @@
     </header>
     <main>
       <!-- <button id="id_button">Click me!</button> -->
-      <button id="id_button_next">Next</button>
       <button id="id_button_previous">Previous</button>
+      <button id="id_button_next">Next</button>
       <button id="id_button_random">Random</button>
+      <button id="id_button_first">First</button>
       <div id="id_astro_num"></div>
     </main>
   </body>
@@ -43,14 +44,9 @@
   <script>
     let my = {};
 
-    // const btn = document.querySelector('#button');
-    // id_button.addEventListener('click', button_action);
-    // function button_action() {
-    //   alert('Hello class! ');
-    // }
-
     id_button_next.addEventListener('click', next_action);
     id_button_previous.addEventListener('click', previous_action);
+    id_button_first.addEventListener('click', next_first);
     id_button_random.addEventListener('click', random_action);
 
     document.addEventListener('DOMContentLoaded', (event) => {
@@ -86,6 +82,11 @@
     function mo_astro_index_changed(oldValue, newValue) {
       console.log('mo_astro_index_changed oldValue', oldValue, 'newValue', newValue);
       id_astro_num.innerHTML = 'astro num=' + (newValue + 1) + '';
+    }
+
+    function next_first() {
+      my.astro_index = 0;
+      dstore_astro_update();
     }
 
     function next_action() {
