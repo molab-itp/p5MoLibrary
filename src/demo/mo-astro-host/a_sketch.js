@@ -87,6 +87,7 @@ function dstore_init() {
 
 function mo_astro_index_changed(oldValue, newValue) {
   console.log('mo_astro_index_changed oldValue', oldValue, 'newValue', newValue);
+  refAdjustTo(newValue);
 }
 
 function drawCycleCount() {
