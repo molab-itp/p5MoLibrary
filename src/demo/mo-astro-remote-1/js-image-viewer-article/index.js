@@ -1,5 +1,5 @@
 // Import stylesheets
-import './style.css';
+// import './style.css';
 
 let canvasEl;
 let ctx;
@@ -19,9 +19,9 @@ function init() {
   ctx = canvasEl.getContext('2d');
 
   loadImage(`https://loremflickr.com/320/240`, 320, 240).then((img) => {
-          image = img;
-      ctx.drawImage(img, 0, 0);
-      setupListeners(canvasEl);
+    image = img;
+    ctx.drawImage(img, 0, 0);
+    setupListeners(canvasEl);
   });
 }
 
@@ -34,12 +34,11 @@ function loadImage(src, width, height) {
   return new Promise((resolve) => {
     image.onload = () => {
       resolve(image);
-    }
-  })
+    };
+  });
 }
 
 function setupListeners(canvasEl) {
-
   canvasEl.addEventListener('mousedown', (e) => handleMouseDown(e));
   canvasEl.addEventListener('mouseup', () => handleMouseUp());
   canvasEl.addEventListener('mousemove', (e) => handleMouseMove(e));
@@ -58,75 +57,78 @@ function handleMouseDown(event) {
 }
 
 function handleMouseMove(event) {
-    if (!isMousedown) {
-      return;
-    }
-
-    const deltaX = (startPanX - event.clientX);
-    const deltaY = (startPanY - event.clientY);
-    panX += deltaX;
-    panY += deltaY;
-    startPanX = event.clientX;
-    startPanY = event.clientY;
-    redraw(image, zoom);
+  if (!isMousedown) {
+    return;
   }
 
-  function handleMouseWheel(event) {
-    event.preventDefault();
-    isMousedown = false;
-    const zoomChange = -event.deltaY;
-    zoom += (zoomChange / 4);
+  const deltaX = startPanX - event.clientX;
+  const deltaY = startPanY - event.clientY;
+  panX += deltaX;
+  panY += deltaY;
+  startPanX = event.clientX;
+  startPanY = event.clientY;
+  redraw(image, zoom);
+}
 
-    if (zoom < 0.75) { zoom = 0.75; }
-    if (zoom > 3) { zoom = 3; }
-    redraw(image, zoom);
+function handleMouseWheel(event) {
+  event.preventDefault();
+  isMousedown = false;
+  const zoomChange = -event.deltaY;
+  zoom += zoomChange / 4;
+
+  if (zoom < 0.75) {
+    zoom = 0.75;
+  }
+  if (zoom > 3) {
+    zoom = 3;
+  }
+  redraw(image, zoom);
+}
+
+function redraw(image, zoom) {
+  if (!ctx) {
+    return;
+  }
+  ctx.clearRect(0, 0, canvasEl.width, canvasEl.height); // Clear canvas
+  const perceivedWidth = image.width * zoom;
+  const perceivedHeight = image.height * zoom;
+
+  let dx = 0;
+  let dy = 0;
+
+  // Center the image as you zoom in using dx and dy offsets
+  if (zoom > 1) {
+    dx = -perceivedWidth / 4;
+    dy = -perceivedHeight / 4;
+  } else {
+    dx = 0;
+    dy = 0;
   }
 
-  function redraw(image, zoom) {
-    if (!ctx) { return; }
-    ctx.clearRect(0, 0, canvasEl.width, canvasEl.height); // Clear canvas
-    const perceivedWidth = image.width * zoom;
-    const perceivedHeight = image.height * zoom;
+  boundPan();
+  ctx.drawImage(image, panX, panY, image.width, image.height, dx, dy, perceivedWidth, perceivedHeight);
+}
 
-    let dx = 0;
-    let dy = 0;
-
-    // Center the image as you zoom in using dx and dy offsets
-    if (zoom > 1) {
-      dx = -perceivedWidth / 4;
-      dy = -perceivedHeight / 4;
-    } else {
-      dx = 0;
-      dy = 0;
-    }
-
-    boundPan();
-    ctx.drawImage(image, panX, panY, image.width, image.height, dx, dy, perceivedWidth, perceivedHeight);
+function boundPan() {
+  const padding = 50 * zoom;
+  if (panX - padding < -image.width) {
+    panX = -image.width + padding;
   }
 
-  function boundPan() {
-    const padding = 50 * zoom;
-    if ((panX - padding) < -image.width) {
-     panX = -image.width + padding;
-    }
-
-    if ((panX + padding) > image.width) {
-      panX = image.width - padding;
-    }
-
-    if ((panY - padding) < -image.height) {
-      panY = -image.height + padding;
-     }
- 
-     if ((panY + padding) > image.height) {
-       panY = image.height - padding;
-     }
+  if (panX + padding > image.width) {
+    panX = image.width - padding;
   }
 
-  function handleMouseUp() {
-    isMousedown = false;
-    isDragging = false;
+  if (panY - padding < -image.height) {
+    panY = -image.height + padding;
   }
 
+  if (panY + padding > image.height) {
+    panY = image.height - padding;
+  }
+}
 
-
+function handleMouseUp() {
+  isMousedown = false;
+  isDragging = false;
+}
