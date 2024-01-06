@@ -41,14 +41,14 @@ function setup() {
   my.cycleCount = 1;
 
   // dstore interface
-
+  //
   let config = fb_.init('jht1493');
   console.log('?v=43 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
   my.astro_index = 0;
-  my.logLoud = 1;
+  // my.logLoud = 1;
 
   dstore_init();
 }
@@ -85,8 +85,8 @@ function dstore_init() {
     });
 }
 
-function mo_astro_index_changed(oldValue, newValue) {
-  console.log('mo_astro_index_changed oldValue', oldValue, 'newValue', newValue);
+function mo_astro_index_changed(newValue, oldValue) {
+  console.log('mo_astro_index_changed newValue', newValue, 'oldValue', oldValue);
   refAdjustTo(newValue);
 }
 

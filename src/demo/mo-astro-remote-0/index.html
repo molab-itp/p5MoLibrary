@@ -36,20 +36,23 @@
   <!-- <script type="module" src="../../lib/0/a_main.js?v=43"></script> -->
   <script type="module" src="../../lib/0/fb_config.js?v=43"></script>
   <!-- sharing code from other project -->
+  <script src="../mo-astro-host/dstore_astro_onChild.js?v=43"></script>
   <script src="../mo-pixel-grid/dstore_device_update.js?v=43"></script>
   <script src="../mo-pixel-grid/dstore_device_onChild.js?v=43"></script>
-  <script src="../../lib/0/updateTimeGap.js?v=43"></script>
-  <script src="./dstore_astro_onChild.js?v=43"></script>
+  <script src="../mo-pixel-grid/updateTimeGap.js?v=43"></script>
 
   <script>
     let my = {};
 
     id_button_next.addEventListener('click', next_action);
     id_button_previous.addEventListener('click', previous_action);
-    id_button_first.addEventListener('click', next_first);
+    id_button_first.addEventListener('click', first_action);
     id_button_random.addEventListener('click', random_action);
 
-    document.addEventListener('DOMContentLoaded', (event) => {
+    document.addEventListener('DOMContentLoaded', document_loaded);
+    ui_log(my, 'Hello ui_log');
+
+    function document_loaded() {
       // console.log('DOM fully loaded and parsed');
       // console.log('Hello');
       let config = fb_.init('jht1493');
@@ -60,8 +63,7 @@
       my.astro_index = 0;
 
       dstore_init();
-    });
-    ui_log(my, 'Hello ui_log');
+    }
 
     function dstore_init() {
       let { signInAnonymously, auth } = fb_;
@@ -79,12 +81,13 @@
         });
     }
 
-    function mo_astro_index_changed(oldValue, newValue) {
-      console.log('mo_astro_index_changed oldValue', oldValue, 'newValue', newValue);
+    function mo_astro_index_changed(newValue, oldValue) {
+      console.log('mo_astro_index_changed newValue', newValue, 'oldValue', oldValue);
       id_astro_num.innerHTML = 'astro num=' + (newValue + 1) + '';
     }
 
-    function next_first() {
+    function first_action() {
+      ui_log(my, 'first_action');
       my.astro_index = 0;
       dstore_astro_update();
     }

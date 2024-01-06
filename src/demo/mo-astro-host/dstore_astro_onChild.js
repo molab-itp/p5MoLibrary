@@ -30,7 +30,7 @@ function dstore_astro_onChild({ mo_astro_index_changed }) {
       let oldValue = my.astro_index;
       my.astro_index = val;
       if (mo_astro_index_changed) {
-        mo_astro_index_changed(oldValue, my.astro_index);
+        mo_astro_index_changed(my.astro_index, oldValue);
       }
     }
   }

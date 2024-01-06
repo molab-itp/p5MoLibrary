@@ -13,6 +13,7 @@ export function get_url_params() {
   // console.log('nstore', store);
   // return store;
 }
+window.get_url_params = get_url_params;
 
 // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
 function params_query(query) {
@@ -24,5 +25,3 @@ function params_query(query) {
 }
 
 // console.log('in get_url_params');
-
-window.get_url_params = get_url_params;

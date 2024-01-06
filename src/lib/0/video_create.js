@@ -9,7 +9,8 @@ export function video_create(my) {
   my.video.size(my.vwidth, my.vheight);
   my.video.hide();
 }
-//
+window.video_create = video_create;
+
 export function video_ready(my) {
   return (
     my.video && //
@@ -18,6 +19,4 @@ export function video_ready(my) {
     my.video.height > 0
   );
 }
-
-window.video_create = video_create;
 window.video_ready = video_ready;

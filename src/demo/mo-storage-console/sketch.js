@@ -156,7 +156,8 @@ function demo_getDownloadURL(path) {
   }
   let { storage, ref, getDownloadURL } = fb_;
   // getDownloadURL(ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg'))
-  getDownloadURL(ref(storage, path))
+  let refPath = ref(storage, path);
+  getDownloadURL(refPath)
     // oVFxc052pOWF5qq560qMuBmEsbr2/120.jpeg
     // oVFxc052pOWF5qq560qMuBmEsbr2/119.jpeg
     .then((url) => {
