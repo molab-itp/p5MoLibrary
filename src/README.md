@@ -6,7 +6,7 @@
   - [demo/BlackFacts](demo/BlackFacts?v=47)
   - [demo/Heavenly3D](demo/Heavenly3D?v=47)
   - [demo/DrawPoints](demo/DrawPoints)
-  - [demo/mo-astro-host](demo/mo-astro-host/)
+  - [demo/mo-astro-host-0](demo/mo-astro-host-0/)
   - [demo/mo-astro-remote-0](demo/mo-astro-remote-0/)
   - [demo/mo-astro-remote-1](demo/mo-astro-remote-1/)
   - [demo/mo-gallery-1](demo/mo-gallery-1/)

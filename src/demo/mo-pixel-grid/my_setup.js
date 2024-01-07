@@ -1,7 +1,9 @@
 //
 function my_setup() {
-  my.version = '?v=47'; // update to verify change on mobile
-  my.vwidth = 480; // Aspect ratio of video capture
+  // updated to verify change on mobile
+  my.version = '?v=47';
+  // Aspect ratio of video capture
+  my.vwidth = 480;
   my.vheight = 640;
   my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';

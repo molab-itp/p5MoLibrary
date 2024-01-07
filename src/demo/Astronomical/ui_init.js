@@ -125,7 +125,7 @@ function ui_paneUpdate() {
 function previousRefAction() {
   if (my.refBox.refIndex == 0) {
     // Wrap around to top
-    refAdjustTo(my.refBox.refs.length - 1);
+    refIndexAssign(my.refBox.refs.length - 1);
   } else {
     refAdjustDelta(-1);
   }
@@ -136,19 +136,19 @@ function nextRefAction() {
   let n = my.refBox.refs.length - 1;
   if (my.refBox.refIndex == n) {
     // Wrap around to botom
-    refAdjustTo(0);
+    refIndexAssign(0);
   } else {
     // Advance to next ref
     refAdjustDelta(1);
   }
 }
 
-function refAdjustTo(index) {
+function refIndexAssign(index) {
   my.refBox.refIndex = index;
-  syncRefIndex();
+  refIndexSync();
 }
 
-function syncRefIndex() {
+function refIndexSync() {
   my.refIndex_input.value(my.refBox.refIndex + 1);
   my.refLabel_input.value(my.refBox.refLabel);
   ui_paneUpdate();
@@ -159,12 +159,12 @@ function syncRefIndex() {
 
 function refAdjustDelta(delta) {
   my.refBox.refIndex += delta;
-  syncRefIndex();
+  refIndexSync();
 }
 
 function randomAction() {
   my.refBox.refIndex = floor(random(0, my.refBox.refs.length));
-  syncRefIndex();
+  refIndexSync();
 }
 
 function ui_init_update() {
