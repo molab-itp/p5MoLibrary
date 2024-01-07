@@ -1,6 +1,7 @@
 //
 function ui_init() {
   //
+  createSpan(my.version.substring(1));
   createSpan().id('id_panX');
   createSpan().id('id_panY');
   createSpan().id('id_zoom');

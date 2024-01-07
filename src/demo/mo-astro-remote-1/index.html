@@ -25,9 +25,9 @@
       <h1>mo-astro-remote-1</h1>
     </header>
     <!-- <h2>Instructions</h2> -->
-    <p>To move or pan, click and drag on the image.</br>
-    To zoom in, pinch to zoom on your trackpad.</p>
-
+    <!-- <p>To move or pan, click and drag on the image.</br>
+    To zoom in, pinch to zoom on your trackpad.</p> -->
+    ?v=49
     <main>
       <!-- <button id="id_button">Click me!</button> -->
       <button id="id_button_previous">Previous</button>
@@ -35,9 +35,9 @@
       <button id="id_button_random">Random</button>
       <button id="id_button_first">First</button>
       <input type="checkbox" id="id_checkbox_loop" name="loop" />
-      <label for="id_checkbox_loop">Loop</label> 
+      <label for="id_checkbox_loop">Loop</label>
       <span id="id_lapse_report"></span>
-  
+
       <h1 id="id_astro_num"></h1>
     </main>
 
@@ -45,7 +45,6 @@
     <!--  -->
 
     <canvas id="canvas" width="320" height="640"></canvas>
-
   </body>
 
   <!-- <script type="module" src="https://molab-itp.github.io/p5moLibrary/src/lib/0/fb_config.js"></script> -->
@@ -56,12 +55,13 @@
   <script src="../mo-pixel-grid/dstore_device_update.js?v=49"></script>
   <script src="../mo-pixel-grid/dstore_device_onChild.js?v=49"></script>
   <script src="../mo-pixel-grid/dstore_updateTimeGap.js?v=49"></script>
+  <script src="..//Astronomical/refBox_init.js?v=49"></script>
 
   <script src="index.js?v=49"></script>
   <script src="../js-image-viewer/index.js?v=49"></script>
+
   <script>
     let imagePath = '../../assets/The_Celestial_Zoo.png';
     js_image_viewer_init(imagePath);
   </script>
-
 </html>
