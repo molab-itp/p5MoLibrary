@@ -20,7 +20,7 @@ function js_image_viewer_init(imagePath) {
 
   // loadImage(`https://loremflickr.com/320/240`, 320, 240).then((img) => {
   if (!imagePath) {
-    imagePath = '../../../assets/The_Celestial_Zoo.png';
+    imagePath = '../../assets/The_Celestial_Zoo.png';
   }
   loadImage(imagePath, 4800, 3200).then((img) => {
     image = img;

@@ -74,10 +74,5 @@ function create_pane2() {
   let x0 = floor(my.width * (1 - my.paneRatio2));
   let y0 = my.height - height;
   let z0 = 1;
-  // if (my.isPortrait) {
-  //   width = my.width;
-  //   x0 = 0;
-  // }
-  // let regionIndex = -1;
   my.pane2 = new Pane({ backgImg, x0, y0, z0, width, height });
 }

@@ -37,7 +37,7 @@ function dstore_astro_onChild({ mo_astro_index_changed }) {
 }
 
 // my.astro_index
-function dstore_astro_update() {
+function dstore_astro_update(index) {
   // console.log('dstore_astro_update my.uid', my.uid);
   ui_log(my, 'dstore_astro_update my.uid', my.uid);
   if (!my.uid) return;
@@ -47,7 +47,7 @@ function dstore_astro_update() {
   let refPath = ref(database, path);
   // ui_log(my, 'dstore_astro_update', path);
 
-  let index = my.astro_index;
+  // let index = my.astro_index;
   let count = increment(1);
   let dpath = `device/${my.uid}/count`;
 

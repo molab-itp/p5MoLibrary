@@ -39,32 +39,29 @@ function dstore_init() {
 
 function mo_astro_index_changed(newValue, oldValue) {
   // console.log('mo_astro_index_changed newValue', newValue, 'oldValue', oldValue);
-  id_astro_num.innerHTML = 'Now showing on the big screen astro num=' + (newValue + 1) + '';
+  id_astro_num.innerHTML = 'Now showing on the big screen astro ' + (newValue + 1) + '';
 }
 
 function first_action() {
   ui_log(my, 'first_action');
-  my.astro_index = 0;
-  dstore_astro_update();
+  dstore_astro_update(0);
 }
 
 function next_action() {
   ui_log(my, 'next_action');
-  my.astro_index = (my.astro_index + 1) % 210;
-  dstore_astro_update();
+  dstore_astro_update((my.astro_index + 1) % 210);
 }
 
 function previous_action() {
   ui_log(my, 'previous_action');
-  my.astro_index = (my.astro_index - 1 + 210) % 210;
-  dstore_astro_update();
+  dstore_astro_update((my.astro_index - 1 + 210) % 210);
 }
 
 function random_action() {
   ui_log(my, 'random_action');
   // my.astro_index = int(random(0, 210));
-  my.astro_index = Math.floor(Math.random() * 210);
-  dstore_astro_update();
+  // my.astro_index = Math.floor(Math.random() * 210);
+  dstore_astro_update(Math.floor(Math.random() * 210));
 }
 
 function ui_log(my, ...args) {

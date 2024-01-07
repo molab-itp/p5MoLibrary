@@ -4,8 +4,9 @@
 
   - [demo/Astronomical](demo/Astronomical?v=48)
   - [demo/BlackFacts](demo/BlackFacts?v=48)
-  - [demo/Heavenly3D](demo/Heavenly3D?v=48)
   - [demo/DrawPoints](demo/DrawPoints)
+  - [demo/Heavenly3D](demo/Heavenly3D?v=48)
+  - [demo/js-image-viewer](demo/js-image-viewer)
   - [demo/mo-astro-host-0](demo/mo-astro-host-0/)
   - [demo/mo-astro-host-1](demo/mo-astro-host-1/)
   - [demo/mo-astro-remote-0](demo/mo-astro-remote-0/)
