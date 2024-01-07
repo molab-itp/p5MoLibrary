@@ -8,11 +8,12 @@ let my = {};
 function preload() {
   //
   my.backgImg = loadImage('../../assets/The_Celestial_Zoo.png');
+  my.qrcodeImg = loadImage('../../assets/qrcode-mo-astro-remote-0.png');
 }
 
 function setup() {
   //
-  astro_setup();
+  a_setup();
 
   // Create but dont start animation
   my.animLoop = new Anim({ target: my, time: 15 });
@@ -34,6 +35,7 @@ function draw() {
   background(0);
   my.pane1.render();
   my.pane0.render();
+  my.pane2.render();
   ui_init_update();
 }
 

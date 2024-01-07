@@ -6,6 +6,8 @@ export class Pane {
     //
     Object.assign(this, props);
 
+    if (!this.regionIndex) this.regionIndex = 0;
+
     // console.log('Pane', this.label, 'width', this.width, 'height', this.height);
 
     // panX
@@ -31,7 +33,7 @@ export class Pane {
     if (this.anim.running) {
       // animation is running, don't touch props
       // this.focus_pan();
-    } else {
+    } else if (this.refBox) {
       // when not animating show focus rect
       this.focus_focusRect();
       this.focusRect.render();
@@ -113,6 +115,9 @@ export class Pane {
   }
 
   refEntry() {
+    if (!this.refBox) {
+      return { label: '', i: 0, regions: [{ x: 0, y: 0, w: this.width, h: this.height, z: 1 }] };
+    }
     return this.refBox.refEntry();
   }
 

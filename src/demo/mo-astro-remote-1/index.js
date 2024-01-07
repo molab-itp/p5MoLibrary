@@ -38,8 +38,8 @@ function dstore_init() {
 }
 
 function mo_astro_index_changed(newValue, oldValue) {
-  console.log('mo_astro_index_changed newValue', newValue, 'oldValue', oldValue);
-  id_astro_num.innerHTML = 'astro num=' + (newValue + 1) + '';
+  // console.log('mo_astro_index_changed newValue', newValue, 'oldValue', oldValue);
+  id_astro_num.innerHTML = 'Now showing on the big screen astro num=' + (newValue + 1) + '';
 }
 
 function first_action() {
