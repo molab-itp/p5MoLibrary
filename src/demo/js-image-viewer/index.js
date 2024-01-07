@@ -89,6 +89,13 @@ function handleMouseWheel(event) {
   redraw(image, zoom);
 }
 
+// { x, y }
+function pan_draw(args) {
+  panX = args.x;
+  panY = args.y;
+  redraw(image, zoom);
+}
+
 function redraw(image, zoom) {
   if (!ctx) {
     return;

@@ -4,21 +4,23 @@ id_button_next.addEventListener('click', next_action);
 id_button_previous.addEventListener('click', previous_action);
 id_button_first.addEventListener('click', first_action);
 id_button_random.addEventListener('click', random_action);
+id_checkbox_loop.addEventListener('click', loop_action);
 
 document.addEventListener('DOMContentLoaded', document_loaded);
 ui_log(my, 'Hello ui_log');
 
 function document_loaded() {
-  // console.log('DOM fully loaded and parsed');
-  // console.log('Hello');
   let config = fb_.init('jht1493');
   console.log('?v=49 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
   my.astro_index = 0;
+  my.stepCount = 0;
 
   dstore_init();
+
+  my.animLoop = new Anim({ target: my, time: 15 });
 }
 
 function dstore_init() {
@@ -40,6 +42,14 @@ function dstore_init() {
 function mo_astro_index_changed(newValue, oldValue) {
   // console.log('mo_astro_index_changed newValue', newValue, 'oldValue', oldValue);
   id_astro_num.innerHTML = 'Now showing on the big screen astro ' + (newValue + 1) + '';
+}
+
+function loop_action() {
+  ui_log(my, 'loop_action id_checkbox_loop.checked', id_checkbox_loop.checked);
+  my.loop = id_checkbox_loop.checked;
+  if (my.loop) {
+    my.animLoop.start();
+  }
 }
 
 function first_action() {
@@ -73,4 +83,22 @@ function ui_error(...args) {
   alert(...args);
 }
 
+function step_animation(timeStamp) {
+  // console.log('step_animation timeStamp', timeStamp);
+  window.requestAnimationFrame(step_animation);
+  my.animLoop.step({ action: stepAction, loop: my.loop });
+  let lapse = my.animLoop.lapse() + ' ' + my.stepCount;
+  if (!my.loop) lapse = '';
+  id_lapse_report.innerHTML = lapse;
+}
+
+window.requestAnimationFrame(step_animation);
+
+function stepAction() {
+  console.log('stepAction ');
+  next_action();
+  my.stepCount++;
+}
+
 //
+// https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
