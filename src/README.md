@@ -7,6 +7,7 @@
   - [demo/Heavenly3D](demo/Heavenly3D?v=48)
   - [demo/DrawPoints](demo/DrawPoints)
   - [demo/mo-astro-host-0](demo/mo-astro-host-0/)
+  - [demo/mo-astro-host-1](demo/mo-astro-host-1/)
   - [demo/mo-astro-remote-0](demo/mo-astro-remote-0/)
   - [demo/mo-astro-remote-1](demo/mo-astro-remote-1/)
   - [demo/mo-gallery-1](demo/mo-gallery-1/)
