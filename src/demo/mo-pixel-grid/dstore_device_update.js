@@ -94,7 +94,7 @@ function dstore_initActivities(key, date_s) {
   let device = my.stored_devices[key];
   if (!device) return null;
 
-  let activities = device.serverValues.activity;
+  let activities = device.serverValues && device.serverValues.activity;
   if (!activities) return initActivities;
   if (activities.length == 0) return initActivities;
 
@@ -102,8 +102,7 @@ function dstore_initActivities(key, date_s) {
 }
 
 function dstore_device_activityGapTime(device) {
-  if (!device.serverValues) return 0;
-  let activities = device.serverValues.activity;
+  let activities = device.serverValues && device.serverValues.activity;
   if (!activities) return 0;
   if (activities.length <= 0) return 0;
   let activity = activities[0];
