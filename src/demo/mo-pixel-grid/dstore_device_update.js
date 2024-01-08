@@ -37,17 +37,9 @@ function dstore_device_update() {
   let date_s = new Date().toISOString();
   let count = increment(1);
   let name_s = my.nameDevice || '';
-  let chip = null;
-  if (my.videoColor) {
-    let c = my.videoColor;
-    let x = my.track_xi;
-    let y = my.track_yi;
-    let s = my.stepPx;
-    chip = { x, y, s, c };
-  }
   let userAgent = navigator.userAgent;
 
-  let updates = { date_s, count, name_s, chip, userAgent };
+  let updates = { date_s, count, name_s, userAgent };
 
   // Acivity is only updated if present in recently received server info
   let activities = dstore_device_activities(my.uid, date_s);
@@ -110,6 +102,7 @@ function dstore_initActivities(key, date_s) {
 }
 
 function dstore_device_activityGapTime(device) {
+  if (!device.serverValues) return 0;
   let activities = device.serverValues.activity;
   if (!activities) return 0;
   if (activities.length <= 0) return 0;

@@ -33,6 +33,7 @@ function dstore_init() {
       dstore_device_update();
       dstore_device_onChild();
       dstore_pixgrid_onChild();
+      dstore_pixchip_onChild();
     })
     .catch((error) => {
       ui_log(my, 'dstore_init error', error);
@@ -65,9 +66,9 @@ function draw_frame() {
     image(my.videoImg, 0, 0);
   }
 
-  if (!my.storeFlag) {
-    dstore_received();
-  }
+  // if (!my.storeFlag) {
+  dstore_received();
+  // }
 }
 
 function updateAction() {
@@ -76,7 +77,8 @@ function updateAction() {
   }
   if (my.scanFlag) {
     draw_cross_hair_update();
-    dstore_device_update();
+    // dstore_device_update();
+    dstore_pixchip_update();
   }
 }
 

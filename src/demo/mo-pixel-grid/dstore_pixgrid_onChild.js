@@ -3,15 +3,12 @@
 // dbStoreRootPath/room0/device {
 // dbStoreRootPath/room0/pix
 //
-// my.stored_devices
-// my.stored_pixgrids
-//
 
 function dstore_pixgrid_onChild() {
   //
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   // from "firebase/database";
-  let path = `${my.dstore_rootPath}/${my.roomName}/pixgrid`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixgrid`;
   ui_log(my, 'dstore_pixgrid_onChild path=', path);
   let refPath = ref(database, path);
 
@@ -31,14 +28,14 @@ function dstore_pixgrid_onChild() {
     let key = data.key;
     let val = data.val();
     ui_log(my, msg, key, 'n=', val.length);
+    let device = dstore_fetch_device(key);
     if (remove) {
-      delete my.stored_pixgrids[key];
+      delete device.pixgrids;
       return;
     }
-    if (!my.stored_pixgrids) {
-      my.stored_pixgrids = {};
-    }
-    my.stored_pixgrids[key] = val;
+    device.pixgrids = val;
+    // console.log('device.pixgrids key', key, 'val', val);
+    // console.log('device.pixgrids key', key, 'val n', val.length);
   }
 }
 
@@ -48,7 +45,7 @@ function dstore_pixgrid_update(irow, stepPx, row) {
     ui_log(my, 'dstore_pixgrid_update no uid', my.uid);
     return;
   }
-  let path = `${my.dstore_rootPath}/${my.roomName}/pixgrid/${my.uid}/${irow}`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixgrid/${my.uid}/${irow}`;
   let refPath = ref(database, path);
   let i = irow;
   let s = stepPx;
@@ -60,7 +57,7 @@ function dstore_pixgrid_update(irow, stepPx, row) {
 // db goes to read-only mode when nstep=128
 function dstore_pixgrid_removeAll() {
   let { database, ref, set } = fb_.fbase;
-  let path = `${my.dstore_rootPath}/${my.roomName}/pixgrid`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixgrid`;
   let refPath = ref(database, path);
   set(refPath, {})
     .then(() => {
@@ -75,7 +72,7 @@ function dstore_pixgrid_removeAll() {
 
 function dstore_pixgrid_remove() {
   let { database, ref, set } = fb_.fbase;
-  let path = `${my.dstore_rootPath}/${my.roomName}/pixgrid/${my.uid}`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixgrid/${my.uid}`;
   let refPath = ref(database, path);
   set(refPath, {})
     .then(() => {
@@ -92,7 +89,6 @@ function dstore_remove() {
   dstore_device_remove();
   dstore_pixgrid_remove();
   delete my.stored_devices;
-  delete my.stored_pixgrids;
 }
 
 // https://console.firebase.google.com/u/0/project/molab-485f5/database/molab-485f5-default-rtdb/data

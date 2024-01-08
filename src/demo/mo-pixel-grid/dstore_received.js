@@ -38,14 +38,14 @@ function dstore_received_image(uid) {
   let device = my.stored_devices[uid];
   // console.log('dstore_received device', device);
   if (!device) return;
-  if (my.stored_pixgrids) {
-    let pixs = my.stored_pixgrids[uid];
-    // console.log('uid', uid, 'pixs', pixs);
-    // console.log('dstore_received_image uid', uid, 'pix n', pixs.length);
-    dstore_received_device(device, pixs);
-  }
+
+  let pixs = device.pixgrids;
+  dstore_received_device(device, pixs);
+
   image(device.layer, my.x0, my.y0);
-  dstore_received_cross(device);
+
+  dstore_received_cross(device, uid);
+
   image(device.crossLayer, my.x0, my.y0);
 }
 
@@ -107,14 +107,15 @@ function dstore_received_device(device, pixs) {
   }
 }
 
-function dstore_received_cross(device) {
+function dstore_received_cross(device, uid) {
   let crossLayer = device.crossLayer;
   crossLayer.clear();
   if (!dstore_device_isActive(device)) {
     return;
   }
   // Draw the chip on layer that persists
-  let chip = device.serverValues.chip;
+  let chip = device.pixchips;
+  // let chip = device.serverValues.chip;
   if (!chip) {
     return;
   }

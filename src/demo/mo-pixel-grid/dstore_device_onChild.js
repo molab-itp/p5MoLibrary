@@ -26,32 +26,36 @@ function dstore_device_onChild() {
         delete my.stored_devices[key];
         my.ndevice = Object.keys(my.stored_devices).length;
       }
-      if (my.stored_pixgrids) {
-        delete my.stored_pixgrids[key];
-      }
       return;
     }
-    if (!my.stored_devices) {
-      my.stored_devices = {};
-    }
-    let device = my.stored_devices[key];
-    if (!device) {
-      // First use of device, add to my.stored_devices
-      let uid = key;
-      let index = Object.keys(my.stored_devices).length;
-      let layer;
-      let crossLayer;
-      if (window.createGraphics && my.vwidth) {
-        layer = createGraphics(my.vwidth, my.vheight);
-        crossLayer = createGraphics(my.vwidth, my.vheight);
-      }
-      device = { uid, index, layer, crossLayer };
-      my.stored_devices[key] = device;
-      my.ndevice = index + 1;
-    }
+    let device = dstore_fetch_device(key);
     device.serverValues = val;
   }
 }
+
+function dstore_fetch_device(uid) {
+  if (!my.stored_devices) {
+    my.stored_devices = {};
+  }
+  let device = my.stored_devices[uid];
+  if (!device) {
+    // First use of device, add to my.stored_devices
+    let index = Object.keys(my.stored_devices).length;
+    let layer;
+    let crossLayer;
+    // in p5js allocate graphics layers
+    if (window.createGraphics && my.vwidth) {
+      layer = createGraphics(my.vwidth, my.vheight);
+      crossLayer = createGraphics(my.vwidth, my.vheight);
+    }
+    device = { uid, index, layer, crossLayer };
+    my.stored_devices[uid] = device;
+    my.ndevice = index + 1;
+  }
+  return device;
+}
+
+// --
 
 function dstore_device_remove() {
   let { database, ref, set } = fb_.fbase;
