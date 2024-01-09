@@ -1,4 +1,10 @@
 //
+// for chip
+//   let x = my.track_xi;
+//   let y = my.track_yi;
+//   let s = my.stepPx;
+//   let c = my.videoColor;
+
 function dstore_pixchip_onChild() {
   //
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;

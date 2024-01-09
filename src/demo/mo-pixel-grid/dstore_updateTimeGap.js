@@ -1,9 +1,9 @@
 //
-function updateTimeGap(activities) {
-  for (let index = 1; index < activities.length; index++) {
-    let nowEnt = activities[index - 1];
+function updateTimeGap(events) {
+  for (let index = 1; index < events.length; index++) {
+    let nowEnt = events[index - 1];
     let nowTime = new Date(nowEnt.date_s).getTime();
-    let pastEnt = activities[index];
+    let pastEnt = events[index];
     let pastTime = new Date(pastEnt.date_s).getTime();
     nowEnt.gap = nowTime - pastTime - nowEnt.time;
     nowEnt.gap_s = convertTimeToSeconds(nowEnt.gap);

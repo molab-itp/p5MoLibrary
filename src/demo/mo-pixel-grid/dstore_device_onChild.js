@@ -28,16 +28,18 @@ function dstore_device_onChild() {
       }
       return;
     }
-    let device = dstore_fetch_device(key);
-    device.serverValues = val;
+    dstore_fetch_device(key, val);
+    // let device = dstore_fetch_device(key);
+    // device.serverValues = val;
   }
 }
 
-function dstore_fetch_device(uid) {
+function dstore_fetch_device(uid, val) {
   if (!my.stored_devices) {
     my.stored_devices = {};
   }
   let device = my.stored_devices[uid];
+  let fresh = 0;
   if (!device) {
     // First use of device, add to my.stored_devices
     let index = Object.keys(my.stored_devices).length;
@@ -51,6 +53,14 @@ function dstore_fetch_device(uid) {
     device = { uid, index, layer, crossLayer };
     my.stored_devices[uid] = device;
     my.ndevice = index + 1;
+    fresh = 1;
+  }
+  if (val) {
+    device.serverValues = val;
+  }
+  if (fresh && uid == my.uid) {
+    // device must be inited to record visit event
+    dstore_device_visit();
   }
   return device;
 }

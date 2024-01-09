@@ -48,7 +48,6 @@ function dstore_init() {
       // console.log('dstore_init my.uid', my.uid);
       ui_log(my, 'dstore_init', my.uid);
 
-      dstore_device_update();
       dstore_device_onChild();
       dstore_astro_onChild({ mo_astro_index_changed });
     })

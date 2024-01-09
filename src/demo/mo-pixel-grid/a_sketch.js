@@ -30,7 +30,7 @@ function dstore_init() {
     .then(() => {
       my.uid = auth.currentUser.uid;
       ui_log(my, 'dstore_init', my.uid);
-      dstore_device_update();
+
       dstore_device_onChild();
       dstore_pixgrid_onChild();
       dstore_pixchip_onChild();
@@ -77,7 +77,7 @@ function updateAction() {
   }
   if (my.scanFlag) {
     draw_cross_hair_update();
-    // dstore_device_update();
+    // dstore_device_event();
     dstore_pixchip_update();
   }
 }
