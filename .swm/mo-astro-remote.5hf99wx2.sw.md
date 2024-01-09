@@ -3,7 +3,7 @@ title: mo-astro-remote
 ---
 Remote mobile device control of Astronomical on big screen.
 
-<SwmSnippet path="/src/demo/mo-astro-remote/index.html" line="36">
+<SwmSnippet path="/src/demo/mo-astro-remote-0/index.html" line="38">
 
 ---
 
