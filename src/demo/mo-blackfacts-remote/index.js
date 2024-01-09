@@ -15,7 +15,7 @@ function document_loaded() {
 
   my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
-  my.astro_index = 0;
+  my.blackfacts_index = 0;
   my.stepCount = 0;
 
   dstore_init();
@@ -31,33 +31,17 @@ function dstore_init() {
       ui_log(my, 'dstore_init', my.uid);
 
       dstore_device_onChild();
-      dstore_astro_onChild({ mo_astro_index_changed });
+      dstore_blackfacts_onChild({ mo_blackfacts_index_changed });
     })
     .catch((error) => {
       ui_log(my, 'dstore_init error', error);
     });
 }
 
-function mo_astro_index_changed(newValue, oldValue) {
-  // console.log('mo_astro_index_changed newValue', newValue, 'oldValue', oldValue);
-  id_astro_num.innerHTML = 'Now showing on the big screen astro ' + (newValue + 1) + '';
-  my.astro_index = newValue;
-  let ref = refBox_init.refs[my.astro_index];
-  let regions = ref.regions;
-  pan_draw(regions[1]);
-
-  // let refBox_init = {
-  //   refs: [
-  //     {
-  //       label: 'Sun',
-  //       regions: [
-  //         {
-  //           x: 24,
-  //           y: 25,
-  //           w: 184,
-  //           h: 370,
-  //           z: 8,
-  //         },
+function mo_blackfacts_index_changed(newValue, oldValue) {
+  console.log('mo_blackfacts_index_changed newValue', newValue, 'oldValue', oldValue);
+  id_blackfacts_num.innerHTML = 'Now showing on the big screen blackfacts ' + (newValue + 1) + '';
+  my.blackfacts_index = newValue;
 }
 
 function loop_action() {
@@ -70,24 +54,24 @@ function loop_action() {
 
 function first_action() {
   ui_log(my, 'first_action');
-  dstore_astro_update(0);
+  dstore_blackfacts_update(0);
 }
 
 function next_action() {
   ui_log(my, 'next_action');
-  dstore_astro_update((my.astro_index + 1) % 210);
+  dstore_blackfacts_update((my.blackfacts_index + 1) % 210);
 }
 
 function previous_action() {
   ui_log(my, 'previous_action');
-  dstore_astro_update((my.astro_index - 1 + 210) % 210);
+  dstore_blackfacts_update((my.blackfacts_index - 1 + 210) % 210);
 }
 
 function random_action() {
   ui_log(my, 'random_action');
-  // my.astro_index = int(random(0, 210));
-  // my.astro_index = Math.floor(Math.random() * 210);
-  dstore_astro_update(Math.floor(Math.random() * 210));
+  // my.blackfacts_index = int(random(0, 210));
+  // my.blackfacts_index = Math.floor(Math.random() * 210);
+  dstore_blackfacts_update(Math.floor(Math.random() * 210));
 }
 
 function ui_log(my, ...args) {
@@ -102,10 +86,12 @@ function ui_error(...args) {
 function step_animation(timeStamp) {
   // console.log('step_animation timeStamp', timeStamp);
   window.requestAnimationFrame(step_animation);
-  my.animLoop.step({ action: stepAction, loop: my.loop });
-  let lapse = my.animLoop.lapse() + ' ' + my.stepCount;
-  if (!my.loop) lapse = '';
-  id_lapse_report.innerHTML = lapse;
+  if (my.animLoop) {
+    my.animLoop.step({ action: stepAction, loop: my.loop });
+    let lapse = my.animLoop.lapse() + ' ' + my.stepCount;
+    if (!my.loop) lapse = '';
+    id_lapse_report.innerHTML = lapse;
+  }
 }
 
 window.requestAnimationFrame(step_animation);
