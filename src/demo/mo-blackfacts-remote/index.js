@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', document_loaded);
 ui_log(my, 'Hello ui_log');
 
 function document_loaded() {
-  let config = fb_.init('jht1493');
+  let config = fb_.init('jht9629');
+  // let config = fb_.init('jht1493');
   console.log('?v=61 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   my.dstore_rootPath = 'm0-@r-@w-';
