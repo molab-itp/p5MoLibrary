@@ -29,8 +29,6 @@ function dstore_device_onChild() {
       return;
     }
     dstore_fetch_device(key, val);
-    // let device = dstore_fetch_device(key);
-    // device.serverValues = val;
   }
 }
 
