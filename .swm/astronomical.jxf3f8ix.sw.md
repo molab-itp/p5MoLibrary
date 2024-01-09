@@ -1,8 +1,7 @@
 ---
 title: Astronomical
 ---
-A big screen presentation of infographic listing&nbsp;\
-210 notable astronomical objects from\
+Designed for a big screen presentation of astronomical objects from\
 <https://en.wikipedia.org/wiki/Astronomical_object> and <https://commons.wikimedia.org/wiki/File:The_Celestial_Zoo_infographic_wikimedia.png>\
 "Infographic listing 210 notable astronomical objects marked on a central logarithmic map of the observable universe. A small view and some distinguishing features are included for each astronomical object "
 
@@ -24,7 +23,7 @@ let refBox_init = {
 
 <SwmPath>[src/demo/Astronomical/index.html](/src/demo/Astronomical/index.html)</SwmPath>
 
-includes `a_main.js` for RefBox, Pane, Anim and Rect
+module style includes `a_main.js` for RefBox, Pane, Anim and Rect
 
 <SwmPath>[src/lib/0/a_main.js](/src/lib/0/a_main.js)</SwmPath>
 
