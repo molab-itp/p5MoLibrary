@@ -8,7 +8,7 @@ let my = {};
 function preload() {
   //
   my.backgImg = loadImage('../../assets/The_Celestial_Zoo.png');
-  my.qrcodeImg = loadImage('../../assets/qrcode-mo-astro-remote-0.png');
+  my.qrcodeImg = loadImage('../../qrcode/mo-astro-remote-1_qrcode.png');
 }
 
 function setup() {
