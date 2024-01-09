@@ -37,6 +37,15 @@ function execPlaylist() {
   }
 }
 
+function execCommandIndex(index) {
+  let keys = Object.keys(fotdData).sort();
+  let key = keys[index % keys.length];
+  let entry = fotdData[key];
+  let videoKey = entry.videoKey;
+  console.log('execCommandIndex index', index, 'entry', entry, 'videoKey', videoKey);
+  player.cueVideoById(videoKey);
+}
+
 function execCommand() {
   videoKey = getVideoKey(playlist[playlistIndex]);
   console.log('About to play video ' + videoKey);
