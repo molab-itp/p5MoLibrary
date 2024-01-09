@@ -1,4 +1,6 @@
-console.log('BlackFacts');
+console.log('BlackFacts index');
+
+// 2024-01-09 jht: page sometimes needs several reloads to show video
 
 {
   // place qrcode image at Bottom right
@@ -49,7 +51,7 @@ function mo_blackfacts_index_changed(newValue, oldValue) {
 }
 
 function ui_log(my, ...args) {
-  console.log(...args);
+  // console.log(...args);
 }
 
 function ui_error(...args) {

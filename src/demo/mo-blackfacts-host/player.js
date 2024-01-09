@@ -15,6 +15,8 @@ let volume = parseInt(params.volume || '0', 10);
 
 //document.documentElement.requestFullscreen();
 
+console.log('BlackFacts player');
+
 function onYouTubeIframeAPIReady() {
   if (!player) {
     setupVideo();
@@ -38,11 +40,16 @@ function execPlaylist() {
 }
 
 function execCommandIndex(index) {
+  if (!player || !player.cueVideoById) {
+    console.log('execCommandIndex no player', player);
+    return;
+  }
   let keys = Object.keys(fotdData).sort();
   let key = keys[index % keys.length];
   let entry = fotdData[key];
   let videoKey = entry.videoKey;
   console.log('execCommandIndex index', index, 'entry', entry, 'videoKey', videoKey);
+  playlist = [videoKey];
   player.cueVideoById(videoKey);
 }
 
