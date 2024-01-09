@@ -11,7 +11,7 @@ ui_log(my, 'Hello ui_log');
 
 function document_loaded() {
   let config = fb_.init('jht1493');
-  console.log('?v=56 config.projectId', config.projectId, 'configLabel', config.configLabel);
+  console.log('?v=57 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
@@ -102,6 +102,7 @@ function ui_error(...args) {
 function step_animation(timeStamp) {
   // console.log('step_animation timeStamp', timeStamp);
   window.requestAnimationFrame(step_animation);
+  if (!my.animLoop) return;
   my.animLoop.step({ action: stepAction, loop: my.loop });
   let lapse = my.animLoop.lapse() + ' ' + my.stepCount;
   if (!my.loop) lapse = '';

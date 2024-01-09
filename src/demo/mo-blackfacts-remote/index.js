@@ -11,7 +11,7 @@ ui_log(my, 'Hello ui_log');
 
 function document_loaded() {
   let config = fb_.init('jht1493');
-  console.log('?v=56 config.projectId', config.projectId, 'configLabel', config.configLabel);
+  console.log('?v=57 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
@@ -59,19 +59,19 @@ function first_action() {
 
 function next_action() {
   ui_log(my, 'next_action');
-  dstore_blackfacts_update((my.blackfacts_index + 1) % 210);
+  dstore_blackfacts_update((my.blackfacts_index + 1) % 366);
 }
 
 function previous_action() {
   ui_log(my, 'previous_action');
-  dstore_blackfacts_update((my.blackfacts_index - 1 + 210) % 210);
+  dstore_blackfacts_update((my.blackfacts_index - 1 + 366) % 366);
 }
 
 function random_action() {
   ui_log(my, 'random_action');
-  // my.blackfacts_index = int(random(0, 210));
-  // my.blackfacts_index = Math.floor(Math.random() * 210);
-  dstore_blackfacts_update(Math.floor(Math.random() * 210));
+  // my.blackfacts_index = int(random(0, 366));
+  // my.blackfacts_index = Math.floor(Math.random() * 366);
+  dstore_blackfacts_update(Math.floor(Math.random() * 366));
 }
 
 function ui_log(my, ...args) {
@@ -86,12 +86,11 @@ function ui_error(...args) {
 function step_animation(timeStamp) {
   // console.log('step_animation timeStamp', timeStamp);
   window.requestAnimationFrame(step_animation);
-  if (my.animLoop) {
-    my.animLoop.step({ action: stepAction, loop: my.loop });
-    let lapse = my.animLoop.lapse() + ' ' + my.stepCount;
-    if (!my.loop) lapse = '';
-    id_lapse_report.innerHTML = lapse;
-  }
+  if (!my.animLoop) return;
+  my.animLoop.step({ action: stepAction, loop: my.loop });
+  let lapse = my.animLoop.lapse() + ' ' + my.stepCount;
+  if (!my.loop) lapse = '';
+  id_lapse_report.innerHTML = lapse;
 }
 
 window.requestAnimationFrame(step_animation);

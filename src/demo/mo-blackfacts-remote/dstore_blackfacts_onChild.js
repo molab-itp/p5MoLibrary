@@ -43,7 +43,7 @@ function dstore_blackfacts_update(index) {
   if (!my.uid) return;
 
   let { database, ref, update, increment } = fb_.fbase;
-  let path = `${my.dstore_rootPath}/${my.roomName}/mo-astro`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/mo-blackfacts`;
   let refPath = ref(database, path);
   // ui_log(my, 'dstore_blackfacts_update', path);
 
