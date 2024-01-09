@@ -17,7 +17,7 @@ for (let index = 0; index < process.argv.length; index++) {
 }
 
 // source files that will have ?v=<buildnumber> updated
-const buildnum_files = ['../README.md', './README.md', './demo/', './lib/'];
+const buildnum_files = ['../README.md', './README.md', './demo/', './lib/', './qrcode/'];
 
 const root_path = join(__dirname, '..');
 const src_path = join(root_path, 'src');
