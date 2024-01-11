@@ -132,7 +132,7 @@ class DrawPoints {
   restore_drawing(urlParams) {
     // console.log('restore_drawing nstore |' + nstore + '|');
     let store;
-    if (urlParams) {
+    if (urlParams && urlParams.drawings) {
       store = this.restore_urlParams(urlParams);
     } else {
       store = this.restore_localStorage();
