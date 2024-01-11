@@ -5,7 +5,7 @@
 let my = {};
 
 function my_setup() {
-  my.version = '?v=62';
+  my.version = '?v=63';
   my.width = 640;
   my.height = 480;
   my.save_label = 'plea';
