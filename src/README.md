@@ -12,8 +12,10 @@
   - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=64)
   - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=64)
   - [demo/mo-blackfact](demo/mo-blackfacts?v=64)
-  <!-- - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=64)
-  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=64) -->
+  <!--
+  - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=64)
+  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=64)
+    -->
   - [demo/mo-gallery-1](demo/mo-gallery-1?v=64)
   - [demo/mo-gallery-2](demo/mo-gallery-2?v=64)
   - [demo/mo-pixel-grid](demo/mo-pixel-grid?v=64)
