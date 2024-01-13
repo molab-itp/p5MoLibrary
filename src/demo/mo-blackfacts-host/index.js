@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', document_loaded);
 function document_loaded() {
   let config = fb_.init('jht9629');
   // let config = fb_.init('jht1493');
-  console.log('?v=64 config.projectId', config.projectId, 'configLabel', config.configLabel);
+  console.log('?v=65 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
