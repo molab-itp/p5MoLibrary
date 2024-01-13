@@ -11,8 +11,9 @@
   - [demo/mo-astro-host-1](demo/mo-astro-host-1?v=63)
   - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=63)
   - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=63)
-  - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=63)
-  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=63)
+  - [demo/mo-blackfact](demo/mo-blackfacts?v=63)
+  <!-- - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=63)
+  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=63) -->
   - [demo/mo-gallery-1](demo/mo-gallery-1?v=63)
   - [demo/mo-gallery-2](demo/mo-gallery-2?v=63)
   - [demo/mo-pixel-grid](demo/mo-pixel-grid?v=63)
