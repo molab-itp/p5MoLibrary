@@ -18,7 +18,7 @@ function dstore_device_update() {
 
 function dstore_device_event(keys) {
   // console.log('dstore_device_event my.uid', my.uid);
-  ui_log(my, 'dstore_device_event my.uid', my.uid);
+  // ui_log(my, 'dstore_device_event my.uid', my.uid);
   if (!my.uid) return;
 
   let { database, ref, update, increment } = fb_.fbase;

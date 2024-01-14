@@ -1,5 +1,5 @@
 //
-function dstore_blackfacts_onChild({ mo_blackfacts_index_changed }) {
+function dstore_blackfacts_onChild({ mo_blackfacts_index_changed, mo_blackfacts_qccode_changed }) {
   // Setup listener for changes to firebase db device
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-blackfacts`;
@@ -32,12 +32,18 @@ function dstore_blackfacts_onChild({ mo_blackfacts_index_changed }) {
       if (mo_blackfacts_index_changed) {
         mo_blackfacts_index_changed(my.blackfacts_index, oldValue);
       }
+    } else if (key == 'qrcode') {
+      let oldValue = my.blackfacts_qrcode;
+      my.blackfacts_qrcode = val;
+      if (mo_blackfacts_qccode_changed) {
+        mo_blackfacts_qccode_changed(my.blackfacts_qrcode, oldValue);
+      }
     }
   }
 }
 
 // my.blackfacts_index
-function dstore_blackfacts_update(index) {
+function dstore_blackfacts_update({ index, qrcode }) {
   // console.log('dstore_blackfacts_update my.uid', my.uid);
   ui_log(my, 'dstore_blackfacts_update my.uid', my.uid);
   if (!my.uid) return;
@@ -47,11 +53,13 @@ function dstore_blackfacts_update(index) {
   let refPath = ref(database, path);
   // ui_log(my, 'dstore_blackfacts_update', path);
 
-  // let index = my.blackfacts_index;
   let count = increment(1);
   let dpath = `device/${my.uid}/count`;
 
-  let updates = { index, [dpath]: count };
+  let updates = { [dpath]: count };
+
+  if (index !== undefined) updates.index = index;
+  if (qrcode !== undefined) updates.qrcode = qrcode;
 
   ui_log(my, 'dstore_blackfacts_update updates', updates);
 

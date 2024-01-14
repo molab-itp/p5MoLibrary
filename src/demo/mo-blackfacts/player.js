@@ -42,9 +42,10 @@ function execPlaylist() {
 }
 
 let fotdDataKeys = Object.keys(fotdData).sort();
+let nfacts = fotdDataKeys.length;
 
 function fotdEntry(index) {
-  let key = fotdDataKeys[index % fotdDataKeys.length];
+  let key = fotdDataKeys[index % nfacts];
   return fotdData[key];
 }
 
@@ -53,20 +54,31 @@ function execCommandIndex(index) {
     console.log('execCommandIndex no player', player);
     return;
   }
+  if (!my.isPortraitView) {
+    qrcode_hide();
+  }
+
   let entry = fotdEntry(index);
   let videoKey = entry.videoKey;
   console.log('execCommandIndex index', index, 'entry', entry, 'videoKey', videoKey);
-  playlist = [videoKey];
+
+  // playlist = [videoKey];
+
   player.cueVideoById(videoKey);
 }
 
 function execCommand() {
+  if (my.playNext) {
+    console.log('execCommand my.playNext');
+    next_action();
+    // qrcode_hide();
+    return;
+  }
+
   videoKey = getVideoKey(playlist[playlistIndex]);
   console.log('About to play video ' + videoKey);
-
   player.cueVideoById(videoKey);
-
-  playlistIndex = ++playlistIndex % playlist.length;
+  playlistIndex = (playlistIndex + 1) % playlist.length;
   console.log('Incremented playlistIndex to: ' + playlistIndex);
 
   function getVideoKey(playlistEntry) {
@@ -112,7 +124,7 @@ function setupVideo() {
 
         switch (state) {
           case -1:
-            console.log('YT.Player unstarted');
+            // console.log('YT.Player unstarted');
             break;
 
           case YT.PlayerState.ENDED:
@@ -121,22 +133,22 @@ function setupVideo() {
             break;
 
           case YT.PlayerState.PAUSED:
-            console.log('YT.PlayerState.PAUSED ' + videoKey);
+            // console.log('YT.PlayerState.PAUSED ' + videoKey);
             break;
 
           case YT.PlayerState.PLAYING:
             //player.unMute();
             //player.setVolume(volume);
             //console.log('Set volume to ' + volume);
-            console.log('YT.PlayerState.PLAYING ' + videoKey);
+            // console.log('YT.PlayerState.PLAYING ' + videoKey);
             break;
 
           case YT.PlayerState.BUFFERING:
-            console.log('YT.PlayerState.BUFFERING ' + videoKey);
+            // console.log('YT.PlayerState.BUFFERING ' + videoKey);
             break;
 
           case YT.PlayerState.CUED:
-            console.log('YT.PlayerState.CUED');
+            // console.log('YT.PlayerState.CUED');
             player.playVideo();
             break;
         }

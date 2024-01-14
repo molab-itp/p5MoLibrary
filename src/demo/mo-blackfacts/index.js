@@ -10,7 +10,8 @@ function my_init() {
   my.isPortraitView = window.innerHeight > window.innerWidth;
   if (my.isPortraitView) {
     // PortraitView - no qrcode, show dashboard
-    id_qrcode.classList.add('hidden');
+    //
+    qrcode_hide();
     {
       // place player below id_blackfacts_num
       let rects = id_blackfacts_num.getClientRects();
@@ -21,7 +22,8 @@ function my_init() {
       // id_player.style.top = y + 'px';
     }
   } else {
-    // Landscape
+    // Landscape - show qrcode, hide dashboard
+    //
     id_dashboard.classList.add('hidden');
     {
       // place qrcode image at Bottom right
@@ -31,6 +33,14 @@ function my_init() {
       // id_qrcode.style.top = y + 'px';
     }
   }
+}
+
+function qrcode_hide() {
+  id_qrcode.classList.add('hidden');
+}
+
+function qrcode_show() {
+  id_qrcode.classList.remove('hidden');
 }
 
 document.addEventListener('DOMContentLoaded', document_loaded);
@@ -50,10 +60,11 @@ function document_loaded() {
   my.roomName = 'room0';
   my.blackfacts_index = 0;
   my.stepCount = 0;
+  my.animTime = 7;
 
   dstore_init();
 
-  my.animLoop = new Anim({ target: my, time: 15 });
+  my.animLoop = new Anim({ target: my, time: my.animTime });
 
   window.requestAnimationFrame(step_animation);
 }
@@ -80,12 +91,12 @@ function mo_blackfacts_index_changed(newValue, oldValue) {
 
   let entry = fotdEntry(my.blackfacts_index);
   let description = entry.description;
-  console.log('mo_blackfacts_index_changed description', description);
+  // console.log('mo_blackfacts_index_changed description', description);
   let periodIndex = description.indexOf('.  Narrated');
   if (periodIndex >= 0) {
     description = description.substring(0, periodIndex);
   }
-  console.log('mo_blackfacts_index_changed description', description);
+  // console.log('mo_blackfacts_index_changed description', description);
 
   id_blackfacts_num.innerHTML = '#' + (newValue + 1) + ' ' + description;
 

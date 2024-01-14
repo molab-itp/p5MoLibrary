@@ -12,7 +12,7 @@ const fotdData = {
     videoKey: '5wfrJKOntTE',
     title: 'BlackFacts Minute: January 2',
     description:
-      'BlackFacts.com Fact Of The Day for January 2, On this Day in 1965, Martin Luther King Jr. drove a registration vote.    Narrated by BlackFacts.com A.I. driven Digital Griot -  Timbuktu(tm)  #blackhistorymonth #blackhistory #blackfacts #civilrights #blm #mlk #martinlutherkingjr #martinlutherkingday #drmartinlutherkingjr',
+      'BlackFacts.com Fact Of The Day for January 2, On this Day in 1965, Martin Luther King Jr. drove a registration vote.  Narrated by BlackFacts.com A.I. driven Digital Griot -  Timbuktu(tm)  #blackhistorymonth #blackhistory #blackfacts #civilrights #blm #mlk #martinlutherkingjr #martinlutherkingday #drmartinlutherkingjr',
     thumbnail: 'https://i.ytimg.com/vi/5wfrJKOntTE/maxresdefault.jpg',
   },
   '0103': {
@@ -33,7 +33,7 @@ const fotdData = {
     videoKey: 'Y6R-h5hatbI',
     title: 'BlackFacts.com celebrates Founders Day (Jan 5th) for Kappa Alpha Psi Fraternity.',
     description:
-      'Fact-Of-The-Day for: January 05 - On this day in 1911, Kappa Alpha Psi Fraternity, Incorporated was founded at Indiana University  Narrated by BlackFacts.com A.I. driven Digital Griot -  Timbuktu(tm)  #blackhistorymonth #blackhistory #blackfacts #civilrights #blm #kappaalphapsi #divinenine',
+      'Fact-Of-The-Day for: January 05 - On this day in 1911, Kappa Alpha Psi Fraternity, Incorporated was founded at Indiana University.  Narrated by BlackFacts.com A.I. driven Digital Griot -  Timbuktu(tm)  #blackhistorymonth #blackhistory #blackfacts #civilrights #blm #kappaalphapsi #divinenine',
     thumbnail: 'https://i.ytimg.com/vi/Y6R-h5hatbI/maxresdefault.jpg',
   },
   '0106': {
@@ -414,7 +414,7 @@ const fotdData = {
       'BlackFacts.com Fact Of The Day for February 28, On this Day in 1989, Philip Emeagwali receives the Gordon Bell Prize, considered the Nobel Prize of computing.  Narrated by BlackFacts.com A.I. driven Digital Griot -  Timbuktu(tm)  #blackhistorymonth #blackhistory #blackfacts #civilrights #blm',
     thumbnail: 'https://i.ytimg.com/vi/bp9Vv5R2Xg0/maxresdefault.jpg',
   },
-  '0229': { videoKey: '', title: '', description: '', thumbnail: '' },
+  // '0229': { videoKey: '', title: '', description: '', thumbnail: '' },
   '0301': {
     videoKey: 'hmpjy5tfEIM',
     title: 'BlackFacts Minute: March 1',
@@ -2019,11 +2019,12 @@ const fotdData = {
     thumbnail: 'https://i.ytimg.com/vi/wG0zlPGzCKU/maxresdefault.jpg',
   },
   1016: {
-    videoKey: 'S_jud-xbCG8',
+    videoKey: 'bh1kz21Qrbs', // 'S_jud-xbCG8',
     title: 'BlackFacts Minute: October 16',
     description:
       'BlackFacts.com Fact Of The Day for October 16, On this Day in 1995, the Million Man March took place in Washington D.C.  Narrated by BlackFacts.com A.I. driven Digital Griot -  Timbuktu(tm)  #blackhistorymonth #blackhistory #blackfacts',
-    thumbnail: 'https://i.ytimg.com/vi/S_jud-xbCG8/maxresdefault.jpg',
+    // thumbnail: 'https://i.ytimg.com/vi/S_jud-xbCG8/maxresdefault.jpg',
+    thumbnail: 'https://i.ytimg.com/vi/bh1kz21Qrbs/maxresdefault.jpg',
   },
   1017: {
     videoKey: 'xMH3eIqmL_U',
