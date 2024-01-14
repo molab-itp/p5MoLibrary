@@ -44,7 +44,7 @@ function document_loaded() {
 
   let config = fb_.init('jht9629');
   // let config = fb_.init('jht1493');
-  console.log('?v=68 config.projectId', config.projectId, 'configLabel', config.configLabel);
+  console.log('?v=69 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
@@ -79,8 +79,15 @@ function mo_blackfacts_index_changed(newValue, oldValue) {
   my.blackfacts_index = newValue;
 
   let entry = fotdEntry(my.blackfacts_index);
+  let description = entry.description;
+  console.log('mo_blackfacts_index_changed description', description);
+  let periodIndex = description.indexOf('.  Narrated');
+  if (periodIndex >= 0) {
+    description = description.substring(0, periodIndex);
+  }
+  console.log('mo_blackfacts_index_changed description', description);
 
-  id_blackfacts_num.innerHTML = '#' + (newValue + 1) + ' ' + entry.description;
+  id_blackfacts_num.innerHTML = '#' + (newValue + 1) + ' ' + description;
 
   execCommandIndex(newValue);
 }
