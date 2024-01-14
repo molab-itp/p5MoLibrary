@@ -16,7 +16,8 @@
       body {
         margin: 0;
         padding: 0;
-        background-color: #fff;
+        /* background-color: #fff; */
+        background-color: #000;
         overflow: hidden;
       }
 
@@ -29,26 +30,42 @@
       }
 
       #id_qrcode {
-        /* z-index: 0; */
+        z-index: 2;
         position: absolute;
         top: 0;
         left: 0;
       }
+
+      #id_dashboard {
+        z-index: 1;
+        position: absolute;
+        color: #fff;
+        background-color: #000;
+      }
+
       /* make the buttons bigger on small screens */
       @media only screen and (max-width: 600px) {
+        #id_dashboard {
+          font-size: 5vw;
+        }
+      }
+      /* @media only screen and (max-width: 600px) {
         body,
         button,
         select,
         input {
           font-size: 5vw;
         }
-      }
+      } */
+
       .hidden {
         display: none;
       }
+
       * {
         font-family: monospace;
       }
+
     </style>
   </head>
   <body>
@@ -61,11 +78,13 @@
       <label for="id_checkbox_loop">Run</label>
       <span id="id_lapse_report"></span>
 
-      <h1 id="id_blackfacts_num"></h1>
+      <h2 id="id_blackfacts_num"></h12>
+      <!-- <h1 id="id_blackfacts_num"></h1> -->
+      <!-- <div id="id_blackfacts_num"></div> -->
     </div>
 
     <div id="id_player"></div>
-    <div id="id_qrcode"><img src="../../qrcode/mo-blackfacts-remote_qrcode.png" width="200px" /></div>
+    <div id="id_qrcode"><img src="../../qrcode/mo-blackfacts-qrcode.png" width="200px" /></div>
   </body>
 
   <!-- <script type="module" src="https://molab-itp.github.io/p5moLibrary/src/lib/0/fb_config.js"></script> -->

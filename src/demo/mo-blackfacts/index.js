@@ -9,24 +9,25 @@ function my_init() {
   my.isPortraitView = window.innerHeight > window.innerWidth;
   if (my.isPortraitView) {
     // PortraitView - no qrcode, show dashboard
+    id_qrcode.classList.add('hidden');
     {
       // place player below id_blackfacts_num
       let rects = id_blackfacts_num.getClientRects();
       let rt = rects[0];
       console.log('rt', rt);
       // let y = rt.y + rt.height;
-      let y = 200;
-      id_player.style.top = y + 'px';
+      // let y = 200;
+      // id_player.style.top = y + 'px';
     }
-    id_qrcode.classList.add('hidden');
   } else {
     // Landscape
+    id_dashboard.classList.add('hidden');
     {
       // place qrcode image at Bottom right
       let x = window.innerWidth - id_qrcode.clientWidth;
       let y = window.innerHeight - id_qrcode.clientHeight;
       id_qrcode.style.left = x + 'px';
-      id_qrcode.style.top = y + 'px';
+      // id_qrcode.style.top = y + 'px';
     }
   }
 }
