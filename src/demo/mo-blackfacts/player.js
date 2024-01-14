@@ -15,7 +15,7 @@ let volume = parseInt(params.volume || '0', 10);
 
 //document.documentElement.requestFullscreen();
 
-console.log('BlackFacts player');
+console.log('BlackFacts player.js');
 
 function onYouTubeIframeAPIReady() {
   console.log('BlackFacts onYouTubeIframeAPIReady player', player);

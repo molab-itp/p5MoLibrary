@@ -5,6 +5,7 @@ console.log('BlackFacts index');
 let my = {};
 
 function my_init() {
+  console.log('my_init');
   //
   my.isPortraitView = window.innerHeight > window.innerWidth;
   if (my.isPortraitView) {
@@ -33,14 +34,17 @@ function my_init() {
 }
 
 document.addEventListener('DOMContentLoaded', document_loaded);
-// ui_log(my, 'Hello ui_log');
+console.log('addEventListener document_loaded');
 
 function document_loaded() {
+  //
+  console.log('document_loaded');
+
   my_init();
 
   let config = fb_.init('jht9629');
   // let config = fb_.init('jht1493');
-  console.log('?v=67 config.projectId', config.projectId, 'configLabel', config.configLabel);
+  console.log('?v=68 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
@@ -50,6 +54,8 @@ function document_loaded() {
   dstore_init();
 
   my.animLoop = new Anim({ target: my, time: 15 });
+
+  window.requestAnimationFrame(step_animation);
 }
 
 function dstore_init() {

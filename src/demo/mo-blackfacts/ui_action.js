@@ -44,8 +44,6 @@ function step_animation(timeStamp) {
   id_lapse_report.innerHTML = lapse;
 }
 
-window.requestAnimationFrame(step_animation);
-
 function stepAction() {
   console.log('stepAction ');
   next_action();
