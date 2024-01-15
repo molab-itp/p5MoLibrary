@@ -49,29 +49,35 @@ function fotdEntry(index) {
   return fotdData[key];
 }
 
+// called from mo_blackfacts_index_changed
+// play video given index into fotdData
+//
 function execCommandIndex(index) {
   if (!player || !player.cueVideoById) {
     console.log('execCommandIndex no player', player);
     return;
   }
   if (!my.isPortraitView) {
-    qrcode_hide();
+    my.execRemoteTrigger = 1;
   }
 
   let entry = fotdEntry(index);
   let videoKey = entry.videoKey;
   console.log('execCommandIndex index', index, 'entry', entry, 'videoKey', videoKey);
 
-  // playlist = [videoKey];
-
   player.cueVideoById(videoKey);
 }
 
+// called when video play ends
 function execCommand() {
+  if (my.execRemoteTrigger) {
+    // Ignore play list if we were last triggered remotedly
+    console.log('execCommand my.execRemoteTrigger return');
+    return;
+  }
   if (my.playNext) {
     console.log('execCommand my.playNext');
     next_action();
-    // qrcode_hide();
     return;
   }
 
