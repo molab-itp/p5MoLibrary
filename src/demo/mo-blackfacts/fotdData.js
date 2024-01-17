@@ -1490,7 +1490,7 @@ const fotdData = {
     videoKey: 'w4cviIYHCDM',
     title: 'BlackFacts Minute: August 1',
     description:
-      'BlackFacts.com Fact Of The Day for August 1st, On This Day in 1895, Benjamin E. Mays was named president of Morehouse College  Narrated by BlackFacts.com A.I. driven Digital Griot -  Timbuktu(tm) ',
+      'BlackFacts.com Fact Of The Day for August 1st, On This Day in 1895, Benjamin E. Mays was named president of Morehouse College.  Narrated by BlackFacts.com A.I. driven Digital Griot -  Timbuktu(tm) ',
     thumbnail: 'https://i.ytimg.com/vi/w4cviIYHCDM/maxresdefault.jpg',
   },
   '0802': {
