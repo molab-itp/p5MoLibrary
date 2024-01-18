@@ -68,7 +68,7 @@ const fotdData = {
     videoKey: 'mzOUC9_TNVc',
     title: 'BlackFacts Minute: January 10',
     description:
-      'BlackFacts.com Fact Of The Day for January 10, On this Day in 1988, Walter Payton retired from the National Football League.   Narrated by BlackFacts.com A.I. driven Digital Griot -  Timbuktu(tm)  #blackhistorymonth #blackhistory #blackfacts #civilrights #blm #nfl #walterpayton #nflhalloffame',
+      'BlackFacts.com Fact Of The Day for January 10, On this Day in 1988, Walter Payton retired from the National Football League.  Narrated by BlackFacts.com A.I. driven Digital Griot -  Timbuktu(tm)  #blackhistorymonth #blackhistory #blackfacts #civilrights #blm #nfl #walterpayton #nflhalloffame',
     thumbnail: 'https://i.ytimg.com/vi/mzOUC9_TNVc/maxresdefault.jpg',
   },
   '0111': {
@@ -2373,7 +2373,7 @@ const fotdData = {
     videoKey: 'GuprMT2w2-8',
     title: 'BlackFacts Minute: December 5',
     description:
-      'BlackFacts.com Fact Of The Day for December 5, On this Day in 1955, Historic bus boycott began in Montgomery  Narrated by BlackFacts.com A.I. driven Digital Griot -  Timbuktu(tm)  #blackhistorymonth #blackhistory #blackfacts #civilrights',
+      'BlackFacts.com Fact Of The Day for December 5, On this Day in 1955, Historic bus boycott began in Montgomery.  Narrated by BlackFacts.com A.I. driven Digital Griot -  Timbuktu(tm)  #blackhistorymonth #blackhistory #blackfacts #civilrights',
     thumbnail: 'https://i.ytimg.com/vi/GuprMT2w2-8/maxresdefault.jpg',
   },
   1206: {

@@ -92,7 +92,8 @@ function mo_blackfacts_index_changed(newValue, oldValue) {
   let entry = fotdEntry(my.blackfacts_index);
   let description = entry.description;
   // console.log('mo_blackfacts_index_changed description', description);
-  let periodIndex = description.indexOf('.  Narrated');
+  let periodIndex = description.indexOf('Narrated by BlackFacts.com');
+  // let periodIndex = description.indexOf('.  Narrated');
   if (periodIndex >= 0) {
     description = description.substring(0, periodIndex);
   }
