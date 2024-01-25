@@ -7,11 +7,9 @@
   - [demo/DrawPoints](demo/DrawPoints?v=72)
   - [demo/Heavenly3D](demo/Heavenly3D?v=72)
   - [demo/js-image-viewer](demo/js-image-viewer?v=72)
-  - [demo/mo-astro-host-0](demo/mo-astro-host-0?v=72)
-  - [demo/mo-astro-host-1](demo/mo-astro-host-1?v=72)
-  - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=72)
-  - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=72)
+  - [demo/mo-astro](demo/mo-astro?v=72)
   - [demo/mo-blackfact](demo/mo-blackfacts?v=72)
+  - [demo/mo-draw](demo/mo-draw?v=72)
   - [demo/mo-gallery-1](demo/mo-gallery-1?v=72)
   - [demo/mo-gallery-2](demo/mo-gallery-2?v=72)
   - [demo/mo-pixel-grid](demo/mo-pixel-grid?v=72)
@@ -23,6 +21,11 @@
 - [Native Americans Exhibition Trailer](demo/BlackFacts?playlist=hpjNGTYvpxw)
 
 <!--
+
+  - [demo/mo-astro-host-0](demo/mo-astro-host-0?v=72)
+  - [demo/mo-astro-host-1](demo/mo-astro-host-1?v=72)
+  - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=72)
+  - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=72)
 
   - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=72)
   - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=72)

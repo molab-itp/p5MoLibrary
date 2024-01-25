@@ -24,6 +24,10 @@ function ui_init() {
   let body_elt = document.querySelector('body');
   let main_elt = document.querySelector('main');
   body_elt.insertBefore(main_elt, null);
+
+  // https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore
+  // insertBefore(newNode, referenceNode)
+  // referenceNode: if null, then newNode is inserted at the end of node's child nodes.
 }
 
 function ui_init_row_1() {
