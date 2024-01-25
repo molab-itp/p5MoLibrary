@@ -49,7 +49,8 @@ function draw() {
 }
 
 function step_check() {
-  if (my.play_step) {
+  // advance in landscape view
+  if (my.play_step && !my.isPortrait) {
     console.log('step_check next_action');
     next_action();
   }

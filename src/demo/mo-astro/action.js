@@ -24,7 +24,7 @@ function dstore_init() {
 function mo_astro_index_changed(newValue, oldValue) {
   console.log('mo_astro_index_changed newValue', newValue, 'oldValue', oldValue);
   // id_astro_num.innerHTML = 'Now showing on the big screen astro ' + (newValue + 1) + '';
-  my.astro_index = newValue;
+  // my.astro_index = newValue;
   // let ref = refBox_init.refs[my.astro_index];
   // let regions = ref.regions;
   // pan_draw(regions[1]);
