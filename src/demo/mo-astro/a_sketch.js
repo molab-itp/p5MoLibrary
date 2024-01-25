@@ -17,19 +17,21 @@ function setup() {
 
   // Create but dont start animation
   my.animLoop = new Anim({ target: my, time: 15 });
-  if (my.scanFlag) {
-    my.animLoop.start();
-  }
+  // if (my.scanFlag) {
+  my.animLoop.start();
+  // }
 
   // dstore interface
   let config = fb_.init('jht9629');
   // let config = fb_.init('jht1493');
-  console.log('?v=72 config.projectId', config.projectId, 'configLabel', config.configLabel);
+  console.log('?v=73 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
   my.astro_index = 0;
-  // my.logLoud = 1;
+
+  my.play_step_flag = true;
+  my.show_qrcode_flag = true;
 
   dstore_init();
 }
@@ -42,28 +44,13 @@ function draw() {
   my.pane2.render();
   ui_init_update();
 
-  my.animLoop.step({ action: nextRefAction, loop: my.scanFlag });
+  // my.animLoop.step({ action: nextRefAction, loop: my.scanFlag });
+  my.animLoop.step({ action: step_check, loop: 1 });
 }
 
-function dstore_init() {
-  // console.log('dstore_init ');
-  let { signInAnonymously, auth } = fb_;
-  signInAnonymously(auth)
-    .then(() => {
-      my.uid = auth.currentUser.uid;
-      // console.log('dstore_init my.uid', my.uid);
-      ui_log(my, 'dstore_init', my.uid);
-
-      dstore_device_onChild();
-      dstore_astro_onChild({ mo_astro_index_changed });
-    })
-    .catch((error) => {
-      ui_log(my, 'dstore_init error', error);
-    });
-}
-
-function mo_astro_index_changed(newValue, oldValue) {
-  // console.log('mo_astro_index_changed newValue', newValue, 'oldValue', oldValue);
-  refIndexAssign(newValue);
-  my.astro_index = newValue;
+function step_check() {
+  if (my.play_step) {
+    console.log('step_check next_action');
+    next_action();
+  }
 }

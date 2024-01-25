@@ -1,7 +1,7 @@
 //
 function a_setup() {
   //
-  my.version = '?v=72';
+  my.version = '?v=73';
   my.canvas = createCanvas(windowWidth, windowHeight - 90);
   // my.canvas.mousePressed(canvas_mousePressed);
   // my.canvas.mouseReleased(canvas_mouseReleased);
@@ -10,10 +10,13 @@ function a_setup() {
   my.paneRatio0 = 4 / 16;
   my.paneRatio1 = 12 / 16;
   my.paneRatio2 = 2 / 16;
-  my.isPortrait = height > width;
   my.scanFlag = 1;
 
+  my.isPortrait = height > width;
+  // my.isPortraitView = window.innerHeight > window.innerWidth;
+
   my.refBox = new RefBox(refBox_init);
+  my.nrefs = my.refBox.refs.length;
 
   create_pane0();
 

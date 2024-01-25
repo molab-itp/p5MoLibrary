@@ -9,6 +9,35 @@ function ui_init() {
 }
 
 function ui_init_create() {
+  if (my.isPortrait) {
+    // Portrait View
+    ui_init_remote();
+  } else {
+    // Landscape
+  }
+  ui_init_create_edit();
+}
+
+function ui_init_remote() {
+  console.log('ui_init_remote');
+  createButton('first').mousePressed(first_action);
+  createButton('next').mousePressed(next_action);
+  createButton('previous').mousePressed(previous_action);
+  createButton('random').mousePressed(random_action);
+  createElement('br');
+  my.play_step_chkBox = createCheckbox('play_step', my.play_step_flag).changed(function () {
+    play_step_changed(this.checked());
+  });
+  my.play_step_chkBox.style('display:inline');
+  my.show_qrcode_chkBox = createCheckbox('show_qrcode', my.show_qrcode_flag).changed(function () {
+    show_qrcode_changed(this.checked());
+  });
+  my.show_qrcode_chkBox.style('display:inline');
+  createElement('br');
+}
+
+// ui for edit interface to update refBox_init
+function ui_init_create_edit() {
   //
   createSpan(my.version.substring(1));
   createSpan().id('id_panX');
