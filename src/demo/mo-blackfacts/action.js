@@ -68,3 +68,7 @@ function stepAction() {
 
 //
 // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+
+// document.getElementById('example').innerHTML
+// https://stackoverflow.com/questions/3434278/do-dom-tree-elements-with-ids-become-global-properties
+// https://html.spec.whatwg.org/multipage/nav-history-apis.html#named-access-on-the-window-object
