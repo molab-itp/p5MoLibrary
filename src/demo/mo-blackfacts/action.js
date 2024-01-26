@@ -1,3 +1,7 @@
+//
+
+console.log('BlackFacts action.js');
+
 id_button_next.addEventListener('click', next_action);
 id_button_previous.addEventListener('click', previous_action);
 id_button_first.addEventListener('click', first_action);
@@ -56,27 +60,31 @@ function random_action() {
   dstore_blackfacts_update({ index });
 }
 
-function step_animation(timeStamp) {
+function stepAction() {
+  console.log('stepAction ');
+  next_action();
+  my.stepCount++;
+}
+
+function setup_animationFrame() {
+  window.requestAnimationFrame(animationFrameCallback);
+}
+
+function animationFrameCallback(timeStamp) {
   // console.log('step_animation timeStamp', timeStamp);
-  window.requestAnimationFrame(step_animation);
+  window.requestAnimationFrame(animationFrameCallback);
 
   if (!my.isPortraitView) {
     if (my.blackfacts_qrcode) qrcode_show();
     else qrcode_hide();
   }
 
-  if (!my.animLoop) return;
-
-  my.animLoop.step({ action: stepAction, loop: my.playClip });
-  let lapse = '';
-  if (my.playClip) lapse = my.animLoop.lapse() + ' ' + my.stepCount;
-  id_lapse_report.innerHTML = lapse;
-}
-
-function stepAction() {
-  console.log('stepAction ');
-  next_action();
-  my.stepCount++;
+  if (my.animLoop) {
+    my.animLoop.step({ action: stepAction, loop: my.playClip });
+    let lapse = '';
+    if (my.playClip) lapse = my.animLoop.lapse() + ' ' + my.stepCount;
+    id_lapse_report.innerHTML = lapse;
+  }
 }
 
 //

@@ -66,7 +66,7 @@ function document_loaded() {
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 
-  window.requestAnimationFrame(step_animation);
+  setup_animationFrame();
 }
 
 function dstore_init() {
@@ -77,31 +77,44 @@ function dstore_init() {
       ui_log(my, 'dstore_init', my.uid);
 
       dstore_device_onChild();
-      dstore_blackfacts_onChild({ mo_blackfacts_index_changed });
+      // dstore_blackfacts_onChild({ mo_blackfacts_index_changed });
+      dstore_blackfacts_onChild({ mo_blackfacts_key_value });
     })
     .catch((error) => {
       ui_log(my, 'dstore_init error', error);
     });
 }
 
-function mo_blackfacts_index_changed(newValue, oldValue) {
-  console.log('mo_blackfacts_index_changed newValue', newValue, 'oldValue', oldValue);
+function mo_blackfacts_key_value(key, value) {
+  switch (key) {
+    case 'index':
+      mo_blackfacts_index_value(value);
+      break;
+    case 'qrcode':
+      mo_blackfacts_qccode_value(value);
+      break;
+  }
+}
 
+function mo_blackfacts_index_value(newValue) {
+  console.log('mo_blackfacts_index_value newValue', newValue);
   my.blackfacts_index = newValue;
-
-  let entry = dateFact(my.blackfacts_index);
+  let entry = dateFactForIndex(my.blackfacts_index);
   let description = entry.description;
-  // console.log('mo_blackfacts_index_changed description', description);
   let periodIndex = description.indexOf('Narrated by BlackFacts.com');
-  // let periodIndex = description.indexOf('.  Narrated');
   if (periodIndex >= 0) {
     description = description.substring(0, periodIndex);
   }
-  // console.log('mo_blackfacts_index_changed description', description);
+  // console.log('mo_blackfacts_index_value description', description);
 
   id_blackfacts_num.innerHTML = '#' + (newValue + 1) + ' ' + description;
 
   execCommandIndex(newValue);
+}
+
+function mo_blackfacts_qccode_value(newValue) {
+  console.log('mo_blackfacts_qccode_value newValue', newValue);
+  my.blackfacts_qrcode = newValue;
 }
 
 function ui_log(my, ...args) {

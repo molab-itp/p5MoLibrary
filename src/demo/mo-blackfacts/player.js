@@ -1,5 +1,7 @@
 'use strict';
 
+console.log('BlackFacts player.js');
+
 let videoKey = null;
 let player = null;
 let playlistIndex = 0;
@@ -14,8 +16,6 @@ let delay = params.delay || 0;
 let volume = parseInt(params.volume || '0', 10);
 
 //document.documentElement.requestFullscreen();
-
-console.log('BlackFacts player.js');
 
 function onYouTubeIframeAPIReady() {
   console.log('BlackFacts onYouTubeIframeAPIReady player', player);
@@ -44,7 +44,7 @@ function execPlaylist() {
 let dateFactsKeys = Object.keys(dateFacts).sort();
 let nfacts = dateFactsKeys.length;
 
-function dateFact(index) {
+function dateFactForIndex(index) {
   let key = dateFactsKeys[index % nfacts];
   return dateFacts[key];
 }
@@ -60,10 +60,10 @@ function execCommandIndex(index) {
   if (!my.isPortraitView) {
     my.execRemoteTrigger = 1;
   }
-
-  let entry = dateFact(index);
+  let entry = dateFactForIndex(index);
   let videoKey = entry.videoKey;
-  console.log('execCommandIndex index', index, 'entry', entry, 'videoKey', videoKey);
+  console.log('execCommandIndex index', index, 'entry', entry);
+  console.log('execCommandIndex videoKey', videoKey);
 
   player.cueVideoById(videoKey);
 }

@@ -1,5 +1,6 @@
 //
-function dstore_blackfacts_onChild({ mo_blackfacts_index_changed, mo_blackfacts_qccode_changed }) {
+// function dstore_blackfacts_onChild({ mo_blackfacts_index_changed, mo_blackfacts_qccode_changed }) {
+function dstore_blackfacts_onChild({ mo_blackfacts_key_value }) {
   // Setup listener for changes to firebase db device
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-blackfacts`;
@@ -20,24 +21,15 @@ function dstore_blackfacts_onChild({ mo_blackfacts_index_changed, mo_blackfacts_
 
   function receivedDeviceKey(msg, data, remove) {
     let key = data.key;
-    let val = data.val();
+    let value = data.val();
     // ui_log(my, msg, key, 'n=', Object.keys(val).length);
-    ui_log(my, msg, 'key', key, 'val', val);
+    ui_log(my, msg, 'key', key, 'value', value);
     if (remove) {
       return;
     }
-    if (key == 'index') {
-      let oldValue = my.blackfacts_index;
-      my.blackfacts_index = val;
-      if (mo_blackfacts_index_changed) {
-        mo_blackfacts_index_changed(my.blackfacts_index, oldValue);
-      }
-    } else if (key == 'qrcode') {
-      let oldValue = my.blackfacts_qrcode;
-      my.blackfacts_qrcode = val;
-      if (mo_blackfacts_qccode_changed) {
-        mo_blackfacts_qccode_changed(my.blackfacts_qrcode, oldValue);
-      }
+    if (mo_blackfacts_key_value) {
+      // { index, qrcode }
+      mo_blackfacts_key_value(key, value);
     }
   }
 }

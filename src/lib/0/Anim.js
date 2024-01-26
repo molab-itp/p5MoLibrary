@@ -8,7 +8,7 @@ export class Anim {
     // convert time from seconds to milliseconds
     this.time *= 1000;
     this.running = 0;
-    // this.started = 0;
+    this.startTime = Date.now();
   }
 
   start() {
