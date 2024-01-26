@@ -64,9 +64,9 @@ function document_loaded() {
 
   dstore_init();
 
-  my.animLoop = new Anim({ target: my, time: my.animTime });
+  // my.animLoop = new Anim({ target: my, time: my.animTime });
 
-  setup_animationFrame();
+  // setup_animationFrame();
 }
 
 function dstore_init() {
@@ -74,15 +74,24 @@ function dstore_init() {
   signInAnonymously(auth)
     .then(() => {
       my.uid = auth.currentUser.uid;
-      ui_log(my, 'dstore_init', my.uid);
+      ui_log(my, 'dstore_init uid', my.uid);
 
-      dstore_device_onChild();
-      // dstore_blackfacts_onChild({ mo_blackfacts_index_changed });
-      dstore_blackfacts_onChild({ mo_blackfacts_key_value });
+      dstore_post_init();
     })
     .catch((error) => {
       ui_log(my, 'dstore_init error', error);
     });
+}
+
+function dstore_post_init() {
+  //
+  dstore_device_onChild();
+
+  dstore_blackfacts_onChild({ mo_blackfacts_key_value });
+
+  my.animLoop = new Anim({ target: my, time: my.animTime });
+
+  setup_animationFrame();
 }
 
 function mo_blackfacts_key_value(key, value) {

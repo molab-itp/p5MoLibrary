@@ -109,15 +109,15 @@ function getDateVideoKey(date) {
 }
 
 function setupVideo() {
-  console.log('creating YTPlayer');
-
+  console.log('BlackFacts setupVideo creating YTPlayer');
+  my.blackfacts_player_inited = 1;
   player = new YT.Player('id_player', {
     playerVars: {
       origin: location.origin,
     },
     events: {
       onReady: function (event) {
-        console.log('YTPlayer ready');
+        console.log('BlackFacts YTPlayer ready');
         // The player play method cueVideoById just became available.
         //player.unMute();
         //player.setVolume(volume);
@@ -134,7 +134,7 @@ function setupVideo() {
             break;
 
           case YT.PlayerState.ENDED:
-            console.log('YT.PlayerState.ENDED ' + videoKey);
+            console.log('BlackFacts YT.PlayerState.ENDED ' + videoKey);
             execCommand();
             break;
 

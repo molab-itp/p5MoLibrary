@@ -67,24 +67,52 @@ function stepAction() {
 }
 
 function setup_animationFrame() {
-  window.requestAnimationFrame(animationFrameCallback);
+  window.requestAnimationFrame(animationFrame_callback);
 }
 
-function animationFrameCallback(timeStamp) {
+function animationFrame_callback(timeStamp) {
   // console.log('step_animation timeStamp', timeStamp);
-  window.requestAnimationFrame(animationFrameCallback);
-
+  window.requestAnimationFrame(animationFrame_callback);
+  let timeSecs = timeStamp / 1000;
+  if (my.blackfacts_player_inited) {
+    record_startup_time(timeSecs);
+  } else {
+    // Check for player setup stall
+    if (timeSecs > 5) {
+      console.log('animationFrame_callback player startup stall');
+      player_startup_stalled();
+    }
+  }
   if (!my.isPortraitView) {
     if (my.blackfacts_qrcode) qrcode_show();
     else qrcode_hide();
   }
-
   if (my.animLoop) {
     my.animLoop.step({ action: stepAction, loop: my.playClip });
     let lapse = '';
     if (my.playClip) lapse = my.animLoop.lapse() + ' ' + my.stepCount;
     id_lapse_report.innerHTML = lapse;
   }
+}
+
+function record_startup_time(timeSecs) {
+  if (!my.blackfacts_player_startup_time) {
+    console.log('record_startup_time timeSecs', timeSecs);
+    my.blackfacts_player_startup_time = timeSecs;
+    dstore_blackfacts_update({}, { startup_time: timeSecs });
+  }
+}
+
+function player_startup_stalled() {
+  if (my.stalled_report) {
+    return;
+  }
+  my.stalled_report = 1;
+  let { increment } = fb_.fbase;
+  dstore_blackfacts_update({}, { startup_stall: increment(1) });
+  setTimeout(function () {
+    window.location.reload();
+  }, 5000);
 }
 
 //
