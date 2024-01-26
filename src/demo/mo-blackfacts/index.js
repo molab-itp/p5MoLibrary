@@ -11,12 +11,12 @@ function my_init() {
   if (my.isPortraitView) {
     // PortraitView - no qrcode, show dashboard
     //
+    id_message_pane.classList.add('hidden');
     qrcode_hide();
     {
-      // place player below id_blackfacts_num
       let rects = id_blackfacts_num.getClientRects();
       let rt = rects[0];
-      console.log('rt', rt);
+      console.log('id_blackfacts_num rt', rt);
       // let y = rt.y + rt.height;
       // let y = 200;
       // id_player.style.top = y + 'px';
@@ -26,7 +26,7 @@ function my_init() {
     //
     id_dashboard.classList.add('hidden');
     {
-      // place qrcode image at Bottom right
+      // place qrcode image at top right
       let x = window.innerWidth - id_qrcode.clientWidth;
       let y = window.innerHeight - id_qrcode.clientHeight;
       id_qrcode.style.left = x + 'px';
@@ -62,28 +62,28 @@ function document_loaded() {
   my.stepCount = 0;
   my.animTime = 7;
 
-  dstore_init();
+  dstore_signIn();
 
   // my.animLoop = new Anim({ target: my, time: my.animTime });
 
   // setup_animationFrame();
 }
 
-function dstore_init() {
+function dstore_signIn() {
   let { signInAnonymously, auth } = fb_;
   signInAnonymously(auth)
     .then(() => {
       my.uid = auth.currentUser.uid;
       ui_log(my, 'dstore_init uid', my.uid);
 
-      dstore_post_init();
+      dstore_app_init();
     })
     .catch((error) => {
       ui_log(my, 'dstore_init error', error);
     });
 }
 
-function dstore_post_init() {
+function dstore_app_init() {
   //
   dstore_device_onChild();
 
@@ -115,8 +115,9 @@ function mo_blackfacts_index_value(newValue) {
     description = description.substring(0, periodIndex);
   }
   // console.log('mo_blackfacts_index_value description', description);
-
-  id_blackfacts_num.innerHTML = '#' + (newValue + 1) + ' ' + description;
+  let str = '#' + (newValue + 1) + ' ' + description;
+  id_blackfacts_num.innerHTML = str;
+  id_message_text.innerHTML = str;
 
   execCommandIndex(newValue);
 }

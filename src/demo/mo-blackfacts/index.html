@@ -9,7 +9,7 @@
     <!-- BlackFacts Video Player 2023-12-26 downloaded by JHT -->
     <!-- source: https://blackfacts.com/kiosk?delay=2000&playlist=today -->
     <!--  -->
-    <title>mo-blackfacts</title>
+    <title>mo-blackfacts ?v=76</title>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="dateFacts.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css?v=76" />
@@ -18,26 +18,31 @@
   </head>
   <body>
     <div id="id_dashboard">
+      <button id="id_button_first">First</button>
       <button id="id_button_previous">Previous</button>
       <button id="id_button_next">Next</button>
       <button id="id_button_random">Random</button>
-      <button id="id_button_first">First</button>
 
       <input type="checkbox" id="id_checkbox_play_next" name="play_next" />
-      <label for="id_checkbox_play_next">Play Next</label>
+      <label for="id_checkbox_play_next">PlayNext</label>
 
       <input type="checkbox" id="id_checkbox_play_clip" name="play_clip" />
-      <label for="id_checkbox_play_clip">Play Clip</label>
+      <label for="id_checkbox_play_clip">PlayClip</label>
       
       <input type="checkbox" id="id_checkbox_qrcode" name="qrcode" />
-      <label for="id_checkbox_qrcode">Show QRCode</label>
+      <label for="id_checkbox_qrcode">ShowQRCode</label>
 
       <span id="id_lapse_report"></span>
 
       <h2 id="id_blackfacts_num"></h12>
-      <!-- <h1 id="id_blackfacts_num"></h1> -->
-      <!-- <div id="id_blackfacts_num"></div> -->
     </div>
+
+    <div id="id_message_pane">
+      <h2 id="id_message_text"></h12>
+    </div>
+
+    <!-- very strange: h2 here kills divs that follow -->
+    <!-- <h2 id="id_blackfacts_num"></h12> -->
 
     <div id="id_player"></div>
     <div id="id_qrcode"><img src="../../qrcode/mo-blackfacts-qrcode.png" width="200px" /></div>
@@ -53,6 +58,7 @@
   <script src="dstore_blackfacts_onChild.js?v=76"></script>
 
   <script src="action.js?v=76"></script>
+  <script src="frame.js?v=76"></script>
   <script src="player.js?v=76"></script>
   <script src="index.js?v=76"></script>
 </html>

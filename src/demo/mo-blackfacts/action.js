@@ -11,14 +11,14 @@ id_checkbox_play_clip.addEventListener('click', play_clip_action);
 id_checkbox_qrcode.addEventListener('click', qrcode_action);
 
 function qrcode_action() {
-  ui_log(my, 'clip_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
+  ui_log(my, 'qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
   my.qrcodeFlag = id_checkbox_qrcode.checked;
   let qrcode = my.qrcodeFlag ? 1 : 0;
   dstore_blackfacts_update({ qrcode });
 }
 
 function play_clip_action() {
-  ui_log(my, 'clip_action id_checkbox_play_clip.checked', id_checkbox_play_clip.checked);
+  ui_log(my, 'play_clip_action id_checkbox_play_clip.checked', id_checkbox_play_clip.checked);
   my.playClip = id_checkbox_play_clip.checked;
   if (my.playClip) {
     my.animLoop.start();
@@ -64,55 +64,6 @@ function stepAction() {
   console.log('stepAction ');
   next_action();
   my.stepCount++;
-}
-
-function setup_animationFrame() {
-  window.requestAnimationFrame(animationFrame_callback);
-}
-
-function animationFrame_callback(timeStamp) {
-  // console.log('step_animation timeStamp', timeStamp);
-  window.requestAnimationFrame(animationFrame_callback);
-  let timeSecs = timeStamp / 1000;
-  if (my.blackfacts_player_inited) {
-    record_startup_time(timeSecs);
-  } else {
-    // Check for player setup stall
-    if (timeSecs > 5) {
-      console.log('animationFrame_callback player startup stall');
-      player_startup_stalled();
-    }
-  }
-  if (!my.isPortraitView) {
-    if (my.blackfacts_qrcode) qrcode_show();
-    else qrcode_hide();
-  }
-  if (my.animLoop) {
-    my.animLoop.step({ action: stepAction, loop: my.playClip });
-    let lapse = '';
-    if (my.playClip) lapse = my.animLoop.lapse() + ' ' + my.stepCount;
-    id_lapse_report.innerHTML = lapse;
-  }
-}
-
-function record_startup_time(timeSecs) {
-  if (!my.blackfacts_player_startup_time) {
-    console.log('record_startup_time timeSecs', timeSecs);
-    my.blackfacts_player_startup_time = timeSecs;
-    dstore_blackfacts_update({}, { startup_time: timeSecs });
-  }
-}
-
-function player_startup_stalled() {
-  if (my.stalled_report) {
-    return;
-  }
-  my.stalled_report = 1;
-  let { increment } = fb_.fbase;
-  dstore_blackfacts_update({}, { startup_stall: increment(1) });
-  setTimeout(function () {
-    window.location.reload();
-  }, 5000);
 }
 
 //
