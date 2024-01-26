@@ -119,7 +119,7 @@ function mo_blackfacts_index_value(newValue) {
   id_blackfacts_num.innerHTML = str;
   id_message_text.innerHTML = str;
 
-  execCommandIndex(newValue);
+  execCommandIndex(my.blackfacts_index);
 }
 
 function mo_blackfacts_qccode_value(newValue) {

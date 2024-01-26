@@ -10,6 +10,7 @@ function animationFrame_callback(timeStamp) {
     record_startup_time(timeSecs);
   } else {
     // Check for player setup stall
+    // !!@ my. candidate
     if (timeSecs > 5.0) {
       console.log('animationFrame_callback player startup stall');
       player_startup_stalled();
@@ -52,9 +53,11 @@ function player_startup_stalled() {
     return;
   }
   my.stalled_report = 1;
+
   let { increment } = fb_.fbase;
   dstore_blackfacts_update({}, { startup_stall: increment(1) });
+
   setTimeout(function () {
     window.location.reload();
-  }, 5.0 * 1000);
+  }, 5.0 * 1000); // !!@ my. candidate
 }
