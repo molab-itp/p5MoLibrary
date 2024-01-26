@@ -41,16 +41,16 @@ function execPlaylist() {
   }
 }
 
-let fotdDataKeys = Object.keys(fotdData).sort();
-let nfacts = fotdDataKeys.length;
+let dateFactsKeys = Object.keys(dateFacts).sort();
+let nfacts = dateFactsKeys.length;
 
 function fotdEntry(index) {
-  let key = fotdDataKeys[index % nfacts];
-  return fotdData[key];
+  let key = dateFactsKeys[index % nfacts];
+  return dateFacts[key];
 }
 
 // called from mo_blackfacts_index_changed
-// play video given index into fotdData
+// play video given index into dateFacts
 //
 function execCommandIndex(index) {
   if (!player || !player.cueVideoById) {
@@ -96,7 +96,7 @@ function getDateVideoKey(date) {
   // Default to today
   let theDate = date || new Date();
   let key = dateKey(theDate);
-  let videoKey = fotdData[key].videoKey;
+  let videoKey = dateFacts[key].videoKey;
   return videoKey;
 
   function formatDay(num) {

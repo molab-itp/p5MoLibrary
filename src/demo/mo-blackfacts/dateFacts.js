@@ -1,6 +1,6 @@
 'use strict';
 
-const fotdData = {
+const dateFacts = {
   '0101': {
     videoKey: 'VZTSYcFTNSA',
     title: 'BlackFacts Minute: January 1',

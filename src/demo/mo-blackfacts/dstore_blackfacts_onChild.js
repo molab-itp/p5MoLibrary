@@ -43,7 +43,8 @@ function dstore_blackfacts_onChild({ mo_blackfacts_index_changed, mo_blackfacts_
 }
 
 // my.blackfacts_index
-function dstore_blackfacts_update({ index, qrcode }) {
+// function dstore_blackfacts_update({ index, qrcode }) {
+function dstore_blackfacts_update(props) {
   // console.log('dstore_blackfacts_update my.uid', my.uid);
   ui_log(my, 'dstore_blackfacts_update my.uid', my.uid);
   if (!my.uid) return;
@@ -58,8 +59,11 @@ function dstore_blackfacts_update({ index, qrcode }) {
 
   let updates = { [dpath]: count };
 
-  if (index !== undefined) updates.index = index;
-  if (qrcode !== undefined) updates.qrcode = qrcode;
+  for (let prop in props) {
+    updates[prop] = props[prop];
+  }
+  // if (index !== undefined) updates.index = index;
+  // if (qrcode !== undefined) updates.qrcode = qrcode;
 
   ui_log(my, 'dstore_blackfacts_update updates', updates);
 
