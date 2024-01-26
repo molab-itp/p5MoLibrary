@@ -108,18 +108,24 @@ function mo_blackfacts_key_value(key, value) {
 function mo_blackfacts_index_value(newValue) {
   console.log('mo_blackfacts_index_value newValue', newValue);
   my.blackfacts_index = newValue;
-  let entry = dateFactForIndex(my.blackfacts_index);
+
+  update_blackfacts_num_ui();
+
+  execCommandIndex(my.blackfacts_index);
+}
+
+function update_blackfacts_num_ui() {
+  let index = my.blackfacts_index;
+  let entry = dateFactForIndex(index);
   let description = entry.description;
   let periodIndex = description.indexOf('Narrated by BlackFacts.com');
   if (periodIndex >= 0) {
     description = description.substring(0, periodIndex);
   }
   // console.log('mo_blackfacts_index_value description', description);
-  let str = '#' + (newValue + 1) + ' ' + description;
+  let str = '#' + (index + 1) + ' ' + description;
   id_blackfacts_num.innerHTML = str;
   id_message_text.innerHTML = str;
-
-  execCommandIndex(my.blackfacts_index);
 }
 
 function mo_blackfacts_qccode_value(newValue) {
