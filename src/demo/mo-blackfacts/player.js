@@ -44,7 +44,7 @@ function execPlaylist() {
 let dateFactsKeys = Object.keys(dateFacts).sort();
 let nfacts = dateFactsKeys.length;
 
-function fotdEntry(index) {
+function dateFact(index) {
   let key = dateFactsKeys[index % nfacts];
   return dateFacts[key];
 }
@@ -61,7 +61,7 @@ function execCommandIndex(index) {
     my.execRemoteTrigger = 1;
   }
 
-  let entry = fotdEntry(index);
+  let entry = dateFact(index);
   let videoKey = entry.videoKey;
   console.log('execCommandIndex index', index, 'entry', entry, 'videoKey', videoKey);
 
