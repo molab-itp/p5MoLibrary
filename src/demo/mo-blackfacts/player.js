@@ -49,7 +49,7 @@ function dateFactForIndex(index) {
   return dateFacts[key];
 }
 
-// called from mo_blackfacts_index_changed
+// called from mo_blackfacts_index_value
 // play video given index into dateFacts
 //
 function execCommandIndex(index) {
@@ -66,11 +66,16 @@ function execCommandIndex(index) {
   console.log('execCommandIndex index', index, 'entry', entry);
   console.log('execCommandIndex videoKey', videoKey);
 
+  // reset play list to selected video
+  playlist = [videoKey];
+  playlistIndex = 0;
+
   player.cueVideoById(videoKey);
 }
 
 // called when video play ends
 function execCommand() {
+  // In landscape view, we'll keep advancing
   if (my.execRemoteTrigger) {
     console.log('execCommand my.execRemoteTrigger next_action');
     next_action();
