@@ -57,9 +57,10 @@ function execCommandIndex(index) {
     console.log('execCommandIndex no player', player);
     return;
   }
-  // if (!my.isPortraitView) {
-  my.execRemoteTrigger = 1;
-  // }
+  if (!my.isPortraitView) {
+    // In landscape view, we'll keep advancing
+    my.execRemoteTrigger = 1;
+  }
   let entry = dateFactForIndex(index);
   let videoKey = entry.videoKey;
   console.log('execCommandIndex index', index, 'entry', entry);
@@ -71,25 +72,26 @@ function execCommandIndex(index) {
 // called when video play ends
 function execCommand() {
   if (my.execRemoteTrigger) {
-    // Ignore play list if we were last triggered remotedly
-    console.log('execCommand my.execRemoteTrigger return');
-    return;
-  }
-  if (my.playNext) {
-    console.log('execCommand my.playNext');
+    console.log('execCommand my.execRemoteTrigger next_action');
     next_action();
     return;
   }
-
+  if (my.playNext) {
+    console.log('execCommand my.playNext next_action');
+    next_action();
+    return;
+  }
+  // Select next video from playList
+  //
   videoKey = getVideoKey(playlist[playlistIndex]);
   console.log('About to play video ' + videoKey);
   player.cueVideoById(videoKey);
   playlistIndex = (playlistIndex + 1) % playlist.length;
   console.log('Incremented playlistIndex to: ' + playlistIndex);
+}
 
-  function getVideoKey(playlistEntry) {
-    return playlistEntry === 'today' ? getDateVideoKey() : playlistEntry;
-  }
+function getVideoKey(playlistEntry) {
+  return playlistEntry === 'today' ? getDateVideoKey() : playlistEntry;
 }
 
 function getDateVideoKey(date) {
@@ -98,13 +100,12 @@ function getDateVideoKey(date) {
   let key = dateKey(theDate);
   let videoKey = dateFacts[key].videoKey;
   return videoKey;
-
-  function formatDay(num) {
-    return ('00' + num).slice(-2);
-  }
-
+  //
   function dateKey(theDay) {
     return formatDay(1 + theDay.getMonth()) + formatDay(theDay.getDate());
+  }
+  function formatDay(num) {
+    return ('00' + num).slice(-2);
   }
 }
 

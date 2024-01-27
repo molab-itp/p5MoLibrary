@@ -1,4 +1,6 @@
-console.log('BlackFacts index');
+//
+
+console.log('BlackFacts index.js');
 
 // 2024-01-09 jht: page sometimes needs several reloads to show video
 
@@ -117,6 +119,7 @@ function mo_blackfacts_index_value(newValue) {
 function update_blackfacts_num_ui() {
   let index = my.blackfacts_index;
   let entry = dateFactForIndex(index);
+  //
   let description = entry.description;
   let periodIndex = description.indexOf('Narrated by BlackFacts.com');
   if (periodIndex >= 0) {
