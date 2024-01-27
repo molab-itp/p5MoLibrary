@@ -57,10 +57,14 @@ function execCommandIndex(index) {
     console.log('execCommandIndex no player', player);
     return;
   }
-  if (!my.isPortraitView) {
-    // In landscape view, we'll keep advancing
-    my.execRemoteTrigger = 1;
-  }
+  // if (!my.isPortraitView) {
+  //   // In landscape view, we'll keep advancing
+  //   my.execRemoteTrigger = 1;
+  // }
+
+  // flag having received index event
+  my.execRemoteTrigger = 1;
+
   let entry = dateFactForIndex(index);
   let videoKey = entry.videoKey;
   console.log('execCommandIndex index', index, 'entry', entry);
