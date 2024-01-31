@@ -4,6 +4,28 @@ console.log('BlackFacts index.js');
 
 // 2024-01-09 jht: page sometimes needs several reloads to show video
 
+document.addEventListener('DOMContentLoaded', document_loaded);
+console.log('addEventListener document_loaded');
+function document_loaded() {
+  //
+  console.log('document_loaded');
+
+  my_init();
+
+  let config = fb_.init('jht9629');
+  // let config = fb_.init('jht1493');
+  console.log('?v=84 config.projectId', config.projectId, 'configLabel', config.configLabel);
+
+  my.dstore_rootPath = 'm0-@r-@w-';
+  my.roomName = 'room0';
+  my.blackfacts_index = 0;
+  my.stepCount = 0;
+  my.animTime = 7;
+  my.nameDevice = 'device?v=84';
+
+  dstore_signIn();
+}
+
 let my = {};
 
 function my_init() {
@@ -43,32 +65,6 @@ function qrcode_hide() {
 
 function qrcode_show() {
   id_qrcode.classList.remove('hidden');
-}
-
-document.addEventListener('DOMContentLoaded', document_loaded);
-console.log('addEventListener document_loaded');
-
-function document_loaded() {
-  //
-  console.log('document_loaded');
-
-  my_init();
-
-  let config = fb_.init('jht9629');
-  // let config = fb_.init('jht1493');
-  console.log('?v=84 config.projectId', config.projectId, 'configLabel', config.configLabel);
-
-  my.dstore_rootPath = 'm0-@r-@w-';
-  my.roomName = 'room0';
-  my.blackfacts_index = 0;
-  my.stepCount = 0;
-  my.animTime = 7;
-
-  dstore_signIn();
-
-  // my.animLoop = new Anim({ target: my, time: my.animTime });
-
-  // setup_animationFrame();
 }
 
 function dstore_signIn() {
