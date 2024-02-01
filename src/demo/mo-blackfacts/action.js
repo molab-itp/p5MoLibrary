@@ -10,9 +10,17 @@ id_checkbox_play_next.addEventListener('click', play_next_action);
 id_checkbox_play_clip.addEventListener('click', play_clip_action);
 id_checkbox_qrcode.addEventListener('click', qrcode_action);
 id_button_more.addEventListener('click', more_action);
+id_button_nation_time.addEventListener('click', nation_time_action);
+
+function nation_time_action() {
+  let videoKey = '-UtKxghWlvY';
+  playlist = [videoKey];
+  execCommand();
+}
 
 function more_action() {
   id_index_button_container.classList.toggle('hidden');
+  id_player.classList.toggle('hidden');
 }
 
 function qrcode_action() {
