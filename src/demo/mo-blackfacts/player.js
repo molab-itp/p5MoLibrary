@@ -2,6 +2,9 @@
 
 console.log('BlackFacts player.js');
 
+let dateFactsKeys = Object.keys(dateFacts).sort();
+let nfacts = dateFactsKeys.length;
+
 let videoKey = null;
 let player = null;
 let playlistIndex = 0;
@@ -40,9 +43,6 @@ function execPlaylist() {
     }
   }
 }
-
-let dateFactsKeys = Object.keys(dateFacts).sort();
-let nfacts = dateFactsKeys.length;
 
 function dateFactForIndex(index) {
   let key = dateFactsKeys[index % nfacts];

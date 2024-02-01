@@ -16,6 +16,14 @@ function document_loaded() {
   // let config = fb_.init('jht1493');
   console.log('?v=84 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
+  dstore_signIn();
+}
+
+let my = {};
+
+function my_init() {
+  // console.log('my_init');
+  //
   my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
   my.blackfacts_index = 0;
@@ -23,48 +31,9 @@ function document_loaded() {
   my.animTime = 7;
   my.nameDevice = 'device?v=84';
 
-  dstore_signIn();
-}
-
-let my = {};
-
-function my_init() {
-  console.log('my_init');
-  //
   my.isPortraitView = window.innerHeight > window.innerWidth;
-  if (my.isPortraitView) {
-    // PortraitView - no qrcode, show dashboard
-    //
-    id_message_pane.classList.add('hidden');
-    qrcode_hide();
-    {
-      let rects = id_blackfacts_num.getClientRects();
-      let rt = rects[0];
-      console.log('id_blackfacts_num rt', rt);
-      // let y = rt.y + rt.height;
-      // let y = 200;
-      // id_player.style.top = y + 'px';
-    }
-  } else {
-    // Landscape - show qrcode, hide dashboard
-    //
-    id_dashboard.classList.add('hidden');
-    {
-      // place qrcode image at top right
-      let x = window.innerWidth - id_qrcode.clientWidth;
-      let y = window.innerHeight - id_qrcode.clientHeight;
-      id_qrcode.style.left = x + 'px';
-      // id_qrcode.style.top = y + 'px';
-    }
-  }
-}
 
-function qrcode_hide() {
-  id_qrcode.classList.add('hidden');
-}
-
-function qrcode_show() {
-  id_qrcode.classList.remove('hidden');
+  ui_init();
 }
 
 function dstore_signIn() {
