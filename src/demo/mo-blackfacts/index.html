@@ -13,8 +13,7 @@
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="dateFacts.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css?v=84" />
-    <style>
-    </style>
+    <style></style>
   </head>
   <body>
     <div id="id_dashboard">
@@ -22,34 +21,38 @@
       <button id="id_button_previous">Previous</button>
       <button id="id_button_next">Next</button>
       <button id="id_button_random">Random</button>
-      
-      <br/>
-      
+
+      <br />
+
       <input type="checkbox" id="id_checkbox_play_next" name="play_next" />
       <label for="id_checkbox_play_next">Next</label>
 
       <input type="checkbox" id="id_checkbox_play_clip" name="play_clip" />
       <label for="id_checkbox_play_clip">Clip</label>
-      
+
       <input type="checkbox" id="id_checkbox_qrcode" name="qrcode" />
       <label for="id_checkbox_qrcode">QRCode</label>
 
       <span id="id_lapse_report"></span>
+      <br />
 
-      <h2 id="id_blackfacts_num"></h12>
+      <h2 id="id_blackfacts_num"></h2>
+      <div>
+        An experimental interactive multi-screen experience by
+        <a href="https://jht1493.net" target="jht">John Henry Thompson</a>
+        <br />
+        <br />
+      </div>
     </div>
 
     <div id="id_message_pane">
-      <h2 id="id_message_text"></h12>
+      <h2 id="id_message_text"></h2>
     </div>
-
-    <!-- very strange: h2 here kills divs that follow -->
-    <!-- <h2 id="id_blackfacts_num"></h12> -->
 
     <div id="id_player"></div>
     <div id="id_qrcode"><img src="../../qrcode/mo-blackfacts-qrcode.png" width="200px" /></div>
 
-    <div id="id_button_host"> </div>
+    <div id="id_button_host"></div>
   </body>
 
   <!-- <script type="module" src="https://molab-itp.github.io/p5moLibrary/src/lib/0/fb_config.js"></script> -->
