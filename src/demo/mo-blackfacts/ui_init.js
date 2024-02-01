@@ -39,7 +39,8 @@ function create_wide_view() {
 function create_index_buttons() {
   //
   // let button_host = window.id_button_host;
-  let button_host = id_dashboard;
+  // let button_host = id_dashboard;
+  let button_host = id_index_button_container;
   for (let index = 0; index < nfacts; index++) {
     let label = ('' + (index + 1)).padStart(3, '0');
     const elt = document.createElement('button');

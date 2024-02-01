@@ -9,6 +9,9 @@ id_button_random.addEventListener('click', random_action);
 id_checkbox_play_next.addEventListener('click', play_next_action);
 id_checkbox_play_clip.addEventListener('click', play_clip_action);
 id_checkbox_qrcode.addEventListener('click', qrcode_action);
+id_button_more.addEventListener('click', more_action);
+
+function more_action() {}
 
 function qrcode_action() {
   ui_log(my, 'qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
