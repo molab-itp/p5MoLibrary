@@ -13,9 +13,7 @@ id_button_more.addEventListener('click', more_action);
 id_button_nation_time.addEventListener('click', nation_time_action);
 
 function nation_time_action() {
-  let videoKey = '-UtKxghWlvY';
-  playlist = [videoKey];
-  execCommand();
+  window.location.href = '?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX';
 }
 
 function more_action() {

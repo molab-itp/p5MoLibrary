@@ -33,6 +33,10 @@ function animationFrame_callback(timeStamp) {
     }
     id_blackfacts_num.innerHTML = str;
     id_message_text.innerHTML = str;
+  } else if (params.title) {
+    let str = params.title;
+    id_blackfacts_num.innerHTML = str;
+    id_message_text.innerHTML = str;
   }
 }
 

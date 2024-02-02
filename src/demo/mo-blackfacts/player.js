@@ -53,15 +53,14 @@ function dateFactForIndex(index) {
 // play video given index into dateFacts
 //
 function execCommandIndex(index) {
+  if (params.playlist) {
+    console.log('execCommandIndex params.playlist', params.playlist);
+    return;
+  }
   if (!player || !player.cueVideoById) {
     console.log('execCommandIndex no player', player);
     return;
   }
-  // if (!my.isPortraitView) {
-  //   // In landscape view, we'll keep advancing
-  //   my.execRemoteTrigger = 1;
-  // }
-
   // flag having received index event
   my.execRemoteTrigger = 1;
 

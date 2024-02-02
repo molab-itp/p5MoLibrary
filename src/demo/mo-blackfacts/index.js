@@ -82,6 +82,10 @@ function mo_blackfacts_index_value(newValue) {
 }
 
 function update_blackfacts_num_ui() {
+  // url title param will be displayed in animationFrame_callback
+  if (params.title) {
+    return;
+  }
   let index = my.blackfacts_index;
   let entry = dateFactForIndex(index);
   //
