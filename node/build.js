@@ -16,7 +16,7 @@ for (let index = 0; index < process.argv.length; index++) {
   } else if (val == '--quiet') {
     set_quietFlag(1);
   } else if (!val.startsWith('/')) {
-    console.log('Unknow option', val);
+    console.log('Unknown option', val);
   }
 }
 
