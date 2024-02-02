@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-import { get_build_vers, build_ver_run, set_updateBuild } from './build_ver.js';
+import { get_build_vers, build_ver_run, set_updateBuild, set_quietFlag } from './build_ver.js';
 
 for (let index = 0; index < process.argv.length; index++) {
   // console.log(index, process.argv[index]);
@@ -13,6 +13,10 @@ for (let index = 0; index < process.argv.length; index++) {
     set_updateBuild(1);
   } else if (val == '--dev') {
     set_updateBuild(0);
+  } else if (val == '--quiet') {
+    set_quietFlag(1);
+  } else if (!val.startsWith('/')) {
+    console.log('Unknow option', val);
   }
 }
 

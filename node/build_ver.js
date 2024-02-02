@@ -9,9 +9,16 @@ let updateBuild = 1;
 // --prod --> 1
 // --dev  --> 0
 
+let quietFlag = 0;
+
 export function set_updateBuild(flag) {
-  console.log('set_updateBuild flag', flag);
+  // console.log('set_updateBuild flag', flag);
   updateBuild = flag;
+}
+
+export function set_quietFlag(flag) {
+  // console.log('set_quietFlag flag', flag);
+  quietFlag = flag;
 }
 
 export function get_build_vers(src_path, buildnum_path) {
@@ -29,11 +36,16 @@ export function get_build_vers(src_path, buildnum_path) {
   return { current, next };
 }
 
+function mlog(...args) {
+  if (quietFlag) return;
+  console.log(...args);
+}
+
 // build_ver_run(buildnum_path, build_ver, src_path, buildnum_files);
 
 export function build_ver_run(src_path, buildnum_path, build_ver, buildnum_files) {
   // buildnum_path = join(src_path, buildnum_path);
-  console.log('build_ver_run updateBuild', updateBuild);
+  mlog('build_ver_run updateBuild', updateBuild);
 
   // const from_str = '\\?v=1';
   const from_str = '\\?v=\\d+';
@@ -42,7 +54,7 @@ export function build_ver_run(src_path, buildnum_path, build_ver, buildnum_files
   const re = new RegExp(from_str, 'g');
   let nfiles = enum_files(src_path, buildnum_files);
   // console.log('nfiles', nfiles);
-  console.log('build_ver_run nfiles', nfiles.length);
+  mlog('build_ver_run nfiles', nfiles.length);
   let writeCount = 0;
   let skipCount = 0;
   for (let afile of nfiles) {
@@ -74,5 +86,5 @@ export function build_ver_run(src_path, buildnum_path, build_ver, buildnum_files
     writeSrcBuildFile(src_path, buildnum_path, build_ver.next + '');
     writeCount++;
   }
-  console.log('writeCount', writeCount, 'skipCount', skipCount, 'build_ver.next', build_ver.next);
+  mlog('writeCount', writeCount, 'skipCount', skipCount, 'build_ver.next', build_ver.next);
 }
