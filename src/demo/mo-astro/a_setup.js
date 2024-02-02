@@ -1,7 +1,7 @@
 //
 function a_setup() {
   //
-  my.version = '?v=91';
+  my.version = '?v=92';
   my.canvas = createCanvas(windowWidth, windowHeight - 90);
   // my.canvas.mousePressed(canvas_mousePressed);
   // my.canvas.mouseReleased(canvas_mouseReleased);
