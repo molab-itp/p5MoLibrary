@@ -26,7 +26,7 @@ rdest=$host:${rpath}
 # Create directory for upload
 ssh $host mkdir -p $rpath
 
-source=../docs
+source=../src
 # echo $verbose $delete $test
 echo -razO$verbose $excludes $delete $test
 echo "rsync from $source"
