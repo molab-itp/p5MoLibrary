@@ -2,41 +2,41 @@
 
 - a p5js Library for multi screen experiences - mobile devices paired with large screens
 
-  - [demo/Astronomical](demo/Astronomical?v=97)
-  - [demo/BlackFacts](demo/BlackFacts?v=97)
-  - [demo/DrawPoints](demo/DrawPoints?v=97)
-  - [demo/Heavenly3D](demo/Heavenly3D?v=97)
-  - [demo/mo-astro](demo/mo-astro?v=97)
-  - [demo/mo-blackfacts](demo/mo-blackfacts?v=97)
-  - [demo/mo-draw](demo/mo-draw?v=97)
-  - [demo/mo-pixel-grid](demo/mo-pixel-grid?v=97)
-  - [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=97)
+  - [demo/Astronomical](demo/Astronomical?v=98)
+  - [demo/BlackFacts](demo/BlackFacts?v=98)
+  - [demo/DrawPoints](demo/DrawPoints?v=98)
+  - [demo/Heavenly3D](demo/Heavenly3D?v=98)
+  - [demo/mo-astro](demo/mo-astro?v=98)
+  - [demo/mo-blackfacts](demo/mo-blackfacts?v=98)
+  - [demo/mo-draw](demo/mo-draw?v=98)
+  - [demo/mo-pixel-grid](demo/mo-pixel-grid?v=98)
+  - [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=98)
 
 - Play list
 
-  - [NationTime](demo/mo-blackfacts?v=97&playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX)
+  - [NationTime](demo/mo-blackfacts?v=98&playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX)
 
 - preliminary work
 
-  - [demo/js-image-viewer](demo/js-image-viewer?v=97)
-  - [demo/mo-gallery-1](demo/mo-gallery-1?v=97)
-  - [demo/mo-gallery-2](demo/mo-gallery-2?v=97)
-  - [demo/mo-storage-console](demo/mo-storage-console?v=97)
+  - [demo/js-image-viewer](demo/js-image-viewer?v=98)
+  - [demo/mo-gallery-1](demo/mo-gallery-1?v=98)
+  - [demo/mo-gallery-2](demo/mo-gallery-2?v=98)
+  - [demo/mo-storage-console](demo/mo-storage-console?v=98)
 
-# [github.io](https://molab-itp.github.io/p5moLibrary/src?v=97)
+# [github.io](https://molab-itp.github.io/p5moLibrary/src?v=98)
 
 - [Native Americans Exhibition Trailer](demo/BlackFacts?playlist=hpjNGTYvpxw)
 
 <!--
 
 - retired
-  - [demo/mo-astro-host-0](demo/mo-astro-host-0?v=97)
-  - [demo/mo-astro-host-1](demo/mo-astro-host-1?v=97)
-  - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=97)
-  - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=97)
+  - [demo/mo-astro-host-0](demo/mo-astro-host-0?v=98)
+  - [demo/mo-astro-host-1](demo/mo-astro-host-1?v=98)
+  - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=98)
+  - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=98)
 
-  - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=97)
-  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=97)
+  - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=98)
+  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=98)
 
 # https://www.youtube.com/watch?v=hpjNGTYvpxw
 # The Land Carries Our Ancestors: Contemporary Art by Native Americans Exhibition Trailer
