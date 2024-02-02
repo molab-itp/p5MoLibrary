@@ -30,4 +30,5 @@ bin/build.sh --prod
 git add .
 git commit -m "`cat src/gen/build_ver.txt`"
 git push
-
+echo
+echo "build `cat src/gen/build_ver.txt`"

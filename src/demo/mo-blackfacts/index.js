@@ -14,7 +14,7 @@ function document_loaded() {
 
   let config = fb_.init('jht9629');
   // let config = fb_.init('jht1493');
-  console.log('?v=104 config.projectId', config.projectId, 'configLabel', config.configLabel);
+  console.log('?v=105 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   dstore_signIn();
 }
@@ -29,7 +29,7 @@ function my_init() {
   my.blackfacts_index = 0;
   my.stepCount = 0;
   my.animTime = 7;
-  my.nameDevice = 'device?v=104';
+  my.nameDevice = 'device?v=105';
 
   my.isPortraitView = window.innerHeight > window.innerWidth;
 
