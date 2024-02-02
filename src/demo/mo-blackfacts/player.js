@@ -84,11 +84,11 @@ function execCommand() {
     next_action();
     return;
   }
-  if (my.playNext) {
-    console.log('execCommand my.playNext next_action');
-    next_action();
-    return;
-  }
+  // if (my.playNext) {
+  //   console.log('execCommand my.playNext next_action');
+  //   next_action();
+  //   return;
+  // }
   // Select next video from playList
   //
   videoKey = getVideoKey(playlist[playlistIndex]);

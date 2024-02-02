@@ -6,7 +6,7 @@ id_button_next.addEventListener('click', next_action);
 id_button_previous.addEventListener('click', previous_action);
 id_button_first.addEventListener('click', first_action);
 id_button_random.addEventListener('click', random_action);
-id_checkbox_play_next.addEventListener('click', play_next_action);
+// id_checkbox_play_next.addEventListener('click', play_next_action);
 id_checkbox_play_clip.addEventListener('click', play_clip_action);
 id_checkbox_qrcode.addEventListener('click', qrcode_action);
 id_button_more.addEventListener('click', more_action);
@@ -19,6 +19,9 @@ function nation_time_action() {
 function more_action() {
   id_index_button_container.classList.toggle('hidden');
   id_player.classList.toggle('hidden');
+  if (id_player.classList.contains('hidden')) {
+    document.body.style.overflowY = 'scroll';
+  }
 }
 
 function qrcode_action() {
@@ -37,13 +40,13 @@ function play_clip_action() {
   }
 }
 
-function play_next_action() {
-  ui_log(my, 'play_next_action id_checkbox_play_next.checked', id_checkbox_play_next.checked);
-  my.playNext = id_checkbox_play_next.checked;
-  if (my.playNext) {
-    next_action();
-  }
-}
+// function play_next_action() {
+//   ui_log(my, 'play_next_action id_checkbox_play_next.checked', id_checkbox_play_next.checked);
+//   my.playNext = id_checkbox_play_next.checked;
+//   if (my.playNext) {
+//     next_action();
+//   }
+// }
 
 function first_action() {
   ui_log(my, 'first_action');
