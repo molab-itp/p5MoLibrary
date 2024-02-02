@@ -14,7 +14,7 @@ function document_loaded() {
 
   let config = fb_.init('jht9629');
   // let config = fb_.init('jht1493');
-  console.log('?v=98 config.projectId', config.projectId, 'configLabel', config.configLabel);
+  console.log('?v=99 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   dstore_signIn();
 }
@@ -25,11 +25,11 @@ function my_init() {
   // console.log('my_init');
   //
   my.dstore_rootPath = 'm0-@r-@w-';
-  my.roomName = 'room1';
+  my.roomName = 'room0';
   my.blackfacts_index = 0;
   my.stepCount = 0;
   my.animTime = 7;
-  my.nameDevice = 'device?v=98';
+  my.nameDevice = 'device?v=99';
 
   my.isPortraitView = window.innerHeight > window.innerWidth;
 

@@ -71,9 +71,9 @@ function init(config) {
   return nconfig;
 }
 
-import { fstore } from './fb_fstore.js?v=98';
+import { fstore } from './fb_fstore.js?v=99';
 
-import { fbase } from './fb_fbase.js?v=98';
+import { fbase } from './fb_fbase.js?v=99';
 
 // export api for non-module script
 const fb_ = {
