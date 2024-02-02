@@ -2,7 +2,9 @@
 
 - a p5js Library for multi screen experiences - mobile devices paired with large screens
 
-# [github.io](https://molab-itp.github.io/p5moLibrary/src?v=106)
+# [deploy on github.io](https://molab-itp.github.io/p5moLibrary/src?v=111)
+
+# [repo](https://github.com/molab-itp/p5moLibrary)
 
 ```
 

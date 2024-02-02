@@ -14,21 +14,23 @@ cd ${0%/*}
 
 cd ..
 
+quiet=-q
+
 # start in in next, even number build
 # odd number build will be pushed to main with changes from next
 bin/build.sh --prod
-git add .
-git commit -m "`cat src/gen/build_ver.txt`"
-git push
+git add . 
+git commit $quiet -m "`cat src/gen/build_ver.txt`"
+git push $quiet
 # in main
-git checkout main
-git merge next
-git push
+git checkout main $quiet
+git merge next $quiet
+git push $quiet
 # in next
-git checkout next
+git checkout next $quiet
 bin/build.sh --prod
-git add .
-git commit -m "`cat src/gen/build_ver.txt`"
-git push
+git add . 
+git commit -m "`cat src/gen/build_ver.txt`" $quiet
+git push $quiet
 echo
 echo "build `cat src/gen/build_ver.txt`"
