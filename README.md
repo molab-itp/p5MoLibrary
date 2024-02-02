@@ -9,10 +9,12 @@
 ```
 
 # release to git pages
-# merge next branch in to main
-# odd number build will be pushed to main with
-# switch back to next branch, update to next even number
-
+#
+# merge branch next in to branch main
+# odd number build will be pushed to branch main with
+# switch back to branch next
+# update to next even number
+#
 bin/git-release.sh
 
 

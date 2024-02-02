@@ -16,8 +16,8 @@ cd ..
 
 quiet=--quiet
 
-# start in in next, even number build
-# odd number build will be pushed to main with changes from next
+# start in branch next, even number build
+# odd number build will be pushed to branch main with changes from next
 bin/build.sh --prod $quiet
 git add . 
 git commit $quiet -m "`cat src/gen/build_ver.txt`"
