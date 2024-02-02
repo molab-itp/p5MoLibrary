@@ -47,28 +47,37 @@ function play_next_action() {
 
 function first_action() {
   ui_log(my, 'first_action');
+  mark_user_action();
   let index = 0;
   dstore_blackfacts_update({ index });
 }
 
 function next_action() {
   ui_log(my, 'next_action');
+  mark_user_action();
   let index = (my.blackfacts_index + 1) % nfacts;
   dstore_blackfacts_update({ index });
 }
 
 function previous_action() {
   ui_log(my, 'previous_action');
+  mark_user_action();
   let index = (my.blackfacts_index - 1 + nfacts) % nfacts;
   dstore_blackfacts_update({ index });
 }
 
 function random_action() {
   ui_log(my, 'random_action');
+  mark_user_action();
   // my.blackfacts_index = int(random(0, nfacts));
   // my.blackfacts_index = Math.floor(Math.random() * nfacts);
   let index = Math.floor(Math.random() * nfacts);
   dstore_blackfacts_update({ index });
+}
+
+// clear params to allow actions from cloud
+function mark_user_action() {
+  params = {};
 }
 
 function stepAction() {

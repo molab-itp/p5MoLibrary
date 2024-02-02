@@ -10,7 +10,7 @@ let player = null;
 let playlistIndex = 0;
 
 // https://dev.blackfacts.com/kiosk?delay=2000&volume=50&playlist=today,451kA90ehvA
-const params = new Proxy(new URLSearchParams(window.location.search), {
+let params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 
