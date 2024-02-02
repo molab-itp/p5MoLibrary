@@ -14,7 +14,7 @@ cd ${0%/*}
 
 cd ..
 
-quiet=-q
+quiet=--quiet
 
 # start in in next, even number build
 # odd number build will be pushed to main with changes from next
