@@ -12,16 +12,19 @@ let dateFactsKeys = Object.keys(dateFacts).sort();
 let nfacts = dateFactsKeys.length;
 
 function dumpDateFacts() {
-  let ndata = {};
+  console.log('dumpDateFacts  nfacts', nfacts);
+  let str = '{';
   for (let index = 0; index < nfacts; index++) {
     let key = dateFactsKeys[index];
     let entry = dateFacts[key];
     entry.index = index;
-    ndata[key] = entry;
-    console.log('dumpDateFacts  dumpDateFacts', index, entry);
+    let ent = JSON.stringify(entry);
+    str += `"${key}": "${ent}",`;
+    console.log('dumpDateFacts index', index, entry);
   }
-  let ndateJSON = JSON.stringify(ndata, null, 2);
-  downloadToFile('dumpDateFacts ndateJSON', ndateJSON);
+  str += '}';
+  // let ndateJSON = JSON.stringify(ndata, null, 2);
+  downloadToFile('dumpDateFacts ndateJSON', str);
 }
 
 // https://stackoverflow.com/questions/3665115/how-to-create-a-file-in-memory-for-user-to-download-but-not-through-server
