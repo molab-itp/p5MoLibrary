@@ -2,6 +2,12 @@
 
 console.log('BlackFacts player.js');
 
+// https://developers.google.com/youtube/iframe_api_reference
+var tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/iframe_api';
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
 let dateFactsKeys = Object.keys(dateFacts).sort();
 let nfacts = dateFactsKeys.length;
 
@@ -53,6 +59,7 @@ function dateFactForIndex(index) {
 // play video given index into dateFacts
 //
 function execCommandIndex(index) {
+  // ignore cloud actions if playlist in url
   if (typeof params.playlist == 'string') {
     console.log('execCommandIndex params.playlist', params.playlist);
     return;
@@ -123,6 +130,9 @@ function setupVideo() {
   player = new YT.Player('id_player', {
     playerVars: {
       origin: location.origin,
+      cc_load_policy: params.cc ? 1 : 0, // Enable closed captions by default
+      cc_lang_pref: 'en',
+      autoplay: 1,
     },
     events: {
       onReady: function (event) {
@@ -136,21 +146,17 @@ function setupVideo() {
       },
       onStateChange: function (event) {
         let state = event.data;
-
         switch (state) {
           case -1:
             // console.log('YT.Player unstarted');
             break;
-
           case YT.PlayerState.ENDED:
             console.log('BlackFacts YT.PlayerState.ENDED ' + videoKey);
             execCommand();
             break;
-
           case YT.PlayerState.PAUSED:
             // console.log('YT.PlayerState.PAUSED ' + videoKey);
             break;
-
           case YT.PlayerState.PLAYING:
             //player.unMute();
             //player.setVolume(volume);
@@ -161,7 +167,6 @@ function setupVideo() {
           case YT.PlayerState.BUFFERING:
             // console.log('YT.PlayerState.BUFFERING ' + videoKey);
             break;
-
           case YT.PlayerState.CUED:
             // console.log('YT.PlayerState.CUED');
             player.playVideo();
@@ -170,7 +175,6 @@ function setupVideo() {
       },
       onError: function (event) {
         let errorNum = event.data;
-
         switch (errorNum) {
           case 2:
             console.log('YT.Player error:  The request contains an invalid parameter value.');
