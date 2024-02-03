@@ -60,7 +60,7 @@ function dateFactForIndex(index) {
 //
 function video_play_index(index) {
   // ignore cloud actions if playlist in url
-  if (typeof params.playlist == 'string') {
+  if (url_has_playlist()) {
     console.log('video_play_index params.playlist', params.playlist);
     return;
   }
@@ -86,14 +86,18 @@ function video_play_index(index) {
   player.cueVideoById(videoKey);
 }
 
+function url_has_playlist() {
+  return typeof params.playlist == 'string';
+}
+
 function player_ready() {
   return player && player.cueVideoById;
 }
 
 // called when video play ends
 function video_ended() {
-  // In landscape view, we'll keep advancing
-  if (my.execRemoteTrigger) {
+  // Advance to next video, maybe
+  if (my.execRemoteTrigger && !url_has_playlist()) {
     console.log('execCommand my.execRemoteTrigger next_action');
     next_action();
     return;
