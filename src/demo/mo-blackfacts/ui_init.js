@@ -63,7 +63,7 @@ function create_index_buttons() {
     elt.innerHTML = label;
     button_host.appendChild(elt);
     elt.addEventListener('click', function () {
-      toggle_more_panes();
+      toggle_365_panes();
       dstore_blackfacts_update({ index });
     });
   }

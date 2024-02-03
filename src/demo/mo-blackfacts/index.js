@@ -14,7 +14,7 @@ function document_loaded() {
 
   let config = fb_.init('jht9629');
   // let config = fb_.init('jht1493');
-  console.log('?v=137 config.projectId', config.projectId, 'configLabel', config.configLabel);
+  console.log('?v=138 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   dstore_signIn();
 }
@@ -29,7 +29,7 @@ function my_init() {
   my.blackfacts_index = 0;
   my.stepCount = 0;
   my.animTime = 7;
-  my.nameDevice = 'device?v=137';
+  my.nameDevice = 'device?v=138';
 
   my.isPortraitView = window.innerHeight > window.innerWidth;
 
@@ -95,9 +95,13 @@ function update_blackfacts_num_ui() {
     description = description.substring(0, periodIndex);
   }
   // console.log('mo_blackfacts_index_value description', description);
-  let str = '#' + (index + 1) + ' ' + description;
-  id_blackfacts_num.innerHTML = str;
-  id_message_text.innerHTML = str;
+  let msg = '#' + (index + 1) + ' ' + description;
+  show_message(msg);
+}
+
+function show_message(msg) {
+  id_blackfacts_num.innerHTML = msg;
+  id_message_text.innerHTML = id_blackfacts_num.innerHTML = msg;
 }
 
 function mo_blackfacts_qccode_value(newValue) {

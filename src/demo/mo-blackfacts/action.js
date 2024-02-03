@@ -9,12 +9,20 @@ id_button_random.addEventListener('click', random_action);
 // id_checkbox_play_next.addEventListener('click', play_next_action);
 id_checkbox_play_clip.addEventListener('click', play_clip_action);
 id_checkbox_qrcode.addEventListener('click', qrcode_action);
-id_button_more.addEventListener('click', more_action);
-id_button_nation_time.addEventListener('click', nation_time_action);
+
+id_button_show_365.addEventListener('click', show_365_action);
+id_button_library.addEventListener('click', library_action);
 
 id_button_play.addEventListener('click', play_action);
 id_button_pause.addEventListener('click', pause_action);
 id_button_rewind.addEventListener('click', rewind_action);
+
+id_button_resume.addEventListener('click', resume_action);
+
+function resume_action() {
+  // allow_cloud_actions();
+  window.location.reload();
+}
 
 function play_action() {
   hold_cloud_actions('Play');
@@ -31,18 +39,15 @@ function rewind_action() {
   player.seekTo(0);
 }
 
-function nation_time_action() {
-  window.location.href = '?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX';
+function library_action() {
+  window.location.href = '../..';
 }
 
-function more_action() {
-  toggle_more_panes();
-  // if (id_player.classList.contains('hidden')) {
-  //   document.body.style.overflowY = 'scroll';
-  // }
+function show_365_action() {
+  toggle_365_panes();
 }
 
-function toggle_more_panes() {
+function toggle_365_panes() {
   id_index_button_container.classList.toggle('hidden');
   id_player.classList.toggle('hidden');
 }

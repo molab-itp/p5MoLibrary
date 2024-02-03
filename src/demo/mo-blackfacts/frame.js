@@ -37,12 +37,10 @@ function animationFrame_callback(timeStamp) {
     if (my.stalled_report) {
       str += ' reload pending';
     }
-    id_blackfacts_num.innerHTML = str;
-    id_message_text.innerHTML = str;
+    show_message(str);
   } else if (params.title) {
     let str = params.title;
-    id_blackfacts_num.innerHTML = str;
-    id_message_text.innerHTML = str;
+    show_message(str);
   }
 }
 
