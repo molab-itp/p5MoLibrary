@@ -104,8 +104,11 @@ function allow_cloud_actions() {
 
 // set params to hold actions from cloud
 function hold_cloud_actions(title) {
-  console.log('stepAction ');
-  title += ' #' + (my.blackfacts_index + 1);
+  console.log('hold_cloud_actions ');
+  if (my.hold_index == null) {
+    my.hold_index = my.blackfacts_index;
+  }
+  title += ' #' + (my.hold_index + 1);
   params = { playlist: '', title };
 }
 

@@ -38,7 +38,7 @@ function downloadToFile(filename, text) {
   document.body.removeChild(element);
 }
 
-dumpDateFacts();
+// dumpDateFacts();
 
 let videoKey = null;
 let player = null;
