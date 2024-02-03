@@ -104,6 +104,7 @@ function allow_cloud_actions() {
 
 // set params to hold actions from cloud
 function hold_cloud_actions(title) {
+  title += ' #' + (my.blackfacts_index + 1);
   params = { playlist: '', title };
 }
 

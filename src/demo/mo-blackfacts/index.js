@@ -78,7 +78,7 @@ function mo_blackfacts_index_value(newValue) {
 
   update_blackfacts_num_ui();
 
-  execCommandIndex(my.blackfacts_index);
+  video_play_index(my.blackfacts_index);
 }
 
 function update_blackfacts_num_ui() {

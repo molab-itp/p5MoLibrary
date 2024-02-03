@@ -5,6 +5,12 @@ function setup_animationFrame() {
 function animationFrame_callback(timeStamp) {
   // console.log('step_animation timeStamp', timeStamp);
   window.requestAnimationFrame(animationFrame_callback);
+  if (my.video_play_index_pending && player_ready()) {
+    let index = my.video_play_index_pending;
+    my.video_play_index_pending = null;
+    video_play_index(index);
+    return;
+  }
   let timeSecs = timeStamp / 1000;
   if (my.blackfacts_player_inited) {
     record_startup_time(timeSecs);

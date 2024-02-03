@@ -58,14 +58,10 @@ function dateFactForIndex(index) {
 // called from mo_blackfacts_index_value
 // play video given index into dateFacts
 //
-function execCommandIndex(index) {
+function video_play_index(index) {
   // ignore cloud actions if playlist in url
   if (typeof params.playlist == 'string') {
-    console.log('execCommandIndex params.playlist', params.playlist);
-    return;
-  }
-  if (!player || !player.cueVideoById) {
-    console.log('execCommandIndex no player', player);
+    console.log('video_play_index params.playlist', params.playlist);
     return;
   }
   // flag having received index event
@@ -73,24 +69,39 @@ function execCommandIndex(index) {
 
   let entry = dateFactForIndex(index);
   let videoKey = entry.videoKey;
-  console.log('execCommandIndex index', index, 'entry', entry);
-  console.log('execCommandIndex videoKey', videoKey);
+  console.log('video_play_index index', index, 'entry', entry);
+  console.log('video_play_index videoKey', videoKey);
 
   // reset play list to selected video
   playlist = [videoKey];
   playlistIndex = 0;
 
+  if (!player_ready()) {
+    // if (!player || !player.cueVideoById) {
+    console.log('video_play_index no player', player);
+    my.video_play_index_pending = index;
+    return;
+  }
+
   player.cueVideoById(videoKey);
 }
 
+function player_ready() {
+  return player && player.cueVideoById;
+}
+
 // called when video play ends
-function execCommand() {
+function video_ended() {
   // In landscape view, we'll keep advancing
   if (my.execRemoteTrigger) {
     console.log('execCommand my.execRemoteTrigger next_action');
     next_action();
     return;
   }
+  execCommand();
+}
+
+function execCommand() {
   // if (my.playNext) {
   //   console.log('execCommand my.playNext next_action');
   //   next_action();
@@ -152,7 +163,7 @@ function setupVideo() {
             break;
           case YT.PlayerState.ENDED:
             console.log('BlackFacts YT.PlayerState.ENDED ' + videoKey);
-            execCommand();
+            video_ended();
             break;
           case YT.PlayerState.PAUSED:
             // console.log('YT.PlayerState.PAUSED ' + videoKey);
