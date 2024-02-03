@@ -54,7 +54,6 @@ function show_qrcode_top_right() {
 }
 
 function create_index_buttons() {
-  //
   // let button_host = window.id_button_host;
   // let button_host = id_dashboard;
   let button_host = id_index_button_container;
@@ -64,6 +63,7 @@ function create_index_buttons() {
     elt.innerHTML = label;
     button_host.appendChild(elt);
     elt.addEventListener('click', function () {
+      toggle_more_panes();
       dstore_blackfacts_update({ index });
     });
   }

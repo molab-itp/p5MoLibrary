@@ -36,11 +36,15 @@ function nation_time_action() {
 }
 
 function more_action() {
+  toggle_more_panes();
+  // if (id_player.classList.contains('hidden')) {
+  //   document.body.style.overflowY = 'scroll';
+  // }
+}
+
+function toggle_more_panes() {
   id_index_button_container.classList.toggle('hidden');
   id_player.classList.toggle('hidden');
-  if (id_player.classList.contains('hidden')) {
-    document.body.style.overflowY = 'scroll';
-  }
 }
 
 function qrcode_action() {
