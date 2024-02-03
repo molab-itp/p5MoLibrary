@@ -20,6 +20,7 @@
     - [Let America be America Again - video](https://molab-itp.github.io/p5moLibrary/src/demo/BlackFacts?playlist=CFNM8GB_Yp0)
     - [Let America be America Again - poets.org](https://poets.org/poem/let-america-be-america-again)
   - [NationTime - edit by Ali Santana](demo/mo-blackfacts?v=128&playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX)
+  - [2024 02 06 nyu mlk event](https://molab-itp.github.io/p5moLibrary/src/demo/BlackFacts?playlist=zbRz5xTaLYI)
 
 - dev console
 
