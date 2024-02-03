@@ -8,7 +8,7 @@
 
 ```
 
-# release to git pages
+# deploy to github pages
 #
 # update build number
 # merge branch next in to branch main

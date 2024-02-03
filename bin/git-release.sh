@@ -2,22 +2,16 @@
 cd ${0%/*}
 
 # Produce a release build
-# - starting in next branch
-# - increment build number
-# - commit and push
-# - switch to main
-# - merge from next
-# - commit and push
-# - switch back to next
-# - increment build number 
-# - commit and push
 
 cd ..
-
 quiet=--quiet
 
-# start in branch next, even number build
-# odd number build will be pushed to branch main with changes from next
+# deploy to github pages
+#
+# update build number
+# merge branch next in to branch main
+# switch back to branch next
+#
 bin/build.sh --prod $quiet
 git add . 
 git commit $quiet -m "`cat src/gen/build_ver.txt`"
