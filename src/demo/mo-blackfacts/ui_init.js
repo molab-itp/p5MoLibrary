@@ -1,5 +1,9 @@
 //
 function ui_init() {
+  if (params.qrcode) {
+    console.log('ui_init qrcode', params.qrcode);
+    id_qrcode_src.src = '../../qrcode/' + params.qrcode;
+  }
   if (my.isPortraitView) {
     create_tall_view();
   } else {
