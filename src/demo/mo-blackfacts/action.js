@@ -104,12 +104,13 @@ function allow_cloud_actions() {
 
 // set params to hold actions from cloud
 function hold_cloud_actions(title) {
+  console.log('stepAction ');
   title += ' #' + (my.blackfacts_index + 1);
   params = { playlist: '', title };
 }
 
 function stepAction() {
-  console.log('stepAction ');
+  // console.log('stepAction ');
   next_action();
   my.stepCount++;
 }

@@ -19,12 +19,12 @@ function dumpDateFacts() {
     let entry = dateFacts[key];
     entry.index = index;
     let ent = JSON.stringify(entry);
-    str += `"${key}": "${ent}",`;
-    console.log('dumpDateFacts index', index, entry);
+    str += `"${key}": ${ent},`;
+    // console.log('dumpDateFacts index', index, entry);
   }
   str += '}';
   // let ndateJSON = JSON.stringify(ndata, null, 2);
-  downloadToFile('dumpDateFacts ndateJSON', str);
+  downloadToFile('dumpDateFacts-ndateJSON', str);
 }
 
 // https://stackoverflow.com/questions/3665115/how-to-create-a-file-in-memory-for-user-to-download-but-not-through-server
