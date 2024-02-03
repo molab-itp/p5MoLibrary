@@ -53,7 +53,7 @@ function dateFactForIndex(index) {
 // play video given index into dateFacts
 //
 function execCommandIndex(index) {
-  if (params.playlist) {
+  if (typeof params.playlist == 'string') {
     console.log('execCommandIndex params.playlist', params.playlist);
     return;
   }

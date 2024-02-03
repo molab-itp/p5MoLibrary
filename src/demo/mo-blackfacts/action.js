@@ -12,6 +12,25 @@ id_checkbox_qrcode.addEventListener('click', qrcode_action);
 id_button_more.addEventListener('click', more_action);
 id_button_nation_time.addEventListener('click', nation_time_action);
 
+id_button_play.addEventListener('click', play_action);
+id_button_pause.addEventListener('click', pause_action);
+id_button_rewind.addEventListener('click', rewind_action);
+
+function play_action() {
+  hold_cloud_actions('Play');
+  player.playVideo();
+}
+
+function pause_action() {
+  hold_cloud_actions('Pause');
+  player.pauseVideo();
+}
+
+function rewind_action() {
+  hold_cloud_actions('Rewind');
+  player.seekTo(0);
+}
+
 function nation_time_action() {
   window.location.href = '?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX';
 }
@@ -50,28 +69,28 @@ function play_clip_action() {
 
 function first_action() {
   ui_log(my, 'first_action');
-  mark_user_action();
+  allow_cloud_actions();
   let index = 0;
   dstore_blackfacts_update({ index });
 }
 
 function next_action() {
   ui_log(my, 'next_action');
-  mark_user_action();
+  allow_cloud_actions();
   let index = (my.blackfacts_index + 1) % nfacts;
   dstore_blackfacts_update({ index });
 }
 
 function previous_action() {
   ui_log(my, 'previous_action');
-  mark_user_action();
+  allow_cloud_actions();
   let index = (my.blackfacts_index - 1 + nfacts) % nfacts;
   dstore_blackfacts_update({ index });
 }
 
 function random_action() {
   ui_log(my, 'random_action');
-  mark_user_action();
+  allow_cloud_actions();
   // my.blackfacts_index = int(random(0, nfacts));
   // my.blackfacts_index = Math.floor(Math.random() * nfacts);
   let index = Math.floor(Math.random() * nfacts);
@@ -79,8 +98,13 @@ function random_action() {
 }
 
 // clear params to allow actions from cloud
-function mark_user_action() {
+function allow_cloud_actions() {
   params = {};
+}
+
+// set params to hold actions from cloud
+function hold_cloud_actions(title) {
+  params = { playlist: '', title };
 }
 
 function stepAction() {
