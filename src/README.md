@@ -19,7 +19,7 @@
   - [Langston Hughes ](demo/BlackFacts?playlist=XzI3huqpCi4)
     - [Let America be America Again - video](demo/mo-blackfacts?playlist=CFNM8GB_Yp0&title=%E2%98%85)
     - [Let America be America Again - poets.org](https://poets.org/poem/let-america-be-america-again)
-  - [NationTime - edit by Ali Santana](demo/mo-blackfacts?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX)
+  - [NationTime - edit by Ali Santana](demo/mo-blackfacts?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png)
   - [2024-02-06-nyu-mlk-event](demo/mo-blackfacts?playlist=zbRz5xTaLYI&qrcode=annoucement-01.png&title=2024-02-06-nyu-mlk-event)
   - [Sonia Sanchez @ NMAAHC - Furious Flower](demo/mo-blackfacts?playlist=FNLp8e-cfgk&title=Sonia%20Sanchez)
 
