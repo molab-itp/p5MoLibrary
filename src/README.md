@@ -2,15 +2,15 @@
 
 - a p5js Library for multi screen experiences - mobile devices paired with large screens
 
-  - [demo/Astronomical](demo/Astronomical?v=143)
-  - [demo/BlackFacts](demo/BlackFacts?v=143)
-  - [demo/DrawPoints](demo/DrawPoints?v=143)
-  - [demo/Heavenly3D](demo/Heavenly3D?v=143)
-  - [demo/mo-astro](demo/mo-astro?v=143)
-  - [demo/mo-blackfacts](demo/mo-blackfacts?v=143)
-  - [demo/mo-draw](demo/mo-draw?v=143)
-  - [demo/mo-pixel-grid](demo/mo-pixel-grid?v=143)
-  - [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=143)
+  - [demo/Astronomical](demo/Astronomical?v=144)
+  - [demo/BlackFacts](demo/BlackFacts?v=144)
+  - [demo/DrawPoints](demo/DrawPoints?v=144)
+  - [demo/Heavenly3D](demo/Heavenly3D?v=144)
+  - [demo/mo-astro](demo/mo-astro?v=144)
+  - [demo/mo-blackfacts](demo/mo-blackfacts?v=144)
+  - [demo/mo-draw](demo/mo-draw?v=144)
+  - [demo/mo-pixel-grid](demo/mo-pixel-grid?v=144)
+  - [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=144)
 
 - play list
 
@@ -23,28 +23,28 @@
   - [2024-02-06-nyu-mlk-event](demo/mo-blackfacts?playlist=zbRz5xTaLYI&qrcode=annoucement-01.png&title=2024-02-06-nyu-mlk-event)
   - [Sonia Sanchez @ NMAAHC - Furious Flower](demo/mo-blackfacts?playlist=FNLp8e-cfgk&title=Sonia%20Sanchez)
   - [NationTime - edit by Ali Santana](demo/mo-blackfacts?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png)
-  - [MEET THE ARTIST - JULIAN ADON ALEXANDER](demo/mo-blackfacts?playlist=wk0La_2igws&title=MEET%20THE%20ARTIST%20-%20JULIAN%20ADON%20ALEXANDER&qrcode=JULIAN.png)
+  - [MEET THE ARTIST - JULIAN ADON ALEXANDER](demo/mo-blackfacts?playlist=wk0La_2igws&title=MEET%20THE%20ARTIST%20-%20JULIAN%20ADON%20ALEXANDE%20-%20What%20it%20is&qrcode=JULIAN.png)
   - [Weapons of White Destruction - TJ](demo/mo-blackfacts?playlist=ob8YQPGJiHY&title=Weapons%20of%20White%20Destruction%20-%20TJ&&qrcode=TJ.png)
 
 - dev console
 
-  - [demo/js-image-viewer](demo/js-image-viewer?v=143)
-  - [demo/mo-gallery-1](demo/mo-gallery-1?v=143)
-  - [demo/mo-gallery-2](demo/mo-gallery-2?v=143)
-  - [demo/mo-storage-console](demo/mo-storage-console?v=143)
+  - [demo/js-image-viewer](demo/js-image-viewer?v=144)
+  - [demo/mo-gallery-1](demo/mo-gallery-1?v=144)
+  - [demo/mo-gallery-2](demo/mo-gallery-2?v=144)
+  - [demo/mo-storage-console](demo/mo-storage-console?v=144)
 
-# [github.io](https://molab-itp.github.io/p5moLibrary/src?v=143)
+# [github.io](https://molab-itp.github.io/p5moLibrary/src?v=144)
 
 <!--
 
 - retired
-  - [demo/mo-astro-host-0](demo/mo-astro-host-0?v=143)
-  - [demo/mo-astro-host-1](demo/mo-astro-host-1?v=143)
-  - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=143)
-  - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=143)
+  - [demo/mo-astro-host-0](demo/mo-astro-host-0?v=144)
+  - [demo/mo-astro-host-1](demo/mo-astro-host-1?v=144)
+  - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=144)
+  - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=144)
 
-  - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=143)
-  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=143)
+  - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=144)
+  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=144)
 
 # https://www.youtube.com/watch?v=hpjNGTYvpxw
 # The Land Carries Our Ancestors: Contemporary Art by Native Americans Exhibition Trailer
