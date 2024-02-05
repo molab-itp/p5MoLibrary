@@ -24,6 +24,7 @@
   - [Sonia Sanchez @ NMAAHC - Furious Flower](demo/mo-blackfacts?playlist=FNLp8e-cfgk&title=Sonia%20Sanchez)
   - [NationTime - edit by Ali Santana](demo/mo-blackfacts?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png)
   - [MEET THE ARTIST - JULIAN ADON ALEXANDER](demo/mo-blackfacts?playlist=wk0La_2igws&title=MEET%20THE%20ARTI%20T%20-%20%20ULI%20N%20ADON%20ALEXANDER&&qrcode=JULIAN.png)
+  - [Weapons of White Destruction | TJ](demo/mo-blackfacts?playlist=ob8YQPGJiHY&title=Weapons%20of%20White%20Destruction%20-%20TJ&&qrcode=TJ.png)
 
 - dev console
 
