@@ -20,11 +20,16 @@
     - [Let America be America Again - video](demo/mo-blackfacts?playlist=CFNM8GB_Yp0&title=%E2%98%85)
     - [Let America be America Again - poets.org](https://poets.org/poem/let-america-be-america-again)
   - [NationTime - edit by Ali Santana](demo/mo-blackfacts?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png)
-  - [2024-02-06-nyu-mlk-event](demo/mo-blackfacts?playlist=zbRz5xTaLYI&qrcode=annoucement-01.png&title=2024-02-06-nyu-mlk-event)
   - [Sonia Sanchez @ NMAAHC - Furious Flower](demo/mo-blackfacts?playlist=FNLp8e-cfgk&title=Sonia%20Sanchez)
   - [NationTime - edit by Ali Santana](demo/mo-blackfacts?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png)
   - [MEET THE ARTIST - JULIAN ADON ALEXANDER](demo/mo-blackfacts?playlist=wk0La_2igws&title=MEET%20THE%20ARTIST%20-%20JULIAN%20ADON%20ALEXANDE%20-%20What%20it%20is&qrcode=JULIAN.png)
-  - [Weapons of White Destruction - TJ](demo/mo-blackfacts?playlist=ob8YQPGJiHY&title=Weapons%20of%20White%20Destruction%20-%20TJ&&qrcode=TJ.png)
+
+  - [2024-02-07-nyu-mlk-event](demo/mo-blackfacts?playlist=lG758MniLYg&qrcode=annoucement-01.png&title=2024-02-07-nyu-mlk-event)
+
+- retired
+
+  - [2024-02-06-nyu-mlk-event](demo/mo-blackfacts?playlist=zbRz5xTaLYI&qrcode=annoucement-01.png&title=2024-02-06-nyu-mlk-event)
+  <!-- - [Weapons of White Destruction - TJ](demo/mo-blackfacts?playlist=ob8YQPGJiHY&title=Weapons%20of%20White%20Destruction%20-%20TJ&&qrcode=TJ.png) -->
 
 - dev console
 
