@@ -1,7 +1,7 @@
 //
 function my_setup() {
   // updated to verify change on mobile
-  my.version = '?v=148';
+  my.version = '?v=149';
   // Aspect ratio of video capture
   my.vwidth = 480;
   my.vheight = 640;
