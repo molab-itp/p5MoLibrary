@@ -33,6 +33,9 @@ function my_init() {
 
   my.isPortraitView = window.innerHeight > window.innerWidth;
 
+  my.idevice = params.idevice;
+  console.log('my_init my.idevice', my.idevice);
+
   ui_init();
 }
 
@@ -75,11 +78,30 @@ function mo_blackfacts_key_value(key, value) {
   }
 }
 
+// Check for matching update to idevice
 function mo_blackfacts_device_value(newValue) {
-  console.log('mo_blackfacts_device_value newValue', newValue);
+  console.log('mo_blackfacts_device_value my.idevice', my.idevice, 'newValue', newValue);
+  if (!my.idevice) return;
+  for (let prop in newValue) {
+    let item = newValue[prop];
+    if (item.idevice !== undefined && item.idevice == my.idevice) {
+      console.log('mo_blackfacts_device_value match my.idevice', my.idevice);
+      let index = item.index;
+      if (index != null) {
+        console.log('mo_blackfacts_device_value index', index);
+        update_blackfacts_index(index);
+      }
+    }
+  }
 }
 
 function mo_blackfacts_index_value(newValue) {
+  if (!my.idevice) {
+    update_blackfacts_index(newValue);
+  }
+}
+
+function update_blackfacts_index(newValue) {
   // console.log('mo_blackfacts_index_value newValue', newValue);
   my.blackfacts_index = newValue;
 

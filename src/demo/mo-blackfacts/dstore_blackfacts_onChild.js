@@ -36,6 +36,7 @@ function dstore_blackfacts_onChild({ mo_blackfacts_key_value }) {
 
 //  props { index, qrcode, startup_time }
 function dstore_blackfacts_update(props, deviceProps) {
+  ui_log(my, 'dstore_blackfacts_update props', props, 'deviceProps', deviceProps);
   // ui_log(my, 'dstore_blackfacts_update my.uid', my.uid);
   if (!my.uid) return;
 
@@ -53,14 +54,14 @@ function dstore_blackfacts_update(props, deviceProps) {
   for (let prop in deviceProps) {
     let value = deviceProps[prop];
     let dpath = `device/${my.uid}/${prop}`;
-    updates = { [dpath]: value };
+    updates[dpath] = value;
   }
 
   for (let prop in props) {
     updates[prop] = props[prop];
   }
 
-  // ui_log(my, 'dstore_blackfacts_update updates', updates);
+  ui_log(my, 'dstore_blackfacts_update updates', updates);
 
   update(refPath, updates);
 
