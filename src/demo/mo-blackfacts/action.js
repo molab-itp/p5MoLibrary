@@ -1,6 +1,6 @@
 //
 
-console.log('BlackFacts action.js');
+// console.log('BlackFacts action.js');
 
 id_button_next.addEventListener('click', next_action);
 id_button_previous.addEventListener('click', previous_action);
@@ -77,31 +77,29 @@ function play_clip_action() {
 // }
 
 function first_action() {
-  ui_log(my, 'first_action');
+  // ui_log(my, 'first_action');
   allow_cloud_actions();
   let index = 0;
   dstore_blackfacts_update({ index });
 }
 
 function next_action() {
-  ui_log(my, 'next_action');
+  // ui_log(my, 'next_action');
   allow_cloud_actions();
   let index = (my.blackfacts_index + 1) % nfacts;
   dstore_blackfacts_update({ index });
 }
 
 function previous_action() {
-  ui_log(my, 'previous_action');
+  // ui_log(my, 'previous_action');
   allow_cloud_actions();
   let index = (my.blackfacts_index - 1 + nfacts) % nfacts;
   dstore_blackfacts_update({ index });
 }
 
 function random_action() {
-  ui_log(my, 'random_action');
+  // ui_log(my, 'random_action');
   allow_cloud_actions();
-  // my.blackfacts_index = int(random(0, nfacts));
-  // my.blackfacts_index = Math.floor(Math.random() * nfacts);
   let index = Math.floor(Math.random() * nfacts);
   dstore_blackfacts_update({ index });
 }

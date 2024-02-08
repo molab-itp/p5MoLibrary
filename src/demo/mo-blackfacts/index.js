@@ -1,14 +1,14 @@
 //
 
-console.log('BlackFacts index.js');
+// console.log('BlackFacts index.js');
 
 // 2024-01-09 jht: page sometimes needs several reloads to show video
 
 document.addEventListener('DOMContentLoaded', document_loaded);
-console.log('addEventListener document_loaded');
+// console.log('addEventListener document_loaded');
 function document_loaded() {
   //
-  console.log('document_loaded');
+  // console.log('document_loaded');
 
   my_init();
 
@@ -25,7 +25,7 @@ function my_init() {
   // console.log('my_init');
   //
   my.dstore_rootPath = 'm0-@r-@w-';
-  my.roomName = 'room0';
+  my.roomName = 'room1';
   my.blackfacts_index = 0;
   my.stepCount = 0;
   my.animTime = 7;
@@ -41,7 +41,7 @@ function dstore_signIn() {
   signInAnonymously(auth)
     .then(() => {
       my.uid = auth.currentUser.uid;
-      ui_log(my, 'dstore_init uid', my.uid);
+      ui_log(my, 'dstore_init roomName', my.roomName, 'uid', my.uid);
 
       dstore_app_init();
     })
@@ -69,11 +69,18 @@ function mo_blackfacts_key_value(key, value) {
     case 'qrcode':
       mo_blackfacts_qccode_value(value);
       break;
+    case 'device':
+      mo_blackfacts_device_value(value);
+      break;
   }
 }
 
+function mo_blackfacts_device_value(newValue) {
+  console.log('mo_blackfacts_device_value newValue', newValue);
+}
+
 function mo_blackfacts_index_value(newValue) {
-  console.log('mo_blackfacts_index_value newValue', newValue);
+  // console.log('mo_blackfacts_index_value newValue', newValue);
   my.blackfacts_index = newValue;
 
   update_blackfacts_num_ui();
@@ -105,7 +112,7 @@ function show_message(msg) {
 }
 
 function mo_blackfacts_qccode_value(newValue) {
-  console.log('mo_blackfacts_qccode_value newValue', newValue);
+  // console.log('mo_blackfacts_qccode_value newValue', newValue);
   my.blackfacts_qrcode = newValue;
 }
 

@@ -23,7 +23,7 @@ function dstore_blackfacts_onChild({ mo_blackfacts_key_value }) {
     let key = data.key;
     let value = data.val();
     // ui_log(my, msg, key, 'n=', Object.keys(val).length);
-    ui_log(my, msg, 'key', key, 'value', value);
+    // ui_log(my, msg, 'key', key, 'value', value);
     if (remove) {
       return;
     }
@@ -36,8 +36,7 @@ function dstore_blackfacts_onChild({ mo_blackfacts_key_value }) {
 
 //  props { index, qrcode, startup_time }
 function dstore_blackfacts_update(props, deviceProps) {
-  // console.log('dstore_blackfacts_update my.uid', my.uid);
-  ui_log(my, 'dstore_blackfacts_update my.uid', my.uid);
+  // ui_log(my, 'dstore_blackfacts_update my.uid', my.uid);
   if (!my.uid) return;
 
   let { database, ref, update, increment } = fb_.fbase;
@@ -48,9 +47,6 @@ function dstore_blackfacts_update(props, deviceProps) {
   if (deviceProps == undefined) {
     deviceProps = { count: increment(1) };
   }
-  // let count = increment(1);
-  // let dpath = `device/${my.uid}/count`;
-  // let updates = { [dpath]: count };
 
   let updates = {};
 
@@ -64,7 +60,7 @@ function dstore_blackfacts_update(props, deviceProps) {
     updates[prop] = props[prop];
   }
 
-  ui_log(my, 'dstore_blackfacts_update updates', updates);
+  // ui_log(my, 'dstore_blackfacts_update updates', updates);
 
   update(refPath, updates);
 

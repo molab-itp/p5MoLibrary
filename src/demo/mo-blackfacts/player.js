@@ -1,6 +1,6 @@
 'use strict';
 
-console.log('BlackFacts player.js');
+// console.log('BlackFacts player.js');
 
 // https://developers.google.com/youtube/iframe_api_reference
 var tag = document.createElement('script');
@@ -12,7 +12,7 @@ let dateFactsKeys = Object.keys(dateFacts).sort();
 let nfacts = dateFactsKeys.length;
 
 function dumpDateFacts() {
-  console.log('dumpDateFacts  nfacts', nfacts);
+  // console.log('dumpDateFacts  nfacts', nfacts);
   let str = '{';
   for (let index = 0; index < nfacts; index++) {
     let key = dateFactsKeys[index];
@@ -56,14 +56,14 @@ let volume = parseInt(params.volume || '0', 10);
 //document.documentElement.requestFullscreen();
 
 function onYouTubeIframeAPIReady() {
-  console.log('BlackFacts onYouTubeIframeAPIReady player', player);
+  // console.log('BlackFacts onYouTubeIframeAPIReady player', player);
   if (!player) {
     setupVideo();
   }
 }
 
 function onYouTubePlayerAPIReady() {
-  console.log('BlackFacts onYouTubePlayerAPIReady player', player);
+  // console.log('BlackFacts onYouTubePlayerAPIReady player', player);
   if (!player) {
     setupVideo();
   }
@@ -90,7 +90,7 @@ function dateFactForIndex(index) {
 function video_play_index(index) {
   // ignore cloud actions if playlist in url
   if (url_has_playlist()) {
-    console.log('video_play_index params.playlist', params.playlist);
+    // console.log('video_play_index params.playlist', params.playlist);
     return;
   }
   // flag having received index event
@@ -98,16 +98,15 @@ function video_play_index(index) {
 
   let entry = dateFactForIndex(index);
   let videoKey = entry.videoKey;
-  console.log('video_play_index index', index, 'entry', entry);
-  console.log('video_play_index videoKey', videoKey);
+  // console.log('video_play_index index', index, 'entry', entry);
+  // console.log('video_play_index videoKey', videoKey);
 
   // reset play list to selected video
   playlist = [videoKey];
   playlistIndex = 0;
 
   if (!player_ready()) {
-    // if (!player || !player.cueVideoById) {
-    console.log('video_play_index no player', player);
+    // console.log('video_play_index no player', player);
     my.video_play_index_pending = index;
     return;
   }
@@ -143,10 +142,10 @@ function execCommand() {
   // Select next video from playList
   //
   videoKey = getVideoKey(playlist[playlistIndex]);
-  console.log('About to play video ' + videoKey);
+  // console.log('About to play video ' + videoKey);
   player.cueVideoById(videoKey);
   playlistIndex = (playlistIndex + 1) % playlist.length;
-  console.log('Incremented playlistIndex to: ' + playlistIndex);
+  // console.log('Incremented playlistIndex to: ' + playlistIndex);
 }
 
 function getVideoKey(playlistEntry) {
@@ -169,7 +168,7 @@ function getDateVideoKey(date) {
 }
 
 function setupVideo() {
-  console.log('BlackFacts setupVideo creating YTPlayer');
+  // console.log('BlackFacts setupVideo creating YTPlayer');
   my.blackfacts_player_inited = 1;
   player = new YT.Player('id_player', {
     playerVars: {
@@ -180,7 +179,7 @@ function setupVideo() {
     },
     events: {
       onReady: function (event) {
-        console.log('BlackFacts YTPlayer ready');
+        // console.log('BlackFacts YTPlayer ready');
         // The player play method cueVideoById just became available.
         //player.unMute();
         //player.setVolume(volume);
@@ -195,7 +194,7 @@ function setupVideo() {
             // console.log('YT.Player unstarted');
             break;
           case YT.PlayerState.ENDED:
-            console.log('BlackFacts YT.PlayerState.ENDED ' + videoKey);
+            // console.log('BlackFacts YT.PlayerState.ENDED ' + videoKey);
             video_ended();
             break;
           case YT.PlayerState.PAUSED:
