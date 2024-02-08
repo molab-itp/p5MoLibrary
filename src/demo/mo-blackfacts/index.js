@@ -25,7 +25,7 @@ function my_init() {
   // console.log('my_init');
   //
   my.dstore_rootPath = 'm0-@r-@w-';
-  my.roomName = 'room1';
+  my.roomName = 'room0';
   my.blackfacts_index = 0;
   my.stepCount = 0;
   my.animTime = 7;
