@@ -80,7 +80,7 @@ function mo_blackfacts_key_value(key, value) {
 
 // Check for matching update to idevice
 function mo_blackfacts_device_value(newValue) {
-  console.log('mo_blackfacts_device_value my.idevice', my.idevice, 'newValue', newValue);
+  // console.log('mo_blackfacts_device_value my.idevice', my.idevice, 'newValue', newValue);
   if (!my.idevice) return;
   for (let prop in newValue) {
     let item = newValue[prop];
