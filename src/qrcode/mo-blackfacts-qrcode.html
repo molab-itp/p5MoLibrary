@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script>
-      let ref = '../demo/mo-blackfacts';
-      //location.replace(ref);
-    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>mo-blackfacts ?v=147</title>
@@ -14,8 +10,14 @@
       <h1>Welcome to mo-blackfacts ?v=147</h1>
       By entering this site you agree to have anonymous user data stored
       <h2>
-        <a href="../demo/mo-blackfacts?v=147">Enter mo-blackfacts </a>
+        <a href="../demo/mo-blackfacts/index.html?v=147" id="id_link">Enter mo-blackfacts </a>
       </h2>
     </div>
+
+    <script>
+      if (window.location.search) {
+        id_link.href += '&' + window.location.search.substring(1);
+      }
+    </script>
   </body>
 </html>
