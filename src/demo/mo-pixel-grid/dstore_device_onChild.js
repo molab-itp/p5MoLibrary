@@ -20,7 +20,7 @@ function dstore_device_onChild() {
   function receivedDeviceKey(msg, data, remove) {
     let key = data.key;
     let val = data.val();
-    // ui_log(my, msg, key, 'n=', Object.keys(val).length);
+    ui_log(my, msg, key, 'n=', Object.keys(val).length);
     if (remove) {
       if (my.stored_devices) {
         delete my.stored_devices[key];
@@ -28,11 +28,11 @@ function dstore_device_onChild() {
       }
       return;
     }
-    dstore_fetch_device(key, val);
+    dstore_device_fetch(key, val);
   }
 }
 
-function dstore_fetch_device(uid, val) {
+function dstore_device_fetch(uid, val) {
   if (!my.stored_devices) {
     my.stored_devices = {};
   }
@@ -43,6 +43,7 @@ function dstore_fetch_device(uid, val) {
     let index = Object.keys(my.stored_devices).length;
     let layer;
     let crossLayer;
+    // !!@ move to dstore_pixchip
     // in p5js allocate graphics layers
     if (window.createGraphics && my.vwidth) {
       layer = createGraphics(my.vwidth, my.vheight);
@@ -78,4 +79,23 @@ function dstore_device_remove() {
       // The write failed...
       ui_log(my, 'dstore_device_remove error', error);
     });
+}
+
+// --
+
+function dstore_device_summary() {
+  let arr = Object.values(my.stored_devices).sort((item1, item2) => {
+    let date1 = item1.serverValues.date_s;
+    let date2 = item2.serverValues.date_s;
+    return date1.localeCompare(date2);
+  });
+  for (let item of arr) {
+    let { date_s, visit_count, update_count, userAgent } = item.serverValues;
+    userAgent = userAgent.substring(0, 80);
+    console.log('date_s', date_s, 'visit_count', visit_count, 'update_count', update_count);
+    console.log(userAgent);
+    // console.log('');
+  }
+  // console.log('dstore_device_summary', arr);
+  console.log('dstore_device_summary n', arr.length);
 }

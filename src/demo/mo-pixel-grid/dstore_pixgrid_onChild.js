@@ -28,7 +28,7 @@ function dstore_pixgrid_onChild() {
     let key = data.key;
     let val = data.val();
     ui_log(my, msg, key, 'n=', val.length);
-    let device = dstore_fetch_device(key);
+    let device = dstore_device_fetch(key);
     if (remove) {
       delete device.pixgrids;
       return;

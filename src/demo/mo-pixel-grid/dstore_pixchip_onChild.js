@@ -31,7 +31,7 @@ function dstore_pixchip_onChild() {
     ui_log(my, msg, key, 'n=', val.length);
 
     // console.log('dstore_pixchip_onChild key, val', key, val);
-    let device = dstore_fetch_device(key);
+    let device = dstore_device_fetch(key);
     if (remove) {
       delete device.pixchips;
       return;
