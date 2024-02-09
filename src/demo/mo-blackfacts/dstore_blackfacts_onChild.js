@@ -66,6 +66,6 @@ function dstore_blackfacts_update(props, ideviceProps) {
   ui_log(my, 'dstore_blackfacts_update updates', updates);
 
   update(refPath, updates);
-
+  ``;
   dstore_device_update();
 }
