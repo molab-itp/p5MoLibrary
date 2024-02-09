@@ -14,7 +14,7 @@ function document_loaded() {
 
   let config = fb_.init('jht9629');
   // let config = fb_.init('jht1493');
-  console.log('?v=155 config.projectId', config.projectId, 'configLabel', config.configLabel);
+  console.log('?v=156 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   dstore_signIn();
 }
@@ -29,14 +29,14 @@ function my_init() {
   my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
-  my.nameDevice = 'device?v=155';
+  my.nameDevice = 'device?v=156';
 
   my.isPortraitView = window.innerHeight > window.innerWidth;
 
   my.idevice = params.idevice;
   console.log('my_init my.idevice', my.idevice);
   if (my.idevice) {
-    my.group = 'g' + my.idevice;
+    my.group = 's' + my.idevice;
   }
   if (!my.group) {
     my.group = params.group;
