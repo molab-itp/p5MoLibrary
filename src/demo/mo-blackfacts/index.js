@@ -26,17 +26,17 @@ function my_init() {
   //
   my.dstore_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
-  my.blackfacts_index = 0;
+  my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
   my.nameDevice = 'device?v=150';
 
   my.isPortraitView = window.innerHeight > window.innerWidth;
 
-  my.idevice = params.idevice;
-  console.log('my_init my.idevice', my.idevice);
-  if (my.idevice) {
-    id_title.innerHTML += ' (' + my.idevice + ')';
+  my.group = params.group;
+  console.log('my_init my.group', my.group);
+  if (my.group) {
+    id_title.innerHTML += ' (' + my.group + ')';
   }
   if (params.room) {
     my.roomName = params.room;
@@ -81,31 +81,33 @@ function mo_blackfacts_key_value(key, value) {
     case 'device':
       mo_blackfacts_device_value(value);
       break;
-    case 'idevice':
-      mo_blackfacts_idevice_value(value);
+    case 'group':
+      mo_blackfacts_group_value(value);
       break;
   }
 }
 
-function mo_blackfacts_idevice_value(newValue) {
-  console.log('mo_blackfacts_idevice_value my.idevice', my.idevice, 'newValue', newValue);
-  let item = newValue[my.idevice - 1];
-  console.log('mo_blackfacts_idevice_value item', item);
-  let index = item.index;
-  if (index != null && index != my.blackfacts_index) {
-    update_blackfacts_index(index);
+function mo_blackfacts_group_value(newValue) {
+  console.log('mo_blackfacts_group_value my.group', my.group, 'newValue', newValue);
+  let item = newValue[my.group];
+  console.log('mo_blackfacts_group_value item', item);
+  if (item) {
+    let index = item.index;
+    if (index != null && index != my.blackfacts_index) {
+      update_blackfacts_index(index);
+    }
   }
 }
 
-// Check for matching update to idevice
+// Check for matching update to group
 function mo_blackfacts_device_value(newValue) {
-  // console.log('mo_blackfacts_device_value my.idevice', my.idevice, 'newValue', newValue);
-  // if (!my.idevice) return;
+  // console.log('mo_blackfacts_device_value my.group', my.group, 'newValue', newValue);
+  // if (!my.group) return;
   // let index;
   // for (let prop in newValue) {
   //   let item = newValue[prop];
-  //   if (item.idevice !== undefined && item.idevice == my.idevice) {
-  //     console.log('mo_blackfacts_device_value match my.idevice', my.idevice, 'prop', prop);
+  //   if (item.group !== undefined && item.group == my.group) {
+  //     console.log('mo_blackfacts_device_value match my.group', my.group, 'prop', prop);
   //     index = item.index;
   //   }
   // }
@@ -116,7 +118,7 @@ function mo_blackfacts_device_value(newValue) {
 }
 
 function mo_blackfacts_index_value(newValue) {
-  if (!my.idevice) {
+  if (!my.group) {
     update_blackfacts_index(newValue);
   } else {
     console.log('mo_blackfacts_index_value !!@ Skipping newValue', newValue);

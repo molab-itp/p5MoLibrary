@@ -107,9 +107,9 @@ function random_action() {
 }
 
 function dstore_blackfacts_update_index(index) {
-  ui_log(my, 'dstore_blackfacts_update_index index', index, 'my.idevice', my.idevice);
-  if (my.idevice) {
-    dstore_blackfacts_update({}, {}, { idevice: my.idevice, index });
+  ui_log(my, 'dstore_blackfacts_update_index index', index, 'my.group', my.group);
+  if (my.group) {
+    dstore_blackfacts_update({}, {}, { group: my.group, index });
   } else {
     dstore_blackfacts_update({ index });
   }
