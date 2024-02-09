@@ -26,14 +26,6 @@ function create_tall_view() {
   //
   id_message_pane.classList.add('hidden');
   qrcode_hide();
-  {
-    let rects = id_blackfacts_num.getClientRects();
-    let rt = rects[0];
-    console.log('id_blackfacts_num rt', rt);
-    // let y = rt.y + rt.height;
-    // let y = 200;
-    // id_player.style.top = y + 'px';
-  }
   create_index_buttons();
 }
 
@@ -64,7 +56,6 @@ function create_index_buttons() {
     button_host.appendChild(elt);
     elt.addEventListener('click', function () {
       toggle_365_panes();
-      // dstore_blackfacts_update({ index });
       dstore_blackfacts_update_index(index);
     });
   }

@@ -35,7 +35,9 @@ function my_init() {
 
   my.idevice = params.idevice;
   console.log('my_init my.idevice', my.idevice);
-
+  if (my.idevice) {
+    id_title.innerHTML += ' (' + my.idevice + ')';
+  }
   if (params.room) {
     my.roomName = params.room;
   }
@@ -87,25 +89,30 @@ function mo_blackfacts_key_value(key, value) {
 
 function mo_blackfacts_idevice_value(newValue) {
   console.log('mo_blackfacts_idevice_value my.idevice', my.idevice, 'newValue', newValue);
-  //
+  let item = newValue[my.idevice - 1];
+  console.log('mo_blackfacts_idevice_value item', item);
+  let index = item.index;
+  if (index != null && index != my.blackfacts_index) {
+    update_blackfacts_index(index);
+  }
 }
 
 // Check for matching update to idevice
 function mo_blackfacts_device_value(newValue) {
   // console.log('mo_blackfacts_device_value my.idevice', my.idevice, 'newValue', newValue);
-  if (!my.idevice) return;
-  let index;
-  for (let prop in newValue) {
-    let item = newValue[prop];
-    if (item.idevice !== undefined && item.idevice == my.idevice) {
-      console.log('mo_blackfacts_device_value match my.idevice', my.idevice, 'prop', prop);
-      index = item.index;
-    }
-  }
-  if (index != null) {
-    console.log('mo_blackfacts_device_value index', index);
-    update_blackfacts_index(index);
-  }
+  // if (!my.idevice) return;
+  // let index;
+  // for (let prop in newValue) {
+  //   let item = newValue[prop];
+  //   if (item.idevice !== undefined && item.idevice == my.idevice) {
+  //     console.log('mo_blackfacts_device_value match my.idevice', my.idevice, 'prop', prop);
+  //     index = item.index;
+  //   }
+  // }
+  // if (index != null) {
+  //   console.log('mo_blackfacts_device_value index', index);
+  //   update_blackfacts_index(index);
+  // }
 }
 
 function mo_blackfacts_index_value(newValue) {

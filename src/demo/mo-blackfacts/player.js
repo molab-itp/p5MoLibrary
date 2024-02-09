@@ -126,7 +126,7 @@ function player_ready() {
 function video_ended() {
   // Advance to next video, maybe
   if (my.execRemoteTrigger && !url_has_playlist()) {
-    console.log('execCommand my.execRemoteTrigger next_action');
+    console.log('video_ended my.execRemoteTrigger next_action');
     next_action();
     return;
   }

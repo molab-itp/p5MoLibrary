@@ -50,6 +50,8 @@ function show_365_action() {
 function toggle_365_panes() {
   id_index_button_container.classList.toggle('hidden');
   id_player.classList.toggle('hidden');
+  id_blackfacts_num.classList.toggle('hidden');
+  id_message_text.classList.toggle('hidden');
 }
 
 function qrcode_action() {
@@ -80,7 +82,6 @@ function first_action() {
   // ui_log(my, 'first_action');
   allow_cloud_actions();
   let index = 0;
-  // dstore_blackfacts_update({ index });
   dstore_blackfacts_update_index(index);
 }
 
@@ -88,7 +89,6 @@ function next_action() {
   ui_log(my, 'next_action');
   allow_cloud_actions();
   let index = (my.blackfacts_index + 1) % nfacts;
-  // dstore_blackfacts_update({ index });
   dstore_blackfacts_update_index(index);
 }
 
@@ -96,7 +96,6 @@ function previous_action() {
   // ui_log(my, 'previous_action');
   allow_cloud_actions();
   let index = (my.blackfacts_index - 1 + nfacts) % nfacts;
-  // dstore_blackfacts_update({ index });
   dstore_blackfacts_update_index(index);
 }
 
@@ -104,14 +103,13 @@ function random_action() {
   // ui_log(my, 'random_action');
   allow_cloud_actions();
   let index = Math.floor(Math.random() * nfacts);
-  // dstore_blackfacts_update({ index });
   dstore_blackfacts_update_index(index);
 }
 
 function dstore_blackfacts_update_index(index) {
   ui_log(my, 'dstore_blackfacts_update_index index', index, 'my.idevice', my.idevice);
   if (my.idevice) {
-    dstore_blackfacts_update({}, { idevice: my.idevice, index });
+    dstore_blackfacts_update({}, {}, { idevice: my.idevice, index });
   } else {
     dstore_blackfacts_update({ index });
   }
