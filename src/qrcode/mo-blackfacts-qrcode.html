@@ -7,7 +7,7 @@
   </head>
   <body>
     <div>
-      <h1>Welcome to mo-blackfacts ?v=149</h1>
+      <h1 id="id_title">Welcome to mo-blackfacts ?v=149</h1>
       By entering this site you agree to have anonymous user data stored
       <h2>
         <a href="../demo/mo-blackfacts/index.html?v=149" id="id_link">Enter mo-blackfacts </a>
@@ -15,8 +15,11 @@
     </div>
 
     <script>
-      if (window.location.search) {
-        id_link.href += '&' + window.location.search.substring(1);
+      let str = window.location.search;
+      if (str) {
+        str = '&' + str.substring(1);
+        id_link.href += str;
+        id_title.innerHTML = id_title.innerHTML + str;
       }
     </script>
   </body>

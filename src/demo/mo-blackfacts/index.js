@@ -79,7 +79,15 @@ function mo_blackfacts_key_value(key, value) {
     case 'device':
       mo_blackfacts_device_value(value);
       break;
+    case 'idevice':
+      mo_blackfacts_idevice_value(value);
+      break;
   }
+}
+
+function mo_blackfacts_idevice_value(newValue) {
+  console.log('mo_blackfacts_idevice_value my.idevice', my.idevice, 'newValue', newValue);
+  //
 }
 
 // Check for matching update to idevice

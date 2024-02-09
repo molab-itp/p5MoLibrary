@@ -35,8 +35,9 @@ function dstore_blackfacts_onChild({ mo_blackfacts_key_value }) {
 }
 
 //  props { index, qrcode, startup_time }
-function dstore_blackfacts_update(props, deviceProps) {
-  ui_log(my, 'dstore_blackfacts_update props', props, 'deviceProps', deviceProps);
+function dstore_blackfacts_update(props, ideviceProps) {
+  ui_log(my, 'dstore_blackfacts_update props', props, 'ideviceProps', ideviceProps);
+  // ui_log(my, 'dstore_blackfacts_update props', props, 'deviceProps', deviceProps);
   // ui_log(my, 'dstore_blackfacts_update my.uid', my.uid);
   if (!my.uid) return;
 
@@ -45,6 +46,7 @@ function dstore_blackfacts_update(props, deviceProps) {
   let refPath = ref(database, path);
   // ui_log(my, 'dstore_blackfacts_update', path);
 
+  let deviceProps;
   if (deviceProps == undefined) {
     deviceProps = { count: increment(1) };
   }
