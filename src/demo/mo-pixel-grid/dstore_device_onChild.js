@@ -20,7 +20,10 @@ function dstore_device_onChild() {
   function receivedDeviceKey(msg, data, remove) {
     let key = data.key;
     let val = data.val();
-    ui_log(my, msg, key, 'n=', Object.keys(val).length);
+    // ui_log(my, msg, key, 'n=', Object.keys(val).length);
+    // ui_log(my, msg, key, 'n=', JSON.stringify(val));
+    ui_log(my, msg, key, val.name_s);
+
     if (remove) {
       if (my.stored_devices) {
         delete my.stored_devices[key];

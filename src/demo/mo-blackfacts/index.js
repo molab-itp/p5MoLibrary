@@ -36,6 +36,10 @@ function my_init() {
   my.idevice = params.idevice;
   console.log('my_init my.idevice', my.idevice);
 
+  if (params.room) {
+    my.roomName = params.room;
+  }
+
   ui_init();
 }
 

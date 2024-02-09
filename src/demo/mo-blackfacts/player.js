@@ -97,9 +97,9 @@ function video_play_index(index) {
   my.execRemoteTrigger = 1;
 
   let entry = dateFactForIndex(index);
-  let videoKey = entry.videoKey;
+  videoKey = entry.videoKey;
   // console.log('video_play_index index', index, 'entry', entry);
-  // console.log('video_play_index videoKey', videoKey);
+  console.log('video_play_index videoKey', videoKey, 'index', index);
 
   // reset play list to selected video
   playlist = [videoKey];
@@ -220,25 +220,28 @@ function setupVideo() {
         let errorNum = event.data;
         switch (errorNum) {
           case 2:
-            console.log('YT.Player error:  The request contains an invalid parameter value.');
+            video_player_error(' The request contains an invalid parameter value');
             break;
 
           case 5:
-            console.log('YT.Player error: The requested content cannot be played in an HTML5 player.');
+            video_player_error('The requested content cannot be played in an HTML5 player');
             break;
 
           case 100:
-            console.log('YT.Player error: The video requested was not found.');
+            video_player_error('The video requested was not found');
             break;
 
           case 101:
           case 150:
-            console.log(
-              'YT.Player error: The owner of the requested video does not allow it to be played in embedded players.'
-            );
+            video_player_error('The owner of the requested video does not allow it to be played in embedded players');
             break;
         }
       },
     },
   });
+}
+
+function video_player_error(msg) {
+  console.log('YT.Player error: ' + msg);
+  console.log('videoKey', videoKey);
 }
