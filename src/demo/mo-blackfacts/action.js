@@ -85,7 +85,7 @@ function first_action() {
 }
 
 function next_action() {
-  // ui_log(my, 'next_action');
+  ui_log(my, 'next_action');
   allow_cloud_actions();
   let index = (my.blackfacts_index + 1) % nfacts;
   // dstore_blackfacts_update({ index });

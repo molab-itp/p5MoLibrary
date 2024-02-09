@@ -86,27 +86,30 @@ function mo_blackfacts_key_value(key, value) {
 function mo_blackfacts_device_value(newValue) {
   // console.log('mo_blackfacts_device_value my.idevice', my.idevice, 'newValue', newValue);
   if (!my.idevice) return;
+  let index;
   for (let prop in newValue) {
     let item = newValue[prop];
     if (item.idevice !== undefined && item.idevice == my.idevice) {
-      console.log('mo_blackfacts_device_value match my.idevice', my.idevice);
-      let index = item.index;
-      if (index != null) {
-        console.log('mo_blackfacts_device_value index', index);
-        update_blackfacts_index(index);
-      }
+      console.log('mo_blackfacts_device_value match my.idevice', my.idevice, 'prop', prop);
+      index = item.index;
     }
+  }
+  if (index != null) {
+    console.log('mo_blackfacts_device_value index', index);
+    update_blackfacts_index(index);
   }
 }
 
 function mo_blackfacts_index_value(newValue) {
   if (!my.idevice) {
     update_blackfacts_index(newValue);
+  } else {
+    console.log('mo_blackfacts_index_value !!@ Skipping newValue', newValue);
   }
 }
 
 function update_blackfacts_index(newValue) {
-  // console.log('mo_blackfacts_index_value newValue', newValue);
+  console.log('update_blackfacts_index newValue', newValue);
   my.blackfacts_index = newValue;
 
   update_blackfacts_num_ui();
