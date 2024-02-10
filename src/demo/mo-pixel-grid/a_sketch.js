@@ -13,31 +13,20 @@ function setup() {
 
   ui_init();
 
-  video_create(my);
+  video_create();
 
   let config = fb_.init('jht9629');
   // let config = fb_.init('jht1493');
-  ui_log(my, 'config.projectId', config.projectId, 'configLabel', config.configLabel);
+  ui_log('config.projectId', config.projectId, 'configLabel', config.configLabel);
 
-  dstore_init();
+  dstore_init({ dstore_host_init });
 
   anim_init();
 }
 
-function dstore_init() {
-  let { signInAnonymously, auth } = fb_;
-  signInAnonymously(auth)
-    .then(() => {
-      my.uid = auth.currentUser.uid;
-      ui_log(my, 'dstore_init', my.uid);
-
-      dstore_device_onChild();
-      dstore_pixgrid_onChild();
-      dstore_pixchip_onChild();
-    })
-    .catch((error) => {
-      ui_log(my, 'dstore_init error', error);
-    });
+function dstore_host_init() {
+  dstore_pixgrid_onChild();
+  dstore_pixchip_onChild();
 }
 
 function anim_init() {
@@ -54,9 +43,9 @@ function draw() {
 }
 
 function draw_frame() {
-  if (my.videoFlag && !video_ready(my)) return;
+  if (my.videoFlag && !video_ready()) return;
 
-  ui_check_scroll(my);
+  ui_check_scroll();
 
   background(0);
 

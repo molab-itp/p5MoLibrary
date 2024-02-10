@@ -33,7 +33,7 @@ function setup() {
   my.play_step_flag = true;
   my.show_qrcode_flag = true;
 
-  dstore_init();
+  dstore_init({});
 }
 
 function draw() {

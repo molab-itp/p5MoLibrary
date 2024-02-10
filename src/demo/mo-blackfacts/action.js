@@ -55,14 +55,14 @@ function toggle_365_panes() {
 }
 
 function qrcode_action() {
-  ui_log(my, 'qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
+  ui_log('qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
   my.qrcodeFlag = id_checkbox_qrcode.checked;
   let qrcode = my.qrcodeFlag ? 1 : 0;
   dstore_blackfacts_update({ qrcode });
 }
 
 function play_clip_action() {
-  ui_log(my, 'play_clip_action id_checkbox_play_clip.checked', id_checkbox_play_clip.checked);
+  ui_log('play_clip_action id_checkbox_play_clip.checked', id_checkbox_play_clip.checked);
   my.playClip = id_checkbox_play_clip.checked;
   if (my.playClip) {
     my.animLoop.start();
@@ -71,7 +71,7 @@ function play_clip_action() {
 }
 
 // function play_next_action() {
-//   ui_log(my, 'play_next_action id_checkbox_play_next.checked', id_checkbox_play_next.checked);
+//   ui_log('play_next_action id_checkbox_play_next.checked', id_checkbox_play_next.checked);
 //   my.playNext = id_checkbox_play_next.checked;
 //   if (my.playNext) {
 //     next_action();
@@ -79,35 +79,35 @@ function play_clip_action() {
 // }
 
 function first_action() {
-  // ui_log(my, 'first_action');
+  // ui_log('first_action');
   allow_cloud_actions();
   let index = 0;
   dstore_blackfacts_update_index(index);
 }
 
 function next_action() {
-  ui_log(my, 'next_action');
+  ui_log('next_action');
   allow_cloud_actions();
   let index = (my.blackfacts_index + 1) % nfacts;
   dstore_blackfacts_update_index(index);
 }
 
 function previous_action() {
-  // ui_log(my, 'previous_action');
+  // ui_log('previous_action');
   allow_cloud_actions();
   let index = (my.blackfacts_index - 1 + nfacts) % nfacts;
   dstore_blackfacts_update_index(index);
 }
 
 function random_action() {
-  // ui_log(my, 'random_action');
+  // ui_log('random_action');
   allow_cloud_actions();
   let index = Math.floor(Math.random() * nfacts);
   dstore_blackfacts_update_index(index);
 }
 
 function dstore_blackfacts_update_index(index) {
-  ui_log(my, 'dstore_blackfacts_update_index index', index, 'my.group', my.group);
+  ui_log('dstore_blackfacts_update_index index', index, 'my.group', my.group);
   if (my.group) {
     dstore_blackfacts_update({}, {}, { group: my.group, index });
   } else {

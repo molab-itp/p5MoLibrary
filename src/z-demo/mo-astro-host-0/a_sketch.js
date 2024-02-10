@@ -45,13 +45,13 @@ function dstore_init() {
     .then(() => {
       my.uid = auth.currentUser.uid;
       // console.log('dstore_init my.uid', my.uid);
-      ui_log(my, 'dstore_init', my.uid);
+      ui_log('dstore_init', my.uid);
 
       dstore_device_onChild();
       dstore_astro_onChild({ mo_astro_index_changed });
     })
     .catch((error) => {
-      ui_log(my, 'dstore_init error', error);
+      ui_log('dstore_init error', error);
     });
 }
 

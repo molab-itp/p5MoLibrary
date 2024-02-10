@@ -15,7 +15,7 @@ function my_init() {
   my.ndevice = -1;
 
   if (my.scrollOnStartFlag) {
-    ui_toggle_scroll(my);
+    ui_toggle_scroll();
   }
 
   my.track_xi = 0;

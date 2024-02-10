@@ -9,7 +9,7 @@ function dstore_pixgrid_onChild() {
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
   // from "firebase/database";
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixgrid`;
-  ui_log(my, 'dstore_pixgrid_onChild path=', path);
+  ui_log('dstore_pixgrid_onChild path=', path);
   let refPath = ref(database, path);
 
   onChildAdded(refPath, (data) => {
@@ -27,7 +27,7 @@ function dstore_pixgrid_onChild() {
   function receivedPixKey(msg, data, remove) {
     let key = data.key;
     let val = data.val();
-    ui_log(my, msg, key, 'n=', val.length);
+    ui_log(msg, key, 'n=', val.length);
     let device = dstore_device_fetch(key);
     if (remove) {
       delete device.pixgrids;
@@ -42,7 +42,7 @@ function dstore_pixgrid_onChild() {
 function dstore_pixgrid_update(irow, stepPx, row) {
   let { database, ref, update } = fb_.fbase;
   if (!my.uid) {
-    ui_log(my, 'dstore_pixgrid_update no uid', my.uid);
+    ui_log('dstore_pixgrid_update no uid', my.uid);
     return;
   }
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixgrid/${my.uid}/${irow}`;
@@ -62,11 +62,11 @@ function dstore_pixgrid_removeAll() {
   set(refPath, {})
     .then(() => {
       // Data saved successfully!
-      // ui_log(my, 'dstore_removeAll OK');
+      // ui_log('dstore_removeAll OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log(my, 'dstore_removeAll error', error);
+      ui_log('dstore_removeAll error', error);
     });
 }
 
@@ -77,11 +77,11 @@ function dstore_pixgrid_remove() {
   set(refPath, {})
     .then(() => {
       // Data saved successfully!
-      // ui_log(my, 'dstore_pixgrid_remove OK');
+      // ui_log('dstore_pixgrid_remove OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log(my, 'dstore_pixgrid_remove error', error);
+      ui_log('dstore_pixgrid_remove error', error);
     });
 }
 

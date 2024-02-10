@@ -21,12 +21,12 @@ window.dstore_device_update = dstore_device_update;
 
 function dstore_device_event(keys) {
   // console.log('dstore_device_event my.uid', my.uid);
-  // ui_log(my, 'dstore_device_event my.uid', my.uid);
+  // ui_log('dstore_device_event my.uid', my.uid);
   if (!my.uid) return;
 
   let { database, ref, update, increment } = fb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/device/${my.uid}`;
-  // ui_log(my, 'dstore_device_event', path);
+  // ui_log('dstore_device_event', path);
   let refPath = ref(database, path);
 
   let date_s = new Date().toISOString();
@@ -47,7 +47,7 @@ function dstore_device_event(keys) {
 }
 
 function dstore_device_events(keys, uid, date_s) {
-  // ui_log(my, 'dstore_device_events uid', uid, date_s);
+  // ui_log('dstore_device_events uid', uid, date_s);
   let events = dstore_init_events(keys, uid, date_s);
   if (!events) return null;
 

@@ -21,8 +21,8 @@ function dstore_blackfacts_onChild({ mo_blackfacts_index_changed }) {
   function receivedDeviceKey(msg, data, remove) {
     let key = data.key;
     let val = data.val();
-    // ui_log(my, msg, key, 'n=', Object.keys(val).length);
-    ui_log(my, msg, 'key', key, 'val', val);
+    // ui_log(msg, key, 'n=', Object.keys(val).length);
+    ui_log(msg, 'key', key, 'val', val);
     if (remove) {
       return;
     }
@@ -39,13 +39,13 @@ function dstore_blackfacts_onChild({ mo_blackfacts_index_changed }) {
 // my.blackfacts_index
 function dstore_blackfacts_update(index) {
   // console.log('dstore_blackfacts_update my.uid', my.uid);
-  ui_log(my, 'dstore_blackfacts_update my.uid', my.uid);
+  ui_log('dstore_blackfacts_update my.uid', my.uid);
   if (!my.uid) return;
 
   let { database, ref, update, increment } = fb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-blackfacts`;
   let refPath = ref(database, path);
-  // ui_log(my, 'dstore_blackfacts_update', path);
+  // ui_log('dstore_blackfacts_update', path);
 
   // let index = my.blackfacts_index;
   let count = increment(1);
@@ -53,7 +53,7 @@ function dstore_blackfacts_update(index) {
 
   let updates = { index, [dpath]: count };
 
-  ui_log(my, 'dstore_blackfacts_update updates', updates);
+  ui_log('dstore_blackfacts_update updates', updates);
 
   update(refPath, updates);
 

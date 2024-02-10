@@ -55,12 +55,12 @@ function dstore_signIn() {
   signInAnonymously(auth)
     .then(() => {
       my.uid = auth.currentUser.uid;
-      ui_log(my, 'dstore_init roomName', my.roomName, 'uid', my.uid);
+      ui_log('dstore_signIn roomName', my.roomName, 'uid', my.uid);
 
       dstore_app_init();
     })
     .catch((error) => {
-      ui_log(my, 'dstore_init error', error);
+      ui_log('dstore_signIn error', error);
     });
 }
 
@@ -167,7 +167,7 @@ function mo_blackfacts_qccode_value(newValue) {
   my.blackfacts_qrcode = newValue;
 }
 
-function ui_log(my, ...args) {
+function ui_log(...args) {
   console.log(...args);
 }
 

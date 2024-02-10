@@ -5,13 +5,13 @@ function dstore_init() {
     .then(() => {
       my.uid = auth.currentUser.uid;
       // console.log('dstore_init my.uid', my.uid);
-      ui_log(my, 'dstore_init', my.uid);
+      ui_log('dstore_init', my.uid);
 
       dstore_device_onChild();
       dstore_astro_onChild({ mo_astro_index_changed });
     })
     .catch((error) => {
-      ui_log(my, 'dstore_init error', error);
+      ui_log('dstore_init error', error);
     });
 }
 
@@ -32,7 +32,7 @@ function mo_astro_index_changed(newValue, oldValue) {
 }
 
 function loop_action() {
-  ui_log(my, 'loop_action id_checkbox_loop.checked', id_checkbox_loop.checked);
+  ui_log('loop_action id_checkbox_loop.checked', id_checkbox_loop.checked);
   my.loop = id_checkbox_loop.checked;
   if (my.loop) {
     my.animLoop.start();
@@ -40,25 +40,25 @@ function loop_action() {
 }
 
 function first_action() {
-  ui_log(my, 'first_action');
+  ui_log('first_action');
   let index = 0;
   dstore_astro_update({ index });
 }
 
 function next_action() {
-  ui_log(my, 'next_action');
+  ui_log('next_action');
   let index = (my.astro_index + 1) % my.nrefs;
   dstore_astro_update({ index });
 }
 
 function previous_action() {
-  ui_log(my, 'previous_action');
+  ui_log('previous_action');
   let index = (my.astro_index - 1 + my.nrefs) % my.nrefs;
   dstore_astro_update({ index });
 }
 
 function random_action() {
-  ui_log(my, 'random_action');
+  ui_log('random_action');
   // my.astro_index = int(random(0, my.nrefs));
   // my.astro_index = Math.floor(Math.random() * my.nrefs);
   let index = Math.floor(Math.random() * my.nrefs);

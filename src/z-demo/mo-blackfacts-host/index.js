@@ -13,7 +13,7 @@ console.log('BlackFacts index');
 let my = {};
 
 document.addEventListener('DOMContentLoaded', document_loaded);
-// ui_log(my, 'Hello ui_log');
+// ui_log('Hello ui_log');
 
 function document_loaded() {
   let config = fb_.init('jht9629');
@@ -35,13 +35,13 @@ function dstore_init() {
   signInAnonymously(auth)
     .then(() => {
       my.uid = auth.currentUser.uid;
-      ui_log(my, 'dstore_init', my.uid);
+      ui_log('dstore_init', my.uid);
 
       dstore_device_onChild();
       dstore_blackfacts_onChild({ mo_blackfacts_index_changed });
     })
     .catch((error) => {
-      ui_log(my, 'dstore_init error', error);
+      ui_log('dstore_init error', error);
     });
 }
 
@@ -51,7 +51,7 @@ function mo_blackfacts_index_changed(newValue, oldValue) {
   execCommandIndex(newValue);
 }
 
-function ui_log(my, ...args) {
+function ui_log(...args) {
   // console.log(...args);
 }
 

@@ -1,5 +1,5 @@
 //
-export function video_create(my) {
+export function video_create() {
   // console.log('video_create my.video', my.video);
   if (my.video) {
     my.video.remove();
@@ -11,7 +11,7 @@ export function video_create(my) {
 }
 window.video_create = video_create;
 
-export function video_ready(my) {
+export function video_ready() {
   return (
     my.video && //
     my.video.loadedmetadata &&

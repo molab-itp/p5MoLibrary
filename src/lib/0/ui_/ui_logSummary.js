@@ -1,10 +1,10 @@
 //
 
-function ui_logSummary_div(my) {
-  my.logSummary_div = ui_div(my, 'logSummary', 'Welcome to the debug pane');
+function ui_logSummary_div() {
+  my.logSummary_div = ui_div('logSummary', 'Welcome to the debug pane');
   ui_set_hidden(my.logSummary_div, my.logSummaryFlag);
 
-  my.logDetail_div = ui_div(my, 'logDetail', '');
+  my.logDetail_div = ui_div('logDetail', '');
   ui_set_hidden(my.logDetail_div, my.logDetailFlag);
 }
 window.ui_logSummary_div = ui_logSummary_div;
@@ -18,12 +18,12 @@ function ui_set_hidden(element, flag) {
 }
 window.ui_set_hidden = ui_set_hidden;
 
-function ui_logSummaryFlag_changed(my, newValue) {
+function ui_logSummaryFlag_changed(newValue) {
   my.logSummaryFlag = newValue;
   ui_set_hidden(my.logSummary_div, my.logSummaryFlag);
   // console.log('my.logTags', my.logTags);
   if (!my.logTags) return;
-  let div = ui_div_empty(my, 'logSummary');
+  let div = ui_div_empty('logSummary');
   for (let key in my.logTags) {
     let ent = my.logTags[key];
     // console.log('my.logTags key=', key, 'ent', ent);

@@ -20,9 +20,9 @@ function dstore_device_onChild() {
   function receivedDeviceKey(msg, data, remove) {
     let key = data.key;
     let val = data.val();
-    // ui_log(my, msg, key, 'n=', Object.keys(val).length);
-    // ui_log(my, msg, key, 'n=', JSON.stringify(val));
-    ui_log(my, msg, key, val.name_s);
+    // ui_log(msg, key, 'n=', Object.keys(val).length);
+    // ui_log(msg, key, 'n=', JSON.stringify(val));
+    ui_log(msg, key, val.name_s);
 
     if (remove) {
       if (my.stored_devices) {
@@ -78,11 +78,11 @@ function dstore_device_remove() {
   set(refPath, {})
     .then(() => {
       // Data saved successfully!
-      // ui_log(my, 'dstore_device_remove OK');
+      // ui_log('dstore_device_remove OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log(my, 'dstore_device_remove error', error);
+      ui_log('dstore_device_remove error', error);
     });
 }
 window.dstore_device_remove = dstore_device_remove;

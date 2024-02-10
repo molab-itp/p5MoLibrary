@@ -33,7 +33,6 @@
     </main>
   </body>
 
-  <!-- <script type="module" src="../../lib/0/a_main.js?v=76"></script> -->
   <script type="module" src="../../lib/0/fb_/fb_config.js?v=76"></script>
   <!-- sharing code from other project -->
   <script src="../mo-astro-host-0/dstore_astro_onChild.js?v=76"></script>
@@ -50,7 +49,7 @@
     id_button_random.addEventListener('click', random_action);
 
     document.addEventListener('DOMContentLoaded', document_loaded);
-    ui_log(my, 'Hello ui_log');
+    ui_log('Hello ui_log');
 
     function document_loaded() {
       // console.log('DOM fully loaded and parsed');
@@ -71,13 +70,13 @@
       signInAnonymously(auth)
         .then(() => {
           my.uid = auth.currentUser.uid;
-          ui_log(my, 'dstore_init', my.uid);
+          ui_log('dstore_init', my.uid);
 
           dstore_device_onChild();
           dstore_astro_onChild({ mo_astro_index_changed });
         })
         .catch((error) => {
-          ui_log(my, 'dstore_init error', error);
+          ui_log('dstore_init error', error);
         });
     }
 
@@ -87,27 +86,27 @@
     }
 
     function first_action() {
-      ui_log(my, 'first_action');
+      ui_log('first_action');
       dstore_astro_update(0);
     }
 
     function next_action() {
-      ui_log(my, 'next_action');
+      ui_log('next_action');
       dstore_astro_update((my.astro_index + 1) % 210);
     }
 
     function previous_action() {
-      ui_log(my, 'previous_action');
+      ui_log('previous_action');
       dstore_astro_update((my.astro_index - 1 + 210) % 210);
     }
 
     function random_action() {
-      ui_log(my, 'random_action');
+      ui_log('random_action');
       // my.astro_index = int(random(0, 210)); // p5js funcs
       dstore_astro_update(Math.floor(Math.random() * 210));
     }
 
-    function ui_log(my, ...args) {
+    function ui_log(...args) {
       console.log(...args);
     }
 

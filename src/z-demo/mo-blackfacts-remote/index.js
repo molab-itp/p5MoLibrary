@@ -7,7 +7,7 @@ id_button_random.addEventListener('click', random_action);
 id_checkbox_loop.addEventListener('click', loop_action);
 
 document.addEventListener('DOMContentLoaded', document_loaded);
-ui_log(my, 'Hello ui_log');
+ui_log('Hello ui_log');
 
 function document_loaded() {
   let config = fb_.init('jht9629');
@@ -29,13 +29,13 @@ function dstore_init() {
   signInAnonymously(auth)
     .then(() => {
       my.uid = auth.currentUser.uid;
-      ui_log(my, 'dstore_init', my.uid);
+      ui_log('dstore_init', my.uid);
 
       dstore_device_onChild();
       dstore_blackfacts_onChild({ mo_blackfacts_index_changed });
     })
     .catch((error) => {
-      ui_log(my, 'dstore_init error', error);
+      ui_log('dstore_init error', error);
     });
 }
 
@@ -46,7 +46,7 @@ function mo_blackfacts_index_changed(newValue, oldValue) {
 }
 
 function loop_action() {
-  ui_log(my, 'loop_action id_checkbox_loop.checked', id_checkbox_loop.checked);
+  ui_log('loop_action id_checkbox_loop.checked', id_checkbox_loop.checked);
   my.loop = id_checkbox_loop.checked;
   if (my.loop) {
     my.animLoop.start();
@@ -54,28 +54,28 @@ function loop_action() {
 }
 
 function first_action() {
-  ui_log(my, 'first_action');
+  ui_log('first_action');
   dstore_blackfacts_update(0);
 }
 
 function next_action() {
-  ui_log(my, 'next_action');
+  ui_log('next_action');
   dstore_blackfacts_update((my.blackfacts_index + 1) % 366);
 }
 
 function previous_action() {
-  ui_log(my, 'previous_action');
+  ui_log('previous_action');
   dstore_blackfacts_update((my.blackfacts_index - 1 + 366) % 366);
 }
 
 function random_action() {
-  ui_log(my, 'random_action');
+  ui_log('random_action');
   // my.blackfacts_index = int(random(0, 366));
   // my.blackfacts_index = Math.floor(Math.random() * 366);
   dstore_blackfacts_update(Math.floor(Math.random() * 366));
 }
 
-function ui_log(my, ...args) {
+function ui_log(...args) {
   console.log(...args);
 }
 
