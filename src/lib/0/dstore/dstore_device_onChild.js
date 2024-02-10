@@ -98,6 +98,7 @@ function dstore_device_summary() {
     let date2 = item2.serverValues.date_s;
     return date1.localeCompare(date2);
   });
+  arr.reverse();
   let lines = [];
   for (let item of arr) {
     let { uid } = item;
@@ -110,5 +111,6 @@ function dstore_device_summary() {
   lines.push('dstore_device_summary n ' + arr.length);
   // console.log('dstore_device_summary', arr);
   console.log(lines.join('\n'));
+  return arr;
 }
 window.dstore_device_summary = dstore_device_summary;

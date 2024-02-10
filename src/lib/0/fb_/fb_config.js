@@ -62,6 +62,7 @@ function init(config) {
   // if config object not found, default to firebaseConfig_jht9629
   nconfig = nconfig || firebaseConfig_jht9629;
   nconfig.configLabel = configLabel;
+  nconfig.configVersion = '?v=158';
   // console.log('fb_config config', config);
   // console.log('fb_config config.projectId', config.projectId);
   fb_.app = initializeApp(nconfig);
