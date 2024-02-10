@@ -2,8 +2,6 @@
 
 // console.log('BlackFacts index.js');
 
-// 2024-01-09 jht: page sometimes needs several reloads to show video
-
 document.addEventListener('DOMContentLoaded', document_loaded);
 // console.log('addEventListener document_loaded');
 function document_loaded() {

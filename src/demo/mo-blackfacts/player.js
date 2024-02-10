@@ -2,6 +2,8 @@
 
 // console.log('BlackFacts player.js');
 
+// 2024-02-09 jht: move script tag to following code to load iframe_api fixed problem below
+// 2024-01-09 jht: page sometimes needs several reloads to show video
 // https://developers.google.com/youtube/iframe_api_reference
 var tag = document.createElement('script');
 tag.src = 'https://www.youtube.com/iframe_api';
