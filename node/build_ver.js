@@ -47,11 +47,11 @@ export function build_ver_run(src_path, buildnum_path, build_ver, buildnum_files
   // buildnum_path = join(src_path, buildnum_path);
   mlog('build_ver_run updateBuild', updateBuild);
 
-  // const from_str = '\\?v=1';
-  const from_str = '\\?v=\\d+';
-  const to_str = '?v=' + build_ver.next;
+  // const ver_from_str = '\\?v=1';
+  const ver_from_str = '\\?v=\\d+';
+  const ver_to_str = '?v=' + build_ver.next;
 
-  const re = new RegExp(from_str, 'g');
+  const ver_replace = new RegExp(ver_from_str, 'g');
   let nfiles = enum_files(src_path, buildnum_files);
   // console.log('nfiles', nfiles);
   mlog('build_ver_run nfiles', nfiles.length);
@@ -71,14 +71,14 @@ export function build_ver_run(src_path, buildnum_path, build_ver, buildnum_files
     }
     // console.log('build_ver_run afile', afile);
     const fpath = join(src_path, afile);
-    const str = readFileSync(fpath, 'utf8');
+    let str = readFileSync(fpath, 'utf8');
     if (!str) {
       console.log('read failed fpath', fpath);
       continue;
     }
-    const nstr = str.replace(re, to_str);
+    str = str.replace(ver_replace, ver_to_str);
     if (updateBuild) {
-      writeBuildFile(src_path, afile, nstr);
+      writeBuildFile(src_path, afile, str);
       writeCount++;
     }
   }
