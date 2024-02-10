@@ -12,9 +12,12 @@
 function dstore_device_visit() {
   dstore_device_event({ event: 'visit', count: 'visit_count' });
 }
+window.dstore_device_visit = dstore_device_visit;
+
 function dstore_device_update() {
   dstore_device_event({ event: 'update', count: 'update_count' });
 }
+window.dstore_device_update = dstore_device_update;
 
 function dstore_device_event(keys) {
   // console.log('dstore_device_event my.uid', my.uid);
@@ -66,9 +69,9 @@ function dstore_device_events(keys, uid, date_s) {
     // Update the first entry with new time and date
     event.date_s = date_s;
     event.time += ndiff;
-    event.time_s = convertTimeToSeconds(event.time);
+    event.time_s = dstore_timeToSeconds(event.time);
   }
-  updateTimeGap(events);
+  dstore_updateTimeGap(events);
   if (events.length > my.eventLogMax) {
     // Delete the last entry to keep to max number permitted
     events.splice(-1, 1);
@@ -108,3 +111,4 @@ function dstore_device_isActive(device) {
   // console.log('dstore_device_isActive device.index', device.index, 'gapTime', lapgapTimese, my.eventLogTimeMax);
   return gapTime < my.eventLogTimeMax;
 }
+window.dstore_device_isActive = dstore_device_isActive;

@@ -1,17 +1,17 @@
 //
-function updateTimeGap(events) {
+function dstore_updateTimeGap(events) {
   for (let index = 1; index < events.length; index++) {
     let nowEnt = events[index - 1];
     let nowTime = new Date(nowEnt.date_s).getTime();
     let pastEnt = events[index];
     let pastTime = new Date(pastEnt.date_s).getTime();
     nowEnt.gap = nowTime - pastTime - nowEnt.time;
-    nowEnt.gap_s = convertTimeToSeconds(nowEnt.gap);
+    nowEnt.gap_s = dstore_timeToSeconds(nowEnt.gap);
   }
 }
-window.updateTimeGap = updateTimeGap;
+window.dstore_updateTimeGap = dstore_updateTimeGap;
 
-function convertTimeToSeconds(time) {
+function dstore_timeToSeconds(time) {
   let str = '';
   let secs = time / 1000;
   let mins = Math.floor(secs / 60);
@@ -38,4 +38,4 @@ function convertTimeToSeconds(time) {
   }
   return str;
 }
-window.convertTimeToSeconds = convertTimeToSeconds;
+window.dstore_timeToSeconds = dstore_timeToSeconds;

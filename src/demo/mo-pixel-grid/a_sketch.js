@@ -77,7 +77,6 @@ function updateAction() {
   }
   if (my.scanFlag) {
     draw_cross_hair_update();
-    // dstore_device_event();
     dstore_pixchip_update();
   }
 }
@@ -162,13 +161,13 @@ function mouseDragged() {
 }
 
 function windowResized() {
-  console.log('windowResized windowHeight', windowHeight, 'windowWidth', windowWidth);
+  // console.log('windowResized windowHeight', windowHeight, 'windowWidth', windowWidth);
   // my.isPortrait = windowHeight > windowWidth;
   if (isPortraitView()) {
     return;
   }
   resizeCanvas(windowWidth, windowHeight);
-  console.log('windowResized width', width, 'height', height);
+  // console.log('windowResized width', width, 'height', height);
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/twgS6eWRZ

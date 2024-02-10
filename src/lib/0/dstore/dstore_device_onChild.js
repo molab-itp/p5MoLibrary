@@ -34,6 +34,7 @@ function dstore_device_onChild() {
     dstore_device_fetch(key, val);
   }
 }
+window.dstore_device_onChild = dstore_device_onChild;
 
 function dstore_device_fetch(uid, val) {
   if (!my.stored_devices) {
@@ -66,7 +67,7 @@ function dstore_device_fetch(uid, val) {
   }
   return device;
 }
-
+window.dstore_device_fetch = dstore_device_fetch;
 // --
 
 function dstore_device_remove() {
@@ -83,6 +84,7 @@ function dstore_device_remove() {
       ui_log(my, 'dstore_device_remove error', error);
     });
 }
+window.dstore_device_remove = dstore_device_remove;
 
 // --
 
@@ -105,3 +107,4 @@ function dstore_device_summary() {
   // console.log('dstore_device_summary', arr);
   console.log(lines.join('\n'));
 }
+window.dstore_device_summary = dstore_device_summary;

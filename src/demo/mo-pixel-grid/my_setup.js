@@ -6,7 +6,7 @@ function my_setup() {
   my.vwidth = 480;
   my.vheight = 640;
   my.dstore_rootPath = 'm0-@r-@w-';
-  my.roomName = 'room0';
+  my.roomName = 'room-pixel-grid';
   my.nameDevice = '';
   // my.nstepCycle = [8, 16, 32];
   // my.updateTimes = [0.2, 0.1, 0.02];
