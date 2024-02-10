@@ -22,7 +22,7 @@ function dstore_app_onChild({ mo_app_key_value }) {
     let key = data.key;
     let value = data.val();
     // ui_log(msg, key, 'n=', Object.keys(val).length);
-    ui_log(msg, 'key', key, 'value', value);
+    // ui_log(msg, 'key', key, 'value', value);
     if (remove) {
       return;
     }
@@ -36,7 +36,7 @@ window.dstore_app_onChild = dstore_app_onChild;
 
 //  props { index, qrcode, startup_time }
 function dstore_app_update(props, deviceProps, groupProps) {
-  ui_log('dstore_app_update props', props, 'groupProps', groupProps);
+  // ui_log('dstore_app_update props', props, 'groupProps', groupProps);
   // ui_log('dstore_app_update props', props, 'deviceProps', deviceProps);
   // ui_log('dstore_app_update my.uid', my.uid);
   if (!my.uid) return;
@@ -67,7 +67,7 @@ function dstore_app_update(props, deviceProps, groupProps) {
     updates[dpath] = groupProps.index;
   }
 
-  ui_log('dstore_app_update updates', updates);
+  // ui_log('dstore_app_update updates', updates);
 
   update(refPath, updates);
 

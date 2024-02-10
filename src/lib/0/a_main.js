@@ -3,9 +3,10 @@
 // console.log('in a_main.js');
 
 import './Anim.js?v=2';
-import './dstore/dstore_init.js?v=2';
+import './dstore/dstore_app.js?v=2';
 import './dstore/dstore_device_event.js?v=2';
 import './dstore/dstore_device_onChild.js?v=2';
+import './dstore/dstore_init.js?v=2';
 import './dstore/dstore_updateTimeGap.js?v=2';
 import './fb_/fb_config.js?v=2';
 import './get_url_params.js?v=2';

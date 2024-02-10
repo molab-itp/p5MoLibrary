@@ -22,7 +22,7 @@ function dstore_device_onChild() {
     let val = data.val();
     // ui_log(msg, key, 'n=', Object.keys(val).length);
     // ui_log(msg, key, 'n=', JSON.stringify(val));
-    ui_log(msg, key, val.name_s);
+    // ui_log(msg, key, val.name_s);
 
     if (remove) {
       if (my.stored_devices) {

@@ -29,6 +29,7 @@ function my_init() {
   my.stepCount = 0;
   my.animTime = 7;
   my.nameDevice = 'device?v=2';
+  my.pingTime = 1;
 
   my.isPortraitView = window.innerHeight > window.innerWidth;
 
@@ -73,7 +74,13 @@ function dstore_app_init() {
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 
+  my.pingLoop = new Anim({ target: my, time: my.pingTime, action: pingAction });
+
   setup_animationFrame();
+}
+
+function pingAction() {
+  dstore_app_update({});
 }
 
 function mo_app_key_value(key, value) {

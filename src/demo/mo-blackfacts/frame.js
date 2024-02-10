@@ -32,6 +32,9 @@ function animationFrame_callback(timeStamp) {
     if (my.playClip) lapse = my.animLoop.lapse() + ' ' + my.stepCount;
     id_lapse_report.innerHTML = lapse;
   }
+  if (my.pingLoop) {
+    my.pingLoop.step({ loop: 1 });
+  }
   if (!my.blackfacts_player_inited) {
     let str = 'Waiting for video ' + timeSecs.toFixed(2);
     if (my.stalled_report) {
