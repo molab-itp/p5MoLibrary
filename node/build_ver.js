@@ -50,8 +50,8 @@ export function build_ver_run(src_path, buildnum_path, build_ver, buildnum_files
   // const ver_from_str = '\\?v=1';
   const ver_from_str = '\\?v=\\d+';
   const ver_to_str = '?v=' + build_ver.next;
-
   const ver_replace = new RegExp(ver_from_str, 'g');
+
   let nfiles = enum_files(src_path, buildnum_files);
   // console.log('nfiles', nfiles);
   mlog('build_ver_run nfiles', nfiles.length);
@@ -76,7 +76,9 @@ export function build_ver_run(src_path, buildnum_path, build_ver, buildnum_files
       console.log('read failed fpath', fpath);
       continue;
     }
+
     str = str.replace(ver_replace, ver_to_str);
+
     if (updateBuild) {
       writeBuildFile(src_path, afile, str);
       writeCount++;

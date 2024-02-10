@@ -25,6 +25,6 @@ let refBox_init = {
 
 module style includes `a_main.js` for RefBox, Pane, Anim and Rect
 
-<SwmPath>[src/lib/0/a_main.js](/src/lib/0/a_main.js)</SwmPath>
+<SwmPath>[src/lib/1/a_main.js](/src/lib/1/a_main.js)</SwmPath>
 
 <SwmMeta version="3.0.0" repo-id="Z2l0aHViJTNBJTNBcDVtb0xpYnJhcnklM0ElM0Ftb2xhYi1pdHA=" repo-name="p5moLibrary"><sup>Powered by [Swimm](https://app.swimm.io/)</sup></SwmMeta>
