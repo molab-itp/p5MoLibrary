@@ -33,7 +33,11 @@ function setup() {
   my.play_step_flag = true;
   my.show_qrcode_flag = true;
 
-  dstore_init({});
+  dstore_init({ dstore_host_init });
+}
+
+function dstore_host_init() {
+  dstore_astro_onChild({ mo_astro_index_changed });
 }
 
 function draw() {

@@ -98,8 +98,8 @@ function dstore_init_events(keys, uid, date_s) {
 
 function dstore_device_eventGapTime(device) {
   let events = device.serverValues && device.serverValues.update;
-  if (!events) return 0;
-  if (events.length <= 0) return 0;
+  if (!events) return Number.MAX_SAFE_INTEGER;
+  if (events.length <= 0) return Number.MAX_SAFE_INTEGER;
   let event = events[0];
   let gapTime = Date.now() - new Date(event.date_s);
   // console.log('dstore_device_eventGapTime device.index', device.index, 'gapTime', gapTime);

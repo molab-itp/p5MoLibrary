@@ -14,7 +14,18 @@ function document_loaded() {
   // let config = fb_.init('jht1493');
   console.log('?v=2 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
-  dstore_signIn();
+  dstore_init({ dstore_host_init });
+}
+
+function dstore_host_init() {
+  //
+  dstore_app_onChild({ mo_app_key_value });
+
+  my.animLoop = new Anim({ target: my, time: my.animTime });
+
+  my.pingLoop = new Anim({ target: my, time: my.pingTime, action: pingAction });
+
+  setup_animationFrame();
 }
 
 let my = {};
@@ -50,33 +61,6 @@ function my_init() {
   }
 
   ui_init();
-}
-
-function dstore_signIn() {
-  let { signInAnonymously, auth } = fb_;
-  signInAnonymously(auth)
-    .then(() => {
-      my.uid = auth.currentUser.uid;
-      ui_log('dstore_signIn roomName', my.roomName, 'uid', my.uid);
-
-      dstore_app_init();
-    })
-    .catch((error) => {
-      ui_log('dstore_signIn error', error);
-    });
-}
-
-function dstore_app_init() {
-  //
-  dstore_device_onChild();
-
-  dstore_app_onChild({ mo_app_key_value });
-
-  my.animLoop = new Anim({ target: my, time: my.animTime });
-
-  my.pingLoop = new Anim({ target: my, time: my.pingTime, action: pingAction });
-
-  setup_animationFrame();
 }
 
 function pingAction() {

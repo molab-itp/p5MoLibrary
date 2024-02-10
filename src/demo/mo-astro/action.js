@@ -1,20 +1,3 @@
-function dstore_init() {
-  // console.log('dstore_init ');
-  let { signInAnonymously, auth } = fb_;
-  signInAnonymously(auth)
-    .then(() => {
-      my.uid = auth.currentUser.uid;
-      // console.log('dstore_init my.uid', my.uid);
-      ui_log('dstore_init', my.uid);
-
-      dstore_device_onChild();
-      dstore_astro_onChild({ mo_astro_index_changed });
-    })
-    .catch((error) => {
-      ui_log('dstore_init error', error);
-    });
-}
-
 // function mo_astro_index_changed(newValue, oldValue) {
 //   console.log('mo_astro_index_changed newValue', newValue, 'oldValue', oldValue);
 //   refIndexAssign(newValue);

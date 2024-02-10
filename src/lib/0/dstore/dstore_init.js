@@ -15,6 +15,7 @@ function dstore_init({ dstore_host_init }) {
 }
 window.dstore_init = dstore_init;
 
+// return array of devices, most active first
 function dstore_device_summary(show) {
   if (!my.stored_devices) {
     console.log('no stored_devices');
