@@ -23,7 +23,8 @@ function my_init() {
   // console.log('my_init');
   //
   my.dstore_rootPath = 'm0-@r-@w-';
-  my.roomName = 'room0';
+  my.mo_app = 'mo-blackfacts';
+  my.roomName = 'room1';
   my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
@@ -68,14 +69,14 @@ function dstore_app_init() {
   //
   dstore_device_onChild();
 
-  dstore_blackfacts_onChild({ mo_blackfacts_key_value });
+  dstore_app_onChild({ mo_app_key_value });
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 
   setup_animationFrame();
 }
 
-function mo_blackfacts_key_value(key, value) {
+function mo_app_key_value(key, value) {
   switch (key) {
     case 'index':
       mo_blackfacts_index_value(value);
@@ -107,19 +108,6 @@ function mo_blackfacts_group_value(newValue) {
 // Check for matching update to group
 function mo_blackfacts_device_value(newValue) {
   // console.log('mo_blackfacts_device_value my.group', my.group, 'newValue', newValue);
-  // if (!my.group) return;
-  // let index;
-  // for (let prop in newValue) {
-  //   let item = newValue[prop];
-  //   if (item.group !== undefined && item.group == my.group) {
-  //     console.log('mo_blackfacts_device_value match my.group', my.group, 'prop', prop);
-  //     index = item.index;
-  //   }
-  // }
-  // if (index != null) {
-  //   console.log('mo_blackfacts_device_value index', index);
-  //   update_blackfacts_index(index);
-  // }
 }
 
 function mo_blackfacts_index_value(newValue) {

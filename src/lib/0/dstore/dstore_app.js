@@ -1,50 +1,50 @@
 //
-// function dstore_blackfacts_onChild({ mo_blackfacts_index_changed, mo_blackfacts_qccode_changed }) {
-function dstore_blackfacts_onChild({ mo_blackfacts_key_value }) {
+function dstore_app_onChild({ mo_app_key_value }) {
   // Setup listener for changes to firebase db device
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
-  let path = `${my.dstore_rootPath}/${my.roomName}/mo-blackfacts`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/${my.mo_app}`;
   let refPath = ref(database, path);
 
   onChildAdded(refPath, (data) => {
-    receivedDeviceKey('dstore_blackfacts_onChild Added', data);
+    receivedDeviceKey('dstore_app_onChild Added', data);
   });
 
   onChildChanged(refPath, (data) => {
-    // console.log('dstore_blackfacts_onChild Changed', data);
-    receivedDeviceKey('dstore_blackfacts_onChild Changed', data);
+    // console.log('dstore_app_onChild Changed', data);
+    receivedDeviceKey('dstore_app_onChild Changed', data);
   });
 
   onChildRemoved(refPath, (data) => {
-    receivedDeviceKey('dstore_blackfacts_onChild Removed', data, { remove: 1 });
+    receivedDeviceKey('dstore_app_onChild Removed', data, { remove: 1 });
   });
 
   function receivedDeviceKey(msg, data, remove) {
     let key = data.key;
     let value = data.val();
     // ui_log(msg, key, 'n=', Object.keys(val).length);
-    // ui_log(msg, 'key', key, 'value', value);
+    ui_log(msg, 'key', key, 'value', value);
     if (remove) {
       return;
     }
-    if (mo_blackfacts_key_value) {
+    if (mo_app_key_value) {
       // { index, qrcode }
-      mo_blackfacts_key_value(key, value);
+      mo_app_key_value(key, value);
     }
   }
 }
+window.dstore_app_onChild = dstore_app_onChild;
 
 //  props { index, qrcode, startup_time }
-function dstore_blackfacts_update(props, deviceProps, groupProps) {
-  ui_log('dstore_blackfacts_update props', props, 'groupProps', groupProps);
-  // ui_log('dstore_blackfacts_update props', props, 'deviceProps', deviceProps);
-  // ui_log('dstore_blackfacts_update my.uid', my.uid);
+function dstore_app_update(props, deviceProps, groupProps) {
+  ui_log('dstore_app_update props', props, 'groupProps', groupProps);
+  // ui_log('dstore_app_update props', props, 'deviceProps', deviceProps);
+  // ui_log('dstore_app_update my.uid', my.uid);
   if (!my.uid) return;
 
   let { database, ref, update, increment } = fb_.fbase;
-  let path = `${my.dstore_rootPath}/${my.roomName}/mo-blackfacts`;
+  let path = `${my.dstore_rootPath}/${my.roomName}/${my.mo_app}`;
   let refPath = ref(database, path);
-  // ui_log('dstore_blackfacts_update', path);
+  // ui_log('dstore_app_update', path);
 
   let updates = {};
 
@@ -67,9 +67,10 @@ function dstore_blackfacts_update(props, deviceProps, groupProps) {
     updates[dpath] = groupProps.index;
   }
 
-  ui_log('dstore_blackfacts_update updates', updates);
+  ui_log('dstore_app_update updates', updates);
 
   update(refPath, updates);
-  ``;
+
   dstore_device_update();
 }
+window.dstore_app_update = dstore_app_update;

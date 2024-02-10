@@ -58,7 +58,7 @@ function qrcode_action() {
   ui_log('qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
   my.qrcodeFlag = id_checkbox_qrcode.checked;
   let qrcode = my.qrcodeFlag ? 1 : 0;
-  dstore_blackfacts_update({ qrcode });
+  dstore_app_update({ qrcode });
 }
 
 function play_clip_action() {
@@ -109,9 +109,9 @@ function random_action() {
 function dstore_blackfacts_update_index(index) {
   ui_log('dstore_blackfacts_update_index index', index, 'my.group', my.group);
   if (my.group) {
-    dstore_blackfacts_update({}, {}, { group: my.group, index });
+    dstore_app_update({}, {}, { group: my.group, index });
   } else {
-    dstore_blackfacts_update({ index });
+    dstore_app_update({ index });
   }
 }
 
