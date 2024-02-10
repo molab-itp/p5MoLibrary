@@ -89,6 +89,10 @@ window.dstore_device_remove = dstore_device_remove;
 // --
 
 function dstore_device_summary() {
+  if (!my.stored_devices) {
+    console.log('no stored_devices');
+    return;
+  }
   let arr = Object.values(my.stored_devices).sort((item1, item2) => {
     let date1 = item1.serverValues.date_s;
     let date2 = item2.serverValues.date_s;
