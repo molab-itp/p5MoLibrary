@@ -68,7 +68,6 @@ function dstore_device_fetch(uid, val) {
   return device;
 }
 window.dstore_device_fetch = dstore_device_fetch;
-
 // --
 
 function dstore_device_remove() {
@@ -86,3 +85,30 @@ function dstore_device_remove() {
     });
 }
 window.dstore_device_remove = dstore_device_remove;
+
+// --
+
+function dstore_device_summary() {
+  if (!my.stored_devices) {
+    console.log('no stored_devices');
+    return;
+  }
+  let arr = Object.values(my.stored_devices).sort((item1, item2) => {
+    let date1 = item1.serverValues.date_s;
+    let date2 = item2.serverValues.date_s;
+    return date1.localeCompare(date2);
+  });
+  let lines = [];
+  for (let item of arr) {
+    let { uid } = item;
+    let { date_s, visit_count, update_count, userAgent } = item.serverValues;
+    userAgent = userAgent.substring(8, 48);
+    lines.push(date_s + ' visit_count ' + visit_count + ' update_count ' + update_count);
+    lines.push(uid + ' ' + userAgent);
+    // console.log('');
+  }
+  lines.push('dstore_device_summary n ' + arr.length);
+  // console.log('dstore_device_summary', arr);
+  console.log(lines.join('\n'));
+}
+window.dstore_device_summary = dstore_device_summary;
