@@ -40,7 +40,7 @@ function setup() {
 
   my.canvas = createCanvas(my.width, my.height);
 
-  my.drawPoints = new DrawPoints();
+  my.drawPoints = new DrawPoints(my);
 
   let urlParams = get_url_params();
   my.drawPoints.restore_drawing(urlParams);

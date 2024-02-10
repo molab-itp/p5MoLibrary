@@ -45,15 +45,7 @@ function dstore_device_fetch(uid, val) {
   if (!device) {
     // First use of device, add to my.stored_devices
     let index = Object.keys(my.stored_devices).length;
-    let layer;
-    let crossLayer;
-    // !!@ move to dstore_pixchip
-    // in p5js allocate graphics layers
-    if (window.createGraphics && my.vwidth) {
-      layer = createGraphics(my.vwidth, my.vheight);
-      crossLayer = createGraphics(my.vwidth, my.vheight);
-    }
-    device = { uid, index, layer, crossLayer };
+    device = { uid, index };
     my.stored_devices[uid] = device;
     my.ndevice = index + 1;
     fresh = 1;

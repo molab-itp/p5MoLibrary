@@ -35,7 +35,8 @@ function dstore_received_uid(uid) {
 }
 
 function dstore_received_image(uid) {
-  let device = my.stored_devices[uid];
+  // let device = my.stored_devices[uid];
+  let device = dstore_device_fetch_pix(uid);
   // console.log('dstore_received device', device);
   if (!device) return;
 

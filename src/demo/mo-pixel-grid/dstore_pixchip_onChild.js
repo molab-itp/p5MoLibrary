@@ -31,13 +31,22 @@ function dstore_pixchip_onChild() {
     ui_log(msg, key, 'n=', val.length);
 
     // console.log('dstore_pixchip_onChild key, val', key, val);
-    let device = dstore_device_fetch(key);
+    let device = dstore_device_fetch_pix(key);
     if (remove) {
       delete device.pixchips;
       return;
     }
     device.pixchips = val;
   }
+}
+
+function dstore_device_fetch_pix(key) {
+  let device = dstore_device_fetch(key);
+  if (!device.layer) {
+    device.layer = createGraphics(my.vwidth, my.vheight);
+    device.crossLayer = createGraphics(my.vwidth, my.vheight);
+  }
+  return device;
 }
 
 function dstore_pixchip_update() {
