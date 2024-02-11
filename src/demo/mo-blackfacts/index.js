@@ -23,8 +23,9 @@ function dstore_host_init() {
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 
-  my.pingLoop = new Anim({ target: my, time: my.pingTime, action: pingAction });
-
+  if (my.isPortraitView) {
+    my.pingLoop = new Anim({ target: my, time: my.pingTime, action: pingAction });
+  }
   setup_animationFrame();
 }
 
