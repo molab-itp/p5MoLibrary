@@ -5,14 +5,14 @@
 document.addEventListener('DOMContentLoaded', document_loaded);
 // console.log('addEventListener document_loaded');
 function document_loaded() {
-  //
   // console.log('document_loaded');
 
   my_init();
 
   let config = fb_.init('jht9629');
   // let config = fb_.init('jht1493');
-  console.log('?v=4 config.projectId', config.projectId, 'configLabel', config.configLabel);
+  console.log('?v=4 config.projectId', config.projectId);
+  console.log('configLabel', config.configLabel);
 
   dstore_init({ dstore_host_init });
 }
@@ -26,6 +26,7 @@ function dstore_host_init() {
   if (my.isPortraitView) {
     my.pingLoop = new Anim({ target: my, time: my.pingTime, action: pingAction });
   }
+
   setup_animationFrame();
 }
 
@@ -45,6 +46,8 @@ function my_init() {
 
   my.isPortraitView = window.innerHeight > window.innerWidth;
 
+  // idevice param renamed to group
+  // however, still present in qr code
   my.idevice = params.idevice;
   console.log('my_init my.idevice', my.idevice);
   if (my.idevice) {
