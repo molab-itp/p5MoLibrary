@@ -35,7 +35,7 @@ function my_init() {
   //
   my.dstore_rootPath = 'm0-@r-@w-';
   my.mo_app = 'mo-blackfacts';
-  my.roomName = 'room1';
+  my.roomName = 'room0';
   my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
