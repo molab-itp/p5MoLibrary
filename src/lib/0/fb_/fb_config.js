@@ -62,7 +62,7 @@ function init(config) {
   // if config object not found, default to firebaseConfig_jht9629
   nconfig = nconfig || firebaseConfig_jht9629;
   nconfig.configLabel = configLabel;
-  nconfig.configVersion = '?v=2';
+  nconfig.configVersion = '?v=3';
   // console.log('fb_config config', config);
   // console.log('fb_config config.projectId', config.projectId);
   fb_.app = initializeApp(nconfig);
@@ -72,9 +72,9 @@ function init(config) {
   return nconfig;
 }
 
-import { fstore } from './fb_fstore.js?v=2';
+import { fstore } from './fb_fstore.js?v=3';
 
-import { fbase } from './fb_fbase.js?v=2';
+import { fbase } from './fb_fbase.js?v=3';
 
 // export api for non-module script
 const fb_ = {
