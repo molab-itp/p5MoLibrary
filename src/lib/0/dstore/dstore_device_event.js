@@ -42,9 +42,7 @@ function dstore_device_updates(updates, keys) {
   if (!keys) {
     keys = { event: 'update', count: 'update_count' };
   }
-
   Object.assign(updates, { date_s, [keys.count]: count, name_s, userAgent });
-  // let updates = { date_s, [keys.count]: count, name_s, userAgent };
 
   // Acivity is only updated if present in recently received server info
   let events = dstore_device_events(keys, my.uid, date_s);
@@ -56,33 +54,6 @@ function dstore_device_updates(updates, keys) {
   update(refPath, updates);
 }
 window.dstore_device_updates = dstore_device_updates;
-
-// function dstore_device_event(keys) {
-//   // console.log('dstore_device_event my.uid', my.uid);
-//   // ui_log('dstore_device_event my.uid', my.uid);
-//   if (!my.uid) return;
-
-//   let { database, ref, update, increment } = fb_.fbase;
-//   let path = `${my.dstore_rootPath}/${my.roomName}/device/${my.uid}`;
-//   // ui_log('dstore_device_event', path);
-//   let refPath = ref(database, path);
-
-//   let date_s = new Date().toISOString();
-//   let count = increment(1);
-//   let name_s = my.nameDevice || '';
-//   let userAgent = navigator.userAgent;
-
-//   let updates = { date_s, [keys.count]: count, name_s, userAgent };
-
-//   // Acivity is only updated if present in recently received server info
-//   let events = dstore_device_events(keys, my.uid, date_s);
-//   if (events) {
-//     updates[keys.event] = events;
-//     updates.time = events[0].time;
-//     updates.time_s = events[0].time_s;
-//   }
-//   update(refPath, updates);
-// }
 
 function dstore_device_events(keys, uid, date_s) {
   // ui_log('dstore_device_events uid', uid, date_s);
