@@ -65,7 +65,10 @@ function my_init() {
 }
 
 function pingAction() {
-  dstore_app_update({});
+  // dstore_app_update({});
+  let portrait = my.isPortraitView ? 1 : 0;
+  let group = my.group;
+  dstore_device_updates({ portrait, group });
 }
 
 function mo_app_key_value(key, value) {

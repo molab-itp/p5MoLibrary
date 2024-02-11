@@ -70,7 +70,7 @@ function dstore_pixchip_update() {
 
   update(refPath, chip);
 
-  dstore_device_update();
+  dstore_device_event_update();
 }
 
 // --

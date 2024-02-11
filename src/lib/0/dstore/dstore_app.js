@@ -71,6 +71,6 @@ function dstore_app_update(props, deviceProps, groupProps) {
 
   update(refPath, updates);
 
-  dstore_device_update();
+  dstore_device_event_update();
 }
 window.dstore_app_update = dstore_app_update;

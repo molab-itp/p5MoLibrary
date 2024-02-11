@@ -65,5 +65,5 @@ function dstore_astro_update({ index, play_step, show_qrcode }) {
 
   update(refPath, updates);
 
-  dstore_device_update();
+  dstore_device_event_update();
 }

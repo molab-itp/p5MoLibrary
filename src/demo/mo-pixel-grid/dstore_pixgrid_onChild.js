@@ -51,7 +51,7 @@ function dstore_pixgrid_update(irow, stepPx, row) {
   let s = stepPx;
   update(refPath, { i, s, row });
 
-  dstore_device_update();
+  dstore_device_event_update();
 }
 
 // db goes to read-only mode when nstep=128

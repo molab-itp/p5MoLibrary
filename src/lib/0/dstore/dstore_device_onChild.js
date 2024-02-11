@@ -55,7 +55,7 @@ function dstore_device_fetch(uid, val) {
   }
   if (fresh && uid == my.uid) {
     // device must be inited to record visit event
-    dstore_device_visit();
+    dstore_device_event_visit();
   }
   return device;
 }
