@@ -19,6 +19,10 @@
   - [demo/mo-blackfacts s3](demo/mo-blackfacts?v=5&group=s3)
   - [demo/mo-blackfacts s4](demo/mo-blackfacts?v=5&group=s4)
 
+- p5moExamples
+
+  - [p5moExamples lobby](https://editor.p5js.org/jht9629-nyu/sketches/vP6sWN4Cu)
+
 - play list
 
   - [Native Americans Exhibition Trailer](demo/BlackFacts?playlist=hpjNGTYvpxw)
