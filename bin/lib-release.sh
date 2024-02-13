@@ -3,6 +3,16 @@ cd ${0%/*}
 
 # Publish lib to p5moRelease/lib/n
 
+# check for destination
+dest=../../p5moRelease
+if [ ! -e "$dest" ]; then
+  git clone https://github.com/molab-itp/p5moRelease.git $dest
+fi
+if [ ! -e "$dest" ]; then
+  echo "fail to clone to $dest"
+  exit
+fi
+
 excludes="--exclude-from to-public-exclude.txt"
 
 quiet=--quiet
@@ -14,7 +24,7 @@ verbose=
 
 buildnum=`cat ../src/gen/build_ver.txt`
 
-rdest=../../p5moRelease/lib/$buildnum
+rdest=$dest/lib/$buildnum
 
 mkdir -p $rdest
 
@@ -28,7 +38,7 @@ rsync -razO$verbose $excludes $delete $test "$source/" "$rdest/"
 echo
 echo lib $buildnum
 
-cd ../../p5moRelease
+cd $dest
 
 git add . 
 git commit $quiet -m "$buildnum"
