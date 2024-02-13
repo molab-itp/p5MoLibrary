@@ -21,7 +21,7 @@ window.dstore_init = dstore_init;
 // return array of devices, most recently active first
 function dstore_device_summary(show) {
   if (!my.stored_devices) {
-    console.log('no stored_devices');
+    // console.log('no stored_devices');
     return null;
   }
   let arr = Object.values(my.stored_devices).sort((item1, item2) => {
