@@ -21,23 +21,23 @@ function setup() {
   my.animLoop.start();
   // }
 
-  // dstore interface
+  // dbase interface
   let config = fireb_.init('jht9629');
   // let config = fireb_.init('jht1493');
   console.log('?v=6 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
-  my.dstore_rootPath = 'm0-@r-@w-';
+  my.dbase_rootPath = 'm0-@r-@w-';
   my.roomName = 'room0';
   my.astro_index = 0;
 
   my.play_step_flag = true;
   my.show_qrcode_flag = true;
 
-  dstore_init({ dstore_host_init });
+  dbase_app_init({ dbase_host_init });
 }
 
-function dstore_host_init() {
-  dstore_astro_onChild({ mo_astro_index_changed });
+function dbase_host_init() {
+  dbase_astro_onChild({ mo_astro_index_changed });
 }
 
 function draw() {

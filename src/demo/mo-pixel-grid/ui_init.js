@@ -203,7 +203,7 @@ function updateBtn_action() {
 }
 
 function resetBtn_action() {
-  dstore_remove();
+  dbase_remove();
   ui_log_clear();
   localStorage.clear();
   location.reload();

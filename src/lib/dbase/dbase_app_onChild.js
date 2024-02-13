@@ -1,21 +1,21 @@
 //
-function dstore_app_onChild({ mo_app_key_value }) {
+function dbase_app_onChild({ mo_app_key_value, mo_app_removed }) {
   // Setup listener for changes to firebase db device
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
-  let path = `${my.dstore_rootPath}/${my.roomName}/${my.mo_app}`;
+  let path = `${my.dbase_rootPath}/${my.roomName}/${my.mo_app}`;
   let refPath = ref(database, path);
 
   onChildAdded(refPath, (data) => {
-    receivedDeviceKey('dstore_app_onChild Added', data);
+    receivedDeviceKey('dbase_app_onChild Added', data);
   });
 
   onChildChanged(refPath, (data) => {
-    // console.log('dstore_app_onChild Changed', data);
-    receivedDeviceKey('dstore_app_onChild Changed', data);
+    // console.log('dbase_app_onChild Changed', data);
+    receivedDeviceKey('dbase_app_onChild Changed', data);
   });
 
   onChildRemoved(refPath, (data) => {
-    receivedDeviceKey('dstore_app_onChild Removed', data, { remove: 1 });
+    receivedDeviceKey('dbase_app_onChild Removed', data, { remove: 1 });
   });
 
   function receivedDeviceKey(msg, data, remove) {
@@ -24,6 +24,7 @@ function dstore_app_onChild({ mo_app_key_value }) {
     // ui_log(msg, key, 'n=', Object.keys(val).length);
     // ui_log(msg, 'key', key, 'value', value);
     if (remove) {
+      if (mo_app_removed) mo_app_removed(key, value);
       return;
     }
     if (mo_app_key_value) {
@@ -32,19 +33,19 @@ function dstore_app_onChild({ mo_app_key_value }) {
     }
   }
 }
-window.dstore_app_onChild = dstore_app_onChild;
+window.dbase_app_onChild = dbase_app_onChild;
 
 //  props { index, qrcode, startup_time }
-function dstore_app_update(props, deviceProps, groupProps) {
-  // ui_log('dstore_app_update props', props, 'groupProps', groupProps);
-  // ui_log('dstore_app_update props', props, 'deviceProps', deviceProps);
-  // ui_log('dstore_app_update my.uid', my.uid);
+function dbase_app_update(props, deviceProps, groupProps) {
+  // ui_log('dbase_app_update props', props, 'groupProps', groupProps);
+  // ui_log('dbase_app_update props', props, 'deviceProps', deviceProps);
+  // ui_log('dbase_app_update my.uid', my.uid);
   if (!my.uid) return;
 
   let { database, ref, update, increment } = fireb_.fbase;
-  let path = `${my.dstore_rootPath}/${my.roomName}/${my.mo_app}`;
+  let path = `${my.dbase_rootPath}/${my.roomName}/${my.mo_app}`;
   let refPath = ref(database, path);
-  // ui_log('dstore_app_update', path);
+  // ui_log('dbase_app_update', path);
 
   let updates = {};
 
@@ -67,10 +68,10 @@ function dstore_app_update(props, deviceProps, groupProps) {
     updates[dpath] = groupProps.index;
   }
 
-  // ui_log('dstore_app_update updates', updates);
+  // ui_log('dbase_app_update updates', updates);
 
   update(refPath, updates);
 
-  dstore_device_event_update();
+  dbase_device_event_update();
 }
-window.dstore_app_update = dstore_app_update;
+window.dbase_app_update = dbase_app_update;

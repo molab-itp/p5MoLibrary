@@ -25,19 +25,19 @@ function loop_action() {
 function first_action() {
   ui_log('first_action');
   let index = 0;
-  dstore_astro_update({ index });
+  dbase_astro_update({ index });
 }
 
 function next_action() {
   ui_log('next_action');
   let index = (my.astro_index + 1) % my.nrefs;
-  dstore_astro_update({ index });
+  dbase_astro_update({ index });
 }
 
 function previous_action() {
   ui_log('previous_action');
   let index = (my.astro_index - 1 + my.nrefs) % my.nrefs;
-  dstore_astro_update({ index });
+  dbase_astro_update({ index });
 }
 
 function random_action() {
@@ -45,17 +45,17 @@ function random_action() {
   // my.astro_index = int(random(0, my.nrefs));
   // my.astro_index = Math.floor(Math.random() * my.nrefs);
   let index = Math.floor(Math.random() * my.nrefs);
-  dstore_astro_update({ index });
+  dbase_astro_update({ index });
 }
 
 function play_step_changed(newValue) {
   my.play_step_flag = newValue;
   let play_step = my.play_step_flag ? 1 : 0;
-  dstore_astro_update({ play_step });
+  dbase_astro_update({ play_step });
 }
 
 function show_qrcode_changed(newValue) {
   my.show_qrcode_flag = newValue;
   let show_qrcode = my.show_qrcode_flag ? 1 : 0;
-  dstore_astro_update({ show_qrcode });
+  dbase_astro_update({ show_qrcode });
 }

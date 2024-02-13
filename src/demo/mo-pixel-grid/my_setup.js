@@ -5,7 +5,7 @@ function my_setup() {
   // Aspect ratio of video capture
   my.vwidth = 480;
   my.vheight = 640;
-  my.dstore_rootPath = 'm0-@r-@w-';
+  my.dbase_rootPath = 'm0-@r-@w-';
   my.roomName = 'room-pixel-grid';
   my.nameDevice = '';
   // my.nstepCycle = [8, 16, 32];

@@ -1,32 +1,32 @@
 //
 // incrementally draw grid of pixel rects from storage
-function dstore_received() {
-  // console.log('dstore_received my.stored_devices', my.stored_devices);
+function dbase_received() {
+  // console.log('dbase_received my.fireb_devices', my.fireb_devices);
   // let layer = my.layer;
-  if (!my.stored_devices) {
+  if (!my.fireb_devices) {
     return;
   }
   my.x0 = 0;
   my.y0 = 0;
   // Render my pix first
   if (my.uid) {
-    dstore_received_uid(my.uid);
+    dbase_received_uid(my.uid);
   }
-  for (let uid in my.stored_devices) {
-    // console.log('dstore_received ub_uid', uid);
+  for (let uid in my.fireb_devices) {
+    // console.log('dbase_received ub_uid', uid);
     if (uid != my.uid) {
-      dstore_received_uid(uid);
+      dbase_received_uid(uid);
     }
-    // console.log('dstore_received my.y0', my.y0);
+    // console.log('dbase_received my.y0', my.y0);
     if (my.y0 >= height) {
       break;
     }
   }
 }
 
-function dstore_received_uid(uid) {
-  // console.log('dstore_received_uid uid', uid, my.x0, my.y0);
-  dstore_received_image(uid);
+function dbase_received_uid(uid) {
+  // console.log('dbase_received_uid uid', uid, my.x0, my.y0);
+  dbase_received_image(uid);
   my.x0 += my.vwidth;
   if (my.x0 >= width) {
     my.x0 = 0;
@@ -34,25 +34,25 @@ function dstore_received_uid(uid) {
   }
 }
 
-function dstore_received_image(uid) {
-  // let device = my.stored_devices[uid];
-  let device = dstore_device_fetch_pix(uid);
-  // console.log('dstore_received device', device);
+function dbase_received_image(uid) {
+  // let device = my.fireb_devices[uid];
+  let device = dbase_device_fetch_pix(uid);
+  // console.log('dbase_received device', device);
   if (!device) return;
 
   let pixs = device.pixgrids;
-  dstore_received_device(device, pixs);
+  dbase_received_device(device, pixs);
 
   image(device.layer, my.x0, my.y0);
 
-  dstore_received_cross(device, uid);
+  dbase_received_cross(device, uid);
 
   image(device.crossLayer, my.x0, my.y0);
 }
 
-function dstore_received_device(device, pixs) {
+function dbase_received_device(device, pixs) {
   if (!pixs) return;
-  // console.log('dstore_received_device pix n', pixs.length);
+  // console.log('dbase_received_device pix n', pixs.length);
   if (pixs.length <= 0) return;
   let layer = device.layer;
   let nstep = pixs.length;
@@ -64,11 +64,11 @@ function dstore_received_device(device, pixs) {
   while (more) {
     let pix = pixs[vyi];
     if (!pix) {
-      console.log('dstore_received_device no vyi', vyi);
+      console.log('dbase_received_device no vyi', vyi);
       vyi = 0;
       break;
     }
-    // console.log('dstore_received_device pix', pix);
+    // console.log('dbase_received_device pix', pix);
     if (pix.s) {
       stepPx = pix.s;
       innerPx = floor(stepPx * (1 - my.margin));
@@ -81,15 +81,15 @@ function dstore_received_device(device, pixs) {
     // console.log('item', item);
     let colr = item.c;
     if (!colr) {
-      console.log('dstore_received_device no colr vxi', vxi, 'vyi', vyi);
+      console.log('dbase_received_device no colr vxi', vxi, 'vyi', vyi);
       break;
     }
-    // console.log('dstore_received_device colr', colr, typeof colr);
+    // console.log('dbase_received_device colr', colr, typeof colr);
     let x = vxi * stepPx;
     let y = vyi * stepPx;
-    // console.log('dstore_received_device x', x, y);
+    // console.log('dbase_received_device x', x, y);
 
-    dstore_received_shape(layer, x, y, colr, innerPx);
+    dbase_received_shape(layer, x, y, colr, innerPx);
     vxi += 1;
     if (vxi >= pix.row.length) {
       vxi = 0;
@@ -98,7 +98,7 @@ function dstore_received_device(device, pixs) {
         // If we have reached the end of the pixel grid for our device
         // advance to next nstep
         // if (device.uid == my.uid) {
-        //   console.log('dstore_received_device vyi', vyi);
+        //   console.log('dbase_received_device vyi', vyi);
         //   nstepIndex_update();
         // }
         more = 0;
@@ -108,10 +108,10 @@ function dstore_received_device(device, pixs) {
   }
 }
 
-function dstore_received_cross(device, uid) {
+function dbase_received_cross(device, uid) {
   let crossLayer = device.crossLayer;
   crossLayer.clear();
-  if (!dstore_device_isActive(device)) {
+  if (!dbase_device_isActive(device)) {
     return;
   }
   // Draw the chip on layer that persists
@@ -126,7 +126,7 @@ function dstore_received_cross(device, uid) {
   let x = chip.x * stepPx;
   let y = chip.y * stepPx;
   let innerPx = floor(stepPx * (1 - my.margin));
-  dstore_received_shape(device.layer, x, y, colr, innerPx);
+  dbase_received_shape(device.layer, x, y, colr, innerPx);
 
   // Draw the cross hairs on cleared crossLayer
   x = floor(x + innerPx * 0.5);
@@ -139,10 +139,10 @@ function dstore_received_cross(device, uid) {
   crossLayer.line(0, y, my.vwidth, y);
 }
 
-function dstore_received_shape(layer, x, y, colr, innerPx) {
+function dbase_received_shape(layer, x, y, colr, innerPx) {
   layer.fill(colr);
   layer.noStroke();
-  // console.log('dstore_received_shape x', x, y);
+  // console.log('dbase_received_shape x', x, y);
   let ww = innerPx;
   let hh = innerPx;
   let ns = my.shapeIndex % 4;

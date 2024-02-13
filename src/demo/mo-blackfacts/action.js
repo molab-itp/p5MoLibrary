@@ -58,7 +58,7 @@ function qrcode_action() {
   ui_log('qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
   my.qrcodeFlag = id_checkbox_qrcode.checked;
   let qrcode = my.qrcodeFlag ? 1 : 0;
-  dstore_app_update({ qrcode });
+  dbase_app_update({ qrcode });
 }
 
 function play_clip_action() {
@@ -82,36 +82,36 @@ function first_action() {
   // ui_log('first_action');
   allow_cloud_actions();
   let index = 0;
-  dstore_blackfacts_update_index(index);
+  dbase_blackfacts_update_index(index);
 }
 
 function next_action() {
   ui_log('next_action');
   allow_cloud_actions();
   let index = (my.blackfacts_index + 1) % nfacts;
-  dstore_blackfacts_update_index(index);
+  dbase_blackfacts_update_index(index);
 }
 
 function previous_action() {
   // ui_log('previous_action');
   allow_cloud_actions();
   let index = (my.blackfacts_index - 1 + nfacts) % nfacts;
-  dstore_blackfacts_update_index(index);
+  dbase_blackfacts_update_index(index);
 }
 
 function random_action() {
   // ui_log('random_action');
   allow_cloud_actions();
   let index = Math.floor(Math.random() * nfacts);
-  dstore_blackfacts_update_index(index);
+  dbase_blackfacts_update_index(index);
 }
 
-function dstore_blackfacts_update_index(index) {
-  ui_log('dstore_blackfacts_update_index index', index, 'my.group', my.group);
+function dbase_blackfacts_update_index(index) {
+  ui_log('dbase_blackfacts_update_index index', index, 'my.group', my.group);
   if (my.group) {
-    dstore_app_update({}, {}, { group: my.group, index });
+    dbase_app_update({}, {}, { group: my.group, index });
   } else {
-    dstore_app_update({ index });
+    dbase_app_update({ index });
   }
 }
 

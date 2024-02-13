@@ -1,16 +1,17 @@
 ---
 title: mo-astro-remote
 ---
+
 Remote mobile device control of Astronomical on big screen.
 
 <SwmSnippet path="/src/demo/mo-astro-remote-0/index.html" line="38">
 
 ---
 
-sharing code from mo-pixel-grid with mo-astro-remote. dstore_device functions included in script src= lines
+sharing code from mo-pixel-grid with mo-astro-remote. dbase_device functions included in script src= lines
 
 ```html
-  <!-- sharing code from other project -->
+<!-- sharing code from other project -->
 ```
 
 ---

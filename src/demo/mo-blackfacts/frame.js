@@ -51,7 +51,7 @@ function record_startup_time(timeSecs) {
   if (!my.blackfacts_player_startup_time) {
     // console.log('record_startup_time timeSecs', timeSecs);
     my.blackfacts_player_startup_time = timeSecs;
-    dstore_app_update({}, { startup_time: timeSecs });
+    dbase_app_update({}, { startup_time: timeSecs });
   }
 }
 
@@ -66,7 +66,7 @@ function player_startup_stalled() {
   my.stalled_report = 1;
 
   let { increment } = fireb_.fbase;
-  dstore_blackfacts_update({}, { startup_stall: increment(1) });
+  dbase_blackfacts_update({}, { startup_stall: increment(1) });
 
   setTimeout(function () {
     window.location.reload();

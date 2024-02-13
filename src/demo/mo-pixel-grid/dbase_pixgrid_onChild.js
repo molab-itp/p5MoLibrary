@@ -4,31 +4,32 @@
 // dbStoreRootPath/room0/pix
 //
 
-function dstore_pixgrid_onChild() {
+// !!@ use dbase_app_onChild
+function dbase_pixgrid_onChild() {
   //
   let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   // from "firebase/database";
-  let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixgrid`;
-  ui_log('dstore_pixgrid_onChild path=', path);
+  let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid`;
+  ui_log('dbase_pixgrid_onChild path=', path);
   let refPath = ref(database, path);
 
   onChildAdded(refPath, (data) => {
-    receivedPixKey('dstore_pixgrid_onChild Added', data);
+    receivedPixKey('dbase_pixgrid_onChild Added', data);
   });
 
   onChildChanged(refPath, (data) => {
-    receivedPixKey('dstore_pixgrid_onChild Changed', data);
+    receivedPixKey('dbase_pixgrid_onChild Changed', data);
   });
 
   onChildRemoved(refPath, (data) => {
-    receivedPixKey('dstore_pixgrid_onChild Removed', data, { remove: 1 });
+    receivedPixKey('dbase_pixgrid_onChild Removed', data, { remove: 1 });
   });
 
   function receivedPixKey(msg, data, remove) {
     let key = data.key;
     let val = data.val();
     ui_log(msg, key, 'n=', val.length);
-    let device = dstore_device_fetch_pix(key);
+    let device = dbase_device_fetch_pix(key);
     if (remove) {
       delete device.pixgrids;
       return;
@@ -39,56 +40,56 @@ function dstore_pixgrid_onChild() {
   }
 }
 
-function dstore_pixgrid_update(irow, stepPx, row) {
+function dbase_pixgrid_update(irow, stepPx, row) {
   let { database, ref, update } = fireb_.fbase;
   if (!my.uid) {
-    ui_log('dstore_pixgrid_update no uid', my.uid);
+    ui_log('dbase_pixgrid_update no uid', my.uid);
     return;
   }
-  let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixgrid/${my.uid}/${irow}`;
+  let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid/${my.uid}/${irow}`;
   let refPath = ref(database, path);
   let i = irow;
   let s = stepPx;
   update(refPath, { i, s, row });
 
-  dstore_device_event_update();
+  dbase_device_event_update();
 }
 
 // db goes to read-only mode when nstep=128
-function dstore_pixgrid_removeAll() {
+function dbase_pixgrid_removeAll() {
   let { database, ref, set } = fireb_.fbase;
-  let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixgrid`;
+  let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid`;
   let refPath = ref(database, path);
   set(refPath, {})
     .then(() => {
       // Data saved successfully!
-      // ui_log('dstore_removeAll OK');
+      // ui_log('dbase_removeAll OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log('dstore_removeAll error', error);
+      ui_log('dbase_removeAll error', error);
     });
 }
 
-function dstore_pixgrid_remove() {
+function dbase_pixgrid_remove() {
   let { database, ref, set } = fireb_.fbase;
-  let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixgrid/${my.uid}`;
+  let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid/${my.uid}`;
   let refPath = ref(database, path);
   set(refPath, {})
     .then(() => {
       // Data saved successfully!
-      // ui_log('dstore_pixgrid_remove OK');
+      // ui_log('dbase_pixgrid_remove OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log('dstore_pixgrid_remove error', error);
+      ui_log('dbase_pixgrid_remove error', error);
     });
 }
 
-function dstore_remove() {
-  dstore_device_remove();
-  dstore_pixgrid_remove();
-  delete my.stored_devices;
+function dbase_remove() {
+  dbase_device_remove();
+  dbase_pixgrid_remove();
+  delete my.fireb_devices;
 }
 
 // https://console.firebase.google.com/u/0/project/molab-485f5/database/molab-485f5-default-rtdb/data

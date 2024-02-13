@@ -19,14 +19,14 @@ function setup() {
   // let config = fireb_.init('jht1493');
   ui_log('config.projectId', config.projectId, 'configLabel', config.configLabel);
 
-  dstore_init({ dstore_host_init });
+  dbase_app_init({ dbase_host_init });
 
   anim_init();
 }
 
-function dstore_host_init() {
-  dstore_pixgrid_onChild();
-  dstore_pixchip_onChild();
+function dbase_host_init() {
+  dbase_pixgrid_onChild();
+  dbase_pixchip_onChild();
 }
 
 function anim_init() {
@@ -56,17 +56,17 @@ function draw_frame() {
   }
 
   // if (!my.storeFlag) {
-  dstore_received();
+  dbase_received();
   // }
 }
 
 function updateAction() {
   if (my.storeFlag) {
-    dstore_send(my.videoImg);
+    dbase_send(my.videoImg);
   }
   if (my.scanFlag) {
     draw_cross_hair_update();
-    dstore_pixchip_update();
+    dbase_pixchip_update();
   }
 }
 

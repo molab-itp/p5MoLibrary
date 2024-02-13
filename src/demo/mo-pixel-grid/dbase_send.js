@@ -1,12 +1,12 @@
 // incrementally draw grid of pixel rects from given image img
-function dstore_send(img) {
-  // console.log('dstore_send img', img);
+function dbase_send(img) {
+  // console.log('dbase_send img', img);
   if (!img) return;
-  dstore_send_image(img);
+  dbase_send_image(img);
 }
 
-function dstore_send_image(img) {
-  // console.log('dstore_send_image img', img);
+function dbase_send_image(img) {
+  // console.log('dbase_send_image img', img);
   more = 1;
   let colr;
   let cx = floor(my.stepPx * 0.5);
@@ -60,6 +60,6 @@ function draw_record_rect(ix, iy, c) {
 
 function draw_record_flush(irow) {
   if (my.storeFlag && irow >= 0) {
-    dstore_pixgrid_update(irow, my.stepPx, my.pixRows[irow]);
+    dbase_pixgrid_update(irow, my.stepPx, my.pixRows[irow]);
   }
 }

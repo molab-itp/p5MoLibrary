@@ -1,17 +1,17 @@
 //
-function dstore_updateTimeGap(events) {
+function dbase_updateTimeGap(events) {
   for (let index = 1; index < events.length; index++) {
     let nowEnt = events[index - 1];
     let nowTime = new Date(nowEnt.date_s).getTime();
     let pastEnt = events[index];
     let pastTime = new Date(pastEnt.date_s).getTime();
     nowEnt.gap = nowTime - pastTime - nowEnt.time;
-    nowEnt.gap_s = dstore_timeToSeconds(nowEnt.gap);
+    nowEnt.gap_s = dbase_timeToSeconds(nowEnt.gap);
   }
 }
-window.dstore_updateTimeGap = dstore_updateTimeGap;
+window.dbase_updateTimeGap = dbase_updateTimeGap;
 
-function dstore_timeToSeconds(time) {
+function dbase_timeToSeconds(time) {
   let str = '';
   let secs = time / 1000;
   let mins = Math.floor(secs / 60);
@@ -38,4 +38,4 @@ function dstore_timeToSeconds(time) {
   }
   return str;
 }
-window.dstore_timeToSeconds = dstore_timeToSeconds;
+window.dbase_timeToSeconds = dbase_timeToSeconds;

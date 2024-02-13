@@ -14,12 +14,12 @@ function document_loaded() {
   console.log('?v=6 config.projectId', config.projectId);
   console.log('configLabel', config.configLabel);
 
-  dstore_init({ dstore_host_init });
+  dbase_app_init({ dbase_host_init });
 }
 
-function dstore_host_init() {
+function dbase_host_init() {
   //
-  dstore_app_onChild({ mo_app_key_value });
+  dbase_app_onChild({ mo_app_key_value });
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 
@@ -35,7 +35,7 @@ let my = {};
 function my_init() {
   // console.log('my_init');
   //
-  my.dstore_rootPath = 'm0-@r-@w-';
+  my.dbase_rootPath = 'm0-@r-@w-';
   my.mo_app = 'mo-blackfacts';
   my.roomName = 'room0';
   my.blackfacts_index = -1;
@@ -68,10 +68,10 @@ function my_init() {
 }
 
 function pingAction() {
-  // dstore_app_update({});
+  // dbase_app_update({});
   let portrait = my.isPortraitView ? 1 : 0;
   let group = my.group;
-  dstore_device_updates({ portrait, group });
+  dbase_device_updates({ portrait, group });
 }
 
 function mo_app_key_value(key, value) {
