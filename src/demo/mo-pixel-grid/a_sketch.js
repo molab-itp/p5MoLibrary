@@ -4,8 +4,8 @@
 let my = {};
 
 function setup() {
-  my_setup();
-  my_init();
+  my_init1();
+  my_init2();
 
   my.canvas = createCanvas(my.width, my.height);
   my.canvas.mouseReleased(canvas_mouseReleased);
@@ -15,9 +15,9 @@ function setup() {
 
   video_create();
 
-  let config = fireb_.init('jht9629');
-  // let config = fireb_.init('jht1493');
-  ui_log('config.projectId', config.projectId, 'configLabel', config.configLabel);
+  // let config = fireb_.init('jht9629');
+  // // let config = fireb_.init('jht1493');
+  // ui_log('config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   dbase_app_init({ dbase_host_init });
 

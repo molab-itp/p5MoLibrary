@@ -65,7 +65,7 @@ const dbRef = ref(getDatabase());
 
 // https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0
 
-// const galleryRef = ref(database, 'mo-gallery-1');
+// const galleryRef = ref( getDatabase(), 'mo-gallery-1');
 // fireb_.galleryRef = galleryRef;
 // onValue(galleryRef, (snapshot) => {
 //   const data = snapshot.val();

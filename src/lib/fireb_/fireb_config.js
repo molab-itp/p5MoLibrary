@@ -67,14 +67,13 @@ function init(config) {
   // console.log('fireb_config config.projectId', config.projectId);
   fireb_.app = initializeApp(nconfig);
   fireb_.auth = getAuth();
-  fireb_.fbase.init();
-  fireb_.fstorage.init();
+  // fireb_.fbase.init();
+  // fireb_.fstorage.init();
   return nconfig;
 }
 
-import { fstorage } from './fireb_fstorage.js?v=6';
-
 import { fbase } from './fireb_fbase.js?v=6';
+import { fstorage } from './fireb_fstorage.js?v=6';
 
 // export api for non-module script
 const fireb_ = {

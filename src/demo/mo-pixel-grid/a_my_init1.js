@@ -1,10 +1,12 @@
 //
-function my_setup() {
+function my_init1() {
   // updated to verify change on mobile
   my.version = '?v=6';
   // Aspect ratio of video capture
   my.vwidth = 480;
   my.vheight = 640;
+  my.fireb_config = 'jht9629';
+  // my.fireb_config = 'jht1493';
   my.dbase_rootPath = 'm0-@r-@w-';
   my.roomName = 'room-pixel-grid';
   my.nameDevice = '';

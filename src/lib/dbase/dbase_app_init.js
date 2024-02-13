@@ -1,4 +1,11 @@
 function dbase_app_init({ dbase_host_init }) {
+  //
+  let config = fireb_.init(my.fireb_config);
+  console.log('configVersion', config.configVersion);
+  console.log('config.projectId', config.projectId);
+  console.log('configLabel', config.configLabel);
+  console.log('room', my.roomName);
+
   let { signInAnonymously, auth } = fireb_;
   signInAnonymously(auth)
     .then(() => {

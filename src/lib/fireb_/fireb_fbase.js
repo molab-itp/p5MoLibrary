@@ -1,7 +1,7 @@
 //
 // Expose firebase api to non-import code p5js script.js
 // via variable fireb_.xxxx
-// fireb_.fbase.dbRef
+// fireb_.fbase.child
 // ...
 
 // console.log('fireb_fbase');
@@ -20,16 +20,17 @@ import {
   update,
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
 
-function init() {
-  // console.log('fireb_fbase init');
-  fbase.dbRef = ref(getDatabase());
-  fbase.database = getDatabase();
-}
+// function init() {
+//   // console.log('fireb_fbase init');
+//   // fbase.database = getDatabase();
+//   // fbase.dbRef = ref(fbase.database);
+// }
 
 export const fbase = {
-  init,
+  // init,
   child,
   get,
+  getDatabase,
   increment,
   onChildAdded,
   onChildChanged,

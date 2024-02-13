@@ -16,14 +16,15 @@ import {
   uploadBytes,
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js';
 
-function init() {
-  // console.log('fireb_fstorage init');
-  fstorage.storage = getStorage();
-}
+// function init() {
+//   // console.log('fireb_fstorage init');
+//   fstorage.storage = getStorage();
+// }
 
 export const fstorage = {
-  init,
+  // init,
   getDownloadURL,
+  getStorage,
   list,
   listAll,
   ref,

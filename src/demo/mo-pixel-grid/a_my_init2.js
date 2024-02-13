@@ -1,4 +1,4 @@
-function my_init() {
+function my_init2() {
   //
   my.nstep = my.nstepCycle[my.nstepIndex];
   my.updateTime = my.updateTimes[my.nstepIndex];

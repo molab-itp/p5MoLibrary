@@ -9,10 +9,10 @@ function document_loaded() {
 
   my_init();
 
-  let config = fireb_.init('jht9629');
-  // let config = fireb_.init('jht1493');
-  console.log('?v=6 config.projectId', config.projectId);
-  console.log('configLabel', config.configLabel);
+  // let config = fireb_.init('jht9629');
+  // // let config = fireb_.init('jht1493');
+  // console.log('?v=6 config.projectId', config.projectId);
+  // console.log('configLabel', config.configLabel);
 
   dbase_app_init({ dbase_host_init });
 }
@@ -35,6 +35,8 @@ let my = {};
 function my_init() {
   // console.log('my_init');
   //
+  my.fireb_config = 'jht9629';
+  // my.fireb_config = 'jht1493';
   my.dbase_rootPath = 'm0-@r-@w-';
   my.mo_app = 'mo-blackfacts';
   my.roomName = 'room0';

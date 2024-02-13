@@ -1,8 +1,8 @@
 function dbase_device_onChild() {
   // Setup listener for changes to firebase db device
-  let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
+  let { getDatabase, ref, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/device`;
-  let refPath = ref(database, path);
+  let refPath = ref(getDatabase(), path);
 
   onChildAdded(refPath, (data) => {
     receivedDeviceKey('dbase_device_onChild Added', data);
@@ -64,9 +64,9 @@ window.dbase_device_fetch = dbase_device_fetch;
 // --
 
 function dbase_device_remove() {
-  let { database, ref, set } = fireb_.fbase;
+  let { getDatabase, ref, set } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/device/${my.uid}`;
-  let refPath = ref(database, path);
+  let refPath = ref(getDatabase(), path);
   set(refPath, {})
     .then(() => {
       // Data saved successfully!
