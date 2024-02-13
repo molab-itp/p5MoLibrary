@@ -14,7 +14,7 @@ src/demo/BlackFacts
 
 10.4.0
 
-fb_.auth.currentUser.uid
+fireb_.auth.currentUser.uid
 'yGt3ZocTRxWpZQu9bMymjI8zku32'
 
 function ui_toggle_scroll() {

@@ -76,7 +76,7 @@ function draw() {
 }
 
 function demo_signIn() {
-  let { signInAnonymously, auth } = fb_;
+  let { signInAnonymously, auth } = fireb_;
   signInAnonymously(auth)
     .then(() => {
       console.log('signInAnonymously OK');
@@ -104,13 +104,13 @@ function demo_upload() {
 }
 
 function default_imagePath() {
-  return `${my.dstore_rootPath}/${fb_.auth.currentUser.uid}/001${my.ext}`;
+  return `${my.dstore_rootPath}/${fireb_.auth.currentUser.uid}/001${my.ext}`;
 }
 function demo_upload_blob(blob) {
   console.log('demo_upload_blob', blob);
-  let { storage, ref, uploadBytes } = fb_;
+  let { storage, ref, uploadBytes } = fireb_;
 
-  // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
+  // let path = `/-mo-1/${fireb_.auth.currentUser.uid}/000`;
   my.imagePath = default_imagePath();
   console.log('demo_upload_blob my.imagePath', my.imagePath);
   const storageRef = ref(storage, my.imagePath);
@@ -154,7 +154,7 @@ function demo_getDownloadURL(path) {
     path = default_imagePath();
     console.log('demo_getDownloadURL path', path);
   }
-  let { storage, ref, getDownloadURL } = fb_;
+  let { storage, ref, getDownloadURL } = fireb_;
   // getDownloadURL(ref(storage, 'GNhzoQknS1OHY8DA1Fvygmltr902/1.jpeg'))
   let refPath = ref(storage, path);
   getDownloadURL(refPath)
@@ -218,7 +218,7 @@ let d_error;
 // https://firebase.google.com/docs/storage/web/list-files#list_all_files
 function demo_listAll(bucket) {
   console.log('demo_listAll bucket', bucket);
-  let { storage, ref, listAll } = fb_;
+  let { storage, ref, listAll } = fireb_;
   // Create a reference under which you want to list
   // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
   // const listRef = ref(storage, '');
@@ -251,7 +251,7 @@ function demo_listAll(bucket) {
 // https://firebase.google.com/docs/storage/web/list-files#paginate_list_results
 function demo_list(bucket) {
   console.log('demo_list bucket', bucket);
-  let { storage, ref, list } = fb_;
+  let { storage, ref, list } = fireb_;
   // Create a reference under which you want to list
   // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
   // const listRef = ref(storage, '');

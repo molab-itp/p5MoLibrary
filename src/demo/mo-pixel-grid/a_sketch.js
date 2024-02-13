@@ -1,5 +1,5 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/7Wjlo3pPU
-// mo-pixel-grid jht9629 fb_firebase.js
+// mo-pixel-grid jht9629 fireb_firebase.js
 
 let my = {};
 
@@ -15,8 +15,8 @@ function setup() {
 
   video_create();
 
-  let config = fb_.init('jht9629');
-  // let config = fb_.init('jht1493');
+  let config = fireb_.init('jht9629');
+  // let config = fireb_.init('jht1493');
   ui_log('config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   dstore_init({ dstore_host_init });

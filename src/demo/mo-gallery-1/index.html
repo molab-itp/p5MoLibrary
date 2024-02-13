@@ -46,8 +46,8 @@
       };
 
       // Initialize Firebase
-      const fb_ = {};
-      fb_.app = initializeApp(firebaseConfig);
+      const fireb_ = {};
+      fireb_.app = initializeApp(firebaseConfig);
 
       const auth = getAuth();
       const database = getDatabase();
@@ -83,18 +83,18 @@
       // https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0
 
       // const galleryRef = ref(database, 'mo-gallery-1');
-      // fb_.galleryRef = galleryRef;
+      // fireb_.galleryRef = galleryRef;
       // onValue(galleryRef, (snapshot) => {
       //   const data = snapshot.val();
       //   console.log('galleryRef data', data);
       // });
 
-      window.fb_ = fb_;
-      fb_.auth = auth;
-      fb_.database = database;
-      fb_.dbRef = dbRef;
-      fb_.ref = ref;
-      fb_.onValue = onValue;
+      window.fireb_ = fireb_;
+      fireb_.auth = auth;
+      fireb_.database = database;
+      fireb_.dbRef = dbRef;
+      fireb_.ref = ref;
+      fireb_.onValue = onValue;
 
       // Callbacks are removed by calling the off() method on your Firebase database reference.
     </script>

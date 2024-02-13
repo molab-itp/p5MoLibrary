@@ -1,10 +1,10 @@
 //
 // Expose firebase api to non-import code p5js script.js
-// via variable fb_.xxxx
-// fb_.fbase.dbRef
+// via variable fireb_.xxxx
+// fireb_.fbase.dbRef
 // ...
 
-// console.log('fb_fbase');
+// console.log('fireb_fbase');
 
 import {
   child,
@@ -21,7 +21,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
 
 function init() {
-  // console.log('fb_fbase init');
+  // console.log('fireb_fbase init');
   fbase.dbRef = ref(getDatabase());
   fbase.database = getDatabase();
 }
@@ -46,7 +46,7 @@ export const fbase = {
 
 // https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0
 
-// Extracted to own file fb_firebase.js and use
+// Extracted to own file fireb_firebase.js and use
 //  <script type="module" src="firebase.js"></script>
 // to load from index.html
 // This step was to verify that script module import works in p5js editor

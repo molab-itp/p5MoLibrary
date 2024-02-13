@@ -1,9 +1,9 @@
 //
 // Expose firebase api to non-import code p5js script.js
-// via variable fb_.xxxx
-// fb_.ref
-// fb_.database
-// fb_.onValue
+// via variable fireb_.xxxx
+// fireb_.ref
+// fireb_.database
+// fireb_.onValue
 
 // Documentation starting reference
 // <!-- https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en -->
@@ -66,23 +66,23 @@ const dbRef = ref(getDatabase());
 // https://firebase.google.com/docs/database/web/read-and-write?hl=en&authuser=0
 
 // const galleryRef = ref(database, 'mo-gallery-1');
-// fb_.galleryRef = galleryRef;
+// fireb_.galleryRef = galleryRef;
 // onValue(galleryRef, (snapshot) => {
 //   const data = snapshot.val();
 //   console.log('galleryRef data', data);
 // });
 
-const fb_ = {};
-window.fb_ = fb_;
-fb_.app = app;
-fb_.auth = auth;
-fb_.database = database;
-fb_.dbRef = dbRef;
-fb_.ref = ref;
-fb_.onValue = onValue;
+const fireb_ = {};
+window.fireb_ = fireb_;
+fireb_.app = app;
+fireb_.auth = auth;
+fireb_.database = database;
+fireb_.dbRef = dbRef;
+fireb_.ref = ref;
+fireb_.onValue = onValue;
 
 // History
-// Extracted to own file fb_firebase.js and use
+// Extracted to own file fireb_firebase.js and use
 //  <script type="module" src="firebase.js"></script>
 // to load from index.html
 // This step was to verify that script module import works in p5js editor

@@ -47,11 +47,11 @@ function setup() {
 
   ui_init();
 
-  let config = fb_.init('jht9629');
-  // let config = fb_.init('jht1493');
+  let config = fireb_.init('jht9629');
+  // let config = fireb_.init('jht1493');
   ui_log('config.projectId', config.projectId);
 
-  fb_signIn();
+  fireb_signIn();
 
   textSize(40);
 }
@@ -104,7 +104,7 @@ function update_interval() {
   // console.log('update_interval my.count', my.count);
 
   if (my.replay) {
-    fstore_img_download();
+    fstorage_img_download();
     if (my.soundEnable) {
       sound_playback_start();
     }
@@ -117,7 +117,7 @@ function update_interval() {
   }
 
   if (my.record) {
-    fstore_img_upload();
+    fstorage_img_upload();
     if (my.count == 0 && my.soundEnable) {
       sound_record_start();
     }
@@ -149,8 +149,8 @@ function adjust_count(delta) {
   return wrap;
 }
 
-function fb_signIn() {
-  let { signInAnonymously, auth } = fb_;
+function fireb_signIn() {
+  let { signInAnonymously, auth } = fireb_;
   signInAnonymously(auth)
     .then(() => {
       ui_log('signInAnonymously OK');
@@ -159,8 +159,8 @@ function fb_signIn() {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      ui_log('fb_signIn errorCode', errorCode);
-      ui_log('fb_signIn errorMessage', errorMessage);
+      ui_log('fireb_signIn errorCode', errorCode);
+      ui_log('fireb_signIn errorMessage', errorMessage);
     });
 }
 

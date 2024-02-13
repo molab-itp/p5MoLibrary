@@ -1,9 +1,9 @@
 // https://firebase.google.com/docs/storage/web/list-files#list_all_files
-function fstore_listAll(bucket) {
-  // console.log('fstore_listAll bucket', bucket);
-  let { storage, ref, listAll } = fb_.fstore;
+function fstorage_listAll(bucket) {
+  // console.log('fstorage_listAll bucket', bucket);
+  let { storage, ref, listAll } = fireb_.fstorage;
   bucket = bucket || my.dstore_rootPath;
-  console.log('fstore_listAll bucket', bucket);
+  console.log('fstorage_listAll bucket', bucket);
   // Create a reference under which you want to list
   // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
   // const listRef = ref(storage, '');
@@ -28,14 +28,14 @@ function fstore_listAll(bucket) {
     })
     .catch((error) => {
       // Uh-oh, an error occurred!
-      ui_error('fstore_listAll error', error);
+      ui_error('fstorage_listAll error', error);
     });
 }
 
 // https://firebase.google.com/docs/storage/web/list-files#paginate_list_results
-function fstore_list(bucket) {
-  console.log('fstore_list bucket', bucket);
-  let { storage, ref, list } = fb_.fstore;
+function fstorage_list(bucket) {
+  console.log('fstorage_list bucket', bucket);
+  let { storage, ref, list } = fireb_.fstorage;
   bucket = bucket || my.dstore_rootPath;
   // Create a reference under which you want to list
   // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
@@ -61,6 +61,6 @@ function fstore_list(bucket) {
     })
     .catch((error) => {
       // Uh-oh, an error occurred!
-      ui_error('fstore_list error', error);
+      ui_error('fstorage_list error', error);
     });
 }

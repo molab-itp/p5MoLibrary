@@ -1,20 +1,20 @@
-function fstore_img_download() {
-  // console.log('fstore_img_download ');
+function fstorage_img_download() {
+  // console.log('fstorage_img_download ');
   let path = next_imagePath(my.count);
   // my.lastDownloadPath = null;
-  // ui_log('fstore_img_download next_imagePath ' + path);
-  let { storage, ref, getDownloadURL } = fb_.fstore;
+  // ui_log('fstorage_img_download next_imagePath ' + path);
+  let { storage, ref, getDownloadURL } = fireb_.fstorage;
   getDownloadURL(ref(storage, path))
     .then((url) => {
       // `url` is the download URL for '1.jpeg'
-      // ui_log('fstore_img_download url', url);
+      // ui_log('fstorage_img_download url', url);
 
       // This can be downloaded directly:
       const xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';
       xhr.onload = (event) => {
         const blob = xhr.response;
-        // ui_log('fstore_img_download blob ' + blob);
+        // ui_log('fstorage_img_download blob ' + blob);
         renderBlobToCanvas(blob);
         my.lastDownloadPath = path;
         if (my.img_download_log) {
@@ -30,7 +30,7 @@ function fstore_img_download() {
     })
     .catch((error) => {
       // Handle any errors
-      ui_error('fstore_getDownloadURL error', error);
+      ui_error('fstorage_getDownloadURL error', error);
       my.replayLayer.fill(0);
       my.replayLayer.rect(0, 0, width, height);
     });

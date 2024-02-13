@@ -12,12 +12,12 @@ let a_index = 0;
 function setup() {
   // createCanvas(400, 100);
   noCanvas();
-  // console.log('app', fb_.app);
+  // console.log('app', fireb_.app);
 
   // Setup listener for changes to firebase db
-  // fb_ is initialized by fb_firebase.js
-  let galleryRef = fb_.ref(fb_.database, storeKey);
-  fb_.onValue(galleryRef, (snapshot) => {
+  // fireb_ is initialized by fireb_firebase.js
+  let galleryRef = fireb_.ref(fireb_.database, storeKey);
+  fireb_.onValue(galleryRef, (snapshot) => {
     const data = snapshot.val();
     console.log('galleryRef data', data);
     received_gallery(data);

@@ -1,6 +1,7 @@
 ---
 title: mo-pixel-grid
 ---
+
 **src/mo-pixel-grid** uses the firebase library to store and read data from a realtime database `my.dstore_rootPath` `my.roomName`
 
 <SwmToken path="/src/demo/mo-pixel-grid/dstore_device_event.js" pos="25:11:11" line-data="  let path = `${my.dstore_rootPath}/${my.roomName}/device/${my.uid}`;">`dstore_rootPath`</SwmToken>
@@ -35,8 +36,8 @@ The query append to each `src=` reference in index file is to force reload from 
 establish the connection to firebase using config`'jht9629'` or `'jht1493'`.
 
 ```
-  // let config = fb_.init('jht9629');
-  let config = fb_.init('jht1493');
+  // let config = fireb_.init('jht9629');
+  let config = fireb_.init('jht1493');
 ```
 
 ---
@@ -47,7 +48,7 @@ establish the connection to firebase using config`'jht9629'` or `'jht1493'`.
 
 creating your own firebase account and pass the config object to fb\_.init&nbsp;
 
-<SwmToken path="/src/demo/mo-pixel-grid/a_sketch.js" pos="18:11:11" line-data="  // let config = fb_.init(&#39;jht9629&#39;);">`init`</SwmToken>
+<SwmToken path="/src/demo/mo-pixel-grid/a_sketch.js" pos="18:11:11" line-data="  // let config = fireb_.init(&#39;jht9629&#39;);">`init`</SwmToken>
 
 &nbsp;
 

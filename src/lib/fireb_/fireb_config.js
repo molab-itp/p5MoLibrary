@@ -1,16 +1,16 @@
 //
 // Expose firebase api to non-import code p5js script.js
-// via variable fb_.xxxx
-// fb_.init
-// fb_.app
-// fb_.auth
-// fb_.signInAnonymously
+// via variable fireb_.xxxx
+// fireb_.init
+// fireb_.app
+// fireb_.auth
+// fireb_.signInAnonymously
 //
 
 // Documentation starting reference
 //    https://firebase.google.com/docs/web/alt-setup?authuser=0&hl=en
 
-// console.log('fb_config');
+// console.log('fireb_config');
 
 import {
   initializeApp, //
@@ -55,7 +55,7 @@ function init(config) {
   let configLabel;
   let nconfig = config;
   if (typeof nconfig == 'string') {
-    // console.log('fb_config config string', config);
+    // console.log('fireb_config config string', config);
     configLabel = nconfig;
     nconfig = configs[config];
   }
@@ -63,27 +63,27 @@ function init(config) {
   nconfig = nconfig || firebaseConfig_jht9629;
   nconfig.configLabel = configLabel;
   nconfig.configVersion = '?v=6';
-  // console.log('fb_config config', config);
-  // console.log('fb_config config.projectId', config.projectId);
-  fb_.app = initializeApp(nconfig);
-  fb_.auth = getAuth();
-  fb_.fbase.init();
-  fb_.fstore.init();
+  // console.log('fireb_config config', config);
+  // console.log('fireb_config config.projectId', config.projectId);
+  fireb_.app = initializeApp(nconfig);
+  fireb_.auth = getAuth();
+  fireb_.fbase.init();
+  fireb_.fstorage.init();
   return nconfig;
 }
 
-import { fstore } from './fb_fstore.js?v=6';
+import { fstorage } from './fireb_fstorage.js?v=6';
 
-import { fbase } from './fb_fbase.js?v=6';
+import { fbase } from './fireb_fbase.js?v=6';
 
 // export api for non-module script
-const fb_ = {
+const fireb_ = {
   init,
   signInAnonymously,
   fbase,
-  fstore,
+  fstorage,
 };
 
-window.fb_ = fb_;
+window.fireb_ = fireb_;
 
 // https://firebase.google.com/docs/projects/api-keys

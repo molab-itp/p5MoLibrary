@@ -27,7 +27,7 @@ let splatBtn;
 
 function setup() {
   noCanvas();
-  // console.log('app', fb_.app);
+  // console.log('app', fireb_.app);
   if (debug) {
     rwidth = rwidth / 4;
     rheight = rheight / 4;
@@ -37,8 +37,8 @@ function setup() {
   check_url_param();
 
   // Setup listner for changes to firebase db
-  let galleryRef = fb_.ref(fb_.database, galleryKey);
-  fb_.onValue(galleryRef, (snapshot) => {
+  let galleryRef = fireb_.ref(fireb_.database, galleryKey);
+  fireb_.onValue(galleryRef, (snapshot) => {
     const data = snapshot.val();
     console.log('galleryRef data', data);
     received_gallery(data);

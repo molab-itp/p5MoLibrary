@@ -1,11 +1,11 @@
 //
 // firebase-storage
 // Expose firebase api to non-import code p5js script.js
-// via variable fb_.xxxx
-// fb_.fstore.storage
+// via variable fireb_.xxxx
+// fireb_.fstorage.storage
 // ...
 
-// console.log('fb_fstore');
+// console.log('fireb_fstorage');
 
 import {
   getDownloadURL,
@@ -17,11 +17,11 @@ import {
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js';
 
 function init() {
-  // console.log('fb_fstore init');
-  fstore.storage = getStorage();
+  // console.log('fireb_fstorage init');
+  fstorage.storage = getStorage();
 }
 
-export const fstore = {
+export const fstorage = {
   init,
   getDownloadURL,
   list,

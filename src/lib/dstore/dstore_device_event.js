@@ -28,7 +28,7 @@ function dstore_device_updates(updates, keys) {
   // ui_log('dstore_device_event my.uid', my.uid);
   if (!my.uid) return;
 
-  let { database, ref, update, increment } = fb_.fbase;
+  let { database, ref, update, increment } = fireb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/device/${my.uid}`;
   // ui_log('dstore_device_event', path);
   let refPath = ref(database, path);

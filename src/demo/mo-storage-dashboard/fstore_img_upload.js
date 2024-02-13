@@ -1,23 +1,23 @@
 // https://firebase.google.com/docs/storage/web/upload-files?authuser=0#upload_from_a_blob_or_file
 
-function fstore_img_upload() {
-  // console.log('fstore_img_upload');
+function fstorage_img_upload() {
+  // console.log('fstorage_img_upload');
   let count = my.count;
   my.layer.elt.toBlob(
     (blob) => {
-      fstore_img_upload_blob(blob, count);
+      fstorage_img_upload_blob(blob, count);
     },
     my.imageType,
     my.imageQuality
   );
 }
 
-function fstore_img_upload_blob(blob, count) {
-  // console.log('fstore_img_upload_blob', blob);
-  let { storage, ref, uploadBytes } = fb_.fstore;
-  // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;
+function fstorage_img_upload_blob(blob, count) {
+  // console.log('fstorage_img_upload_blob', blob);
+  let { storage, ref, uploadBytes } = fireb_.fstorage;
+  // let path = `/-mo-1/${fireb_.auth.currentUser.uid}/000`;
   my.imagePath = next_imagePath(count);
-  // ui_log('fstore_img_upload_blob my.imagePath', my.imagePath);
+  // ui_log('fstorage_img_upload_blob my.imagePath', my.imagePath);
   const storageRef = ref(storage, my.imagePath);
 
   // 'file' comes from the Blob or File API
@@ -30,7 +30,7 @@ function fstore_img_upload_blob(blob, count) {
     })
     .catch((error) => {
       // Handle any errors
-      ui_error('fstore_img_upload_blob error', error);
+      ui_error('fstorage_img_upload_blob error', error);
     });
 }
 

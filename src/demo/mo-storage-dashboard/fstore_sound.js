@@ -1,14 +1,14 @@
 function sound_getBlob() {
   my.soundBlob = my.soundFile.getBlob();
   // Upload the sound blob
-  fstore_sound_upload_blob(my.soundBlob, 0);
+  fstorage_sound_upload_blob(my.soundBlob, 0);
 }
 
-function fstore_sound_upload_blob(blob, count) {
-  console.log('fstore_sound_upload_blob', blob);
-  let { storage, ref, uploadBytes } = fb_.fstore;
+function fstorage_sound_upload_blob(blob, count) {
+  console.log('fstorage_sound_upload_blob', blob);
+  let { storage, ref, uploadBytes } = fireb_.fstorage;
   my.soundPath = next_soundPath(count);
-  ui_log('fstore_sound_upload_blob my.soundPath', my.soundPath);
+  ui_log('fstorage_sound_upload_blob my.soundPath', my.soundPath);
   const storageRef = ref(storage, my.soundPath);
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, blob)
@@ -17,11 +17,11 @@ function fstore_sound_upload_blob(blob, count) {
       // console.log('snapshot', snapshot);
       // console.log('Uploaded path', path);
       ui_log('upload ', my.soundPath);
-      my.fstore_sound_upload_completed = 1;
+      my.fstorage_sound_upload_completed = 1;
     })
     .catch((error) => {
       // Handle any errors
-      ui_error('fstore_sound_upload_blob error', error);
+      ui_error('fstorage_sound_upload_blob error', error);
     });
 }
 
@@ -31,18 +31,18 @@ function next_soundPath(count) {
   return `${my.dstore_rootPath}/${my.clipsName}/${str}.wav`;
 }
 
-function fstore_sound_download() {
-  // console.log('fstore_sound_download ');
+function fstorage_sound_download() {
+  // console.log('fstorage_sound_download ');
   let path = next_soundPath(0);
-  // ui_log('fstore_sound_download next_imagePath ' + path);
-  let { storage, ref, getDownloadURL } = fb_.fstore;
+  // ui_log('fstorage_sound_download next_imagePath ' + path);
+  let { storage, ref, getDownloadURL } = fireb_.fstorage;
   getDownloadURL(ref(storage, path))
     .then((url) => {
       const xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';
       xhr.onload = (event) => {
         const blob = xhr.response;
-        // ui_log('fstore_sound_download blob ' + blob);
+        // ui_log('fstorage_sound_download blob ' + blob);
         ui_log('sound download ' + path);
         sound_play_blob(blob);
       };
@@ -51,7 +51,7 @@ function fstore_sound_download() {
     })
     .catch((error) => {
       // Handle any errors
-      ui_error('fstore_sound_download error', error);
+      ui_error('fstorage_sound_download error', error);
     });
 }
 function sound_play_blob(blob) {

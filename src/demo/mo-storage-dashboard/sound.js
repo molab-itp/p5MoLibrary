@@ -51,8 +51,8 @@ function sound_record_stop() {
   // stop recorder, and send the result to soundFile
   my.recorder.stop();
   // Prepare for upload
-  my.fstore_sound_upload_started = 1;
-  my.fstore_sound_upload_completed = 0;
+  my.fstorage_sound_upload_started = 1;
+  my.fstorage_sound_upload_completed = 0;
   my.sound_downFile = null;
 
   // Give record a sec before asking for blob
@@ -67,13 +67,13 @@ function sound_playback_start() {
   }
   // Wait for upload to complete
   if (
-    my.fstore_sound_upload_started && //
-    !my.fstore_sound_upload_completed
+    my.fstorage_sound_upload_started && //
+    !my.fstorage_sound_upload_completed
   ) {
     return;
   }
   // download the sound
-  fstore_sound_download();
+  fstorage_sound_download();
 }
 
 function sound_playback_stop() {

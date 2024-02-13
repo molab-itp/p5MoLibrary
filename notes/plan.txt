@@ -2,7 +2,7 @@ _aplan.txt
 
 # --
 
-[] doc: lib/fb_
+[] doc: lib/fireb_
 [] doc: permision model
   my.dstore_rootPath = '-mo-storage-video-@w-/clips';
   my.dstore_rootPath = '-mo-1-@w-';

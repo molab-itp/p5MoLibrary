@@ -1,6 +1,6 @@
 function dstore_device_onChild() {
   // Setup listener for changes to firebase db device
-  let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
+  let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/device`;
   let refPath = ref(database, path);
 
@@ -64,7 +64,7 @@ window.dstore_device_fetch = dstore_device_fetch;
 // --
 
 function dstore_device_remove() {
-  let { database, ref, set } = fb_.fbase;
+  let { database, ref, set } = fireb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/device/${my.uid}`;
   let refPath = ref(database, path);
   set(refPath, {})

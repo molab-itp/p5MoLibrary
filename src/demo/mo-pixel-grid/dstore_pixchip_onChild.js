@@ -7,7 +7,7 @@
 
 function dstore_pixchip_onChild() {
   //
-  let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
+  let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   // from "firebase/database";
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixchip`;
   ui_log('dstore_pixchip_onChild path=', path);
@@ -58,7 +58,7 @@ function dstore_pixchip_update() {
     ui_log('dstore_pixchip_update no uid', my.uid);
     return;
   }
-  let { database, ref, update } = fb_.fbase;
+  let { database, ref, update } = fireb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixchip/${my.uid}`;
   let refPath = ref(database, path);
 
@@ -76,7 +76,7 @@ function dstore_pixchip_update() {
 // --
 
 function dstore_pixchip_removeAll() {
-  let { database, ref, set } = fb_.fbase;
+  let { database, ref, set } = fireb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixchip`;
   let refPath = ref(database, path);
   set(refPath, {})
@@ -91,7 +91,7 @@ function dstore_pixchip_removeAll() {
 }
 
 function dstore_pixchip_remove() {
-  let { database, ref, set } = fb_.fbase;
+  let { database, ref, set } = fireb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixchip/${my.uid}`;
   let refPath = ref(database, path);
   set(refPath, {})

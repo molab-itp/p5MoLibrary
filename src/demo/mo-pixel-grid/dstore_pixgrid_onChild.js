@@ -6,7 +6,7 @@
 
 function dstore_pixgrid_onChild() {
   //
-  let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
+  let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   // from "firebase/database";
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixgrid`;
   ui_log('dstore_pixgrid_onChild path=', path);
@@ -40,7 +40,7 @@ function dstore_pixgrid_onChild() {
 }
 
 function dstore_pixgrid_update(irow, stepPx, row) {
-  let { database, ref, update } = fb_.fbase;
+  let { database, ref, update } = fireb_.fbase;
   if (!my.uid) {
     ui_log('dstore_pixgrid_update no uid', my.uid);
     return;
@@ -56,7 +56,7 @@ function dstore_pixgrid_update(irow, stepPx, row) {
 
 // db goes to read-only mode when nstep=128
 function dstore_pixgrid_removeAll() {
-  let { database, ref, set } = fb_.fbase;
+  let { database, ref, set } = fireb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixgrid`;
   let refPath = ref(database, path);
   set(refPath, {})
@@ -71,7 +71,7 @@ function dstore_pixgrid_removeAll() {
 }
 
 function dstore_pixgrid_remove() {
-  let { database, ref, set } = fb_.fbase;
+  let { database, ref, set } = fireb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/mo-pixgrid/${my.uid}`;
   let refPath = ref(database, path);
   set(refPath, {})

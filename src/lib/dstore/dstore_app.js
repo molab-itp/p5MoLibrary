@@ -1,7 +1,7 @@
 //
 function dstore_app_onChild({ mo_app_key_value }) {
   // Setup listener for changes to firebase db device
-  let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fb_.fbase;
+  let { database, ref, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/${my.mo_app}`;
   let refPath = ref(database, path);
 
@@ -41,7 +41,7 @@ function dstore_app_update(props, deviceProps, groupProps) {
   // ui_log('dstore_app_update my.uid', my.uid);
   if (!my.uid) return;
 
-  let { database, ref, update, increment } = fb_.fbase;
+  let { database, ref, update, increment } = fireb_.fbase;
   let path = `${my.dstore_rootPath}/${my.roomName}/${my.mo_app}`;
   let refPath = ref(database, path);
   // ui_log('dstore_app_update', path);

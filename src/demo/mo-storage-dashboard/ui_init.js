@@ -212,7 +212,7 @@ function ui_error(...args) {
 // });
 
 // createButton('SignIn').mousePressed(function () {
-//   fb_signIn();
+//   fireb_signIn();
 // });
 
 // createButton('Reset count').mousePressed(function () {
@@ -220,7 +220,7 @@ function ui_error(...args) {
 // });
 
 // createButton('Upload').mousePressed(function () {
-//   fstore_img_upload();
+//   fstorage_img_upload();
 // });
 
 // my.reloadBtn = createButton('Reload');

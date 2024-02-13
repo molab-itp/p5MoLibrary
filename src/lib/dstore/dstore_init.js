@@ -1,5 +1,5 @@
 function dstore_init({ dstore_host_init }) {
-  let { signInAnonymously, auth } = fb_;
+  let { signInAnonymously, auth } = fireb_;
   signInAnonymously(auth)
     .then(() => {
       my.uid = auth.currentUser.uid;
