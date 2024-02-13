@@ -14,12 +14,12 @@ function document_loaded() {
   // console.log('?v=6 config.projectId', config.projectId);
   // console.log('configLabel', config.configLabel);
 
-  dbase_app_init({ dbase_host_init });
+  dbase_app_init({ completed: dbase_host_init });
 }
 
 function dbase_host_init() {
   //
-  dbase_app_onChild({ mo_app_key_value });
+  dbase_app_event({ changed_key_value: mo_app_key_value });
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 

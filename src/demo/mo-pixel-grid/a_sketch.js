@@ -19,7 +19,7 @@ function setup() {
   // // let config = fireb_.init('jht1493');
   // ui_log('config.projectId', config.projectId, 'configLabel', config.configLabel);
 
-  dbase_app_init({ dbase_host_init });
+  dbase_app_init({ completed: dbase_host_init });
 
   anim_init();
 }

@@ -6,10 +6,10 @@ function sound_getBlob() {
 
 function fstorage_sound_upload_blob(blob, count) {
   console.log('fstorage_sound_upload_blob', blob);
-  let { storage, ref, uploadBytes } = fireb_.fstorage;
+  let { getStorage, ref, uploadBytes } = fireb_.fstorage;
   my.soundPath = next_soundPath(count);
   ui_log('fstorage_sound_upload_blob my.soundPath', my.soundPath);
-  const storageRef = ref(storage, my.soundPath);
+  const storageRef = ref(getStorage(), my.soundPath);
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, blob)
     .then((snapshot) => {
@@ -35,8 +35,8 @@ function fstorage_sound_download() {
   // console.log('fstorage_sound_download ');
   let path = next_soundPath(0);
   // ui_log('fstorage_sound_download next_imagePath ' + path);
-  let { storage, ref, getDownloadURL } = fireb_.fstorage;
-  getDownloadURL(ref(storage, path))
+  let { getStorage, ref, getDownloadURL } = fireb_.fstorage;
+  getDownloadURL(ref(getStorage(), path))
     .then((url) => {
       const xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';

@@ -1,4 +1,4 @@
-function dbase_app_init({ dbase_host_init }) {
+function dbase_app_init({ completed }) {
   //
   let config = fireb_.init(my.fireb_config);
   console.log('configVersion', config.configVersion);
@@ -17,7 +17,7 @@ function dbase_app_init({ dbase_host_init }) {
       // Send initial ping
       dbase_app_update({});
 
-      if (dbase_host_init) dbase_host_init();
+      if (completed) completed();
     })
     .catch((error) => {
       console.log('dbase_app_init error', error);

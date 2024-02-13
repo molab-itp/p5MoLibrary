@@ -35,7 +35,7 @@ function setup() {
   my.play_step_flag = true;
   my.show_qrcode_flag = true;
 
-  dbase_app_init({ dbase_host_init });
+  dbase_app_init({ completed: dbase_host_init });
 }
 
 function dbase_host_init() {

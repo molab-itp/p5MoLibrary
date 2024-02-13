@@ -3,8 +3,8 @@ function fstorage_img_download() {
   let path = next_imagePath(my.count);
   // my.lastDownloadPath = null;
   // ui_log('fstorage_img_download next_imagePath ' + path);
-  let { storage, ref, getDownloadURL } = fireb_.fstorage;
-  getDownloadURL(ref(storage, path))
+  let { getStorage, ref, getDownloadURL } = fireb_.fstorage;
+  getDownloadURL(ref(getStorage(), path))
     .then((url) => {
       // `url` is the download URL for '1.jpeg'
       // ui_log('fstorage_img_download url', url);

@@ -4,7 +4,7 @@
 
 import './Anim.js?v=6';
 import './dbase/dbase_app_init.js?v=6';
-import './dbase/dbase_app_onChild.js?v=6';
+import './dbase/dbase_app_event.js?v=6';
 import './dbase/dbase_device_event.js?v=6';
 import './dbase/dbase_device_onChild.js?v=6';
 import './dbase/dbase_updateTimeGap.js?v=6';

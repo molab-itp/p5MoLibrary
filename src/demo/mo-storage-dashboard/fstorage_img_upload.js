@@ -14,11 +14,11 @@ function fstorage_img_upload() {
 
 function fstorage_img_upload_blob(blob, count) {
   // console.log('fstorage_img_upload_blob', blob);
-  let { storage, ref, uploadBytes } = fireb_.fstorage;
+  let { getStorage, ref, uploadBytes } = fireb_.fstorage;
   // let path = `/-mo-1/${fireb_.auth.currentUser.uid}/000`;
   my.imagePath = next_imagePath(count);
   // ui_log('fstorage_img_upload_blob my.imagePath', my.imagePath);
-  const storageRef = ref(storage, my.imagePath);
+  const storageRef = ref(getStorage(), my.imagePath);
 
   // 'file' comes from the Blob or File API
   uploadBytes(storageRef, blob)

@@ -5,7 +5,7 @@
 //   let s = my.stepPx;
 //   let c = my.videoColor;
 
-// !!@ use dbase_app_onChild
+// !!@ use dbase_app_event
 function dbase_pixchip_onChild() {
   //
   let { getDatabase, ref, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;

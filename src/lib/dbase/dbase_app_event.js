@@ -1,21 +1,21 @@
 //
-function dbase_app_onChild({ mo_app_key_value, mo_app_removed }) {
+function dbase_app_event({ changed_key_value, removed_key_value }) {
   // Setup listener for changes to firebase db device
   let { getDatabase, ref, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/${my.mo_app}`;
   let refPath = ref(getDatabase(), path);
 
   onChildAdded(refPath, (data) => {
-    receivedDeviceKey('dbase_app_onChild Added', data);
+    receivedDeviceKey('dbase_app_event Added', data);
   });
 
   onChildChanged(refPath, (data) => {
-    // console.log('dbase_app_onChild Changed', data);
-    receivedDeviceKey('dbase_app_onChild Changed', data);
+    // console.log('dbase_app_event Changed', data);
+    receivedDeviceKey('dbase_app_event Changed', data);
   });
 
   onChildRemoved(refPath, (data) => {
-    receivedDeviceKey('dbase_app_onChild Removed', data, { remove: 1 });
+    receivedDeviceKey('dbase_app_event Removed', data, { remove: 1 });
   });
 
   function receivedDeviceKey(msg, data, remove) {
@@ -24,16 +24,16 @@ function dbase_app_onChild({ mo_app_key_value, mo_app_removed }) {
     // ui_log(msg, key, 'n=', Object.keys(val).length);
     // ui_log(msg, 'key', key, 'value', value);
     if (remove) {
-      if (mo_app_removed) mo_app_removed(key, value);
+      if (removed_key_value) removed_key_value(key, value);
       return;
     }
-    if (mo_app_key_value) {
+    if (changed_key_value) {
       // { index, qrcode }
-      mo_app_key_value(key, value);
+      changed_key_value(key, value);
     }
   }
 }
-window.dbase_app_onChild = dbase_app_onChild;
+window.dbase_app_event = dbase_app_event;
 
 //  props { index, qrcode, startup_time }
 function dbase_app_update(props, deviceProps, groupProps) {

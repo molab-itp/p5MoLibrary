@@ -1,13 +1,11 @@
 // https://firebase.google.com/docs/storage/web/list-files#list_all_files
 function fstorage_listAll(bucket) {
   // console.log('fstorage_listAll bucket', bucket);
-  let { storage, ref, listAll } = fireb_.fstorage;
+  let { getStorage, ref, listAll } = fireb_.fstorage;
   bucket = bucket || my.dbase_rootPath;
   console.log('fstorage_listAll bucket', bucket);
   // Create a reference under which you want to list
-  // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
-  // const listRef = ref(storage, '');
-  const listRef = ref(storage, bucket);
+  const listRef = ref(getStorage(), bucket);
   // console.log('listRef', listRef);
   // Find all the prefixes and items.
   listAll(listRef)
@@ -35,12 +33,10 @@ function fstorage_listAll(bucket) {
 // https://firebase.google.com/docs/storage/web/list-files#paginate_list_results
 function fstorage_list(bucket) {
   console.log('fstorage_list bucket', bucket);
-  let { storage, ref, list } = fireb_.fstorage;
+  let { getStorage, ref, list } = fireb_.fstorage;
   bucket = bucket || my.dbase_rootPath;
   // Create a reference under which you want to list
-  // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');
-  // const listRef = ref(storage, '');
-  const listRef = ref(storage, bucket);
+  const listRef = ref(getStorage(), bucket);
   console.log('listRef', listRef);
   // Find all the prefixes and items.
   list(listRef, { maxResults: 100 })
