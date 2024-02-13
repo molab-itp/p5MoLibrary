@@ -28,7 +28,7 @@ rdest=$dest/lib/$buildnum
 
 mkdir -p $rdest
 
-source=../src/lib/0
+source=../src/lib
 # echo $verbose $delete $test
 # echo -razO$verbose $excludes $delete $test
 # echo "rsync from $source"
