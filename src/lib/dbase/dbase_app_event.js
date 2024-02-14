@@ -1,9 +1,9 @@
 //
 function dbase_app_event({ changed_key_value, removed_key_value }) {
   // Setup listener for changes to firebase db device
-  let { getDatabase, ref, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
+  let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/${my.mo_app}`;
-  let refPath = ref(getDatabase(), path);
+  let refPath = getRefPath(path);
 
   onChildAdded(refPath, (data) => {
     receivedDeviceKey('dbase_app_event Added', data);
@@ -42,9 +42,9 @@ function dbase_app_update(props, deviceProps, groupProps) {
   // ui_log('dbase_app_update my.uid', my.uid);
   if (!my.uid) return;
 
-  let { getDatabase, ref, update, increment } = fireb_.fbase;
+  let { getRefPath, update, increment } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/${my.mo_app}`;
-  let refPath = ref(getDatabase(), path);
+  let refPath = getRefPath(path);
   // ui_log('dbase_app_update', path);
 
   let updates = {};

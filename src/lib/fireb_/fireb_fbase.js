@@ -26,11 +26,16 @@ import {
 //   // fbase.dbRef = ref(fbase.database);
 // }
 
+function getRefPath(path) {
+  return ref(getDatabase(), path);
+}
+
 export const fbase = {
   // init,
   child,
   get,
   getDatabase,
+  getRefPath,
   increment,
   onChildAdded,
   onChildChanged,

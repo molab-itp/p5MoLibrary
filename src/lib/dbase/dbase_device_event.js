@@ -28,10 +28,10 @@ function dbase_device_updates(updates, keys) {
   // ui_log('dbase_device_event my.uid', my.uid);
   if (!my.uid) return;
 
-  let { getDatabase, ref, update, increment } = fireb_.fbase;
+  let { getRefPath, update, increment } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/device/${my.uid}`;
   // ui_log('dbase_device_event', path);
-  let refPath = ref(getDatabase(), path);
+  let refPath = getRefPath(path);
 
   let date_s = new Date().toISOString();
   let count = increment(1);

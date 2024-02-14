@@ -8,11 +8,11 @@
 // !!@ use dbase_app_event
 function dbase_pixchip_onChild() {
   //
-  let { getDatabase, ref, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
+  let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   // from "firebase/database";
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip`;
   ui_log('dbase_pixchip_onChild path=', path);
-  let refPath = ref(getDatabase(), path);
+  let refPath = getRefPath(path);
 
   onChildAdded(refPath, (data) => {
     receivedData('dbase_pixchip_onChild Added', data);
@@ -59,9 +59,9 @@ function dbase_pixchip_update() {
     ui_log('dbase_pixchip_update no uid', my.uid);
     return;
   }
-  let { getDatabase, ref, update } = fireb_.fbase;
+  let { getRefPath, update } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip/${my.uid}`;
-  let refPath = ref(getDatabase(), path);
+  let refPath = getRefPath(path);
 
   let c = my.videoColor;
   let x = my.track_xi;
@@ -77,9 +77,9 @@ function dbase_pixchip_update() {
 // --
 
 function dbase_pixchip_removeAll() {
-  let { getDatabase, ref, set } = fireb_.fbase;
+  let { getRefPath, set } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip`;
-  let refPath = ref(getDatabase(), path);
+  let refPath = getRefPath(path);
   set(refPath, {})
     .then(() => {
       // Data saved successfully!
@@ -92,9 +92,9 @@ function dbase_pixchip_removeAll() {
 }
 
 function dbase_pixchip_remove() {
-  let { getDatabase, ref, set } = fireb_.fbase;
+  let { getRefPath, set } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip/${my.uid}`;
-  let refPath = ref(getDatabase(), path);
+  let refPath = getRefPath(path);
   set(refPath, {})
     .then(() => {
       // Data saved successfully!

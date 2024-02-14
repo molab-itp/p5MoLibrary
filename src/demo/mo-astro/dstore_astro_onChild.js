@@ -1,9 +1,9 @@
 //
 function dbase_astro_onChild({ mo_astro_index_changed }) {
   // Setup listener for changes to firebase db device
-  let { getDatabase, ref, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
+  let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-astro`;
-  let refPath = ref(getDatabase(), path);
+  let refPath = getRefPath(path);
 
   onChildAdded(refPath, (data) => {
     receivedDeviceKey('dbase_astro_onChild Added', data);
@@ -46,9 +46,9 @@ function dbase_astro_update({ index, play_step, show_qrcode }) {
   ui_log('dbase_astro_update my.uid', my.uid);
   if (!my.uid) return;
 
-  let { getDatabase, ref, update, increment } = fireb_.fbase;
+  let { getRefPath, update, increment } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-astro`;
-  let refPath = ref(getDatabase(), path);
+  let refPath = getRefPath(path);
   // ui_log('dbase_astro_update', path);
 
   // let index = my.astro_index;
