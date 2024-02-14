@@ -1,8 +1,8 @@
 //
 function dbase_astro_onChild({ mo_astro_index_changed }) {
   // Setup listener for changes to firebase db device
-  let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-astro`;
+  let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   let refPath = getRefPath(path);
 
   onChildAdded(refPath, (data) => {

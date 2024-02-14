@@ -8,9 +8,8 @@
 // !!@ use dbase_app_event
 function dbase_pixchip_onChild() {
   //
-  let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
-  // from "firebase/database";
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip`;
+  let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   ui_log('dbase_pixchip_onChild path=', path);
   let refPath = getRefPath(path);
 
@@ -59,8 +58,8 @@ function dbase_pixchip_update() {
     ui_log('dbase_pixchip_update no uid', my.uid);
     return;
   }
-  let { getRefPath, update } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip/${my.uid}`;
+  let { getRefPath, update } = fireb_.fbase;
   let refPath = getRefPath(path);
 
   let c = my.videoColor;
@@ -77,8 +76,8 @@ function dbase_pixchip_update() {
 // --
 
 function dbase_pixchip_removeAll() {
-  let { getRefPath, set } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip`;
+  let { getRefPath, set } = fireb_.fbase;
   let refPath = getRefPath(path);
   set(refPath, {})
     .then(() => {
@@ -92,8 +91,8 @@ function dbase_pixchip_removeAll() {
 }
 
 function dbase_pixchip_remove() {
-  let { getRefPath, set } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip/${my.uid}`;
+  let { getRefPath, set } = fireb_.fbase;
   let refPath = getRefPath(path);
   set(refPath, {})
     .then(() => {

@@ -29,6 +29,7 @@ function setup() {
   my.fireb_config = 'jht9629';
   // my.fireb_config = 'jht1493';
   my.dbase_rootPath = 'm0-@r-@w-';
+  my.mo_app = 'mo-astro';
   my.roomName = 'room0';
   my.astro_index = 0;
 

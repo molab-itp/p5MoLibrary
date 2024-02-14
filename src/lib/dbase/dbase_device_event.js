@@ -26,12 +26,13 @@ function dbase_device_event(keys) {
 function dbase_device_updates(updates, keys) {
   // console.log('dbase_device_event my.uid', my.uid);
   // ui_log('dbase_device_event my.uid', my.uid);
-  if (!my.uid) return;
-
-  let { getRefPath, update, increment } = fireb_.fbase;
+  if (!my.uid) {
+    return;
+  }
   let path = `${my.dbase_rootPath}/${my.roomName}/device/${my.uid}`;
-  // ui_log('dbase_device_event', path);
+  let { getRefPath, update, increment } = fireb_.fbase;
   let refPath = getRefPath(path);
+  // ui_log('dbase_device_event', path);
 
   let date_s = new Date().toISOString();
   let count = increment(1);

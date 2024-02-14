@@ -6,12 +6,10 @@
 
 // !!@ use dbase_app_event
 function dbase_pixgrid_onChild() {
-  //
-  let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
-  // from "firebase/database";
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid`;
-  ui_log('dbase_pixgrid_onChild path=', path);
+  let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   let refPath = getRefPath(path);
+  ui_log('dbase_pixgrid_onChild path=', path);
 
   onChildAdded(refPath, (data) => {
     receivedPixKey('dbase_pixgrid_onChild Added', data);
@@ -41,12 +39,12 @@ function dbase_pixgrid_onChild() {
 }
 
 function dbase_pixgrid_update(irow, stepPx, row) {
-  let { getRefPath, update } = fireb_.fbase;
   if (!my.uid) {
     ui_log('dbase_pixgrid_update no uid', my.uid);
     return;
   }
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid/${my.uid}/${irow}`;
+  let { getRefPath, update } = fireb_.fbase;
   let refPath = getRefPath(path);
   let i = irow;
   let s = stepPx;
@@ -57,8 +55,8 @@ function dbase_pixgrid_update(irow, stepPx, row) {
 
 // db goes to read-only mode when nstep=128
 function dbase_pixgrid_removeAll() {
-  let { getRefPath, set } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid`;
+  let { getRefPath, set } = fireb_.fbase;
   let refPath = getRefPath(path);
   set(refPath, {})
     .then(() => {
@@ -72,8 +70,8 @@ function dbase_pixgrid_removeAll() {
 }
 
 function dbase_pixgrid_remove() {
-  let { getRefPath, set } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid/${my.uid}`;
+  let { getRefPath, set } = fireb_.fbase;
   let refPath = getRefPath(path);
   set(refPath, {})
     .then(() => {
