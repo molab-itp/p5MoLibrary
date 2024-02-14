@@ -44,6 +44,8 @@ function dbase_pix_chip_update() {
   let value = { x, y, s, c };
 
   dbase_update_value(value, { app: 'mo-pixchip', tag: 'dbase_pix_chip_update' });
+
+  // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip/${my.uid}`;
 }
 
 // --
