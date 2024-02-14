@@ -70,7 +70,6 @@ function my_init() {
 }
 
 function pingAction() {
-  // dbase_update_props({});
   let portrait = my.isPortraitView ? 1 : 0;
   let group = my.group;
   dbase_device_updates({ portrait, group });
