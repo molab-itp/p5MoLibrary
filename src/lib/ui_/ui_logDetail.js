@@ -24,7 +24,6 @@ function ui_log(...args) {
   ui_log_add(ent.lines, str);
   str = my.logLines.join('<br/>');
   my.logDetail_div.html(str);
-  // console.log('str', str);
 }
 window.ui_log = ui_log;
 

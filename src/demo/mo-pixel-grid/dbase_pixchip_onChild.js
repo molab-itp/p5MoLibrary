@@ -5,9 +5,24 @@
 //   let s = my.stepPx;
 //   let c = my.videoColor;
 
-// !!@ use dbase_app_event
 function dbase_pixchip_onChild() {
   //
+  dbase_app_event(
+    { changed_key_value, removed_key_value }, //
+    { app: 'mo-pixchip', tag: 'dbase_pixchip_onChild' }
+  );
+
+  function changed_key_value(key, value) {
+    let device = dbase_device_fetch_pix(key);
+    device.pixchips = value;
+  }
+  function removed_key_value(key, value) {
+    let device = dbase_device_fetch_pix(key);
+    delete device.pixchips;
+  }
+}
+
+function old_dbase_pixchip_onChild() {
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip`;
   let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   ui_log('dbase_pixchip_onChild path=', path);

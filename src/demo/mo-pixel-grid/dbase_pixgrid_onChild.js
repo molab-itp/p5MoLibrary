@@ -4,8 +4,24 @@
 // dbStoreRootPath/room0/pix
 //
 
-// !!@ use dbase_app_event
 function dbase_pixgrid_onChild() {
+  //
+  dbase_app_event(
+    { changed_key_value, removed_key_value }, //
+    { app: 'mo-pixgrid', tag: 'dbase_pixgrid_onChild' }
+  );
+
+  function changed_key_value(key, value) {
+    let device = dbase_device_fetch_pix(key);
+    device.pixgrids = value;
+  }
+  function removed_key_value(key, value) {
+    let device = dbase_device_fetch_pix(key);
+    delete device.pixgrids;
+  }
+}
+
+function old_dbase_pixgrid_onChild() {
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid`;
   let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   let refPath = getRefPath(path);
