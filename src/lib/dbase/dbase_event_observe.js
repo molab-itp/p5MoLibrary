@@ -30,7 +30,7 @@ function dbase_event_observe({ changed_key_value, removed_key_value }, apps) {
     let key = data.key;
     let value = data.val();
     // ui_log(msg, key, 'n=', Object.keys(val).length);
-    ui_log(msg, 'key', key, 'value', value);
+    // ui_log(msg, 'key', key, 'value', value);
     if (remove) {
       if (removed_key_value) {
         removed_key_value(key, value);

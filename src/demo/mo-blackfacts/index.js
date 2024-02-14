@@ -95,8 +95,10 @@ function mo_app_key_value(key, value) {
 
 function mo_blackfacts_group_value(newValue) {
   console.log('mo_blackfacts_group_value my.group', my.group, 'newValue', newValue);
-  let item = newValue[my.group];
-  console.log('mo_blackfacts_group_value item', item);
+  // for my.group=s1,s2,... group=s1
+  let group = my.group.split(',')[0];
+  let item = newValue[group];
+  // console.log('mo_blackfacts_group_value item', item);
   if (item) {
     let index = item.index;
     if (index != null && index != my.blackfacts_index) {

@@ -28,11 +28,18 @@ function dbase_update_props(props, deviceProps, groupProps) {
   }
 
   if (groupProps !== undefined) {
-    // !!@ Consider hanlding more than index as group prop
-    let dpath = `group/${groupProps.group}/index`;
-    updates[dpath] = groupProps.index;
+    // group=s1,s2,s3,s4 to broadcast
+    let groups = groupProps.group.split(',');
+    // console.log('dbase_update_props groups', groups);
+    for (let group of groups) {
+      for (let prop in groupProps) {
+        if (prop == 'group') continue;
+        let value = groupProps[prop];
+        let dpath = `group/${group}/${prop}`;
+        updates[dpath] = value;
+      }
+    }
   }
-
   // ui_log('dbase_update_props updates', updates);
 
   update(refPath, updates);
