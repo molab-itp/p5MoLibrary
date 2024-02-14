@@ -1,9 +1,9 @@
 //
-function dbase_pix_grid_onChild() {
+function dbase_pix_grid_observe() {
   //
-  dbase_event_listen(
+  dbase_event_observe(
     { changed_key_value, removed_key_value }, //
-    { app: 'mo-pixgrid', tag: 'dbase_pix_grid_onChild' }
+    { app: 'mo-pixgrid', tag: 'dbase_pix_grid_observe' }
   );
   // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid`;
 

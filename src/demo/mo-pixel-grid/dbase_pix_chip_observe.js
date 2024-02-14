@@ -5,11 +5,11 @@
 //   let s = my.stepPx;
 //   let c = my.videoColor;
 
-function dbase_pix_chip_onChild() {
+function dbase_pix_chip_observe() {
   //
-  dbase_event_listen(
+  dbase_event_observe(
     { changed_key_value, removed_key_value }, //
-    { app: 'mo-pixchip', tag: 'dbase_pix_chip_onChild' }
+    { app: 'mo-pixchip', tag: 'dbase_pix_chip_observe' }
   );
   // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip`;
 

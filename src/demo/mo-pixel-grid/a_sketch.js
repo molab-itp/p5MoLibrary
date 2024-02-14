@@ -25,8 +25,8 @@ function setup() {
 }
 
 function dbase_host_init() {
-  dbase_pix_grid_onChild();
-  dbase_pix_chip_onChild();
+  dbase_pix_grid_observe();
+  dbase_pix_chip_observe();
 }
 
 function anim_init() {

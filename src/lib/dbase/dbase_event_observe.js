@@ -1,8 +1,8 @@
 //
-function dbase_event_listen({ changed_key_value, removed_key_value }, apps) {
+function dbase_event_observe({ changed_key_value, removed_key_value }, apps) {
   // apps = { app, tag }
   let app = my.mo_app;
-  let tag = 'dbase_event_listen';
+  let tag = 'dbase_event_observe';
   if (apps) {
     app = apps.app || app;
     tag = apps.tag || tag;
@@ -42,4 +42,4 @@ function dbase_event_listen({ changed_key_value, removed_key_value }, apps) {
     }
   }
 }
-window.dbase_event_listen = dbase_event_listen;
+window.dbase_event_observe = dbase_event_observe;

@@ -19,7 +19,7 @@ function document_loaded() {
 
 function dbase_host_init() {
   //
-  dbase_event_listen({ changed_key_value: mo_app_key_value });
+  dbase_event_observe({ changed_key_value: mo_app_key_value });
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 

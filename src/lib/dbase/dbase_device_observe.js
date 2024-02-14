@@ -1,20 +1,20 @@
-function dbase_device_onChild() {
+function dbase_device_observe() {
   // Setup listener for changes to firebase db device
   let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/device`;
   let refPath = getRefPath(path);
 
   onChildAdded(refPath, (data) => {
-    receivedDeviceKey('dbase_device_onChild Added', data);
+    receivedDeviceKey('dbase_device_observe Added', data);
   });
 
   onChildChanged(refPath, (data) => {
-    // console.log('dbase_device_onChild Changed', data);
-    receivedDeviceKey('dbase_device_onChild Changed', data);
+    // console.log('dbase_device_observe Changed', data);
+    receivedDeviceKey('dbase_device_observe Changed', data);
   });
 
   onChildRemoved(refPath, (data) => {
-    receivedDeviceKey('dbase_device_onChild Removed', data, { remove: 1 });
+    receivedDeviceKey('dbase_device_observe Removed', data, { remove: 1 });
   });
 
   function receivedDeviceKey(msg, data, remove) {
@@ -34,7 +34,7 @@ function dbase_device_onChild() {
     dbase_device_fetch(key, val);
   }
 }
-window.dbase_device_onChild = dbase_device_onChild;
+window.dbase_device_observe = dbase_device_observe;
 
 function dbase_device_fetch(uid, val) {
   if (!my.fireb_devices) {
