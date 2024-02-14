@@ -8,7 +8,7 @@ Remote mobile device control of Astronomical on big screen.
 
 ---
 
-sharing code from mo-pixel-grid with mo-astro-remote. dbase_device functions included in script src= lines
+sharing code from mo-pix-chip-grid with mo-astro-remote. dbase_device functions included in script src= lines
 
 ```html
 <!-- sharing code from other project -->

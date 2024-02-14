@@ -160,7 +160,7 @@ function windowResized() {
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/7Wjlo3pPU
-// mo-pixel-grid jht9629 fireb_firebase.js
+// mo-pix-chip-grid jht9629 fireb_firebase.js
 
 // https://editor.p5js.org/jht9629-nyu/sketches/twgS6eWRZ
 // pixel-grid

@@ -3,9 +3,9 @@ function dbase_pix_grid_observe() {
   //
   dbase_event_observe(
     { changed_key_value, removed_key_value }, //
-    { app: 'mo-pixgrid', tag: 'dbase_pix_grid_observe' }
+    { app: 'mo-pix-grid', tag: 'dbase_pix_grid_observe' }
   );
-  // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid`;
+  // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-grid`;
 
   function changed_key_value(key, value) {
     let device = dbase_device_fetch_pix(key);
@@ -23,14 +23,14 @@ function dbase_pix_grid_update(irow, stepPx, row) {
   let s = stepPx;
   let value = { i, s, row };
 
-  dbase_update_value(value, { app: 'mo-pixgrid', tag: 'dbase_pix_grid_update', suffix: irow });
+  dbase_update_value(value, { app: 'mo-pix-grid', tag: 'dbase_pix_grid_update', suffix: irow });
 
-  // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid/${my.uid}/${irow}`;
+  // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-grid/${my.uid}/${irow}`;
 }
 
 // db goes to read-only mode when nstep=128
 function dbase_pix_grid_removeAll() {
-  let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid`;
+  let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-grid`;
   let { getRefPath, set } = fireb_.fbase;
   let refPath = getRefPath(path);
   set(refPath, {})
@@ -45,7 +45,7 @@ function dbase_pix_grid_removeAll() {
 }
 
 function dbase_pix_grid_remove() {
-  let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid/${my.uid}`;
+  let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-grid/${my.uid}`;
   let { getRefPath, set } = fireb_.fbase;
   let refPath = getRefPath(path);
   set(refPath, {})

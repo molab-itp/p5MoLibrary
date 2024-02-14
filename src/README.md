@@ -9,7 +9,7 @@
   - [demo/mo-astro](demo/mo-astro?v=9)
   - [demo/mo-blackfacts](demo/mo-blackfacts?v=9)
   - [demo/mo-draw](demo/mo-draw?v=9)
-  - [demo/mo-pixel-grid](demo/mo-pixel-grid?v=9)
+  - [demo/mo-pix-chip-grid](demo/mo-pix-chip-grid?v=9)
   - [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=9)
 
 - POWER TO THE PEOPLE screens

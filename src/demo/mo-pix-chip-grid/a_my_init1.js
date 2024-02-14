@@ -8,7 +8,7 @@ function my_init1() {
   my.fireb_config = 'jht9629';
   // my.fireb_config = 'jht1493';
   my.dbase_rootPath = 'm0-@r-@w-';
-  my.mo_app = 'mo-pixel-grid';
+  my.mo_app = 'mo-pix-chip-grid';
   my.roomName = 'room-pixel-grid';
   my.nameDevice = '';
   // my.logLoud = 1; // 1 to show ui_log in console

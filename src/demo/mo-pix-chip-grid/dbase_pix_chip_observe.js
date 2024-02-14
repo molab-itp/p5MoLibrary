@@ -9,9 +9,9 @@ function dbase_pix_chip_observe() {
   //
   dbase_event_observe(
     { changed_key_value, removed_key_value }, //
-    { app: 'mo-pixchip', tag: 'dbase_pix_chip_observe' }
+    { app: 'mo-pix-chip', tag: 'dbase_pix_chip_observe' }
   );
-  // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip`;
+  // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-chip`;
 
   function changed_key_value(key, value) {
     let device = dbase_device_fetch_pix(key);
@@ -43,15 +43,15 @@ function dbase_pix_chip_update() {
   let s = my.stepPx;
   let value = { x, y, s, c };
 
-  dbase_update_value(value, { app: 'mo-pixchip', tag: 'dbase_pix_chip_update' });
+  dbase_update_value(value, { app: 'mo-pix-chip', tag: 'dbase_pix_chip_update' });
 
-  // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip/${my.uid}`;
+  // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-chip/${my.uid}`;
 }
 
 // --
 
 function dbase_pix_chip_removeAll() {
-  let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip`;
+  let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-chip`;
   let { getRefPath, set } = fireb_.fbase;
   let refPath = getRefPath(path);
   set(refPath, {})
@@ -66,7 +66,7 @@ function dbase_pix_chip_removeAll() {
 }
 
 function dbase_pix_chip_remove() {
-  let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip/${my.uid}`;
+  let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-chip/${my.uid}`;
   let { getRefPath, set } = fireb_.fbase;
   let refPath = getRefPath(path);
   set(refPath, {})
