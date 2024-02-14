@@ -64,6 +64,7 @@ function dbase_app_update(props, deviceProps, groupProps) {
   }
 
   if (groupProps !== undefined) {
+    // !!@ Consider hanlding more than index as group prop
     let dpath = `group/${groupProps.group}/index`;
     updates[dpath] = groupProps.index;
   }
