@@ -11,7 +11,7 @@ function my_init1() {
   my.mo_app = 'mo-pixel-grid';
   my.roomName = 'room-pixel-grid';
   my.nameDevice = '';
-  my.logLoud = 1;
+  // my.logLoud = 1; // 1 to show ui_log in console
   // my.nstepCycle = [8, 16, 32];
   // my.updateTimes = [0.2, 0.1, 0.02];
   // my.nstepCycle = [8, 16, 32, 64, 128];

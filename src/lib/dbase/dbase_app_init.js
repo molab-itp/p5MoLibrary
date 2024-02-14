@@ -15,7 +15,7 @@ function dbase_app_init({ completed }) {
       dbase_device_onChild();
 
       // Send initial ping
-      dbase_app_update({});
+      dbase_update_props({});
 
       if (completed) completed();
     })

@@ -19,7 +19,7 @@ function document_loaded() {
 
 function dbase_host_init() {
   //
-  dbase_app_event({ changed_key_value: mo_app_key_value });
+  dbase_event_listen({ changed_key_value: mo_app_key_value });
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 
@@ -70,7 +70,7 @@ function my_init() {
 }
 
 function pingAction() {
-  // dbase_app_update({});
+  // dbase_update_props({});
   let portrait = my.isPortraitView ? 1 : 0;
   let group = my.group;
   dbase_device_updates({ portrait, group });

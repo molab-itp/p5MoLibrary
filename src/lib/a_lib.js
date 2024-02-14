@@ -4,9 +4,10 @@
 
 import './Anim.js?v=8';
 import './dbase/dbase_app_init.js?v=8';
-import './dbase/dbase_app_event.js?v=8';
 import './dbase/dbase_device_event.js?v=8';
 import './dbase/dbase_device_onChild.js?v=8';
+import './dbase/dbase_event_listen.js?v=8';
+import './dbase/dbase_update_props.js?v=8';
 import './dbase/dbase_updateTimeGap.js?v=8';
 import './fireb_/fireb_config.js?v=8';
 import './get_url_params.js?v=8';

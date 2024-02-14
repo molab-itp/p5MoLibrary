@@ -58,7 +58,7 @@ function qrcode_action() {
   ui_log('qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
   my.qrcodeFlag = id_checkbox_qrcode.checked;
   let qrcode = my.qrcodeFlag ? 1 : 0;
-  dbase_app_update({ qrcode });
+  dbase_update_props({ qrcode });
 }
 
 function play_clip_action() {
@@ -109,9 +109,9 @@ function random_action() {
 function dbase_blackfacts_update_index(index) {
   ui_log('dbase_blackfacts_update_index index', index, 'my.group', my.group);
   if (my.group) {
-    dbase_app_update({}, {}, { group: my.group, index });
+    dbase_update_props({}, {}, { group: my.group, index });
   } else {
-    dbase_app_update({ index });
+    dbase_update_props({ index });
   }
 }
 

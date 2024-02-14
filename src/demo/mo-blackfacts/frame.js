@@ -51,7 +51,7 @@ function record_startup_time(timeSecs) {
   if (!my.blackfacts_player_startup_time) {
     // console.log('record_startup_time timeSecs', timeSecs);
     my.blackfacts_player_startup_time = timeSecs;
-    dbase_app_update({}, { startup_time: timeSecs });
+    dbase_update_props({}, { startup_time: timeSecs });
   }
 }
 

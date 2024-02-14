@@ -25,8 +25,8 @@ function setup() {
 }
 
 function dbase_host_init() {
-  dbase_pixgrid_onChild();
-  dbase_pixchip_onChild();
+  dbase_pix_grid_onChild();
+  dbase_pix_chip_onChild();
 }
 
 function anim_init() {
@@ -66,7 +66,7 @@ function updateAction() {
   }
   if (my.scanFlag) {
     draw_cross_hair_update();
-    dbase_pixchip_update();
+    dbase_pix_chip_update();
   }
 }
 
