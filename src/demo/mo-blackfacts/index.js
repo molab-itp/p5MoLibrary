@@ -11,7 +11,7 @@ function document_loaded() {
 
   // let config = fireb_.init('jht9629');
   // // let config = fireb_.init('jht1493');
-  // console.log('?v=11 config.projectId', config.projectId);
+  // console.log('?v=12 config.projectId', config.projectId);
   // console.log('configLabel', config.configLabel);
 
   dbase_app_init({ completed: dbase_host_init });
@@ -43,7 +43,7 @@ function my_init() {
   my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
-  my.nameDevice = 'device?v=11';
+  my.nameDevice = 'device?v=12';
   my.pingTime = 1;
 
   my.isPortraitView = window.innerHeight > window.innerWidth;
@@ -95,8 +95,11 @@ function mo_app_key_value(key, value) {
 
 function mo_blackfacts_group_value(newValue) {
   console.log('mo_blackfacts_group_value my.group', my.group, 'newValue', newValue);
-  // for my.group=s1,s2,... group=s1
-  let group = my.group.split(',')[0];
+  let group = my.group;
+  if (group) {
+    // for my.group=s1,s2,... group=s1
+    group = group.split(',')[0];
+  }
   let item = newValue[group];
   // console.log('mo_blackfacts_group_value item', item);
   if (item) {
