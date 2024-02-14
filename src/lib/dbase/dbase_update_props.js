@@ -42,18 +42,20 @@ function dbase_update_props(props, deviceProps, groupProps) {
 window.dbase_update_props = dbase_update_props;
 
 function dbase_update_value(value, apps) {
-  // apps = { app, tag }
+  // apps = { app, tag, suffix }
   let app = my.mo_app;
   let tag = 'dbase_update_value';
+  let suffix = '';
   if (apps) {
     app = apps.app || app;
     tag = apps.tag || tag;
+    if (apps.suffix != undefined) suffix = '/' + apps.suffix;
   }
   if (!my.uid) {
     ui_log(tag + ' no uid', my.uid);
     return;
   }
-  let path = `${my.dbase_rootPath}/${my.roomName}/${app}/${my.uid}`;
+  let path = `${my.dbase_rootPath}/${my.roomName}/${app}/${my.uid}${suffix}`;
   let { getRefPath, update } = fireb_.fbase;
   let refPath = getRefPath(path);
 

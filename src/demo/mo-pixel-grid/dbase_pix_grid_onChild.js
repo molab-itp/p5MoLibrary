@@ -5,6 +5,7 @@ function dbase_pix_grid_onChild() {
     { changed_key_value, removed_key_value }, //
     { app: 'mo-pixgrid', tag: 'dbase_pix_grid_onChild' }
   );
+  // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid`;
 
   function changed_key_value(key, value) {
     let device = dbase_device_fetch_pix(key);
@@ -22,21 +23,9 @@ function dbase_pix_grid_update(irow, stepPx, row) {
   let s = stepPx;
   let value = { i, s, row };
 
-  dbase_update_value(value, { app: 'mo-pixgrid', tag: 'dbase_pix_grid_update' });
+  dbase_update_value(value, { app: 'mo-pixgrid', tag: 'dbase_pix_grid_update', suffix: irow });
 
-  // if (!my.uid) {
-  //   ui_log('dbase_pix_grid_update no uid', my.uid);
-  //   return;
-  // }
   // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixgrid/${my.uid}/${irow}`;
-  // let { getRefPath, update } = fireb_.fbase;
-  // let refPath = getRefPath(path);
-
-  // let i = irow;
-  // let s = stepPx;
-  // update(refPath, { i, s, row });
-
-  // dbase_device_event_update();
 }
 
 // db goes to read-only mode when nstep=128

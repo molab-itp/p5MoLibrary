@@ -11,6 +11,7 @@ function dbase_pix_chip_onChild() {
     { changed_key_value, removed_key_value }, //
     { app: 'mo-pixchip', tag: 'dbase_pix_chip_onChild' }
   );
+  // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pixchip`;
 
   function changed_key_value(key, value) {
     let device = dbase_device_fetch_pix(key);
