@@ -17,6 +17,8 @@ function dbase_update_props(props, deviceProps, groupProps) {
     updates[prop] = props[prop];
   }
 
+  // default to increment ../mo_app/device/count
+  //
   if (deviceProps == undefined) {
     deviceProps = { count: increment(1) };
   }
@@ -71,3 +73,9 @@ function dbase_update_value(value, apps) {
   dbase_device_event_update();
 }
 window.dbase_update_value = dbase_update_value;
+
+function dbase_value_increment(value) {
+  let { increment } = fireb_.fbase;
+  return increment(value);
+}
+window.dbase_value_increment = dbase_value_increment;
