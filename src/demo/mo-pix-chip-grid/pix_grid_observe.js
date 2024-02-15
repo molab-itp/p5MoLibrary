@@ -1,9 +1,9 @@
 //
-function dbase_pix_grid_observe() {
+function pix_grid_observe() {
   //
   dbase_event_observe(
     { changed_key_value, removed_key_value }, //
-    { app: 'mo-pix-grid', tag: 'dbase_pix_grid_observe' }
+    { app: 'mo-pix-grid', tag: 'pix_grid_observe' }
   );
   // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-grid`;
 
@@ -17,7 +17,7 @@ function dbase_pix_grid_observe() {
   }
 }
 
-function dbase_pix_grid_update(irow, stepPx, row) {
+function pix_grid_update(irow, stepPx, row) {
   //
   let i = irow;
   let s = stepPx;
@@ -29,39 +29,39 @@ function dbase_pix_grid_update(irow, stepPx, row) {
 }
 
 // db goes to read-only mode when nstep=128
-function dbase_pix_grid_removeAll() {
+function pix_grid_removeAll() {
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-grid`;
   let { getRefPath, set } = fireb_.fbase;
   let refPath = getRefPath(path);
   set(refPath, {})
     .then(() => {
       // Data saved successfully!
-      // ui_log('dbase_removeAll OK');
+      // ui_log('pix_grid_removeAll OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log('dbase_removeAll error', error);
+      ui_log('pix_grid_removeAll error', error);
     });
 }
 
-function dbase_pix_grid_remove() {
+function pix_grid_remove() {
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-grid/${my.uid}`;
   let { getRefPath, set } = fireb_.fbase;
   let refPath = getRefPath(path);
   set(refPath, {})
     .then(() => {
       // Data saved successfully!
-      // ui_log('dbase_pix_grid_remove OK');
+      // ui_log('pix_grid_remove OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log('dbase_pix_grid_remove error', error);
+      ui_log('pix_grid_remove error', error);
     });
 }
 
-function dbase_remove() {
+function app_pix_grid_remove() {
   dbase_device_remove();
-  dbase_pix_grid_remove();
+  pix_grid_remove();
   delete my.fireb_devices;
 }
 

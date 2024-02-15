@@ -5,11 +5,11 @@
 //   let s = my.stepPx;
 //   let c = my.videoColor;
 
-function dbase_pix_chip_observe() {
+function pix_chip_observe() {
   //
   dbase_event_observe(
     { changed_key_value, removed_key_value }, //
-    { app: 'mo-pix-chip', tag: 'dbase_pix_chip_observe' }
+    { app: 'mo-pix-chip', tag: 'pix_chip_observe' }
   );
   // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-chip`;
 
@@ -32,9 +32,9 @@ function dbase_device_fetch_pix(key) {
   return device;
 }
 
-function dbase_pix_chip_update() {
+function pix_chip_update() {
   if (!my.videoColor) {
-    console.log('dbase_pix_chip_update no my.videoColor', my.videoColor);
+    console.log('pix_chip_update no my.videoColor', my.videoColor);
     return;
   }
   let c = my.videoColor;
@@ -43,39 +43,39 @@ function dbase_pix_chip_update() {
   let s = my.stepPx;
   let value = { x, y, s, c };
 
-  dbase_update_value(value, { app: 'mo-pix-chip', tag: 'dbase_pix_chip_update' });
+  dbase_update_value(value, { app: 'mo-pix-chip', tag: 'pix_chip_update' });
 
   // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-chip/${my.uid}`;
 }
 
 // --
 
-function dbase_pix_chip_removeAll() {
+function pix_chip_removeAll() {
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-chip`;
   let { getRefPath, set } = fireb_.fbase;
   let refPath = getRefPath(path);
   set(refPath, {})
     .then(() => {
       // Data saved successfully!
-      // ui_log('dbase_removeAll OK');
+      // ui_log('pix_chip_removeAll OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log('dbase_removeAll error', error);
+      ui_log('pix_chip_removeAll error', error);
     });
 }
 
-function dbase_pix_chip_remove() {
+function pix_chip_remove() {
   let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-chip/${my.uid}`;
   let { getRefPath, set } = fireb_.fbase;
   let refPath = getRefPath(path);
   set(refPath, {})
     .then(() => {
       // Data saved successfully!
-      // ui_log('dbase_pix_chip_remove OK');
+      // ui_log('pix_chip_remove OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log('dbase_pix_chip_remove error', error);
+      ui_log('pix_chip_remove error', error);
     });
 }

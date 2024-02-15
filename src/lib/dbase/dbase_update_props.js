@@ -94,3 +94,4 @@ function dbase_remove_room() {
       console.log('dbase_remove_room error', error);
     });
 }
+window.dbase_remove_room = dbase_remove_room;

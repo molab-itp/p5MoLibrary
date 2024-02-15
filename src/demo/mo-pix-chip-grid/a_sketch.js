@@ -25,8 +25,8 @@ function setup() {
 }
 
 function dbase_host_init() {
-  dbase_pix_grid_observe();
-  dbase_pix_chip_observe();
+  pix_grid_observe();
+  pix_chip_observe();
 }
 
 function anim_init() {
@@ -56,17 +56,17 @@ function draw_frame() {
   }
 
   // if (!my.storeFlag) {
-  dbase_received();
+  render_pix_devices();
   // }
 }
 
 function updateAction() {
   if (my.storeFlag) {
-    dbase_send(my.videoImg);
+    pix_grid_update(my.videoImg);
   }
   if (my.scanFlag) {
     draw_cross_hair_update();
-    dbase_pix_chip_update();
+    pix_chip_update();
   }
 }
 
