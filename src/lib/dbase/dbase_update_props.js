@@ -79,3 +79,18 @@ function dbase_value_increment(value) {
   return increment(value);
 }
 window.dbase_value_increment = dbase_value_increment;
+
+function dbase_remove_room() {
+  let path = `${my.dbase_rootPath}/${my.roomName}`;
+  let { getRefPath, set } = fireb_.fbase;
+  let refPath = getRefPath(path);
+  set(refPath, {})
+    .then(() => {
+      // Data saved successfully!
+      console.log('dbase_remove_room OK');
+    })
+    .catch((error) => {
+      // The write failed...
+      console.log('dbase_remove_room error', error);
+    });
+}
