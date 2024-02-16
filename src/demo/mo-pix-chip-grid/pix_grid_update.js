@@ -2,10 +2,6 @@
 function pix_grid_update(img) {
   // console.log('pix_grid_update img', img);
   if (!img) return;
-  pix_grid_update_image(img);
-}
-
-function pix_grid_update_image(img) {
   // console.log('pix_grid_update_image img', img);
   more = 1;
   let colr;
@@ -60,6 +56,6 @@ function draw_record_rect(ix, iy, c) {
 
 function draw_record_flush(irow) {
   if (my.storeFlag && irow >= 0) {
-    pix_grid_update(irow, my.stepPx, my.pixRows[irow]);
+    pix_grid_update_irow(irow, my.stepPx, my.pixRows[irow]);
   }
 }

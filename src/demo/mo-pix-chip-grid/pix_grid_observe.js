@@ -17,13 +17,13 @@ function pix_grid_observe() {
   }
 }
 
-function pix_grid_update(irow, stepPx, row) {
+function pix_grid_update_irow(irow, stepPx, row) {
   //
   let i = irow;
   let s = stepPx;
   let value = { i, s, row };
 
-  dbase_update_value(value, { app: 'mo-pix-grid', tag: 'dbase_pix_grid_update', suffix: irow });
+  dbase_update_value(value, { app: 'mo-pix-grid', tag: 'pix_grid_update_irow', suffix: irow });
 
   // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-grid/${my.uid}/${irow}`;
 }
