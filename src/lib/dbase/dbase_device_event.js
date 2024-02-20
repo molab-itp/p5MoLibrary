@@ -124,3 +124,15 @@ function dbase_device_eventGapTime(device) {
   // console.log('dbase_device_eventGapTime device.index', device.index, 'gapTime', gapTime);
   return gapTime;
 }
+
+// !!@ Doc
+// dbase_device_updates({ controller });
+// function device_uid_isActive(uid) {
+//   return dbase_device_isActive(fdevice) && fdevice.serverValues.controller;
+
+function device_uid_isActive(uid) {
+  let fdevice = my.fireb_devices[uid];
+  // console.log('device_uid_isActive uid', uid, 'portrait', fdevice.serverValues.controller);
+  return dbase_device_isActive(fdevice) && fdevice.serverValues.controller;
+}
+window.device_uid_isActive = device_uid_isActive;
