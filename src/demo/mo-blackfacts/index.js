@@ -35,7 +35,8 @@ let my = {};
 function my_init() {
   // console.log('my_init');
   //
-  my.fireb_config = 'jht9629';
+  my.fireb_config = 'jhtitp';
+  // my.fireb_config = 'jht9629';
   // my.fireb_config = 'jht1493';
   my.dbase_rootPath = 'm0-@r-@w-';
   my.mo_app = 'mo-blackfacts';
@@ -77,17 +78,17 @@ function pingAction() {
 
 function mo_app_key_value(key, value) {
   switch (key) {
+    case 'a_device':
+      mo_blackfacts_device_value(value);
+      break;
+    case 'a_group':
+      mo_blackfacts_group_value(value);
+      break;
     case 'index':
       mo_blackfacts_index_value(value);
       break;
     case 'qrcode':
       mo_blackfacts_qccode_value(value);
-      break;
-    case 'device':
-      mo_blackfacts_device_value(value);
-      break;
-    case 'group':
-      mo_blackfacts_group_value(value);
       break;
   }
 }

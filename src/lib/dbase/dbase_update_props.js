@@ -25,7 +25,7 @@ function dbase_update_props(props, deviceProps, groupProps) {
 
   for (let prop in deviceProps) {
     let value = deviceProps[prop];
-    let dpath = `device/${my.uid}/${prop}`;
+    let dpath = `a_device/${my.uid}/${prop}`;
     updates[dpath] = value;
   }
 
@@ -37,7 +37,7 @@ function dbase_update_props(props, deviceProps, groupProps) {
       for (let prop in groupProps) {
         if (prop == 'group') continue;
         let value = groupProps[prop];
-        let dpath = `group/${group}/${prop}`;
+        let dpath = `a_group/${group}/${prop}`;
         updates[dpath] = value;
       }
     }

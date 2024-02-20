@@ -43,9 +43,19 @@ const firebaseConfig_jht1493 = {
   messagingSenderId: '1007268220063',
   appId: '1:1007268220063:web:a69f608f35ca3f8d9a26aa',
 };
+//   jhtitp
+const firebaseConfig_jhtitp = {
+  apiKey: 'AIzaSyBg2bnuULvLvkd6SOAEetErgNtyGsNIb8c',
+  authDomain: 'jhtitp-2417a.firebaseapp.com',
+  projectId: 'jhtitp-2417a',
+  storageBucket: 'jhtitp-2417a.appspot.com',
+  messagingSenderId: '523385422249',
+  appId: '1:523385422249:web:52df2a4c0803b79c2a04b8',
+};
 let configs = {
   jht9629: firebaseConfig_jht9629,
   jht1493: firebaseConfig_jht1493,
+  jhtitp: firebaseConfig_jhtitp,
 };
 
 // Initialize Firebase is performed by init function
