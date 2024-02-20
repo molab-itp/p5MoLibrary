@@ -51,6 +51,12 @@ function dbase_device_summary(show) {
     lines.push('dbase_device_summary n ' + arr.length);
     console.log(lines.join('\n'));
   }
+  // [ {
+  //    index
+  //    serverValues {date_s: '2024-02-19T03:52:26.337Z', name_s: '', time: 0, time_s: '', update: Array(9), …}
+  //    uid
+  //    } ... ]
+  //
   return arr;
 }
 window.dbase_device_summary = dbase_device_summary;
