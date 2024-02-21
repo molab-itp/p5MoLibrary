@@ -1,4 +1,6 @@
-function dbase_a_devices_observe({ observe_a_devices }) {
+//
+
+function dbase_a_devices_observe({ observed_a_devices }) {
   //
   if (!my.a_device_values) my.a_device_values = {};
 
@@ -42,20 +44,23 @@ function dbase_a_devices_observe({ observe_a_devices }) {
     }
     my.a_devices = devices;
 
-    if (observe_a_devices) observe_a_devices(key);
+    if (observed_a_devices) observed_a_devices(key);
   }
 }
+window.dbase_a_devices_observe = dbase_a_devices_observe;
 
 function dbase_a_devices() {
   if (!my.a_devices) my.a_devices = [];
   return my.a_devices;
 }
+window.dbase_a_devices = dbase_a_devices;
 
 function dbase_a_device_for_uid(uid) {
   // console.log('dbase_a_device_for_uid uid', uid, my.a_device_values[uid]);
   if (!my.a_device_values) my.a_device_values = {};
   return my.a_device_values[uid];
 }
+window.dbase_a_device_for_uid = dbase_a_device_for_uid;
 
 // throttle update to queue to time
 //
@@ -80,16 +85,20 @@ function dbase_queue_update(props) {
     }
   }
 }
+window.dbase_queue_update = dbase_queue_update;
 
 function dbase_poll() {
   if (my.db_queue_loop) {
     my.db_queue_loop.step({ loop: 1 });
   }
 }
+window.dbase_poll = dbase_poll;
 
 // dbase_issue_actions( {clear_action: 1} )
 //
 function dbase_issue_actions(actions) {
+  console.log('dbase_issue_actions  actions', actions);
+  window.a_actions = actions;
   //
   let nactions = {};
   for (let act of actions) {
@@ -98,14 +107,17 @@ function dbase_issue_actions(actions) {
   // dbase_queue_update({ clear_action: dbase_value_increment(1) });
   dbase_queue_update(nactions);
 }
+window.dbase_issue_actions = dbase_issue_actions;
 
 // dbase_actions_issued(my, { clear_action: 1})
 //
 function dbase_actions_issued(my, actions) {
+  console.log('dbase_actions_issued my', my, 'actions', actions);
   //
   let actionSeen = 0;
   if (!my.db_actions_state) my.db_actions_state = {};
   if (!my.db_last_actions_state) my.db_last_actions_state = {};
+  console.log('dbase_actions_issued actions', actions);
   for (let act of actions) {
     if (my.db_last_actions_state[act] != my.db_actions_state[act]) {
       my.db_last_actions_state[act] = my.db_actions_state[act];
@@ -114,3 +126,4 @@ function dbase_actions_issued(my, actions) {
   }
   return actionSeen;
 }
+window.dbase_actions_issued = dbase_actions_issued;
