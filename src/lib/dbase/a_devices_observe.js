@@ -97,11 +97,9 @@ window.dbase_poll = dbase_poll;
 // dbase_issue_actions( {clear_action: 1} )
 //
 function dbase_issue_actions(actions) {
-  console.log('dbase_issue_actions  actions', actions);
-  window.a_actions = actions;
   //
   let nactions = {};
-  for (let act of actions) {
+  for (let act in actions) {
     nactions[act] = dbase_value_increment(1);
   }
   // dbase_queue_update({ clear_action: dbase_value_increment(1) });
@@ -112,13 +110,13 @@ window.dbase_issue_actions = dbase_issue_actions;
 // dbase_actions_issued(my, { clear_action: 1})
 //
 function dbase_actions_issued(my, actions) {
-  console.log('dbase_actions_issued my', my, 'actions', actions);
+  // console.log('dbase_actions_issued my', my, 'actions', actions);
   //
   let actionSeen = 0;
   if (!my.db_actions_state) my.db_actions_state = {};
   if (!my.db_last_actions_state) my.db_last_actions_state = {};
   console.log('dbase_actions_issued actions', actions);
-  for (let act of actions) {
+  for (let act in actions) {
     if (my.db_last_actions_state[act] != my.db_actions_state[act]) {
       my.db_last_actions_state[act] = my.db_actions_state[act];
       actionSeen++;
