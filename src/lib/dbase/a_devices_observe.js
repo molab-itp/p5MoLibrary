@@ -1,6 +1,6 @@
 //
 
-function dbase_a_devices_observe({ observed_a_devices }) {
+function dbase_a_devices_observe({ observed_a_devices, all }) {
   //
   if (!my.a_device_values) my.a_device_values = {};
 
@@ -31,13 +31,17 @@ function dbase_a_devices_observe({ observed_a_devices }) {
   function build_devices(key) {
     // console.log('build_devices key', key);
     //
-    let allDevices = dbase_device_summary();
+    let siteDevices = dbase_site_devices();
     let devices = [];
-    for (let index = 0; index < allDevices.length; index++) {
-      let adevice = allDevices[index];
-      let uid = adevice.uid;
+    for (let index = 0; index < siteDevices.length; index++) {
+      let sdevice = siteDevices[index];
+      let uid = sdevice.uid;
       let device = my.a_device_values[uid];
-      if (device && device_uid_isActive(uid)) {
+      if (!device) {
+        // console.log('build_devices no uid', uid);
+        continue;
+      }
+      if (all || device_uid_isActive(uid)) {
         device.uid = uid;
         devices.push(device);
       }

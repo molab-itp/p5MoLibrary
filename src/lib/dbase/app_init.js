@@ -26,10 +26,10 @@ function dbase_app_init({ completed }) {
 window.dbase_app_init = dbase_app_init;
 
 // return array of devices, most recently active first
-function dbase_device_summary(show) {
+function dbase_site_devices(show) {
   if (!my.fireb_devices) {
     // console.log('no fireb_devices');
-    return null;
+    return [];
   }
   let arr = Object.values(my.fireb_devices).sort((item1, item2) => {
     let date1 = item1.serverValues.date_s;
@@ -48,7 +48,7 @@ function dbase_device_summary(show) {
       lines.push(uid + ' ' + userAgent);
       // console.log('');
     }
-    lines.push('dbase_device_summary n ' + arr.length);
+    lines.push('dbase_site_devices n ' + arr.length);
     console.log(lines.join('\n'));
   }
   // [ {
@@ -59,4 +59,4 @@ function dbase_device_summary(show) {
   //
   return arr;
 }
-window.dbase_device_summary = dbase_device_summary;
+window.dbase_site_devices = dbase_site_devices;
