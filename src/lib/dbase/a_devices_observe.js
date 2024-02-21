@@ -119,7 +119,7 @@ function dbase_actions_issued(my, actions) {
   let actionSeen = 0;
   if (!my.db_actions_state) my.db_actions_state = {};
   if (!my.db_last_actions_state) my.db_last_actions_state = {};
-  console.log('dbase_actions_issued actions', actions);
+  // console.log('dbase_actions_issued actions', actions);
   for (let act in actions) {
     if (my.db_last_actions_state[act] != my.db_actions_state[act]) {
       my.db_last_actions_state[act] = my.db_actions_state[act];
