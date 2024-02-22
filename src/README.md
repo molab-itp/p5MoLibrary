@@ -15,17 +15,17 @@
 - POWER TO THE PEOPLE screens
 
   - [demo/mo-blackfacts](demo/mo-blackfacts?v=16)
-  - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=16&group=s1)
-  - [demo/mo-blackfacts s2](demo/mo-blackfacts?v=16&group=s2)
-  - [demo/mo-blackfacts s3](demo/mo-blackfacts?v=16&group=s3)
-  - [demo/mo-blackfacts s4](demo/mo-blackfacts?v=16&group=s4)
-  - [demo/mo-blackfacts s1,s2,s3,s4](demo/mo-blackfacts?v=16&group=s1,s2,s3,s4)
+  - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=16&group=s1&qrcode=mo-blackfacts-qrcode-1.png)
+  - [demo/mo-blackfacts s2](demo/mo-blackfacts?v=16&group=s2&qrcode=mo-blackfacts-qrcode-2.png)
+  - [demo/mo-blackfacts s3](demo/mo-blackfacts?v=16&group=s3&qrcode=mo-blackfacts-qrcode-3.png)
+  - [demo/mo-blackfacts s4](demo/mo-blackfacts?v=16&group=s4&qrcode=mo-blackfacts-qrcode-4.png)
+  - [demo/mo-blackfacts s1,s2,s3,s4](demo/mo-blackfacts?v=16&group=s1,s2,s3,s4&qrcode=mo-blackfacts-qrcode-1-4.png)
 
 - p5moExamples
 
-  - [ github.io](https://molab-itp.github.io/p5moExamples)
-  - [ p5moExamples p5js lobby](https://editor.p5js.org/jht9629-nyu/sketches/vP6sWN4Cu)
-  - [ p5moExamples pixel-grid](https://editor.p5js.org/jht9629-nyu/sketches/CntV1JQNp)
+  - [ github.io ](https://molab-itp.github.io/p5moExamples)
+  - [ p5moExamples p5js lobby ](https://editor.p5js.org/jht9629-nyu/sketches/vP6sWN4Cu)
+  - [ p5moExamples pixel-grid ](https://editor.p5js.org/jht9629-nyu/sketches/CntV1JQNp)
 
 - play list
 

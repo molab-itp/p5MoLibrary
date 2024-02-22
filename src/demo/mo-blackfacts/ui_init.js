@@ -54,6 +54,8 @@ function show_qrcode_top_right() {
 function position_bottom() {
   console.log('position_bottom');
   let margin = 10;
+  let qrwidth = 0.4;
+  id_qrcode_src.width = Math.floor(window.innerWidth * qrwidth);
   let x = window.innerWidth - id_qrcode.clientWidth - margin;
   let y = window.innerHeight - id_qrcode.clientHeight - margin;
   id_qrcode.style.left = x + 'px';
