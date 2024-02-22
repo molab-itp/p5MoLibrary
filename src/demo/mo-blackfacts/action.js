@@ -6,9 +6,9 @@ id_button_next.addEventListener('click', next_action);
 id_button_previous.addEventListener('click', previous_action);
 id_button_first.addEventListener('click', first_action);
 id_button_random.addEventListener('click', random_action);
-// id_checkbox_play_next.addEventListener('click', play_next_action);
-id_checkbox_play_clip.addEventListener('click', play_clip_action);
-id_checkbox_qrcode.addEventListener('click', qrcode_action);
+
+// id_checkbox_play_clip.addEventListener('click', play_clip_action);
+// id_checkbox_qrcode.addEventListener('click', qrcode_action);
 
 id_button_show_365.addEventListener('click', show_365_action);
 id_button_library.addEventListener('click', library_action);
@@ -69,14 +69,6 @@ function play_clip_action() {
     next_action();
   }
 }
-
-// function play_next_action() {
-//   ui_log('play_next_action id_checkbox_play_next.checked', id_checkbox_play_next.checked);
-//   my.playNext = id_checkbox_play_next.checked;
-//   if (my.playNext) {
-//     next_action();
-//   }
-// }
 
 function first_action() {
   // ui_log('first_action');

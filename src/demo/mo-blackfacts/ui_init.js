@@ -6,10 +6,10 @@ function ui_init() {
     id_dashboard.classList.add('hidden');
     qrcode_hide();
   } else {
-    if (my.isPortraitView) {
-      create_tall_view();
+    if (my.isController) {
+      create_controller_view();
     } else {
-      create_wide_view();
+      create_controlled_view();
     }
   }
   if (params.qrcode) {
@@ -21,16 +21,17 @@ function ui_init() {
   }
 }
 
-function create_tall_view() {
-  // PortraitView - no qrcode, show dashboard
+function create_controller_view() {
+  // no qrcode, show dashboard
   //
   id_message_pane.classList.add('hidden');
+  id_bottom_message_pane.classList.add('hidden');
   qrcode_hide();
   create_index_buttons();
 }
 
-function create_wide_view() {
-  // Landscape - show qrcode, hide dashboard
+function create_controlled_view() {
+  // show qrcode, hide dashboard
   //
   id_dashboard.classList.add('hidden');
   show_qrcode_top_right();
@@ -38,11 +39,27 @@ function create_wide_view() {
 
 function show_qrcode_top_right() {
   qrcode_show();
-  // place qrcode image at top right
-  let x = window.innerWidth - id_qrcode.clientWidth;
-  let y = window.innerHeight - id_qrcode.clientHeight;
+  if (0) {
+    // place qrcode image at top right
+    let x = window.innerWidth - id_qrcode.clientWidth;
+    let y = window.innerHeight - id_qrcode.clientHeight;
+    id_qrcode.style.left = x + 'px';
+    // id_qrcode.style.top = y + 'px';
+  }
+  if (1) {
+    position_bottom();
+  }
+}
+
+function position_bottom() {
+  console.log('position_bottom');
+  let margin = 10;
+  let x = window.innerWidth - id_qrcode.clientWidth - margin;
+  let y = window.innerHeight - id_qrcode.clientHeight - margin;
   id_qrcode.style.left = x + 'px';
-  // id_qrcode.style.top = y + 'px';
+  id_qrcode.style.top = y + 'px';
+  id_bottom_message_pane.style.left = margin + 'px';
+  id_bottom_message_pane.style.top = y + 'px';
 }
 
 function create_index_buttons() {

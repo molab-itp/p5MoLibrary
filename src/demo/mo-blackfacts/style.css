@@ -6,12 +6,16 @@ body {
   /* overflow: hidden; */
 }
 
+a {
+  color: #fff;
+}
+
 #id_player {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 65%;
 }
 
 #id_qrcode {
@@ -29,6 +33,14 @@ body {
 }
 
 #id_message_pane {
+  z-index: 3;
+  position: absolute;
+  color: #fff;
+  background-color: #0000;
+  max-width: 80%;
+}
+
+#id_bottom_message_pane {
   z-index: 3;
   position: absolute;
   color: #fff;

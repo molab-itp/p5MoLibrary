@@ -20,13 +20,15 @@
     <div id="id_dashboard">
       <div>
         <h1 id="id_title"">POWER TO THE PEOPLE!</h1>
-        An experimental interactive multi-screen experience by
-        <a href="https://jht1493.net" target="jht">John Henry Thompson</a>
-        <br />
+        <h3>
+        An experimental interactive multi-screen experience <br />
+        by <a href="https://jht1493.net" target="jht">John Henry Thompson</a> <br />
         remixing <a href="https://blackfacts.com" target="blackfacts"> blackfacts.com</a>
+        powered by <a href="https://github.com/molab-itp/p5moLibrary" target="moLibrary">  p5moLibrary</a>
         <br />
-        <a href="https://github.com/molab-itp/p5moLibrary" target="moLibrary"> powered by p5moLibrary</a>
         <br />
+These buttons control the big screen:
+        </h3>
       </div>
 
       <button id="id_button_first">First</button>
@@ -47,11 +49,11 @@
       <!-- <input type="checkbox" id="id_checkbox_play_next" name="play_next" />
       <label for="id_checkbox_play_next">Next</label> -->
 
-      <input type="checkbox" id="id_checkbox_play_clip" name="play_clip" />
-      <label for="id_checkbox_play_clip">Clip</label>
+      <!-- <input type="checkbox" id="id_checkbox_play_clip" name="play_clip" /> -->
+      <!-- <label for="id_checkbox_play_clip">Clip</label> -->
 
-      <input type="checkbox" id="id_checkbox_qrcode" name="qrcode" />
-      <label for="id_checkbox_qrcode">QRCode</label>
+      <!-- <input type="checkbox" id="id_checkbox_qrcode" name="qrcode" /> -->
+      <!-- <label for="id_checkbox_qrcode">QRCode</label> -->
 
       <span id="id_lapse_report"></span>
       <br />
@@ -65,9 +67,18 @@
     </div>
 
     <div id="id_player"></div>
+
+
+    <div id="id_bottom_message_pane">
+      <h2 id="id_bottom_message_text"></h2>
+      <h1> POWER TO THE PEOPLE!</h1> 
+      <h2>scan the qrcode to control this screen  </h2>
+    </div>
+
     <div id="id_qrcode"><img src="../../qrcode/mo-blackfacts-qrcode.png" width="200px" id="id_qrcode_src" /></div>
 
-    <div id="id_button_host"></div>
+    <!-- <div id="id_button_host"></div> -->
+
   </body>
 
   <script src="dateFacts.js"></script>
