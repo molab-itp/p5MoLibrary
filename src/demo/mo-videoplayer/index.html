@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <meta charset="utf-8" /> -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge" /> -->
+    <!-- <meta name="author" content="BlackFacts.com" /> -->
+    <!--  -->
+    <!-- BlackFacts Video Player 2023-12-26 downloaded by JHT -->
+    <!-- source: https://blackfacts.com/kiosk?delay=2000&playlist=today -->
+    <!--  -->
+    <title>mo-blackfacts ?v=15</title>
+    <!-- <script src="dateFacts.js"></script> -->
+    <!-- <script src="player.js?v=15"></script> -->
+    <!-- <script src="https://www.youtube.com/iframe_api"></script> -->
+    <link rel="stylesheet" type="text/css" href="style.css?v=15" />
+    <style></style>
+  </head>
+  <body>
+    <div id="id_dashboard">
+      <div>
+        <h1 id="id_title"">POWER TO THE PEOPLE!</h1>
+        An experimental interactive multi-screen experience by
+        <a href="https://jht1493.net" target="jht">John Henry Thompson</a>
+        <br />
+        remixing <a href="https://blackfacts.com" target="blackfacts"> blackfacts.com</a>
+        <br />
+        <a href="https://github.com/molab-itp/p5moLibrary" target="moLibrary"> powered by p5moLibrary</a>
+        <br />
+      </div>
+
+      <button id="id_button_first">First</button>
+      <button id="id_button_previous">Previous</button>
+      <button id="id_button_next">Next</button>
+      <br />
+      <button id="id_button_play">Play</button>
+      <button id="id_button_pause">Pause</button>
+      <button id="id_button_rewind">Rewind</button>
+      <button id="id_button_resume">Resume</button>
+      <br />
+      <button id="id_button_random">Random</button>
+      <button id="id_button_show_365">Show-365</button>
+      <button id="id_button_library">Library</button>
+
+      <br />
+
+      <!-- <input type="checkbox" id="id_checkbox_play_next" name="play_next" />
+      <label for="id_checkbox_play_next">Next</label> -->
+
+      <input type="checkbox" id="id_checkbox_play_clip" name="play_clip" />
+      <label for="id_checkbox_play_clip">Clip</label>
+
+      <input type="checkbox" id="id_checkbox_qrcode" name="qrcode" />
+      <label for="id_checkbox_qrcode">QRCode</label>
+
+      <span id="id_lapse_report"></span>
+      <br />
+
+      <h2 id="id_blackfacts_num"></h2>
+      <div id="id_index_button_container" class="hidden"></div>
+    </div>
+
+    <div id="id_message_pane">
+      <h2 id="id_message_text"></h2>
+    </div>
+
+    <div id="id_player"></div>
+    <div id="id_qrcode"><img src="../../qrcode/mo-blackfacts-qrcode.png" width="200px" id="id_qrcode_src" /></div>
+
+    <div id="id_button_host"></div>
+  </body>
+
+  <script src="dateFacts.js"></script>
+  <script src="player.js?v=15"></script>
+
+  <script type="module" src="../../lib/fireb_/fireb_config.js?v=15"></script>
+  <script type="module" src="../../lib/Anim.js?v=15"></script>
+  <script src="../../lib/dbase/dbase_app_init.js?v=15"></script>
+  <script src="../../lib/dbase/dbase_event_observe.js?v=15"></script>
+  <script src="../../lib/dbase/dbase_device_event.js?v=15"></script>
+  <script src="../../lib/dbase/dbase_device_observe.js?v=15"></script>
+  <script src="../../lib/dbase/dbase_update_props.js?v=15"></script>
+  <script src="../../lib/dbase/dbase_updateTimeGap.js?v=15"></script>
+
+  <script src="action.js?v=15"></script>
+  <script src="frame.js?v=15"></script>
+  <script src="ui_init.js?v=15"></script>
+  <script src="index.js?v=15"></script>
+</html>
