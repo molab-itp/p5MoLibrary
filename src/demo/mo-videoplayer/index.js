@@ -11,11 +11,13 @@ function document_loaded() {
 
   // let config = fireb_.init('jht9629');
   // // let config = fireb_.init('jht1493');
-  // console.log('?v=15 config.projectId', config.projectId);
+  // console.log('?v=17 config.projectId', config.projectId);
   // console.log('configLabel', config.configLabel);
 
   dbase_app_init({ completed: dbase_host_init });
 }
+
+// window.addEventListener('resize', position_bottom);
 
 function dbase_host_init() {
   //
@@ -23,7 +25,7 @@ function dbase_host_init() {
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 
-  if (my.isPortraitView) {
+  if (my.isController) {
     my.pingLoop = new Anim({ target: my, time: my.pingTime, action: pingAction });
   }
 
@@ -35,7 +37,8 @@ let my = {};
 function my_init() {
   // console.log('my_init');
   //
-  my.fireb_config = 'jht9629';
+  my.fireb_config = 'jhtitp';
+  // my.fireb_config = 'jht9629';
   // my.fireb_config = 'jht1493';
   my.dbase_rootPath = 'm0-@r-@w-';
   my.mo_app = 'mo-blackfacts';
@@ -43,10 +46,11 @@ function my_init() {
   my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
-  my.nameDevice = 'device?v=15';
+  my.nameDevice = 'device?v=17';
   my.pingTime = 1;
 
-  my.isPortraitView = window.innerHeight > window.innerWidth;
+  // my.isController = window.innerHeight > window.innerWidth;
+  my.isController = !params.qrcode;
 
   // idevice param renamed to group
   // however, still present in qr code
@@ -70,24 +74,24 @@ function my_init() {
 }
 
 function pingAction() {
-  let portrait = my.isPortraitView ? 1 : 0;
+  let portrait = my.isController ? 1 : 0;
   let group = my.group;
   dbase_device_updates({ portrait, group });
 }
 
 function mo_app_key_value(key, value) {
   switch (key) {
+    case 'a_device':
+      mo_blackfacts_device_value(value);
+      break;
+    case 'a_group':
+      mo_blackfacts_group_value(value);
+      break;
     case 'index':
       mo_blackfacts_index_value(value);
       break;
     case 'qrcode':
       mo_blackfacts_qccode_value(value);
-      break;
-    case 'device':
-      mo_blackfacts_device_value(value);
-      break;
-    case 'group':
-      mo_blackfacts_group_value(value);
       break;
   }
 }
