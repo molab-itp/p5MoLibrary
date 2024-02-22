@@ -19,6 +19,9 @@ function ui_init() {
     }
     show_qrcode_top_right();
   }
+  if (my.group) {
+    id_group_report.innerHTML = my.group;
+  }
 }
 
 function create_controller_view() {
@@ -47,20 +50,26 @@ function show_qrcode_top_right() {
     // id_qrcode.style.top = y + 'px';
   }
   if (1) {
+    position_top();
     position_bottom();
   }
 }
 
-function position_bottom() {
-  console.log('position_bottom');
+function position_top() {
   let margin = 10;
+  id_message_pane.style.left = 2 * margin + 'px';
+}
+
+function position_bottom() {
+  // console.log('position_bottom');
   let qrwidth = 0.4;
+  let margin = 10;
   id_qrcode_src.width = Math.floor(window.innerWidth * qrwidth);
   let x = window.innerWidth - id_qrcode.clientWidth - margin;
   let y = window.innerHeight - id_qrcode.clientHeight - margin;
   id_qrcode.style.left = x + 'px';
   id_qrcode.style.top = y + 'px';
-  id_bottom_message_pane.style.left = margin + 'px';
+  id_bottom_message_pane.style.left = 2 * margin + 'px';
   id_bottom_message_pane.style.top = y + 'px';
 }
 

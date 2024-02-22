@@ -8,7 +8,7 @@ id_button_first.addEventListener('click', first_action);
 id_button_random.addEventListener('click', random_action);
 
 // id_checkbox_play_clip.addEventListener('click', play_clip_action);
-// id_checkbox_qrcode.addEventListener('click', qrcode_action);
+// id_checkbox_qrcode.addEventListener('click', checkbox_qrcode_action);
 
 id_button_show_365.addEventListener('click', show_365_action);
 id_button_library.addEventListener('click', library_action);
@@ -18,6 +18,12 @@ id_button_pause.addEventListener('click', pause_action);
 id_button_rewind.addEventListener('click', rewind_action);
 
 id_button_resume.addEventListener('click', resume_action);
+
+id_qrcode.addEventListener('click', qrcode_click_action);
+
+function qrcode_click_action() {
+  toggleFullScreen();
+}
 
 function resume_action() {
   // allow_cloud_actions();
@@ -54,8 +60,8 @@ function toggle_365_panes() {
   id_message_text.classList.toggle('hidden');
 }
 
-function qrcode_action() {
-  ui_log('qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
+function checkbox_qrcode_action() {
+  ui_log('checkbox_qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
   my.qrcodeFlag = id_checkbox_qrcode.checked;
   let qrcode = my.qrcodeFlag ? 1 : 0;
   dbase_update_props({ qrcode });
@@ -134,3 +140,15 @@ function stepAction() {
 // document.getElementById('example').innerHTML
 // https://stackoverflow.com/questions/3434278/do-dom-tree-elements-with-ids-become-global-properties
 // https://html.spec.whatwg.org/multipage/nav-history-apis.html#named-access-on-the-window-object
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
+
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}

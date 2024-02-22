@@ -8,7 +8,7 @@ id_button_first.addEventListener('click', first_action);
 id_button_random.addEventListener('click', random_action);
 
 // id_checkbox_play_clip.addEventListener('click', play_clip_action);
-// id_checkbox_qrcode.addEventListener('click', qrcode_action);
+// id_checkbox_qrcode.addEventListener('click', checkbox_qrcode_action);
 
 id_button_show_365.addEventListener('click', show_365_action);
 id_button_library.addEventListener('click', library_action);
@@ -54,8 +54,8 @@ function toggle_365_panes() {
   id_message_text.classList.toggle('hidden');
 }
 
-function qrcode_action() {
-  ui_log('qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
+function checkbox_qrcode_action() {
+  ui_log('checkbox_qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
   my.qrcodeFlag = id_checkbox_qrcode.checked;
   let qrcode = my.qrcodeFlag ? 1 : 0;
   dbase_update_props({ qrcode });

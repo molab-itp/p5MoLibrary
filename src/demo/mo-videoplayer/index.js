@@ -48,6 +48,7 @@ function my_init() {
   my.animTime = 7;
   my.nameDevice = 'device?v=17';
   my.pingTime = 1;
+  // my.leftMargin = 10;
 
   // my.isController = window.innerHeight > window.innerWidth;
   my.isController = !params.qrcode;
@@ -155,7 +156,7 @@ function update_blackfacts_num_ui() {
 
 function show_message(msg) {
   id_blackfacts_num.innerHTML = msg;
-  id_message_text.innerHTML = id_blackfacts_num.innerHTML = msg;
+  id_message_text.innerHTML = msg;
 }
 
 function mo_blackfacts_qccode_value(newValue) {
