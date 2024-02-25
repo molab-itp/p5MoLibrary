@@ -1,5 +1,7 @@
 # [p5moLibrary](https://github.com/molab-itp/p5moLibrary)
 
+# [github.io](https://molab-itp.github.io/p5moLibrary/src?v=18)
+
 - a p5js Library for multi screen experiences - mobile devices paired with large screens
 
   - [demo/Astronomical](demo/Astronomical?v=18)
@@ -14,31 +16,39 @@
 
 - POWER TO THE PEOPLE screens
 
-  - [demo/mo-blackfacts](demo/mo-blackfacts?v=18)
-  - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=18&group=s1&qrcode=mo-blackfacts-qrcode-1.png)
-  - [demo/mo-blackfacts s2](demo/mo-blackfacts?v=18&group=s2&qrcode=mo-blackfacts-qrcode-2.png)
-  - [demo/mo-blackfacts s3](demo/mo-blackfacts?v=18&group=s3&qrcode=mo-blackfacts-qrcode-3.png)
-  - [demo/mo-blackfacts s4](demo/mo-blackfacts?v=18&group=s4&qrcode=mo-blackfacts-qrcode-4.png)
-  - [demo/mo-blackfacts s5](demo/mo-blackfacts?v=18&group=s5&qrcode=mo-blackfacts-qrcode-5.png)
-  - [demo/mo-blackfacts s6](demo/mo-blackfacts?v=18&group=s6&qrcode=mo-blackfacts-qrcode-6.png)
-  - [demo/mo-blackfacts s1-s6](demo/mo-blackfacts?v=18&group=s1,s2,s3,s4,s5,s6&qrcode=mo-blackfacts-qrcode-1-6.png)
+  - [demo/mo-blackfacts remote](demo/mo-blackfacts?v=18)
+  - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=18&group=s1&qrcode=mo-blackfacts-qrcode-1.png) [remote](demo/mo-blackfacts?v=18&group=s1)
+  - [demo/mo-blackfacts s2](demo/mo-blackfacts?v=18&group=s2&qrcode=mo-blackfacts-qrcode-2.png) [remote](demo/mo-blackfacts?v=18&group=s2)
+  - [demo/mo-blackfacts s3](demo/mo-blackfacts?v=18&group=s3&qrcode=mo-blackfacts-qrcode-3.png) [remote](demo/mo-blackfacts?v=18&group=s3)
+  - [demo/mo-blackfacts s4](demo/mo-blackfacts?v=18&group=s4&qrcode=mo-blackfacts-qrcode-4.png) [remote](demo/mo-blackfacts?v=18&group=s4)
+  - [demo/mo-blackfacts s5](demo/mo-blackfacts?v=18&group=s5&qrcode=mo-blackfacts-qrcode-5.png) [remote](demo/mo-blackfacts?v=18&group=s5)
+  - [demo/mo-blackfacts s6](demo/mo-blackfacts?v=18&group=s6&qrcode=mo-blackfacts-qrcode-6.png) [remote](demo/mo-blackfacts?v=18&group=s6)
+  - [demo/mo-blackfacts s1-s6](demo/mo-blackfacts?v=18&group=s1,s2,s3,s4,s5,s6&qrcode=mo-blackfacts-qrcode-1-6.png) [remote](demo/mo-blackfacts?v=18&group=s1,s2,s3,s4,s5,s6)
 
 - p5moExamples
 
-  - [ github.io ](https://molab-itp.github.io/p5moExamples)
+  - [ p5moExamples github.io ](https://molab-itp.github.io/p5moExamples)
+
+- p5moExamples p5js
+
   - [ p5moExamples p5js lobby ](https://editor.p5js.org/jht9629-nyu/sketches/vP6sWN4Cu)
-  - [ p5moExamples pixel-grid ](https://editor.p5js.org/jht9629-nyu/sketches/CntV1JQNp)
+  - [ p5moExamples p5js pixel-grid ](https://editor.p5js.org/jht9629-nyu/sketches/CntV1JQNp)
 
 - play list
 
-  - [Native Americans Exhibition Trailer](demo/BlackFacts?playlist=hpjNGTYvpxw)
+  - [NationTime - edit by Ali Santana](demo/mo-videoplayer?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png)
 
   - [Langston Hughes ](demo/BlackFacts?playlist=XzI3huqpCi4)
+
     - [Let America be America Again - video](demo/mo-blackfacts?playlist=CFNM8GB_Yp0&title=%E2%98%85)
     - [Let America be America Again - poets.org](https://poets.org/poem/let-america-be-america-again)
-  - [NationTime - edit by Ali Santana](demo/mo-videoplayer?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png)
+
+  - [Native Americans Exhibition Trailer](demo/BlackFacts?playlist=hpjNGTYvpxw)
+
   - [Sonia Sanchez @ NMAAHC - Furious Flower](demo/mo-blackfacts?playlist=FNLp8e-cfgk&title=Sonia%20Sanchez)
+
   - [NationTime - edit by Ali Santana](demo/mo-videoplayer?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png)
+
   - [MEET THE ARTIST - JULIAN ADON ALEXANDER](demo/mo-blackfacts?playlist=wk0La_2igws&title=MEET%20THE%20ARTIST%20-%20JULIAN%20ADON%20ALEXANDE%20-%20What%20it%20is&qrcode=JULIAN.png)
 
   - [2024-02-07-nyu-mlk-event](demo/mo-blackfacts?playlist=lG758MniLYg&qrcode=annoucement-01.png&title=2024-02-07-nyu-mlk-event)
@@ -54,8 +64,6 @@
   - [demo/mo-gallery-1](demo/mo-gallery-1?v=18)
   - [demo/mo-gallery-2](demo/mo-gallery-2?v=18)
   - [demo/mo-storage-console](demo/mo-storage-console?v=18)
-
-# [github.io](https://molab-itp.github.io/p5moLibrary/src?v=18)
 
 <!--
 

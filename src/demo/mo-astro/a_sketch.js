@@ -26,8 +26,9 @@ function setup() {
   // // let config = fireb_.init('jht1493');
   // console.log('?v=18 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
-  my.fireb_config = 'jht9629';
+  // my.fireb_config = 'jht9629';
   // my.fireb_config = 'jht1493';
+  my.fireb_config = 'jhtitp';
   my.dbase_rootPath = 'm0-@r-@w-';
   my.mo_app = 'mo-astro';
   my.roomName = 'room0';
