@@ -17,13 +17,13 @@
 - POWER TO THE PEOPLE screens
 
   - [demo/mo-blackfacts remote](demo/mo-blackfacts?v=18)
-  - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=18&group=s1&qrcode=mo-blackfacts-qrcode-1.png) [remote](demo/mo-blackfacts?v=18&group=s1)
-  - [demo/mo-blackfacts s2](demo/mo-blackfacts?v=18&group=s2&qrcode=mo-blackfacts-qrcode-2.png) [remote](demo/mo-blackfacts?v=18&group=s2)
-  - [demo/mo-blackfacts s3](demo/mo-blackfacts?v=18&group=s3&qrcode=mo-blackfacts-qrcode-3.png) [remote](demo/mo-blackfacts?v=18&group=s3)
-  - [demo/mo-blackfacts s4](demo/mo-blackfacts?v=18&group=s4&qrcode=mo-blackfacts-qrcode-4.png) [remote](demo/mo-blackfacts?v=18&group=s4)
-  - [demo/mo-blackfacts s5](demo/mo-blackfacts?v=18&group=s5&qrcode=mo-blackfacts-qrcode-5.png) [remote](demo/mo-blackfacts?v=18&group=s5)
-  - [demo/mo-blackfacts s6](demo/mo-blackfacts?v=18&group=s6&qrcode=mo-blackfacts-qrcode-6.png) [remote](demo/mo-blackfacts?v=18&group=s6)
-  - [demo/mo-blackfacts s1-s6](demo/mo-blackfacts?v=18&group=s1,s2,s3,s4,s5,s6&qrcode=mo-blackfacts-qrcode-1-6.png) [remote](demo/mo-blackfacts?v=18&group=s1,s2,s3,s4,s5,s6)
+  - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=18&group=s1&qrcode=mo-blackfacts-qrcode-1.png) [-remote-](demo/mo-blackfacts?v=18&group=s1)
+  - [demo/mo-blackfacts s2](demo/mo-blackfacts?v=18&group=s2&qrcode=mo-blackfacts-qrcode-2.png) [-remote-](demo/mo-blackfacts?v=18&group=s2)
+  - [demo/mo-blackfacts s3](demo/mo-blackfacts?v=18&group=s3&qrcode=mo-blackfacts-qrcode-3.png) [-remote-](demo/mo-blackfacts?v=18&group=s3)
+  - [demo/mo-blackfacts s4](demo/mo-blackfacts?v=18&group=s4&qrcode=mo-blackfacts-qrcode-4.png) [-remote-](demo/mo-blackfacts?v=18&group=s4)
+  - [demo/mo-blackfacts s5](demo/mo-blackfacts?v=18&group=s5&qrcode=mo-blackfacts-qrcode-5.png) [-remote-](demo/mo-blackfacts?v=18&group=s5)
+  - [demo/mo-blackfacts s6](demo/mo-blackfacts?v=18&group=s6&qrcode=mo-blackfacts-qrcode-6.png) [-remote-](demo/mo-blackfacts?v=18&group=s6)
+  - [demo/mo-blackfacts s1-s6](demo/mo-blackfacts?v=18&group=s1,s2,s3,s4,s5,s6&qrcode=mo-blackfacts-qrcode-1-6.png) [-remote-](demo/mo-blackfacts?v=18&group=s1,s2,s3,s4,s5,s6)
 
 - p5moExamples
 
