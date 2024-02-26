@@ -11,7 +11,7 @@ function document_loaded() {
 
   // let config = fireb_.init('jht9629');
   // // let config = fireb_.init('jht1493');
-  // console.log('?v=19 config.projectId', config.projectId);
+  // console.log('?v=20 config.projectId', config.projectId);
   // console.log('configLabel', config.configLabel);
 
   dbase_app_init({ completed: dbase_host_init });
@@ -47,7 +47,7 @@ function my_init() {
   my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
-  my.nameDevice = 'device?v=19';
+  my.nameDevice = 'device?v=20';
   my.pingTime = 1;
 
   // my.isController = window.innerHeight > window.innerWidth;
