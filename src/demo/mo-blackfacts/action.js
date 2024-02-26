@@ -107,7 +107,14 @@ function random_action() {
 function dbase_blackfacts_update_index(index) {
   ui_log('dbase_blackfacts_update_index index', index, 'my.group', my.group);
   if (my.group) {
-    dbase_update_props({}, {}, { group: my.group, index });
+    let groups = my.group;
+    // broadcast group when has comma separated values
+    //  my.group=s1,s2,... --> group=s0
+    if (groups.indexOf(',') > -1) {
+      // Special group 's0' recieves all updates
+      groups = 's0,' + my.group;
+    }
+    dbase_update_props({}, {}, { group: groups, index });
   } else {
     dbase_update_props({ index });
   }

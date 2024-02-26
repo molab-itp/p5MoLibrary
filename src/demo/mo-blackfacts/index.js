@@ -42,7 +42,8 @@ function my_init() {
   my.fireb_config = 'jhtitp';
   my.dbase_rootPath = 'm0-@r-@w-';
   my.mo_app = 'mo-blackfacts';
-  my.roomName = 'room0';
+  // my.roomName = 'room0';
+  my.roomName = 'room1';
   my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
@@ -100,8 +101,13 @@ function mo_blackfacts_group_value(newValue) {
   console.log('mo_blackfacts_group_value my.group', my.group, 'newValue', newValue);
   let group = my.group;
   if (group) {
-    // for my.group=s1,s2,... group=s1
-    group = group.split(',')[0];
+    // broadcast group when has comma separated values
+    //  my.group=s1,s2,... --> group=s0
+    let groups = group.split(',');
+    if (groups.length > 1) {
+      // For broadcast group - Observe special group 0
+      group = 's0';
+    }
   }
   let item = newValue[group];
   // console.log('mo_blackfacts_group_value item', item);
