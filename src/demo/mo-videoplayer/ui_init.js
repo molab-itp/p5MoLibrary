@@ -6,7 +6,7 @@ function ui_init() {
     id_dashboard.classList.add('hidden');
     qrcode_hide();
   } else {
-    if (my.isController) {
+    if (my.isRemote) {
       create_tall_view();
     } else {
       create_wide_view();

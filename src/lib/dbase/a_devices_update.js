@@ -26,20 +26,6 @@ function dbase_a_devices_update(deviceProps) {
 window.dbase_a_devices_update = dbase_a_devices_update;
 
 //
-// Issue actions to all a_devices
-//
-function dbase_a_devices_issue_actions(actions) {
-  //
-  let nactions = {};
-  for (let act in actions) {
-    nactions[act] = dbase_value_increment(1);
-  }
-  // dbase_queue_update({ clear_action: dbase_value_increment(1) });
-  dbase_a_devices_update(nactions);
-}
-window.dbase_a_devices_issue_actions = dbase_a_devices_issue_actions;
-
-//
 // throttle update to queue to time
 //
 function dbase_queue_update(props) {
@@ -76,22 +62,7 @@ function dbase_poll() {
 window.dbase_poll = dbase_poll;
 
 //
-// Issue actions to my device
-// dbase_issue_actions( {clear_action: 1} )
-//
-function dbase_issue_actions(actions) {
-  //
-  let nactions = {};
-  for (let act in actions) {
-    nactions[act] = dbase_value_increment(1);
-  }
-  // dbase_queue_update({ clear_action: dbase_value_increment(1) });
-  dbase_queue_update(nactions);
-}
-window.dbase_issue_actions = dbase_issue_actions;
-
-//
-// Return non-zero if any actions issued
+// Return non-zero if any actions issued for device uid
 //
 // dbase_actions_issued(uid, { clear_action: 1})
 //
@@ -123,3 +94,37 @@ function dbase_actions_issued(uid, actions) {
   return actionSeen;
 }
 window.dbase_actions_issued = dbase_actions_issued;
+
+//
+// Issue actions to my device
+//
+// dbase_issue_actions( { clear_action: 1 }, { all: 1} )
+//
+function dbase_issue_actions(actions, options) {
+  //
+  if (!options) options = {};
+  let nactions = {};
+  for (let act in actions) {
+    nactions[act] = dbase_value_increment(1);
+  }
+  if (options.all) {
+    dbase_a_devices_update(nactions);
+  } else {
+    dbase_queue_update(nactions);
+  }
+}
+window.dbase_issue_actions = dbase_issue_actions;
+
+//
+// Issue actions to all a_devices
+//
+function dbase_a_devices_issue_actions(actions) {
+  //
+  let nactions = {};
+  for (let act in actions) {
+    nactions[act] = dbase_value_increment(1);
+  }
+  // dbase_queue_update({ clear_action: dbase_value_increment(1) });
+  dbase_a_devices_update(nactions);
+}
+window.dbase_a_devices_issue_actions = dbase_a_devices_issue_actions;

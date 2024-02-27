@@ -61,7 +61,7 @@ function init_query() {
   }
   console.log('init_query windowHeight', windowHeight, 'windowWidth', windowWidth);
   // my.isPortrait = windowHeight > windowWidth;
-  if (isController()) {
+  if (isRemote()) {
     my.width = my.vwidth;
     my.height = my.vheight * 4;
   } else {
@@ -72,7 +72,7 @@ function init_query() {
   }
 }
 
-function isController() {
+function isRemote() {
   return windowHeight > windowWidth;
 }
 

@@ -25,7 +25,7 @@ function dbase_host_init() {
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 
-  if (my.isController) {
+  if (my.isRemote) {
     my.pingLoop = new Anim({ target: my, time: my.pingTime, action: pingAction });
   }
 
@@ -50,8 +50,8 @@ function my_init() {
   my.nameDevice = 'device?v=21';
   my.pingTime = 1;
 
-  // my.isController = window.innerHeight > window.innerWidth;
-  my.isController = !params.qrcode;
+  // my.isRemote = window.innerHeight > window.innerWidth;
+  my.isRemote = !params.qrcode;
 
   // idevice param renamed to group
   // however, still present in qr code
@@ -75,7 +75,7 @@ function my_init() {
 }
 
 function pingAction() {
-  let portrait = my.isController ? 1 : 0;
+  let portrait = my.isRemote ? 1 : 0;
   let group = my.group;
   dbase_device_updates({ portrait, group });
 }

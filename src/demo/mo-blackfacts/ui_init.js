@@ -6,8 +6,8 @@ function ui_init() {
     id_dashboard.classList.add('hidden');
     qrcode_hide();
   } else {
-    if (my.isController) {
-      create_controller_view();
+    if (my.isRemote) {
+      create_remote_view();
     } else {
       create_controlled_view();
     }
@@ -24,7 +24,7 @@ function ui_init() {
   }
 }
 
-function create_controller_view() {
+function create_remote_view() {
   // no qrcode, show dashboard
   //
   id_message_pane.classList.add('hidden');

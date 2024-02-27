@@ -22,7 +22,7 @@ function animationFrame_callback(timeStamp) {
       player_startup_stalled();
     }
   }
-  if (!my.isController && !params.qrcode) {
+  if (!my.isRemote && !params.qrcode) {
     // if (my.blackfacts_qrcode) qrcode_show();
     // else qrcode_hide();
   }
