@@ -32,7 +32,7 @@ function dbase_queue_update(props) {
   //
   if (!my.db_queue) {
     my.db_queue = {};
-    my.db_queue_loop = new Anim({ time: 0.1, action: check_queue });
+    my.db_queue_loop = new Anim({ time: 0.25, action: check_queue });
     my.db_queue_count = 0;
     my.db_queue_count_last = 0;
   }

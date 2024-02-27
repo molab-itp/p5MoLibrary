@@ -37,9 +37,9 @@ let my = {};
 function my_init() {
   // console.log('my_init');
   //
-  // my.fireb_config = 'jht9629';
+  my.fireb_config = 'jht9629';
   // my.fireb_config = 'jht1493';
-  my.fireb_config = 'jhtitp';
+  // my.fireb_config = 'jhtitp';
   my.dbase_rootPath = 'm0-@r-@w-';
   my.mo_app = 'mo-blackfacts';
   my.roomName = 'room0';
