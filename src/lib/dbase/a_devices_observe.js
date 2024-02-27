@@ -72,7 +72,7 @@ function dbase_queue_update(props) {
   //
   if (!my.db_queue) {
     my.db_queue = {};
-    my.db_queue_loop = new Anim({ time: 0.25, action: check_queue });
+    my.db_queue_loop = new Anim({ time: 0.1, action: check_queue });
     my.db_queue_count = 0;
     my.db_queue_count_last = 0;
   }
@@ -117,12 +117,12 @@ function dbase_actions_issued(my, actions) {
   // console.log('dbase_actions_issued my', my, 'actions', actions);
   //
   let actionSeen = 0;
-  if (!my.db_actions_state) my.db_actions_state = {};
+  // if (!my.db_actions_state) my.db_actions_state = {};
   if (!my.db_last_actions_state) my.db_last_actions_state = {};
   // console.log('dbase_actions_issued actions', actions);
   for (let act in actions) {
-    if (my.db_last_actions_state[act] != my.db_actions_state[act]) {
-      my.db_last_actions_state[act] = my.db_actions_state[act];
+    if (my.db_last_actions_state[act] != my[act]) {
+      my.db_last_actions_state[act] = my[act];
       actionSeen++;
     }
   }
