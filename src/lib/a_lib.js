@@ -4,6 +4,7 @@
 
 import './Anim.js?v=21';
 import './dbase/a_devices_observe.js?v=21';
+import './dbase/a_devices_update.js?v=21';
 import './dbase/app_init.js?v=21';
 import './dbase/device_event.js?v=21';
 import './dbase/device_observe.js?v=21';

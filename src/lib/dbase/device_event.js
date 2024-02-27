@@ -99,7 +99,7 @@ function dbase_app_init_events(keys, uid, date_s) {
   let device = my.fireb_devices[uid];
   if (!device) return null;
 
-  let events = device.serverValues && device.serverValues[keys.event];
+  let events = device.dbase && device.dbase[keys.event];
   if (!events || events.length == 0) {
     return initActivities;
   }
@@ -115,7 +115,7 @@ function dbase_device_isActive(device) {
 window.dbase_device_isActive = dbase_device_isActive;
 
 function dbase_device_eventGapTime(device) {
-  let events = device.serverValues && device.serverValues.update;
+  let events = device.dbase && device.dbase.update;
   if (!events || events.length == 0) {
     return Number.MAX_VALUE;
   }
@@ -128,11 +128,11 @@ function dbase_device_eventGapTime(device) {
 // !!@ Doc
 // dbase_device_updates({ controller });
 // function device_uid_isActive(uid) {
-//   return dbase_device_isActive(fdevice) && fdevice.serverValues.controller;
+//   return dbase_device_isActive(fdevice) && fdevice.dbase.controller;
 
 function device_uid_isActive(uid) {
   let fdevice = my.fireb_devices[uid];
-  // console.log('device_uid_isActive uid', uid, 'portrait', fdevice.serverValues.controller);
-  return dbase_device_isActive(fdevice) && fdevice.serverValues.controller;
+  // console.log('device_uid_isActive uid', uid, 'portrait', fdevice.dbase.controller);
+  return dbase_device_isActive(fdevice) && fdevice.dbase.controller;
 }
 window.device_uid_isActive = device_uid_isActive;

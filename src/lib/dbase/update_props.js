@@ -1,5 +1,6 @@
 //
 function dbase_update_props(props, deviceProps, groupProps) {
+  //
   // ui_log('dbase_update_props props', props, 'groupProps', groupProps);
   // ui_log('dbase_update_props props', props, 'deviceProps', deviceProps);
   // ui_log('dbase_update_props my.uid', my.uid);

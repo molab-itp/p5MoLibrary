@@ -13,7 +13,7 @@ function a_setup() {
   my.scanFlag = 1;
 
   my.isPortrait = height > width;
-  // my.isPortraitView = window.innerHeight > window.innerWidth;
+  // my.isController = window.innerHeight > window.innerWidth;
 
   my.refBox = new RefBox(refBox_init);
   my.nrefs = my.refBox.refs.length;

@@ -116,7 +116,7 @@ function render_pix_devices_cross(device, uid) {
   }
   // Draw the chip on layer that persists
   let chip = device.pixchips;
-  // let chip = device.serverValues.chip;
+  // let chip = device.dbase.chip;
   if (!chip) {
     return;
   }

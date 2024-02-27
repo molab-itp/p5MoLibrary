@@ -32,8 +32,8 @@ function dbase_site_devices(show) {
     return [];
   }
   let arr = Object.values(my.fireb_devices).sort((item1, item2) => {
-    let date1 = item1.serverValues.date_s;
-    let date2 = item2.serverValues.date_s;
+    let date1 = item1.dbase.date_s;
+    let date2 = item2.dbase.date_s;
     return date1.localeCompare(date2);
   });
   // Latest date first
@@ -42,7 +42,7 @@ function dbase_site_devices(show) {
     let lines = [];
     for (let item of arr) {
       let { uid } = item;
-      let { date_s, visit_count, update_count, userAgent } = item.serverValues;
+      let { date_s, visit_count, update_count, userAgent } = item.dbase;
       userAgent = userAgent.substring(8, 48);
       lines.push(date_s + ' visit_count ' + visit_count + ' update_count ' + update_count);
       lines.push(uid + ' ' + userAgent);
@@ -53,7 +53,7 @@ function dbase_site_devices(show) {
   }
   // [ {
   //    index
-  //    serverValues {date_s: '2024-02-19T03:52:26.337Z', name_s: '', time: 0, time_s: '', update: Array(9), …}
+  //    dbase {date_s: '2024-02-19T03:52:26.337Z', name_s: '', time: 0, time_s: '', update: Array(9), …}
   //    uid
   //    } ... ]
   //

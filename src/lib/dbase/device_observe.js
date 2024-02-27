@@ -51,7 +51,7 @@ function dbase_device_fetch(uid, val) {
     fresh = 1;
   }
   if (val) {
-    device.serverValues = val;
+    device.dbase = val;
   }
   if (fresh && uid == my.uid) {
     // device must be inited to record visit event

@@ -152,7 +152,7 @@ function mouseDragged() {
 function windowResized() {
   // console.log('windowResized windowHeight', windowHeight, 'windowWidth', windowWidth);
   // my.isPortrait = windowHeight > windowWidth;
-  if (isPortraitView()) {
+  if (isController()) {
     return;
   }
   resizeCanvas(windowWidth, windowHeight);
