@@ -1,6 +1,6 @@
 //
 
-function dbase_a_devices_observe({ observed_a_devices, all }) {
+function dbase_a_devices_observe({ observed_a_device, removed_a_device, all }) {
   //
   if (!my.a_device_values) my.a_device_values = {};
 
@@ -22,13 +22,13 @@ function dbase_a_devices_observe({ observed_a_devices, all }) {
   function removed_key_value(key, value) {
     console.log('removed_key_value key', key, 'value', value);
     delete my.a_device_values[key];
-    build_devices(key);
+    build_devices(key, { removed: 1 });
   }
 
   // ?? can performance improved by knowing that only specific device is updated?
   // Collection list of active devices and keep current in sync
   //
-  function build_devices(key) {
+  function build_devices(key, removed) {
     // console.log('build_devices key', key);
     //
     let siteDevices = dbase_site_devices();
@@ -47,8 +47,12 @@ function dbase_a_devices_observe({ observed_a_devices, all }) {
       }
     }
     my.a_devices = devices;
-
-    if (observed_a_devices) observed_a_devices(key);
+    if (removed) {
+      removed_a_device(key);
+    } else {
+      let a_device = my.a_device_values[key];
+      if (observed_a_device) observed_a_device(key, a_device);
+    }
   }
 }
 window.dbase_a_devices_observe = dbase_a_devices_observe;
