@@ -61,8 +61,8 @@ function my_init() {
   // my.fireb_config = 'jhtitp';
   my.dbase_rootPath = 'm0-@r-@w-';
   my.mo_app = 'mo-blackfacts';
-  // my.roomName = 'room0';
-  my.roomName = 'room1';
+  my.roomName = 'room0';
+  // my.roomName = 'room1';
   my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
