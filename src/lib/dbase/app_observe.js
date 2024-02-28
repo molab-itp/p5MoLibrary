@@ -45,8 +45,6 @@ function dbase_app_observe({ observed_key, removed_key, observed_item }, apps) {
       if (group) {
         // broadcast group when has comma separated values
         //  my.group=s1,s2,... --> group=s0
-        // let groups = group.split(',');
-        // if (groups.length > 1) {
         if (group.indexOf(',') > -1) {
           // For broadcast group - Observe special group 0
           group = 's0';

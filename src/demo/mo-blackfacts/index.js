@@ -1,5 +1,7 @@
 //
 
+let my = {};
+
 // console.log('BlackFacts index.js');
 
 document.addEventListener('DOMContentLoaded', document_loaded);
@@ -38,27 +40,18 @@ function app_init_completed() {
     if (index != null && index != my.blackfacts_index) {
       update_blackfacts_index(index);
     }
-  }
-
-  function observed_key(key, value) {
-    switch (key) {
-      // case 'a_device':
-      //   mo_blackfacts_device_value(value);
-      //   break;
-      case 'a_group':
-        mo_blackfacts_group_value(value);
-        break;
-      // case 'index':
-      //   mo_blackfacts_index_value(value);
-      //   break;
-      // case 'qrcode':
-      //   mo_blackfacts_qccode_value(value);
-      //   break;
+    let echo_delay = item.echo_delay;
+    if (echo_delay != null && my.echo_delay != echo_delay) {
+      my.echo_delay = echo_delay;
+      video_play_index(my.blackfacts_index, 0);
     }
   }
 }
 
-let my = {};
+function update_blackfacts_index_dbase(index) {
+  ui_log('update_blackfacts_index_dbase index', index, 'my.group', my.group);
+  dbase_update_item({ index });
+}
 
 function my_init() {
   // console.log('my_init');
@@ -149,7 +142,7 @@ function update_blackfacts_index(newValue) {
 
   update_blackfacts_num_ui();
 
-  video_play_index(my.blackfacts_index);
+  video_play_index(my.blackfacts_index, my.echo_delay);
 }
 
 function update_blackfacts_num_ui() {

@@ -89,7 +89,7 @@ function dateFactForIndex(index) {
 // called from mo_blackfacts_index_value
 // play video given index into dateFacts
 //
-function video_play_index(index) {
+function video_play_index(index, echo_delay) {
   // ignore cloud actions if playlist in url
   if (url_has_playlist()) {
     // console.log('video_play_index params.playlist', params.playlist);
@@ -112,8 +112,13 @@ function video_play_index(index) {
     my.video_play_index_pending = index;
     return;
   }
-
-  player.cueVideoById(videoKey);
+  if (echo_delay) {
+    window.setTimeout(() => {
+      player.cueVideoById(videoKey);
+    }, echo_delay * 1000);
+  } else {
+    player.cueVideoById(videoKey);
+  }
 }
 
 function url_has_playlist() {

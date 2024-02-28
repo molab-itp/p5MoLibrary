@@ -8,7 +8,7 @@ function animationFrame_callback(timeStamp) {
   if (my.video_play_index_pending && player_ready()) {
     let index = my.video_play_index_pending;
     my.video_play_index_pending = null;
-    video_play_index(index);
+    video_play_index(index, my.echo_delay);
     return;
   }
   let timeSecs = timeStamp / 1000;
@@ -16,7 +16,7 @@ function animationFrame_callback(timeStamp) {
     record_startup_time(timeSecs);
   } else {
     // Check for player setup stall
-    // !!@ my. candidate
+    // !!@ my. candidate value 5.0)
     if (timeSecs > 5.0) {
       console.log('animationFrame_callback player startup stall');
       player_startup_stalled();

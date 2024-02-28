@@ -21,6 +21,27 @@ id_button_resume.addEventListener('click', resume_action);
 
 id_qrcode.addEventListener('click', qrcode_click_action);
 
+id_button_echo_delay_0.addEventListener('click', echo_delay_0_action);
+id_button_echo_delay_n.addEventListener('click', echo_delay_n_action);
+
+function echo_delay_0_action() {
+  let group = my.group;
+  dbase_update_props({ group: group }, {}, { echo_delay: 0 });
+}
+
+function echo_delay_n_action() {
+  let groups = my.group;
+  if (!groups) groups = '';
+  groups = groups.split(',');
+  let delayStep = 2;
+  let echo_delay = delayStep;
+  for (let index = 0; index < groups.length; index++) {
+    let group = groups[index];
+    dbase_update_props({ group: group }, {}, { echo_delay });
+    echo_delay += delayStep;
+  }
+}
+
 function qrcode_click_action() {
   toggleFullScreen();
 }
@@ -102,11 +123,6 @@ function random_action() {
   allow_cloud_actions();
   let index = Math.floor(Math.random() * nfacts);
   update_blackfacts_index_dbase(index);
-}
-
-function update_blackfacts_index_dbase(index) {
-  ui_log('update_blackfacts_index_dbase index', index, 'my.group', my.group);
-  dbase_update_item({ index });
 }
 
 // clear params to allow actions from cloud
