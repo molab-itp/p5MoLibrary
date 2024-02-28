@@ -1,8 +1,14 @@
+//
 function dbase_device_observe() {
+  //
   // Setup listener for changes to firebase db device
   let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/device`;
   let refPath = getRefPath(path);
+
+  if (!my.fireb_devices) {
+    my.fireb_devices = {};
+  }
 
   onChildAdded(refPath, (data) => {
     receivedDeviceKey('dbase_device_observe Added', data);
@@ -25,10 +31,8 @@ function dbase_device_observe() {
     // ui_log(msg, key, val.name_s);
 
     if (remove) {
-      if (my.fireb_devices) {
-        delete my.fireb_devices[key];
-        my.ndevice = Object.keys(my.fireb_devices).length;
-      }
+      delete my.fireb_devices[key];
+      my.ndevice = Object.keys(my.fireb_devices).length;
       return;
     }
     dbase_device_fetch(key, val);
@@ -36,12 +40,14 @@ function dbase_device_observe() {
 }
 window.dbase_device_observe = dbase_device_observe;
 
+//
+// my.fireb_devices
+//  device = { uid, index, dbase }
+//    device.dbase are values from the server
+//
 function dbase_device_fetch(uid, val) {
-  if (!my.fireb_devices) {
-    my.fireb_devices = {};
-  }
-  let device = my.fireb_devices[uid];
   let fresh = 0;
+  let device = my.fireb_devices[uid];
   if (!device) {
     // First use of device, add to my.fireb_devices
     let index = Object.keys(my.fireb_devices).length;
@@ -61,9 +67,10 @@ function dbase_device_fetch(uid, val) {
 }
 window.dbase_device_fetch = dbase_device_fetch;
 
-// --
-
+//
+//
 function dbase_device_remove() {
+  //
   let { getRefPath, set } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/device/${my.uid}`;
   let refPath = getRefPath(path);
@@ -78,3 +85,36 @@ function dbase_device_remove() {
     });
 }
 window.dbase_device_remove = dbase_device_remove;
+
+//
+//
+let fbase_device_dbase_sample = {
+  //
+  date_s: '2024-02-28T00:00:23.101Z',
+  name_s: '',
+  remote: 1,
+  time: 13457,
+  time_s: '13.457 secs',
+  update: [
+    {
+      date_s: '2024-02-28T00:00:23.101Z',
+      gap: 9543,
+      gap_s: '9.543 secs',
+      time: 13457,
+      time_s: '13.457 secs',
+    },
+  ],
+  update_count: 1007,
+  userAgent:
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+  visit: [
+    {
+      date_s: '2024-02-27T23:56:02.833Z',
+      gap: 14968,
+      gap_s: '14.968 secs',
+      time: 0,
+      time_s: '',
+    },
+  ],
+  visit_count: 2,
+};

@@ -1,8 +1,8 @@
 //
-function dbase_event_observe({ changed_key_value, removed_key_value }, apps) {
+function dbase_app_observe({ observed_device, removed_device }, apps) {
   // apps = { app, tag }
   let app = my.mo_app;
-  let tag = 'dbase_event_observe';
+  let tag = 'dbase_app_observe';
   if (apps) {
     app = apps.app || app;
     tag = apps.tag || tag;
@@ -33,13 +33,13 @@ function dbase_event_observe({ changed_key_value, removed_key_value }, apps) {
     // ui_log(msg, 'key', key, 'value', value);
     if (remove) {
       if (removed_key_value) {
-        removed_key_value(key, value);
+        removed_device(key, value);
       }
       return;
     }
-    if (changed_key_value) {
-      changed_key_value(key, value);
+    if (observed_device) {
+      observed_device(key, value);
     }
   }
 }
-window.dbase_event_observe = dbase_event_observe;
+window.dbase_app_observe = dbase_app_observe;

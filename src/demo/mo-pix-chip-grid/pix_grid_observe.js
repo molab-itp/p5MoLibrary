@@ -1,17 +1,17 @@
 //
 function pix_grid_observe() {
   //
-  dbase_event_observe(
-    { changed_key_value, removed_key_value }, //
+  dbase_app_observe(
+    { observed_device, removed_device }, //
     { app: 'mo-pix-grid', tag: 'pix_grid_observe' }
   );
   // let path = `${my.dbase_rootPath}/${my.roomName}/mo-pix-grid`;
 
-  function changed_key_value(key, value) {
+  function observed_device(key, value) {
     let device = dbase_device_fetch_pix(key);
     device.pixgrids = value;
   }
-  function removed_key_value(key, value) {
+  function removed_device(key, value) {
     let device = dbase_device_fetch_pix(key);
     delete device.pixgrids;
   }

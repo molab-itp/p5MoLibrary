@@ -18,7 +18,7 @@ function dbase_update_props(props, deviceProps, groupProps) {
     updates[prop] = props[prop];
   }
 
-  // default to increment ../mo_app/device/count
+  // default to increment ../mo_app/a_device/count
   //
   if (deviceProps == undefined) {
     deviceProps = { count: increment(1) };

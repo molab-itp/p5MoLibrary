@@ -21,7 +21,7 @@ function document_loaded() {
 
 function dbase_host_init() {
   //
-  dbase_event_observe({ changed_key_value: mo_app_key_value });
+  dbase_app_observe({ observed_device: mo_app_key_value });
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 
@@ -30,6 +30,23 @@ function dbase_host_init() {
   }
 
   setup_animationFrame();
+
+  function mo_app_key_value(key, value) {
+    switch (key) {
+      case 'a_device':
+        mo_blackfacts_device_value(value);
+        break;
+      case 'a_group':
+        mo_blackfacts_group_value(value);
+        break;
+      case 'index':
+        mo_blackfacts_index_value(value);
+        break;
+      case 'qrcode':
+        mo_blackfacts_qccode_value(value);
+        break;
+    }
+  }
 }
 
 let my = {};
@@ -78,23 +95,6 @@ function pingAction() {
   let portrait = my.isRemote ? 1 : 0;
   let group = my.group;
   dbase_device_updates({ portrait, group });
-}
-
-function mo_app_key_value(key, value) {
-  switch (key) {
-    case 'a_device':
-      mo_blackfacts_device_value(value);
-      break;
-    case 'a_group':
-      mo_blackfacts_group_value(value);
-      break;
-    case 'index':
-      mo_blackfacts_index_value(value);
-      break;
-    case 'qrcode':
-      mo_blackfacts_qccode_value(value);
-      break;
-  }
 }
 
 function mo_blackfacts_group_value(newValue) {

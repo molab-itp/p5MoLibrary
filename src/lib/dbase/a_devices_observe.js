@@ -5,21 +5,21 @@ function dbase_a_devices_observe({ observed_a_device, removed_a_device, all }) {
   if (!my.a_device_values) my.a_device_values = {};
 
   // 'mo-paint/a_device'
-  dbase_event_observe(
-    { changed_key_value, removed_key_value }, //
+  dbase_app_observe(
+    { observed_device, removed_device }, //
     { app: my.mo_app + '/a_device' }
   );
 
-  // dbase_event_observe --> dbase_observe_devices
+  // dbase_app_observe --> dbase_observe_devices
   //
 
-  function changed_key_value(key, value) {
-    // console.log('changed_key_value key', key, 'value', value);
+  function observed_device(key, value) {
+    // console.log('observed_device key', key, 'value', value);
     my.a_device_values[key] = value;
     build_devices(key);
   }
 
-  function removed_key_value(key, value) {
+  function removed_device(key, value) {
     console.log('removed_key_value key', key, 'value', value);
     delete my.a_device_values[key];
     build_devices(key, { removed: 1 });
