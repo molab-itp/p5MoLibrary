@@ -32,7 +32,7 @@ function dbase_app_observe({ observed_device, removed_device }, apps) {
     // ui_log(msg, key, 'n=', Object.keys(val).length);
     // ui_log(msg, 'key', key, 'value', value);
     if (remove) {
-      if (removed_key_value) {
+      if (removed_device) {
         removed_device(key, value);
       }
       return;

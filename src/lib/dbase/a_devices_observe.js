@@ -20,7 +20,7 @@ function dbase_a_devices_observe({ observed_a_device, removed_a_device, all }) {
   }
 
   function removed_device(key, value) {
-    console.log('removed_key_value key', key, 'value', value);
+    console.log('removed_device key', key, 'value', value);
     delete my.a_device_values[key];
     build_devices(key, { removed: 1 });
   }
