@@ -22,7 +22,8 @@ function document_loaded() {
 
 function app_init_completed() {
   //
-  dbase_app_observe({ observed_device: mo_app_key_value });
+  // dbase_app_observe({ observed_key });
+  dbase_app_observe({ observed_item });
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 
@@ -32,20 +33,27 @@ function app_init_completed() {
 
   setup_animationFrame();
 
-  function mo_app_key_value(key, value) {
+  function observed_item(item) {
+    let index = item.index;
+    if (index != null && index != my.blackfacts_index) {
+      update_blackfacts_index(index);
+    }
+  }
+
+  function observed_key(key, value) {
     switch (key) {
-      case 'a_device':
-        mo_blackfacts_device_value(value);
-        break;
+      // case 'a_device':
+      //   mo_blackfacts_device_value(value);
+      //   break;
       case 'a_group':
         mo_blackfacts_group_value(value);
         break;
-      case 'index':
-        mo_blackfacts_index_value(value);
-        break;
-      case 'qrcode':
-        mo_blackfacts_qccode_value(value);
-        break;
+      // case 'index':
+      //   mo_blackfacts_index_value(value);
+      //   break;
+      // case 'qrcode':
+      //   mo_blackfacts_qccode_value(value);
+      //   break;
     }
   }
 }
@@ -60,8 +68,8 @@ function my_init() {
   // my.fireb_config = 'jhtitp';
   my.dbase_rootPath = 'm0-@r-@w-';
   my.mo_app = 'mo-blackfacts';
-  my.roomName = 'room0';
-  // my.roomName = 'room1';
+  // my.roomName = 'room0';
+  my.roomName = 'room1';
   my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
@@ -98,40 +106,42 @@ function pingAction() {
   dbase_device_updates({ portrait, group });
 }
 
-function mo_blackfacts_group_value(newValue) {
-  console.log('mo_blackfacts_group_value my.group', my.group, 'newValue', newValue);
-  let group = my.group;
-  if (group) {
-    // broadcast group when has comma separated values
-    //  my.group=s1,s2,... --> group=s0
-    let groups = group.split(',');
-    if (groups.length > 1) {
-      // For broadcast group - Observe special group 0
-      group = 's0';
-    }
-  }
-  let item = newValue[group];
-  // console.log('mo_blackfacts_group_value item', item);
-  if (item) {
-    let index = item.index;
-    if (index != null && index != my.blackfacts_index) {
-      update_blackfacts_index(index);
-    }
-  }
-}
+// function mo_blackfacts_group_value(newValue) {
+//   console.log('mo_blackfacts_group_value my.group', my.group, 'newValue', newValue);
+//   let group = my.group;
+//   if (group) {
+//     // broadcast group when has comma separated values
+//     //  my.group=s1,s2,... --> group=s0
+//     let groups = group.split(',');
+//     if (groups.length > 1) {
+//       // For broadcast group - Observe special group 0
+//       group = 's0';
+//     }
+//   } else {
+//     // Default group
+//     group = 's0';
+//   }
+//   let item = newValue[group];
+//   // console.log('mo_blackfacts_group_value item', item);
+//   if (item) {
+//     let index = item.index;
+//     if (index != null && index != my.blackfacts_index) {
+//       update_blackfacts_index(index);
+//     }
+//   }
+// }
 
-// Check for matching update to group
-function mo_blackfacts_device_value(newValue) {
-  // console.log('mo_blackfacts_device_value my.group', my.group, 'newValue', newValue);
-}
+// function mo_blackfacts_device_value(newValue) {
+//   // console.log('mo_blackfacts_device_value my.group', my.group, 'newValue', newValue);
+// }
 
-function mo_blackfacts_index_value(newValue) {
-  if (!my.group) {
-    update_blackfacts_index(newValue);
-  } else {
-    console.log('mo_blackfacts_index_value !!@ Skipping newValue', newValue);
-  }
-}
+// function mo_blackfacts_index_value(newValue) {
+//   if (!my.group) {
+//     update_blackfacts_index(newValue);
+//   } else {
+//     console.log('mo_blackfacts_index_value !!@ Skipping newValue', newValue);
+//   }
+// }
 
 function update_blackfacts_index(newValue) {
   console.log('update_blackfacts_index newValue', newValue);
@@ -155,7 +165,7 @@ function update_blackfacts_num_ui() {
   if (periodIndex >= 0) {
     description = description.substring(0, periodIndex);
   }
-  // console.log('mo_blackfacts_index_value description', description);
+  // console.log('update_blackfacts_num_ui description', description);
   let msg = '#' + (index + 1) + ' ' + description;
   show_message(msg);
 }

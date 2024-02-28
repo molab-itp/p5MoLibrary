@@ -21,7 +21,7 @@ function document_loaded() {
 
 function dbase_host_init() {
   //
-  dbase_app_observe({ observed_device: mo_app_key_value });
+  dbase_app_observe({ observed_key: observed_key });
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 
@@ -31,7 +31,7 @@ function dbase_host_init() {
 
   setup_animationFrame();
 
-  function mo_app_key_value(key, value) {
+  function observed_key(key, value) {
     switch (key) {
       case 'a_device':
         mo_blackfacts_device_value(value);

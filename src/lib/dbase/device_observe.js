@@ -35,7 +35,7 @@ function dbase_device_observe() {
       my.ndevice = Object.keys(my.fireb_devices).length;
       return;
     }
-    dbase_device_fetch(key, val);
+    dbase_fireb_device(key, val);
   }
 }
 window.dbase_device_observe = dbase_device_observe;
@@ -45,7 +45,7 @@ window.dbase_device_observe = dbase_device_observe;
 //  device = { uid, index, dbase }
 //    device.dbase are values from the server
 //
-function dbase_device_fetch(uid, val) {
+function dbase_fireb_device(uid, val) {
   let fresh = 0;
   let device = my.fireb_devices[uid];
   if (!device) {
@@ -65,7 +65,7 @@ function dbase_device_fetch(uid, val) {
   }
   return device;
 }
-window.dbase_device_fetch = dbase_device_fetch;
+window.dbase_fireb_device = dbase_fireb_device;
 
 //
 //

@@ -60,12 +60,12 @@ function toggle_365_panes() {
   id_message_text.classList.toggle('hidden');
 }
 
-function checkbox_qrcode_action() {
-  ui_log('checkbox_qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
-  my.qrcodeFlag = id_checkbox_qrcode.checked;
-  let qrcode = my.qrcodeFlag ? 1 : 0;
-  dbase_update_props({ qrcode });
-}
+// function checkbox_qrcode_action() {
+//   ui_log('checkbox_qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
+//   my.qrcodeFlag = id_checkbox_qrcode.checked;
+//   let qrcode = my.qrcodeFlag ? 1 : 0;
+//   dbase_update_props({ qrcode });
+// }
 
 function play_clip_action() {
   ui_log('play_clip_action id_checkbox_play_clip.checked', id_checkbox_play_clip.checked);
@@ -80,44 +80,33 @@ function first_action() {
   // ui_log('first_action');
   allow_cloud_actions();
   let index = 0;
-  dbase_blackfacts_update_index(index);
+  update_blackfacts_index_dbase(index);
 }
 
 function next_action() {
   ui_log('next_action');
   allow_cloud_actions();
   let index = (my.blackfacts_index + 1) % nfacts;
-  dbase_blackfacts_update_index(index);
+  update_blackfacts_index_dbase(index);
 }
 
 function previous_action() {
   // ui_log('previous_action');
   allow_cloud_actions();
   let index = (my.blackfacts_index - 1 + nfacts) % nfacts;
-  dbase_blackfacts_update_index(index);
+  update_blackfacts_index_dbase(index);
 }
 
 function random_action() {
   // ui_log('random_action');
   allow_cloud_actions();
   let index = Math.floor(Math.random() * nfacts);
-  dbase_blackfacts_update_index(index);
+  update_blackfacts_index_dbase(index);
 }
 
-function dbase_blackfacts_update_index(index) {
-  ui_log('dbase_blackfacts_update_index index', index, 'my.group', my.group);
-  if (my.group) {
-    let groups = my.group;
-    // broadcast group when has comma separated values
-    //  my.group=s1,s2,... --> group=s0
-    if (groups.indexOf(',') > -1) {
-      // Special group 's0' recieves all updates
-      groups = 's0,' + my.group;
-    }
-    dbase_update_props({}, {}, { group: groups, index });
-  } else {
-    dbase_update_props({ index });
-  }
+function update_blackfacts_index_dbase(index) {
+  ui_log('update_blackfacts_index_dbase index', index, 'my.group', my.group);
+  dbase_update_item({ index });
 }
 
 // clear params to allow actions from cloud

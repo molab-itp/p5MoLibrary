@@ -1,22 +1,22 @@
 //
-function dbase_update_props(props, deviceProps, groupProps) {
+function dbase_update_props(options, deviceProps, groupProps) {
   //
-  // ui_log('dbase_update_props props', props, 'groupProps', groupProps);
   // ui_log('dbase_update_props props', props, 'deviceProps', deviceProps);
-  // ui_log('dbase_update_props my.uid', my.uid);
   if (!my.uid) {
     return;
   }
   let path = `${my.dbase_rootPath}/${my.roomName}/${my.mo_app}`;
   let { getRefPath, update, increment } = fireb_.fbase;
   let refPath = getRefPath(path);
-  // ui_log('dbase_update_props', path);
+
+  let a_group = options.a_group;
+  if (!a_group) a_group = 'a_group';
+
+  let groups = options.group;
+  if (!groups) groups = 's0';
+  groups = groups.split(',');
 
   let updates = {};
-
-  for (let prop in props) {
-    updates[prop] = props[prop];
-  }
 
   // default to increment ../mo_app/a_device/count
   //
@@ -32,13 +32,12 @@ function dbase_update_props(props, deviceProps, groupProps) {
 
   if (groupProps !== undefined) {
     // group=s1,s2,s3,s4 to broadcast
-    let groups = groupProps.group.split(',');
     // console.log('dbase_update_props groups', groups);
     for (let group of groups) {
       for (let prop in groupProps) {
-        if (prop == 'group') continue;
+        // if (prop == 'group') continue;
         let value = groupProps[prop];
-        let dpath = `a_group/${group}/${prop}`;
+        let dpath = `${a_group}/${group}/${prop}`;
         updates[dpath] = value;
       }
     }

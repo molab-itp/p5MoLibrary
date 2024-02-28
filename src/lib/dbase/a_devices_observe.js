@@ -6,21 +6,21 @@ function dbase_a_devices_observe({ observed_a_device, removed_a_device, all }) {
 
   // 'mo-paint/a_device'
   dbase_app_observe(
-    { observed_device, removed_device }, //
+    { observed_key, removed_key }, //
     { app: my.mo_app + '/a_device' }
   );
 
   // dbase_app_observe --> dbase_observe_devices
   //
 
-  function observed_device(key, value) {
-    // console.log('observed_device key', key, 'value', value);
+  function observed_key(key, value) {
+    // console.log('observed_key key', key, 'value', value);
     my.a_device_values[key] = value;
     build_devices(key);
   }
 
-  function removed_device(key, value) {
-    console.log('removed_device key', key, 'value', value);
+  function removed_key(key, value) {
+    console.log('removed_key key', key, 'value', value);
     delete my.a_device_values[key];
     build_devices(key, { removed: 1 });
   }

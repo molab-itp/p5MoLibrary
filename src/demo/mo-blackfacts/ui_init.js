@@ -84,7 +84,7 @@ function create_index_buttons() {
     button_host.appendChild(elt);
     elt.addEventListener('click', function () {
       toggle_365_panes();
-      dbase_blackfacts_update_index(index);
+      update_blackfacts_index_dbase(index);
     });
   }
 }
