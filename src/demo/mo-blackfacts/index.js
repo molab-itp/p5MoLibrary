@@ -43,7 +43,7 @@ function app_init_completed() {
     let echo_delay = item.echo_delay;
     if (echo_delay != null && my.echo_delay != echo_delay) {
       my.echo_delay = echo_delay;
-      video_play_index(my.blackfacts_index, 0);
+      video_play_index(my.blackfacts_index);
     }
   }
 }
@@ -142,7 +142,7 @@ function update_blackfacts_index(newValue) {
 
   update_blackfacts_num_ui();
 
-  video_play_index(my.blackfacts_index, my.echo_delay);
+  video_play_index(my.blackfacts_index);
 }
 
 function update_blackfacts_num_ui() {

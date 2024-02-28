@@ -111,6 +111,16 @@ function next_action() {
   update_blackfacts_index_dbase(index);
 }
 
+function video_ended_next_action() {
+  if (my.echo_delay) {
+    window.setTimeout(() => {
+      next_action();
+    }, my.echo_delay * 1000);
+  } else {
+    next_action();
+  }
+}
+
 function previous_action() {
   // ui_log('previous_action');
   allow_cloud_actions();

@@ -89,7 +89,8 @@ function dateFactForIndex(index) {
 // called from mo_blackfacts_index_value
 // play video given index into dateFacts
 //
-function video_play_index(index, echo_delay) {
+// function video_play_index(index, echo_delay) {
+function video_play_index(index) {
   // ignore cloud actions if playlist in url
   if (url_has_playlist()) {
     // console.log('video_play_index params.playlist', params.playlist);
@@ -112,13 +113,13 @@ function video_play_index(index, echo_delay) {
     my.video_play_index_pending = index;
     return;
   }
-  if (echo_delay) {
-    window.setTimeout(() => {
-      player.cueVideoById(videoKey);
-    }, echo_delay * 1000);
-  } else {
-    player.cueVideoById(videoKey);
-  }
+  // if (echo_delay) {
+  //   window.setTimeout(() => {
+  //     player.cueVideoById(videoKey);
+  //   }, echo_delay * 1000);
+  // } else {
+  player.cueVideoById(videoKey);
+  // }
 }
 
 function url_has_playlist() {
@@ -134,7 +135,7 @@ function video_ended() {
   // Advance to next video, maybe
   if (my.execRemoteTrigger && !url_has_playlist()) {
     console.log('video_ended my.execRemoteTrigger next_action');
-    next_action();
+    video_ended_next_action();
     return;
   }
   execCommand();
