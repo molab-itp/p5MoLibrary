@@ -1,5 +1,5 @@
 //
-function ui_init() {
+function init_ui() {
   show_qrcode_top_right();
   if (params.playlist) {
     // id_message_pane.classList.add('hidden');
@@ -22,6 +22,7 @@ function ui_init() {
   if (my.group) {
     id_group_report.innerHTML = my.group;
   }
+  toggle_365_panes();
 }
 
 function create_remote_view() {

@@ -76,7 +76,7 @@ function show_365_action() {
 
 function toggle_365_panes() {
   id_index_button_container.classList.toggle('hidden');
-  id_player.classList.toggle('hidden');
+  // id_player.classList.toggle('hidden');
   id_blackfacts_num.classList.toggle('hidden');
   id_message_text.classList.toggle('hidden');
 }

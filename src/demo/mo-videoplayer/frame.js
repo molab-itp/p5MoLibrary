@@ -66,7 +66,7 @@ function player_startup_stalled() {
   my.stalled_report = 1;
 
   let { increment } = fireb_.fbase;
-  dbase_blackfacts_update({}, { startup_stall: increment(1) });
+  dbase_update_props({}, { startup_stall: increment(1) });
 
   setTimeout(function () {
     window.location.reload();

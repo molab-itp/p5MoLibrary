@@ -3,15 +3,45 @@ function setup_animationFrame() {
 }
 
 function animationFrame_callback(timeStamp) {
+  let timeSecs = timeStamp / 1000;
   // console.log('step_animation timeStamp', timeStamp);
   window.requestAnimationFrame(animationFrame_callback);
-  if (my.video_play_index_pending && player_ready()) {
+
+  //
+  // attempt to start video after video cued and player.playVideo() called
+  // !!@ Not working. must press play button or next
+  // my.video_play_count
+  //
+  if (
+    my.video_play_index_cued != null && //
+    player_ready() &&
+    player.getPlayerState() != YT.PlayerState.PLAYING
+  ) {
+    console.log('animationFrame_callback video_play_index_cued', my.video_play_index_cued);
+    my.video_index_was_played = my.video_play_index_cued;
+    my.video_play_index_cued = null;
+    player.playVideo();
+  }
+
+  if (
+    my.video_index_was_played != null && //
+    player.getPlayerState() != YT.PlayerState.PLAYING &&
+    timeSecs > 5.0
+  ) {
+    console.log('animationFrame_callback video_index_was_played', my.video_index_was_played);
+    let index = my.video_index_was_played;
+    my.video_index_was_played = null;
+    video_play_index(index);
+    return;
+  }
+
+  if (my.video_play_index_pending != null && player_ready()) {
+    console.log('animationFrame_callback video_play_index_pending', my.video_play_index_pending);
     let index = my.video_play_index_pending;
     my.video_play_index_pending = null;
     video_play_index(index);
     return;
   }
-  let timeSecs = timeStamp / 1000;
   if (my.blackfacts_player_inited) {
     record_startup_time(timeSecs);
   } else {
@@ -66,7 +96,7 @@ function player_startup_stalled() {
   my.stalled_report = 1;
 
   let { increment } = fireb_.fbase;
-  dbase_blackfacts_update({}, { startup_stall: increment(1) });
+  dbase_update_props({}, { startup_stall: increment(1) });
 
   setTimeout(function () {
     window.location.reload();

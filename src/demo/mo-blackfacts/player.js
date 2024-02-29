@@ -89,7 +89,6 @@ function dateFactForIndex(index) {
 // called from mo_blackfacts_index_value
 // play video given index into dateFacts
 //
-// function video_play_index(index, echo_delay) {
 function video_play_index(index) {
   // ignore cloud actions if playlist in url
   if (url_has_playlist()) {
@@ -109,17 +108,16 @@ function video_play_index(index) {
   playlistIndex = 0;
 
   if (!player_ready()) {
-    // console.log('video_play_index no player', player);
+    console.log('video_play_index no player', player, 'index', index);
     my.video_play_index_pending = index;
     return;
   }
-  // if (echo_delay) {
-  //   window.setTimeout(() => {
-  //     player.cueVideoById(videoKey);
-  //   }, echo_delay * 1000);
-  // } else {
+  if (!my.video_play_count) my.video_play_count = 0;
+  if (my.video_play_count == 0) {
+    my.video_play_index_cued = index;
+  }
+
   player.cueVideoById(videoKey);
-  // }
 }
 
 function url_has_playlist() {
@@ -127,7 +125,7 @@ function url_has_playlist() {
 }
 
 function player_ready() {
-  return player && player.cueVideoById;
+  return player && player.cueVideoById != null;
 }
 
 // called when video play ends
@@ -150,7 +148,7 @@ function execCommand() {
   // Select next video from playList
   //
   videoKey = getVideoKey(playlist[playlistIndex]);
-  // console.log('About to play video ' + videoKey);
+  console.log('execCommand  videoKey', videoKey);
   player.cueVideoById(videoKey);
   playlistIndex = (playlistIndex + 1) % playlist.length;
   // console.log('Incremented playlistIndex to: ' + playlistIndex);
@@ -164,7 +162,12 @@ function getDateVideoKey(date) {
   // Default to today
   let theDate = date || new Date();
   let key = dateKey(theDate);
-  let videoKey = dateFacts[key].videoKey;
+  let entry = dateFacts[key];
+  if (!entry) {
+    console.log('getDateVideoKey no entry date', date, 'key', key);
+    entry = dateFacts['0101'];
+  }
+  let videoKey = entry.videoKey;
   return videoKey;
   //
   function dateKey(theDay) {
@@ -177,12 +180,13 @@ function getDateVideoKey(date) {
 
 function setupVideo() {
   // console.log('BlackFacts setupVideo creating YTPlayer');
-  my.blackfacts_player_inited = 1;
+  // my.blackfacts_player_inited = 1;
   player = new YT.Player('id_player', {
     playerVars: {
       origin: location.origin,
-      cc_load_policy: params.cc ? 1 : 0, // Enable closed captions by default
-      cc_lang_pref: 'en',
+      // cc_load_policy: true,
+      // cc_load_policy: params.cc ? 1 : 0, // Enable closed captions by default
+      // cc_lang_pref: 'en',
       autoplay: 1,
     },
     events: {
@@ -193,6 +197,15 @@ function setupVideo() {
         //player.setVolume(volume);
         //console.log('Set volume to ' + volume);
         //player.mute();
+
+        console.log('BlackFacts YTPlayer ready');
+        if (!my.blackfacts_player_inited) my.blackfacts_player_inited = 0;
+        my.blackfacts_player_inited++;
+        if (my.blackfacts_player_inited) {
+          id_blackfacts_num.innerHTML = '';
+          id_message_text.innerHTML = id_blackfacts_num.innerHTML = '';
+        }
+
         execPlaylist();
       },
       onStateChange: function (event) {
@@ -212,15 +225,17 @@ function setupVideo() {
             //player.unMute();
             //player.setVolume(volume);
             //console.log('Set volume to ' + volume);
-            // console.log('YT.PlayerState.PLAYING ' + videoKey);
+            console.log('YT.PlayerState.PLAYING ' + videoKey);
+            // my.blackfacts_player_inited = 1;
             break;
 
           case YT.PlayerState.BUFFERING:
             // console.log('YT.PlayerState.BUFFERING ' + videoKey);
             break;
           case YT.PlayerState.CUED:
-            // console.log('YT.PlayerState.CUED');
+            console.log('YT.PlayerState.CUED');
             player.playVideo();
+            my.video_play_count++;
             break;
         }
       },
@@ -230,15 +245,12 @@ function setupVideo() {
           case 2:
             video_player_error(' The request contains an invalid parameter value');
             break;
-
           case 5:
             video_player_error('The requested content cannot be played in an HTML5 player');
             break;
-
           case 100:
             video_player_error('The video requested was not found');
             break;
-
           case 101:
           case 150:
             video_player_error('The owner of the requested video does not allow it to be played in embedded players');
@@ -251,5 +263,5 @@ function setupVideo() {
 
 function video_player_error(msg) {
   console.log('YT.Player error: ' + msg);
-  console.log('videoKey', videoKey);
+  console.log('player videoKey', videoKey);
 }

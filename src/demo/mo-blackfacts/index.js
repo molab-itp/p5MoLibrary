@@ -14,6 +14,8 @@ function document_loaded() {
 
   my_init();
 
+  init_ui();
+
   // let config = fireb_.init('jht9629');
   // // let config = fireb_.init('jht1493');
   // console.log('?v=24 config.projectId', config.projectId);
@@ -89,8 +91,6 @@ function my_init() {
   if (params.room) {
     my.roomName = params.room;
   }
-
-  ui_init();
 }
 
 function pingAction() {
@@ -99,45 +99,8 @@ function pingAction() {
   dbase_device_updates({ portrait, group });
 }
 
-// function mo_blackfacts_group_value(newValue) {
-//   console.log('mo_blackfacts_group_value my.group', my.group, 'newValue', newValue);
-//   let group = my.group;
-//   if (group) {
-//     // broadcast group when has comma separated values
-//     //  my.group=s1,s2,... --> group=s0
-//     let groups = group.split(',');
-//     if (groups.length > 1) {
-//       // For broadcast group - Observe special group 0
-//       group = 's0';
-//     }
-//   } else {
-//     // Default group
-//     group = 's0';
-//   }
-//   let item = newValue[group];
-//   // console.log('mo_blackfacts_group_value item', item);
-//   if (item) {
-//     let index = item.index;
-//     if (index != null && index != my.blackfacts_index) {
-//       update_blackfacts_index(index);
-//     }
-//   }
-// }
-
-// function mo_blackfacts_device_value(newValue) {
-//   // console.log('mo_blackfacts_device_value my.group', my.group, 'newValue', newValue);
-// }
-
-// function mo_blackfacts_index_value(newValue) {
-//   if (!my.group) {
-//     update_blackfacts_index(newValue);
-//   } else {
-//     console.log('mo_blackfacts_index_value !!@ Skipping newValue', newValue);
-//   }
-// }
-
 function update_blackfacts_index(newValue) {
-  console.log('update_blackfacts_index newValue', newValue);
+  console.log('update_blackfacts_index newValue', newValue, my.blackfacts_index);
   my.blackfacts_index = newValue;
 
   update_blackfacts_num_ui();
