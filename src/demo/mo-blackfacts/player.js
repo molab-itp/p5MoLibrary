@@ -112,9 +112,8 @@ function video_play_index(index) {
     my.video_play_index_pending = index;
     return;
   }
-  if (!my.video_play_count) my.video_play_count = 0;
-  if (my.video_play_count == 0) {
-    my.video_play_index_cued = index;
+  if (my.video_cued_count >= 0 && my.video_cued_count <= 2) {
+    my.video_index_cued = index;
   }
 
   player.cueVideoById(videoKey);
@@ -226,7 +225,8 @@ function setupVideo() {
             //player.setVolume(volume);
             //console.log('Set volume to ' + volume);
             console.log('YT.PlayerState.PLAYING ' + videoKey);
-            // my.blackfacts_player_inited = 1;
+            if (!my.video_played_count) my.video_played_count = 0;
+            my.video_played_count++;
             break;
 
           case YT.PlayerState.BUFFERING:
@@ -234,8 +234,9 @@ function setupVideo() {
             break;
           case YT.PlayerState.CUED:
             console.log('YT.PlayerState.CUED');
+            if (!my.video_cued_count) my.video_cued_count = 0;
+            my.video_cued_count++;
             player.playVideo();
-            my.video_play_count++;
             break;
         }
       },

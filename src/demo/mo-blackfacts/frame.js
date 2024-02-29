@@ -13,13 +13,13 @@ function animationFrame_callback(timeStamp) {
   // my.video_play_count
   //
   if (
-    my.video_play_index_cued != null && //
+    my.video_index_cued != null && //
     player_ready() &&
     player.getPlayerState() != YT.PlayerState.PLAYING
   ) {
-    console.log('animationFrame_callback video_play_index_cued', my.video_play_index_cued);
-    my.video_index_was_played = my.video_play_index_cued;
-    my.video_play_index_cued = null;
+    console.log('animationFrame_callback video_index_cued', my.video_index_cued);
+    my.video_index_was_played = my.video_index_cued;
+    my.video_index_cued = null;
     player.playVideo();
   }
 
@@ -65,15 +65,20 @@ function animationFrame_callback(timeStamp) {
   if (my.pingLoop) {
     my.pingLoop.step({ loop: 1 });
   }
+  show_message_status(timeSecs);
+}
+
+function show_message_status(timeSecs) {
+  if (!timeSecs) timeSecs = '';
   if (!my.blackfacts_player_inited) {
     let str = 'Waiting for video ' + timeSecs.toFixed(2);
     if (my.stalled_report) {
       str += ' reload pending';
     }
-    show_message(str);
+    show_message_id(str);
   } else if (params.title) {
     let str = params.title;
-    show_message(str);
+    show_message_id(str);
   }
 }
 

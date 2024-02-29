@@ -2,6 +2,8 @@
 
 // console.log('BlackFacts action.js');
 
+id_dashboard.addEventListener('click', dashboard_action);
+
 id_button_next.addEventListener('click', next_action);
 id_button_previous.addEventListener('click', previous_action);
 id_button_first.addEventListener('click', first_action);
@@ -10,7 +12,7 @@ id_button_random.addEventListener('click', random_action);
 // id_checkbox_play_clip.addEventListener('click', play_clip_action);
 // id_checkbox_qrcode.addEventListener('click', checkbox_qrcode_action);
 
-id_button_show_365.addEventListener('click', show_365_action);
+id_button_toggle_buttons.addEventListener('click', toggle_buttons_action);
 id_button_library.addEventListener('click', library_action);
 
 id_button_play.addEventListener('click', play_action);
@@ -23,6 +25,13 @@ id_qrcode.addEventListener('click', qrcode_click_action);
 
 id_button_echo_delay_0.addEventListener('click', echo_delay_0_action);
 id_button_echo_delay_n.addEventListener('click', echo_delay_n_action);
+
+function dashboard_action(event) {
+  console.log('dashboard_action');
+  player.playVideo();
+  update_blackfacts_num_ui();
+  toggle_buttons_action();
+}
 
 function echo_delay_0_action() {
   let group = my.group;
@@ -70,8 +79,11 @@ function library_action() {
   window.location.href = '../..';
 }
 
-function show_365_action() {
+// id_button_toggle_buttons
+function toggle_buttons_action() {
   toggle_365_panes();
+  let vis = id_index_button_container.classList.contains('hidden');
+  id_button_toggle_buttons.innerHTML = vis ? 'Show 365' : 'Hide 365';
 }
 
 function toggle_365_panes() {

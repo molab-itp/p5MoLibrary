@@ -10,7 +10,7 @@ id_button_random.addEventListener('click', random_action);
 // id_checkbox_play_clip.addEventListener('click', play_clip_action);
 // id_checkbox_qrcode.addEventListener('click', checkbox_qrcode_action);
 
-id_button_show_365.addEventListener('click', show_365_action);
+id_button_toggle_buttons.addEventListener('click', toggle_buttons_action);
 id_button_library.addEventListener('click', library_action);
 
 id_button_play.addEventListener('click', play_action);
@@ -43,7 +43,7 @@ function library_action() {
   window.location.href = '../..';
 }
 
-function show_365_action() {
+function toggle_buttons_action() {
   toggle_365_panes();
 }
 

@@ -18,7 +18,7 @@ function document_loaded() {
 
   // let config = fireb_.init('jht9629');
   // // let config = fireb_.init('jht1493');
-  // console.log('?v=25 config.projectId', config.projectId);
+  // console.log('?v=26 config.projectId', config.projectId);
   // console.log('configLabel', config.configLabel);
 
   dbase_app_init({ completed: app_init_completed });
@@ -26,7 +26,6 @@ function document_loaded() {
 
 function app_init_completed() {
   //
-  // dbase_app_observe({ observed_key });
   dbase_app_observe({ observed_item });
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
@@ -68,7 +67,7 @@ function my_init() {
   my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
-  my.nameDevice = 'device?v=25';
+  my.nameDevice = 'device?v=26';
   my.pingTime = 1;
 
   // my.isRemote = window.innerHeight > window.innerWidth;
@@ -123,10 +122,10 @@ function update_blackfacts_num_ui() {
   }
   // console.log('update_blackfacts_num_ui description', description);
   let msg = '#' + (index + 1) + ' ' + description;
-  show_message(msg);
+  show_message_id(msg);
 }
 
-function show_message(msg) {
+function show_message_id(msg) {
   id_blackfacts_num.innerHTML = msg;
   id_message_text.innerHTML = id_blackfacts_num.innerHTML = msg;
 }
