@@ -26,11 +26,20 @@ id_qrcode.addEventListener('click', qrcode_click_action);
 id_button_echo_delay_0.addEventListener('click', echo_delay_0_action);
 id_button_echo_delay_n.addEventListener('click', echo_delay_n_action);
 
+let a_target;
+
 function dashboard_action(event) {
   console.log('dashboard_action');
-  player.playVideo();
-  update_blackfacts_num_ui();
-  toggle_buttons_action();
+  var target = event.target;
+  a_target = target;
+  if (target == id_dashboard) {
+    console.log('dashboard_action id_dashboard');
+    player.playVideo();
+    update_blackfacts_num_ui();
+    toggle_buttons_action();
+  } else {
+    console.log('dashboard_action other');
+  }
 }
 
 function echo_delay_0_action() {
@@ -81,6 +90,7 @@ function library_action() {
 
 // id_button_toggle_buttons
 function toggle_buttons_action() {
+  console.log('toggle_buttons_action');
   toggle_365_panes();
   let vis = id_index_button_container.classList.contains('hidden');
   id_button_toggle_buttons.innerHTML = vis ? 'Show 365' : 'Hide 365';
