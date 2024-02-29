@@ -54,13 +54,6 @@ function toggle_365_panes() {
   id_message_text.classList.toggle('hidden');
 }
 
-// function checkbox_qrcode_action() {
-//   ui_log('checkbox_qrcode_action id_checkbox_qrcode.checked', id_checkbox_qrcode.checked);
-//   my.qrcodeFlag = id_checkbox_qrcode.checked;
-//   let qrcode = my.qrcodeFlag ? 1 : 0;
-//   dbase_update_props({ qrcode });
-// }
-
 function play_clip_action() {
   ui_log('play_clip_action id_checkbox_play_clip.checked', id_checkbox_play_clip.checked);
   my.playClip = id_checkbox_play_clip.checked;
