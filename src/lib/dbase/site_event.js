@@ -9,30 +9,30 @@
 // my.uid
 // my.nameDevice
 
-function dbase_device_event_visit() {
-  dbase_device_event({ event: 'visit', count: 'visit_count' });
+function dbase_site_event_visit() {
+  dbase_site_event({ event: 'visit', count: 'visit_count' });
 }
-window.dbase_device_event_visit = dbase_device_event_visit;
+window.dbase_site_event_visit = dbase_site_event_visit;
 
-function dbase_device_event_update() {
-  dbase_device_event({ event: 'update', count: 'update_count' });
+function dbase_site_event_update() {
+  dbase_site_event({ event: 'update', count: 'update_count' });
 }
-window.dbase_device_event_update = dbase_device_event_update;
+window.dbase_site_event_update = dbase_site_event_update;
 
-function dbase_device_event(keys) {
-  dbase_device_updates({}, keys);
+function dbase_site_event(keys) {
+  dbase_site_updates({}, keys);
 }
 
-function dbase_device_updates(updates, keys) {
-  // console.log('dbase_device_event my.uid', my.uid);
-  // ui_log('dbase_device_event my.uid', my.uid);
+function dbase_site_updates(updates, keys) {
+  // console.log('dbase_site_event my.uid', my.uid);
+  // ui_log('dbase_site_event my.uid', my.uid);
   if (!my.uid) {
     return;
   }
   let path = `${my.dbase_rootPath}/${my.roomName}/device/${my.uid}`;
   let { getRefPath, update, increment } = fireb_.fbase;
   let refPath = getRefPath(path);
-  // ui_log('dbase_device_event', path);
+  // ui_log('dbase_site_event', path);
 
   let date_s = new Date().toISOString();
   let count = increment(1);
@@ -46,7 +46,7 @@ function dbase_device_updates(updates, keys) {
   Object.assign(updates, { date_s, [keys.count]: count, name_s, userAgent });
 
   // Acivity is only updated if present in recently received server info
-  let events = dbase_device_events(keys, my.uid, date_s);
+  let events = dbase_site_events(keys, my.uid, date_s);
   if (events) {
     updates[keys.event] = events;
     updates.time = events[0].time;
@@ -54,10 +54,10 @@ function dbase_device_updates(updates, keys) {
   }
   update(refPath, updates);
 }
-window.dbase_device_updates = dbase_device_updates;
+window.dbase_site_updates = dbase_site_updates;
 
-function dbase_device_events(keys, uid, date_s) {
-  // ui_log('dbase_device_events uid', uid, date_s);
+function dbase_site_events(keys, uid, date_s) {
+  // ui_log('dbase_site_events uid', uid, date_s);
   let events = dbase_app_init_events(keys, uid, date_s);
   if (!events) return null;
 
@@ -107,21 +107,21 @@ function dbase_app_init_events(keys, uid, date_s) {
   return events;
 }
 
-function dbase_device_isActive(device) {
-  let gapTime = dbase_device_eventGapTime(device);
-  // console.log('dbase_device_isActive device.index', device.index, 'gapTime', lapgapTimese, my.eventLogTimeMax);
+function dbase_site_isActive(device) {
+  let gapTime = dbase_site_eventGapTime(device);
+  // console.log('dbase_site_isActive device.index', device.index, 'gapTime', lapgapTimese, my.eventLogTimeMax);
   return gapTime < my.eventLogTimeMax;
 }
-window.dbase_device_isActive = dbase_device_isActive;
+window.dbase_site_isActive = dbase_site_isActive;
 
-function dbase_device_eventGapTime(device) {
+function dbase_site_eventGapTime(device) {
   let events = device.dbase && device.dbase.update;
   if (!events || events.length == 0) {
     return Number.MAX_VALUE;
   }
   let event = events[0];
   let gapTime = Date.now() - new Date(event.date_s);
-  // console.log('dbase_device_eventGapTime device.index', device.index, 'gapTime', gapTime);
+  // console.log('dbase_site_eventGapTime device.index', device.index, 'gapTime', gapTime);
   return gapTime;
 }
 
@@ -132,6 +132,6 @@ function device_uid_isActive(uid) {
   //
   let fdevice = my.fireb_devices[uid];
   // console.log('device_uid_isActive uid', uid, 'remote', fdevice.dbase.remote);
-  return dbase_device_isActive(fdevice) && fdevice.dbase.remote;
+  return dbase_site_isActive(fdevice) && fdevice.dbase.remote;
 }
 window.device_uid_isActive = device_uid_isActive;

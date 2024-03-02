@@ -57,7 +57,7 @@ function echo_delay_n_action() {
   for (let index = 0; index < groups.length; index++) {
     let group = groups[index];
     // dbase_update_props({ group: group }, {}, { echo_delay });
-    // dbase_update_props({ echo_delay }, { group: group });      // mo-blackfacts
+    dbase_update_props({ echo_delay }, { group: group });
     echo_delay += delayStep;
   }
 }

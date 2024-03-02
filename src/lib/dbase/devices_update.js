@@ -1,10 +1,10 @@
 //
 // Send an update to all a_devices
 //
-function dbase_a_devices_update(deviceProps) {
+function dbase_devices_update(deviceProps) {
   //
   if (!my.a_device_values) {
-    console.log('dbase_a_devices_update NO my.a_device_values', my.a_device_values);
+    console.log('dbase_devices_update NO my.a_device_values', my.a_device_values);
     return;
   }
   let path = `${my.dbase_rootPath}/${my.roomName}/${my.mo_app}`;
@@ -23,7 +23,7 @@ function dbase_a_devices_update(deviceProps) {
 
   update(refPath, updates);
 }
-window.dbase_a_devices_update = dbase_a_devices_update;
+window.dbase_devices_update = dbase_devices_update;
 
 //
 // throttle update to queue to time
@@ -108,7 +108,7 @@ function dbase_issue_actions(actions, options) {
     nactions[act] = dbase_increment(1);
   }
   if (options.all) {
-    dbase_a_devices_update(nactions);
+    dbase_devices_update(nactions);
   } else {
     dbase_queue_update(nactions);
   }
@@ -118,13 +118,13 @@ window.dbase_issue_actions = dbase_issue_actions;
 //
 // Issue actions to all a_devices
 //
-function dbase_a_devices_issue_actions(actions) {
+function dbase_devices_issue_actions(actions) {
   //
   let nactions = {};
   for (let act in actions) {
     nactions[act] = dbase_increment(1);
   }
   // dbase_queue_update({ clear_action: dbase_increment(1) });
-  dbase_a_devices_update(nactions);
+  dbase_devices_update(nactions);
 }
-window.dbase_a_devices_issue_actions = dbase_a_devices_issue_actions;
+window.dbase_devices_issue_actions = dbase_devices_issue_actions;

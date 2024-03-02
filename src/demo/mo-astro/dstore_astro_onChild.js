@@ -65,5 +65,5 @@ function dbase_astro_update({ index, play_step, show_qrcode }) {
 
   update(refPath, updates);
 
-  dbase_device_event_update();
+  dbase_site_event_update();
 }

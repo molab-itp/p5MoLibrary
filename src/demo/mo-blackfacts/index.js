@@ -57,7 +57,7 @@ function update_blackfacts_index_dbase(index) {
 function pingAction() {
   let portrait = my.isRemote ? 1 : 0;
   let group = my.group;
-  dbase_device_updates({ portrait, group });
+  dbase_site_updates({ portrait, group });
 }
 
 function update_blackfacts_index(newValue) {

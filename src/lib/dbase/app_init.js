@@ -12,7 +12,7 @@ function dbase_app_init({ completed }) {
       my.uid = auth.currentUser.uid;
       console.log('dbase_app_init my.uid', my.uid);
 
-      dbase_device_observe();
+      dbase_site_observe();
 
       // Send initial ping
       dbase_update_props({}, { count: 1 });

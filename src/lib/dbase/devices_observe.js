@@ -1,6 +1,6 @@
 //
 
-function dbase_a_devices_observe({ observed_a_device, removed_a_device, all }) {
+function dbase_devices_observe({ observed_a_device, removed_a_device, all }) {
   //
   if (!my.a_device_values) my.a_device_values = {};
 
@@ -55,7 +55,7 @@ function dbase_a_devices_observe({ observed_a_device, removed_a_device, all }) {
     }
   }
 }
-window.dbase_a_devices_observe = dbase_a_devices_observe;
+window.dbase_devices_observe = dbase_devices_observe;
 
 function dbase_a_devices() {
   if (!my.a_devices) my.a_devices = [];

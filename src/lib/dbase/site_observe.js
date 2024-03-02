@@ -1,5 +1,5 @@
 //
-function dbase_device_observe() {
+function dbase_site_observe() {
   //
   // Setup listener for changes to firebase db device
   let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
@@ -11,16 +11,16 @@ function dbase_device_observe() {
   }
 
   onChildAdded(refPath, (data) => {
-    receivedDeviceKey('dbase_device_observe Added', data);
+    receivedDeviceKey('dbase_site_observe Added', data);
   });
 
   onChildChanged(refPath, (data) => {
-    // console.log('dbase_device_observe Changed', data);
-    receivedDeviceKey('dbase_device_observe Changed', data);
+    // console.log('dbase_site_observe Changed', data);
+    receivedDeviceKey('dbase_site_observe Changed', data);
   });
 
   onChildRemoved(refPath, (data) => {
-    receivedDeviceKey('dbase_device_observe Removed', data, { remove: 1 });
+    receivedDeviceKey('dbase_site_observe Removed', data, { remove: 1 });
   });
 
   function receivedDeviceKey(msg, data, remove) {
@@ -38,7 +38,7 @@ function dbase_device_observe() {
     dbase_fireb_device(key, val);
   }
 }
-window.dbase_device_observe = dbase_device_observe;
+window.dbase_site_observe = dbase_site_observe;
 
 //
 // my.fireb_devices
@@ -61,7 +61,7 @@ function dbase_fireb_device(uid, val) {
   }
   if (fresh && uid == my.uid) {
     // device must be inited to record visit event
-    dbase_device_event_visit();
+    dbase_site_event_visit();
   }
   return device;
 }
@@ -69,7 +69,7 @@ window.dbase_fireb_device = dbase_fireb_device;
 
 //
 //
-function dbase_device_remove() {
+function dbase_site_remove() {
   //
   let { getRefPath, set } = fireb_.fbase;
   let path = `${my.dbase_rootPath}/${my.roomName}/device/${my.uid}`;
@@ -77,14 +77,14 @@ function dbase_device_remove() {
   set(refPath, {})
     .then(() => {
       // Data saved successfully!
-      // ui_log('dbase_device_remove OK');
+      // ui_log('dbase_site_remove OK');
     })
     .catch((error) => {
       // The write failed...
-      ui_log('dbase_device_remove error', error);
+      ui_log('dbase_site_remove error', error);
     });
 }
-window.dbase_device_remove = dbase_device_remove;
+window.dbase_site_remove = dbase_site_remove;
 
 //
 //

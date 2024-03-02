@@ -4,11 +4,11 @@ title: mo-pix-chip-grid
 
 **src/mo-pix-chip-grid** uses the firebase library to store and read data from a realtime database `my.dbase_rootPath` `my.roomName`
 
-<SwmToken path="/src/demo/mo-pix-chip-grid/dbase_device_event.js" pos="25:11:11" line-data="  let path = `${my.dbase_rootPath}/${my.roomName}/device/${my.uid}`;">`dbase_rootPath`</SwmToken>
+<SwmToken path="/src/demo/mo-pix-chip-grid/dbase_site_event.js" pos="25:11:11" line-data="  let path = `${my.dbase_rootPath}/${my.roomName}/device/${my.uid}`;">`dbase_rootPath`</SwmToken>
 
-<SwmToken path="/src/demo/mo-pix-chip-grid/dbase_device_event.js" pos="25:17:17" line-data="  let path = `${my.dbase_rootPath}/${my.roomName}/device/${my.uid}`;">`roomName`</SwmToken>
+<SwmToken path="/src/demo/mo-pix-chip-grid/dbase_site_event.js" pos="25:17:17" line-data="  let path = `${my.dbase_rootPath}/${my.roomName}/device/${my.uid}`;">`roomName`</SwmToken>
 
-<SwmSnippet path="/src/demo/mo-pix-chip-grid/dbase_device_event.js" line="25">
+<SwmSnippet path="/src/demo/mo-pix-chip-grid/dbase_site_event.js" line="25">
 
 ---
 

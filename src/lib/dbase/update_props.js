@@ -68,7 +68,7 @@ function dbase_update_props(props, options) {
 
   update(refPath, updates);
 
-  dbase_device_event_update();
+  dbase_site_event_update();
 }
 window.dbase_update_props = dbase_update_props;
 
@@ -94,7 +94,7 @@ function dbase_update_value(value, apps) {
 
   update(refPath, value);
 
-  dbase_device_event_update();
+  dbase_site_event_update();
 }
 window.dbase_update_value = dbase_update_value;
 
