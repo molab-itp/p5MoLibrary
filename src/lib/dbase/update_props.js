@@ -79,11 +79,11 @@ function dbase_update_value(value, apps) {
 }
 window.dbase_update_value = dbase_update_value;
 
-function dbase_value_increment(value) {
+function dbase_increment(value) {
   let { increment } = fireb_.fbase;
   return increment(value);
 }
-window.dbase_value_increment = dbase_value_increment;
+window.dbase_increment = dbase_increment;
 
 //
 function dbase_remove_room() {

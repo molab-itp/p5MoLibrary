@@ -105,7 +105,7 @@ function dbase_issue_actions(actions, options) {
   if (!options) options = {};
   let nactions = {};
   for (let act in actions) {
-    nactions[act] = dbase_value_increment(1);
+    nactions[act] = dbase_increment(1);
   }
   if (options.all) {
     dbase_a_devices_update(nactions);
@@ -122,9 +122,9 @@ function dbase_a_devices_issue_actions(actions) {
   //
   let nactions = {};
   for (let act in actions) {
-    nactions[act] = dbase_value_increment(1);
+    nactions[act] = dbase_increment(1);
   }
-  // dbase_queue_update({ clear_action: dbase_value_increment(1) });
+  // dbase_queue_update({ clear_action: dbase_increment(1) });
   dbase_a_devices_update(nactions);
 }
 window.dbase_a_devices_issue_actions = dbase_a_devices_issue_actions;
