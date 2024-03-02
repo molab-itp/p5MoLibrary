@@ -1,4 +1,7 @@
 //
+//
+
+//
 function dbase_update_props(options, deviceProps, groupProps) {
   //
   // ui_log('dbase_update_props props', props, 'deviceProps', deviceProps);
@@ -50,8 +53,10 @@ function dbase_update_props(options, deviceProps, groupProps) {
 }
 window.dbase_update_props = dbase_update_props;
 
+//
 function dbase_update_value(value, apps) {
   // apps = { app, tag, suffix }
+  //
   let app = my.mo_app;
   let tag = 'dbase_update_value';
   let suffix = '';
@@ -80,7 +85,9 @@ function dbase_value_increment(value) {
 }
 window.dbase_value_increment = dbase_value_increment;
 
+//
 function dbase_remove_room() {
+  //
   let path = `${my.dbase_rootPath}/${my.roomName}`;
   let { getRefPath, set } = fireb_.fbase;
   let refPath = getRefPath(path);

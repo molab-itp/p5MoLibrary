@@ -48,7 +48,7 @@ function dbase_a_devices_observe({ observed_a_device, removed_a_device, all }) {
     }
     my.a_devices = devices;
     if (removed) {
-      removed_a_device(key);
+      if (removed_a_device) removed_a_device(key);
     } else {
       let a_device = my.a_device_values[key];
       if (observed_a_device) observed_a_device(key, a_device);
