@@ -1,25 +1,25 @@
 //
 
-function dbase_devices_observe({ observed_a_device, removed_a_device, all }) {
+function dbase_devices_observe({ observed_key, removed_key, all }) {
   //
   if (!my.a_device_values) my.a_device_values = {};
 
   // 'mo-paint/a_device'
   dbase_app_observe(
-    { observed_key, removed_key }, //
+    { observed_key: my_observed_key, removed_key: my_removed_key }, //
     { app: my.mo_app + '/a_device' }
   );
 
   // dbase_app_observe --> dbase_observe_devices
   //
 
-  function observed_key(key, value) {
+  function my_observed_key(key, value) {
     // console.log('observed_key key', key, 'value', value);
     my.a_device_values[key] = value;
     build_devices(key);
   }
 
-  function removed_key(key, value) {
+  function my_removed_key(key, value) {
     console.log('removed_key key', key, 'value', value);
     delete my.a_device_values[key];
     build_devices(key, { removed: 1 });
@@ -48,10 +48,10 @@ function dbase_devices_observe({ observed_a_device, removed_a_device, all }) {
     }
     my.a_devices = devices;
     if (removed) {
-      if (removed_a_device) removed_a_device(key);
+      if (removed_key) removed_key(key);
     } else {
       let a_device = my.a_device_values[key];
-      if (observed_a_device) observed_a_device(key, a_device);
+      if (observed_key) observed_key(key, a_device);
     }
   }
 }
