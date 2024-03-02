@@ -22,7 +22,9 @@ function init_ui() {
   if (my.group) {
     id_group_report.innerHTML = my.group;
   }
-  toggle_365_panes();
+  if (my.isRemote) {
+    toggle_365_panes();
+  }
 }
 
 function create_remote_view() {
