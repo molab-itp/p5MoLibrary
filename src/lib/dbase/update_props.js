@@ -1,8 +1,25 @@
 //
 //
 
+// function dbase_update_props(options, deviceProps, groupProps) {
 //
-function dbase_update_props(options, deviceProps, groupProps) {
+// options.group
+// options.count
+// options.all
+//
+function dbase_update_props(props, options) {
+  let deviceProps = props;
+  let groupProps = {};
+  options = options || {};
+  let uids = { [my.uid]: 1 };
+  if (options.all) {
+    uids = my.a_device_values || uids;
+  }
+  let group = options.group;
+  if (group) {
+    groupProps = props;
+    deviceProps = {};
+  }
   //
   // ui_log('dbase_update_props props', props, 'deviceProps', deviceProps);
   if (!my.uid) {
@@ -23,26 +40,28 @@ function dbase_update_props(options, deviceProps, groupProps) {
 
   // default to increment ../mo_app/a_device/count
   //
-  if (deviceProps == undefined) {
-    deviceProps = { count: increment(1) };
+  // if (deviceProps == undefined) {
+  if (options.count) {
+    // deviceProps = { count: increment(1) };
+    deviceProps.count = increment(1);
   }
 
-  for (let prop in deviceProps) {
-    let value = deviceProps[prop];
-    let dpath = `a_device/${my.uid}/${prop}`;
-    updates[dpath] = value;
+  for (let uid in uids) {
+    for (let prop in deviceProps) {
+      let value = deviceProps[prop];
+      let dpath = `a_device/${uid}/${prop}`;
+      updates[dpath] = value;
+    }
   }
 
-  if (groupProps !== undefined) {
-    // group=s1,s2,s3,s4 to broadcast
-    // console.log('dbase_update_props groups', groups);
-    for (let group of groups) {
-      for (let prop in groupProps) {
-        // if (prop == 'group') continue;
-        let value = groupProps[prop];
-        let dpath = `${a_group}/${group}/${prop}`;
-        updates[dpath] = value;
-      }
+  // group=s1,s2,s3,s4 to broadcast
+  // console.log('dbase_update_props groups', groups);
+  for (let group of groups) {
+    for (let prop in groupProps) {
+      // if (prop == 'group') continue;
+      let value = groupProps[prop];
+      let dpath = `${a_group}/${group}/${prop}`;
+      updates[dpath] = value;
     }
   }
   // ui_log('dbase_update_props updates', updates);

@@ -44,7 +44,8 @@ function dashboard_action(event) {
 
 function echo_delay_0_action() {
   let group = my.group;
-  dbase_update_props({ group: group }, {}, { echo_delay: 0 });
+  // dbase_update_props({ group: group }, {}, { echo_delay: 0 });
+  dbase_update_props({ echo_delay: 0 }, { group: group });
 }
 
 function echo_delay_n_action() {
@@ -55,7 +56,8 @@ function echo_delay_n_action() {
   let echo_delay = delayStep;
   for (let index = 0; index < groups.length; index++) {
     let group = groups[index];
-    dbase_update_props({ group: group }, {}, { echo_delay });
+    // dbase_update_props({ group: group }, {}, { echo_delay });
+    // dbase_update_props({ echo_delay }, { group: group });      // mo-blackfacts
     echo_delay += delayStep;
   }
 }

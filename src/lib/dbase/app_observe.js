@@ -72,6 +72,6 @@ function dbase_update_item(item) {
     // Special group 's0' recieves all updates
     group = 's0,' + group;
   }
-  dbase_update_props({ group: group }, {}, item);
+  dbase_update_props(item, { group: group });
 }
 window.dbase_update_item = dbase_update_item;

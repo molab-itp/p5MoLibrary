@@ -15,7 +15,7 @@ function dbase_app_init({ completed }) {
       dbase_device_observe();
 
       // Send initial ping
-      dbase_update_props({});
+      dbase_update_props({}, { count: 1 });
 
       if (completed) completed();
     })

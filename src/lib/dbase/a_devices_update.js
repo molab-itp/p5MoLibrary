@@ -43,7 +43,7 @@ function dbase_queue_update(props) {
     if (my.db_queue_count_last != my.db_queue_count) {
       my.db_queue_count_last = my.db_queue_count;
 
-      dbase_update_props({}, my.db_queue);
+      dbase_update_props(my.db_queue);
 
       my.db_queue = {};
     }
