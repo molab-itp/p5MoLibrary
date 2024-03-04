@@ -11,13 +11,12 @@ function my_init() {
   my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
-  my.nameDevice = 'device?v=30';
+  my.nameDevice = 'device?v=31';
   my.pingTime = 1;
 
   // my.isRemote = window.innerHeight > window.innerWidth;
   my.isRemote = !params.qrcode;
 
-  my.group = 's0';
   // idevice param renamed to group
   // however, still present in qr code
   my.idevice = params.idevice;
@@ -25,8 +24,11 @@ function my_init() {
   if (my.idevice) {
     my.group = 's' + my.idevice;
   }
-  if (!params.group) {
+  if (params.group) {
     my.group = params.group;
+  }
+  if (!my.group) {
+    my.group = 's0';
   }
   console.log('my_init my.group', my.group);
   if (my.group) {
