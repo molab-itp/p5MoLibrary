@@ -1,29 +1,29 @@
 # [p5moLibrary](https://github.com/molab-itp/p5moLibrary)
 
-# [github.io](https://molab-itp.github.io/p5moLibrary/src?v=32)
+# [github.io](https://molab-itp.github.io/p5moLibrary/src?v=33)
 
 - a p5js Library for multi screen experiences - mobile devices paired with large screens
 
-  - [demo/Astronomical](demo/Astronomical?v=32)
-  - [demo/BlackFacts](demo/BlackFacts?v=32)
-  - [demo/DrawPoints](demo/DrawPoints?v=32)
-  - [demo/Heavenly3D](demo/Heavenly3D?v=32)
-  - [demo/mo-astro](demo/mo-astro?v=32)
-  - [demo/mo-blackfacts](demo/mo-blackfacts?v=32)
-  - [demo/mo-draw](demo/mo-draw?v=32)
-  - [demo/mo-pix-chip-grid](demo/mo-pix-chip-grid?v=32)
-  - [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=32)
+  - [demo/Astronomical](demo/Astronomical?v=33)
+  - [demo/BlackFacts](demo/BlackFacts?v=33)
+  - [demo/DrawPoints](demo/DrawPoints?v=33)
+  - [demo/Heavenly3D](demo/Heavenly3D?v=33)
+  - [demo/mo-astro](demo/mo-astro?v=33)
+  - [demo/mo-blackfacts](demo/mo-blackfacts?v=33)
+  - [demo/mo-draw](demo/mo-draw?v=33)
+  - [demo/mo-pix-chip-grid](demo/mo-pix-chip-grid?v=33)
+  - [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=33)
 
 - POWER TO THE PEOPLE screens
 
-  - [demo/mo-blackfacts remote](demo/mo-blackfacts?v=32)
-  - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=32&group=s1&qrcode=mo-blackfacts-qrcode-1.png) [-remote-](demo/mo-blackfacts?v=32&group=s1)
-  - [demo/mo-blackfacts s2](demo/mo-blackfacts?v=32&group=s2&qrcode=mo-blackfacts-qrcode-2.png) [-remote-](demo/mo-blackfacts?v=32&group=s2)
-  - [demo/mo-blackfacts s3](demo/mo-blackfacts?v=32&group=s3&qrcode=mo-blackfacts-qrcode-3.png) [-remote-](demo/mo-blackfacts?v=32&group=s3)
-  - [demo/mo-blackfacts s4](demo/mo-blackfacts?v=32&group=s4&qrcode=mo-blackfacts-qrcode-4.png) [-remote-](demo/mo-blackfacts?v=32&group=s4)
-  - [demo/mo-blackfacts s5](demo/mo-blackfacts?v=32&group=s5&qrcode=mo-blackfacts-qrcode-5.png) [-remote-](demo/mo-blackfacts?v=32&group=s5)
-  - [demo/mo-blackfacts s6](demo/mo-blackfacts?v=32&group=s6&qrcode=mo-blackfacts-qrcode-6.png) [-remote-](demo/mo-blackfacts?v=32&group=s6)
-  - [demo/mo-blackfacts s1-s6](demo/mo-blackfacts?v=32&group=s1,s2,s3,s4,s5,s6&qrcode=mo-blackfacts-qrcode-1-6.png) [-remote-](demo/mo-blackfacts?v=32&group=s1,s2,s3,s4,s5,s6)
+  - [demo/mo-blackfacts remote](demo/mo-blackfacts?v=33)
+  - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=33&group=s1&qrcode=mo-blackfacts-qrcode-1.png) [-remote-](demo/mo-blackfacts?v=33&group=s1)
+  - [demo/mo-blackfacts s2](demo/mo-blackfacts?v=33&group=s2&qrcode=mo-blackfacts-qrcode-2.png) [-remote-](demo/mo-blackfacts?v=33&group=s2)
+  - [demo/mo-blackfacts s3](demo/mo-blackfacts?v=33&group=s3&qrcode=mo-blackfacts-qrcode-3.png) [-remote-](demo/mo-blackfacts?v=33&group=s3)
+  - [demo/mo-blackfacts s4](demo/mo-blackfacts?v=33&group=s4&qrcode=mo-blackfacts-qrcode-4.png) [-remote-](demo/mo-blackfacts?v=33&group=s4)
+  - [demo/mo-blackfacts s5](demo/mo-blackfacts?v=33&group=s5&qrcode=mo-blackfacts-qrcode-5.png) [-remote-](demo/mo-blackfacts?v=33&group=s5)
+  - [demo/mo-blackfacts s6](demo/mo-blackfacts?v=33&group=s6&qrcode=mo-blackfacts-qrcode-6.png) [-remote-](demo/mo-blackfacts?v=33&group=s6)
+  - [demo/mo-blackfacts s1-s6](demo/mo-blackfacts?v=33&group=s1,s2,s3,s4,s5,s6&qrcode=mo-blackfacts-qrcode-1-6.png) [-remote-](demo/mo-blackfacts?v=33&group=s1,s2,s3,s4,s5,s6)
 
 - p5moExamples
 
@@ -60,21 +60,21 @@
 
 - dev console
 
-  - [demo/js-image-viewer](demo/js-image-viewer?v=32)
-  - [demo/mo-gallery-1](demo/mo-gallery-1?v=32)
-  - [demo/mo-gallery-2](demo/mo-gallery-2?v=32)
-  - [demo/mo-storage-console](demo/mo-storage-console?v=32)
+  - [demo/js-image-viewer](demo/js-image-viewer?v=33)
+  - [demo/mo-gallery-1](demo/mo-gallery-1?v=33)
+  - [demo/mo-gallery-2](demo/mo-gallery-2?v=33)
+  - [demo/mo-storage-console](demo/mo-storage-console?v=33)
 
 <!--
 
 - retired
-  - [demo/mo-astro-host-0](demo/mo-astro-host-0?v=32)
-  - [demo/mo-astro-host-1](demo/mo-astro-host-1?v=32)
-  - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=32)
-  - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=32)
+  - [demo/mo-astro-host-0](demo/mo-astro-host-0?v=33)
+  - [demo/mo-astro-host-1](demo/mo-astro-host-1?v=33)
+  - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=33)
+  - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=33)
 
-  - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=32)
-  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=32)
+  - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=33)
+  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=33)
 
 # https://www.youtube.com/watch?v=hpjNGTYvpxw
 # The Land Carries Our Ancestors: Contemporary Art by Native Americans Exhibition Trailer
