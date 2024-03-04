@@ -1,11 +1,11 @@
 //
-function dbase_app_observe({ observed_key, removed_key, observed_item }, apps) {
-  // apps = { app, tag }
+function dbase_app_observe({ observed_key, removed_key, observed_item }, options) {
+  // options = { app, tag }
   let app = my.mo_app;
   let tag = 'dbase_app_observe';
-  if (apps) {
-    app = apps.app || app;
-    tag = apps.tag || tag;
+  if (options) {
+    app = options.app || app;
+    tag = options.tag || tag;
   }
   // Setup listener for changes to firebase db device
   let path = `${my.dbase_rootPath}/${my.roomName}/${app}`;
@@ -54,7 +54,7 @@ function dbase_app_observe({ observed_key, removed_key, observed_item }, apps) {
         group = 's0';
       }
       let item = value[group];
-      // console.log('mo_blackfacts_group_value item', item);
+      // console.log('dbase_app_observe item', item);
       if (item) {
         observed_item(item);
       }

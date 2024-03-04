@@ -20,18 +20,11 @@ import {
   update,
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js';
 
-// function init() {
-//   // console.log('fireb_fbase init');
-//   // fbase.database = getDatabase();
-//   // fbase.dbRef = ref(fbase.database);
-// }
-
 function getRefPath(path) {
   return ref(getDatabase(), path);
 }
 
 export const fbase = {
-  // init,
   child,
   get,
   getDatabase,

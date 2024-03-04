@@ -58,7 +58,6 @@ function dbase_update_props(props, options) {
   // console.log('dbase_update_props groups', groups);
   for (let group of groups) {
     for (let prop in groupProps) {
-      // if (prop == 'group') continue;
       let value = groupProps[prop];
       let dpath = `${a_group}/${group}/${prop}`;
       updates[dpath] = value;

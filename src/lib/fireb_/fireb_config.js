@@ -22,6 +22,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js';
 
 // Your web app's Firebase configuration
+
 // jht9629
 const firebaseConfig_jht9629 = {
   apiKey: 'AIzaSyDLxi_fvCG2kzD2eJ4MxEZbOJ_GFSpIVe0',
@@ -33,6 +34,7 @@ const firebaseConfig_jht9629 = {
   appId: '1:219508380677:web:b5d846a150e7d60368b86c',
   measurementId: 'G-40F0BN8L7L',
 };
+
 // jht1493
 const firebaseConfig_jht1493 = {
   apiKey: 'AIzaSyBl4dTlon41lMW1b3CgJ7LphBH_fi6RETo',
@@ -43,6 +45,7 @@ const firebaseConfig_jht1493 = {
   messagingSenderId: '1007268220063',
   appId: '1:1007268220063:web:a69f608f35ca3f8d9a26aa',
 };
+
 //   jhtitp
 const firebaseConfig_jhtitp = {
   apiKey: 'AIzaSyBg2bnuULvLvkd6SOAEetErgNtyGsNIb8c',
@@ -52,6 +55,7 @@ const firebaseConfig_jhtitp = {
   messagingSenderId: '523385422249',
   appId: '1:523385422249:web:52df2a4c0803b79c2a04b8',
 };
+
 let configs = {
   jht9629: firebaseConfig_jht9629,
   jht1493: firebaseConfig_jht1493,

@@ -47,14 +47,15 @@ function dbase_devices_observe({ observed_key, removed_key, observed_item, all }
       }
     }
     my.a_devices = devices;
-    // let a_device = my.a_device_values[key];
+
+    if (!removed && observed_item && key == my.uid && value) {
+      observed_item(value);
+    }
+
     if (removed) {
       if (removed_key) removed_key(key, value);
     } else {
       if (observed_key) observed_key(key, value);
-    }
-    if (observed_item && key == my.uid && value) {
-      observed_item(value);
     }
   }
 }
