@@ -38,11 +38,9 @@ function dbase_update_props(props, options) {
 
   let updates = {};
 
-  // default to increment ../mo_app/a_device/count
-  //
-  // if (deviceProps == undefined) {
+  // options.count for increment
+  //  ../mo_app/a_device/count
   if (options.count) {
-    // deviceProps = { count: increment(1) };
     deviceProps.count = increment(1);
   }
 
