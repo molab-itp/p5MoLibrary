@@ -22,10 +22,10 @@ function animationFrame_callback(timeStamp) {
       player_startup_stalled();
     }
   }
-  if (!my.isRemote && !params.qrcode) {
-    // if (my.blackfacts_qrcode) qrcode_show();
-    // else qrcode_hide();
-  }
+  // if (!my.isRemote && !params.qrcode) {
+  // if (my.blackfacts_qrcode) qrcode_show();
+  // else qrcode_hide();
+  // }
   if (my.animLoop) {
     my.animLoop.step({ action: stepAction, loop: my.playClip });
     let lapse = '';
@@ -41,9 +41,41 @@ function animationFrame_callback(timeStamp) {
       str += ' reload pending';
     }
     show_message(str);
-  } else if (params.title) {
-    let str = params.title;
-    show_message(str);
+  } else {
+    // my.blackfacts_player_inited
+    if (params.title) {
+      let str = params.title;
+      show_message(str);
+    }
+    // Attempt to autoplay fails
+    // appears that we need some user interaction for video to play
+    //
+    // if (my.video_cued_count && !my.video_played_count) {
+    //   console.log('frame waiting for play');
+    //   if (!my.video_play_issued) my.video_play_issued = 0;
+    //   my.video_play_issued++;
+    //   if (my.video_play_issued == 60) {
+    //     console.log('frame playVideo');
+    //     player.playVideo();
+    //   }
+    // }
+    if (my.isRemote) {
+      if (my.video_played_count != my.video_played_count_prior) {
+        console.log('frame played_count change ', my.video_played_count, my.video_played_count_prior);
+        my.video_played_count_prior = my.video_played_count;
+        dbase_issue_actions({ play_video_action: 1 }, { group: my.group });
+      }
+    }
+    if (
+      !my.isRemote && //
+      dbase_actions_issued(my.uid, { play_video_action: 1 }, { group: my.group })
+    ) {
+      console.log('frame dbase_actions_issued player.playVideo ', player_ready());
+      if (player_ready()) {
+        player.seekTo(0);
+        player.playVideo();
+      }
+    }
   }
 }
 

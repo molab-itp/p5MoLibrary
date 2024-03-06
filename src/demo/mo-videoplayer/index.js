@@ -21,7 +21,10 @@ function document_loaded() {
 
 function dbase_host_init() {
   //
-  dbase_app_observe({ observed_key: observed_key });
+  // dbase_app_observe({ observed_key: observed_key });
+  // dbase_devices_observe({ observed_item });
+
+  dbase_app_observe({ observed_item });
 
   my.animLoop = new Anim({ target: my, time: my.animTime });
 
@@ -31,22 +34,26 @@ function dbase_host_init() {
 
   setup_animationFrame();
 
-  function observed_key(key, value) {
-    switch (key) {
-      case 'a_device':
-        mo_blackfacts_device_value(value);
-        break;
-      case 'a_group':
-        mo_blackfacts_group_value(value);
-        break;
-      case 'index':
-        mo_blackfacts_index_value(value);
-        break;
-      case 'qrcode':
-        mo_blackfacts_qccode_value(value);
-        break;
-    }
+  function observed_item(value) {
+    console.log('observed_item value', value);
   }
+
+  // function observed_key(key, value) {
+  //   switch (key) {
+  //     case 'a_device':
+  //       mo_blackfacts_device_value(value);
+  //       break;
+  //     case 'a_group':
+  //       mo_blackfacts_group_value(value);
+  //       break;
+  //     case 'index':
+  //       mo_blackfacts_index_value(value);
+  //       break;
+  //     case 'qrcode':
+  //       mo_blackfacts_qccode_value(value);
+  //       break;
+  //   }
+  // }
 }
 
 let my = {};
@@ -66,6 +73,7 @@ function my_init() {
   my.nameDevice = 'device?v=33';
   my.pingTime = 1;
   // my.leftMargin = 10;
+  my.group = 'nation_time';
 
   // my.isRemote = window.innerHeight > window.innerWidth;
   my.isRemote = !params.qrcode;
@@ -74,7 +82,7 @@ function my_init() {
   // however, still present in qr code
   my.idevice = params.idevice;
   console.log('my_init my.idevice', my.idevice);
-  if (my.idevice) {
+  if (my.idevice && !my.group) {
     my.group = 's' + my.idevice;
   }
   if (!my.group) {

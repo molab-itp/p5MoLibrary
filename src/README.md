@@ -14,7 +14,7 @@
   - [demo/mo-pix-chip-grid](demo/mo-pix-chip-grid?v=33)
   - [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=33)
 
-- POWER TO THE PEOPLE screens
+- "POWER TO THE PEOPLE!" installation screens
 
   - [demo/mo-blackfacts remote](demo/mo-blackfacts?v=33)
   - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=33&group=s1&qrcode=mo-blackfacts-qrcode-1.png) [-remote-](demo/mo-blackfacts?v=33&group=s1)
@@ -36,7 +36,7 @@
 
 - play list
 
-  - [NationTime - edit by Ali Santana](demo/mo-videoplayer?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png)
+  - [NationTime - edit by Ali Santana](demo/mo-videoplayer/?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png) - [-remote-](demo/mo-videoplayer/?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX)
 
   - [Langston Hughes ](demo/BlackFacts?playlist=XzI3huqpCi4)
 

@@ -55,6 +55,7 @@ function dbase_app_observe({ observed_key, removed_key, observed_item }, options
       }
       let item = value[group];
       // console.log('dbase_app_observe item', item);
+      my.a_group_item = item;
       if (item) {
         observed_item(item);
       }

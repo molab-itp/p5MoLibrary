@@ -8,3 +8,5 @@ import './site_event.js?v=33';
 import './site_observe.js?v=33';
 import './update_props.js?v=33';
 import './updateTimeGap.js?v=33';
+import '../Anim.js?v=33';
+import '../fireb_/fireb_config.js?v=33';

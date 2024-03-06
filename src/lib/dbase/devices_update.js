@@ -66,28 +66,44 @@ window.dbase_poll = dbase_poll;
 //
 // dbase_actions_issued(uid, { clear_action: 1})
 //
-function dbase_actions_issued(uid, actions) {
+function dbase_actions_issued(uid, actions, options) {
   // console.log('dbase_actions_issued uid', uid, 'actions', actions);
+  options = options || {};
   let actionSeen = 0;
   if (!my.db_last_actions_uid) my.db_last_actions_uid = {};
-  if (!my.a_device_values) {
-    console.log('dbase_actions_issued uid', my.uid, 'no a_device_values', my.a_device_values);
-    return;
-  }
-  let device = my.a_device_values[uid];
-  if (!device) {
-    console.log('dbase_actions_issued uid', uid, 'no device', device);
-    return;
+  let source;
+  if (options.group) {
+    source = my.a_group_item;
+    if (!source) {
+      console.log('dbase_actions_issued uid', my.uid, 'no a_group_item', my.a_group_item);
+      return 0;
+    }
+  } else {
+    if (!my.a_device_values) {
+      console.log('dbase_actions_issued uid', my.uid, 'no a_device_values', my.a_device_values);
+      return 0;
+    }
+    source = my.a_device_values[uid];
+    if (!source) {
+      console.log('dbase_actions_issued uid', uid, 'no device source', source);
+      return 0;
+    }
   }
   let last_actions = my.db_last_actions_uid[uid];
   if (!last_actions) {
+    // For first view record only
+    // detect action trigger on next change
     last_actions = {};
     my.db_last_actions_uid[uid] = last_actions;
+    for (let act in actions) {
+      last_actions[act] = source[act];
+    }
+    return 0;
   }
   for (let act in actions) {
-    if (last_actions[act] != device[act]) {
-      // console.log('dbase_actions_issued device act', device[act]);
-      last_actions[act] = device[act];
+    if (last_actions[act] != source[act]) {
+      // console.log('dbase_actions_issued source act', source[act]);
+      last_actions[act] = source[act];
       actionSeen++;
     }
   }
@@ -110,7 +126,8 @@ function dbase_issue_actions(actions, options) {
   if (options.all) {
     dbase_devices_update(nactions);
   } else {
-    dbase_queue_update(nactions);
+    // dbase_queue_update(nactions);
+    dbase_update_props(nactions, options);
   }
 }
 window.dbase_issue_actions = dbase_issue_actions;
@@ -118,13 +135,14 @@ window.dbase_issue_actions = dbase_issue_actions;
 //
 // Issue actions to all a_devices
 //
-function dbase_devices_issue_actions(actions) {
+function dbase_devices_issue_actions(actions, options) {
   //
+  if (!options) options = {};
   let nactions = {};
   for (let act in actions) {
     nactions[act] = dbase_increment(1);
   }
   // dbase_queue_update({ clear_action: dbase_increment(1) });
-  dbase_devices_update(nactions);
+  dbase_devices_update(nactions, options);
 }
 window.dbase_devices_issue_actions = dbase_devices_issue_actions;
