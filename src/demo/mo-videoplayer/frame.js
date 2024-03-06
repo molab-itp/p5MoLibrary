@@ -63,6 +63,8 @@ function animationFrame_callback(timeStamp) {
       if (my.video_played_count != my.video_played_count_prior) {
         console.log('frame played_count change ', my.video_played_count, my.video_played_count_prior);
         my.video_played_count_prior = my.video_played_count;
+        let time = player.getCurrentTime();
+        dbase_update_item({ time });
         dbase_issue_actions({ play_video_action: 1 }, { group: my.group });
       }
     }
@@ -72,7 +74,13 @@ function animationFrame_callback(timeStamp) {
     ) {
       console.log('frame dbase_actions_issued player.playVideo ', player_ready());
       if (player_ready()) {
-        player.seekTo(0);
+        if (my.a_group_item) {
+          let time = my.a_group_item.time;
+          if (time != undefined) {
+            console.log('frame dbase_actions_issued time ', time);
+            player.seekTo(time);
+          }
+        }
         player.playVideo();
       }
     }
