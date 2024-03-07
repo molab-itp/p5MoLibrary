@@ -8,6 +8,7 @@
 
 - p5moExamples p5js
 
+  - [ p5moExamples p5js vote ](https://editor.p5js.org/jht9629-nyu/sketches/EEafnQwr1)
   - [ p5moExamples p5js lobby ](https://editor.p5js.org/jht9629-nyu/sketches/vP6sWN4Cu)
   - [ p5moExamples p5js pixel-grid ](https://editor.p5js.org/jht9629-nyu/sketches/CntV1JQNp)
 
