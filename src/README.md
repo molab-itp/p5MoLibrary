@@ -2,6 +2,15 @@
 
 # [github.io](https://molab-itp.github.io/p5moLibrary/src?v=35)
 
+- p5moExamples
+
+  - [ p5moExamples github.io ](https://molab-itp.github.io/p5moExamples)
+
+- p5moExamples p5js
+
+  - [ p5moExamples p5js lobby ](https://editor.p5js.org/jht9629-nyu/sketches/vP6sWN4Cu)
+  - [ p5moExamples p5js pixel-grid ](https://editor.p5js.org/jht9629-nyu/sketches/CntV1JQNp)
+
 - a p5js Library for multi screen experiences - mobile devices paired with large screens
 
   - [demo/Astronomical](demo/Astronomical?v=35)
@@ -24,15 +33,6 @@
   - [demo/mo-blackfacts s5](demo/mo-blackfacts?v=35&group=s5&qrcode=mo-blackfacts-qrcode-5.png) [-remote-](demo/mo-blackfacts?v=35&group=s5)
   - [demo/mo-blackfacts s6](demo/mo-blackfacts?v=35&group=s6&qrcode=mo-blackfacts-qrcode-6.png) [-remote-](demo/mo-blackfacts?v=35&group=s6)
   - [demo/mo-blackfacts s1-s6](demo/mo-blackfacts?v=35&group=s1,s2,s3,s4,s5,s6&qrcode=mo-blackfacts-qrcode-1-6.png) [-remote-](demo/mo-blackfacts?v=35&group=s1,s2,s3,s4,s5,s6)
-
-- p5moExamples
-
-  - [ p5moExamples github.io ](https://molab-itp.github.io/p5moExamples)
-
-- p5moExamples p5js
-
-  - [ p5moExamples p5js lobby ](https://editor.p5js.org/jht9629-nyu/sketches/vP6sWN4Cu)
-  - [ p5moExamples p5js pixel-grid ](https://editor.p5js.org/jht9629-nyu/sketches/CntV1JQNp)
 
 - play list
 

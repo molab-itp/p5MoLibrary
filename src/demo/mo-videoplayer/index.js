@@ -35,25 +35,9 @@ function dbase_host_init() {
   setup_animationFrame();
 
   function observed_item(value) {
-    console.log('observed_item value', value);
+    // console.log('observed_item value', value);
+    // not used
   }
-
-  // function observed_key(key, value) {
-  //   switch (key) {
-  //     case 'a_device':
-  //       mo_blackfacts_device_value(value);
-  //       break;
-  //     case 'a_group':
-  //       mo_blackfacts_group_value(value);
-  //       break;
-  //     case 'index':
-  //       mo_blackfacts_index_value(value);
-  //       break;
-  //     case 'qrcode':
-  //       mo_blackfacts_qccode_value(value);
-  //       break;
-  //   }
-  // }
 }
 
 let my = {};
@@ -103,23 +87,6 @@ function pingAction() {
   let portrait = my.isRemote ? 1 : 0;
   let group = my.group;
   dbase_site_updates({ portrait, group });
-}
-
-function mo_blackfacts_group_value(newValue) {
-  console.log('mo_blackfacts_group_value my.group', my.group, 'newValue', newValue);
-  let group = my.group;
-  if (group) {
-    // for my.group=s1,s2,... group=s1
-    group = group.split(',')[0];
-  }
-  let item = newValue[group];
-  // console.log('mo_blackfacts_group_value item', item);
-  if (item) {
-    let index = item.index;
-    if (index != null && index != my.blackfacts_index) {
-      update_blackfacts_index(index);
-    }
-  }
 }
 
 // Check for matching update to group

@@ -9,6 +9,9 @@ function dbase_app_observe({ observed_key, removed_key, observed_item }, options
   }
   // Setup listener for changes to firebase db device
   let path = `${my.dbase_rootPath}/${my.roomName}/${app}`;
+  if (observed_item) {
+    path += '/a_group';
+  }
   let { getRefPath, onChildAdded, onChildChanged, onChildRemoved } = fireb_.fbase;
   let refPath = getRefPath(path);
 
@@ -40,26 +43,27 @@ function dbase_app_observe({ observed_key, removed_key, observed_item }, options
     if (observed_key) {
       observed_key(key, value);
     }
-    if (observed_item && key == 'a_group') {
-      let group = my.group;
-      if (group) {
-        // broadcast group when has comma separated values
-        //  my.group=s1,s2,... --> group=s0
-        if (group.indexOf(',') > -1) {
-          // For broadcast group - Observe special group 0
-          group = 's0';
+    if (observed_item) {
+      let group = group_key();
+      if (group == key) {
+        my.a_group_item = value;
+        if (value) {
+          observed_item(value);
         }
-      } else {
-        // Default group
-        group = 's0';
-      }
-      let item = value[group];
-      // console.log('dbase_app_observe item', item);
-      my.a_group_item = item;
-      if (item) {
-        observed_item(item);
       }
     }
+  }
+
+  function group_key() {
+    let group = my && my.group;
+    if (!group) group = 's0';
+    // broadcast group when has comma separated values
+    if (group.indexOf(',') > -1) {
+      // my.group=s1,s2,... --> group=s0
+      // Special group 's0' recieves all updates
+      group = 's0';
+    }
+    return group;
   }
 }
 window.dbase_app_observe = dbase_app_observe;
@@ -68,8 +72,8 @@ function dbase_update_item(item) {
   let group = my && my.group;
   if (!group) group = 's0';
   // broadcast group when has comma separated values
-  //  my.group=s1,s2,... --> group=s0
   if (group.indexOf(',') > -1) {
+    // my.group=s1,s2,... --> group=s0,s1,s2,...
     // Special group 's0' recieves all updates
     group = 's0,' + group;
   }
