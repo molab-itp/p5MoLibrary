@@ -118,3 +118,21 @@ function dbase_remove_room() {
     });
 }
 window.dbase_remove_room = dbase_remove_room;
+
+//
+function dbase_remove_mo_app() {
+  //
+  let path = `${my.dbase_rootPath}/${my.roomName}/${my.mo_app}`;
+  let { getRefPath, set } = fireb_.fbase;
+  let refPath = getRefPath(path);
+  set(refPath, {})
+    .then(() => {
+      // Data saved successfully!
+      console.log('dbase_remove_mo_app OK');
+    })
+    .catch((error) => {
+      // The write failed...
+      console.log('dbase_remove_mo_app error', error);
+    });
+}
+window.dbase_remove_mo_app = dbase_remove_mo_app;
