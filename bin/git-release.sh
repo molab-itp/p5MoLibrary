@@ -12,7 +12,9 @@ quiet=--quiet
 # merge branch next in to branch main
 # switch back to branch next
 #
+
 bin/build.sh --prod $quiet
+
 git add . 
 git commit $quiet -m "`cat src/gen/build_ver.txt`"
 git push $quiet
@@ -22,9 +24,6 @@ git merge next $quiet
 git push $quiet
 # in next
 git checkout next $quiet
-# bin/build.sh --prod $quiet
-# git add . 
-# git commit -m "`cat src/gen/build_ver.txt`" $quiet
-# git push $quiet
+
 echo
 echo "build `cat src/gen/build_ver.txt`"

@@ -1,34 +1,29 @@
 #!/bin/bash
-cd ${0%/*}
+# cd ${0%/*}
+
+# echo bin-path ${0%/*}
+bin_path="${0%/*}"
+abs_path="$(readlink -f "$bin_path")"
+# echo $abs_path
+root=`pwd`
+# echo root $root
+
+# exit
 
 # build without incrementing build number:
 # bin/build.sh --dev
 
 # Install npm if needed for node build scripts
 #
-dest=../node
+dest=$abs_path/../node
 if [ ! -e "$dest/node_modules" ]; then
   pushd $dest > /dev/null
   npm install
   popd > /dev/null
 fi
 
-# separate docs folder for pages too confusing with duplicated files
-# do version update in place on src directory
 
-# # Copy src files to build
-# excludes="--exclude .DS_Store  --exclude external/media"
-# delete=--delete
-# test=
-# # test=--dry-run
-# verbose=
-# # verbose=v
-# source=../src
-# rdest=../docs
-# rsync -razO$verbose $excludes $delete $test "$source/" "$rdest/"
+# Process files in build to expand build version 
 
-# Process files in build to expand build version etc.
-# select files are written to src and build so that 
-# src/index.html can used for live server
-node ../node/build.js "$@"
+node $abs_path/../node/build.js --root $root "$@"
 

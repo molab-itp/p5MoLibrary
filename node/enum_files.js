@@ -1,5 +1,5 @@
 import pkg from 'fs-extra';
-const { lstatSync, readdirSync, writeFileSync } = pkg;
+const { lstatSync, readdirSync } = pkg;
 import { join } from 'path';
 
 // list all non-directories in a list of files
@@ -41,18 +41,4 @@ export function enum_files(root_path, files) {
     }
   }
   return nfiles;
-}
-
-// src and build same destination
-
-export function writeBuildFile(src_path, afile, str) {
-  const buildpath = join(src_path, '../src', afile);
-  writeFileSync(buildpath, str);
-}
-
-export function writeSrcBuildFile(src_path, afile, str) {
-  // const apath = join(src_path, afile);
-  // writeFileSync(apath, str);
-  const buildpath = join(src_path, '../src', afile);
-  writeFileSync(buildpath, str);
 }
