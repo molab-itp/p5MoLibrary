@@ -1,6 +1,6 @@
 # [p5moLibrary](https://github.com/molab-itp/p5moLibrary)
 
-- a p5js Library for multi screen experiences - mobile devices paired with large screens with cloud storage
+- a p5js Library for cloud storage enhanced multi-device experiences from handheld to large screens
 
 # [github.io](https://molab-itp.github.io/p5moLibrary/src?v=47)
 
