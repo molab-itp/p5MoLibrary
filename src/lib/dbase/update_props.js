@@ -1,7 +1,7 @@
 //
 //
 
-// function dbase_update_props(options, deviceProps, groupProps) {
+// function dbase_update_props(props, options) {
 //
 // options.group
 // options.count
