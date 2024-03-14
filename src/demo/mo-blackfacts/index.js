@@ -76,6 +76,10 @@ function update_blackfacts_num_ui() {
   }
   let index = my.blackfacts_index;
   let entry = dateFactForIndex(index);
+  if (!entry) {
+    console.log('update_blackfacts_num_ui no entry index', index);
+    return;
+  }
   //
   let description = entry.description;
   let periodIndex = description.indexOf('Narrated by BlackFacts.com');
