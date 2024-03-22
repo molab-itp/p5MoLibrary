@@ -24,7 +24,7 @@ function setup() {
   // dbase interface
   // let config = fireb_.init('jht9629');
   // // let config = fireb_.init('jht1493');
-  // console.log('?v=48 config.projectId', config.projectId, 'configLabel', config.configLabel);
+  // console.log('?v=49 config.projectId', config.projectId, 'configLabel', config.configLabel);
 
   my.fireb_config = 'jht9629';
   // my.fireb_config = 'jht1493';
