@@ -4,7 +4,7 @@ cd ${0%/*}
 # Produce a release build
 
 cd ..
-# quiet=--quiet
+quiet=--quiet
 
 # deploy to github pages
 #
