@@ -2,17 +2,13 @@
 
 # [github.io](https://molab-itp.github.io/p5moLibrary/src?v=62)
 
-- p5moExamples
+- a p5js Library for multi screen experiences - mobile devices paired with large screens
+
+- p5moExamples - examples using p5moLibrary
 
   - [ p5moExamples github.io ](https://molab-itp.github.io/p5moExamples)
 
-- p5moExamples p5js
-
-  - [ p5moExamples p5js vote ](https://editor.p5js.org/jht9629-nyu/sketches/EEafnQwr1)
-  - [ p5moExamples p5js lobby ](https://editor.p5js.org/jht9629-nyu/sketches/vP6sWN4Cu)
-  - [ p5moExamples p5js pixel-grid ](https://editor.p5js.org/jht9629-nyu/sketches/CntV1JQNp)
-
-- a p5js Library for multi screen experiences - mobile devices paired with large screens
+- demo using p5moLibrary internally
 
   - [demo/Astronomical](demo/Astronomical?v=62)
   - [demo/BlackFacts](demo/BlackFacts?v=62)
@@ -24,7 +20,9 @@
   - [demo/mo-pix-chip-grid](demo/mo-pix-chip-grid?v=62)
   - [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=62)
 
-- "POWER TO THE PEOPLE!" installation screens
+- "POWER TO THE PEOPLE!" an installation at 370 Jay st. built using this libraray
+
+  - ["POWER TO THE PEOPLE!" tisch web article](https://tisch.nyu.edu/itp/news/spring-2024/community-facing-interactive-installations-on-the-ground-floor-o)
 
   - [demo/mo-blackfacts remote](demo/mo-blackfacts?v=62)
   - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=62&group=s1&qrcode=mo-blackfacts-qrcode-1.png) [-remote-](demo/mo-blackfacts?v=62&group=s1)
