@@ -1,18 +1,27 @@
-// https://editor.p5js.org/jht9629-nyu/sketches ----
-// https://github.com/molab-itp/p5moLibrary
+// https://editor.p5js.org/jht9629-nyu/sketches/T8RvLIFc2
+// p5moLibrary Astronomical 47
+
 // Display regions of a Astronomical infographic with animated panning and zooming
+// Shift click to define rect region in left or right pane
+// Save defined regions in local storage and export as JSON
 
 let my = {};
 
 function preload() {
   //
-  my.version = '?v=47';
+  my.version = '?v=48';
 
   my.backgImg = loadImage('../../assets/The_Celestial_Zoo.png');
+
+  console.log('preload my.backgImg width', my.backgImg.width, my.backgImg.height);
+  // my.backgImg width 1 1
 }
 
 function setup() {
   //
+  console.log('setup my.backgImg width', my.backgImg.width, my.backgImg.height);
+  // my.backgImg width 4800 3200
+
   astro_setup();
 
   my.animLoop = new Anim({ target: my, time: 15 });
@@ -68,6 +77,14 @@ function draw_crossHairs() {
     line(0, mouseY, width, mouseY);
   }
 }
+
+// --
+// 2024-03-22 use jpg version in p5 editor to preserver dimensions
+// Bad gateway error on p5 editor server
+
+//
+
+// https://github.com/molab-itp/p5moLibrary
 
 // https://editor.p5js.org/jht9629-nyu/sketches/K_xe4i5md
 

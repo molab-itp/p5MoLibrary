@@ -1,6 +1,6 @@
 // https://editor.p5js.org/jht9629-nyu/sketches/6VM5IMP4m
-// Heavenly3D
-// https://github.com/molab-itp/p5moLibrary
+// p5moLibrary Heavenly3D
+// https://github.com/molab-itp/p5moLibrary/tree/main/src/demos/Heavenly3D
 
 let my = {};
 

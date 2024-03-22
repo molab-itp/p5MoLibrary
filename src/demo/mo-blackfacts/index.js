@@ -18,7 +18,7 @@ function document_loaded() {
 
   // let config = fireb_.init('jht9629');
   // // let config = fireb_.init('jht1493');
-  // console.log('?v=47 config.projectId', config.projectId);
+  // console.log('?v=48 config.projectId', config.projectId);
   // console.log('configLabel', config.configLabel);
 
   dbase_app_init({ completed: app_init_completed });
@@ -76,6 +76,10 @@ function update_blackfacts_num_ui() {
   }
   let index = my.blackfacts_index;
   let entry = dateFactForIndex(index);
+  if (!entry) {
+    console.log('update_blackfacts_num_ui no entry index', index);
+    return;
+  }
   //
   let description = entry.description;
   let periodIndex = description.indexOf('Narrated by BlackFacts.com');

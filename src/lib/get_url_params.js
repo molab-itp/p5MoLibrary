@@ -1,3 +1,5 @@
+//
+
 // return null or url query as object
 // eg. query='abc=foo&def=%5Basf%5D&xyz=5'
 // params={abc: "foo", def: "[asf]", xyz: "5"}

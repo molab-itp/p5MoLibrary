@@ -1,0 +1,304 @@
+[
+  {
+    "uid": "hB2ZYjZK8fV2i9lrwQTGUju3Ahi1",
+    "index": 15,
+    "dbase": {
+      "date_s": "2024-03-21T20:48:51.799Z",
+      "name_s": "device?v=47",
+      "time": 0,
+      "time_s": "",
+      "update_count": 15817,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 5
+    }
+  },
+  {
+    "uid": "yBJncqnW6bOSclbx89KWJtq3Kgw2",
+    "index": 20,
+    "dbase": {
+      "date_s": "2024-03-21T20:48:46.291Z",
+      "name_s": "device?v=47",
+      "time": 0,
+      "time_s": "",
+      "update_count": 6085,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15",
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "D1z0LaLpK6eENNkbRnXsImukCPI2",
+    "index": 2,
+    "dbase": {
+      "date_s": "2024-03-21T20:48:31.827Z",
+      "name_s": "device?v=47",
+      "time": 0,
+      "time_s": "",
+      "update_count": 10723,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Safari/605.1.15",
+      "visit_count": 4
+    }
+  },
+  {
+    "uid": "l7ap6WWKosNZ4t4rthjyixKOEym2",
+    "index": 17,
+    "dbase": {
+      "date_s": "2024-03-21T20:48:30.746Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 2,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "CtpzL970vbQnZYahXXYecaPhQRy1",
+    "index": 1,
+    "dbase": {
+      "date_s": "2024-03-21T20:48:28.381Z",
+      "name_s": "device?v=47",
+      "time": 0,
+      "time_s": "",
+      "update_count": 12169,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "JzVCUEvrWaTYoyyo9A33Czd0x6j2",
+    "index": 5,
+    "dbase": {
+      "date_s": "2024-03-21T18:44:38.752Z",
+      "group": "s1",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "time": 4105,
+      "time_s": "4.105 secs",
+      "update_count": 34,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148 Safari/604.1",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "NMJOa0F5JzN3lqhoAhCVXQ6y8hh2",
+    "index": 7,
+    "dbase": {
+      "date_s": "2024-03-21T18:20:15.317Z",
+      "group": "nation_time",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "time": 266602,
+      "time_s": "4 mins 26.602 secs",
+      "update_count": 269,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148 Safari/604.1",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "SksVKMaXWJTQMAGnz4E6pRPGMz82",
+    "index": 9,
+    "dbase": {
+      "date_s": "2024-03-21T18:16:02.833Z",
+      "group": "nation_time",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "time": 20038,
+      "time_s": "20.038 secs",
+      "update_count": 25,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148 Safari/604.1",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "OZaGjJRoYvZAHAHaABmnzxetl1W2",
+    "index": 8,
+    "dbase": {
+      "date_s": "2024-03-21T18:15:06.538Z",
+      "group": "s2",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "time": 3038,
+      "time_s": "3.038 secs",
+      "update_count": 61,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148 Safari/604.1",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "eFsNDz0L3WMqMzoKlX5hveg9fw72",
+    "index": 13,
+    "dbase": {
+      "date_s": "2024-03-21T18:12:37.510Z",
+      "group": "s2",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "time": 23573,
+      "time_s": "23.573 secs",
+      "update_count": 26,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/123.0.6312.52 Mobile/15E148 Safari/604.1",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "LDQMpy1OULYluQc3xWeuZLCZ0n22",
+    "index": 6,
+    "dbase": {
+      "date_s": "2024-03-21T18:12:10.672Z",
+      "group": "s2",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "time": 18254,
+      "time_s": "18.254 secs",
+      "update_count": 24,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148 Safari/604.1",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "oydFETqRDFW7xYpfmH8WS9CHr963",
+    "index": 19,
+    "dbase": {
+      "date_s": "2024-03-21T15:02:23.448Z",
+      "group": "s6",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "remote": 1,
+      "time": 13159,
+      "time_s": "13.159 secs",
+      "update_count": 2862,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148 Safari/604.1",
+      "visit_count": 66
+    }
+  },
+  {
+    "uid": "fwrJuu5tOhgPioxzPhqzYx6FTsb2",
+    "index": 14,
+    "dbase": {
+      "date_s": "2024-03-20T20:57:44.162Z",
+      "group": "s1,s2,s3,s4,s5,s6",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "time": 176812,
+      "time_s": "2 mins 56.812 secs",
+      "update_count": 181,
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Mobile Safari/537.36",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "cNLw0XC4VXeQnW8BPIwAneGu9TJ2",
+    "index": 12,
+    "dbase": {
+      "date_s": "2024-03-20T16:50:24.043Z",
+      "group": "s1",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "time": 1010,
+      "time_s": "1.010 secs",
+      "update_count": 4,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148 Safari/604.1",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "HRezUPxBvKbLHx4u0d2nPy1EDlM2",
+    "index": 4,
+    "dbase": {
+      "date_s": "2024-03-20T12:11:31.344Z",
+      "group": "s1,s2,s3,s4,s5,s6",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "time": 18076,
+      "time_s": "18.076 secs",
+      "update_count": 24,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.2 Mobile/15E148 Safari/604.1",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "YJGJ4WcXZegRB36UFvQuiSdTtIT2",
+    "index": 10,
+    "dbase": {
+      "date_s": "2024-03-19T23:15:45.745Z",
+      "group": "nation_time",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "time": 3028,
+      "time_s": "3.028 secs",
+      "update_count": 8,
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Mobile Safari/537.36",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "iTUp5GXlt9Zf8lLz9wwlWeCYLWH2",
+    "index": 16,
+    "dbase": {
+      "date_s": "2024-03-19T18:34:45.048Z",
+      "group": "s1",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "time": 41427,
+      "time_s": "41.427 secs",
+      "update_count": 44,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148 Safari/604.1",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "GePOGkRUgpeTevTFRwNQZqfbvOE3",
+    "index": 3,
+    "dbase": {
+      "date_s": "2024-03-15T14:04:52.415Z",
+      "group": "s6",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "time": 10503,
+      "time_s": "10.503 secs",
+      "update_count": 42,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.2 Mobile/15E148 Safari/604.1",
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "0SoP9uIP7TVAV1oOTQLnjbI4kZn1",
+    "index": 0,
+    "dbase": {
+      "date_s": "2024-03-15T00:40:20.121Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/122.0.6261.89 Mobile/15E148 Safari/604.1",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "aEWUAiiLaHYM0vyFZX2BfQ8iY1A2",
+    "index": 11,
+    "dbase": {
+      "date_s": "2024-03-14T16:11:11.469Z",
+      "group": "s0",
+      "name_s": "device?v=47",
+      "portrait": 1,
+      "time": 2041,
+      "time_s": "2.041 secs",
+      "update_count": 429,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "visit_count": 5
+    }
+  },
+  {
+    "uid": "m4kdYnkrDzLcyomZ0sPHA2wWA0n2",
+    "index": 18,
+    "dbase": {
+      "date_s": "2024-03-14T02:34:23.170Z",
+      "name_s": "",
+      "time": 331,
+      "time_s": "0.331 secs",
+      "update_count": 1198,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "visit_count": 3
+    }
+  }
+]
