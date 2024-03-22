@@ -6,8 +6,10 @@ let my = {};
 
 function my_setup() {
   my.version = '?v=47';
-  my.width = 640;
-  my.height = 480;
+  my.width = windowWidth;
+  my.height = windowHeight;
+  // my.width = 640;
+  // my.height = 480;
   my.save_label = 'plea';
   // seconds to re-draw points
   my.lapse = 5;
