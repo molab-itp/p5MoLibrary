@@ -1,5 +1,5 @@
-// https for sketch
-// DrawPoints
+// https://editor.p5js.org/jht9629-nyu/sketches/TQyVoswjQ
+// p5moLibrary DrawPoints
 // https://github.com/molab-itp/p5moLibrary
 
 let my = {};
@@ -30,11 +30,11 @@ function my_setup() {
   my.staticDrawing = 1;
 
   // simple test for mobile phone
-  if (window.screen.width < window.screen.height) {
-    my.width = window.screen.width;
-    my.height = my.width;
-    my.xoffset = 0;
-  }
+  // if (window.screen.width < window.screen.height) {
+  //   my.width = window.screen.width;
+  //   my.height = my.width;
+  //   my.xoffset = 0;
+  // }
 }
 
 function setup() {
