@@ -20,8 +20,7 @@ git commit $quiet -m "`cat src/gen/build_ver.txt`"
 git push $quiet
 # in main
 git checkout main $quiet
-git merge next $quiet
-git commit $quiet -m "`cat src/gen/build_ver.txt`"
+git merge next $quiet  -m "`cat src/gen/build_ver.txt`"
 git push $quiet
 # in next
 git checkout next $quiet
