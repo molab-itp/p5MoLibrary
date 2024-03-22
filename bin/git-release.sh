@@ -4,7 +4,7 @@ cd ${0%/*}
 # Produce a release build
 
 cd ..
-quiet=--quiet
+# quiet=--quiet
 
 # deploy to github pages
 #
@@ -21,7 +21,7 @@ git push $quiet
 
 # in main
 git checkout main $quiet
-git merge next $quiet  -m "`cat src/gen/build_ver.txt`"
+git merge next $quiet -m "`cat src/gen/build_ver.txt`"
 git push $quiet
 
 # in next
