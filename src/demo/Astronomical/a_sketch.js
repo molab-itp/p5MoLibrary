@@ -1,4 +1,4 @@
-// https://editor.p5js.org/jht9629-nyu/sketches/T8RvLIFc2
+// https://editor.p5js.org/jht9629-nyu/sketches/iIIAb8KIDr
 // p5moLibrary Astronomical 47
 
 // Display regions of a Astronomical infographic with animated panning and zooming
@@ -9,7 +9,7 @@ let my = {};
 
 function preload() {
   //
-  my.version = '?v=62';
+  my.version = '?v=63';
 
   my.backgImg = loadImage('../../assets/The_Celestial_Zoo.png');
 

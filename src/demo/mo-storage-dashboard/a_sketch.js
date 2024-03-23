@@ -1,12 +1,17 @@
+// https://editor.p5js.org/jht9629-nyu/sketches/Osz28nOS9
+// mo-storage-dashboard 47
+
 // https://editor.p5js.org/jht9629-gmail/sketches/VWbtyZTnx
 // mo-storage-dashboard
-// https://molab-itp.github.io/p5moLibrary/demo/mo-storage-dashboard
+// https://molab-itp.github.io/98-MoGallery-p5js/demos/mo-storage-dashboard
+
+// !!@ update to lib
 // record and play back audio and image sequence to firebase
 
 let my = {};
 function my_setup() {
   // update to verify change on mobile
-  my.version = '?v=62';
+  my.version = '?v=63';
   // Aspect ratio of video capture/
   // will be scaled by rezScale
   my.width = 480;

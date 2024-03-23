@@ -76,7 +76,7 @@ function init(config) {
   // if config object not found, default to firebaseConfig_jht9629
   nconfig = nconfig || firebaseConfig_jht9629;
   nconfig.configLabel = configLabel;
-  nconfig.configVersion = '?v=62';
+  nconfig.configVersion = '?v=63';
   // console.log('fireb_config config', config);
   // console.log('fireb_config config.projectId', config.projectId);
   fireb_.app = initializeApp(nconfig);
@@ -86,8 +86,8 @@ function init(config) {
   return nconfig;
 }
 
-import { fbase } from './fireb_fbase.js?v=62';
-import { fstorage } from './fireb_fstorage.js?v=62';
+import { fbase } from './fireb_fbase.js?v=63';
+import { fstorage } from './fireb_fstorage.js?v=63';
 
 // export api for non-module script
 const fireb_ = {
