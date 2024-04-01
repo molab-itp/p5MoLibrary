@@ -15,7 +15,7 @@ function fstorage_upload({ layer, path, imageQuality, result, error }) {
   if (last4.toLowerCase() == '.png') {
     imageType = 'image/png';
   }
-  console.log('last4', last4, 'imageType', imageType);
+  // console.log('last4', last4, 'imageType', imageType);
 
   let imagePath = `${my.dbase_rootPath}/${my.roomName}/${path}`;
 
