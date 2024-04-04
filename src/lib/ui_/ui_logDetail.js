@@ -61,7 +61,8 @@ function ui_log_init() {
 }
 
 function ui_error(...args) {
-  ui_log(...args);
+  // ui_log(...args);
+  console.log(...args);
   alert(...args);
 }
 window.ui_error = ui_error;
