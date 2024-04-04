@@ -1,6 +1,6 @@
 //
 
-function fstorage_upload({ layer, path, imageQuality, result, error }) {
+async function fstorage_upload({ layer, path, imageQuality }) {
   // console.log('fstorage_img_upload');
   if (!layer || !layer.elt || !layer.elt.toBlob) {
     ui_error('fstorage_upload bad layer', layer);
@@ -19,17 +19,35 @@ function fstorage_upload({ layer, path, imageQuality, result, error }) {
 
   let imagePath = `${my.dbase_rootPath}/${my.roomName}/${path}`;
 
-  layer.elt.toBlob(
-    (blob) => {
-      fstorage_upload_blob(blob, imagePath, result, error);
-    },
-    imageType,
-    imageQuality
-  );
+  let blob = await getBlob(layer.elt, imageType, imageQuality);
+
+  return fstorage_upload_blob(blob, imagePath);
 }
 window.fstorage_upload = fstorage_upload;
 
-function fstorage_remove({ path, result, error }) {
+function getBlob(elt, imageType, imageQuality) {
+  return new Promise(function (resolve, reject) {
+    elt.toBlob(
+      (blob) => {
+        resolve(blob);
+      },
+      imageType,
+      imageQuality
+    );
+  });
+}
+
+async function fstorage_upload_blob(blob, imagePath) {
+  // console.log('fstorage_upload', blob);
+  let { getStorage, ref, uploadBytes } = fireb_.fstorage;
+  // ui_log('fstorage_upload my.imagePath', my.imagePath);
+  const storageRef = ref(getStorage(), imagePath);
+
+  // 'file' comes from the Blob or File API
+  return uploadBytes(storageRef, blob);
+}
+
+async function fstorage_remove({ path }) {
   if (!path) {
     ui_error('fstorage_remove missing path', path);
     return;
@@ -39,66 +57,17 @@ function fstorage_remove({ path, result, error }) {
   let { getStorage, ref, deleteObject } = fireb_.fstorage;
   const desertRef = ref(getStorage(), imagePath);
 
-  deleteObject(desertRef)
-    .then(() => {
-      // File deleted successfully
-      ui_log('fstorage_remove ', imagePath);
-      if (result) result(imagePath);
-    })
-    .catch((err) => {
-      // Uh-oh, an error occurred!
-      ui_error('fstorage_remove error', err);
-      if (error) error(err);
-    });
+  return deleteObject(desertRef);
 }
 window.fstorage_remove = fstorage_remove;
 
-function fstorage_download_url({ path, result, error }) {
+async function fstorage_download_url({ path }) {
   // console.log('fstorage_img_download ');
 
   let imagePath = `${my.dbase_rootPath}/${my.roomName}/${path}`;
 
   let { getStorage, ref, getDownloadURL } = fireb_.fstorage;
 
-  getDownloadURL(ref(getStorage(), imagePath))
-    .then((url) => {
-      ui_log('fstorage_img_download url', url);
-      if (result) result(url);
-    })
-    .catch((err) => {
-      // Handle any errors
-      ui_error('fstorage_download_url error', err);
-      if (error) error(err);
-    });
+  return getDownloadURL(ref(getStorage(), imagePath));
 }
 window.fstorage_download_url = fstorage_download_url;
-
-function fstorage_upload_blob(blob, imagePath, result, error) {
-  // console.log('fstorage_upload', blob);
-  let { getStorage, ref, uploadBytes } = fireb_.fstorage;
-  // ui_log('fstorage_upload my.imagePath', my.imagePath);
-  const storageRef = ref(getStorage(), imagePath);
-
-  // 'file' comes from the Blob or File API
-  uploadBytes(storageRef, blob)
-    .then((snapshot) => {
-      // ui_log('snapshot.metadata.fullPath ' + snapshot.metadata.fullPath);
-      // console.log('snapshot', snapshot);
-      // console.log('Uploaded path', path);
-      ui_log('fstorage_upload ', imagePath);
-      if (result) result(imagePath);
-    })
-    .catch((err) => {
-      // Handle any errors
-      ui_error('fstorage_upload error', err);
-      if (error) error(err);
-    });
-}
-
-// https://firebase.google.com/docs/storage/web/upload-files?authuser=0#upload_from_a_blob_or_file
-
-// function next_imagePath(count) {
-//   // console.log('next_imagePath');
-//   let str = (count + my.count_base + 1).toString().padStart(my.image_seq_pad, '0');
-//   return `${my.dbase_rootPath}/${my.clipsName}/${str}${my.imagExt}`;
-// }
