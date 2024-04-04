@@ -58,9 +58,8 @@ function fstorage_download_url({ path, result, error }) {
 
   let imagePath = `${my.dbase_rootPath}/${my.roomName}/${path}`;
 
-  // my.lastDownloadPath = null;
-  // ui_log('fstorage_img_download next_imagePath ' + path);
   let { getStorage, ref, getDownloadURL } = fireb_.fstorage;
+
   getDownloadURL(ref(getStorage(), imagePath))
     .then((url) => {
       ui_log('fstorage_img_download url', url);
