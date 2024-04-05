@@ -68,6 +68,7 @@ function dbase_app_observe({ observed_key, removed_key, observed_item }, options
 }
 window.dbase_app_observe = dbase_app_observe;
 
+// issue dbase_update_props to group
 function dbase_update_item(item) {
   let group = my && my.group;
   if (!group) group = 's0';
@@ -80,3 +81,24 @@ function dbase_update_item(item) {
   dbase_update_props(item, { group: group });
 }
 window.dbase_update_item = dbase_update_item;
+
+// issue dbase_update_props to group if my.group present
+function dbase_group_update(item) {
+  let group = my && my.group;
+  if (group) {
+    dbase_update_item(item);
+  } else {
+    dbase_update_props(item, { group: group });
+  }
+}
+window.dbase_group_update = dbase_group_update;
+
+function dbase_group_observe(props, options) {
+  let group = my && my.group;
+  if (group) {
+    dbase_app_observe(props, options);
+  } else {
+    dbase_devices_observe(props, options);
+  }
+}
+window.dbase_group_observe = dbase_group_observe;
