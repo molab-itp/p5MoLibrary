@@ -6,6 +6,9 @@ function ui_logSummary_div() {
 
   my.logDetail_div = ui_div('logDetail', '');
   ui_set_hidden(my.logDetail_div, my.logDetailFlag);
+
+  my.logSummary_div.style('background-color:#ddd');
+  my.logDetail_div.style('background-color:#eee');
 }
 window.ui_logSummary_div = ui_logSummary_div;
 
