@@ -65,7 +65,7 @@ function position_top() {
 
 function position_bottom() {
   // console.log('position_bottom');
-  let qrwidth = 0.25;
+  let qrwidth = 0.215;
   let margin = 10;
   id_qrcode_src.width = Math.floor(window.innerWidth * qrwidth);
   let x = window.innerWidth - id_qrcode.clientWidth - margin;
