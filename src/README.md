@@ -47,6 +47,10 @@ demos using p5moLibrary internally. plan is to move them to p5moExamples
 
 - play list
 
+  - [NationTime](demo/mo-videoplayer/index.html?qrcode=NationTime.png) [-remote-](demo/mo-videoplayer/index.html)
+
+  - [Welcome To My House by Fils D Frank](demo/mo-videoplayer/?playlist=kinLtCLHYvo&title=Welcome%20To%20My%20House%20by%20Fils%20D%20Frank&qrcode=NationTime.png) - [-remote-](demo/mo-videoplayer/?playlist=kinLtCLHYvo&title=Welcome%20To%20My%20House%20by%20Fils%20D%20Frank)
+
   - [NationTime - edit by Ali Santana](demo/mo-videoplayer/?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png) - [-remote-](demo/mo-videoplayer/?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX)
 
   - [Langston Hughes ](demo/BlackFacts?playlist=XzI3huqpCi4)
