@@ -6,6 +6,7 @@ function init_ui() {
     id_dashboard.classList.add('hidden');
     qrcode_hide();
     id_bottom_message_pane.classList.add('hidden');
+    id_player.style.height = '100%';
   } else {
     if (my.isRemote) {
       create_remote_view();

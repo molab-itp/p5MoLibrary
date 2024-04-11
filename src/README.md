@@ -1,6 +1,6 @@
-# [p5moLibrary](https://github.com/molab-itp/p5moLibrary) ?v=77
+# [p5moLibrary](https://github.com/molab-itp/p5moLibrary) ?v=78
 
-# [github.io](https://molab-itp.github.io/p5moLibrary/src?v=77)
+# [github.io](https://molab-itp.github.io/p5moLibrary/src?v=78)
 
 - a p5js Library for multi screen experiences - mobile devices paired with large screens
 
@@ -12,13 +12,13 @@
 
 demos using p5moLibrary internally. plan is to move them to p5moExamples
 
-- [demo/Astronomical](demo/Astronomical?v=77)
-- [demo/BlackFacts](demo/BlackFacts?v=77)
-- [demo/DrawPoints](demo/DrawPoints?v=77)
-- [demo/Heavenly3D](demo/Heavenly3D?v=77)
-- [demo/mo-astro](demo/mo-astro?v=77)
-- [demo/mo-blackfacts](demo/mo-blackfacts?v=77)
-- [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=77)
+- [demo/Astronomical](demo/Astronomical?v=78)
+- [demo/BlackFacts](demo/BlackFacts?v=78)
+- [demo/DrawPoints](demo/DrawPoints?v=78)
+- [demo/Heavenly3D](demo/Heavenly3D?v=78)
+- [demo/mo-astro](demo/mo-astro?v=78)
+- [demo/mo-blackfacts](demo/mo-blackfacts?v=78)
+- [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=78)
 
 ## demos p5js editor versions
 
@@ -36,16 +36,18 @@ demos using p5moLibrary internally. plan is to move them to p5moExamples
 
   - ["POWER TO THE PEOPLE!" tisch web article](https://tisch.nyu.edu/itp/news/spring-2024/community-facing-interactive-installations-on-the-ground-floor-o)
 
-  - [demo/mo-blackfacts remote](demo/mo-blackfacts?v=77)
-  - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=77&group=s1&qrcode=mo-blackfacts-qrcode-1.png) [-remote-](demo/mo-blackfacts?v=77&group=s1)
-  - [demo/mo-blackfacts s2](demo/mo-blackfacts?v=77&group=s2&qrcode=mo-blackfacts-qrcode-2.png) [-remote-](demo/mo-blackfacts?v=77&group=s2)
-  - [demo/mo-blackfacts s3](demo/mo-blackfacts?v=77&group=s3&qrcode=mo-blackfacts-qrcode-3.png) [-remote-](demo/mo-blackfacts?v=77&group=s3)
-  - [demo/mo-blackfacts s4](demo/mo-blackfacts?v=77&group=s4&qrcode=mo-blackfacts-qrcode-4.png) [-remote-](demo/mo-blackfacts?v=77&group=s4)
-  - [demo/mo-blackfacts s5](demo/mo-blackfacts?v=77&group=s5&qrcode=mo-blackfacts-qrcode-5.png) [-remote-](demo/mo-blackfacts?v=77&group=s5)
-  - [demo/mo-blackfacts s6](demo/mo-blackfacts?v=77&group=s6&qrcode=mo-blackfacts-qrcode-6.png) [-remote-](demo/mo-blackfacts?v=77&group=s6)
-  - [demo/mo-blackfacts s1-s6](demo/mo-blackfacts?v=77&group=s1,s2,s3,s4,s5,s6&qrcode=mo-blackfacts-qrcode-1-6.png) [-remote-](demo/mo-blackfacts?v=77&group=s1,s2,s3,s4,s5,s6)
+  - [demo/mo-blackfacts remote](demo/mo-blackfacts?v=78)
+  - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=78&group=s1&qrcode=mo-blackfacts-qrcode-1.png) [-remote-](demo/mo-blackfacts?v=78&group=s1)
+  - [demo/mo-blackfacts s2](demo/mo-blackfacts?v=78&group=s2&qrcode=mo-blackfacts-qrcode-2.png) [-remote-](demo/mo-blackfacts?v=78&group=s2)
+  - [demo/mo-blackfacts s3](demo/mo-blackfacts?v=78&group=s3&qrcode=mo-blackfacts-qrcode-3.png) [-remote-](demo/mo-blackfacts?v=78&group=s3)
+  - [demo/mo-blackfacts s4](demo/mo-blackfacts?v=78&group=s4&qrcode=mo-blackfacts-qrcode-4.png) [-remote-](demo/mo-blackfacts?v=78&group=s4)
+  - [demo/mo-blackfacts s5](demo/mo-blackfacts?v=78&group=s5&qrcode=mo-blackfacts-qrcode-5.png) [-remote-](demo/mo-blackfacts?v=78&group=s5)
+  - [demo/mo-blackfacts s6](demo/mo-blackfacts?v=78&group=s6&qrcode=mo-blackfacts-qrcode-6.png) [-remote-](demo/mo-blackfacts?v=78&group=s6)
+  - [demo/mo-blackfacts s1-s6](demo/mo-blackfacts?v=78&group=s1,s2,s3,s4,s5,s6&qrcode=mo-blackfacts-qrcode-1-6.png) [-remote-](demo/mo-blackfacts?v=78&group=s1,s2,s3,s4,s5,s6)
 
 - play list
+
+  - [Community: Rhythm / Movement / Joy (2022)](demo/mo-videoplayer/index.html?playlist=8HfVf69nUX0)
 
   - [NationTime](demo/mo-videoplayer/index.html?qrcode=NationTime.png) [-remote-](demo/mo-videoplayer/index.html)
 
@@ -75,21 +77,21 @@ demos using p5moLibrary internally. plan is to move them to p5moExamples
 
 - dev console
 
-  - [demo/js-image-viewer](demo/js-image-viewer?v=77)
-  - [demo/mo-gallery-1](demo/mo-gallery-1?v=77)
-  - [demo/mo-gallery-2](demo/mo-gallery-2?v=77)
-  - [demo/mo-storage-console](demo/mo-storage-console?v=77)
+  - [demo/js-image-viewer](demo/js-image-viewer?v=78)
+  - [demo/mo-gallery-1](demo/mo-gallery-1?v=78)
+  - [demo/mo-gallery-2](demo/mo-gallery-2?v=78)
+  - [demo/mo-storage-console](demo/mo-storage-console?v=78)
 
 <!--
 
 - retired
-  - [demo/mo-astro-host-0](demo/mo-astro-host-0?v=77)
-  - [demo/mo-astro-host-1](demo/mo-astro-host-1?v=77)
-  - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=77)
-  - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=77)
+  - [demo/mo-astro-host-0](demo/mo-astro-host-0?v=78)
+  - [demo/mo-astro-host-1](demo/mo-astro-host-1?v=78)
+  - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=78)
+  - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=78)
 
-  - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=77)
-  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=77)
+  - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=78)
+  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=78)
 
 # https://www.youtube.com/watch?v=hpjNGTYvpxw
 # The Land Carries Our Ancestors: Contemporary Art by Native Americans Exhibition Trailer
