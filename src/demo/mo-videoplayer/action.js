@@ -6,20 +6,18 @@ id_dashboard.addEventListener('click', dashboard_action);
 
 id_button_next.addEventListener('click', next_action);
 id_button_previous.addEventListener('click', previous_action);
-id_button_first.addEventListener('click', first_action);
-id_button_random.addEventListener('click', random_action);
+id_button_play.addEventListener('click', play_action);
+id_button_pause.addEventListener('click', pause_action);
+id_button_rewind.addEventListener('click', rewind_action);
+id_button_resume.addEventListener('click', resume_action);
 
+// id_button_first.addEventListener('click', first_action);
+// id_button_random.addEventListener('click', random_action)
 // id_checkbox_play_clip.addEventListener('click', play_clip_action);
 // id_checkbox_qrcode.addEventListener('click', checkbox_qrcode_action);
 
 id_button_toggle_buttons.addEventListener('click', toggle_buttons_action);
-id_button_library.addEventListener('click', library_action);
-
-id_button_play.addEventListener('click', play_action);
-id_button_pause.addEventListener('click', pause_action);
-id_button_rewind.addEventListener('click', rewind_action);
-
-id_button_resume.addEventListener('click', resume_action);
+// id_button_library.addEventListener('click', library_action);
 
 id_qrcode.addEventListener('click', qrcode_click_action);
 
@@ -31,7 +29,7 @@ let a_target;
 function dashboard_action(event) {
   console.log('dashboard_action');
   var target = event.target;
-  a_target = target;
+  // a_target = target;
   if (target == id_dashboard) {
     console.log('dashboard_action id_dashboard');
     player.playVideo();
@@ -92,8 +90,8 @@ function library_action() {
 function toggle_buttons_action() {
   console.log('toggle_buttons_action');
   toggle_365_panes();
-  let vis = id_index_button_container.classList.contains('hidden');
-  id_button_toggle_buttons.innerHTML = vis ? 'Show 365' : 'Hide 365';
+  // let vis = id_index_button_container.classList.contains('hidden');
+  // id_button_toggle_buttons.innerHTML = vis ? 'Show 365' : 'Hide 365';
 }
 
 function toggle_365_panes() {
