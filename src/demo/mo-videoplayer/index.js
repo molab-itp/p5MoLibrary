@@ -18,7 +18,7 @@ function document_loaded() {
 
   // let config = fireb_.init('jht9629');
   // // let config = fireb_.init('jht1493');
-  // console.log('?v=81 config.projectId', config.projectId);
+  // console.log('?v=82 config.projectId', config.projectId);
   // console.log('configLabel', config.configLabel);
 
   dbase_app_init({ completed: app_init_completed });
