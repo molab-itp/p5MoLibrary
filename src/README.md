@@ -49,9 +49,9 @@ demos using p5moLibrary internally. plan is to move them to p5moExamples
 
 - garage play list using mo-videplayer
   - [demo/mo-videoplayer s1](demo/mo-videoplayer?v=80&group=s1&qrcode=mo-videoplayer-qrcode-1.png)
-    [[remote](demo/mo-videoplayer?v=80&group=s1)]
+    [[remote](qrcode/mo-videoplayer.html?v=80&group=s1)]
   - [demo/mo-videoplayer s2](demo/mo-videoplayer?v=80&group=s2&qrcode=mo-videoplayer-qrcode-2.png)
-    [[remote](demo/mo-videoplayer?v=80&group=s2)]
+    [[remote](qrcode/mo-videoplayer.html?v=80&group=s2)]
 
 ## NatimeTime play list
 
