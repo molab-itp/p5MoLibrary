@@ -21,11 +21,6 @@ function setup() {
   my.animLoop.start();
   // }
 
-  // dbase interface
-  // let config = fireb_.init('jht9629');
-  // // let config = fireb_.init('jht1493');
-  // console.log('?v=82 config.projectId', config.projectId, 'configLabel', config.configLabel);
-
   my.fireb_config = 'jht9629';
   // my.fireb_config = 'jht1493';
   // my.fireb_config = 'jhtitp';
