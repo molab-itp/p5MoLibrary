@@ -5,13 +5,13 @@ function my_init() {
   // my.fireb_config = 'jht1493';
   // my.fireb_config = 'jhtitp';
   my.dbase_rootPath = 'm0-@r-@w-';
-  my.mo_app = 'mo-nationtime';
-  my.roomName = 'room1';
+  my.mo_app = 'mo-videoplayer';
+  my.roomName = 'room0';
   // my.roomName = 'room1';
   my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
-  my.nameDevice = 'device?v=79';
+  my.nameDevice = 'device?v=80';
   my.pingTime = 1;
 
   // my.isRemote = window.innerHeight > window.innerWidth;

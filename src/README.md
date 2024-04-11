@@ -1,6 +1,6 @@
-# [p5moLibrary](https://github.com/molab-itp/p5moLibrary) ?v=79
+# [p5moLibrary](https://github.com/molab-itp/p5moLibrary) ?v=80
 
-# [github.io](https://molab-itp.github.io/p5moLibrary/src?v=79)
+# [github.io](https://molab-itp.github.io/p5moLibrary/src?v=80)
 
 - a p5js Library for multi screen experiences - mobile devices paired with large screens
 
@@ -12,13 +12,13 @@
 
 demos using p5moLibrary internally. plan is to move them to p5moExamples
 
-- [demo/Astronomical](demo/Astronomical?v=79)
-- [demo/BlackFacts](demo/BlackFacts?v=79)
-- [demo/DrawPoints](demo/DrawPoints?v=79)
-- [demo/Heavenly3D](demo/Heavenly3D?v=79)
-- [demo/mo-astro](demo/mo-astro?v=79)
-- [demo/mo-blackfacts](demo/mo-blackfacts?v=79)
-- [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=79)
+- [demo/Astronomical](demo/Astronomical?v=80)
+- [demo/BlackFacts](demo/BlackFacts?v=80)
+- [demo/DrawPoints](demo/DrawPoints?v=80)
+- [demo/Heavenly3D](demo/Heavenly3D?v=80)
+- [demo/mo-astro](demo/mo-astro?v=80)
+- [demo/mo-blackfacts](demo/mo-blackfacts?v=80)
+- [demo/mo-storage-dashboard](demo/mo-storage-dashboard?v=80)
 
 ## demos p5js editor versions
 
@@ -36,39 +36,47 @@ demos using p5moLibrary internally. plan is to move them to p5moExamples
 
   - ["POWER TO THE PEOPLE!" tisch web article](https://tisch.nyu.edu/itp/news/spring-2024/community-facing-interactive-installations-on-the-ground-floor-o)
 
-  - [demo/mo-blackfacts remote](demo/mo-blackfacts?v=79)
-  - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=79&group=s1&qrcode=mo-blackfacts-qrcode-1.png) [-remote-](demo/mo-blackfacts?v=79&group=s1)
-  - [demo/mo-blackfacts s2](demo/mo-blackfacts?v=79&group=s2&qrcode=mo-blackfacts-qrcode-2.png) [-remote-](demo/mo-blackfacts?v=79&group=s2)
-  - [demo/mo-blackfacts s3](demo/mo-blackfacts?v=79&group=s3&qrcode=mo-blackfacts-qrcode-3.png) [-remote-](demo/mo-blackfacts?v=79&group=s3)
-  - [demo/mo-blackfacts s4](demo/mo-blackfacts?v=79&group=s4&qrcode=mo-blackfacts-qrcode-4.png) [-remote-](demo/mo-blackfacts?v=79&group=s4)
-  - [demo/mo-blackfacts s5](demo/mo-blackfacts?v=79&group=s5&qrcode=mo-blackfacts-qrcode-5.png) [-remote-](demo/mo-blackfacts?v=79&group=s5)
-  - [demo/mo-blackfacts s6](demo/mo-blackfacts?v=79&group=s6&qrcode=mo-blackfacts-qrcode-6.png) [-remote-](demo/mo-blackfacts?v=79&group=s6)
-  - [demo/mo-blackfacts s1-s6](demo/mo-blackfacts?v=79&group=s1,s2,s3,s4,s5,s6&qrcode=mo-blackfacts-qrcode-1-6.png) [-remote-](demo/mo-blackfacts?v=79&group=s1,s2,s3,s4,s5,s6)
+  - [demo/mo-blackfacts remote](demo/mo-blackfacts?v=80)
+  - [demo/mo-blackfacts s1](demo/mo-blackfacts?v=80&group=s1&qrcode=mo-blackfacts-qrcode-1.png) [-remote-](demo/mo-blackfacts?v=80&group=s1)
+  - [demo/mo-blackfacts s2](demo/mo-blackfacts?v=80&group=s2&qrcode=mo-blackfacts-qrcode-2.png) [-remote-](demo/mo-blackfacts?v=80&group=s2)
+  - [demo/mo-blackfacts s3](demo/mo-blackfacts?v=80&group=s3&qrcode=mo-blackfacts-qrcode-3.png) [-remote-](demo/mo-blackfacts?v=80&group=s3)
+  - [demo/mo-blackfacts s4](demo/mo-blackfacts?v=80&group=s4&qrcode=mo-blackfacts-qrcode-4.png) [-remote-](demo/mo-blackfacts?v=80&group=s4)
+  - [demo/mo-blackfacts s5](demo/mo-blackfacts?v=80&group=s5&qrcode=mo-blackfacts-qrcode-5.png) [-remote-](demo/mo-blackfacts?v=80&group=s5)
+  - [demo/mo-blackfacts s6](demo/mo-blackfacts?v=80&group=s6&qrcode=mo-blackfacts-qrcode-6.png) [-remote-](demo/mo-blackfacts?v=80&group=s6)
+  - [demo/mo-blackfacts s1-s6](demo/mo-blackfacts?v=80&group=s1,s2,s3,s4,s5,s6&qrcode=mo-blackfacts-qrcode-1-6.png) [-remote-](demo/mo-blackfacts?v=80&group=s1,s2,s3,s4,s5,s6)
 
-- play list
+## garage play list
 
-  - [Community: Rhythm / Movement / Joy (2022)](demo/mo-videoplayer/index.html?playlist=8HfVf69nUX0)
+- garage play list using mo-videplayer
+  - [demo/mo-videoplayer s1](demo/mo-videoplayer?v=80&group=s1&qrcode=mo-videoplayer-qrcode-1.png)
+    [[remote](demo/mo-videoplayer?v=80&group=s1)]
+  - [demo/mo-videoplayer s2](demo/mo-videoplayer?v=80&group=s2&qrcode=mo-videoplayer-qrcode-2.png)
+    [[remote](demo/mo-videoplayer?v=80&group=s2)]
 
-  - [NationTime](demo/mo-videoplayer/index.html?qrcode=NationTime.png) [-remote-](demo/mo-videoplayer/index.html)
+## NatimeTime play list
 
-  - [Welcome To My House by Fils D Frank](demo/mo-videoplayer/?playlist=kinLtCLHYvo&title=Welcome%20To%20My%20House%20by%20Fils%20D%20Frank&qrcode=NationTime.png) - [-remote-](demo/mo-videoplayer/?playlist=kinLtCLHYvo&title=Welcome%20To%20My%20House%20by%20Fils%20D%20Frank)
+- [Community: Rhythm / Movement / Joy (2022)](demo/mo-videoplayer/index.html?playlist=8HfVf69nUX0)
 
-  - [NationTime - edit by Ali Santana](demo/mo-videoplayer/?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png) - [-remote-](demo/mo-videoplayer/?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX)
+- [NationTime](demo/mo-videoplayer/index.html?qrcode=NationTime.png) [-remote-](demo/mo-videoplayer/index.html)
 
-  - [Langston Hughes ](demo/BlackFacts?playlist=XzI3huqpCi4)
+- [Welcome To My House by Fils D Frank](demo/mo-videoplayer/?playlist=kinLtCLHYvo&title=Welcome%20To%20My%20House%20by%20Fils%20D%20Frank&qrcode=NationTime.png) - [-remote-](demo/mo-videoplayer/?playlist=kinLtCLHYvo&title=Welcome%20To%20My%20House%20by%20Fils%20D%20Frank)
 
-    - [Let America be America Again - video](demo/mo-blackfacts?playlist=CFNM8GB_Yp0&title=%E2%98%85)
-    - [Let America be America Again - poets.org](https://poets.org/poem/let-america-be-america-again)
+- [NationTime - edit by Ali Santana](demo/mo-videoplayer/?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png) - [-remote-](demo/mo-videoplayer/?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX)
 
-  - [Native Americans Exhibition Trailer](demo/BlackFacts?playlist=hpjNGTYvpxw)
+- [Langston Hughes ](demo/BlackFacts?playlist=XzI3huqpCi4)
 
-  - [Sonia Sanchez @ NMAAHC - Furious Flower](demo/mo-blackfacts?playlist=FNLp8e-cfgk&title=Sonia%20Sanchez)
+  - [Let America be America Again - video](demo/mo-blackfacts?playlist=CFNM8GB_Yp0&title=%E2%98%85)
+  - [Let America be America Again - poets.org](https://poets.org/poem/let-america-be-america-again)
 
-  - [NationTime - edit by Ali Santana](demo/mo-videoplayer?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png)
+- [Native Americans Exhibition Trailer](demo/BlackFacts?playlist=hpjNGTYvpxw)
 
-  - [MEET THE ARTIST - JULIAN ADON ALEXANDER](demo/mo-blackfacts?playlist=wk0La_2igws&title=MEET%20THE%20ARTIST%20-%20JULIAN%20ADON%20ALEXANDE%20-%20What%20it%20is&qrcode=JULIAN.png)
+- [Sonia Sanchez @ NMAAHC - Furious Flower](demo/mo-blackfacts?playlist=FNLp8e-cfgk&title=Sonia%20Sanchez)
 
-  - [2024-02-07-nyu-mlk-event](demo/mo-blackfacts?playlist=lG758MniLYg&qrcode=annoucement-01.png&title=2024-02-07-nyu-mlk-event)
+- [NationTime - edit by Ali Santana](demo/mo-videoplayer?playlist=-UtKxghWlvY&title=NationTime%20-%20ELUCID%20-%20BETAMAX&qrcode=NationTime.png)
+
+- [MEET THE ARTIST - JULIAN ADON ALEXANDER](demo/mo-blackfacts?playlist=wk0La_2igws&title=MEET%20THE%20ARTIST%20-%20JULIAN%20ADON%20ALEXANDE%20-%20What%20it%20is&qrcode=JULIAN.png)
+
+- [2024-02-07-nyu-mlk-event](demo/mo-blackfacts?playlist=lG758MniLYg&qrcode=annoucement-01.png&title=2024-02-07-nyu-mlk-event)
 
 - retired
 
@@ -77,21 +85,21 @@ demos using p5moLibrary internally. plan is to move them to p5moExamples
 
 - dev console
 
-  - [demo/js-image-viewer](demo/js-image-viewer?v=79)
-  - [demo/mo-gallery-1](demo/mo-gallery-1?v=79)
-  - [demo/mo-gallery-2](demo/mo-gallery-2?v=79)
-  - [demo/mo-storage-console](demo/mo-storage-console?v=79)
+  - [demo/js-image-viewer](demo/js-image-viewer?v=80)
+  - [demo/mo-gallery-1](demo/mo-gallery-1?v=80)
+  - [demo/mo-gallery-2](demo/mo-gallery-2?v=80)
+  - [demo/mo-storage-console](demo/mo-storage-console?v=80)
 
 <!--
 
 - retired
-  - [demo/mo-astro-host-0](demo/mo-astro-host-0?v=79)
-  - [demo/mo-astro-host-1](demo/mo-astro-host-1?v=79)
-  - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=79)
-  - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=79)
+  - [demo/mo-astro-host-0](demo/mo-astro-host-0?v=80)
+  - [demo/mo-astro-host-1](demo/mo-astro-host-1?v=80)
+  - [demo/mo-astro-remote-0](demo/mo-astro-remote-0?v=80)
+  - [demo/mo-astro-remote-1](demo/mo-astro-remote-1?v=80)
 
-  - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=79)
-  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=79)
+  - [demo/mo-blackfacts-host](demo/mo-blackfacts-host?v=80)
+  - [demo/mo-blackfacts-remote](demo/mo-blackfacts-remote?v=80)
 
 # https://www.youtube.com/watch?v=hpjNGTYvpxw
 # The Land Carries Our Ancestors: Contemporary Art by Native Americans Exhibition Trailer

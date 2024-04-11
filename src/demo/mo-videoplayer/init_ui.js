@@ -47,17 +47,9 @@ function create_controlled_view() {
 
 function show_qrcode_top_right() {
   qrcode_show();
-  if (0) {
-    // place qrcode image at top right
-    let x = window.innerWidth - id_qrcode.clientWidth;
-    let y = window.innerHeight - id_qrcode.clientHeight;
-    id_qrcode.style.left = x + 'px';
-    // id_qrcode.style.top = y + 'px';
-  }
-  if (1) {
-    position_top();
-    position_bottom();
-  }
+
+  position_top();
+  position_bottom();
 }
 
 function position_top() {
