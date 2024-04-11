@@ -21,8 +21,8 @@ id_button_toggle_buttons.addEventListener('click', toggle_buttons_action);
 
 id_qrcode.addEventListener('click', qrcode_click_action);
 
-id_button_echo_delay_0.addEventListener('click', echo_delay_0_action);
-id_button_echo_delay_n.addEventListener('click', echo_delay_n_action);
+// id_button_echo_delay_0.addEventListener('click', echo_delay_0_action);
+// id_button_echo_delay_n.addEventListener('click', echo_delay_n_action);
 
 let a_target;
 
