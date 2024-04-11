@@ -1,0 +1,297 @@
+[
+  {
+    "uid": "CtpzL970vbQnZYahXXYecaPhQRy1",
+    "index": 0,
+    "dbase": {
+      "date_s": "2024-03-14T00:34:04.202Z",
+      "name_s": "device?v=47",
+      "time": 0,
+      "time_s": "",
+      "update": [
+        {
+          "date_s": "2024-03-14T00:34:04.202Z",
+          "gap": 65808,
+          "gap_s": "1 mins 5.808 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:32:58.394Z",
+          "gap": 24071,
+          "gap_s": "24.071 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:32:34.323Z",
+          "gap": 67225,
+          "gap_s": "1 mins 7.225 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:31:27.098Z",
+          "gap": 37521,
+          "gap_s": "37.521 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:30:49.577Z",
+          "gap": 51045,
+          "gap_s": "51.045 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:29:58.532Z",
+          "gap": 49506,
+          "gap_s": "49.506 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:29:09.026Z",
+          "gap": 28663,
+          "gap_s": "28.663 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:28:40.363Z",
+          "gap": 77930,
+          "gap_s": "1 mins 17.930 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:27:22.433Z",
+          "gap": 8931,
+          "gap_s": "8.931 secs",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "update_count": 124,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-03-13T22:51:30.687Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "D1z0LaLpK6eENNkbRnXsImukCPI2",
+    "index": 1,
+    "dbase": {
+      "date_s": "2024-03-14T00:34:03.784Z",
+      "name_s": "device?v=47",
+      "time": 0,
+      "time_s": "",
+      "update": [
+        {
+          "date_s": "2024-03-14T00:34:03.784Z",
+          "gap": 97869,
+          "gap_s": "1 mins 37.869 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:32:25.915Z",
+          "gap": 116379,
+          "gap_s": "1 mins 56.379 secs",
+          "time": 1640,
+          "time_s": "1.640 secs"
+        },
+        {
+          "date_s": "2024-03-14T00:30:27.896Z",
+          "gap": 16380,
+          "gap_s": "16.380 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:30:11.516Z",
+          "gap": 91659,
+          "gap_s": "1 mins 31.659 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:28:39.857Z",
+          "gap": 44876,
+          "gap_s": "44.876 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:27:54.981Z",
+          "gap": 62036,
+          "gap_s": "1 mins 2.036 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:26:52.945Z",
+          "gap": 54105,
+          "gap_s": "54.105 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:25:58.840Z",
+          "gap": 58880,
+          "gap_s": "58.880 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:24:59.960Z",
+          "gap": 69376,
+          "gap_s": "1 mins 9.376 secs",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "update_count": 106,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Safari/605.1.15",
+      "visit": [
+        {
+          "date_s": "2024-03-13T22:51:37.901Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "V68h5MHyyVSjv7ozb05ExxNPjB22",
+    "index": 2,
+    "dbase": {
+      "date_s": "2024-03-14T00:33:51.571Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-03-14T00:33:51.571Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "hB2ZYjZK8fV2i9lrwQTGUju3Ahi1",
+    "index": 3,
+    "dbase": {
+      "date_s": "2024-03-14T00:33:46.737Z",
+      "name_s": "device?v=15",
+      "time": 0,
+      "time_s": "",
+      "update": [
+        {
+          "date_s": "2024-03-14T00:33:46.737Z",
+          "gap": 54386,
+          "gap_s": "54.386 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:32:52.351Z",
+          "gap": 13832,
+          "gap_s": "13.832 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:32:38.519Z",
+          "gap": 30343,
+          "gap_s": "30.343 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:32:08.176Z",
+          "gap": 81628,
+          "gap_s": "1 mins 21.628 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:30:46.548Z",
+          "gap": 2561,
+          "gap_s": "2.561 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:30:43.987Z",
+          "gap": 30476,
+          "gap_s": "30.476 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:30:13.511Z",
+          "gap": 72706,
+          "gap_s": "1 mins 12.706 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:29:00.805Z",
+          "gap": 3403,
+          "gap_s": "3.403 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-03-14T00:28:57.402Z",
+          "gap": 41267,
+          "gap_s": "41.267 secs",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "update_count": 164,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-03-13T22:51:18.536Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 3
+    }
+  },
+  {
+    "uid": "l7ap6WWKosNZ4t4rthjyixKOEym2",
+    "index": 4,
+    "dbase": {
+      "date_s": "2024-03-13T22:51:01.290Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-03-13T22:51:01.290Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  }
+]

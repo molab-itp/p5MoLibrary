@@ -1,0 +1,342 @@
+[
+  {
+    "uid": "kA4I6uwKWWM2KOxXyM7xD8rEuPt1",
+    "index": 19,
+    "serverValues": {
+      "date_s": "2024-02-15T05:23:34.615Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "Uf7Neh1vbsbsjk6ayjR5Tmzj0zP2",
+    "index": 11,
+    "serverValues": {
+      "date_s": "2024-02-15T05:23:00.681Z",
+      "name_s": "device?v=156",
+      "time": 0,
+      "time_s": "",
+      "update_count": 391,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2.1 Safari/605.1.15",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "hB2ZYjZK8fV2i9lrwQTGUju3Ahi1",
+    "index": 18,
+    "serverValues": {
+      "date_s": "2024-02-15T05:22:56.389Z",
+      "name_s": "device?v=156",
+      "time": 0,
+      "time_s": "",
+      "update_count": 795,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "ENIJqqFEhKQ6r1AEFvJ9fLUEj7J3",
+    "index": 6,
+    "serverValues": {
+      "date_s": "2024-02-15T05:22:51.080Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 6,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 6
+    }
+  },
+  {
+    "uid": "e6QyFsx5EpajVNguUinEXhLUZag2",
+    "index": 16,
+    "serverValues": {
+      "date_s": "2024-02-15T05:22:41.082Z",
+      "name_s": "device?v=156",
+      "time": 0,
+      "time_s": "",
+      "update_count": 391,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15",
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "mnj9jhB44af35rsVAU6gOyMKEyh2",
+    "index": 22,
+    "serverValues": {
+      "date_s": "2024-02-15T05:12:32.869Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "c03ef8F8GhfseUWqkI6HW04pMnt1",
+    "index": 14,
+    "serverValues": {
+      "date_s": "2024-02-15T05:01:13.611Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "r8FzDDV6JYRZsLTy94Awvm1w7I52",
+    "index": 24,
+    "serverValues": {
+      "date_s": "2024-02-15T05:00:13.748Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "HJvCHyrKWzTEt4r3cP13EWJ2Eas1",
+    "index": 7,
+    "serverValues": {
+      "date_s": "2024-02-15T04:57:16.021Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "6f9qA9mDIoMAYl2feeX4sC9iT623",
+    "index": 3,
+    "serverValues": {
+      "date_s": "2024-02-15T02:09:36.525Z",
+      "group": "s1",
+      "name_s": "device?v=12",
+      "portrait": 1,
+      "time": 10089,
+      "time_s": "10.089 secs",
+      "update_count": 30,
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Mobile Safari/537.36",
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "KyrUGFs5GOSTz8q3RitbnV8Q7E53",
+    "index": 9,
+    "serverValues": {
+      "date_s": "2024-02-15T01:40:13.804Z",
+      "group": "s2",
+      "name_s": "device?v=12",
+      "portrait": 1,
+      "time": 8092,
+      "time_s": "8.092 secs",
+      "update_count": 51,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1",
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "Hrd94EW8j4MJjePl9Lg89MhpMmG3",
+    "index": 8,
+    "serverValues": {
+      "date_s": "2024-02-15T01:39:42.114Z",
+      "group": "s1",
+      "name_s": "device?v=12",
+      "portrait": 1,
+      "time": 11104,
+      "time_s": "11.104 secs",
+      "update_count": 36,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1.1 Mobile/15E148 Safari/604.1",
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "2336p3xgS2YLMEJfcZrbjJKmiMw1",
+    "index": 2,
+    "serverValues": {
+      "date_s": "2024-02-14T20:53:35.214Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 2,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2.1 Safari/605.1.15",
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "BT1bzKZfCWQHo31kuqKMQfwfw7r2",
+    "index": 4,
+    "serverValues": {
+      "date_s": "2024-02-14T19:54:09.903Z",
+      "group": "s4",
+      "name_s": "device?v=12",
+      "portrait": 1,
+      "time": 5056,
+      "time_s": "5.056 secs",
+      "update_count": 8,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Mobile/15E148 Safari/604.1",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "ClWdj40R4BPQjSzll5z8zSh37jA3",
+    "index": 5,
+    "serverValues": {
+      "date_s": "2024-02-14T19:35:17.754Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "V68h5MHyyVSjv7ozb05ExxNPjB22",
+    "index": 12,
+    "serverValues": {
+      "date_s": "2024-02-14T19:34:29.924Z",
+      "name_s": "",
+      "portrait": 1,
+      "time": 0,
+      "time_s": "",
+      "update_count": 620,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 7
+    }
+  },
+  {
+    "uid": "fQ4fMCXFcJSTrJ6Dtye4CxvLgf63",
+    "index": 17,
+    "serverValues": {
+      "date_s": "2024-02-14T19:32:49.403Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "0NVd9Eb8vdThJg7pGyLWOfVLcf93",
+    "index": 0,
+    "serverValues": {
+      "date_s": "2024-02-14T19:31:48.074Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 2,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "e0Iae8pZRBN8WEtzRFGGWdUG7Xv1",
+    "index": 15,
+    "serverValues": {
+      "date_s": "2024-02-14T18:23:19.820Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "bTTguVrkHtaOmcrEe6fBh93XMMy1",
+    "index": 13,
+    "serverValues": {
+      "date_s": "2024-02-14T18:15:34.947Z",
+      "name_s": "device?v=11",
+      "portrait": 1,
+      "time": 993,
+      "time_s": "0.993 secs",
+      "update_count": 104,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2.1 Safari/605.1.15",
+      "visit_count": 3
+    }
+  },
+  {
+    "uid": "pXqZQhA39rbkU6v2KuVGjvkERGO2",
+    "index": 23,
+    "serverValues": {
+      "date_s": "2024-02-14T18:09:32.118Z",
+      "group": "s4",
+      "name_s": "device?v=12",
+      "portrait": 1,
+      "time": 7034,
+      "time_s": "7.034 secs",
+      "update_count": 10,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/604.1",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "1SAyH93bFheqrHmSTA6tChnUJ3B3",
+    "index": 1,
+    "serverValues": {
+      "date_s": "2024-02-14T18:06:33.512Z",
+      "group": "yt2024-02--06",
+      "name_s": "device?v=12",
+      "portrait": 1,
+      "time": 3199,
+      "time_s": "3.199 secs",
+      "update_count": 9,
+      "userAgent": "Google-Safety",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "m4kdYnkrDzLcyomZ0sPHA2wWA0n2",
+    "index": 21,
+    "serverValues": {
+      "date_s": "2024-02-14T18:01:25.910Z",
+      "name_s": "device?v=12",
+      "portrait": 1,
+      "time": 3048,
+      "time_s": "3.048 secs",
+      "update_count": 36,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 4
+    }
+  },
+  {
+    "uid": "PE0JaOLAv0Ri6hCS4i1ozI9g9dD3",
+    "index": 10,
+    "serverValues": {
+      "date_s": "2024-02-14T17:56:17.986Z",
+      "name_s": "device?v=11",
+      "time": 0,
+      "time_s": "",
+      "update_count": 2,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36",
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "l7ap6WWKosNZ4t4rthjyixKOEym2",
+    "index": 20,
+    "serverValues": {
+      "date_s": "2024-02-14T17:54:59.784Z",
+      "name_s": "device?v=11",
+      "time": 0,
+      "time_s": "",
+      "update_count": 2,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit_count": 1
+    }
+  }
+]

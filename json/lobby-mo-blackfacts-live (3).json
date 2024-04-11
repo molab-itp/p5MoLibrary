@@ -1,0 +1,1760 @@
+[
+  {
+    "uid": "hB2ZYjZK8fV2i9lrwQTGUju3Ahi1",
+    "index": 27,
+    "serverValues": {
+      "date_s": "2024-02-18T20:43:16.391Z",
+      "name_s": "device?v=156",
+      "time": 0,
+      "time_s": "",
+      "update": [
+        {
+          "date_s": "2024-02-18T20:43:16.391Z",
+          "gap": 34363,
+          "gap_s": "34.363 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:42:42.028Z",
+          "gap": 66651,
+          "gap_s": "1 mins 6.651 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:41:35.377Z",
+          "gap": 9878,
+          "gap_s": "9.878 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:41:25.499Z",
+          "gap": 81281,
+          "gap_s": "1 mins 21.281 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:40:04.218Z",
+          "gap": 11476,
+          "gap_s": "11.476 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:39:52.742Z",
+          "gap": 80490,
+          "gap_s": "1 mins 20.490 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:38:32.252Z",
+          "gap": 42067,
+          "gap_s": "42.067 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:37:50.185Z",
+          "gap": 70914,
+          "gap_s": "1 mins 10.914 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:36:39.271Z",
+          "gap": 55548,
+          "gap_s": "55.548 secs",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "update_count": 5673,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-15T05:41:30.862Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "VVlwXfC3LXThKKraRMWC01sQEm32",
+    "index": 16,
+    "serverValues": {
+      "date_s": "2024-02-18T20:42:50.533Z",
+      "name_s": "device?v=14",
+      "time": 0,
+      "time_s": "",
+      "update": [
+        {
+          "date_s": "2024-02-18T20:42:50.533Z",
+          "gap": 122782,
+          "gap_s": "2 mins 2.782 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:40:47.751Z",
+          "gap": 126651,
+          "gap_s": "2 mins 6.651 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:38:41.100Z",
+          "gap": 115787,
+          "gap_s": "1 mins 55.787 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:36:45.313Z",
+          "gap": 132011,
+          "gap_s": "2 mins 12.011 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:34:33.302Z",
+          "gap": 55807,
+          "gap_s": "55.807 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:33:37.495Z",
+          "gap": 116648,
+          "gap_s": "1 mins 56.648 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:31:40.847Z",
+          "gap": 104784,
+          "gap_s": "1 mins 44.784 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:29:56.063Z",
+          "gap": 96946,
+          "gap_s": "1 mins 36.946 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:28:19.117Z",
+          "gap": 132779,
+          "gap_s": "2 mins 12.779 secs",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "update_count": 962,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15",
+      "visit": [
+        {
+          "date_s": "2024-02-17T14:48:03.455Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "dM2v0cy52hY4fG6g7pVbecJpDT53",
+    "index": 21,
+    "serverValues": {
+      "date_s": "2024-02-18T20:41:36.653Z",
+      "name_s": "device?v=14",
+      "time": 0,
+      "time_s": "",
+      "update": [
+        {
+          "date_s": "2024-02-18T20:41:36.653Z",
+          "gap": 126629,
+          "gap_s": "2 mins 6.629 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:39:30.024Z",
+          "gap": 115893,
+          "gap_s": "1 mins 55.893 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:37:34.131Z",
+          "gap": 132429,
+          "gap_s": "2 mins 12.429 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:35:21.702Z",
+          "gap": 55730,
+          "gap_s": "55.730 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:34:25.972Z",
+          "gap": 116643,
+          "gap_s": "1 mins 56.643 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:32:29.329Z",
+          "gap": 104873,
+          "gap_s": "1 mins 44.873 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:30:44.456Z",
+          "gap": 96853,
+          "gap_s": "1 mins 36.853 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:29:07.603Z",
+          "gap": 133033,
+          "gap_s": "2 mins 13.033 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:26:54.570Z",
+          "gap": 119637,
+          "gap_s": "1 mins 59.637 secs",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "update_count": 962,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2.1 Safari/605.1.15",
+      "visit": [
+        {
+          "date_s": "2024-02-17T14:47:11.613Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "e0Iae8pZRBN8WEtzRFGGWdUG7Xv1",
+    "index": 24,
+    "serverValues": {
+      "date_s": "2024-02-18T20:22:57.250Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 8,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-18T20:22:57.250Z",
+          "gap": 39297,
+          "gap_s": "39.297 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:22:17.953Z",
+          "gap": 87177,
+          "gap_s": "1 mins 27.177 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:20:50.776Z",
+          "gap": 96339,
+          "gap_s": "1 mins 36.339 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T20:19:14.437Z",
+          "gap": 11472587,
+          "gap_s": "3 hours 11 mins 12.587 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T17:08:01.850Z",
+          "gap": 54229,
+          "gap_s": "54.229 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T17:07:07.621Z",
+          "gap": 19926,
+          "gap_s": "19.926 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T17:06:47.695Z",
+          "gap": 483094,
+          "gap_s": "8 mins 3.094 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T16:58:44.601Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 8
+    }
+  },
+  {
+    "uid": "oydFETqRDFW7xYpfmH8WS9CHr963",
+    "index": 31,
+    "serverValues": {
+      "date_s": "2024-02-18T19:12:40.611Z",
+      "group": "s3",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 2034,
+      "time_s": "2.034 secs",
+      "update": [
+        {
+          "date_s": "2024-02-18T19:12:40.611Z",
+          "gap": 51232572,
+          "gap_s": "14 hours 13 mins 52.572 secs",
+          "time": 2034,
+          "time_s": "2.034 secs"
+        },
+        {
+          "date_s": "2024-02-18T04:58:46.005Z",
+          "gap": 9612141,
+          "gap_s": "2 hours 40 mins 12.141 secs",
+          "time": 4049,
+          "time_s": "4.049 secs"
+        },
+        {
+          "date_s": "2024-02-18T02:18:29.815Z",
+          "gap": 5000,
+          "gap_s": "5.000 secs",
+          "time": 133885,
+          "time_s": "2 mins 13.885 secs"
+        },
+        {
+          "date_s": "2024-02-18T02:16:10.930Z",
+          "gap": 7355,
+          "gap_s": "7.355 secs",
+          "time": 46224,
+          "time_s": "46.224 secs"
+        },
+        {
+          "date_s": "2024-02-18T02:15:17.351Z",
+          "gap": 90068,
+          "gap_s": "1 mins 30.068 secs",
+          "time": 70997,
+          "time_s": "1 mins 10.997 secs"
+        },
+        {
+          "date_s": "2024-02-18T02:12:36.286Z",
+          "gap": 18839,
+          "gap_s": "18.839 secs",
+          "time": 55005,
+          "time_s": "55.005 secs"
+        },
+        {
+          "date_s": "2024-02-18T02:11:22.442Z",
+          "gap": 299105,
+          "gap_s": "4 mins 59.105 secs",
+          "time": 1184,
+          "time_s": "1.184 secs"
+        },
+        {
+          "date_s": "2024-02-18T02:06:22.153Z",
+          "gap": 29541,
+          "gap_s": "29.541 secs",
+          "time": 19279,
+          "time_s": "19.279 secs"
+        },
+        {
+          "date_s": "2024-02-18T02:05:33.333Z",
+          "gap": 14356331,
+          "gap_s": "3 hours 59 mins 16.331 secs",
+          "time": 100395,
+          "time_s": "1 mins 40.395 secs"
+        }
+      ],
+      "update_count": 1899,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-18T19:12:38.152Z",
+          "gap": 95838,
+          "gap_s": "1 mins 35.838 secs",
+          "time": 355,
+          "time_s": "0.355 secs"
+        },
+        {
+          "date_s": "2024-02-18T19:11:01.959Z",
+          "gap": 21614432,
+          "gap_s": "6 hours 14.432 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T13:10:47.527Z",
+          "gap": 5124372,
+          "gap_s": "1 hours 25 mins 24.372 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T11:45:23.155Z",
+          "gap": 85129,
+          "gap_s": "1 mins 25.129 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T11:43:58.026Z",
+          "gap": 34062924,
+          "gap_s": "9 hours 27 mins 42.924 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T02:16:15.102Z",
+          "gap": 51190,
+          "gap_s": "51.190 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T02:15:23.912Z",
+          "gap": 78385,
+          "gap_s": "1 mins 18.385 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T02:14:05.527Z",
+          "gap": 145003,
+          "gap_s": "2 mins 25.003 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T02:11:40.524Z",
+          "gap": 338493,
+          "gap_s": "5 mins 38.493 secs",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 33
+    }
+  },
+  {
+    "uid": "kbWVuqt9C9ZxqNSmYvxSyqwRUsB3",
+    "index": 29,
+    "serverValues": {
+      "date_s": "2024-02-18T18:50:05.508Z",
+      "group": "s4",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 0,
+      "time_s": "",
+      "update": [
+        {
+          "date_s": "2024-02-18T18:50:05.508Z",
+          "gap": 2049,
+          "gap_s": "2.049 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T18:50:03.459Z",
+          "time": 24766,
+          "time_s": "24.766 secs"
+        }
+      ],
+      "update_count": 35,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-18T18:49:37.768Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "dPlfy7TRzTYxgm2MAXEBJTYO3Nn1",
+    "index": 22,
+    "serverValues": {
+      "date_s": "2024-02-18T14:12:54.438Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (iPad; CPU OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-18T14:12:54.438Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "0SoP9uIP7TVAV1oOTQLnjbI4kZn1",
+    "index": 0,
+    "serverValues": {
+      "date_s": "2024-02-18T07:03:28.057Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/121.0.6167.171 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-18T07:03:28.057Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "EjM2ASpfdrNm9eRQG1wVT3JfwN83",
+    "index": 8,
+    "serverValues": {
+      "date_s": "2024-02-18T03:49:25.029Z",
+      "group": "s2",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 7100,
+      "time_s": "7.100 secs",
+      "update": [
+        {
+          "date_s": "2024-02-18T03:49:25.029Z",
+          "gap": 980658,
+          "gap_s": "16 mins 20.658 secs",
+          "time": 7100,
+          "time_s": "7.100 secs"
+        },
+        {
+          "date_s": "2024-02-18T03:32:57.271Z",
+          "time": 3234,
+          "time_s": "3.234 secs"
+        }
+      ],
+      "update_count": 16,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-18T03:49:17.277Z",
+          "gap": 983671,
+          "gap_s": "16 mins 23.671 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-18T03:32:53.606Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "2F9Xzy7N2NPNNxIT2o0X1vUzQAq2",
+    "index": 2,
+    "serverValues": {
+      "date_s": "2024-02-18T00:14:06.974Z",
+      "group": "s3",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 5034,
+      "time_s": "5.034 secs",
+      "update": [
+        {
+          "date_s": "2024-02-18T00:14:06.974Z",
+          "gap": 292561,
+          "gap_s": "4 mins 52.561 secs",
+          "time": 5034,
+          "time_s": "5.034 secs"
+        },
+        {
+          "date_s": "2024-02-18T00:09:09.379Z",
+          "time": 12053,
+          "time_s": "12.053 secs"
+        }
+      ],
+      "update_count": 24,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/121.0.6167.171 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-18T00:08:56.824Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "l7ap6WWKosNZ4t4rthjyixKOEym2",
+    "index": 30,
+    "serverValues": {
+      "date_s": "2024-02-17T22:50:43.239Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 3,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-17T22:50:43.239Z",
+          "gap": 22650599,
+          "gap_s": "6 hours 17 mins 30.599 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-17T16:33:12.640Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "rcuDg4MFsYbJBTjrwRg6xBgF7Ua2",
+    "index": 34,
+    "serverValues": {
+      "date_s": "2024-02-17T14:51:11.232Z",
+      "group": "s4",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 0,
+      "time_s": "",
+      "update": [
+        {
+          "date_s": "2024-02-15T19:57:09.172Z",
+          "time": 31483,
+          "time_s": "31.483 secs"
+        }
+      ],
+      "update_count": 36,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-17T14:51:11.232Z",
+          "gap": 154474051,
+          "gap_s": "1 days 18 hours 54 mins 34.051 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T19:56:37.181Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "GdtynD2V3fclUHfUgT7zIAxWAhx1",
+    "index": 9,
+    "serverValues": {
+      "date_s": "2024-02-16T23:00:31.714Z",
+      "group": "s4",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 170306,
+      "time_s": "2 mins 50.306 secs",
+      "update": [
+        {
+          "date_s": "2024-02-16T23:00:31.714Z",
+          "time": 170306,
+          "time_s": "2 mins 50.306 secs"
+        }
+      ],
+      "update_count": 179,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-16T22:57:40.738Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "XWKdrPYST7VmSd93C3UMlzZlslC2",
+    "index": 17,
+    "serverValues": {
+      "date_s": "2024-02-16T22:54:16.750Z",
+      "name_s": "device?v=14",
+      "time": 0,
+      "time_s": "",
+      "update_count": 2,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-16T22:54:16.750Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "e6QyFsx5EpajVNguUinEXhLUZag2",
+    "index": 25,
+    "serverValues": {
+      "date_s": "2024-02-16T21:04:54.473Z",
+      "name_s": "device?v=156",
+      "time": 0,
+      "time_s": "",
+      "update": [
+        {
+          "date_s": "2024-02-16T21:04:54.473Z",
+          "gap": 115867,
+          "gap_s": "1 mins 55.867 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T21:02:58.606Z",
+          "gap": 114946,
+          "gap_s": "1 mins 54.946 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T21:01:03.660Z",
+          "gap": 125869,
+          "gap_s": "2 mins 5.869 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T20:58:57.791Z",
+          "gap": 134909,
+          "gap_s": "2 mins 14.909 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T20:56:42.882Z",
+          "gap": 102823,
+          "gap_s": "1 mins 42.823 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T20:55:00.059Z",
+          "gap": 99947,
+          "gap_s": "1 mins 39.947 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T20:53:20.112Z",
+          "gap": 118872,
+          "gap_s": "1 mins 58.872 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T20:51:21.240Z",
+          "gap": 100861,
+          "gap_s": "1 mins 40.861 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T20:49:40.379Z",
+          "gap": 101887,
+          "gap_s": "1 mins 41.887 secs",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "update_count": 1335,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.3 Safari/605.1.15",
+      "visit": [
+        {
+          "date_s": "2024-02-15T05:42:10.775Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "dVPll8Gl51OI9ar2nCrmEYR700A2",
+    "index": 23,
+    "serverValues": {
+      "date_s": "2024-02-16T17:30:48.112Z",
+      "group": "s3",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 46220,
+      "time_s": "46.220 secs",
+      "update": [
+        {
+          "date_s": "2024-02-16T17:30:48.112Z",
+          "gap": 2371,
+          "gap_s": "2.371 secs",
+          "time": 46220,
+          "time_s": "46.220 secs"
+        },
+        {
+          "date_s": "2024-02-16T17:29:59.521Z",
+          "gap": 4259,
+          "gap_s": "4.259 secs",
+          "time": 49239,
+          "time_s": "49.239 secs"
+        },
+        {
+          "date_s": "2024-02-16T17:29:06.023Z",
+          "gap": 58416452,
+          "gap_s": "16 hours 13 mins 36.452 secs",
+          "time": 28147,
+          "time_s": "28.147 secs"
+        },
+        {
+          "date_s": "2024-02-16T01:15:01.424Z",
+          "gap": 16631901,
+          "gap_s": "4 hours 37 mins 11.901 secs",
+          "time": 1000,
+          "time_s": "1.000 secs"
+        },
+        {
+          "date_s": "2024-02-15T20:37:48.523Z",
+          "gap": 827708,
+          "gap_s": "13 mins 47.708 secs",
+          "time": 1016,
+          "time_s": "1.016 secs"
+        },
+        {
+          "date_s": "2024-02-15T20:23:59.799Z",
+          "gap": 3732,
+          "gap_s": "3.732 secs",
+          "time": 6063,
+          "time_s": "6.063 secs"
+        },
+        {
+          "date_s": "2024-02-15T20:23:50.004Z",
+          "gap": 19289,
+          "gap_s": "19.289 secs",
+          "time": 208337,
+          "time_s": "3 mins 28.337 secs"
+        },
+        {
+          "date_s": "2024-02-15T20:20:02.378Z",
+          "gap": 17362,
+          "gap_s": "17.362 secs",
+          "time": 29192,
+          "time_s": "29.192 secs"
+        },
+        {
+          "date_s": "2024-02-15T20:19:15.824Z",
+          "gap": 116374,
+          "gap_s": "1 mins 56.374 secs",
+          "time": 1000,
+          "time_s": "1.000 secs"
+        }
+      ],
+      "update_count": 576,
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Mobile Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-16T17:30:01.244Z",
+          "gap": 51589,
+          "gap_s": "51.589 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T17:29:09.655Z",
+          "gap": 32406,
+          "gap_s": "32.406 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T17:28:37.249Z",
+          "gap": 58417490,
+          "gap_s": "16 hours 13 mins 37.490 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T01:14:59.759Z",
+          "gap": 13231403,
+          "gap_s": "3 hours 40 mins 31.403 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T21:34:28.356Z",
+          "gap": 4447374,
+          "gap_s": "1 hours 14 mins 7.374 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T20:20:20.982Z",
+          "gap": 13026,
+          "gap_s": "13.026 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T20:20:07.956Z",
+          "gap": 35386,
+          "gap_s": "35.386 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T20:19:32.570Z",
+          "gap": 300708,
+          "gap_s": "5 mins 0.708 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T20:14:31.862Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 9
+    }
+  },
+  {
+    "uid": "1SLCc0bEVDWcyoO6f0GDjR1OdB13",
+    "index": 1,
+    "serverValues": {
+      "date_s": "2024-02-16T17:30:12.149Z",
+      "name_s": "device?v=14",
+      "time": 0,
+      "time_s": "",
+      "update_count": 4,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-16T17:30:12.149Z",
+          "gap": 59786,
+          "gap_s": "59.786 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T17:29:12.363Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "c03ef8F8GhfseUWqkI6HW04pMnt1",
+    "index": 19,
+    "serverValues": {
+      "date_s": "2024-02-16T16:11:35.376Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 6,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-16T16:11:35.376Z",
+          "gap": 39805,
+          "gap_s": "39.805 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T16:10:55.571Z",
+          "gap": 107204,
+          "gap_s": "1 mins 47.204 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T16:09:08.367Z",
+          "gap": 33661,
+          "gap_s": "33.661 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T16:08:34.706Z",
+          "gap": 37443,
+          "gap_s": "37.443 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T16:07:57.263Z",
+          "gap": 181844,
+          "gap_s": "3 mins 1.844 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T16:04:55.419Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 6
+    }
+  },
+  {
+    "uid": "Uf7Neh1vbsbsjk6ayjR5Tmzj0zP2",
+    "index": 14,
+    "serverValues": {
+      "date_s": "2024-02-16T16:00:40.668Z",
+      "name_s": "device?v=156",
+      "time": 0,
+      "time_s": "",
+      "update": [
+        {
+          "date_s": "2024-02-16T16:00:40.668Z",
+          "gap": 81163,
+          "gap_s": "1 mins 21.163 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T15:59:19.505Z",
+          "gap": 85075,
+          "gap_s": "1 mins 25.075 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T15:57:54.430Z",
+          "gap": 88154,
+          "gap_s": "1 mins 28.154 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T15:56:26.276Z",
+          "gap": 87291,
+          "gap_s": "1 mins 27.291 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T15:54:58.985Z",
+          "gap": 81661,
+          "gap_s": "1 mins 21.661 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T15:53:37.324Z",
+          "gap": 93094,
+          "gap_s": "1 mins 33.094 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T15:52:04.230Z",
+          "gap": 85676,
+          "gap_s": "1 mins 25.676 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T15:50:38.554Z",
+          "gap": 93867,
+          "gap_s": "1 mins 33.867 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T15:49:04.687Z",
+          "gap": 95153,
+          "gap_s": "1 mins 35.153 secs",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "update_count": 1156,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2.1 Safari/605.1.15",
+      "visit": [
+        {
+          "date_s": "2024-02-15T05:40:51.952Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "VJn4jYxYJ4hgAiSfBkpxGol5NFh2",
+    "index": 15,
+    "serverValues": {
+      "date_s": "2024-02-16T15:05:14.862Z",
+      "group": "s1",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 42569,
+      "time_s": "42.569 secs",
+      "update": [
+        {
+          "date_s": "2024-02-16T15:05:14.862Z",
+          "time": 42569,
+          "time_s": "42.569 secs"
+        }
+      ],
+      "update_count": 49,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.2 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-16T15:04:31.533Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "9m7nqL7E7FNSQ6wPRf8Yf7XPSuB2",
+    "index": 5,
+    "serverValues": {
+      "date_s": "2024-02-16T05:10:53.625Z",
+      "group": "s2",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 1015,
+      "time_s": "1.015 secs",
+      "update": [
+        {
+          "date_s": "2024-02-16T05:10:53.625Z",
+          "gap": 35563956,
+          "gap_s": "9 hours 52 mins 43.956 secs",
+          "time": 1015,
+          "time_s": "1.015 secs"
+        },
+        {
+          "date_s": "2024-02-15T19:18:08.654Z",
+          "time": 19282,
+          "time_s": "19.282 secs"
+        }
+      ],
+      "update_count": 29,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-16T05:10:51.774Z",
+          "gap": 35583369,
+          "gap_s": "9 hours 53 mins 3.369 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T19:17:48.405Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "ENIJqqFEhKQ6r1AEFvJ9fLUEj7J3",
+    "index": 7,
+    "serverValues": {
+      "date_s": "2024-02-16T03:56:14.759Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 7,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-16T03:56:14.759Z",
+          "gap": 30010,
+          "gap_s": "30.010 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T03:55:44.749Z",
+          "gap": 22001,
+          "gap_s": "22.001 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T03:55:22.748Z",
+          "gap": 38698740,
+          "gap_s": "10 hours 44 mins 58.740 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T17:10:24.008Z",
+          "gap": 5564,
+          "gap_s": "5.564 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T17:10:18.444Z",
+          "gap": 1079270,
+          "gap_s": "17 mins 59.270 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T16:52:19.174Z",
+          "gap": 301590,
+          "gap_s": "5 mins 1.590 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T16:47:17.584Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 7
+    }
+  },
+  {
+    "uid": "O3IvWAk8qGd7lMQbtyv1Yh0T7243",
+    "index": 13,
+    "serverValues": {
+      "date_s": "2024-02-16T02:54:05.260Z",
+      "group": "s4",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 0,
+      "time_s": "",
+      "update": [
+        {
+          "date_s": "2024-02-16T02:18:01.234Z",
+          "gap": 5881,
+          "gap_s": "5.881 secs",
+          "time": 90425,
+          "time_s": "1 mins 30.425 secs"
+        },
+        {
+          "date_s": "2024-02-16T02:16:24.928Z",
+          "gap": 10060,
+          "gap_s": "10.060 secs",
+          "time": 18100,
+          "time_s": "18.100 secs"
+        },
+        {
+          "date_s": "2024-02-16T02:15:56.768Z",
+          "time": 28152,
+          "time_s": "28.152 secs"
+        }
+      ],
+      "update_count": 155,
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Mobile Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-16T02:54:05.260Z",
+          "gap": 2179747,
+          "gap_s": "36 mins 19.747 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T02:17:45.513Z",
+          "gap": 99360,
+          "gap_s": "1 mins 39.360 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T02:16:06.153Z",
+          "gap": 38020,
+          "gap_s": "38.020 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-16T02:15:28.133Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 4
+    }
+  },
+  {
+    "uid": "r8FzDDV6JYRZsLTy94Awvm1w7I52",
+    "index": 33,
+    "serverValues": {
+      "date_s": "2024-02-16T01:29:38.171Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-16T01:29:38.171Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "CFmtNXOceYcaLETHxPXiGERv0a92",
+    "index": 6,
+    "serverValues": {
+      "date_s": "2024-02-16T00:06:48.153Z",
+      "group": "s1",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 21115,
+      "time_s": "21.115 secs",
+      "update": [
+        {
+          "date_s": "2024-02-16T00:06:48.153Z",
+          "time": 21115,
+          "time_s": "21.115 secs"
+        }
+      ],
+      "update_count": 42,
+      "userAgent": "Mozilla/5.0 (Android 14; Mobile; rv:122.0) Gecko/122.0 Firefox/122.0",
+      "visit": [
+        {
+          "date_s": "2024-02-16T00:06:26.704Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "3XoRcot9tlgcpnHjJfuwK4bwdzW2",
+    "index": 3,
+    "serverValues": {
+      "date_s": "2024-02-15T22:27:19.540Z",
+      "group": "s2",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 107545,
+      "time_s": "1 mins 47.545 secs",
+      "update": [
+        {
+          "date_s": "2024-02-15T22:27:19.540Z",
+          "time": 107545,
+          "time_s": "1 mins 47.545 secs"
+        }
+      ],
+      "update_count": 116,
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Mobile Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-15T22:25:31.908Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "7edtGraxjpgifQpzpXPlbISdh6Z2",
+    "index": 4,
+    "serverValues": {
+      "date_s": "2024-02-15T20:17:55.399Z",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 2030,
+      "time_s": "2.030 secs",
+      "update": [
+        {
+          "date_s": "2024-02-15T20:17:55.399Z",
+          "gap": 69963,
+          "gap_s": "1 mins 9.963 secs",
+          "time": 2030,
+          "time_s": "2.030 secs"
+        },
+        {
+          "date_s": "2024-02-15T20:16:43.406Z",
+          "gap": 946140,
+          "gap_s": "15 mins 46.140 secs",
+          "time": 2012,
+          "time_s": "2.012 secs"
+        },
+        {
+          "date_s": "2024-02-15T20:00:55.254Z",
+          "gap": 5883,
+          "gap_s": "5.883 secs",
+          "time": 53240,
+          "time_s": "53.240 secs"
+        },
+        {
+          "date_s": "2024-02-15T19:59:56.131Z",
+          "gap": 108096,
+          "gap_s": "1 mins 48.096 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T19:58:08.035Z",
+          "time": 93696,
+          "time_s": "1 mins 33.696 secs"
+        }
+      ],
+      "update_count": 163,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-15T20:00:01.429Z",
+          "gap": 207618,
+          "gap_s": "3 mins 27.618 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T19:56:33.811Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "c5CetN8g3CPOQotCG5JArVElGNz1",
+    "index": 20,
+    "serverValues": {
+      "date_s": "2024-02-15T20:00:49.678Z",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 16117,
+      "time_s": "16.117 secs",
+      "update": [
+        {
+          "date_s": "2024-02-15T20:00:49.678Z",
+          "gap": 21720,
+          "gap_s": "21.720 secs",
+          "time": 16117,
+          "time_s": "16.117 secs"
+        },
+        {
+          "date_s": "2024-02-15T20:00:11.841Z",
+          "gap": 138313,
+          "gap_s": "2 mins 18.313 secs",
+          "time": 10058,
+          "time_s": "10.058 secs"
+        },
+        {
+          "date_s": "2024-02-15T19:57:43.470Z",
+          "gap": 17049,
+          "gap_s": "17.049 secs",
+          "time": 15219,
+          "time_s": "15.219 secs"
+        },
+        {
+          "date_s": "2024-02-15T19:57:11.202Z",
+          "time": 48297,
+          "time_s": "48.297 secs"
+        }
+      ],
+      "update_count": 102,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-15T20:00:01.060Z",
+          "gap": 153497,
+          "gap_s": "2 mins 33.497 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T19:57:27.563Z",
+          "gap": 65276,
+          "gap_s": "1 mins 5.276 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T19:56:22.287Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 3
+    }
+  },
+  {
+    "uid": "xJFGoQD54RRdwe1q878p3x1nAFr1",
+    "index": 35,
+    "serverValues": {
+      "date_s": "2024-02-15T19:57:44.394Z",
+      "group": "s1",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 15200,
+      "time_s": "15.200 secs",
+      "update": [
+        {
+          "date_s": "2024-02-15T19:57:44.394Z",
+          "time": 15200,
+          "time_s": "15.200 secs"
+        }
+      ],
+      "update_count": 22,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-15T19:57:28.478Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "Hv7JyZdTwrXZNybsNAIYjsaVs5G3",
+    "index": 10,
+    "serverValues": {
+      "date_s": "2024-02-15T19:57:19.471Z",
+      "group": "s4",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 45640,
+      "time_s": "45.640 secs",
+      "update": [
+        {
+          "date_s": "2024-02-15T19:57:19.471Z",
+          "time": 45640,
+          "time_s": "45.640 secs"
+        }
+      ],
+      "update_count": 50,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-15T19:56:33.265Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "ph1CUv3WDGbmDCdXbqNTEOox5V33",
+    "index": 32,
+    "serverValues": {
+      "date_s": "2024-02-15T19:57:14.050Z",
+      "group": "s4",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 26430,
+      "time_s": "26.430 secs",
+      "update": [
+        {
+          "date_s": "2024-02-15T19:57:14.050Z",
+          "time": 26430,
+          "time_s": "26.430 secs"
+        }
+      ],
+      "update_count": 35,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-15T19:56:47.214Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "KyrUGFs5GOSTz8q3RitbnV8Q7E53",
+    "index": 11,
+    "serverValues": {
+      "date_s": "2024-02-15T19:57:13.641Z",
+      "name_s": "device?v=14",
+      "time": 0,
+      "time_s": "",
+      "update_count": 2,
+      "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_2_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1",
+      "visit": [
+        {
+          "date_s": "2024-02-15T19:57:13.641Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "bTTguVrkHtaOmcrEe6fBh93XMMy1",
+    "index": 18,
+    "serverValues": {
+      "date_s": "2024-02-15T17:17:27.670Z",
+      "group": "s1",
+      "name_s": "device?v=14",
+      "portrait": 1,
+      "time": 0,
+      "time_s": "",
+      "update": [
+        {
+          "date_s": "2024-02-15T17:17:27.670Z",
+          "gap": 1391948,
+          "gap_s": "23 mins 11.948 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T16:54:15.722Z",
+          "time": 63067,
+          "time_s": "1 mins 3.067 secs"
+        }
+      ],
+      "update_count": 67,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2.1 Safari/605.1.15",
+      "visit": [
+        {
+          "date_s": "2024-02-15T16:53:18.166Z",
+          "gap": 6408,
+          "gap_s": "6.408 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T16:53:11.758Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "O0EYKgqJPPPFFEdzwNg7c7L5x7j2",
+    "index": 12,
+    "serverValues": {
+      "date_s": "2024-02-15T14:46:41.951Z",
+      "name_s": "device?v=13",
+      "portrait": 1,
+      "time": 46234,
+      "time_s": "46.234 secs",
+      "update": [
+        {
+          "date_s": "2024-02-15T14:46:41.951Z",
+          "time": 46234,
+          "time_s": "46.234 secs"
+        }
+      ],
+      "update_count": 51,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-15T14:45:54.793Z",
+          "gap": 6211,
+          "gap_s": "6.211 secs",
+          "time": 0,
+          "time_s": ""
+        },
+        {
+          "date_s": "2024-02-15T14:45:48.582Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 2
+    }
+  },
+  {
+    "uid": "ezyGTvQnfuO67WsR58aBYqdbVfC3",
+    "index": 26,
+    "serverValues": {
+      "date_s": "2024-02-15T14:07:22.515Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Mobile Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-15T14:07:22.515Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  },
+  {
+    "uid": "kA4I6uwKWWM2KOxXyM7xD8rEuPt1",
+    "index": 28,
+    "serverValues": {
+      "date_s": "2024-02-15T05:40:51.137Z",
+      "name_s": "",
+      "time": 0,
+      "time_s": "",
+      "update_count": 1,
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "visit": [
+        {
+          "date_s": "2024-02-15T05:40:51.137Z",
+          "time": 0,
+          "time_s": ""
+        }
+      ],
+      "visit_count": 1
+    }
+  }
+]
