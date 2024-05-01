@@ -45,6 +45,10 @@ demos using p5moLibrary internally. plan is to move them to p5moExamples
   - [demo/mo-blackfacts s6](demo/mo-blackfacts?v=82&group=s6&qrcode=mo-blackfacts-qrcode-6.png) [-remote-](demo/mo-blackfacts?v=82&group=s6)
   - [demo/mo-blackfacts s1-s6](demo/mo-blackfacts?v=82&group=s1,s2,s3,s4,s5,s6&qrcode=mo-blackfacts-qrcode-1-6.png) [-remote-](demo/mo-blackfacts?v=82&group=s1,s2,s3,s4,s5,s6)
 
+## shout
+
+- [demo/mo-shout s1](demo/mo-shout?v=82&group=s1&qrcode=mo-shout-qrcode-1.png) [[remote](qrcode/mo-shout.html?v=82&group=s1)]
+
 ## garage play list
 
 - garage play list using mo-videplayer
