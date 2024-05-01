@@ -26,7 +26,7 @@ function my_setup() {
 
   // my.iframe_src = my.playList[my.payIndex];
 
-  let params = get_url_params() || {};
+  let params = get_url_params();
   console.log('params', params);
   my.isRemote = !params.qrcode;
   if (params.group) {
