@@ -14,6 +14,7 @@ function my_setup() {
     'https://cheerful-ganache-f31c35.netlify.app/',
     'https://molab-itp.github.io/p5moLibrary/src/demo/mo-videoplayer/?playlist=QvoCLigmJUI',
     'https://molab-itp.github.io/p5moLibrary/src/demo/mo-videoplayer/?playlist=dhQ7aj9s_kw',
+    'https://molab-itp.github.io/p5moLibrary/src/demo/mo-videoplayer/?playlist=JCS-g3HwXdc',
   ];
   my.playIndex = 0;
   my.width = windowWidth;
