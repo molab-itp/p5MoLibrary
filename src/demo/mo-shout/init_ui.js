@@ -34,3 +34,11 @@ function position_qrcode() {
   // id_bottom_message_pane.style.left = 2 * margin + 'px';
   // id_bottom_message_pane.style.top = y + 'px';
 }
+
+function qrcode_hide() {
+  id_qrcode.classList.add('hidden');
+}
+
+function qrcode_show() {
+  id_qrcode.classList.remove('hidden');
+}

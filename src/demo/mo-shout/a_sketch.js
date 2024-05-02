@@ -12,6 +12,7 @@ function my_setup() {
   my.playList = [
     'https://molab-itp.github.io/p5moLibrary/src/demo/mo-videoplayer/?playlist=DrI_8IFzkpw',
     'https://cheerful-ganache-f31c35.netlify.app/',
+    'https://molab-itp.github.io/p5moLibrary/src/demo/mo-videoplayer/?playlist=QvoCLigmJUI',
   ];
   my.playIndex = 0;
   my.width = windowWidth;
@@ -24,10 +25,13 @@ function my_setup() {
   my.mo_app = 'mo-shout';
   my.nameDevice = '';
 
-  // my.iframe_src = my.playList[my.payIndex];
+  my.stepSecs = 60.0 + 15.0;
+  // my.stepSecs = 0;
+  my.stepLapsed = 0;
 
   let params = get_url_params();
   console.log('params', params);
+
   my.isRemote = !params.qrcode;
   if (params.group) {
     my.group = params.group;
@@ -38,6 +42,10 @@ function my_setup() {
   console.log('my_init my.group', my.group);
 
   position_qrcode();
+
+  if (my.isRemote) {
+    qrcode_hide();
+  }
 }
 
 function setup() {
@@ -52,14 +60,20 @@ function setup() {
 }
 
 function draw() {
-  background(200);
+  background(0);
+  my.stepLapsed += deltaTime / 1000;
+  if (my.stepSecs && my.stepLapsed > my.stepSecs) {
+    my.stepLapsed = 0;
+    playIndexUpAction();
+  }
   //
 }
 
 function startup_completed() {
   console.log('startup_completed');
 
-  dbase_devices_observe({ observed_item, all: 1 });
+  // dbase_devices_observe({ observed_item, all: 1 });
+  dbase_app_observe({ observed_item });
 
   function observed_item(device) {
     console.log('observed_item device', device);
@@ -78,22 +92,27 @@ function set_playIndex(newValue) {
 
 function playIndexUpAction() {
   if (my.playIndex < my.playList.length - 1) {
-    dbase_update_props({ playIndex: dbase_increment(1) });
+    dbase_update_item({ playIndex: dbase_increment(1) });
+    // dbase_update_props({ playIndex: dbase_increment(1) });
   } else {
-    dbase_update_props({ playIndex: 0 });
+    dbase_update_item({ playIndex: 0 });
+    // dbase_update_props({ playIndex: 0 });
   }
 }
 
 function playIndexDownAction() {
   if (my.playIndex > 0) {
-    dbase_update_props({ playIndex: dbase_increment(-1) });
+    dbase_update_item({ playIndex: dbase_increment(-1) });
+    // dbase_update_props({ playIndex: dbase_increment(-1) });
   } else {
-    dbase_update_props({ playIndex: my.playList.length - 1 });
+    dbase_update_item({ playIndex: my.playList.length - 1 });
+    // dbase_update_props({ playIndex: my.playList.length - 1 });
   }
 }
 
 function playIndexFirst_action() {
-  dbase_update_props({ playIndex: 0 });
+  dbase_update_item({ playIndex: 0 });
+  // dbase_update_props({ playIndex: 0 });
 }
 
 // https://editor.p5js.org/jht9629-nyu/sketches/EEafnQwr1
