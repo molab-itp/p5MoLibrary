@@ -48,6 +48,7 @@ demos using p5moLibrary internally. plan is to move them to p5moExamples
 ## shout
 
 - [demo/mo-shout s1](demo/mo-shout?v=85&group=s1&qrcode=mo-shout-qrcode-1.png) [[remote](qrcode/mo-shout.html?v=85&group=s1)]
+<!-- https://molab-itp.github.io/p5moLibrary/src/qrcode/mo-shout.html?group=s1 -->
 
 ## garage play list
 
