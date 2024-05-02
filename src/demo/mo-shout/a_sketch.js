@@ -13,6 +13,7 @@ function my_setup() {
     'https://molab-itp.github.io/p5moLibrary/src/demo/mo-videoplayer/?playlist=DrI_8IFzkpw',
     'https://cheerful-ganache-f31c35.netlify.app/',
     'https://molab-itp.github.io/p5moLibrary/src/demo/mo-videoplayer/?playlist=QvoCLigmJUI',
+    'https://molab-itp.github.io/p5moLibrary/src/demo/mo-videoplayer/?playlist=dhQ7aj9s_kw',
   ];
   my.playIndex = 0;
   my.width = windowWidth;
@@ -25,7 +26,7 @@ function my_setup() {
   my.mo_app = 'mo-shout';
   my.nameDevice = '';
 
-  my.stepSecs = 60.0 + 15.0;
+  my.stepSecs = 60.0 + 30.0;
   // my.stepSecs = 0;
   my.stepLapsed = 0;
 
@@ -91,6 +92,7 @@ function set_playIndex(newValue) {
 }
 
 function playIndexUpAction() {
+  my.stepLapsed = 0;
   if (my.playIndex < my.playList.length - 1) {
     dbase_update_item({ playIndex: dbase_increment(1) });
     // dbase_update_props({ playIndex: dbase_increment(1) });

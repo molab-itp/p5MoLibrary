@@ -1,10 +1,11 @@
 //
 
 function init_ui() {
-  createButton('Shout Up').mousePressed(playIndexUpAction);
-  createButton('Shout Down').mousePressed(playIndexDownAction);
-  createButton('Reset').mousePressed(playIndexFirst_action);
-  createSpan(' playIndex ');
+  // createButton('Shout Up').mousePressed(playIndexUpAction);
+  // createButton('Shout Down').mousePressed(playIndexDownAction);
+  // createButton('Reset').mousePressed(playIndexFirst_action);
+  createButton('Next').mousePressed(playIndexUpAction);
+  // createSpan(' playIndex ');
   my.playIndex_span = createSpan(my.playIndex);
 
   create_my_iframe();
