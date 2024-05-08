@@ -125,6 +125,12 @@ function dbase_site_eventGapTime(device) {
   return gapTime;
 }
 
+function dbase_site_device_for_uid(uid) {
+  let device = my.fireb_devices[uid];
+  return device;
+}
+window.dbase_site_device_for_uid = dbase_site_device_for_uid;
+
 //
 // fdevice.dbase.remote
 //
