@@ -42,26 +42,8 @@ class DrawPoints {
       this.df.width = this.width;
       this.df.height = this.height;
       fourier_init(this.df);
-      let drawing = this.drawing_for_fourier();
-      fourier_XY(this.df, drawing);
     }
-    this.df.output.clear();
-    fourier_drawPaths(this.df);
-  }
-
-  drawing_for_fourier() {
-    console.log('drawing_for_fourier');
-    let ndrawings = this.drawings.map((points) => {
-      return points.map((point) => {
-        let x = point.x - this.df.centerX;
-        let y = point.y - this.df.centerY;
-        return { x, y };
-      });
-    });
-    if (ndrawings.length < 0) {
-      return [];
-    }
-    return ndrawings[0];
+    fourier_draw(this.df, this.drawings);
   }
 
   draw_points() {

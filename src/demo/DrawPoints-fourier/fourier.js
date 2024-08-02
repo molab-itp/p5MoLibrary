@@ -7,10 +7,10 @@
 //    fourierY: [ num, ....]},
 //    deltaFt: delta to circle
 //
-function fourier_XY(df, drawing) {
+function fourier_XY(df, points) {
   let xx = [];
   let yy = [];
-  for (let elm of drawing) {
+  for (let elm of points) {
     xx.push(elm.x);
     yy.push(elm.y);
   }
@@ -20,9 +20,11 @@ function fourier_XY(df, drawing) {
   df.fourierX.sort((a, b) => b.amp - a.amp);
   df.fourierY.sort((a, b) => b.amp - a.amp);
 
-  df.deltaFt = TWO_PI / drawing.length;
+  df.deltaFt = TWO_PI / points.length;
 }
 
+// x = [ r, ... ]
+// --> X = [ { i=0..n, re, im, amp, phase } ]
 //
 function dft(x) {
   const X = [];

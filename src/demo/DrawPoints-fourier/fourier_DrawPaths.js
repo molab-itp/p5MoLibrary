@@ -1,6 +1,44 @@
 //
 
+function fourier_draw(df, drawings) {
+  console.log('fourier_prepare');
+  if (drawings.length != df.lastDrawingsLength) {
+    df.fourierX = null;
+    df.findex = 0;
+    let fdrawings = drawings.map((points) => {
+      return points.map((point) => {
+        let x = point.x - df.centerX;
+        let y = point.y - df.centerY;
+        return { x, y };
+      });
+    });
+    df.fdrawings = fdrawings;
+    df.lastDrawingsLength = drawings.length;
+  }
+  if (!df.fourierX) {
+    let points = df.fdrawings[df.findex];
+    if (points) {
+      fourier_XY(df, points);
+    }
+  }
+
+  df.output.clear();
+  fourier_drawPaths(df);
+}
+
+function next_drawing(df) {
+  df.time = 0;
+  df.path = [];
+  df.findex = (df.findex + 1) % df.fdrawings.length;
+  df.fourierX = null;
+}
+
 function fourier_init(df) {
+  // df.width
+  // df.height
+  // df.fdrawings = [ [ {x,y}...], ... ]
+  df.findex = 0; // 0 ... fdrawings.length-1
+  df.lastDrawingsLength = -1;
   df.output = createGraphics(df.width, df.height);
   df.centerX = df.width / 2;
   df.centerY = df.height / 2;
@@ -23,9 +61,6 @@ function fourier_init(df) {
   df.run = 1;
   df.step = 0;
   df.drawCenter = 0;
-  // df.width
-  // df.height
-  // output
 }
 
 function fourier_drawPaths(df) {
@@ -66,8 +101,7 @@ function fourier_drawPaths(df) {
   if (df.run || df.step) {
     df.time += df.deltaFt;
     if (df.time > TWO_PI) {
-      df.time = 0;
-      df.path = [];
+      next_drawing(df);
     }
   }
   df.step = 0;
