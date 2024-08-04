@@ -5,7 +5,7 @@
 let my = {};
 
 function my_setup() {
-  my.version = '?v=89';
+  my.version = '?v=90';
   my.width = windowWidth;
   my.height = windowHeight;
   // my.width = 640;
@@ -31,6 +31,7 @@ function my_setup() {
 
   my.backColor = 255;
   my.draw_color = 0; // 'white';
+  my.updateCount = 0;
 }
 
 function setup() {

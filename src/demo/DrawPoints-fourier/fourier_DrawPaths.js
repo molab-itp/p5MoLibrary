@@ -2,7 +2,8 @@
 
 function fourier_draw(df, drawings) {
   console.log('fourier_prepare');
-  if (drawings.length != df.lastDrawingsLength) {
+  if (my.updateCount != df.updateCount) {
+    df.updateCount = my.updateCount;
     df.fourierX = null;
     df.findex = 0;
     let fdrawings = drawings.map((points) => {
@@ -13,7 +14,6 @@ function fourier_draw(df, drawings) {
       });
     });
     df.fdrawings = fdrawings;
-    df.lastDrawingsLength = drawings.length;
   }
   if (!df.fourierX) {
     let points = df.fdrawings[df.findex];
@@ -38,7 +38,7 @@ function fourier_init(df) {
   // df.height
   // df.fdrawings = [ [ {x,y}...], ... ]
   df.findex = 0; // 0 ... fdrawings.length-1
-  df.lastDrawingsLength = -1;
+  df.updateCount = -1;
   df.output = createGraphics(df.width, df.height);
   df.centerX = df.width / 2;
   df.centerY = df.height / 2;
