@@ -33,6 +33,9 @@ class DrawPoints {
     if (this.fourierDrawing) {
       this.draw_fourier();
     }
+    if (this.syncDrawing) {
+      this.draw_sync();
+    }
   }
 
   draw_fourier() {
@@ -56,6 +59,35 @@ class DrawPoints {
     this.draw_to(args);
   }
 
+  draw_sync() {
+    let ncolors = this.draw_specs.length;
+    let npoints = this.npoints;
+    let stopIndex = this.pointIndex;
+    this.pointIndex++;
+    let spec = this.draw_specs[0];
+    let stepper = (ipoint) => {
+      if (ipoint % npoints == 0) {
+        let icycle = args.icycle;
+        let spec = this.draw_specs[icycle];
+        // let str = formatNumber(progress);
+        // str = str + ' ipoint ' + ipoint + ' stopIndex ' + stopIndex + ' strokeWeight ' + istrokeWeight;
+        // str += ' icycle ' + icycle + ' icolor ' + icolor;
+        // console.log(str);
+        this.output.stroke(spec.color);
+        this.output.strokeWeight(spec.strokeWeight);
+        args.icycle = (args.icycle + 1) % ncolors;
+      }
+    };
+    let args = {
+      color: spec.color,
+      strokeWeight: spec.strokeWeight,
+      stopIndex: stopIndex,
+      xoffset: this.xoffset,
+      stepper: stepper,
+      icycle: 0,
+    };
+    this.draw_to(args);
+  }
   draw_timed() {
     let ncolors = this.draw_specs.length;
     let npoints = this.npoints;
@@ -123,7 +155,9 @@ class DrawPoints {
 
   startTimedDraw() {
     // console.log('startTimedDraw');
-    this.timedDrawing = 1;
+    this.pointIndex = 0;
+    this.syncDrawing = 1;
+    // this.timedDrawing = 1;
     // this.timedDrawing = 0;
     this.fourierDrawing = 1;
     this.startTime = secsTime();
