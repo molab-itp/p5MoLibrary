@@ -30,23 +30,12 @@ class DrawPoints {
     if (this.timedDrawing) {
       this.draw_timed();
     }
-    if (this.fourierDrawing) {
-      this.draw_fourier();
-    }
     if (this.syncDrawing) {
       this.draw_sync();
     }
-  }
-
-  draw_fourier() {
-    console.log('draw_fourier');
-    if (!this.df) {
-      this.df = {};
-      this.df.width = this.width;
-      this.df.height = this.height;
-      fourier_init(this.df);
+    if (this.fourierDrawing) {
+      this.draw_fourier();
     }
-    fourier_draw(this.df, this.drawings);
   }
 
   draw_points() {
@@ -59,35 +48,6 @@ class DrawPoints {
     this.draw_to(args);
   }
 
-  draw_sync() {
-    let ncolors = this.draw_specs.length;
-    let npoints = this.npoints;
-    let stopIndex = this.pointIndex;
-    this.pointIndex++;
-    let spec = this.draw_specs[0];
-    let stepper = (ipoint) => {
-      if (ipoint % npoints == 0) {
-        let icycle = args.icycle;
-        let spec = this.draw_specs[icycle];
-        // let str = formatNumber(progress);
-        // str = str + ' ipoint ' + ipoint + ' stopIndex ' + stopIndex + ' strokeWeight ' + istrokeWeight;
-        // str += ' icycle ' + icycle + ' icolor ' + icolor;
-        // console.log(str);
-        this.output.stroke(spec.color);
-        this.output.strokeWeight(spec.strokeWeight);
-        args.icycle = (args.icycle + 1) % ncolors;
-      }
-    };
-    let args = {
-      color: spec.color,
-      strokeWeight: spec.strokeWeight,
-      stopIndex: stopIndex,
-      xoffset: this.xoffset,
-      stepper: stepper,
-      icycle: 0,
-    };
-    this.draw_to(args);
-  }
   draw_timed() {
     let ncolors = this.draw_specs.length;
     let npoints = this.npoints;
@@ -129,9 +89,10 @@ class DrawPoints {
     let stopIndex = args.stopIndex;
     let xoffset = args.xoffset;
     let ipoint = 0;
-    while (ipoint < stopIndex) {
+    while (ipoint <= stopIndex) {
       // Draw all points up until stopIndex
       for (let points of this.drawings) {
+        // console.log('draw_to ipoint', ipoint, 'stopIndex', stopIndex, frameCount);
         for (let i = 1; i < points.length; i++) {
           if (ipoint > stopIndex) return;
           if (stepper) stepper(ipoint);
@@ -143,7 +104,7 @@ class DrawPoints {
       }
       // detect no change
       if (!ipoint) {
-        console.log('stopIndex_draw No change ipoint', ipoint);
+        // console.log('stopIndex_draw No change ipoint', ipoint);
         break;
       }
     }
@@ -176,6 +137,7 @@ class DrawPoints {
     console.log('stopTimedDraw');
     this.timedDrawing = 0;
     this.fourierDrawing = 0;
+    this.syncDrawing = 0;
   }
 
   clearDrawing() {

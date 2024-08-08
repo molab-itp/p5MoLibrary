@@ -1,7 +1,18 @@
 //
 
+DrawPoints.prototype.draw_fourier = function () {
+  // console.log('draw_fourier');
+  if (!this.df) {
+    this.df = {};
+    this.df.width = this.width;
+    this.df.height = this.height;
+    fourier_init(this.df);
+  }
+  fourier_draw(this.df, this.drawings);
+};
+
 function fourier_draw(df, drawings) {
-  console.log('fourier_prepare');
+  // console.log('fourier_prepare');
   if (my.updateCount != df.updateCount) {
     df.updateCount = my.updateCount;
     df.fourierX = null;
@@ -17,9 +28,7 @@ function fourier_draw(df, drawings) {
   }
   if (!df.fourierX) {
     let points = df.fdrawings[df.findex];
-    if (points) {
-      fourier_XY(df, points);
-    }
+    fourier_XY(df, points);
   }
 
   df.output.clear();
@@ -27,10 +36,24 @@ function fourier_draw(df, drawings) {
 }
 
 function next_drawing(df) {
+  console.log('next_drawing df.time', df.time, 'df.findex', df.findex, frameCount);
   df.time = 0;
   df.path = [];
   df.findex = (df.findex + 1) % df.fdrawings.length;
   df.fourierX = null;
+  if (df.findex == 0) {
+    draw_cycle_init();
+  }
+}
+
+function draw_cycle_init() {
+  let drawPoints = my.drawPoints;
+  console.log('draw_cycle_init pointIndex', my.drawPoints.pointIndex, 'cycleCompleted', drawPoints.cycleCompleted);
+  if (drawPoints.cycleCompleted) {
+    drawPoints.cycleCompleted = 0;
+    drawPoints.pointIndex = 0;
+  }
+  // my.drawPoints.pointIndex = 0;
 }
 
 function fourier_init(df) {
@@ -100,7 +123,7 @@ function fourier_drawPaths(df) {
 
   if (df.run || df.step) {
     df.time += df.deltaFt;
-    if (df.time > TWO_PI) {
+    if (df.time >= TWO_PI) {
       next_drawing(df);
     }
   }

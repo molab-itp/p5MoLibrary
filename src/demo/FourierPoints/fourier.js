@@ -8,6 +8,7 @@
 //    deltaFt: delta to circle
 //
 function fourier_XY(df, points) {
+  if (!points) points = [];
   let xx = [];
   let yy = [];
   for (let elm of points) {
@@ -20,7 +21,7 @@ function fourier_XY(df, points) {
   df.fourierX.sort((a, b) => b.amp - a.amp);
   df.fourierY.sort((a, b) => b.amp - a.amp);
 
-  df.deltaFt = TWO_PI / points.length;
+  df.deltaFt = points.length ? TWO_PI / points.length : 0.0;
 }
 
 // x = [ r, ... ]
