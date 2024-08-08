@@ -16,9 +16,9 @@ function my_setup() {
   my.xoffset = 0;
   // my.xoffset = my.width / 2;
   my.draw_specs = [
-    { color: 'red', strokeWeight: 12 },
-    { color: 'green', strokeWeight: 7 },
-    { color: 'yellow', strokeWeight: 2 },
+    { color: 'red', strokeWeight: 12 + 2 },
+    { color: 'green', strokeWeight: 7 + 2 },
+    { color: 'yellow', strokeWeight: 2 + 2 },
   ];
   my.strokeWeight = 10;
   my.run = 1;

@@ -74,10 +74,10 @@ function fourier_init(df) {
   df.trackColor = 0;
   df.drawColor = 0;
   df.epiWeight = 1;
-  df.vxyColor = 'gold';
-  df.epiLineColor = 'green';
+  df.vxyColor = 0; // 'gold';
+  df.epiLineColor = 0; // 'green';
   df.epiCircleColor = [10, 10, 10, 100];
-  df.drawWeight = 4;
+  df.drawWeight = 2;
   // df.deltaFt;
   // df.centerX;
   // df.centerY;
