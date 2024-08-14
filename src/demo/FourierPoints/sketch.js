@@ -10,7 +10,7 @@ function my_setup() {
   my.height = windowHeight;
   // my.width = 640;
   // my.height = 480;
-  my.save_label = 'plea';
+  my.save_label = '1';
   // seconds to re-draw points
   my.lapse = 5;
   my.xoffset = 0;
