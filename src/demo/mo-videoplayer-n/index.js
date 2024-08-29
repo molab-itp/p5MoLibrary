@@ -57,7 +57,7 @@ function my_init() {
   my.blackfacts_index = -1;
   my.stepCount = 0;
   my.animTime = 7;
-  my.nameDevice = 'device?v=94';
+  my.nameDevice = 'device?v=95';
   my.pingTime = 1;
   // my.leftMargin = 10;
   my.group = 'nation_time';
