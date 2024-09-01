@@ -17,4 +17,4 @@ export class Rect {
   }
 }
 
-window.Rect = Rect;
+globalThis.Rect = Rect;

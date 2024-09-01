@@ -9,7 +9,7 @@ function dbase_updateTimeGap(events) {
     nowEnt.gap_s = dbase_timeToSeconds(nowEnt.gap);
   }
 }
-window.dbase_updateTimeGap = dbase_updateTimeGap;
+globalThis.dbase_updateTimeGap = dbase_updateTimeGap;
 
 function dbase_timeToSeconds(time) {
   let str = '';
@@ -38,4 +38,4 @@ function dbase_timeToSeconds(time) {
   }
   return str;
 }
-window.dbase_timeToSeconds = dbase_timeToSeconds;
+globalThis.dbase_timeToSeconds = dbase_timeToSeconds;

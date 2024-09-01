@@ -12,12 +12,12 @@
 function dbase_site_event_visit() {
   dbase_site_event({ event: 'visit', count: 'visit_count' });
 }
-window.dbase_site_event_visit = dbase_site_event_visit;
+globalThis.dbase_site_event_visit = dbase_site_event_visit;
 
 function dbase_site_event_update() {
   dbase_site_event({ event: 'update', count: 'update_count' });
 }
-window.dbase_site_event_update = dbase_site_event_update;
+globalThis.dbase_site_event_update = dbase_site_event_update;
 
 function dbase_site_event(keys) {
   dbase_site_updates({}, keys);
@@ -54,7 +54,7 @@ function dbase_site_updates(updates, keys) {
   }
   update(refPath, updates);
 }
-window.dbase_site_updates = dbase_site_updates;
+globalThis.dbase_site_updates = dbase_site_updates;
 
 function dbase_site_events(keys, uid, date_s) {
   // ui_log('dbase_site_events uid', uid, date_s);
@@ -112,7 +112,7 @@ function dbase_site_isActive(device) {
   // console.log('dbase_site_isActive device.index', device.index, 'gapTime', lapgapTimese, my.eventLogTimeMax);
   return gapTime < my.eventLogTimeMax;
 }
-window.dbase_site_isActive = dbase_site_isActive;
+globalThis.dbase_site_isActive = dbase_site_isActive;
 
 function dbase_site_eventGapTime(device) {
   let events = device.dbase && device.dbase.update;
@@ -129,7 +129,7 @@ function dbase_site_device_for_uid(uid) {
   let device = my.fireb_devices[uid];
   return device;
 }
-window.dbase_site_device_for_uid = dbase_site_device_for_uid;
+globalThis.dbase_site_device_for_uid = dbase_site_device_for_uid;
 
 //
 // fdevice.dbase.remote
@@ -140,4 +140,4 @@ function device_uid_isActive(uid) {
   // console.log('device_uid_isActive uid', uid, 'remote', fdevice.dbase.remote);
   return dbase_site_isActive(fdevice) && fdevice.dbase.remote;
 }
-window.device_uid_isActive = device_uid_isActive;
+globalThis.device_uid_isActive = device_uid_isActive;

@@ -8,7 +8,7 @@ function ui_break(id) {
   }
   return element;
 }
-window.ui_break = ui_break;
+globalThis.ui_break = ui_break;
 
 function ui_span(id, html) {
   let span = ui_element(id);
@@ -19,7 +19,7 @@ function ui_span(id, html) {
   span.html(html);
   return span;
 }
-window.ui_span = ui_span;
+globalThis.ui_span = ui_span;
 
 function ui_div(id, html) {
   let div = ui_element(id);
@@ -30,7 +30,7 @@ function ui_div(id, html) {
   div.html(html);
   return div;
 }
-window.ui_div = ui_div;
+globalThis.ui_div = ui_div;
 
 // Create empty div or empty it if it already exists
 function ui_div_empty(id) {
@@ -47,7 +47,7 @@ function ui_div_empty(id) {
   }
   return div;
 }
-window.ui_div_empty = ui_div_empty;
+globalThis.ui_div_empty = ui_div_empty;
 
 function ui_checkbox(label, value) {
   let chk = ui_element(label);
@@ -58,7 +58,7 @@ function ui_checkbox(label, value) {
   }
   return chk;
 }
-window.ui_checkbox = ui_checkbox;
+globalThis.ui_checkbox = ui_checkbox;
 
 function ui_createButton(label) {
   let element = ui_element(label);
@@ -68,7 +68,7 @@ function ui_createButton(label) {
   }
   return element;
 }
-window.ui_createButton = ui_createButton;
+globalThis.ui_createButton = ui_createButton;
 
 function ui_select(id) {
   let element = ui_element(id);
@@ -78,7 +78,7 @@ function ui_select(id) {
   }
   return element;
 }
-window.ui_select = ui_select;
+globalThis.ui_select = ui_select;
 
 function ui_input(id, text) {
   let element = ui_element(id);
@@ -88,17 +88,17 @@ function ui_input(id, text) {
   }
   return element;
 }
-window.ui_input = ui_input;
+globalThis.ui_input = ui_input;
 
 function ui_begin() {
   my.ui_id_index = 1;
 }
-window.ui_begin = ui_begin;
+globalThis.ui_begin = ui_begin;
 
 function ui_begin_update() {
   my.ui_id_index = 1001;
 }
-window.ui_begin_update = ui_begin_update;
+globalThis.ui_begin_update = ui_begin_update;
 
 function ui_element(id) {
   // console.log('ui_element id', id);

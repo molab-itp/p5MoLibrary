@@ -29,7 +29,7 @@ function dbase_app_init({ completed }) {
       console.log('dbase_app_init error', error);
     });
 }
-window.dbase_app_init = dbase_app_init;
+globalThis.dbase_app_init = dbase_app_init;
 
 // return array of devices, most recently active first
 function dbase_site_devices(show) {
@@ -65,4 +65,4 @@ function dbase_site_devices(show) {
   //
   return arr;
 }
-window.dbase_site_devices = dbase_site_devices;
+globalThis.dbase_site_devices = dbase_site_devices;

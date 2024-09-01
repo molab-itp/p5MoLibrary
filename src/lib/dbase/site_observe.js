@@ -38,7 +38,7 @@ function dbase_site_observe() {
     dbase_fireb_device(key, val);
   }
 }
-window.dbase_site_observe = dbase_site_observe;
+globalThis.dbase_site_observe = dbase_site_observe;
 
 //
 // my.fireb_devices
@@ -65,7 +65,7 @@ function dbase_fireb_device(uid, val) {
   }
   return device;
 }
-window.dbase_fireb_device = dbase_fireb_device;
+globalThis.dbase_fireb_device = dbase_fireb_device;
 
 //
 //
@@ -84,7 +84,7 @@ function dbase_site_remove() {
       ui_log('dbase_site_remove error', error);
     });
 }
-window.dbase_site_remove = dbase_site_remove;
+globalThis.dbase_site_remove = dbase_site_remove;
 
 //
 //

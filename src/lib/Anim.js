@@ -134,4 +134,4 @@ export class Anim {
   // }
 }
 
-window.Anim = Anim;
+globalThis.Anim = Anim;

@@ -10,7 +10,7 @@ function ui_logSummary_div() {
   my.logSummary_div.style('background-color:#ddd');
   my.logDetail_div.style('background-color:#eee');
 }
-window.ui_logSummary_div = ui_logSummary_div;
+globalThis.ui_logSummary_div = ui_logSummary_div;
 
 function ui_set_hidden(element, flag) {
   if (flag) {
@@ -19,7 +19,7 @@ function ui_set_hidden(element, flag) {
     element.elt.classList.add('hidden');
   }
 }
-window.ui_set_hidden = ui_set_hidden;
+globalThis.ui_set_hidden = ui_set_hidden;
 
 function ui_logSummaryFlag_changed(newValue) {
   my.logSummaryFlag = newValue;
@@ -55,4 +55,4 @@ function ui_logSummaryFlag_changed(newValue) {
   }
   div.child(createElement('br'));
 }
-window.ui_logSummaryFlag_changed = ui_logSummaryFlag_changed;
+globalThis.ui_logSummaryFlag_changed = ui_logSummaryFlag_changed;

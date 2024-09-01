@@ -23,7 +23,7 @@ function dbase_devices_update(deviceProps) {
 
   update(refPath, updates);
 }
-window.dbase_devices_update = dbase_devices_update;
+globalThis.dbase_devices_update = dbase_devices_update;
 
 //
 // throttle update to queue to time
@@ -49,7 +49,7 @@ function dbase_queue_update(props) {
     }
   }
 }
-window.dbase_queue_update = dbase_queue_update;
+globalThis.dbase_queue_update = dbase_queue_update;
 
 //
 // Check for pending queue updates
@@ -59,7 +59,7 @@ function dbase_poll() {
     my.db_queue_loop.step({ loop: 1 });
   }
 }
-window.dbase_poll = dbase_poll;
+globalThis.dbase_poll = dbase_poll;
 
 //
 // Return non-zero if any actions issued for device uid
@@ -109,7 +109,7 @@ function dbase_actions_issued(uid, actions, options) {
   }
   return actionSeen;
 }
-window.dbase_actions_issued = dbase_actions_issued;
+globalThis.dbase_actions_issued = dbase_actions_issued;
 
 //
 // Issue actions to my device
@@ -130,7 +130,7 @@ function dbase_issue_actions(actions, options) {
     dbase_update_props(nactions, options);
   }
 }
-window.dbase_issue_actions = dbase_issue_actions;
+globalThis.dbase_issue_actions = dbase_issue_actions;
 
 //
 // Issue actions to all a_devices
@@ -145,4 +145,4 @@ function dbase_devices_issue_actions(actions, options) {
   // dbase_queue_update({ clear_action: dbase_increment(1) });
   dbase_devices_update(nactions, options);
 }
-window.dbase_devices_issue_actions = dbase_devices_issue_actions;
+globalThis.dbase_devices_issue_actions = dbase_devices_issue_actions;

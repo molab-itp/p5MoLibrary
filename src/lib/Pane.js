@@ -297,4 +297,4 @@ export class Pane {
   }
 }
 
-window.Pane = Pane;
+globalThis.Pane = Pane;

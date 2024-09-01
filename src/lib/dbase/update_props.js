@@ -67,7 +67,7 @@ function dbase_update_props(props, options) {
 
   dbase_site_event_update();
 }
-window.dbase_update_props = dbase_update_props;
+globalThis.dbase_update_props = dbase_update_props;
 
 //
 function dbase_update_value(value, apps) {
@@ -93,13 +93,13 @@ function dbase_update_value(value, apps) {
 
   dbase_site_event_update();
 }
-window.dbase_update_value = dbase_update_value;
+globalThis.dbase_update_value = dbase_update_value;
 
 function dbase_increment(value) {
   let { increment } = fireb_.fbase;
   return increment(value);
 }
-window.dbase_increment = dbase_increment;
+globalThis.dbase_increment = dbase_increment;
 
 //
 function dbase_remove_room() {
@@ -117,7 +117,7 @@ function dbase_remove_room() {
       console.log('dbase_remove_room error', error);
     });
 }
-window.dbase_remove_room = dbase_remove_room;
+globalThis.dbase_remove_room = dbase_remove_room;
 
 //
 function dbase_remove_mo_app() {
@@ -135,4 +135,4 @@ function dbase_remove_mo_app() {
       console.log('dbase_remove_mo_app error', error);
     });
 }
-window.dbase_remove_mo_app = dbase_remove_mo_app;
+globalThis.dbase_remove_mo_app = dbase_remove_mo_app;

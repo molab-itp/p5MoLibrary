@@ -23,7 +23,7 @@ async function fstorage_upload({ layer, path, imageQuality }) {
 
   return fstorage_upload_blob(blob, imagePath);
 }
-window.fstorage_upload = fstorage_upload;
+globalThis.fstorage_upload = fstorage_upload;
 
 function getBlob(elt, imageType, imageQuality) {
   return new Promise(function (resolve, reject) {
@@ -59,7 +59,7 @@ async function fstorage_remove({ path }) {
 
   return deleteObject(desertRef);
 }
-window.fstorage_remove = fstorage_remove;
+globalThis.fstorage_remove = fstorage_remove;
 
 async function fstorage_download_url({ path }) {
   // console.log('fstorage_img_download ');
@@ -70,4 +70,4 @@ async function fstorage_download_url({ path }) {
 
   return getDownloadURL(ref(getStorage(), imagePath));
 }
-window.fstorage_download_url = fstorage_download_url;
+globalThis.fstorage_download_url = fstorage_download_url;

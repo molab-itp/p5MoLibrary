@@ -3,7 +3,7 @@ function ui_logDetailFlag_changed(newValue) {
   my.logDetailFlag = newValue;
   ui_set_hidden(my.logDetail_div, my.logDetailFlag);
 }
-window.ui_logDetailFlag_changed = ui_logDetailFlag_changed;
+globalThis.ui_logDetailFlag_changed = ui_logDetailFlag_changed;
 
 // Updates my.logDetail_div with running log
 function ui_log(...args) {
@@ -25,7 +25,7 @@ function ui_log(...args) {
   str = my.logLines.join('<br/>');
   my.logDetail_div.html(str);
 }
-window.ui_log = ui_log;
+globalThis.ui_log = ui_log;
 
 function ui_log_add(lines, str) {
   lines.push(str);
@@ -38,7 +38,7 @@ function ui_log_clear() {
   my.logLines = [];
   my.logDetail_div.html('');
 }
-window.ui_log_clear = ui_log_clear;
+globalThis.ui_log_clear = ui_log_clear;
 
 function ui_logTagEntry(key) {
   let ent = my.logTags[key];
@@ -65,15 +65,15 @@ function ui_error(...args) {
   console.log(...args);
   alert(...args);
 }
-window.ui_error = ui_error;
+globalThis.ui_error = ui_error;
 
 // --
 
 function ui_toggle_scroll() {
-  if (window.scrollY > 0) {
+  if (globalThis.scrollY > 0) {
     // scroll down some. jump back to top
     console.log('ui_toggle_scroll jump to top');
-    window.scrollBy(0, -1000);
+    globalThis.scrollBy(0, -1000);
     my.scrolling = 0;
   } else {
     // At top. initiated scrolling
@@ -85,13 +85,13 @@ function ui_toggle_scroll() {
     }, my.scrollStopSecs * 1000);
   }
 }
-window.ui_toggle_scroll = ui_toggle_scroll;
+globalThis.ui_toggle_scroll = ui_toggle_scroll;
 
 function ui_check_scroll() {
   if (my.scrolling) {
-    window.scrollBy(0, 1);
+    globalThis.scrollBy(0, 1);
   }
 }
-window.ui_check_scroll = ui_check_scroll;
+globalThis.ui_check_scroll = ui_check_scroll;
 
 //

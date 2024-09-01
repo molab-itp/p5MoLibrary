@@ -97,6 +97,6 @@ const fireb_ = {
   fstorage,
 };
 
-window.fireb_ = fireb_;
+globalThis.fireb_ = fireb_;
 
 // https://firebase.google.com/docs/projects/api-keys

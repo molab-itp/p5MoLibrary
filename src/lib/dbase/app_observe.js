@@ -68,7 +68,7 @@ function dbase_app_observe({ observed_key, removed_key, observed_item }, options
     return group;
   }
 }
-window.dbase_app_observe = dbase_app_observe;
+globalThis.dbase_app_observe = dbase_app_observe;
 
 // issue dbase_update_props to group
 function dbase_update_item(item) {
@@ -82,7 +82,7 @@ function dbase_update_item(item) {
   }
   dbase_update_props(item, { group: group });
 }
-window.dbase_update_item = dbase_update_item;
+globalThis.dbase_update_item = dbase_update_item;
 
 // issue dbase_update_props to group if my.group present
 function dbase_group_update(item) {
@@ -93,7 +93,7 @@ function dbase_group_update(item) {
     dbase_update_props(item, { group: group });
   }
 }
-window.dbase_group_update = dbase_group_update;
+globalThis.dbase_group_update = dbase_group_update;
 
 function dbase_group_observe(props, options) {
   let group = my && my.group;
@@ -103,4 +103,4 @@ function dbase_group_observe(props, options) {
     dbase_devices_observe(props, options);
   }
 }
-window.dbase_group_observe = dbase_group_observe;
+globalThis.dbase_group_observe = dbase_group_observe;

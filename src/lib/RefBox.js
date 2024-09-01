@@ -95,4 +95,4 @@ export class RefBox {
 //   this.save_localStorage();
 // }
 
-window.RefBox = RefBox;
+globalThis.RefBox = RefBox;

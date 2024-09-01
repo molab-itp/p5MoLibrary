@@ -59,17 +59,17 @@ function dbase_devices_observe({ observed_key, removed_key, observed_item, all }
     }
   }
 }
-window.dbase_devices_observe = dbase_devices_observe;
+globalThis.dbase_devices_observe = dbase_devices_observe;
 
 function dbase_a_devices() {
   if (!my.a_devices) my.a_devices = [];
   return my.a_devices;
 }
-window.dbase_a_devices = dbase_a_devices;
+globalThis.dbase_a_devices = dbase_a_devices;
 
 function dbase_a_device_for_uid(uid) {
   // console.log('dbase_a_device_for_uid uid', uid, my.a_device_values[uid]);
   if (!my.a_device_values) my.a_device_values = {};
   return my.a_device_values[uid];
 }
-window.dbase_a_device_for_uid = dbase_a_device_for_uid;
+globalThis.dbase_a_device_for_uid = dbase_a_device_for_uid;

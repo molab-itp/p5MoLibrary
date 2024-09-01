@@ -9,7 +9,7 @@ export function video_create() {
   my.video.size(my.vwidth, my.vheight);
   my.video.hide();
 }
-window.video_create = video_create;
+globalThis.video_create = video_create;
 
 export function video_ready() {
   return (
@@ -19,4 +19,4 @@ export function video_ready() {
     my.video.height > 0
   );
 }
-window.video_ready = video_ready;
+globalThis.video_ready = video_ready;
