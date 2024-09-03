@@ -12,11 +12,16 @@ function dbase_app_init({ completed }) {
   console.log('configLabel', config.configLabel);
   console.log('room', my.roomName);
 
+  overlayElement();
+
   let { signInAnonymously, auth } = fireb_;
   signInAnonymously(auth)
     .then(() => {
       my.uid = auth.currentUser.uid;
       console.log('dbase_app_init my.uid', my.uid);
+
+      // my.overlay.innerHTML = 'uid:' + my.uid;
+      dbase_report_my_visit(0);
 
       dbase_site_observe();
 
@@ -66,3 +71,36 @@ function dbase_site_devices(show) {
   return arr;
 }
 globalThis.dbase_site_devices = dbase_site_devices;
+
+function overlayElement() {
+  if (!my.overlay) {
+    my.overlay = document.createElement('div');
+    document.body.appendChild(my.overlay);
+    my.overlay.style.position = 'fixed';
+    my.overlay.style.pointerEvents = 'none'; // Ensures the overlay doesn't block clicks
+  }
+
+  let w = window.innerWidth;
+  let h = 10;
+
+  let x = window.innerWidth - w;
+  let y = window.innerHeight - h - 4;
+  let width = w;
+  let height = h;
+
+  my.overlay.style.top = `${y}px`;
+  my.overlay.style.left = `${x}px`;
+  my.overlay.style.width = `${width}px`;
+  my.overlay.style.height = `${height}px`;
+
+  my.overlay.style.backgroundColor = 'black';
+  my.overlay.style.color = 'white';
+  my.overlay.style.fontSize = '${h}px';
+  // my.overlay.style.textAlign = 'right';
+  my.overlay.innerHTML = 'Text';
+}
+
+function dbase_report_my_visit(visit_count) {
+  my.overlay.innerHTML = 'uid:' + my.uid + ' (' + visit_count + ')';
+}
+globalThis.dbase_report_my_visit = dbase_report_my_visit;
