@@ -81,8 +81,8 @@ function create_index_buttons() {
   // let button_host = id_dashboard;
   let button_host = id_index_button_container;
   for (let index = 0; index < nfacts; index++) {
-    // let label = ('' + (index + 1)).padStart(3, '0');
-    let label = dateFactsKeys[index] + '';
+    let label1 = '#' + ('' + (index + 1)).padStart(3, '0');
+    let label = label1 + ' ' + dateFactsKeys[index] + '';
     const elt = document.createElement('button');
     elt.innerHTML = label;
     button_host.appendChild(elt);

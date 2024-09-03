@@ -82,7 +82,7 @@ function update_blackfacts_num_ui() {
     description = description.substring(0, periodIndex);
   }
   // console.log('update_blackfacts_num_ui description', description);
-  let msg = '#' + (index + 1) + ' ' + description;
+  let msg = '#' + (index + 1) + ' ' + dateFactsKeys[index] + ' ' + description;
   show_message_id(msg);
 }
 
