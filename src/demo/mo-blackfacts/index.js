@@ -17,6 +17,9 @@ function document_loaded() {
   init_ui();
 
   dbase_app_init({ completed: app_init_completed });
+
+  // Sometimes in non-remote description does not appear
+  setTimeout(update_blackfacts_num_ui, 1000);
 }
 
 function app_init_completed() {
