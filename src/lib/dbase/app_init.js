@@ -74,7 +74,7 @@ globalThis.dbase_site_devices = dbase_site_devices;
 
 function overlayElement() {
   if (!my.overlay) {
-    my.overlay = document.createElement('div');
+    my.overlay = document.createElement('span');
     document.body.appendChild(my.overlay);
     my.overlay.style.position = 'fixed';
     my.overlay.style.pointerEvents = 'none'; // Ensures the overlay doesn't block clicks
@@ -84,7 +84,7 @@ function overlayElement() {
   let h = 10;
 
   let x = window.innerWidth - w;
-  let y = window.innerHeight - h - 4;
+  let y = window.innerHeight - h;
   let width = w;
   let height = h;
 
@@ -93,14 +93,15 @@ function overlayElement() {
   my.overlay.style.width = `${width}px`;
   my.overlay.style.height = `${height}px`;
 
+  my.overlay.style.zIndex = 10;
   my.overlay.style.backgroundColor = 'black';
   my.overlay.style.color = 'white';
-  my.overlay.style.fontSize = '${h}px';
+  my.overlay.style.fontSize = `${h}px`;
   // my.overlay.style.textAlign = 'right';
-  my.overlay.innerHTML = 'Text';
+  my.overlay.textContent = 'Starting...';
 }
 
 function dbase_report_my_visit(visit_count) {
-  my.overlay.innerHTML = 'uid:' + my.uid + ' (' + visit_count + ')';
+  my.overlay.textContent = 'uid: ' + my.uid + ' (' + visit_count + ')';
 }
 globalThis.dbase_report_my_visit = dbase_report_my_visit;
