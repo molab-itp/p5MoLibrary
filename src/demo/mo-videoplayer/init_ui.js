@@ -25,7 +25,7 @@ function init_ui() {
     id_group_report.innerHTML = my.group;
   }
   if (my.isRemote) {
-    toggle_365_panes();
+    // toggle_365_panes();
   }
 }
 
@@ -80,10 +80,24 @@ function create_index_buttons() {
     elt.innerHTML = label;
     button_host.appendChild(elt);
     elt.addEventListener('click', function () {
-      toggle_365_panes();
+      // toggle_365_panes();
       update_blackfacts_index_dbase(index);
+      position_video();
     });
   }
+  // setTimeout(position_video, 1000);
+  // position_video();
+}
+
+function position_video() {
+  rt = button_container_rt();
+  id_player.style.top = rt.bottom + 'px';
+}
+
+function button_container_rt() {
+  rt = id_index_button_container.getBoundingClientRect();
+  console.log('button_container_rt rt.bottom', rt.bottom);
+  return rt;
 }
 
 function qrcode_hide() {
