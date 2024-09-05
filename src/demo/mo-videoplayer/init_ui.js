@@ -68,6 +68,9 @@ function position_bottom() {
   id_qrcode.style.top = y + 'px';
   id_bottom_message_pane.style.left = 2 * margin + 'px';
   id_bottom_message_pane.style.top = y + 'px';
+
+  position_video();
+  dbase_positionStatus();
 }
 
 function create_index_buttons() {

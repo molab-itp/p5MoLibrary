@@ -12,7 +12,7 @@ function dbase_app_init({ completed }) {
   console.log('configLabel', config.configLabel);
   console.log('room', my.roomName);
 
-  overlayElement();
+  createStatusElement();
 
   let { signInAnonymously, auth } = fireb_;
   signInAnonymously(auth)
@@ -72,13 +72,43 @@ function dbase_site_devices(show) {
 }
 globalThis.dbase_site_devices = dbase_site_devices;
 
-function overlayElement() {
-  if (!my.overlay) {
-    my.overlay = document.createElement('span');
-    document.body.appendChild(my.overlay);
-    my.overlay.style.position = 'fixed';
-    my.overlay.style.pointerEvents = 'none'; // Ensures the overlay doesn't block clicks
+function createStatusElement() {
+  if (!my.statusElement) {
+    my.statusElement = document.createElement('span');
+    document.body.appendChild(my.statusElement);
+    my.statusElement.style.position = 'fixed';
+    my.statusElement.style.pointerEvents = 'none'; // Ensures the overlay doesn't block clicks
   }
+  dbase_positionStatus();
+  let w = window.innerWidth;
+  let h = 10;
+
+  let x = window.innerWidth - w;
+  let y = window.innerHeight - h;
+  let width = w;
+  let height = h;
+
+  my.statusElement.style.top = `${y}px`;
+  my.statusElement.style.left = `${x}px`;
+  my.statusElement.style.width = `${width}px`;
+  my.statusElement.style.height = `${height}px`;
+
+  my.statusElement.style.zIndex = 10;
+  my.statusElement.style.backgroundColor = 'black';
+  my.statusElement.style.color = 'white';
+  my.statusElement.style.fontSize = `${h}px`;
+  // my.statusElement.style.textAlign = 'right';
+  my.statusElement.textContent = 'Starting...';
+}
+
+function dbase_report_my_visit(visit_count) {
+  if (!my.statusElement) return;
+  my.statusElement.textContent = 'uid: ' + my.uid + ' (' + visit_count + ')';
+}
+globalThis.dbase_report_my_visit = dbase_report_my_visit;
+
+function dbase_positionStatus() {
+  if (!my.statusElement) return;
 
   let w = window.innerWidth;
   let h = 10;
@@ -88,20 +118,14 @@ function overlayElement() {
   let width = w;
   let height = h;
 
-  my.overlay.style.top = `${y}px`;
-  my.overlay.style.left = `${x}px`;
-  my.overlay.style.width = `${width}px`;
-  my.overlay.style.height = `${height}px`;
+  my.statusElement.style.top = `${y}px`;
+  my.statusElement.style.left = `${x}px`;
+  my.statusElement.style.width = `${width}px`;
+  my.statusElement.style.height = `${height}px`;
 
-  my.overlay.style.zIndex = 10;
-  my.overlay.style.backgroundColor = 'black';
-  my.overlay.style.color = 'white';
-  my.overlay.style.fontSize = `${h}px`;
-  // my.overlay.style.textAlign = 'right';
-  my.overlay.textContent = 'Starting...';
+  my.statusElement.style.zIndex = 10;
+  my.statusElement.style.backgroundColor = 'black';
+  my.statusElement.style.color = 'white';
+  my.statusElement.style.fontSize = `${h}px`;
 }
-
-function dbase_report_my_visit(visit_count) {
-  my.overlay.textContent = 'uid: ' + my.uid + ' (' + visit_count + ')';
-}
-globalThis.dbase_report_my_visit = dbase_report_my_visit;
+globalThis.dbase_positionStatus = dbase_positionStatus;
