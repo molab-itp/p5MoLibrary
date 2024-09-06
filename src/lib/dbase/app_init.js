@@ -73,39 +73,16 @@ function dbase_site_devices(show) {
 globalThis.dbase_site_devices = dbase_site_devices;
 
 function createStatusElement() {
+  if (!document) return;
   if (!my.statusElement) {
     my.statusElement = document.createElement('span');
     document.body.appendChild(my.statusElement);
     my.statusElement.style.position = 'fixed';
-    my.statusElement.style.pointerEvents = 'none'; // Ensures the overlay doesn't block clicks
+    my.statusElement.style.pointerEvents = 'none';
   }
   dbase_positionStatus();
-  let w = window.innerWidth;
-  let h = 10;
-
-  let x = window.innerWidth - w;
-  let y = window.innerHeight - h;
-  let width = w;
-  let height = h;
-
-  my.statusElement.style.top = `${y}px`;
-  my.statusElement.style.left = `${x}px`;
-  my.statusElement.style.width = `${width}px`;
-  my.statusElement.style.height = `${height}px`;
-
-  my.statusElement.style.zIndex = 10;
-  my.statusElement.style.backgroundColor = 'black';
-  my.statusElement.style.color = 'white';
-  my.statusElement.style.fontSize = `${h}px`;
-  // my.statusElement.style.textAlign = 'right';
   my.statusElement.textContent = 'Starting...';
 }
-
-function dbase_report_my_visit(visit_count) {
-  if (!my.statusElement) return;
-  my.statusElement.textContent = 'uid: ' + my.uid + ' (' + visit_count + ')';
-}
-globalThis.dbase_report_my_visit = dbase_report_my_visit;
 
 function dbase_positionStatus() {
   if (!my.statusElement) return;
@@ -129,3 +106,9 @@ function dbase_positionStatus() {
   my.statusElement.style.fontSize = `${h}px`;
 }
 globalThis.dbase_positionStatus = dbase_positionStatus;
+
+function dbase_report_my_visit(visit_count) {
+  if (!my.statusElement) return;
+  my.statusElement.textContent = 'uid: ' + my.uid + ' (' + visit_count + ')';
+}
+globalThis.dbase_report_my_visit = dbase_report_my_visit;
