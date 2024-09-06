@@ -62,8 +62,10 @@ function dbase_fireb_device(uid, val) {
   if (fresh && uid == my.uid) {
     // device must be inited to record visit event
     dbase_site_event_visit();
-    dbase_report_my_visit(device.dbase.visit_count);
   }
+  let visit_count = device.dbase.visit_count;
+  let ndevice = Object.keys(my.fireb_devices).length;
+  dbase_report_status({ uid, visit_count, ndevice });
   return device;
 }
 globalThis.dbase_fireb_device = dbase_fireb_device;

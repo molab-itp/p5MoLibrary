@@ -20,8 +20,7 @@ function dbase_app_init({ completed }) {
       my.uid = auth.currentUser.uid;
       console.log('dbase_app_init my.uid', my.uid);
 
-      // my.overlay.innerHTML = 'uid:' + my.uid;
-      dbase_report_my_visit(0);
+      dbase_report_status({});
 
       dbase_site_observe();
 
@@ -107,8 +106,11 @@ function dbase_positionStatus() {
 }
 globalThis.dbase_positionStatus = dbase_positionStatus;
 
-function dbase_report_my_visit(visit_count) {
+function dbase_report_status(props) {
   if (!my.statusElement) return;
-  my.statusElement.textContent = 'uid: ' + my.uid + ' (' + visit_count + ')';
+  let uid = props.uid || '';
+  let visit_count = props.visit_count || '';
+  let ndevice = props.ndevice || '';
+  my.statusElement.textContent = `${my.uid} ${uid} (${visit_count}) [${ndevice}]`;
 }
-globalThis.dbase_report_my_visit = dbase_report_my_visit;
+globalThis.dbase_report_status = dbase_report_status;
