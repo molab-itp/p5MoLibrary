@@ -70,7 +70,7 @@ function position_bottom() {
   id_bottom_message_pane.style.top = y + 'px';
 
   position_video();
-  dbase_positionStatus();
+  // dbase_positionStatus();
 }
 
 function create_index_buttons() {

@@ -75,7 +75,7 @@ function position_bottom() {
   id_bottom_message_pane.style.left = 2 * margin + 'px';
   id_bottom_message_pane.style.top = y + 'px';
 
-  dbase_positionStatus();
+  // dbase_positionStatus();
 }
 
 function create_index_buttons() {

@@ -86,23 +86,20 @@ function createStatusElement() {
 function dbase_positionStatus() {
   if (!my.statusElement) return;
 
-  let w = window.innerWidth;
   let h = 10;
+  let x = 0;
 
-  let x = window.innerWidth - w;
-  let y = window.innerHeight - h;
-  let width = w;
-  let height = h;
-
-  my.statusElement.style.top = `${y}px`;
+  my.statusElement.style.position = 'fixed';
+  my.statusElement.style.bottom = '0';
   my.statusElement.style.left = `${x}px`;
-  my.statusElement.style.width = `${width}px`;
-  my.statusElement.style.height = `${height}px`;
+  my.statusElement.style.width = `100%`;
 
-  my.statusElement.style.zIndex = 10;
+  my.statusElement.style.zIndex = 1000;
   my.statusElement.style.backgroundColor = 'black';
+  // my.statusElement.style.backgroundColor = 'green';
   my.statusElement.style.color = 'white';
   my.statusElement.style.fontSize = `${h}px`;
+  my.statusElement.style.padding = '1px 2px';
 }
 globalThis.dbase_positionStatus = dbase_positionStatus;
 
@@ -114,3 +111,7 @@ function dbase_report_status(props) {
   my.statusElement.textContent = `${my.uid} ${uid} (${visit_count}) [${ndevice}]`;
 }
 globalThis.dbase_report_status = dbase_report_status;
+
+// https://chatgpt.com/
+// html css to keep element at the bottome of the window when window is scrolled
+//
