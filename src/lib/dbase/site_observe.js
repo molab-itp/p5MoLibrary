@@ -70,6 +70,8 @@ function dbase_fireb_device(uid, val) {
 }
 globalThis.dbase_fireb_device = dbase_fireb_device;
 
+// Only count devices that dont contain '-electron' in the name_s field
+//
 function count_client_devices() {
   Object.keys(my.fireb_devices).length;
   let count = 0;
@@ -82,7 +84,6 @@ function count_client_devices() {
   });
   return count;
 }
-count_client_devices();
 
 //
 //
