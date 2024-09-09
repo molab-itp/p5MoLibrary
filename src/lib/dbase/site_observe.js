@@ -77,7 +77,7 @@ function count_client_devices() {
   let count = 0;
   Object.entries(my.fireb_devices).map((ent) => {
     let dev = ent[1];
-    console.log('dev', dev);
+    // console.log('dev', dev);
     if (dev.dbase.name_s.indexOf('-electron') < 0) {
       count++;
     }
