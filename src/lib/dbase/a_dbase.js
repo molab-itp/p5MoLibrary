@@ -11,3 +11,4 @@ import './update_props.js?v=112';
 import './updateTimeGap.js?v=112';
 import '../Anim.js?v=112';
 import '../fireb_/fireb_config.js?v=112';
+import '../get_url_params.js?v=112';
