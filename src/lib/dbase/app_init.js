@@ -12,7 +12,8 @@ function dbase_app_init({ completed }) {
   console.log('configLabel', config.configLabel);
   console.log('room', my.roomName);
 
-  createStatusElement();
+  // createStatusElement();
+  dbase_report_status({ msg: 'Starting...' });
 
   let { signInAnonymously, auth } = fireb_;
   signInAnonymously(auth)
@@ -79,12 +80,6 @@ function createStatusElement() {
     my.statusElement.style.position = 'fixed';
     my.statusElement.style.pointerEvents = 'none';
   }
-  dbase_positionStatus();
-  my.statusElement.textContent = 'Starting...';
-}
-
-function dbase_positionStatus() {
-  if (!my.statusElement) return;
 
   let h = 10;
   let x = 0;
@@ -101,14 +96,22 @@ function dbase_positionStatus() {
   my.statusElement.style.fontSize = `${h}px`;
   my.statusElement.style.padding = '1px 2px';
 }
-globalThis.dbase_positionStatus = dbase_positionStatus;
+// globalThis.dbase_positionStatus = dbase_positionStatus;
 
 function dbase_report_status(props) {
-  if (!my.statusElement) return;
-  let uid = props.uid || '';
-  let visit_count = props.visit_count || '';
-  let ndevice = props.ndevice || '';
-  my.statusElement.textContent = `${my.uid} ${uid} (${visit_count}) [${ndevice}]`;
+  if (!my.statusElement) {
+    createStatusElement();
+    if (!my.statusElement) return;
+  }
+  let msg = props.msg;
+  if (!msg) {
+    let muid = my.uid || '';
+    let uid = props.uid || '';
+    let visit_count = props.visit_count || '';
+    let ndevice = props.ndevice || '';
+    msg = `${muid} ${uid} (${visit_count}) [${ndevice}]`;
+  }
+  my.statusElement.textContent = msg;
 }
 globalThis.dbase_report_status = dbase_report_status;
 
