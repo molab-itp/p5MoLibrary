@@ -9,8 +9,8 @@ const dateFacts = {
   },
   '0102': {
     videoKey: '8HfVf69nUX0',
-    title: 'Community: Rhythm / Movement / Joy (2022)',
-    description: 'Community: Rhythm / Movement / Joy (2022)',
+    title: 'Community: Rhythm / Movement / Joy (2022) by Ali Santana',
+    description: 'Community: Rhythm / Movement / Joy (2022) by Ali Santana',
     index: 1,
   },
   '0103': {
@@ -27,8 +27,9 @@ const dateFacts = {
   },
   '0105': {
     videoKey: '1pcVXU4BGWw',
-    title: 'Tatiana Diomi - doumissmeanimationmp4 (Pinkpantheress)',
-    description: 'Tatiana Diomi - doumissmeanimationmp4 (Pinkpantheress)',
+    // title: 'Tatiana Diomi - doumissmeanimationmp4 (Pinkpantheress)',
+    title: 'Pinkpantheress by Tatiana Diomi',
+    description: 'Pinkpantheress by Tatiana Diomi',
     index: 4,
   },
   '0106': {

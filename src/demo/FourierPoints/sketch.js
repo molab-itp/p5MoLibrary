@@ -5,7 +5,7 @@
 let my = {};
 
 function my_setup() {
-  my.version = '?v=115';
+  my.version = '?v=116';
   my.width = windowWidth;
   my.height = windowHeight;
   // my.width = 640;
