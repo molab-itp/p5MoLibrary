@@ -28,13 +28,13 @@ const dateFacts = {
   '0105': {
     videoKey: '1pcVXU4BGWw',
     title: 'Tatiana Diomi - doumissmeanimationmp4 (Pinkpantheress)',
-    description: "Don't Count Me Out by Kayley Chery (2023)",
+    description: 'Tatiana Diomi - doumissmeanimationmp4 (Pinkpantheress)',
     index: 4,
   },
   '0106': {
     videoKey: 'MrhNbM9219o',
-    title: 'Transmission',
-    description: 'Transmission',
+    title: 'Transmission by Sophia',
+    description: 'Transmission by Sophia',
     index: 5,
   },
 };
