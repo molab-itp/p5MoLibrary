@@ -1,10 +1,8 @@
 // https://editor.p5js.org/jht1493/sketches/5LgILr8RF
-// Firebase-createImg-board
+// firebase mo-gallery-1
 // Display images from Firebase storage as a billboard using createImg
 
-// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/
-// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/?gallery=ims-web
-// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/?gallery=web
+// https://molab-itp.github.io/p5moLibrary/src/demo/mo-gallery-1/?v=119
 
 let a_version = 'v9 ';
 let galleryKey = 'mo-1/gallery-@r-';
@@ -219,3 +217,7 @@ function params_query(query) {
   const params = Object.fromEntries(urlParams);
   return params;
 }
+
+// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/
+// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/?gallery=ims-web
+// https://mobilelabclass-itp.github.io/p5moLibrary/p5js_demo/createImg-board/?gallery=web
