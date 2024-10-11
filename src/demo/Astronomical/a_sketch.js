@@ -9,7 +9,7 @@ let my = {};
 
 function preload() {
   //
-  my.version = '?v=116';
+  my.version = '?v=119';
 
   my.backgImg = loadImage('../../assets/The_Celestial_Zoo.png');
 

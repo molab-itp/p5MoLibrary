@@ -1,10 +1,10 @@
-# [p5moLibrary](https://github.com/molab-itp/p5moLibrary) ?v=116
+# [p5moLibrary](https://github.com/molab-itp/p5moLibrary) ?v=119
 
 - a p5js Library for cloud storage enhanced multi-device experiences from handheld to large screens
 
 # [repo](https://github.com/molab-itp/p5moLibrary)
 
-# [github.io src](https://molab-itp.github.io/p5moLibrary/src?v=116)
+# [github.io src](https://molab-itp.github.io/p5moLibrary/src?v=119)
 
 # [usage examples](https://github.com/molab-itp/p5moExamples)
 

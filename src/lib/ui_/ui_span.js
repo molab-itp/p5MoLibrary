@@ -103,6 +103,9 @@ globalThis.ui_begin_update = ui_begin_update;
 function ui_element(id) {
   // console.log('ui_element id', id);
   if (!id) {
+    if (!my.ui_id_index) {
+      my.ui_id_index = 1;
+    }
     id = 'uid_' + my.ui_id_index;
     my.ui_id_index++;
   }
