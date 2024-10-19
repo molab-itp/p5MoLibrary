@@ -1,4 +1,4 @@
-// https://editor.p5js.org/jht1493/sketches/5LgILr8RF
+// https://editor.p5js.org/jht9629-nyu/sketches/2OYRyVuhx
 // firebase mo-gallery-1
 // Display images from Firebase storage as a billboard using createImg
 
@@ -107,7 +107,7 @@ function received_gallery(data, opts) {
   }
   nitems = rarr.length;
 
-  for (val of rarr) {
+  for (let val of rarr) {
     // console.log('received_gallery val', val);
     // let img = createImg( 'https://p5js.org/assets/img/asterisk-01.png', 'the p5 magenta asterisk' );
     // select full resolution media if available
