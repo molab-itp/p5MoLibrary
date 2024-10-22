@@ -91,7 +91,19 @@ export class Pane {
     let dy = this.y0;
     let sx = this.panX;
     let sy = this.panY;
-    image(backgImg, dx, dy, cm.dWidth, cm.dHeight, sx, sy, cm.sWidth, cm.sHeight);
+    this.backBuffer.clear();
+    this.backBuffer.image(backgImg, 0, 0, cm.dWidth, cm.dHeight, sx, sy, cm.sWidth, cm.sHeight);
+    image(
+      this.backBuffer,
+      dx,
+      dy,
+      this.backBuffer.width,
+      this.backBuffer.height,
+      0,
+      0,
+      this.backBuffer.width,
+      this.backBuffer
+    );
   }
 
   // image(img, x, y, [width], [height])
@@ -183,6 +195,9 @@ export class Pane {
     this.panY = 0;
     this.zoomIndex = this.z0;
     this.zoomRatio = 1 / this.zoomIndex;
+    if (!this.backBuffer) {
+      this.backBuffer = createGraphics(this.width, this.height);
+    }
   }
 
   pan_center() {
@@ -204,16 +219,24 @@ export class Pane {
     let dWidth = this.width;
     let dHeight = floor(dWidth * rr);
     if (dHeight < this.height) {
+      // console.log('dHeight < this.height');
       dHeight = this.height;
       dWidth = floor(dHeight / rr);
+    } else {
+      // console.log('dHeight > this.height');
+      // dHeight = this.height;
+      // dWidth = floor(dHeight / rr);
     }
 
     let sWidth = floor(ww * this.zoomRatio);
     let sHeight = floor(hh * this.zoomRatio);
-    if (this.width < dWidth) {
+    if (dWidth > this.width) {
+      // console.log('dWidth > this.width');
       let dr = this.width / dWidth;
       dWidth = this.width;
       sWidth = floor(sWidth * dr);
+    } else {
+      // console.log('dWidth < this.width');
     }
 
     return { dWidth, dHeight, sWidth, sHeight, ww, hh };

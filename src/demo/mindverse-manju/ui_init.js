@@ -179,7 +179,7 @@ function ui_init_update() {
   let panY = pane.panY.toFixed(1);
   select('#id_panY').html('[panY=' + panY + '] ');
 
-  console.log('pane.zoomIndex', pane.zoomIndex);
+  // console.log('pane.zoomIndex', pane.zoomIndex);
   if (pane.zoomIndex) {
     let zoom = pane.zoomIndex.toFixed(2);
     select('#id_zoom').html('[zoom=' + zoom + '] ');
