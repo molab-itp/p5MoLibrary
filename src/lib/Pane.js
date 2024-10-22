@@ -17,6 +17,7 @@ export class Pane {
 
     this.pan_init();
 
+    console.log('Pane initCentered', this.initCentered);
     if (this.initCentered) {
       this.pan_center();
     }
@@ -163,14 +164,8 @@ export class Pane {
     let rg = this.region();
     this.zoomIndex = rg.z;
     let cm = this.canvasMap();
-    // console.log('focus cm', JSON.stringify(cm));
-    // let x = rg.x + rg.w * 0.5 - cm.sWidth * 0.5;
-    // let y = rg.y + rg.h * 0.5 - cm.sHeight * 0.5;
-    // this.panX = floor(x);
-    // this.panY = floor(y);
     this.panX = floor(rg.x + (rg.w - cm.sWidth) * 0.5);
     this.panY = floor(rg.y + (rg.h - cm.sHeight) * 0.5);
-    // console.log('focus rg', JSON.stringify(rg));
   }
 
   focus_focusRect() {

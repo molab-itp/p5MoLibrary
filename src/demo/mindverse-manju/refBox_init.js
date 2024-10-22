@@ -1,5 +1,6 @@
 let refBox_init = {
   storageLabel: 'ref-manju',
+  reloadLocal: 1,
   refIndex: 0,
   width: 8384,
   height: 9970,
@@ -8,41 +9,21 @@ let refBox_init = {
       label: 'Sun',
       regions: [
         {
-          x: 743,
-          y: 884,
+          x: 4705,
+          y: 4474,
           w: 0,
           h: 0,
           z: 1,
         },
         {
-          x: 8245,
-          y: 8370,
-          w: 0,
-          h: 0,
-          z: 1,
+          x: 0,
+          y: 0,
+          w: 8384,
+          h: 9970,
+          z: 4,
         },
       ],
       i: 1,
-    },
-    {
-      label: '',
-      i: 2,
-      regions: [
-        {
-          x: 1231,
-          y: 893,
-          w: 0,
-          h: 0,
-          z: 1,
-        },
-        {
-          x: 8228,
-          y: 8507,
-          w: 10,
-          h: 0,
-          z: 1,
-        },
-      ],
     },
   ],
 };

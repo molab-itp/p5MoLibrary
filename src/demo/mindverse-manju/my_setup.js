@@ -2,7 +2,13 @@
 function my_setup() {
   //
   my.version = '?v=119';
-  my.canvas = createCanvas(windowWidth, windowHeight - 90);
+
+  // my.primaryPortion = 0.333;
+  my.primaryPortion = 0.5;
+  // let bottomMargin = 0;
+  let bottomMargin = 90;
+
+  my.canvas = createCanvas(windowWidth, windowHeight - bottomMargin);
   my.canvas.mousePressed(canvas_mousePressed);
   my.canvas.mouseReleased(canvas_mouseReleased);
   my.width = width;
@@ -33,9 +39,9 @@ function create_pane0() {
   let backgImg = my.backgImg;
 
   let x0 = 0;
-  let y0 = my.height * 0.25;
+  let y0 = my.height * my.primaryPortion;
   let z0 = 1;
-  let height = my.height * 0.75;
+  let height = my.height * (1 - my.primaryPortion);
 
   let width = my.width;
   let refBox = my.refBox;
@@ -51,7 +57,7 @@ function create_pane1() {
   let x0 = 0;
   let y0 = 0;
   let z0 = 1;
-  let height = my.height * 0.25;
+  let height = my.height * my.primaryPortion;
 
   let width = my.width;
   let initCentered = 0;
