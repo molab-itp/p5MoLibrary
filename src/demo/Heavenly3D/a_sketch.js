@@ -104,3 +104,4 @@ function setFocus(body) {
 // Manju.jpg
 // https://en.wikipedia.org/wiki/Mandala
 // https://en.wikipedia.org/wiki/File:Manjuvajramandala_con_43_divinit%C3%A0_-_Unknown_-_Google_Cultural_Institute.jpg
+// File:Manjuvajramandala con 43 divinità - Unknown - Google Cultural Institute.jpg
