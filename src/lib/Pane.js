@@ -48,6 +48,21 @@ export class Pane {
     this.focus_focusRect();
   }
 
+  focus_animated_cut() {
+    this.anim.initValues({ panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex });
+    this.focus_pan_cut();
+    this.focus_focusRect();
+    this.anim.addChange(1, { panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex });
+  }
+
+  focus_pan_cut() {
+    let rg = this.region();
+    this.zoomIndex = rg.z;
+    let cm = this.canvasMap();
+    this.panX = rg.x;
+    this.panY = rg.y;
+  }
+
   focus_animated() {
     this.anim.initValues({ panX: this.panX, panY: this.panY, zoomIndex: this.zoomIndex });
     if (this.regionIndex == 1) {
@@ -102,7 +117,7 @@ export class Pane {
       0,
       0,
       this.backBuffer.width,
-      this.backBuffer
+      this.backBuffer.height
     );
   }
 

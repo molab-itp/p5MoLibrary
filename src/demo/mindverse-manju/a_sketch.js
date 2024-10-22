@@ -13,14 +13,14 @@ function preload() {
 
   my.backgImg = loadImage('../../assets/Manju.jpg');
 
-  console.log('preload my.backgImg width', my.backgImg.width, my.backgImg.height);
+  // console.log('preload my.backgImg width', my.backgImg.width, my.backgImg.height);
   // my.backgImg width 1 1
 }
 
 function setup() {
   //
   console.log('setup my.backgImg width', my.backgImg.width, my.backgImg.height);
-  // my.backgImg width 4800 3200
+  // setup my.backgImg width 8384 9970
 
   my_setup();
 

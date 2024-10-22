@@ -27,39 +27,35 @@ function my_setup() {
   my.cycleCount = 1;
 }
 
+// Primary pane
+//
 function create_pane0() {
   let backgImg = my.backgImg;
-  let rr = 1 - my.paneRatio;
-  let x0 = 0;
-  let y0 = 0;
-  let z0 = 1;
-  let height = my.height * 0.25;
-  let width = my.width;
-  let refBox = my.refBox;
-  // if (my.isPortrait) {
-  //   // width = floor(my.width * (3 / 9));
-  //   width = my.width;
-  //   height = floor(my.height * (6 / 16));
-  //   // y0 = my.height - height;
-  // }
-  let regionIndex = 0;
-  my.pane0 = new Pane({ backgImg, x0, y0, z0, width, height, refBox, regionIndex });
-}
 
-function create_pane1() {
-  let backgImg = my.backgImg;
-  let rr = my.paneRatio;
   let x0 = 0;
   let y0 = my.height * 0.25;
   let z0 = 1;
   let height = my.height * 0.75;
+
   let width = my.width;
-  let initCentered = 1;
   let refBox = my.refBox;
-  // if (my.isPortrait) {
-  //   width = my.width;
-  //   x0 = 0;
-  // }
+  let regionIndex = 0;
+  my.pane0 = new Pane({ backgImg, x0, y0, z0, width, height, refBox, regionIndex });
+}
+
+// Secondary pane
+//
+function create_pane1() {
+  let backgImg = my.backgImg;
+
+  let x0 = 0;
+  let y0 = 0;
+  let z0 = 1;
+  let height = my.height * 0.25;
+
+  let width = my.width;
+  let initCentered = 0;
+  let refBox = my.refBox;
   let regionIndex = 1;
   my.pane1 = new Pane({ backgImg, x0, y0, z0, width, height, initCentered, refBox, regionIndex });
 }

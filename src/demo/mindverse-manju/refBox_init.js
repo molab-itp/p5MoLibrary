@@ -8,11 +8,11 @@ let refBox_init = {
       label: 'Sun',
       regions: [
         {
-          x: 163,
-          y: 314,
-          w: 598,
-          h: 589,
-          z: 4,
+          x: 743,
+          y: 884,
+          w: 0,
+          h: 0,
+          z: 1,
         },
         {
           x: 8245,
@@ -29,11 +29,11 @@ let refBox_init = {
       i: 2,
       regions: [
         {
-          x: 705,
-          y: 1541,
+          x: 1231,
+          y: 893,
           w: 0,
           h: 0,
-          z: 4,
+          z: 1,
         },
         {
           x: 8228,
