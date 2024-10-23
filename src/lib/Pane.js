@@ -107,19 +107,10 @@ export class Pane {
     let dy = this.y0;
     let sx = this.panX;
     let sy = this.panY;
-    this.backBuffer.clear();
-    this.backBuffer.image(backgImg, 0, 0, cm.dWidth, cm.dHeight, sx, sy, cm.sWidth, cm.sHeight);
-    image(
-      this.backBuffer,
-      dx,
-      dy,
-      this.backBuffer.width,
-      this.backBuffer.height,
-      0,
-      0,
-      this.backBuffer.width,
-      this.backBuffer.height
-    );
+    let bf = this.backBuffer;
+    bf.clear();
+    bf.image(backgImg, 0, 0, cm.dWidth, cm.dHeight, sx, sy, cm.sWidth, cm.sHeight);
+    image(bf, dx, dy, bf.width, bf.height, 0, 0, bf.width, bf.height);
   }
 
   // image(img, x, y, [width], [height])
@@ -165,7 +156,10 @@ export class Pane {
     this.zoomIndex = rg.z;
     let cm = this.canvasMap();
     this.panX = floor(rg.x + (rg.w - cm.sWidth) * 0.5);
-    this.panY = floor(rg.y + (rg.h - cm.sHeight) * 0.5);
+    // this.panY = floor(rg.y + (rg.h - cm.sHeight) * 0.5);
+    this.panY = floor(rg.y);
+    // this.panX = floor(rg.x + (rg.w - cm.ww) * 0.5);
+    // this.panY = floor(rg.y + (rg.h - cm.hh) * 0.5);
   }
 
   focus_focusRect() {
@@ -229,25 +223,28 @@ export class Pane {
     let dWidth = this.width;
     let dHeight = floor(dWidth * rr);
     if (dHeight < this.height) {
-      // console.log('dHeight < this.height');
+      // console.log('canvasMap dHeight < this.height');
       dHeight = this.height;
       dWidth = floor(dHeight / rr);
     } else {
-      // console.log('dHeight > this.height');
-      // dHeight = this.height;
-      // dWidth = floor(dHeight / rr);
+      // console.log('canvasMap dHeight > this.height **');
+      // height clipped **
     }
 
     let sWidth = floor(ww * this.zoomRatio);
     let sHeight = floor(hh * this.zoomRatio);
     if (dWidth > this.width) {
-      // console.log('dWidth > this.width');
+      // console.log('canvasMap dWidth > this.width');
       let dr = this.width / dWidth;
       dWidth = this.width;
       sWidth = floor(sWidth * dr);
     } else {
-      // console.log('dWidth < this.width');
+      // console.log('canvasMap dWidth < this.width **');
+      // width NOT clipped **
     }
+
+    // canvasMap dHeight > this.height
+    // canvasMap dWidth < this.width
 
     return { dWidth, dHeight, sWidth, sHeight, ww, hh };
   }
@@ -311,6 +308,7 @@ export class Pane {
       let y = floor((ment.y - this.y0) * rh) + this.panY;
       regions.push({ x, y });
     }
+    console.log('updateEnt regions', regions);
     if (regions[0].x > regions[1].x) {
       let temp = regions[1].x;
       regions[1].x = regions[0].x;
