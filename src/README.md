@@ -54,12 +54,15 @@ demos using p5moLibrary internally. plan is to move them to p5moExamples
 ## garage play list
 
 - garage play list using mo-videplayer
+
   - [demo/mo-videoplayer s1](demo/mo-videoplayer?v=119&group=s1&qrcode=mo-videoplayer-qrcode-1.png)
     [[remote](qrcode/mo-videoplayer.html?v=119&group=s1)]
   - [demo/mo-videoplayer s2](demo/mo-videoplayer?v=119&group=s2&qrcode=mo-videoplayer-qrcode-2.png)
     [[remote](qrcode/mo-videoplayer.html?v=119&group=s2)]
 
 ## NatimeTime play list
+
+- [2025 Alter Ego](demo/mo-videoplayer/index.html?playlist=zJxFKxA5lT0&qrcode=2024-alter-ego.png)
 
 - [Community: Rhythm / Movement / Joy (2022)](demo/mo-videoplayer/index.html?playlist=8HfVf69nUX0)
 
